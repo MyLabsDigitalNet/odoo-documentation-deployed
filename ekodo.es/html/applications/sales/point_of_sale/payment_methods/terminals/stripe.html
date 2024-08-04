@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stripe &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/point_of_sale/payment_methods/terminals/stripe.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/point_of_sale/payment_methods/terminals/stripe.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Stripe</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#configure-the-payment-method">Configure the payment method</a></li>
+<li><a class="reference internal" href="#connect-stripe-to-odoo">Connect Stripe to Odoo</a></li>
+<li><a class="reference internal" href="#configure-the-payment-terminal">Configure the payment terminal</a></li>
+<li><a class="reference internal" href="#link-the-payment-method-to-a-pos">Link the payment method to a POS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pay-with-a-payment-terminal">Pay with a payment terminal</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#payment-terminal-unavailable-in-your-stripe-account">Payment terminal unavailable in your Stripe account</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/point_of_sale/payment_methods/terminals/stripe.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Stripe</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="stripe">
+<h1>Stripe<a class="headerlink" href="#stripe" title="Permalink to this headline">¶</a></h1>
+<p>Connecting a payment terminal allows you to offer a fluid payment flow to your customers and ease
+the work of your cashiers.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><ul class="simple">
+<li><p>Stripe payment terminals do not require an <a class="reference internal" href="../../../../general/iot.html"><span class="doc">IoT Box</span></a></p></li>
+<li><p>Stripe terminals can be used in many countries, but not worldwide. Check the <a class="reference external" href="https://support.stripe.com/questions/global-availability-for-stripe-terminal">global
+availability for Stripe Terminal</a>.</p></li>
+<li><p>Stripe’s integration works with <a class="reference external" href="https://docs.stripe.com/terminal/smart-readers">Stripe Terminal smart readers</a></p></li>
+</ul>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../../finance/payment_providers/stripe.html"><span class="doc">Stripe as payment provider</span></a></p></li>
+<li><p><a class="reference external" href="https://stripe.com/payments/payment-methods">List of payment methods supported by Stripe</a></p></li>
+</ul>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="configure-the-payment-method">
+<h3>Configure the payment method<a class="headerlink" href="#configure-the-payment-method" title="Permalink to this headline">¶</a></h3>
+<p>Activate <strong>Stripe</strong> in the settings by going to <span class="menuselection">Point of Sale ‣ Configuration ‣
+Settings ‣ Payment Terminals</span> and enabling <span class="guilabel">Stripe</span>.</p>
+<p>Then, create the payment method:</p>
+<ul class="simple">
+<li><p>Go to <span class="menuselection">Point of Sale ‣ Configuration ‣ Payment Methods</span>, click
+<span class="guilabel">Create</span>, and complete the <span class="guilabel">Method</span> field with your payment method’s name;</p></li>
+<li><p>Set the <span class="guilabel">Journal</span> field as <span class="guilabel">Bank</span> and the <span class="guilabel">Use a Payment Terminal</span>
+field as <span class="guilabel">Stripe</span>;</p></li>
+<li><p>Enter your payment terminal serial number in the <span class="guilabel">Stripe Serial Number</span> field;</p></li>
+<li><p>Click <span class="guilabel">Don’t forget to complete Stripe connect before using this payment method.</span></p></li>
+</ul>
+<img alt="payment method creation form" class="align-center" src="../../../../../_images/create-method-stripe.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Click <span class="guilabel">Identify Customer</span> to allow this payment method <strong>exclusively</strong> for identified
+customers. For any unidentified customers to be able to pay with Stripe, leave the
+<span class="guilabel">Identify Customer</span> field unchecked.</p></li>
+<li><p>The <span class="guilabel">Outstanding Account</span> and the <span class="guilabel">Intermediary Account</span> can stay empty to
+use the default accounts.</p></li>
+<li><p>Find your payment terminal serial number under the device or on <a class="reference external" href="https://dashboard.stripe.com">Stripe’s dashboard</a>.</p></li>
+</ul>
+</div>
+</section><section id="connect-stripe-to-odoo">
+<h3>Connect Stripe to Odoo<a class="headerlink" href="#connect-stripe-to-odoo" title="Permalink to this headline">¶</a></h3>
+<p>Click <span class="guilabel">Connect Stripe</span>. Doing so redirects you automatically to a configuration page.
+Fill in all the information to create your Stripe account and link it with Odoo. Once the forms are
+completed, the API keys (<span class="guilabel">Publishable Key</span> and <span class="guilabel">Secret Key</span>) can be retrieved on
+<strong>Stripe’s</strong> website. To do so, click <span class="guilabel">Get your Secret and Publishable keys</span>,
+click the keys to copy them, and paste them into the corresponding fields in Odoo. Your terminal is
+ready to be configured in a POS.</p>
+<img alt="stripe connection form" class="align-center" src="../../../../../_images/stripe-connect.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>When you use <strong>Stripe</strong> exclusively in Point of Sale, you only need the <strong>Secret Key</strong> to use
+your terminal.</p></li>
+<li><p>When you use Stripe as <strong>payment provider</strong>, the <span class="guilabel">State</span> can stay set as
+<span class="guilabel">Disabled</span>.</p></li>
+<li><p>For databases hosted <strong>On-Premise</strong>, the <span class="guilabel">Connect Stripe</span> button does not work. To
+retrieve the API keys manually, log in to your <a class="reference external" href="https://dashboard.stripe.com">Stripe dashboard</a>, type <code class="o_code docutils literal notranslate"><span class="pre">API</span></code> in the search bar, and click
+<span class="guilabel">Developers &gt; API</span>.</p></li>
+</ul>
+</div>
+</section><section id="configure-the-payment-terminal">
+<h3>Configure the payment terminal<a class="headerlink" href="#configure-the-payment-terminal" title="Permalink to this headline">¶</a></h3>
+<p>Swipe right on your payment terminal, click <span class="guilabel">Settings</span>, enter the admin PIN code, validate
+and select your network.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>The device must be connected to a secured WI-FI network.</p></li>
+<li><p>Your Odoo database and payment terminal must share the same network.</p></li>
+<li><p>You must enter the admin PIN code to access your payment terminal settings. By default, this
+code is <code class="o_code docutils literal notranslate"><span class="pre">07139</span></code>.</p></li>
+</ul>
+</div>
+</section><section id="link-the-payment-method-to-a-pos">
+<h3>Link the payment method to a POS<a class="headerlink" href="#link-the-payment-method-to-a-pos" title="Permalink to this headline">¶</a></h3>
+<p>To add a <strong>payment method</strong> to your point of sale, go to <span class="menuselection">Point of Sale ‣
+Configuration ‣ Settings</span>. Select the POS, scroll down to the <span class="guilabel">Payments</span> section, and
+add your payment method for <strong>Stripe</strong> in the <span class="guilabel">Payment Methods</span> field.</p>
+</section><section id="pay-with-a-payment-terminal">
+<h2>Pay with a payment terminal<a class="headerlink" href="#pay-with-a-payment-terminal" title="Permalink to this headline">¶</a></h2>
+<p>When processing a payment, select <span class="guilabel">Stripe</span> as the payment method. Check the amount and
+click <span class="guilabel">Send</span>. Once the payment is successful, the status changes to <span class="guilabel">Payment
+Successful</span>. To cancel the payment request, click <span class="guilabel">cancel</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul>
+<li><div class="line-block">
+<div class="line">In case of connection issues between Odoo and the payment terminal, force the payment by
+clicking on <span class="guilabel">Force Done</span>, which allows you to validate the order.</div>
+<div class="line">This option is only available after receiving an error message informing you that the
+connection failed.</div>
+</div>
+</li>
+<li><p>The terminal must have at least 10% battery level to use it.</p></li>
+<li><p>The device does not work for payments under €0.50.</p></li>
+</ul>
+</div>
+</section><section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+</section><section id="payment-terminal-unavailable-in-your-stripe-account">
+<h3>Payment terminal unavailable in your Stripe account<a class="headerlink" href="#payment-terminal-unavailable-in-your-stripe-account" title="Permalink to this headline">¶</a></h3>
+<p>If the payment terminal is unavailable in your Stripe account, you must add it manually:</p>
+<ol class="arabic simple">
+<li><p>Log into your <a class="reference external" href="https://dashboard.stripe.com">Stripe’s dashboard</a> and go to
+<span class="menuselection">Stripe dashboard ‣ Payments ‣ Readers ‣ Locations</span>;</p></li>
+<li><p>Add a location by clicking the <span class="guilabel">+ New</span> button or selecting an already created location;</p></li>
+<li><p>Click the <span class="guilabel">+ New</span> button in the <span class="guilabel">Readers</span> box and fill in the required
+information.</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>You must provide a <strong>registration code</strong>. To retrieve that code, swipe right on your device,
+enter the admin PIN code (by default: <code class="o_code docutils literal notranslate"><span class="pre">07139</span></code>), validate, and click <span class="guilabel">Generate a
+registration code</span>.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Stripe</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#configure-the-payment-method">Configure the payment method</a></li>
+<li><a class="reference internal" href="#connect-stripe-to-odoo">Connect Stripe to Odoo</a></li>
+<li><a class="reference internal" href="#configure-the-payment-terminal">Configure the payment terminal</a></li>
+<li><a class="reference internal" href="#link-the-payment-method-to-a-pos">Link the payment method to a POS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pay-with-a-payment-terminal">Pay with a payment terminal</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#payment-terminal-unavailable-in-your-stripe-account">Payment terminal unavailable in your Stripe account</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Stripe</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

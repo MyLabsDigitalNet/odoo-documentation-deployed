@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online payment order confirmation &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/send_quotations/get_paid_to_validate.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/send_quotations/get_paid_to_validate.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Online payment order confirmation</a><ul>
+<li><a class="reference internal" href="#activate-online-payments">Activate online payments</a></li>
+<li><a class="reference internal" href="#payment-providers">Payment providers</a></li>
+<li><a class="reference internal" href="#register-a-payment">Register a payment</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/send_quotations/get_paid_to_validate.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Online payment order confirmation</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="online-payment-order-confirmation">
+<h1>Online payment order confirmation<a class="headerlink" href="#online-payment-order-confirmation" title="Permalink to this headline">¶</a></h1>
+<p>The Odoo <em>Sales</em> application provides customers with the ability to confirm orders, via an online
+payment, directly on a sales order. Once the sales order is electronically paid for by the customer,
+the salesperson attached to the sales order is instantly notified that the order is confirmed.</p>
+</section><section id="activate-online-payments">
+<h2>Activate online payments<a class="headerlink" href="#activate-online-payments" title="Permalink to this headline">¶</a></h2>
+<p>In order to have customers confirm orders with an online payment, the <em>Online Payment</em> setting
+<strong>must</strong> be activated.</p>
+<p>To activate the <em>Online Payment</em> feature, go to <span class="menuselection">Sales app ‣ Configuration ‣
+Settings</span>, scroll to the <span class="guilabel">Quotations &amp; Orders</span> heading, check the box next to the
+<span class="guilabel">Online Payment</span> feature, and click <span class="guilabel">Save</span>.</p>
+<img alt="Activar el pago online en el menu de ajustes" class="align-center" src="../../../../_images/activar_pago_online.png" />
+<p>Beneath the <span class="guilabel">Online Payment</span> option on the <em>Sales</em> <span class="guilabel">Settings</span> page, there’s a
+<span class="guilabel">Default Quotation Validity</span> field. In this field, there’s the option to add a specific
+number of days for quotations to remain valid by default.</p>
+<p>To enable this feature on a standard quotation, click the checkbox for the <span class="guilabel">Payment</span>
+feature option, located in the <span class="guilabel">Online confirmation</span> field, on the <span class="guilabel">Other Info</span>
+tab.</p>
+<img alt="La configuración de pago en línea en una cotización estándar en Odoo Ventas" class="align-center" src="../../../../_images/opciones_pag_presupuesto.png" />
+<p>To enable this feature on a quotation template, click the checkbox for the <span class="guilabel">Payment</span>
+feature option, located in the <span class="guilabel">Online confirmation</span> field of the quotation template form.</p>
+<img alt="La configuración de pago en línea en los formularios de plantillas de cotización en Odoo Ventas." class="align-center" src="../../../../_images/confirmacion_plantilla.png" />
+</section><section id="payment-providers">
+<h2>Payment providers<a class="headerlink" href="#payment-providers" title="Permalink to this headline">¶</a></h2>
+<p>After activating the <span class="guilabel">Online Payment</span> feature, a link to configure <span class="guilabel">Payment
+Providers</span> appears beneath it.</p>
+<p>Clicking that link reveals a separate <span class="guilabel">Payment Providers</span> page, in which a large variety
+of payment providers can be enabled, customized, and published.</p>
+<img alt="Pagina de proveedores de pago" class="align-center" src="../../../../_images/proveedores_pago.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../../finance/payment_providers.html"><span class="doc">Online payments</span></a></p>
+</div>
+</section><section id="register-a-payment">
+<h2>Register a payment<a class="headerlink" href="#register-a-payment" title="Permalink to this headline">¶</a></h2>
+<p>After opening quotations in their customer portal, customers can click <span class="guilabel">Accept &amp; Pay</span> to
+confirm their order with an online payment.</p>
+<img alt="Boton de aceptar y pagar en la preview del presupuesto" class="align-center" src="../../../../_images/registrar_pago1.png" />
+<p>After clicking <span class="guilabel">Accept &amp; Pay</span>, customers are presented with <span class="guilabel">Validate Order</span>
+pop-up window containing different options for them to make online payments, in the <span class="guilabel">Pay
+with</span> section.</p>
+<img alt="Pop-up de validacion de Pedido" class="align-center" src="../../../../_images/validar_pedido.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Odoo will <strong>only</strong> offer payment options on the <span class="guilabel">Validate Order</span> pop-up window that
+have been published and configured on the <span class="guilabel">Payment Providers</span> page.</p>
+</div>
+<p>Once the customer selects their desired method of payment, they will click the <span class="guilabel">Pay</span>
+button on the pop-up window to confirm the order. Odoo instantly notifies the assigned salesperson
+upon order confirmation with an online payment.</p>
+<img alt="Ejemplo de notificación que aparece en el chat cuando se realiza un pago online" class="align-center" src="../../../../_images/mensaje_confirmacion.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="quote_template.html"><span class="doc">Quotation templates</span></a></p></li>
+<li><p><a class="reference internal" href="get_signature_to_validate.html"><span class="doc">Online signatures for order confirmations</span></a></p></li>
+<li><p><a class="reference internal" href="../../../finance/payment_providers.html"><span class="doc">Online payments</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Online payment order confirmation</a><ul>
+<li><a class="reference internal" href="#activate-online-payments">Activate online payments</a></li>
+<li><a class="reference internal" href="#payment-providers">Payment providers</a></li>
+<li><a class="reference internal" href="#register-a-payment">Register a payment</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Online payment order confirmation</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

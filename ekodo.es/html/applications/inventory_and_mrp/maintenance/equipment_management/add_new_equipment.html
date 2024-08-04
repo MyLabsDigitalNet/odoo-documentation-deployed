@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add new equipment &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/maintenance/equipment_management/add_new_equipment.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/maintenance/equipment_management/add_new_equipment.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Add new equipment</a><ul>
+<li><a class="reference internal" href="#include-additional-product-information">Include additional product information</a></li>
+<li><a class="reference internal" href="#add-maintenance-details">Add maintenance details</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/maintenance/equipment_management/add_new_equipment.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Add new equipment</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="add-new-equipment">
+<h1>Add new equipment<a class="headerlink" href="#add-new-equipment" title="Permalink to this headline">¶</a></h1>
+<p id="maintenance-equipment-management-add-new-equipment">In Odoo, <em>equipment</em> refers to any item that is used in everyday operations, including the
+manufacturing of products. This can mean a piece of machinery on a production line, a tool that is
+used in different locations, or a computer in an office space. Equipment registered in Odoo can be
+owned by the company that uses the Odoo database, or by a third party, such as a vendor in the case
+of equipment rentals.</p>
+<p>Using Odoo <em>Maintenance</em>, it is possible to track individual pieces of equipment, along with
+information about their maintenance requirements. To add a new piece of equipment, navigate to the
+<span class="guilabel">Maintenance</span> module, select <span class="menuselection">Equipments ‣ Machines &amp; Tools ‣ Create</span>,
+and configure the equipment as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Equipment Name</span>: the product name of the piece of equipment</p></li>
+<li><p><span class="guilabel">Equipment Category</span>: the category that the equipment belongs to; for example,
+computers, machinery, tools, etc.; new categories can be created by navigating to
+<span class="menuselection">Configuration ‣ Equipment Categories</span> and clicking <span class="guilabel">Create</span></p></li>
+<li><p><span class="guilabel">Company</span>: the company that owns the equipment; again, this can be the company that uses
+the Odoo database, or a third-party company</p></li>
+<li><p><span class="guilabel">Used By</span>: specify if the equipment is used by a specific employee, department, or both;
+select <span class="guilabel">Other</span> to specify both an employee and a department</p></li>
+<li><p><span class="guilabel">Maintenance Team</span>: the team responsible for servicing the equipment; new teams can be
+created by navigating to <span class="menuselection">Configuration ‣ Maintenance Teams</span> and
+selecting <span class="guilabel">Create</span>; the members of each team can also be assigned from this page</p></li>
+<li><p><span class="guilabel">Technician</span>: the person responsible for servicing the equipment; this can be used to
+assign a specific individual in the event that no maintenance team is assigned or when a specific
+member of the assigned team should always be responsible for the equipment; any person added to
+Odoo as a user can be assigned as a technician</p></li>
+<li><p><span class="guilabel">Used in location</span>: the location where the equipment is used; this is a simple text
+field that can be used to specify locations that are not work centers, like an office, for
+example</p></li>
+<li><p><span class="guilabel">Work Center</span>: if the equipment is used at a work center, specify it here; equipment can
+also be assigned to a work center by navigating to <span class="menuselection">Maintenance ‣ Equipments ‣
+Work Centers</span>, selecting a work center or creating a new one using the <span class="guilabel">Create</span> button,
+and clicking the <span class="guilabel">Equipment</span> tab on the work center form</p></li>
+</ul>
+<img alt="An example of a fully configured new equipment form." class="align-center" src="../../../../_images/new-equipment-form.png" />
+</section><section id="include-additional-product-information">
+<h2>Include additional product information<a class="headerlink" href="#include-additional-product-information" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="guilabel">Product Information</span> tab at the bottom of the form can be used to provide further
+details about the piece of equipment:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Vendor</span>: the vendor that the equipment was purchased from</p></li>
+<li><p><span class="guilabel">Vendor Reference</span>: the reference code assigned to the vendor</p></li>
+<li><p><span class="guilabel">Model</span>: the specific model of the piece of equipment</p></li>
+<li><p><span class="guilabel">Serial Number</span>: the unique serial number of the equipment</p></li>
+<li><p><span class="guilabel">Effective Date</span>: the date that the equipment became available for use; this is used to
+calculate the <abbr title="Mean Time Between Failures">MTBF</abbr></p></li>
+<li><p><span class="guilabel">Cost</span>: the amount the equipment was purchased for</p></li>
+<li><p><span class="guilabel">Warranty Expiration Date</span>: the date on which the equipment’s warranty will expire</p></li>
+</ul>
+<img alt="The product information tab for the new piece of equipment." class="align-center" src="../../../../_images/new-equipment-product-information.png" />
+</section><section id="add-maintenance-details">
+<h2>Add maintenance details<a class="headerlink" href="#add-maintenance-details" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="guilabel">Maintenance</span> tab includes information that can be useful to maintenance teams:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Preventive Maintenance Frequency</span>: specifies how often maintenance should be
+performed to prevent equipment failure</p></li>
+<li><p><span class="guilabel">Maintenance Duration</span>: the amount of time required to fix the equipment when it fails</p></li>
+<li><p><span class="guilabel">Expected Mean Time Between Failure</span>: the average amount of time that the equipment is
+expected to operate before failing</p></li>
+</ul>
+<img alt="The maintenance tab for the new piece of equipment." class="align-center" src="../../../../_images/new-equipment-maintenance.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Maintenance</span> tab also includes sections for <span class="guilabel">Mean Time Between Failure</span>,
+<span class="guilabel">Estimated Next Failure</span>, <span class="guilabel">Latest Failure</span>,
+and <span class="guilabel">Mean Time To Repair</span>. These values are calculated automatically based on
+maintenance requests if any exist.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To see the maintenance requests for a piece of equipment, go to the page for the equipment and
+select <span class="guilabel">Maintenance</span> in the top right corner of the form.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Add new equipment</a><ul>
+<li><a class="reference internal" href="#include-additional-product-information">Include additional product information</a></li>
+<li><a class="reference internal" href="#add-maintenance-details">Add maintenance details</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Add new equipment</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

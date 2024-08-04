@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Avalara (Avatax) portal &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/avatax/avalara_portal.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/taxes/avatax/avalara_portal.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Avalara (Avatax) portal</a><ul>
+<li><a class="reference internal" href="#transactions">Transactions</a><ul>
+<li><a class="reference internal" href="#edit-transaction">Edit transaction</a></li>
+<li><a class="reference internal" href="#filter">Filter</a></li>
+<li><a class="reference internal" href="#sort-by">Sort by</a><ul>
+<li><a class="reference internal" href="#customize-columns">Customize columns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#import-export">Import-export</a></li>
+<li><a class="reference internal" href="#reports">Reports</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-more-jurisdictions">Add more jurisdictions</a></li>
+<li><a class="reference internal" href="#tax-exemption-certificate">Tax exemption certificate</a></li>
+<li><a class="reference internal" href="#end-of-year-operations">End-of-year operations</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/avatax/avalara_portal.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Avalara (Avatax) portal</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="avalara-avatax-portal">
+<span id="avatax-portal"></span><h1>Avalara (Avatax) portal<a class="headerlink" href="#avalara-avatax-portal" title="Permalink to this headline">¶</a></h1>
+<p>Avalara’s (<em>AvaTax</em>) management console offers account management options including: viewing/editing
+the transactions sent from Odoo to <em>AvaTax</em>, details on how the taxes are calculated, tax reporting,
+tax exemption management, and tax return resources.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Avalara is the software developer of the tax software, <em>AvaTax</em>.</p>
+</div>
+<p>To access the console, first, navigate to either Avalara’s <a class="reference external" href="https://sandbox.admin.avalara.com/">sandbox</a> or <a class="reference external" href="https://admin.avalara.com/">production</a> environment.
+This will depend on which type of account was set in the <a class="reference internal" href="../avatax.html"><span class="doc">integration</span></a>. Log in to
+the management console.</p>
+<img alt="Avalara dashboard after logging into management portal." class="align-center" src="../../../../../_images/avalara-portal.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>For more information see Avalara’s documentation: <a class="reference external" href="https://community.avalara.com/support/s/document-item?language=en_US&amp;bundleId=qvv1656594440497&amp;topicId=Activate_your_Communications_Customer_Portal_account.html&amp;_LANG=enus">Activate your Communications Customer Portal
+account</a>.</p>
+</div>
+</section><section id="transactions">
+<span id="avalara-portal-transactions"></span><h2>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h2>
+<p>To access transactions, click in the <span class="guilabel">Transactions</span> link on the main dashboard upon
+logging into the <a class="reference internal" href="#avatax-portal"><span class="std std-ref">Avalara (Avatax) portal</span></a>. To manually access the <em>Transactions</em> page, while logged into
+the Avalara console, navigate to <span class="menuselection">Transactions ‣ Transactions</span>.</p>
+<img alt="Avalara portal with the transactions shortcut highlighted." class="align-center" src="../../../../../_images/avalara-transactions.png" />
+</section><section id="edit-transaction">
+<h3>Edit transaction<a class="headerlink" href="#edit-transaction" title="Permalink to this headline">¶</a></h3>
+<p>Click into a transaction to reveal more details about the transaction. These details include
+sections on <span class="guilabel">Invoice detail</span>, <span class="guilabel">Additional info</span>, and <span class="guilabel">Customer info</span>.
+Click <i class="fa fa-pencil"></i> <span class="guilabel">Edit document details</span> to make changes to the transaction.</p>
+<p>A <span class="guilabel">Discount</span> can be added to adjust the invoice. This is especially useful in cases where
+the transaction has already synced with Avalara / <em>AvaTax</em>, and changes need to be made afterward.</p>
+</section><section id="filter">
+<span id="avalara-portal-filter"></span><h3>Filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h3>
+<p>Filter transactions on the <span class="guilabel">Transactions</span> page, by setting the <span class="guilabel">From</span> and
+<span class="guilabel">To</span> fields, and configuring other fields to filter by, including:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Document Status</span>: any of the following options, <span class="guilabel">All</span>, <span class="guilabel">Voided</span>,
+<span class="guilabel">Committed</span>, <span class="guilabel">Uncommitted</span>, or <span class="guilabel">Locked</span>.</p></li>
+<li><p><span class="guilabel">Document Code</span>: any of the following options, <span class="guilabel">Exactly match</span>,
+<span class="guilabel">Starts with</span>, or <span class="guilabel">Contains</span>.</p></li>
+<li><p><span class="guilabel">Customer/Vendor Code</span>: the customer/vendor code in Odoo (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Contact18</span></code>).</p></li>
+<li><p><span class="guilabel">Country</span>: the country this tax was calculated in; this is a text field.</p></li>
+<li><p><span class="guilabel">Region</span>: the region of the country, which varies based on the <span class="guilabel">Country</span>
+selection.</p></li>
+</ul>
+<p>Click <i class="fa fa-plus"></i> <span class="guilabel">Filters</span> to access the following filter conditions:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Document Type</span>: any of the following selections, <span class="guilabel">All</span>, <span class="guilabel">Sales
+Invoice</span>, <span class="guilabel">Purchase Invoice</span>, <span class="guilabel">Return Invoice</span>, <span class="guilabel">Inventory Transfer
+Inbound Invoice</span>, <span class="guilabel">Inventory Transfer Outbound Invoice</span>, or <span class="guilabel">Customs
+Invoice</span>.</p></li>
+<li><p><span class="guilabel">Import ID</span>: represents the import ID of the document.</p></li>
+</ul>
+</section><section id="sort-by">
+<h3>Sort by<a class="headerlink" href="#sort-by" title="Permalink to this headline">¶</a></h3>
+<p>On the <span class="guilabel">Transactions</span> page, transactions will be listed below, according to the set
+<a class="reference internal" href="#avalara-portal-filter"><span class="std std-ref">Filter</span></a>, located in the top half of the page. The following columns are
+available by default, to sort by ascending or descending order:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Doc Code</span>: either of the following options, <span class="guilabel">Exactly match</span>,
+<span class="guilabel">Starts with</span>, or <span class="guilabel">Contains</span>.</p></li>
+<li><p><span class="guilabel">Doc Status</span>: either of the following options, <span class="guilabel">All</span>, <span class="guilabel">Voided</span>,
+<span class="guilabel">Committed</span>, <span class="guilabel">Uncommitted</span>, or <span class="guilabel">Locked</span>.</p></li>
+<li><p><span class="guilabel">Cust/Vendor Code</span> : this is the customer/vendor code in Odoo (e.g. Contact18).</p></li>
+<li><p><span class="guilabel">Region</span>: this is the region of the country, this will vary based on the
+<span class="guilabel">Country</span> selection.</p></li>
+<li><p><span class="guilabel">Amount</span>: the numeric amount of the total amount on the Odoo document.</p></li>
+<li><p><span class="guilabel">Tax</span>: the numeric amount of the tax applied to the total.</p></li>
+</ul>
+<img alt="Transactions page on the Avalara portal with the filter and sort-by options highlighted." class="align-center" src="../../../../../_images/transactions.png" />
+</section><section id="customize-columns">
+<h4>Customize columns<a class="headerlink" href="#customize-columns" title="Permalink to this headline">¶</a></h4>
+<p>Additional columns can be added by clicking the <i class="fa fa-cog"></i> <span class="guilabel">Customize columns</span>. On the
+resulting popover window, click the drop-down menu for the <span class="guilabel">column</span> that should be
+changed.</p>
+<p>The following columns can be added for additional transactional information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">AvaTax calculated</span>: the amount of tax calculated by <em>AvaTax</em>.</p></li>
+<li><p><span class="guilabel">Country</span>: the country this tax was calculated in; this is a text field.</p></li>
+<li><p><span class="guilabel">Cust/vendor code</span>: the customer/vendor code in Odoo (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Contact18</span></code>).</p></li>
+<li><p><span class="guilabel">Currency</span>: the standardized abbreviation for the currency the amount total is in.</p></li>
+<li><p><span class="guilabel">Doc date</span>: the document’s date of creation.</p></li>
+<li><p><span class="guilabel">Doc status</span>: any of the following options, <span class="guilabel">All</span>, <span class="guilabel">Voided</span>,
+<span class="guilabel">Committed</span>, <span class="guilabel">Uncommitted</span>, or <span class="guilabel">Locked</span>.</p></li>
+<li><p><span class="guilabel">Doc type</span>: any of the following selections, <span class="guilabel">All</span>, <span class="guilabel">Sales
+Invoice</span>, <span class="guilabel">Purchase Invoice</span>, <span class="guilabel">Return Invoice</span>, <span class="guilabel">Inventory Transfer
+Inbound Invoice</span>, <span class="guilabel">Inventory Transfer Outbound Invoice</span>, or <span class="guilabel">Customs
+Invoice</span>.</p></li>
+<li><p><span class="guilabel">Import ID</span>: represents the import ID of the document.</p></li>
+<li><p><span class="guilabel">Last modified</span>: timestamp of the last time the document was modified.</p></li>
+<li><p><span class="guilabel">Location code</span>: the location code used to calculate the tax, based on the delivery
+address.</p></li>
+<li><p><span class="guilabel">PO number</span>: the purchase order number.</p></li>
+<li><p><span class="guilabel">Reference code</span>: the Odoo reference code (e.g. NV/2024/00003)</p></li>
+<li><p><span class="guilabel">Region</span>: the region of the country,which varies based on the <span class="guilabel">Country</span>
+selection.</p></li>
+<li><p><span class="guilabel">Salesperson code</span>: the numeric ID of the user assigned to the sales order in Odoo.</p></li>
+<li><p><span class="guilabel">Tax date</span>: the month/day/year of the tax calculation.</p></li>
+<li><p><span class="guilabel">Tax override type</span>: where an exemption would appear, should there be none, the field
+populates with <span class="guilabel">None</span>.</p></li>
+</ul>
+<p>To add a new column click the <i class="fa fa-plus"></i> <span class="guilabel">Column</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>For more information on <em>AvaTax</em> transactions, refer to this Avalara documentation: <a class="reference external" href="https://community.avalara.com/support/s/document-item?language=en_US&amp;bundleId=qvv1656594440497&amp;topicId=transactions.html&amp;_LANG=enus">Transactions</a>.</p>
+</div>
+</section><section id="import-export">
+<h3>Import-export<a class="headerlink" href="#import-export" title="Permalink to this headline">¶</a></h3>
+<p>While on the <a class="reference internal" href="#avalara-portal-transactions"><span class="std std-ref">Transactions</span></a>, click <i class="fa fa-download"></i> <span class="guilabel">Import
+transactions</span> or <i class="fa fa-upload"></i> <span class="guilabel">Export transactions</span> to import or export transactions.</p>
+</section><section id="reports">
+<h3>Reports<a class="headerlink" href="#reports" title="Permalink to this headline">¶</a></h3>
+<p>To access reporting, navigate to the <span class="menuselection">Reports</span> link in the top menu of the Avalara
+management console. Next, select from one of the available reporting tabs: <span class="guilabel">Transactions
+reports</span>, <span class="guilabel">Liability &amp; tax return reports</span>, or <span class="guilabel">Exemption reports</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Additionally, there is a <span class="guilabel">Favorites</span> tab and <span class="guilabel">Downloads</span> tab. The
+<span class="guilabel">Favorites</span> tab contains any favorited report configurations for the Avalara user. The
+<span class="guilabel">Downloads</span> tab contains a list view where the user can download the high-volume
+transaction reports created in the last 30 days.</p>
+</div>
+<p>Make a selection for the <span class="guilabel">Report Category</span>, and the <span class="guilabel">Report Name</span>, under the
+<span class="guilabel">Select a report</span> section.</p>
+<p>Next, fill out the <span class="guilabel">Select report details</span> section. These options will vary based on the
+tab selected above.</p>
+<p>Depending on the report size, the following two options are available in the section labeled,
+<span class="guilabel">Select the approximate number of transactions for your report</span>: <span class="guilabel">Create and
+download the report instantly</span> (for small reports) and <span class="guilabel">Create and download the report in
+the background</span> (for larger reports). Select one or the other depending on the volume of
+transactions in this report.</p>
+<p>Finally, under the section labeled, <span class="guilabel">Report preview and export</span> make a selection of the
+file type to download. Either a <span class="guilabel">.PDF</span> or <span class="guilabel">.XLS</span> can be chosen. Alternatively,
+the file can be previewed by selecting the <span class="guilabel">Preview</span> option.</p>
+<p>After making all the configurations, click <span class="guilabel">Create report</span> to download the report. Click
+<i class="fa fa-star-o"></i> <span class="guilabel">Make this report a favorite</span> to save the report configuration to the
+user’s favorites.</p>
+<p>After the report is created, click <i class="fa fa-download"></i> <span class="guilabel">Download</span> to download the file to
+the device.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Select a pre-configured report from the <span class="guilabel">Frequently used reports</span> section of the
+reporting dashboard.</p>
+<p>Access this list by clicking on the <span class="guilabel">Reports</span> option in the top menu of the Avalara
+management console, and scroll to the bottom of the page.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://community.avalara.com/support/s/document-item?language=en_US&amp;bundleId=rjq1671176624730&amp;topicId=Reports_in_AvaTax.html&amp;_LANG=enus">See Avalara’s documentation: Reports in AvaTax</a>.</p>
+</div>
+</section><section id="add-more-jurisdictions">
+<h2>Add more jurisdictions<a class="headerlink" href="#add-more-jurisdictions" title="Permalink to this headline">¶</a></h2>
+<p>Additional jurisdictions (tax locations) can be added in the Avalara management console. Navigate to
+either Avalara’s <a class="reference external" href="https://sandbox.admin.avalara.com/">sandbox</a> or <a class="reference external" href="https://admin.avalara.com/">production</a> environment. This will depend on which type of account was set in the
+<a class="reference internal" href="../avatax.html"><span class="doc">integration</span></a>.</p>
+<p>Next, navigate to <span class="menuselection">Settings ‣ Where you collect tax</span>. Choose between the three
+different tabs, depending on the business need. The first tab is <span class="guilabel">Sales and use tax</span>,
+where tax can be collected for the United States. Click the <i class="fa fa-plus"></i> <span class="guilabel">Add to where
+you collect sales and use tax</span> to add another location where the company collects sales and use tax.</p>
+<p>The second option, is the <span class="guilabel">VAT/GST</span> tab where the <i class="fa fa-plus"></i> <span class="guilabel">Add a country
+or territory where you collect VAT/GST</span> can be selected to add another country or territory where
+the company collects VAT/GST.</p>
+<p>Finally, on the far-right, is the <span class="guilabel">Customs duty</span> tab, where a country can be added where
+the company collects customs duty. Simply click on the <i class="fa fa-plus"></i> <span class="guilabel">Add a country
+where you calculate customs duty</span> icon below the tab.</p>
+<img alt="AvaTax management console, on the Where you collect tax page, with the add button and sales and use tax tab highlighted." class="align-center" src="../../../../../_images/where-you-collect-tax.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://community.avalara.com/support/s/document-item?language=en_US&amp;bundleId=bla1700809896571_bla1700809896571&amp;topicId=nbw1698727575499.html&amp;_LANG=enus">See Avalara’s documentation: Add local jurisdiction taxes</a>.</p>
+</div>
+</section><section id="tax-exemption-certificate">
+<h2>Tax exemption certificate<a class="headerlink" href="#tax-exemption-certificate" title="Permalink to this headline">¶</a></h2>
+<p>Tax exemption certificates for customers can be added into the Avalara management console, so that
+<em>AvaTax</em> is aware of which customers may be exempt from paying certain taxes. To add an <em>exception
+certificate</em> navigate to <span class="menuselection">Exemptions ‣ Customer certificates</span>. From there, click on
+the <i class="fa fa-plus"></i> <span class="guilabel">Add a certificate</span> to configure an exemption.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>An Avalara subscription to Exemption Certificate Management (ECM) is required in order to attach
+certificate images, and to be ready for an audit. For more on subscribing to this add-on, visit
+<a class="reference external" href="https://community.avalara.com/support/s/document-item?language=en_US&amp;bundleId=hff1682048150115_hff1682048150115&amp;topicId=fol1682356576230.html&amp;_LANG=enus">Avalara</a>.</p>
+</div>
+</section><section id="end-of-year-operations">
+<h2>End-of-year operations<a class="headerlink" href="#end-of-year-operations" title="Permalink to this headline">¶</a></h2>
+<p>Avalara’s services include tax return services, for when it is time to file taxes at the end of the
+year. To access Avalara’s tax services log, into the <a class="reference external" href="https://admin.avalara.com/">management portal</a>. Then, from the main dashboard, click <span class="guilabel">Returns</span>. Avalara
+will prompt the Avalara user to log in for security purposes, and redirect the user to the <em>Returns</em>
+portal.</p>
+<img alt="Avalara portal with the returns shortcut highlighted." class="align-center" src="../../../../../_images/avalara-returns.png" />
+<p>Click <span class="guilabel">Get started</span> to begin the tax return process. For more information, refer to this
+Avalara documentation: <a class="reference external" href="https://community.avalara.com/support/s/document-item?language=en_US&amp;bundleId=hps1656397152776_hps1656397152776&amp;topicId=Learn_about_Managed_Returns.html&amp;_LANG=enus">About Managed Returns</a>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Alternatively, click on the <span class="menuselection">Returns</span> button in the top menu of the Avalara
+management console.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../avatax.html"><span class="doc">AvaTax integration</span></a></p></li>
+<li><p><a class="reference internal" href="avatax_use.html"><span class="doc">AvaTax use</span></a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/us-tax-compliance-avatax-2858?fullscreen=1">US Tax Compliance: Avatax elearning video</a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Avalara (Avatax) portal</a><ul>
+<li><a class="reference internal" href="#transactions">Transactions</a><ul>
+<li><a class="reference internal" href="#edit-transaction">Edit transaction</a></li>
+<li><a class="reference internal" href="#filter">Filter</a></li>
+<li><a class="reference internal" href="#sort-by">Sort by</a><ul>
+<li><a class="reference internal" href="#customize-columns">Customize columns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#import-export">Import-export</a></li>
+<li><a class="reference internal" href="#reports">Reports</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-more-jurisdictions">Add more jurisdictions</a></li>
+<li><a class="reference internal" href="#tax-exemption-certificate">Tax exemption certificate</a></li>
+<li><a class="reference internal" href="#end-of-year-operations">End-of-year operations</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Avalara (Avatax) portal</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

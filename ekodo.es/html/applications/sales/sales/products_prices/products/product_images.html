@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product images with Google Images &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/products_prices/products/product_images.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/products_prices/products/product_images.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Product images with Google Images</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#google-api-dashboard">Google API dashboard</a></li>
+<li><a class="reference internal" href="#google-programmable-search-dashboard">Google Programmable Search dashboard</a></li>
+<li><a class="reference internal" href="#odoo">Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#product-images-in-odoo-with-google-custom-search-api">Product images in Odoo with Google Custom Search API</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/products_prices/products/product_images.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Product images with Google Images</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="product-images-with-google-images">
+<h1>Product images with Google Images<a class="headerlink" href="#product-images-with-google-images" title="Permalink to this headline">¶</a></h1>
+<p>Having appropriate product images in Odoo is useful for a number of reasons. However, if a lot of
+products need images, assigning them can become incredibly time-consuming.</p>
+<p>Fortunately, by configuring the <em>Google Custom Search</em> API within an Odoo database, finding product
+images for products (based on their barcode) is extremely efficient.</p>
+</section><section id="configuration">
+<span id="product-images-configuration"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>In order to utilize <em>Google Custom Search</em> within an Odoo database, both the database and the Google
+API must be properly configured.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Free Google accounts allow users to select up to 100 free images per day. If a higher amount is
+needed, a billing upgrade is required.</p>
+</div>
+</section><section id="google-api-dashboard">
+<span id="product-images-google-api-dashboard"></span><h3>Google API dashboard<a class="headerlink" href="#google-api-dashboard" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Go to the <a class="reference external" href="https://console.developers.google.com/">Google Cloud Platform API &amp; Services</a> page
+to generate Google Custom Search API credentials. Then, log in with a Google account. Next, agree
+to their <span class="guilabel">Terms of Service</span> by checking the box, and clicking <span class="guilabel">Agree and
+Continue</span>.</p></li>
+<li><p>From here, select (or create) an API project to store the credentials. Start by giving it a
+memorable <span class="guilabel">Project Name</span>, select a <span class="guilabel">Location</span> (if any), then click
+<span class="guilabel">Create</span>.</p></li>
+<li><p>With the <span class="guilabel">Credentials</span> option selected in the left sidebar, click <span class="guilabel">Create
+Credentials</span>, and select <span class="guilabel">API key</span> from the drop-down menu.</p>
+<img alt="API y servicios de google cloud" class="align-center" src="../../../../../_images/api_google.png" />
+</li>
+<li><p>Doing so reveals an <span class="guilabel">API key created</span> pop-up window, containing a custom <span class="guilabel">API
+key</span>. Copy and save <span class="guilabel">Your API key</span> in the pop-up window – it will be used later. Once
+the key is copied (and saved for later use), click <span class="guilabel">Close</span> to remove the pop-up window.</p>
+<img alt="Pop up que aparece el crear la clave API" class="align-center" src="../../../../../_images/clave_api.png" />
+</li>
+<li><p>On this page, search for <code class="o_code docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Search</span> <span class="pre">API</span></code>, and select it.</p>
+<img alt="Busqueda en la barra de navegacion de la pagina de google cloud" class="align-center" src="../../../../../_images/custom_search_api.png" />
+</li>
+<li><p>From the <span class="guilabel">Custom Search API</span> page, enable the API by clicking <span class="guilabel">Enable</span>.</p>
+<img alt="Página &quot;API de búsqueda personalizada&quot; con el botón Habilitar resaltado en Google Cloud Platform." class="align-center" src="../../../../../_images/habilitar_api.png" />
+</li>
+</ol>
+</section><section id="google-programmable-search-dashboard">
+<span id="product-images-google-pse-dashboard"></span><h3>Google Programmable Search dashboard<a class="headerlink" href="#google-programmable-search-dashboard" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Next, go to <a class="reference external" href="https://programmablesearchengine.google.com/">Google Programmable Search Engine</a>,
+and click either of the <span class="guilabel">Get started</span> buttons. Log in with a Google account, if not
+already logged in.</p>
+<img alt="Pagina de Google Programmable Search Engine" class="align-center" src="../../../../../_images/search_engine.png" />
+</li>
+<li><p>On the <span class="guilabel">Create a new search engine</span> form, fill out the name of the search engine, along
+with what the engine should search, and be sure to enable <span class="guilabel">Image Search</span> and
+<span class="guilabel">SafeSearch</span>.</p>
+<img alt="Formulario de creación de un nuevo motor de búsqueda" class="align-center" src="../../../../../_images/odoo_ejemplo.png" />
+</li>
+<li><p>Validate the form by clicking <span class="guilabel">Create</span>.</p></li>
+<li><p>Doing so reveals a new page with the heading: <span class="guilabel">Your new search engine has been
+created</span>.</p>
+<img alt="Pagina de &quot;tu nuevo buscador ha sido creado&quot;" class="align-center" src="../../../../../_images/buscador_creado.png" />
+</li>
+<li><p>From this page, click <span class="guilabel">Customize</span> to open the <span class="menuselection">Overview ‣ Basic</span> page.
+Then, copy the ID in the <span class="guilabel">Search engine ID</span> field. This ID is needed for the Odoo
+configuration.</p>
+<img alt="Pagina de vista general del buscador con el ID de buscador" class="align-center" src="../../../../../_images/vista_general_buscador.png" />
+</li>
+</ol>
+</section><section id="odoo">
+<span id="product-images-setup-in-odoo"></span><h3>Odoo<a class="headerlink" href="#odoo" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>In the Odoo database, go to the <span class="menuselection">Settings app</span> and scroll to the
+<span class="guilabel">Integrations</span> section. From here, check the box beside <span class="guilabel">Google Images</span>.
+Then, click <span class="guilabel">Save</span>.</p>
+<img alt="Los ajustes de imagenes de google en odoo" class="align-center" src="../../../../../_images/odoo_imagenes_google.png" />
+</li>
+<li><p>Next, return to the <span class="menuselection">Settings app</span>, and scroll to the <span class="guilabel">Integrations</span>
+section. Then, enter the <span class="guilabel">API Key</span> and <span class="guilabel">Search Engine ID</span> in the fields
+beneath the <span class="guilabel">Google Images</span> feature.</p></li>
+<li><p>Click <span class="guilabel">Save</span>.</p></li>
+</ol>
+</section><section id="product-images-in-odoo-with-google-custom-search-api">
+<span id="product-images-get-product-images"></span><h2>Product images in Odoo with Google Custom Search API<a class="headerlink" href="#product-images-in-odoo-with-google-custom-search-api" title="Permalink to this headline">¶</a></h2>
+<p>Adding images to products in Odoo can be done on any product or product variant. This process can be
+completed in any Odoo application that provides access to product pages (e.g. <em>Sales</em> app,
+<em>Inventory</em> app, etc.).</p>
+<p>Below is a step-by-step guide detailing how to utilize the <em>Google Custom Search API</em> to assign
+images to products in Odoo using the Odoo <em>Sales</em> application:</p>
+<ol class="arabic">
+<li><p>Navigate to the <span class="guilabel">Products</span> page in the <em>Sales</em> app (<span class="menuselection">Sales app ‣
+Products ‣ Products</span>). Or, navigate to the <span class="guilabel">Product Variants</span> page in the <em>Sales</em> app
+(<span class="menuselection">Sales app ‣ Products ‣ Product Variants</span>).</p></li>
+<li><p>Select the desired product that needs an image.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Only products (or product variants) that have a barcode, but <strong>not</strong> an image, are processed.</p>
+<p>If a product with one or more variants is selected, each variant that matches the
+aforementioned criteria is processed.</p>
+</div>
+</li>
+<li><p>Click the <span class="guilabel">Action ⚙️ (gear)</span> icon on the product page, and select <span class="guilabel">Get
+Pictures from Google Images</span> from the menu that pops up.</p>
+<img alt="Accion de obtener imagenes en la aplicacion odoo" class="align-center" src="../../../../../_images/accion_obtener_imagenes.png" />
+</li>
+<li><p>On the pop-up window that appears, click <span class="guilabel">Get Pictures</span>.</p>
+<img alt="Pop up previo a la obtencion de imagenes de google" class="align-center" src="../../../../../_images/obtener_imagenes.png" />
+</li>
+<li><p>Once clicked, the image(s) will appear incrementally.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Only the first 10 images are fetched immediately. If you selected more than 10, the rest are
+fetched as a background job.</p>
+<p>The background job processes about 100 images in a minute. If the quota authorized by Google
+(either with a free or a paid plan) is reached, the background job puts itself on hold for 24
+hours. Then, it will continue where it stopped the day before.</p>
+</div>
+</li>
+</ol>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://cloud.google.com/billing/docs/how-to/manage-billing-account">Create, modify, or close your Google Cloud Billing account</a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Product images with Google Images</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#google-api-dashboard">Google API dashboard</a></li>
+<li><a class="reference internal" href="#google-programmable-search-dashboard">Google Programmable Search dashboard</a></li>
+<li><a class="reference internal" href="#odoo">Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#product-images-in-odoo-with-google-custom-search-api">Product images in Odoo with Google Custom Search API</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Product images with Google Images</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

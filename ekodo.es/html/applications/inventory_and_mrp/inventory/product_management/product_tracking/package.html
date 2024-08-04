@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Packages &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_tracking/package.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/product_management/product_tracking/package.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Packages</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#pack-items">Pack items</a><ul>
+<li><a class="reference internal" href="#detailed-operations">Detailed operations</a></li>
+<li><a class="reference internal" href="#put-in-pack">Put in pack</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#package-type">Package type</a></li>
+<li><a class="reference internal" href="#cluster-packages">Cluster packages</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_tracking/package.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Packages</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="packages">
+<h1>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h1>
+<p>A <em>package</em> is a physical container holding one or more products. Packages can also be used to store
+items in bulk.</p>
+<p>Packages are commonly used for the following purposes:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#inventory-warehouses-storage-pack"><span class="std std-ref">Grouping products to move them in bulk</span></a>.</p></li>
+<li><p><a class="reference internal" href="#inventory-warehouses-storage-package-type"><span class="std std-ref">Shipping to customers</span></a>: configure package types
+to align with shipping carriers’ size and weight requirements, streamlining the packing process,
+and ensuring compliance with carrier shipping specifications.</p></li>
+<li><p>Storing items in bulk.</p></li>
+</ol>
+<p><em>Package use</em> is a field on the package form in Odoo that is only visible by enabling the <em>Batch
+Transfers</em> and <em>Packages</em> features (<span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>).</p>
+<p>By default, the <em>Package Use</em> field on a packages form is set to <em>Disposable Box</em>. Change this field
+to <em>Reusable Box</em> <strong>only</strong> when configuring packages for <a class="reference internal" href="#inventory-warehouses-storage-cluster-pack"><span class="std std-ref">cluster pickings</span></a>.</p>
+<p><em>Package type</em> is an optional feature used for <a class="reference internal" href="../../shipping_receiving/setup_configuration/delivery_method.html"><span class="doc">calculating shipping cost</span></a>, based on real shipping weight.
+Create package types to include the weight of the package itself (e.g. boxes, pallets, other
+shipping containers) in shipping cost calculations.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>While packages are commonly used in the <a class="reference internal" href="../../shipping_receiving/daily_operations/delivery_three_steps.html"><span class="doc">three-step delivery route</span></a>, they can be used in any
+workflow involving storable products.</p>
+</div>
+</section><section id="configuration">
+<span id="inventory-warehouses-storage-enable-package"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To use packages, first go to <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>. Under
+the <span class="guilabel">Operations</span> heading, activate the <span class="guilabel">Packages</span> feature. Then, click
+<span class="guilabel">Save</span>.</p>
+<img alt="Activate the *Packages* setting in Inventory &gt; Configuration &gt; Settings." class="align-center" src="../../../../../_images/enable-pack.png" />
+</section><section id="pack-items">
+<span id="inventory-warehouses-storage-pack"></span><h2>Pack items<a class="headerlink" href="#pack-items" title="Permalink to this headline">¶</a></h2>
+<p>Products can be added to packages in any transfer by:</p>
+<ol class="arabic simple">
+<li><p>Clicking each <a class="reference internal" href="#inventory-warehouses-storage-detailed-operations"><span class="std std-ref">Detailed Operations</span></a> icon
+on the product line.</p></li>
+<li><p>Using the <a class="reference internal" href="#inventory-warehouses-storage-put-in-pack"><span class="std std-ref">Put in Pack</span></a> button to place
+everything in the transfer into a package.</p></li>
+</ol>
+</section><section id="detailed-operations">
+<span id="inventory-warehouses-storage-detailed-operations"></span><h3>Detailed operations<a class="headerlink" href="#detailed-operations" title="Permalink to this headline">¶</a></h3>
+<p>On any warehouse transfer (e.g. receipt, delivery order), add a product to a package by clicking the
+<span class="guilabel">⦙≣ (bulleted list)</span> icon in the <span class="guilabel">Operations</span> tab.</p>
+<img alt="Show &quot;Detailed Operations&quot; icon in the product line." class="align-center" src="../../../../../_images/detailed-operations1.png" />
+<p>Doing so opens the <span class="guilabel">Detailed Operations</span> pop-up window for the <span class="guilabel">Product</span>.</p>
+<p>To put the <span class="guilabel">Product</span> in a package, click <span class="guilabel">Add a line</span>, and assign the product to
+a <span class="guilabel">Destination Package</span>. Select an existing package, or create a new one by typing the
+name of the new package, then select <span class="guilabel">Create…</span>.</p>
+<div class="figure align-center" id="id1">
+<img alt="Assign a package to &quot;Destination Package&quot; field." src="../../../../../_images/destination-package.png" />
+<p class="caption"><span class="caption-text">Twelve units of <code class="o_code docutils literal notranslate"><span class="pre">Acoustic</span> <span class="pre">Bloc</span> <span class="pre">Screen</span></code> are placed in <code class="o_code docutils literal notranslate"><span class="pre">PACK0000001</span></code>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Then, specify the quantity of items to go into the package in the <span class="guilabel">Done</span> column. Repeat
+the above steps to place the <span class="guilabel">Product</span> in different packages. Once finished, click
+<span class="guilabel">Confirm</span> to close the window.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../shipping_receiving/advanced_operations_shipping/multipack.html"><span class="doc">Ship one order in multiple packages</span></a></p>
+</div>
+</section><section id="put-in-pack">
+<span id="inventory-warehouses-storage-put-in-pack"></span><h3>Put in pack<a class="headerlink" href="#put-in-pack" title="Permalink to this headline">¶</a></h3>
+<p>Alternatively, click the <span class="guilabel">Put in Pack</span> button on <strong>any</strong> warehouse transfer to create a
+new package, and place all the items in the transfer in that newly-created package.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <span class="guilabel">Put in Pack</span> button appears on receipts, delivery orders, and other transfer forms
+with the <em>Packages</em> feature enabled in <span class="menuselection">Inventory app ‣ Configuration ‣
+Settings</span>.</p>
+</div>
+<div class="figure align-center" id="id2">
+<img alt="Image of the &quot;Put in Pack&quot; button being clicked." src="../../../../../_images/put-in-pack.png" />
+<p class="caption"><span class="caption-text">In batch transfer <code class="o_code docutils literal notranslate"><span class="pre">BATCH/00003</span></code>, the <span class="guilabel">Put in Pack</span> button was clicked to create a new
+package, <code class="o_code docutils literal notranslate"><span class="pre">PACK0000002</span></code>, and assign all items to it in the <span class="guilabel">Destination Package</span> field.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</section><section id="package-type">
+<span id="inventory-warehouses-storage-package-type"></span><h2>Package type<a class="headerlink" href="#package-type" title="Permalink to this headline">¶</a></h2>
+<p>Create package types by navigating to <span class="menuselection">Inventory app ‣ Configuration ‣ Package
+Types</span>, in order to set custom dimensions and weight limits. This feature is mainly used to
+calculate package weights for shipping costs.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../shipping_receiving/setup_configuration/third_party_shipper.html"><span class="doc">Shipping carriers</span></a></p></li>
+<li><p><a class="reference internal" href="../../shipping_receiving/setup_configuration/delivery_method.html"><span class="doc">Delivery methods</span></a></p></li>
+</ul>
+</div>
+<p>On the <span class="guilabel">Package Types</span> list, clicking <span class="guilabel">New</span> opens a blank package type form. The
+fields of the form are as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Package Type</span> (required): define the package type’s name.</p></li>
+<li><p><span class="guilabel">Size</span>: define the dimensions of the package in millimeters (mm). The fields, from left
+to right, define the <span class="guilabel">Length</span>, <span class="guilabel">Width</span>, and <span class="guilabel">Height</span>.</p></li>
+<li><p><span class="guilabel">Weight</span>: weight of an empty package (e.g. an empty box, pallet).</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Odoo calculates the package’s weight by adding the weight of the empty package plus the weight of
+the item(s), which can be found in the <span class="guilabel">Weight</span> field, in the <span class="guilabel">Inventory</span>
+tab, of each product form.</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">Max Weight</span>: maximum shipping weight allowed in the package.</p></li>
+<li><p><span class="guilabel">Barcode</span>: define a barcode to identify the package type from a scan.</p></li>
+<li><p><span class="guilabel">Company</span>: specify a company to make the package type available <strong>only</strong> at the selected
+company. Leave the field blank if it is available at all companies.</p></li>
+<li><p><span class="guilabel">Carrier</span>: specify the intended shipping carrier for this package type.</p></li>
+<li><p><span class="guilabel">Carrier Code</span>: define a code that is linked to the package type.</p></li>
+</ul>
+<img alt="Package type for FedEx's 25 kilogram box." class="align-center" src="../../../../../_images/package-type.png" />
+</section><section id="cluster-packages">
+<span id="inventory-warehouses-storage-cluster-pack"></span><h2>Cluster packages<a class="headerlink" href="#cluster-packages" title="Permalink to this headline">¶</a></h2>
+<p>To use <em>cluster packages</em>, first navigate to <span class="menuselection">Inventory app ‣ Configuration ‣
+Settings</span>, and activate the <span class="guilabel">Batch Transfers</span> feature, located in the
+<span class="guilabel">Operations</span> section. Doing so makes the <em>Package Use</em> field become visible on a package
+form.</p>
+<img alt="Activate the *Batch Transfers* feature in Inventory &gt; Configuration &gt; Settings." class="align-center" src="../../../../../_images/enable-batch.png" />
+<p>Add new packages by going to <span class="menuselection">Inventory app ‣ Products ‣ Packages</span>. Then, click
+<span class="guilabel">New</span>, or select an existing package. Doing so opens the package form, which contains the
+following fields:</p>
+<ul>
+<li><p><span class="guilabel">Package Reference</span> (required): name of the package.</p></li>
+<li><p><span class="guilabel">Package Type</span>: used for <a class="reference internal" href="#inventory-warehouses-storage-package-type"><span class="std std-ref">configuring shipping boxes to ship to the customer</span></a>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p><span class="guilabel">Package Type</span> is unnecessary for configuring packages for cluster pickings.</p>
+</div>
+</li>
+<li><p><span class="guilabel">Shipping Weight</span>: used to input the weight of the package after measuring it on a
+scale.</p></li>
+<li><p><span class="guilabel">Company</span>: specify a company to make the package available <strong>only</strong> at the selected
+company. Leave the field blank if the package is available at all companies.</p></li>
+<li><p><span class="guilabel">Location</span>: current location of the package.</p></li>
+<li><p><span class="guilabel">Pack Date</span>: the date the package was created.</p></li>
+<li><p><span class="guilabel">Package Use</span>: choose <span class="guilabel">Reusable</span> for packages used for moving products within
+the warehouse; <span class="guilabel">Disposable</span> for packages used to ship products to customers.</p></li>
+</ul>
+<img alt="Display package form to create a cluster pack." class="align-center" src="../../../../../_images/package.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../warehouses_storage/advanced_operations_warehouse/cluster_picking.html"><span class="doc">Using cluster packages</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Packages</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#pack-items">Pack items</a><ul>
+<li><a class="reference internal" href="#detailed-operations">Detailed operations</a></li>
+<li><a class="reference internal" href="#put-in-pack">Put in pack</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#package-type">Package type</a></li>
+<li><a class="reference internal" href="#cluster-packages">Cluster packages</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Packages</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

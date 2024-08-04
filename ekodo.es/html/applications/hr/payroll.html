@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payroll &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/hr/payroll.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/hr/payroll.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Payroll</a><ul>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#work-entries">Work entries</a><ul>
+<li><a class="reference internal" href="#work-entry-types">Work entry types</a><ul>
+<li><a class="reference internal" href="#new-work-entry-type">New work entry type</a><ul>
+<li><a class="reference internal" href="#general-information-section">General information section</a></li>
+<li><a class="reference internal" href="#display-in-payslip-section">Display in payslip section</a></li>
+<li><a class="reference internal" href="#unpaid-section">Unpaid section</a></li>
+<li><a class="reference internal" href="#valid-for-advantages-section">Valid for advantages section</a></li>
+<li><a class="reference internal" href="#time-off-options-section">Time off options section</a></li>
+<li><a class="reference internal" href="#reporting-section">Reporting section</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-schedules">Working schedules</a><ul>
+<li><a class="reference internal" href="#new-working-schedule">New working schedule</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#salary">Salary</a><ul>
+<li><a class="reference internal" href="#structure-types">Structure types</a></li>
+<li><a class="reference internal" href="#new-structure-type">New structure type</a><ul>
+<li><a class="reference internal" href="#new-default-working-hours">New default working hours</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#structures">Structures</a></li>
+<li><a class="reference internal" href="#rules">Rules</a></li>
+<li><a class="reference internal" href="#rule-parameters">Rule parameters</a></li>
+<li><a class="reference internal" href="#other-input-types">Other input types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#salary-package-configurator">Salary package configurator</a><ul>
+<li><a class="reference internal" href="#advantages">Advantages</a></li>
+<li><a class="reference internal" href="#personal-info">Personal info</a></li>
+<li><a class="reference internal" href="#resume">Resume</a></li>
+<li><a class="reference internal" href="#offers">Offers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/hr/payroll.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Payroll</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="payroll">
+<h1>Payroll<a class="headerlink" href="#payroll" title="Permalink to this headline">¶</a></h1>
+<p>Odoo <em>Payroll</em> is used to process work entries and create payslips for employees, including both
+regular pay and commission. Payroll works in conjunction with other Odoo apps, such as <em>Employees</em>,
+<em>Timesheets</em>, <em>Time Off</em>, and <em>Attendances</em>.</p>
+<p>The <em>Payroll</em> app helps ensure there are no issues or conflicts when validating work entries,
+handles country-specific localizations to ensure that payslips follow local rules and taxes, and
+allows for salary assignments. Payroll configuration is critical to ensure accurate and timely
+processing of payslips.</p>
+</section><section id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>To access the <em>Settings</em>, go to <span class="menuselection">Payroll ‣ Configuration ‣ Settings</span>. Whether or
+not payslips are posted in accounting, and whether SEPA payments are created, is selected here.</p>
+<p>The <span class="guilabel">Settings</span> screen is where localization settings are configured. <em>Localizations</em> are
+country-specific settings pre-configured in Odoo at the creation of the database, and account for
+all taxes, fees, and allowances for that particular country. The <span class="guilabel">Localization</span> section of
+the <span class="guilabel">Settings</span> includes a detailed view of all benefits provided to employees.</p>
+<img alt="Settings available for Payroll." class="align-center" src="../../_images/payroll-settings.png" />
+<p>Any country-specific localizations are set up in the <span class="guilabel">Localization</span> section of the
+<span class="guilabel">Settings</span> screen. All localization items are pre-populated when the country is specified
+during the creation of the database. It is not recommended to alter the localization settings unless
+specifically required.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Odoo can handle a multi-company configuration. This is generally done when there is a main
+company or office location, such as a headquarters, and there are other offices/branches around
+the country or globe, that fall under that main company or headquarters. In Odoo, each company,
+including the headquarters, would be setup as their own company/branch using the multi-company
+method.</p>
+<p>Each individual company can have a different localization setting configured for that specific
+company, since company locations can vary and be located anywhere in the world, where rules and
+laws differ. For more information on companies refer to <a class="reference internal" href="../general/companies.html"><span class="doc">this documentation</span></a> on setting up companies.</p>
+</div>
+</section><section id="work-entries">
+<span id="payroll-work-entries-config"></span><h2>Work entries<a class="headerlink" href="#work-entries" title="Permalink to this headline">¶</a></h2>
+<p>A <em>work entry</em> is an individual record on an employee’s timesheet. Work entries can be configured to
+account for all types of work and time off, such as <span class="guilabel">Attendance</span>, <span class="guilabel">Sick Time
+Off</span>, <span class="guilabel">Training</span>, or <span class="guilabel">Public Holiday</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="payroll/work_entries.html"><span class="doc">Manage work entries</span></a></p>
+</div>
+</section><section id="work-entry-types">
+<h3>Work entry types<a class="headerlink" href="#work-entry-types" title="Permalink to this headline">¶</a></h3>
+<p>When creating a work entry in the <em>Payroll</em> application, or when an employee enters information in
+the <em>Timesheets</em> application, a <span class="guilabel">Work Entry Type</span> needs to be selected. The list of
+<span class="guilabel">Work Entry Types</span> is automatically created based on localization settings set in the
+database.</p>
+<p>To view the current work entry types available, go to <span class="menuselection">Payroll ‣ Configuration ‣
+Work Entries ‣ Work Entry Types</span>.</p>
+<p>Each work entry type has a code to aid in the creation of payslips, and to ensure all taxes and fees
+are correctly entered.</p>
+<img alt="List of all work entry types currently available for use, with the payroll code and color." class="align-center" src="../../_images/work-entry-types.png" />
+</section><section id="new-work-entry-type">
+<h4>New work entry type<a class="headerlink" href="#new-work-entry-type" title="Permalink to this headline">¶</a></h4>
+<p>To create a new <span class="guilabel">Work Entry Type</span>, click the <span class="guilabel">New</span> button, and enter the
+information for the following sections on the form.</p>
+</section><section id="general-information-section">
+<h5>General information section<a class="headerlink" href="#general-information-section" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><span class="guilabel">Work Entry Type Name</span>: The name should be short and descriptive, such as <code class="o_code docutils literal notranslate"><span class="pre">Sick</span> <span class="pre">Time</span></code> or
+<code class="o_code docutils literal notranslate"><span class="pre">Public</span> <span class="pre">Holiday</span></code>.</p></li>
+<li><p><span class="guilabel">Payroll Code</span>: This code appears with the work entry type on timesheets and payslips.
+Since the code is used in conjunction with the <em>Accounting</em> application, it is advised to check
+with the accounting department for a code to use.</p></li>
+<li><p><span class="guilabel">DMFA code</span>: This code is used to identify <abbr title="De Multifunctionele Aangifte">DMFA</abbr>
+entries on a corresponding DMFA report. The DMFA report is a quarterly report that Belgian-based
+companies are required to submit for social security reporting purposes. This report states the
+work done by the employees during the quarter, as well as the salaries paid to those employees.</p></li>
+<li><p><span class="guilabel">External Code</span>: This code is used for exporting data to a third-party payroll service.
+Check with the third-party being used in order to determine the <span class="guilabel">External Code</span> to enter
+for the new work entry type.</p></li>
+<li><p><span class="guilabel">SDWorx code</span>: This code is only for companies that use SDWorx, a payroll service
+provider.</p></li>
+<li><p><span class="guilabel">Color</span>: Select a color for the particular work entry type.</p></li>
+</ul>
+</section><section id="display-in-payslip-section">
+<h5>Display in payslip section<a class="headerlink" href="#display-in-payslip-section" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><span class="guilabel">Rounding</span>: The rounding method selected determines how quantities on timesheet entries
+are displayed on the payslip.</p>
+<ul>
+<li><p><span class="guilabel">No Rounding</span>: A timesheet entry is not modified.</p></li>
+<li><p><span class="guilabel">Half Day</span>: A timesheet entry is rounded to the closest half day amount.</p></li>
+<li><p><span class="guilabel">Day</span>: A timesheet entry is rounded to the closest full day amount.</p></li>
+</ul>
+</li>
+</ul>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If the working time is set to an 8-hour work day (40-hour work week), and an employee enters a
+time of 5.5 hours on a timesheet, and <span class="guilabel">Rounding</span> is set to <span class="guilabel">No Rounding</span>, the
+entry remains 5.5 hours. If <span class="guilabel">Rounding</span> is set to <span class="guilabel">Half Day</span>, the entry is
+changed to 4 hours. If it is set to <span class="guilabel">Day</span>, it is changed to 8 hours.</p>
+</div>
+</section><section id="unpaid-section">
+<h5>Unpaid section<a class="headerlink" href="#unpaid-section" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><span class="guilabel">Unpaid in Structures Types</span>: If the work entry is for work that is not paid, specify
+which pay structure the unpaid work entry applies to from the drop-down menu. Some situations
+where work would be logged on a timesheet but no compensation given would be for unpaid
+internships, unpaid training, or volunteer work.</p></li>
+</ul>
+</section><section id="valid-for-advantages-section">
+<h5>Valid for advantages section<a class="headerlink" href="#valid-for-advantages-section" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><span class="guilabel">Meal Voucher</span>: If the work entry should count towards a meal voucher, check the box.</p></li>
+<li><p><span class="guilabel">Representation Fees</span>: If the work entry should count towards representation fees, check
+the box.</p></li>
+<li><p><span class="guilabel">Private Car Reimbursement</span>: If the work entry should count towards a private car
+reimbursement, check the box.</p></li>
+</ul>
+</section><section id="time-off-options-section">
+<h5>Time off options section<a class="headerlink" href="#time-off-options-section" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><span class="guilabel">Time Off</span>: Check this box if the work entry type can be selected for a time off request
+or entry in the <em>Time Off</em> application. If <span class="guilabel">Time Off</span> is checked, a <span class="guilabel">Time Off
+Type</span> field appears. This field has a drop-down menu to select the specific type of time off, such
+as <code class="o_code docutils literal notranslate"><span class="pre">Paid</span> <span class="pre">Time</span> <span class="pre">Off</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Sick</span> <span class="pre">Time</span> <span class="pre">Off</span></code>, or <code class="o_code docutils literal notranslate"><span class="pre">Extra</span> <span class="pre">Hours</span></code> for example. A new type of time off can be
+entered in the field if the listed types of time off in the drop-down menu do not display the type
+of time off needed.</p></li>
+<li><p><span class="guilabel">Keep Time Off Right</span>: This is for Belgian-specific companies only, and will not appear
+for other localizations. Check this box if the work entry is for time off that will affect the
+time off benefits for the following year. Workers are given time off each year according to the
+government, and in some cases, time-off taken during a specific time period can affect how much
+time off the employee will receive or accrue the following year.</p></li>
+</ul>
+</section><section id="reporting-section">
+<h5>Reporting section<a class="headerlink" href="#reporting-section" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><span class="guilabel">Unforeseen Absence</span>: If the work entry should be visible on the unforeseen absences
+report, check this box.</p></li>
+</ul>
+<img alt="New work entry type form with all fields to be filled in." class="align-center" src="../../_images/new-work-entry.png" />
+</section><section id="working-schedules">
+<span id="payroll-working-times"></span><h3>Working schedules<a class="headerlink" href="#working-schedules" title="Permalink to this headline">¶</a></h3>
+<p>To view the currently configured working schedules, go to <span class="menuselection">Payroll ‣ Configuration
+‣ Work Entries ‣ Working Schedules</span>. The working schedules that are available for an employee’s
+contracts and work entries are found in this list.</p>
+<p>Working schedules are company-specific. Each company must identify each type of working schedule
+they use.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>An Odoo database containing multiple companies that use a standard 40-hour work week needs to
+have a separate working schedule entry for each company that uses the 40-hour standard work week.</p>
+<p>A database with five companies that all use a standard 40-hour work week needs to have five
+separate 40-hour working schedules configured.</p>
+</div>
+<img alt="All working schedules available to use currently set up in the database for the company." class="align-center" src="../../_images/working-schedules.png" />
+</section><section id="new-working-schedule">
+<h4>New working schedule<a class="headerlink" href="#new-working-schedule" title="Permalink to this headline">¶</a></h4>
+<p>To create a new working schedule, click the <span class="guilabel">New</span> button, and enter the information on the
+form.</p>
+<p>The fields are auto-populated for a regular 40-hour work week but can be modified. First, change the
+name of the working time by modifying the text in the <span class="guilabel">Name</span> field. Next, make any
+adjustments to the days and times that apply to the new working time.</p>
+<p>In the <span class="guilabel">Working Hours</span> tab, modify the <span class="guilabel">Day of Week</span>, <span class="guilabel">Day Period</span>,
+and <span class="guilabel">Work Entry Type</span> selections by clicking on the drop-down menus in each column and
+making the desired selection. The <span class="guilabel">Work From</span> and <span class="guilabel">Work To</span> columns are modified
+by typing in the time.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Work From</span> and <span class="guilabel">Work To</span> times must be in a 24-hour format. For example,
+<code class="o_code docutils literal notranslate"><span class="pre">2:00</span> <span class="pre">PM</span></code> would be entered as <code class="o_code docutils literal notranslate"><span class="pre">14:00</span></code>.</p>
+</div>
+<p>If the working time should be in a two-week configuration, click the <span class="guilabel">Switch to 2 weeks
+calendar</span> button in the top left. This creates entries for an <span class="guilabel">Even week</span> and an
+<span class="guilabel">Odd week</span>.</p>
+<img alt="New working schedule form." class="align-center" src="../../_images/new-working-schedule.png" />
+</section><section id="salary">
+<h2>Salary<a class="headerlink" href="#salary" title="Permalink to this headline">¶</a></h2>
+</section><section id="structure-types">
+<span id="payroll-structure-types"></span><h3>Structure types<a class="headerlink" href="#structure-types" title="Permalink to this headline">¶</a></h3>
+<p>In Odoo, an employee’s payslip is based on <em>structures</em> and <em>structure types</em>, which both affect how
+an employee enters timesheets. Each structure type is an individual set of rules for processing a
+timesheet entry, which consists of different structures nested within it. Structure types define how
+often an employee gets paid, the working hours, and if wages are based on a salary (fixed) or how
+many hours the employee worked (varied).</p>
+<p>For example, a structure type could be <code class="o_code docutils literal notranslate"><span class="pre">Employee</span></code>, and that structure type could have two different
+structures in it: a <code class="o_code docutils literal notranslate"><span class="pre">Regular</span> <span class="pre">Pay</span></code> structure which includes all the separate rules for processing
+regular pay, as well as a structure for an <code class="o_code docutils literal notranslate"><span class="pre">End</span> <span class="pre">of</span> <span class="pre">Year</span> <span class="pre">Bonus</span></code> which includes the rules only for the
+end of year bonus. Both the <code class="o_code docutils literal notranslate"><span class="pre">Regular</span> <span class="pre">Pay</span></code> structure and <code class="o_code docutils literal notranslate"><span class="pre">End</span> <span class="pre">of</span> <span class="pre">Year</span> <span class="pre">Bonus</span></code> structure are structures
+within the <code class="o_code docutils literal notranslate"><span class="pre">Employee</span></code> structure type.</p>
+<p>The different structure types can be seen by going to <span class="menuselection">Payroll ‣ Configuration ‣
+Salary ‣ Structure Types</span>.</p>
+<p>There are two default structure types configured in Odoo: <em>Employee</em> and <em>Worker</em>. Typically,
+<em>Employee</em> is used for salaried employees, which is why the wage type is <em>Monthly Fixed Wage</em>, and
+<em>Worker</em> is typically used for employees paid by the hour, so the wage type is <em>Hourly Wage</em>.</p>
+<img alt="List of all currently configured structure types available to use." class="align-center" src="../../_images/structure-type.png" />
+</section><section id="new-structure-type">
+<h3>New structure type<a class="headerlink" href="#new-structure-type" title="Permalink to this headline">¶</a></h3>
+<p>To make a new structure type, click the <span class="guilabel">New</span> button and a structure type form appears.
+Enter the information in the fields. Most fields are pre-populated, but all the fields can be
+modified.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Structure Type</span>: Enter the name for the new structure type, such as ‘Employee’ or
+‘Worker’.</p></li>
+<li><p><span class="guilabel">Country</span>: Select the country that the new structure type applies to from the drop-down
+menu.</p></li>
+<li><p><span class="guilabel">Wage Type</span>: Select what type of wage the new structure type will use, either
+<span class="guilabel">Monthly Fixed Wage</span> or <span class="guilabel">Hourly Wage</span>. If the wage type is going to be used
+for salaried employees who receive the same wage every pay period, select <span class="guilabel">Monthly Fixed
+Wage</span>. If the wage type is going to be used for employees who receive wages based on how many
+hours they worked during a pay period, select <span class="guilabel">Hourly Wage</span>.</p></li>
+<li><p><span class="guilabel">Default Scheduled Pay</span>: Select the typical pay schedule for the new structure type from
+the drop-down menu. Options are <span class="guilabel">Monthly</span>, <span class="guilabel">Quarterly</span>,
+<span class="guilabel">Semi-annually</span>, <span class="guilabel">Annually</span>, <span class="guilabel">Weekly</span>, <span class="guilabel">Bi-weekly</span>,
+<span class="guilabel">Bi-monthly</span>. This indicates how often this type of structure type is paid out.</p></li>
+<li><p><span class="guilabel">Default Working Hours</span>: Select the default working hours for the new structure type
+from the drop-down menu. All available working hours for the currently selected company appear in
+the drop-down menu. The default working hours that are pre-configured in Odoo is the
+<span class="guilabel">Standard 40 hours/week</span> option. If the needed working hours do not appear in the list,
+a <a class="reference internal" href="#new-default-working-hours"><span class="std std-ref">new set of default working hours can be created</span></a>.</p></li>
+<li><p><span class="guilabel">Regular Pay Structure</span>: Type in the name for the regular pay structure.</p></li>
+<li><p><span class="guilabel">Default Work Entry Type</span>: Select the default type of work entry the new structure type
+will fall under from the drop-down menu. Options include <span class="guilabel">Attendance</span>,
+<span class="guilabel">Overtime Hours</span>, <span class="guilabel">Generic Time Off</span>, <span class="guilabel">Compensatory Time Off</span>,
+<span class="guilabel">Home Working</span>, <span class="guilabel">Unpaid</span>, <span class="guilabel">Sick Time Off</span>, <span class="guilabel">Paid Time
+Off</span>, and <span class="guilabel">Out Of Contract</span>.</p></li>
+</ul>
+<img alt="New structure type form to fill out when creating a new structure type." class="align-center" src="../../_images/new-structure.png" />
+</section><section id="new-default-working-hours">
+<span id="id1"></span><h4>New default working hours<a class="headerlink" href="#new-default-working-hours" title="Permalink to this headline">¶</a></h4>
+<p>To make new default working hours, type the name for the new working hours in the <span class="guilabel">Default
+Working Hours</span> field on the new structure type form. Click <span class="guilabel">Create and edit</span>. A default
+working hours form will pop up. The default working hours form has two sections, a general
+information section and a tab listing out all the individual working hours by day and time. When the
+form is filled out, click <span class="guilabel">Save &amp; Close</span>.</p>
+<ul>
+<li><p><span class="guilabel">Name</span>: Type in the name for the new default working hours. This should be descriptive
+and clear to understand, such as <code class="o_code docutils literal notranslate"><span class="pre">Standard</span> <span class="pre">20</span> <span class="pre">Hours/Week</span></code>.</p></li>
+<li><p><span class="guilabel">Company</span>: Select the company that can use these new default working hours from the
+drop-down menu. Keep in mind, working hours are company-specific and cannot be shard between
+companies. Each company needs to have their own working hours set.</p></li>
+<li><p><span class="guilabel">Average Hour Per Day</span>: The average hours per day field will be auto-populated based on
+the working hours configured in the <em>Working Hours</em> tab. This entry affects resource planning,
+since the average daily hours affect what resources can be used, and in what quantity, per work
+day.</p></li>
+<li><p><span class="guilabel">Timezone</span>: Select the timezone that the new default working hours will be used for from
+the drop-down menu.</p></li>
+<li><p><span class="guilabel">Company Full Time</span>: Enter the number of hours per week an employee would need to work
+in order to be considered a full-time employee. Typically, this is approximately 40 hours, and
+this number affects what types of benefits an employee can receive based on their employment
+status (full-time vs part-time).</p></li>
+<li><p><span class="guilabel">Work Time rate</span>: This percentage is auto-generated based on the entry for the
+<span class="guilabel">Company Full Time</span> and the working hours configured in the <em>Working Hours</em> tab. This
+number should be between <code class="o_code docutils literal notranslate"><span class="pre">0.00%</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">100%</span></code>, so if the percentage is above <code class="o_code docutils literal notranslate"><span class="pre">100%</span></code>, it is an
+indication that the working times and/or <span class="guilabel">Company Full Time</span> hours need adjustment.</p></li>
+<li><p><span class="guilabel">Working Hours</span> Tab: This tab is where each day’s specific working hours are listed.
+When a new default working hour form  is created, the working hours tab is pre-populated with a
+default 40-hour week, with each day divided into three timed sections. Every day has morning
+(8:00-12:00), lunch (12:00-13:00), and evening (13:00-17:00) hours configured using a 24 hour time
+format. To adjust any of these hours, click on the specific field to adjust, and make the
+adjustment using the drop-down menus, or in the specific case of the times, type in the desired
+time.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If the working hours are not consistent each week, and the hours are on a bi-weekly schedule
+instead, click the <span class="guilabel">Switch to 2 week calendar</span> button at the top of the new default
+working hours form. This will change the working hours tab to display two weeks of working
+times that can be adjusted.</p>
+</div>
+</li>
+</ul>
+</section><section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline">¶</a></h3>
+<p><em>Salary structures</em> are the different ways an employee gets paid within a specific <em>structure</em>, and
+are specifically defined by various rules.</p>
+<p>The amount of structures a company needs for each structure type depends on how many different ways
+employees are paid, and how their pay is calculated. For example, a common structure that could be
+useful to add may be a <code class="o_code docutils literal notranslate"><span class="pre">Bonus</span></code>.</p>
+<p>To view all the various structures for each structure type, go to <span class="menuselection">Payroll ‣
+Configuration ‣ Salary ‣ Structures</span>.</p>
+<p>Each <a class="reference internal" href="#payroll-structure-types"><span class="std std-ref">structure type</span></a> lists the various structures associated with
+it. Each structure contains a set of rules that define it.</p>
+<img alt="All available salary structures." class="align-center" src="../../_images/salary-structure.png" />
+<p>Click on a structure to view its <span class="guilabel">Salary Rules</span>. These rules are what calculate the
+payslip for the employee.</p>
+<img alt="Salary structure details for Regular Pay, listing all the specific Salary Rules." class="align-center" src="../../_images/structure-regular-pay-rules.png" />
+</section><section id="rules">
+<h3>Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h3>
+<p>Each structure has a set of <em>salary rules</em> to follow for accounting purposes. These rules are
+configured by the localization, and affect actions in the <em>Accounting</em> application, so modifications
+to the default rules, or the creation of new rules, should only be done when necessary.</p>
+<p>To view all the rules, go to <span class="menuselection">Payroll app ‣ Configuration ‣ Salary ‣ Rules</span>.
+Click on a structure (such as <span class="guilabel">Regular Pay</span>) to view all the rules.</p>
+<p>To make a new rule, click <span class="guilabel">New</span>. A new rule form appears. Enter the information in the
+fields.</p>
+<p>The required fields for a rule are:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Name</span>: Enter a name for the rule.</p></li>
+<li><p><span class="guilabel">Category</span>: Select a category the rule applies to from the drop-down menu, or enter a
+new one.</p></li>
+<li><p><span class="guilabel">Code</span>: Enter a code to be used for this new rule. It is recommended to coordinate with
+the accounting department for a code to use as this will affect accounting reports and payroll
+processing.</p></li>
+<li><p><span class="guilabel">Salary Structure</span>: Select a salary structure the rule applies to from the drop-down
+menu, or enter a new one.</p></li>
+<li><p><span class="guilabel">Condition Based on</span>: In the <span class="guilabel">General</span> tab, select from the drop-down menu
+whether the rule is <span class="guilabel">Always True</span> (always applies), a <span class="guilabel">Range</span> (applies to a
+specific range, which is entered beneath the selection), or a <span class="guilabel">Python Expression</span> (the
+code is entered beneath the selection).</p></li>
+<li><p><span class="guilabel">Amount Type</span>: In the <span class="guilabel">General</span> tab, select from the drop-down menu whether
+the amount is a <span class="guilabel">Fixed Amount</span>, a <span class="guilabel">Percentage (%)</span>, or a <span class="guilabel">Python
+Code</span>. Depending on what is selected, the fixed amount, percentage, or Python code needs to be
+entered next.</p></li>
+</ul>
+<img alt="Enter the information for the new rule on the new rule form." class="align-center" src="../../_images/new-rule1.png" />
+</section><section id="rule-parameters">
+<h3>Rule parameters<a class="headerlink" href="#rule-parameters" title="Permalink to this headline">¶</a></h3>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Currently, the <span class="guilabel">Rule Parameters</span> feature found inside the <span class="menuselection">Payroll app
+‣ Configuration ‣ Salary ‣ Rule Parameters</span> menu is still in development and only serves a
+specific use case for Belgian markets. The documentation will be updated when this section has
+matured to more markets.</p>
+</div>
+</section><section id="other-input-types">
+<h3>Other input types<a class="headerlink" href="#other-input-types" title="Permalink to this headline">¶</a></h3>
+<p>When creating payslips, it is sometimes necessary to add other entries for specific circumstances,
+like expenses, reimbursements, or deductions. These other inputs can be configured by going to
+<span class="menuselection">Payroll ‣ Configuration ‣ Salary ‣ Other Input Types</span>.</p>
+<img alt="A list of other input types for payroll that can be selected when creating a new entry for a payslip." class="align-center" src="../../_images/other-input.png" />
+<p>To create a new input type, click the <span class="guilabel">New</span> button. Enter the <span class="guilabel">Description</span>, the
+<span class="guilabel">Code</span>, and which structure it applies to in the <span class="guilabel">Availability in Structure</span>
+field.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <span class="guilabel">Code</span> is used in the salary rules to compute payslips. If the
+<span class="guilabel">Availability in Structure</span> field is left blank, it indicates that the new input type
+is available for all payslips and is not exclusive to a specific structure.</p>
+</div>
+<img alt="Create a new Input Type." class="align-center" src="../../_images/input-type-new.png" />
+</section><section id="salary-package-configurator">
+<h2>Salary package configurator<a class="headerlink" href="#salary-package-configurator" title="Permalink to this headline">¶</a></h2>
+<p>The various options under the <span class="guilabel">Salary Package Configurator</span> section of the
+<span class="menuselection">Payroll ‣ Configuration ‣ Salary Package Configurator</span> menu all affect an
+employee’s potential salary. These sections (<span class="guilabel">Advantages</span>, <span class="guilabel">Personal Info</span>,
+<span class="guilabel">Resume</span>, and <span class="guilabel">Offers</span>) specify what benefits can be offered to an employee in
+their salary package.</p>
+<p>Depending on what information an employee enters (such as deductions, dependents, etc.), their
+salary is adjusted accordingly. When an applicant applies for a job on the company website, the
+sections under <span class="guilabel">Salary Package Configurator</span> directly affect what the applicant sees, and
+what is populated as the applicant enters information.</p>
+</section><section id="advantages">
+<h3>Advantages<a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h3>
+<p>When offering potential employees a position, there can be certain <em>advantages</em> or benefits set in
+Odoo in addition to the salary to make an offer more appealing (such as extra time off, the use of a
+company car, reimbursement for a phone or internet, etc.).</p>
+<p>To see the advantages, go to <span class="menuselection">Payroll ‣ Configuration ‣ Salary Package
+Configurator ‣ Advantages</span>. Advantages are grouped by <span class="guilabel">Structure type</span>, and the
+advantage listed for a particular structure type is only available for that specific structure.</p>
+<img alt="A list view of all the advantages or benefits that is available for each structure type." class="align-center" src="../../_images/advantages.png" />
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A company has two structure types, one labeled <span class="guilabel">Employee</span>, and anther labeled
+<span class="guilabel">Intern</span>. The <span class="guilabel">Employee</span> structure type contains an advantage of using a
+company car, while the <span class="guilabel">Intern</span> structure type does not. Instead, the
+<span class="guilabel">Intern</span> structure type has a meal voucher advantage available, while the
+<span class="guilabel">Employee</span> structure type does not.</p>
+<p>A person hired under the <span class="guilabel">Employee</span> structure type can use a company car, but cannot
+have meal vouchers. The opposite is true for someone hired under the <span class="guilabel">Intern</span> structure
+type. They would have meal vouchers available to them, not the use of a company car.</p>
+</div>
+<p>To make a new advantage, click the <span class="guilabel">New</span> button, and enter the information in the fields.
+The required fields for an advantage are:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Name</span>: Enter the name for the advantage.</p></li>
+<li><p><span class="guilabel">Advantage Field</span>: Select from the drop-down menu what field in the payslip this
+advantage appears under.</p></li>
+<li><p><span class="guilabel">Advantage Type</span>: Select from the drop-down menu what type of advantage the benefit is.
+Select from <span class="guilabel">Monthly Benefit in Kind</span>, <span class="guilabel">Monthly Advantages in Net</span>,
+<span class="guilabel">Monthly Advantages in Cash</span>, or <span class="guilabel">Yearly Advantages in Cash</span>.</p></li>
+<li><p><span class="guilabel">Salary Structure Type</span>: Select from the drop-down menu which salary structure type this
+advantage applies to.</p></li>
+<li><p><span class="guilabel">Display Type</span>: Select from the drop-down menu how this advantage is displayed.</p></li>
+</ul>
+<img alt="List of advantages employee's can have." class="align-center" src="../../_images/new-advantage.png" />
+</section><section id="personal-info">
+<h3>Personal info<a class="headerlink" href="#personal-info" title="Permalink to this headline">¶</a></h3>
+<p>Every employee in Odoo has an <em>employee card</em> which is created when a candidate becomes an
+employee. This card includes all of their personal information, resume, work information, and
+documents.</p>
+<p>The personal information is gathered from the salary package configurator section that a
+candidate fills out after being offered a position. This personal information is then transferred to
+the employee card when they are hired.</p>
+<p>To view an employee’s card, go to the main <span class="menuselection">Employees</span> app dashboard, and click on
+the employee’s card.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>An employee card can be thought of as an employee personnel file.</p>
+</div>
+<p>The <em>Personal Information</em> section lists all of the fields that are available to enter on the
+employee’s card. To access this section, go to <span class="menuselection">Payroll ‣ Configuration ‣ Salary
+Package Configurator  ‣ Personal Info</span>.</p>
+<img alt="A list of all the personal information that appears on employee card to enter." class="align-center" src="../../_images/personal-info.png" />
+<p>To edit a personal info entry, select the entry from the list, and modify the personal info. To
+create a new personal info entry, click the <span class="guilabel">New</span> button.</p>
+<p>The required fields, aside from entering the <span class="guilabel">Information</span> name, are <span class="guilabel">Related
+Model</span>, <span class="guilabel">Related Field</span>, and <span class="guilabel">Category</span>. Select a <span class="guilabel">Related Model</span> from
+the drop-down menu. <span class="guilabel">Employee</span> populates the field by default, but the <span class="guilabel">Bank
+Account</span> option is also available if the information is related to a bank account instead. Select a
+<span class="guilabel">Related Field</span> from the drop-down menu that best describes what kind of personal
+information this entry is, and where it is going to be stored in the backed. Then, select a
+<span class="guilabel">Category</span> from the drop-down menu that the personal information should be under, such as
+<span class="guilabel">Address</span> or <span class="guilabel">Personal Documents</span>.</p>
+<p>The two most important fields on the personal info form are <span class="guilabel">Is Required</span> and
+<span class="guilabel">Display Type</span>. Checking the <span class="guilabel">Is Required</span> box makes the field mandatory on the
+employee’s card. The <span class="guilabel">Display Type</span> drop-down menu allows for the information to be
+entered in a variety of ways, from a <span class="guilabel">Text</span> box, to a customizable <span class="guilabel">Radio</span>
+button, a <span class="guilabel">Checkbox</span>, a <span class="guilabel">Document</span>, and more.</p>
+<img alt="New personal information entry." class="align-center" src="../../_images/personal-new.png" />
+</section><section id="resume">
+<h3>Resume<a class="headerlink" href="#resume" title="Permalink to this headline">¶</a></h3>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Currently, the <span class="guilabel">Resume</span> feature found inside the <span class="menuselection">Payroll app ‣
+Configuration ‣ Salary Package Configurator ‣ Resume</span> menu is still in development and only
+serves a specific use case for Belgian markets. The documentation will be updated when this
+section has matured to more markets.</p>
+</div>
+</section><section id="offers">
+<h3>Offers<a class="headerlink" href="#offers" title="Permalink to this headline">¶</a></h3>
+<p>When a candidate is offered a position, there are several items that need to be tracked in order
+for a business to stay organized, such as where in the offer process the candidate is, how long the
+offer is valid for, as well as all the offer details. These details are all stored in each <em>offers</em>
+record.</p>
+<p>To view all offers, go to <span class="menuselection">Payroll ‣ Configuration ‣ Salary Package Configurator
+‣ Offers</span>. All offers that have been sent to either potential candidates or current employees
+appears in this list. The status, offer start date and expiration date, amount of the contract, and
+more, can all be found in this list. Offers sent via the <span class="guilabel">Recruitment</span> application appear
+here, but there is an option to create a new offer from the <span class="guilabel">Payroll</span> application as well.</p>
+<img alt="A list of all offers given to a current employee or potential candidate along with the status of the offer." class="align-center" src="../../_images/offers.png" />
+<p>To create a new offer, click the <span class="guilabel">New</span> button. The two required fields are the
+<span class="guilabel">Contract Template</span>, and the <span class="guilabel">Company</span>. Select the <span class="guilabel">Contract Template</span>
+and <span class="guilabel">Company</span> from the drop-down menus. Fill in any other details for the offer, such as
+the <span class="guilabel">Job Title</span>, <span class="guilabel">Department</span>, the <span class="guilabel">Contract Start Date</span> and the
+<span class="guilabel">Offer Validity Date</span>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_hr_payroll_contracts"><a class="reference internal" href="payroll/contracts.html">Contracts</a></li>
+<li class="toctree-l1 o_menu_applications_hr_payroll_payslips"><a class="reference internal" href="payroll/payslips.html">Payslips</a></li>
+<li class="toctree-l1 o_menu_applications_hr_payroll_work_entries"><a class="reference internal" href="payroll/work_entries.html">Work entries</a></li>
+<li class="toctree-l1 o_menu_applications_hr_payroll_reporting"><a class="reference internal" href="payroll/reporting.html">Reporting</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Payroll</a><ul>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#work-entries">Work entries</a><ul>
+<li><a class="reference internal" href="#work-entry-types">Work entry types</a><ul>
+<li><a class="reference internal" href="#new-work-entry-type">New work entry type</a><ul>
+<li><a class="reference internal" href="#general-information-section">General information section</a></li>
+<li><a class="reference internal" href="#display-in-payslip-section">Display in payslip section</a></li>
+<li><a class="reference internal" href="#unpaid-section">Unpaid section</a></li>
+<li><a class="reference internal" href="#valid-for-advantages-section">Valid for advantages section</a></li>
+<li><a class="reference internal" href="#time-off-options-section">Time off options section</a></li>
+<li><a class="reference internal" href="#reporting-section">Reporting section</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-schedules">Working schedules</a><ul>
+<li><a class="reference internal" href="#new-working-schedule">New working schedule</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#salary">Salary</a><ul>
+<li><a class="reference internal" href="#structure-types">Structure types</a></li>
+<li><a class="reference internal" href="#new-structure-type">New structure type</a><ul>
+<li><a class="reference internal" href="#new-default-working-hours">New default working hours</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#structures">Structures</a></li>
+<li><a class="reference internal" href="#rules">Rules</a></li>
+<li><a class="reference internal" href="#rule-parameters">Rule parameters</a></li>
+<li><a class="reference internal" href="#other-input-types">Other input types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#salary-package-configurator">Salary package configurator</a><ul>
+<li><a class="reference internal" href="#advantages">Advantages</a></li>
+<li><a class="reference internal" href="#personal-info">Personal info</a></li>
+<li><a class="reference internal" href="#resume">Resume</a></li>
+<li><a class="reference internal" href="#offers">Offers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Payroll</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

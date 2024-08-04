@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bank and cash accounts &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/bank.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/bank.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Bank and cash accounts</a><ul>
+<li><a class="reference internal" href="#manage-your-bank-and-cash-accounts">Manage your bank and cash accounts</a><ul>
+<li><a class="reference internal" href="#connect-your-bank-for-automatic-synchronization">Connect your bank for automatic synchronization</a></li>
+<li><a class="reference internal" href="#create-a-bank-account">Create a bank account</a></li>
+<li><a class="reference internal" href="#create-a-cash-journal">Create a cash journal</a></li>
+<li><a class="reference internal" href="#edit-an-existing-bank-or-cash-journal">Edit an existing bank or cash journal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#suspense-account">Suspense account</a></li>
+<li><a class="reference internal" href="#profit-and-loss-accounts">Profit and loss accounts</a></li>
+<li><a class="reference internal" href="#currency">Currency</a></li>
+<li><a class="reference internal" href="#account-number">Account number</a></li>
+<li><a class="reference internal" href="#bank-feeds">Bank feeds</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#outstanding-accounts">Outstanding accounts</a><ul>
+<li><a class="reference internal" href="#default-accounts-configuration">Default accounts configuration</a></li>
+<li><a class="reference internal" href="#bank-and-cash-journals-configuration">Bank and cash journals configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/bank.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Bank and cash accounts</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_hide_toc">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="bank-and-cash-accounts">
+<h1>Bank and cash accounts<a class="headerlink" href="#bank-and-cash-accounts" title="Permalink to this headline">¶</a></h1>
+<p>You can manage as many bank or cash accounts as needed on your database. Configuring them well
+allows you to have all your banking data up-to-date and ready for <a class="reference internal" href="bank/reconciliation.html"><span class="doc">reconciliation</span></a> with your journal entries.</p>
+<p>In Odoo Accounting, each bank account has a dedicated journal set to post all entries in a dedicated
+account. Both the journal and the account are automatically created and configured whenever you add
+a bank account.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Cash journals and accounts must be configured manually.</p>
+</div>
+<p>Bank journals are displayed by default on the <span class="guilabel">Accounting Dashboard</span> in the form of cards
+which include action buttons.</p>
+<img alt="Bank journals are displayed on the Accounting Dashboard and contain action buttons" src="../../../_images/card.png" />
+</section><section id="manage-your-bank-and-cash-accounts">
+<span id="bank-accounts-manage"></span><h2>Manage your bank and cash accounts<a class="headerlink" href="#manage-your-bank-and-cash-accounts" title="Permalink to this headline">¶</a></h2>
+</section><section id="connect-your-bank-for-automatic-synchronization">
+<h3>Connect your bank for automatic synchronization<a class="headerlink" href="#connect-your-bank-for-automatic-synchronization" title="Permalink to this headline">¶</a></h3>
+<p>To connect your bank account to your database, go to <span class="menuselection">Accounting ‣ Configuration
+‣ Banks: Add a Bank Account</span>, select your bank in the list, click on <span class="guilabel">Connect</span>, and
+follow the instructions.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="bank/bank_synchronization.html"><span class="doc">Bank synchronization</span></a></p>
+</div>
+</section><section id="create-a-bank-account">
+<h3>Create a bank account<a class="headerlink" href="#create-a-bank-account" title="Permalink to this headline">¶</a></h3>
+<p>If your banking institution is not available in Odoo, or if you don’t want to connect your bank
+account to your database, you can configure your bank account manually.</p>
+<p>To manually add a bank account, go to <span class="menuselection">Accounting ‣ Configuration ‣ Banks:
+Add a Bank Account</span>, click on <span class="guilabel">Create it</span> (at the bottom right), and fill out the form.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Odoo automatically detects the bank account type (e.g., IBAN) and enables some features
+accordingly.</p></li>
+<li><p>A default bank journal is available and can be used to configure your bank account by going to
+<span class="menuselection">Accounting ‣ Configuration ‣ Accounting: Journals ‣ Bank</span>. Open it and
+edit the different fields to match your bank account information.</p></li>
+</ul>
+</div>
+</section><section id="create-a-cash-journal">
+<h3>Create a cash journal<a class="headerlink" href="#create-a-cash-journal" title="Permalink to this headline">¶</a></h3>
+<p>To create a new cash journal, go to <span class="menuselection">Accounting ‣ Configuration ‣ Accounting:
+Journals</span>, click on <span class="guilabel">Create</span> and select <span class="guilabel">Cash</span> in the <span class="guilabel">Type</span> field.</p>
+<p>For more information on the accounting information fields, read the
+<a class="reference internal" href="#bank-accounts-configuration"><span class="std std-ref">Configuration</span></a> section of this page.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>A default cash journal is available and can be used straight away. You can review it by going to
+<span class="menuselection">Accounting ‣ Configuration ‣ Accounting: Journals ‣ Cash</span>.</p>
+</div>
+</section><section id="edit-an-existing-bank-or-cash-journal">
+<h3>Edit an existing bank or cash journal<a class="headerlink" href="#edit-an-existing-bank-or-cash-journal" title="Permalink to this headline">¶</a></h3>
+<p>To edit an existing bank journal, go to <span class="menuselection">Accounting ‣ Configuration ‣ Accounting:
+Journals</span> and select the journal you want to modify.</p>
+</section><section id="configuration">
+<span id="bank-accounts-configuration"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>You can edit the accounting information and bank account number according to your needs.</p>
+<img alt="Manually configure your bank information" src="../../../_images/bank-journal-config.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Multi-currency system</span></a></p></li>
+<li><p><a class="reference internal" href="bank/transactions.html"><span class="doc">Transactions</span></a></p></li>
+</ul>
+</div>
+</section><section id="suspense-account">
+<span id="bank-accounts-suspense"></span><h3>Suspense account<a class="headerlink" href="#suspense-account" title="Permalink to this headline">¶</a></h3>
+<p>Bank statement transactions are posted on the <span class="guilabel">Suspense Account</span> until the final
+reconciliation allows finding the right account.</p>
+</section><section id="profit-and-loss-accounts">
+<h3>Profit and loss accounts<a class="headerlink" href="#profit-and-loss-accounts" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Profit Account</span> is used to register a profit when the ending balance of a cash
+register differs from what the system computes, while the <span class="guilabel">Loss Account</span> is used to
+register a loss when the ending balance of a cash register differs from what the system computes.</p>
+</section><section id="currency">
+<h3>Currency<a class="headerlink" href="#currency" title="Permalink to this headline">¶</a></h3>
+<p>You can edit the currency used to enter the statements.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Multi-currency system</span></a></p>
+</div>
+</section><section id="account-number">
+<h3>Account number<a class="headerlink" href="#account-number" title="Permalink to this headline">¶</a></h3>
+<p>If you need to <strong>edit your bank account details</strong>, click on the external link arrow next to your
+<span class="guilabel">Account Number</span>. On the new page, click on the external link arrow next to your
+<span class="guilabel">Bank</span> and update your bank information accordingly. These details are used when
+registering payments.</p>
+<img alt="Edit your bank information" src="../../../_images/bank-account-number.png" />
+</section><section id="bank-feeds">
+<h3>Bank feeds<a class="headerlink" href="#bank-feeds" title="Permalink to this headline">¶</a></h3>
+<p><span class="guilabel">Bank Feeds</span> defines how the bank statements are registered. Three options are available:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Undefined yet</span>, which should be selected when you don’t know yet if you will
+synchronize your bank account with your database or not.</p></li>
+<li><p><span class="guilabel">Import (CAMT, CODA, CSV, OFX, QIF)</span>, which should be selected if you want to import
+your bank statement using a different format.</p></li>
+<li><p><span class="guilabel">Automated Bank Synchronization</span>, which should be selected if your bank is synchronized
+with your database.</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="bank/bank_synchronization.html"><span class="doc">Bank synchronization</span></a></p></li>
+<li><p><a class="reference internal" href="bank/transactions.html"><span class="doc">Transactions</span></a></p></li>
+</ul>
+</div>
+</section><section id="outstanding-accounts">
+<span id="bank-outstanding-accounts"></span><h2>Outstanding accounts<a class="headerlink" href="#outstanding-accounts" title="Permalink to this headline">¶</a></h2>
+<p>By default, payments are registered through transitory accounts named <strong>outstanding accounts</strong>,
+before being recorded in your bank account.</p>
+<ul class="simple">
+<li><p>An <strong>outstanding payments account</strong> is where outgoing payments are posted until they are linked
+with a withdrawal from your bank statement.</p></li>
+<li><p>An <strong>outstanding receipts account</strong> is where incoming payments are posted until they are linked
+with a deposit from your bank statement.</p></li>
+</ul>
+<p>These accounts should be of <a class="reference internal" href="get_started/chart_of_accounts.html#chart-of-account-type"><span class="std std-ref">type</span></a> <span class="guilabel">Current Assets</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The movement from an outstanding account to a bank account is done automatically when you
+reconcile the bank account with a bank statement.</p>
+</div>
+</section><section id="default-accounts-configuration">
+<h3>Default accounts configuration<a class="headerlink" href="#default-accounts-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The outstanding accounts are defined by default. If necessary, you can update them by going to
+<span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Default Accounts</span> and update your
+<span class="guilabel">Outstanding Receipts Account</span> and <span class="guilabel">Outstanding Payments Account</span>.</p>
+</section><section id="bank-and-cash-journals-configuration">
+<h3>Bank and cash journals configuration<a class="headerlink" href="#bank-and-cash-journals-configuration" title="Permalink to this headline">¶</a></h3>
+<p>You can also set specific outstanding accounts for any journal with the <a class="reference internal" href="get_started/chart_of_accounts.html#chart-of-account-type"><span class="std std-ref">type</span></a> <span class="guilabel">Bank</span> or <span class="guilabel">Cash</span>.</p>
+<p>From your <span class="guilabel">Accounting Dashboard</span>, click on the menu selection ⋮ of the journal you want to
+configure, and click on <span class="guilabel">Configuration</span>, then open the <span class="guilabel">Incoming/Outgoing
+Payments</span> tab. To display the outstanding accounts column, click on the toggle button and check the
+<span class="guilabel">Outstanding Receipts/Payments accounts</span>, then update the account.</p>
+<img alt="Select the toggle button and click on outstanding Accounts" class="align-center" src="../../../_images/toggle-button.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>If you do not specify an outstanding payments account or an outstanding receipts account for a
+specific journal, Odoo uses the default outstanding accounts.</p></li>
+<li><p>If your main bank account is added as an outstanding receipts account or outstanding payments
+account, when a payment is registered, the invoice or bill’s status is directly set to
+<span class="guilabel">Paid</span>.</p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="bank/bank_synchronization.html">Bank synchronization</a><ul>
+<li class="toctree-l2 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="bank/bank_synchronization/saltedge.html">Salt Edge</a></li>
+<li class="toctree-l2 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="bank/bank_synchronization/ponto.html">Ponto</a></li>
+<li class="toctree-l2 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="bank/bank_synchronization/enablebanking.html">Enable Banking</a></li>
+</ul>
+</li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="bank/transactions.html">Transactions</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="bank/reconciliation.html">Bank reconciliation</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="bank/reconciliation_models.html">Reconciliation models</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_bank_foreign_currency"><a class="reference internal" href="bank/foreign_currency.html">Manage a bank account in a foreign currency</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_bank_cash_register"><a class="reference internal" href="bank/cash_register.html">Cash register</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Bank and cash accounts</a><ul>
+<li><a class="reference internal" href="#manage-your-bank-and-cash-accounts">Manage your bank and cash accounts</a><ul>
+<li><a class="reference internal" href="#connect-your-bank-for-automatic-synchronization">Connect your bank for automatic synchronization</a></li>
+<li><a class="reference internal" href="#create-a-bank-account">Create a bank account</a></li>
+<li><a class="reference internal" href="#create-a-cash-journal">Create a cash journal</a></li>
+<li><a class="reference internal" href="#edit-an-existing-bank-or-cash-journal">Edit an existing bank or cash journal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#suspense-account">Suspense account</a></li>
+<li><a class="reference internal" href="#profit-and-loss-accounts">Profit and loss accounts</a></li>
+<li><a class="reference internal" href="#currency">Currency</a></li>
+<li><a class="reference internal" href="#account-number">Account number</a></li>
+<li><a class="reference internal" href="#bank-feeds">Bank feeds</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#outstanding-accounts">Outstanding accounts</a><ul>
+<li><a class="reference internal" href="#default-accounts-configuration">Default accounts configuration</a></li>
+<li><a class="reference internal" href="#bank-and-cash-journals-configuration">Bank and cash journals configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Bank and cash accounts</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

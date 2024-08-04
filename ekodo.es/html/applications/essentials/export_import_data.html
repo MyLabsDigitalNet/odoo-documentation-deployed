@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Export and import data &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/essentials/export_import_data.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/essentials/export_import_data.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="In-app purchases (IAP)" href="in_app_purchase.html" />
+    <link rel="prev" title="Contacts" href="contacts.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul class="current">
+<li class="toctree-l1 current o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul class="current">
+<li class="toctree-l2 current o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul class="current">
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l3 current o_menu_applications_essentials_"><a class="current reference internal" href="#">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Export and import data</a><ul>
+<li><a class="reference internal" href="#export-data-from-odoo">Export data from Odoo</a></li>
+<li><a class="reference internal" href="#import-data-into-odoo">Import data into Odoo</a><ul>
+<li><a class="reference internal" href="#get-started">Get started</a></li>
+<li><a class="reference internal" href="#adapt-a-template">Adapt a template</a></li>
+<li><a class="reference internal" href="#import-from-another-application">Import from another application</a></li>
+<li><a class="reference internal" href="#field-missing-to-map-column">Field missing to map column</a></li>
+<li><a class="reference internal" href="#change-data-import-format">Change data import format</a></li>
+<li><a class="reference internal" href="#import-numbers-with-currency-signs">Import numbers with currency signs</a></li>
+<li><a class="reference internal" href="#import-preview-table-not-displayed-correctly">Import preview table not displayed correctly</a></li>
+<li><a class="reference internal" href="#change-csv-file-format-in-spreadsheet-application">Change CSV file format in spreadsheet application</a></li>
+<li><a class="reference internal" href="#difference-between-database-id-and-external-id">Difference between Database ID and External ID</a></li>
+<li><a class="reference internal" href="#import-relation-fields">Import relation fields</a><ul>
+<li><a class="reference internal" href="#options-for-multiple-matches-on-fields">Options for multiple matches on fields</a></li>
+<li><a class="reference internal" href="#import-many2many-relationship-fields">Import many2many relationship fields</a></li>
+<li><a class="reference internal" href="#import-one2many-relationships">Import one2many relationships</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#import-records-several-times">Import records several times</a></li>
+<li><a class="reference internal" href="#value-not-provided-for-a-specific-field">Value not provided for a specific field</a></li>
+<li><a class="reference internal" href="#export-import-different-tables-from-an-sql-application-to-odoo">Export/import different tables from an SQL application to Odoo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul class="current">
+<li class="toctree-l1 current o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul class="current">
+<li class="toctree-l2 current o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul class="current">
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l3 current o_menu_applications_essentials_"><a class="current reference internal" href="#">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/essentials/export_import_data.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="in_app_purchase.html" title="In-app purchases (IAP)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="contacts.html" title="Contacts"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../applications.html" >User Docs</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../essentials.html" accesskey="U">Odoo essentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Export and import data</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="export-and-import-data">
+<h1>Export and import data<a class="headerlink" href="#export-and-import-data" title="Permalink to this headline">¶</a></h1>
+<p>In Odoo, it is sometimes necessary to export or import data for running reports, or for data
+modification. This document covers the export and import of data into and out of Odoo.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Sometimes, users run into a ‘time out’ error, or a record does not process, due to its size. This
+can occur with large exports, or in cases where the import file is too large. To circumvent this
+limitation surrounding the size of the records, process exports or imports in smaller batches.</p>
+</div>
+</section><section id="export-data-from-odoo">
+<span id="export-data"></span><h2>Export data from Odoo<a class="headerlink" href="#export-data-from-odoo" title="Permalink to this headline">¶</a></h2>
+<p>When working with a database, it is sometimes necessary to export data in a distinct file. Doing so
+can aid in reporting on activities, although, Odoo provides a precise and easy reporting tool with
+each available application.</p>
+<p>With Odoo, the values can be exported from any field in any record. To do so, activate the list view
+(<span class="guilabel">☰ (three horizontal lines)</span> icon), on the items that need to be exported, and then
+select the records that should be exported. To select a record, tick the checkbox next to the
+corresponding record. Finally, click on <span class="guilabel">⚙️ Action</span>, and then <span class="guilabel">Export</span>.</p>
+<img alt="View of the different things to enable/click to export data." class="align-center" src="../../_images/list-view-export.png" />
+<p>When clicking on <span class="guilabel">Export</span>, an <span class="guilabel">Export Data</span> pop-over window appears, with
+several options for the data to export:</p>
+<img alt="Overview of options to consider when exporting data in Odoo.." class="align-center" src="../../_images/export-data-overview.png" />
+<ol class="arabic simple">
+<li><p>With the <span class="guilabel">I want to update data (import-compatable export)</span> option ticked, the system
+only shows the fields that can be imported. This is helpful in the case where the existing
+records need to be updated. This works like a filter. Leaving the box unticked, gives many more
+field options because it shows all the fields, not just the ones that can be imported.</p></li>
+<li><p>When exporting, there is the option to export in two formats: <code class="o_code docutils literal notranslate"><span class="pre">.csv</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">.xls</span></code>. With <code class="o_code docutils literal notranslate"><span class="pre">.csv</span></code>,
+items are separated by a comma, while <code class="o_code docutils literal notranslate"><span class="pre">.xls</span></code> holds information about all the worksheets in a
+file, including both content and formatting.</p></li>
+<li><p>These are the items that can be exported. Use the <span class="guilabel">&gt; (right arrow)</span> icon to display
+more sub-field options. Use the <span class="guilabel">Search</span> bar to find specific fields. To use the
+<span class="guilabel">Search</span> option more efficiently, click on all the <span class="guilabel">&gt; (right arrows)</span> to
+display all fields.</p></li>
+<li><p>The <span class="guilabel">+ (plus sign)</span> icon button is present to add fields to the <span class="guilabel">Fields to
+export</span> list.</p></li>
+<li><p>The <span class="guilabel">↕️ (up-down arrow)</span> to the left of the selected fields can be used to move the
+fields up and down, to change the order in which they are displayed in the exported file.
+Drag-and-drop using the <span class="guilabel">↕️ (up-down arrow)</span> icon.</p></li>
+<li><p>The <span class="guilabel">🗑️ (trash can)</span> icon is used to remove fields. Click on the <span class="guilabel">🗑️ (trash
+can)</span> icon to remove the field.</p></li>
+<li><p>For recurring reports, it is helpful to save export presets. Select all the needed fields, and
+click on the template drop-down menu. Once there, click on <span class="guilabel">New template</span>, and give a
+unique name to the export just created. The next time the same list needs to be exported, select
+the related template that was previously saved from the drop-down menu.</p></li>
+</ol>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>It is helpful to know the field’s external identifier. For example, <span class="guilabel">Related Company</span>
+in the export user interface is equal to <em>parent_id</em> (external identifier). This is helpful
+because then, the only data exported is what should be modified and re-imported.</p>
+</div>
+</section><section id="import-data-into-odoo">
+<span id="import-data"></span><h2>Import data into Odoo<a class="headerlink" href="#import-data-into-odoo" title="Permalink to this headline">¶</a></h2>
+<p>Importing data into Odoo is extremely helpful during implementation, or in times where data needs to
+be updated in bulk. The following documentation covers how to import data into an Odoo database.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Imports are permanent and <strong>cannot</strong> be undone. However, it is possible to use filters (<code class="o_code docutils literal notranslate"><span class="pre">created</span>
+<span class="pre">on</span></code> or <code class="o_code docutils literal notranslate"><span class="pre">last</span> <span class="pre">modified</span></code>) to identify records changed or created by the import.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Activating <a class="reference internal" href="../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> changes the visible import settings in the left
+menu. Doing so reveals an <span class="menuselection">Advanced</span> menu. Included in this advanced menu are two
+options: <span class="guilabel">Track history during import</span> and <span class="guilabel">Allow matching with subfields</span>.</p>
+<img alt="Advanced import options when developer mode is activated." class="align-center" src="../../_images/advanced-import.png" />
+<p>If the model uses openchatter, the <span class="guilabel">Track history during import</span> option sets up
+subscriptions and sends notifications during the import, but leads to a slower import.</p>
+<p>Should the <span class="guilabel">Allow matching with subfields</span> option be selected, then all subfields
+within a field are used to match under the <span class="guilabel">Odoo Field</span> while importing.</p>
+</div>
+</section><section id="get-started">
+<h3>Get started<a class="headerlink" href="#get-started" title="Permalink to this headline">¶</a></h3>
+<p>Data can be imported on any Odoo business object using either Excel (<code class="o_code docutils literal notranslate"><span class="pre">.xlsx</span></code>) or <abbr title="Comma-separated Values">CSV</abbr> (<code class="o_code docutils literal notranslate"><span class="pre">.csv</span></code>) formats. This includes: contacts, products, bank statements,
+journal entries, and orders.</p>
+<p>Open the view of the object to which the data should be imported/populated, and click on
+<span class="menuselection">⭐ Favorites ‣ Import records</span>.</p>
+<img alt="Favorites menu revealed with the import records option highlighted." class="align-center" src="../../_images/import-button.png" />
+<p>After clicking <span class="guilabel">Import records</span>, Odoo reveals a separate page with templates that can be
+downloaded and populated with the company’s own data. Such templates can be imported in one click,
+since the data mapping is already done. To download a template click <span class="guilabel">Import Template for
+Customers</span> at the center of the page.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>When importing a <abbr title="Comma-separated Values">CSV</abbr> file, Odoo provides <span class="guilabel">Formatting</span>
+options. These options do <strong>not</strong> appear when importing the proprietary Excel file type (<code class="o_code docutils literal notranslate"><span class="pre">.xls</span></code>,
+<code class="o_code docutils literal notranslate"><span class="pre">.xlsx</span></code>).</p>
+<img alt="Formatting options presented when a CVS file is imported in Odoo." class="align-center" src="../../_images/formatting.png" />
+</div>
+<p>Make necessary adjustments to the <em>Formatting</em> options, and ensure all columns in the
+<span class="guilabel">Odoo field</span> and <span class="guilabel">File Column</span> are free of errors. Finally, click
+<span class="guilabel">Import</span> to import the data.</p>
+</section><section id="adapt-a-template">
+<h3>Adapt a template<a class="headerlink" href="#adapt-a-template" title="Permalink to this headline">¶</a></h3>
+<p>Import templates are provided in the import tool of the most common data to import (contacts,
+products, bank statements, etc.). Open them with any spreadsheet software (<em>Microsoft Office</em>,
+<em>OpenOffice</em>, <em>Google Drive</em>, etc.).</p>
+<p>Once the template is downloaded, proceed to follow these steps:</p>
+<ul class="simple">
+<li><p>Add, remove, and sort columns to best fit the data structure.</p></li>
+<li><p>It is strongly advised to <strong>not</strong> remove the <span class="guilabel">External ID</span> (ID) column (see why in the
+next section).</p></li>
+<li><p>Set a unique ID to every record by dragging down the ID sequencing in the <span class="guilabel">External ID</span>
+(ID) column.</p></li>
+</ul>
+<img alt="An animation of the mouse dragging down the ID column, so each record has a unique ID." class="align-center" src="../../_images/dragdown.gif" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When a new column is added, Odoo may not be able to map it automatically, if its label does not
+fit any field within Odoo. However, new columns can be mapped manually when the import is tested.
+Search the drop-down menu for the corresponding field.</p>
+<img alt="Drop-down menu expanded in the initial import screen on Odoo." class="align-center" src="../../_images/field_list.png" />
+<p>Then, use this field’s label in the import file to ensure future imports are successful.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Another useful way to find out the proper column names to import is to export a sample file
+using the fields that should be imported. This way, if there is not a sample import template,
+the names are accurate.</p>
+</div>
+</section><section id="import-from-another-application">
+<h3>Import from another application<a class="headerlink" href="#import-from-another-application" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">External ID</span> (ID) is a unique identifier for the line item. Feel free to use one
+from previous software to facilitate the transition to Odoo.</p>
+<p>Setting an ID is not mandatory when importing, but it helps in many cases:</p>
+<ul class="simple">
+<li><p>Update imports: import the same file several times without creating duplicates.</p></li>
+<li><p><a class="reference internal" href="#export-import-data-relation-fields"><span class="std std-ref">Import relation fields</span></a>.</p></li>
+</ul>
+<p>To recreate relationships between different records, the unique identifier from the original
+application should be used to map it to the <span class="guilabel">External ID</span> (ID) column in Odoo.</p>
+<p>When another record is imported that links to the first one, use <strong>XXX/ID</strong> (XXX/External ID) for
+the original unique identifier. This record can also be found using its name.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>It should be noted that there will be a conflict if two or more records have the same name.</p>
+</div>
+<p>The <span class="guilabel">External ID</span> (ID) can also be used to update the original import, if modified data
+needs to be re-imported later, therefore, it is a good practice to specify it whenever possible.</p>
+</section><section id="field-missing-to-map-column">
+<h3>Field missing to map column<a class="headerlink" href="#field-missing-to-map-column" title="Permalink to this headline">¶</a></h3>
+<p>Odoo heuristically tries to find the type of field for each column inside the imported file, based
+on the first ten lines of the files.</p>
+<p>For example, if there is a column only containing numbers, only the fields with the <em>integer</em> type
+are presented as options.</p>
+<p>While this behavior might be beneficial in most cases, it is also possible that it could fail, or
+the column may be mapped to a field that is not proposed by default.</p>
+<p>If this happens, check the <span class="guilabel">Show fields of relation fields (advanced) option</span>, then a
+complete list of fields becomes available for each column.</p>
+<img alt="Searching for the field to match the tax column." class="align-center" src="../../_images/field_list.png" />
+</section><section id="change-data-import-format">
+<h3>Change data import format<a class="headerlink" href="#change-data-import-format" title="Permalink to this headline">¶</a></h3>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Odoo can automatically detect if a column is a date, and tries to guess the date format from a
+set of most commonly used date formats. While this process can work for many date formats, some
+date formats are not recognizable. This can cause confusion, due to day-month inversions; it is
+difficult to guess which part of a date format is the day, and which part is the month, in a
+date, such as <code class="o_code docutils literal notranslate"><span class="pre">01-03-2016</span></code>.</p>
+</div>
+<p>When importing a <abbr title="Comma-separated Values">CSV</abbr> file, Odoo provides <span class="guilabel">Formatting</span>
+options.</p>
+<p>To view which date format Odoo has found from the file, check the <span class="guilabel">Date Format</span> that is
+shown when clicking on options under the file selector. If this format is incorrect, change it to
+the preferred format using <em>ISO 8601</em> to define the format.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p><em>ISO 8601</em> is an international standard, covering the worldwide exchange, along with the
+communication of date and time-related data. For example, the date format should be <code class="o_code docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code>.
+So, in the case of July 24th 1981, it should be written as <code class="o_code docutils literal notranslate"><span class="pre">1981-07-24</span></code>.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>When importing Excel files (<code class="o_code docutils literal notranslate"><span class="pre">.xls</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">.xlsx</span></code>), consider using <em>date cells</em> to store dates. This
+maintains locale date formats for display, regardless of how the date is formatted in Odoo. When
+importing a <abbr title="Comma-separated Values">CSV</abbr> file, use Odoo’s <span class="guilabel">Formatting</span> section
+to select the date format columns to import.</p>
+</div>
+</section><section id="import-numbers-with-currency-signs">
+<h3>Import numbers with currency signs<a class="headerlink" href="#import-numbers-with-currency-signs" title="Permalink to this headline">¶</a></h3>
+<p>Odoo fully supports numbers with parenthesis to represent negative signs, as well as numbers with
+currency signs attached to them. Odoo also automatically detects which thousand/decimal separator is
+used. If a currency symbol unknown to Odoo is used, it might not be recognized as a number, and the
+import crashes.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When importing a <abbr title="Comma-separated Values">CSV</abbr> file, the <span class="guilabel">Formatting</span> menu
+appears on the left-hand column. Under these options, the <span class="guilabel">Thousands Separator</span> can be
+changed.</p>
+</div>
+<p>Examples of supported numbers (using ‘thirty-two thousand’ as the figure):</p>
+<ul class="simple">
+<li><p>32.000,00</p></li>
+<li><p>32000,00</p></li>
+<li><p>32,000.00</p></li>
+<li><p>-32000.00</p></li>
+<li><p>(32000.00)</p></li>
+<li><p>$ 32.000,00</p></li>
+<li><p>(32000.00 €)</p></li>
+</ul>
+<p>Example that will not work:</p>
+<ul class="simple">
+<li><p>ABC 32.000,00</p></li>
+<li><p>$ (32.000,00)</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>A <span class="guilabel">() (parenthesis)</span> around the number indicates that the number is a negative value.
+The currency symbol <strong>must</strong> be placed within the parenthesis for Odoo to recognize it as a
+negative currency value.</p>
+</div>
+</section><section id="import-preview-table-not-displayed-correctly">
+<h3>Import preview table not displayed correctly<a class="headerlink" href="#import-preview-table-not-displayed-correctly" title="Permalink to this headline">¶</a></h3>
+<p>By default, the import preview is set on commas as field separators, and quotation marks as text
+delimiters. If the <abbr title="Comma-separated Values">CSV</abbr> file does not have these settings, modify
+the <span class="guilabel">Formatting</span> options (displayed under the <span class="guilabel">Import</span> <abbr title="Comma-separated Values">CSV</abbr> file bar after selecting the <abbr title="Comma-separated Values">CSV</abbr> file).</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If the <abbr title="Comma-separated Values">CSV</abbr> file has a tabulation as a separator, Odoo does
+<strong>not</strong> detect the separations. The file format options need to be modified in the spreadsheet
+application. See the following <a class="reference internal" href="#export-import-data-change-csv"><span class="std std-ref">Change CSV file format</span></a>
+section.</p>
+</div>
+</section><section id="change-csv-file-format-in-spreadsheet-application">
+<span id="export-import-data-change-csv"></span><h3>Change CSV file format in spreadsheet application<a class="headerlink" href="#change-csv-file-format-in-spreadsheet-application" title="Permalink to this headline">¶</a></h3>
+<p>When editing and saving <abbr title="Comma-separated Values">CSV</abbr> files in spreadsheet applications, the
+computer’s regional settings are applied for the separator and delimiter. Odoo suggests using
+<em>OpenOffice</em> or <em>LibreOffice</em>, as both applications allow modifications of all three options (from
+<em>LibreOffice</em> application, go to <span class="menuselection">‘Save As’ dialog box ‣ Check the box ‘Edit filter
+settings’ ‣ Save</span>).</p>
+<p>Microsoft Excel can modify the encoding when saving (<span class="menuselection">‘Save As’ dialog box ‣
+‘Tools’ drop-down menu ‣ Encoding tab</span>).</p>
+</section><section id="difference-between-database-id-and-external-id">
+<h3>Difference between Database ID and External ID<a class="headerlink" href="#difference-between-database-id-and-external-id" title="Permalink to this headline">¶</a></h3>
+<p>Some fields define a relationship with another object. For example, the country of a contact is a
+link to a record of the ‘Country’ object. When such fields are imported, Odoo has to recreate links
+between the different records. To help import such fields, Odoo provides three mechanisms.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p><strong>Only one</strong> mechanism should be used per field that is imported.</p>
+</div>
+<p>For example, to reference the country of a contact, Odoo proposes three different fields to import:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Country</span>: the name or code of the country</p></li>
+<li><p><span class="guilabel">Country/Database ID</span>: the unique Odoo ID for a record, defined by the ID PostgreSQL
+column</p></li>
+<li><p><span class="guilabel">Country/External ID</span>: the ID of this record referenced in another application (or the
+<code class="o_code docutils literal notranslate"><span class="pre">.XML</span></code> file that imported it)</p></li>
+</ul>
+<p>For the country of Belgium, for example, use one of these three ways to import:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Country</span>: <code class="o_code docutils literal notranslate"><span class="pre">Belgium</span></code></p></li>
+<li><p><span class="guilabel">Country/Database ID</span>: <code class="o_code docutils literal notranslate"><span class="pre">21</span></code></p></li>
+<li><p><span class="guilabel">Country/External ID</span>: <code class="o_code docutils literal notranslate"><span class="pre">base.be</span></code></p></li>
+</ul>
+<p>According to the company’s need, use one of these three ways to reference records in relations. Here
+is an example when one or the other should be used, according to the need:</p>
+<ul class="simple">
+<li><p>Use <span class="guilabel">Country</span>: this is the easiest way when data comes from <abbr title="Comma-separated Values">CSV</abbr> files that have been created manually.</p></li>
+<li><p>Use <span class="guilabel">Country/Database ID</span>: this should rarely be used. It is mostly used by developers
+as the main advantage is to never have conflicts (there may be several records with the same name,
+but they always have a unique Database ID)</p></li>
+<li><p>Use <span class="guilabel">Country/External ID</span>: use <em>External ID</em> when importing data from a third-party
+application.</p></li>
+</ul>
+<p>When <em>External IDs</em> are used, import <abbr title="Comma-separated Values">CSV</abbr> files with the
+<span class="guilabel">External ID</span> (ID) column defining the <em>External ID</em> of each record that is imported.
+Then, a reference can be made to that record with columns, like <code class="o_code docutils literal notranslate"><span class="pre">Field/External</span> <span class="pre">ID</span></code>. The following
+two <abbr title="Comma-separated Values">CSV</abbr> files provide an example for products and their categories.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/b00ebfcb154b6770ed0398d1a9aeb3bd/External_id_3rd_party_application_product_categories.csv"><code class="xref download o_code docutils literal notranslate"><span class="pre">CSV</span> <span class="pre">file</span> <span class="pre">for</span> <span class="pre">categories</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/c3355b134fea5ce15f88558701029667/External_id_3rd_party_application_products.csv"><code class="xref download o_code docutils literal notranslate"><span class="pre">CSV</span> <span class="pre">file</span> <span class="pre">for</span> <span class="pre">Products</span></code></a></p></li>
+</ul>
+</section><section id="import-relation-fields">
+<span id="export-import-data-relation-fields"></span><h3>Import relation fields<a class="headerlink" href="#import-relation-fields" title="Permalink to this headline">¶</a></h3>
+<p>An Odoo object is always related to many other objects (e.g. a product is linked to product
+categories, attributes, vendors, etc.). To import those relations, the records of the related object
+need to be imported first, from their own list menu.</p>
+<p>This can be achieved by using either the name of the related record, or its ID, depending on the
+circumstances. The ID is expected when two records have the same name. In such a case add <code class="o_code docutils literal notranslate"><span class="pre">/</span> <span class="pre">ID</span></code>
+at the end of the column title (e.g. for product attributes: <code class="o_code docutils literal notranslate"><span class="pre">Product</span> <span class="pre">Attributes</span> <span class="pre">/</span> <span class="pre">Attribute</span> <span class="pre">/</span> <span class="pre">ID</span></code>).</p>
+</section><section id="options-for-multiple-matches-on-fields">
+<h4>Options for multiple matches on fields<a class="headerlink" href="#options-for-multiple-matches-on-fields" title="Permalink to this headline">¶</a></h4>
+<p>If, for example, there are two product categories with the child name <code class="o_code docutils literal notranslate"><span class="pre">Sellable</span></code> (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Misc.</span>
+<span class="pre">Products/Sellable</span></code> &amp; <code class="o_code docutils literal notranslate"><span class="pre">Other</span> <span class="pre">Products/Sellable</span></code>), the validation is halted, but the data may still be
+imported. However, Odoo recommends that the data is not imported because it will all be linked to
+the first <code class="o_code docutils literal notranslate"><span class="pre">Sellable</span></code> category found in the <em>Product Category</em> list (<code class="o_code docutils literal notranslate"><span class="pre">Misc.</span> <span class="pre">Products/Sellable</span></code>).
+Odoo, instead, recommends modifying one of the duplicate’s values, or the product category
+hierarchy.</p>
+<p>However, if the company does not wish to change the configuration of product categories, Odoo
+recommends making use of the <em>External ID</em> for this field, ‘Category’.</p>
+</section><section id="import-many2many-relationship-fields">
+<h4>Import many2many relationship fields<a class="headerlink" href="#import-many2many-relationship-fields" title="Permalink to this headline">¶</a></h4>
+<p>The tags should be separated by a comma, without any spacing. For example, if a customer needs to be
+linked to both tags: <code class="o_code docutils literal notranslate"><span class="pre">Manufacturer</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">Retailer</span></code> then ‘Manufacturer,Retailer’ needs to be encoded
+in the same column of the <abbr title="Comma-separated Values">CSV</abbr> file.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/3e57aa5f999e49c58169bf4ac7eb0afb/m2m_customers_tags.csv"><code class="xref download o_code docutils literal notranslate"><span class="pre">CSV</span> <span class="pre">file</span> <span class="pre">for</span> <span class="pre">Manufacturer,</span> <span class="pre">Retailer</span></code></a></p></li>
+</ul>
+</section><section id="import-one2many-relationships">
+<h4>Import one2many relationships<a class="headerlink" href="#import-one2many-relationships" title="Permalink to this headline">¶</a></h4>
+<p>If a company wants to import a sales order with several order lines, a specific row <strong>must</strong> be
+reserved in the <abbr title="Comma-separated Values">CSV</abbr> file for each order line. The first order line
+is imported on the same row as the information relative to order. Any additional lines need an
+additional row that does not have any information in the fields relative to the order.</p>
+<p>As an example, here is a <abbr title="Comma-separated Values">CSV</abbr> file of some quotations that can be
+imported, based on demo data:</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/bdf01933a07f1490224f9d53de24764b/purchase.order_functional_error_line_cant_adpat.csv"><code class="xref download o_code docutils literal notranslate"><span class="pre">File</span> <span class="pre">for</span> <span class="pre">some</span> <span class="pre">Quotations</span></code></a></p></li>
+</ul>
+<p>The following <abbr title="Comma-separated Values">CSV</abbr> file shows how to import purchase orders with
+their respective purchase order lines:</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/a72f76fb9667dfb8c2795ec523e6f4b3/o2m_purchase_order_lines.csv"><code class="xref download o_code docutils literal notranslate"><span class="pre">Purchase</span> <span class="pre">orders</span> <span class="pre">with</span> <span class="pre">their</span> <span class="pre">respective</span> <span class="pre">purchase</span> <span class="pre">order</span> <span class="pre">lines</span></code></a></p></li>
+</ul>
+<p>The following <abbr title="Comma-separated Values">CSV</abbr> file shows how to import customers and their
+respective contacts:</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/e4356873a7ad7151783745c8228f370a/o2m_customers_contacts.csv"><code class="xref download o_code docutils literal notranslate"><span class="pre">Customers</span> <span class="pre">and</span> <span class="pre">their</span> <span class="pre">respective</span> <span class="pre">contacts</span></code></a></p></li>
+</ul>
+</section><section id="import-records-several-times">
+<h3>Import records several times<a class="headerlink" href="#import-records-several-times" title="Permalink to this headline">¶</a></h3>
+<p>If an imported file contains one of the columns: <span class="guilabel">External ID</span> or <span class="guilabel">Database ID</span>,
+records that have already been imported are modified, instead of being created. This is extremely
+useful as it allows users to import the same <abbr title="Comma-separated Values">CSV</abbr> file several
+times, while having made some changes in between two imports.</p>
+<p>Odoo takes care of creating or modifying each record, depending if it is new or not.</p>
+<p>This feature allows a company to use the <em>Import/Export tool</em> in Odoo to modify a batch of records
+in a spreadsheet application.</p>
+</section><section id="value-not-provided-for-a-specific-field">
+<h3>Value not provided for a specific field<a class="headerlink" href="#value-not-provided-for-a-specific-field" title="Permalink to this headline">¶</a></h3>
+<p>If all fields are not set in the CSV file, Odoo assigns the default value for every non-defined
+field. But, if fields are set with empty values in the <abbr title="Comma-separated Values">CSV</abbr> file,
+Odoo sets the empty value in the field, instead of assigning the default value.</p>
+</section><section id="export-import-different-tables-from-an-sql-application-to-odoo">
+<h3>Export/import different tables from an SQL application to Odoo<a class="headerlink" href="#export-import-different-tables-from-an-sql-application-to-odoo" title="Permalink to this headline">¶</a></h3>
+<p>If data needs to be imported from different tables, relations need to be recreated between records
+belonging to different tables. For instance, if companies and people are imported, the link between
+each person and the company they work for needs to be recreated.</p>
+<p>To manage relations between tables, use the <code class="o_code docutils literal notranslate"><span class="pre">External</span> <span class="pre">ID</span></code> facilities of Odoo. The <code class="o_code docutils literal notranslate"><span class="pre">External</span> <span class="pre">ID</span></code> of a
+record is the unique identifier of this record in another application. The <code class="o_code docutils literal notranslate"><span class="pre">External</span> <span class="pre">ID</span></code> must be
+unique across all records of all objects. It is a good practice to prefix this <code class="o_code docutils literal notranslate"><span class="pre">External</span> <span class="pre">ID</span></code> with
+the name of the application or table. (like, ‘company_1’, ‘person_1’ - instead of ‘1’)</p>
+<p>As an example, suppose there is an SQL database with two tables that are to be imported: companies
+and people. Each person belongs to one company, so the link between a person and the company they
+work for must be recreated.</p>
+<p>Test this example, with a <a class="reference download internal" download="" href="../../_downloads/6a43d52743cdb4f58e92cdf08131b012/database_import_test.sql"><code class="xref download o_code docutils literal notranslate"><span class="pre">sample</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">PostgreSQL</span> <span class="pre">database</span></code></a>.</p>
+<p>First, export all companies and their <em>External ID</em>. In PSQL, write the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; copy <span class="o">(</span><span class="k">select</span> <span class="s1">&#39;company_&#39;</span><span class="o">||</span>id as <span class="s2">&quot;External ID&quot;</span>,company_name as <span class="s2">&quot;Name&quot;</span>,<span class="s1">&#39;True&#39;</span> as <span class="s2">&quot;Is a Company&quot;</span> from companies<span class="o">)</span> TO <span class="s1">&#39;/tmp/company.csv&#39;</span> with CSV HEADER<span class="p">;</span>
+</pre></div>
+</div>
+<p>This SQL command creates the following <abbr title="Comma-separated Values">CSV</abbr> file:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>External ID,Name,Is a Company
+company_1,Bigees,True
+company_2,Organi,True
+company_3,Boum,True
+</pre></div>
+</div>
+<p>To create the <abbr title="Comma-separated Values">CSV</abbr> file for people linked to companies, use the
+following SQL command in PSQL:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; copy <span class="o">(</span><span class="k">select</span> <span class="s1">&#39;person_&#39;</span><span class="o">||</span>id as <span class="s2">&quot;External ID&quot;</span>,person_name as <span class="s2">&quot;Name&quot;</span>,<span class="s1">&#39;False&#39;</span> as <span class="s2">&quot;Is a Company&quot;</span>,<span class="s1">&#39;company_&#39;</span><span class="o">||</span>company_id as <span class="s2">&quot;Related Company/External ID&quot;</span> from persons<span class="o">)</span> TO <span class="s1">&#39;/tmp/person.csv&#39;</span> with CSV
+</pre></div>
+</div>
+<p>It produces the following <abbr title="Comma-separated Values">CSV</abbr> file:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>External ID,Name,Is a Company,Related Company/External ID
+person_1,Fabien,False,company_1
+person_2,Laurence,False,company_1
+person_3,Eric,False,company_2
+person_4,Ramsy,False,company_3
+</pre></div>
+</div>
+<p>In this file, Fabien and Laurence are working for the Bigees company (<code class="o_code docutils literal notranslate"><span class="pre">company_1</span></code>), and Eric is
+working for the Organi company. The relation between people and companies is done using the
+<em>External ID</em> of the companies. The <em>External ID</em> is prefixed by the name of the table to avoid a
+conflict of ID between people and companies (<code class="o_code docutils literal notranslate"><span class="pre">person_1</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">company_1</span></code>, who shared the same ID 1 in
+the original database).</p>
+<p>The two files produced are ready to be imported in Odoo without any modifications. After having
+imported these two <abbr title="Comma-separated Values">CSV</abbr> files, there are four contacts and three
+companies (the first two contacts are linked to the first company). Keep in mind to first import
+the companies, and then the people.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Export and import data</a><ul>
+<li><a class="reference internal" href="#export-data-from-odoo">Export data from Odoo</a></li>
+<li><a class="reference internal" href="#import-data-into-odoo">Import data into Odoo</a><ul>
+<li><a class="reference internal" href="#get-started">Get started</a></li>
+<li><a class="reference internal" href="#adapt-a-template">Adapt a template</a></li>
+<li><a class="reference internal" href="#import-from-another-application">Import from another application</a></li>
+<li><a class="reference internal" href="#field-missing-to-map-column">Field missing to map column</a></li>
+<li><a class="reference internal" href="#change-data-import-format">Change data import format</a></li>
+<li><a class="reference internal" href="#import-numbers-with-currency-signs">Import numbers with currency signs</a></li>
+<li><a class="reference internal" href="#import-preview-table-not-displayed-correctly">Import preview table not displayed correctly</a></li>
+<li><a class="reference internal" href="#change-csv-file-format-in-spreadsheet-application">Change CSV file format in spreadsheet application</a></li>
+<li><a class="reference internal" href="#difference-between-database-id-and-external-id">Difference between Database ID and External ID</a></li>
+<li><a class="reference internal" href="#import-relation-fields">Import relation fields</a><ul>
+<li><a class="reference internal" href="#options-for-multiple-matches-on-fields">Options for multiple matches on fields</a></li>
+<li><a class="reference internal" href="#import-many2many-relationship-fields">Import many2many relationship fields</a></li>
+<li><a class="reference internal" href="#import-one2many-relationships">Import one2many relationships</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#import-records-several-times">Import records several times</a></li>
+<li><a class="reference internal" href="#value-not-provided-for-a-specific-field">Value not provided for a specific field</a></li>
+<li><a class="reference internal" href="#export-import-different-tables-from-an-sql-application-to-odoo">Export/import different tables from an SQL application to Odoo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="in_app_purchase.html" title="In-app purchases (IAP)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="contacts.html" title="Contacts"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../applications.html" >User Docs</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../essentials.html" >Odoo essentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Export and import data</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

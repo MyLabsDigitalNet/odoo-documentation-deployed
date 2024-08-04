@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contacts &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/essentials/contacts.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/essentials/contacts.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Export and import data" href="export_import_data.html" />
+    <link rel="prev" title="Search and filter records" href="search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul class="current">
+<li class="toctree-l1 current o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul class="current">
+<li class="toctree-l2 current o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul class="current">
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="search.html">Search and filter records</a></li>
+<li class="toctree-l3 current o_menu_applications_essentials_"><a class="current reference internal" href="#">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Contacts</a><ul>
+<li><a class="reference internal" href="#contact-form">Contact form</a><ul>
+<li><a class="reference internal" href="#contact-type">Contact type</a></li>
+<li><a class="reference internal" href="#name">Name</a></li>
+<li><a class="reference internal" href="#address">Address</a></li>
+<li><a class="reference internal" href="#additional-fields">Additional fields</a></li>
+<li><a class="reference internal" href="#contacts-addresses-tab">Contacts &amp; Addresses tab</a></li>
+<li><a class="reference internal" href="#sales-purchase-tab">Sales &amp; Purchase tab</a><ul>
+<li><a class="reference internal" href="#sales-section">Sales section</a></li>
+<li><a class="reference internal" href="#point-of-sale-section">Point Of Sale section</a></li>
+<li><a class="reference internal" href="#purchase-section">Purchase section</a></li>
+<li><a class="reference internal" href="#misc-section">Misc section</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#accounting-tab">Accounting tab</a></li>
+<li><a class="reference internal" href="#internal-notes-tab">Internal Notes tab</a></li>
+<li><a class="reference internal" href="#partner-assignment-tab">Partner Assignment tab</a></li>
+<li><a class="reference internal" href="#membership-tab">Membership tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smart-buttons">Smart buttons</a><ul>
+<li><a class="reference internal" href="#archive-contacts">Archive contacts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul class="current">
+<li class="toctree-l1 current o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul class="current">
+<li class="toctree-l2 current o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul class="current">
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="search.html">Search and filter records</a></li>
+<li class="toctree-l3 current o_menu_applications_essentials_"><a class="current reference internal" href="#">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/essentials/contacts.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="export_import_data.html" title="Export and import data"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="search.html" title="Search and filter records"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../applications.html" >User Docs</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../essentials.html" accesskey="U">Odoo essentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Contacts</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="contacts">
+<h1>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h1>
+<p>The <em>Contacts</em> application comes installed on all Odoo databases. Contacts are created for customers
+the company does business with through Odoo. A contact is a repository of vital business
+information, facilitating communication and business transactions.</p>
+</section><section id="contact-form">
+<h2>Contact form<a class="headerlink" href="#contact-form" title="Permalink to this headline">¶</a></h2>
+<p>To create a new contact, navigate to the <span class="menuselection">Contacts app</span>, and click
+<span class="guilabel">Create</span>. A new form appears where various contact information can be added.</p>
+</section><section id="contact-type">
+<h3>Contact type<a class="headerlink" href="#contact-type" title="Permalink to this headline">¶</a></h3>
+<p>Odoo allows for both <span class="guilabel">Individual</span> and <span class="guilabel">Company</span> contacts. Select either
+<span class="guilabel">Individual</span> or <span class="guilabel">Company</span>, depending on the type of contact that is being added.</p>
+</section><section id="name">
+<h3>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<p>First, fill in the name of the <span class="guilabel">Individual</span> or <span class="guilabel">Company</span>. This is how the name
+appears throughout the database. This field is <strong>mandatory</strong>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p><span class="guilabel">Individual</span> contacts can have a <span class="guilabel">Company</span> contact linked to it. After
+selecting <span class="guilabel">Individual</span>, a new <span class="guilabel">Company Name…</span> field appears below the
+first name field.</p>
+</div>
+</section><section id="address">
+<h3>Address<a class="headerlink" href="#address" title="Permalink to this headline">¶</a></h3>
+<p>Next, enter the <span class="guilabel">Address</span> of the <span class="guilabel">Company</span> or <span class="guilabel">Individual</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If the <span class="guilabel">Individual</span> option is chosen, then the <em>type of address</em> can be chosen from a
+drop-down menu. Options for this drop-down menu include: <span class="guilabel">Contact</span>, <span class="guilabel">Invoice
+Address</span>, <span class="guilabel">Delivery Address</span>, <span class="guilabel">Other Address</span>, and <span class="guilabel">Private
+Address</span>.</p>
+</div>
+</section><section id="additional-fields">
+<h3>Additional fields<a class="headerlink" href="#additional-fields" title="Permalink to this headline">¶</a></h3>
+<p>Additional details are included on the initial form. The following fields are available:</p>
+<ul class="simple">
+<li><p><span class="guilabel">VAT</span>: Value Added Tax number.</p></li>
+<li><p><span class="guilabel">Citizen Identification</span>: citizen or government identification number (only available
+on <span class="guilabel">Individual</span>).</p></li>
+<li><p><span class="guilabel">Job Position</span>: list the job position of the <span class="guilabel">Individual</span> (only available on
+<span class="guilabel">Individual</span>).</p></li>
+<li><p><span class="guilabel">Phone</span>: list phone number (with country code). Make a call, send an SMS, or WhatsApp
+message by hovering over the field on the saved form, and clicking the desired option.</p></li>
+<li><p><span class="guilabel">Mobile</span>: list mobile phone number (with country code). Make a call, send an SMS, or
+WhatsApp message by hovering over the field on the saved form, and clicking on the desired option.</p></li>
+<li><p><span class="guilabel">Email</span>: enter the email address with the domain.</p></li>
+<li><p><span class="guilabel">Website</span>: enter the full website address, starting with <code class="o_code docutils literal notranslate"><span class="pre">http</span></code> or <code class="o_code docutils literal notranslate"><span class="pre">https</span></code>.</p></li>
+<li><p><span class="guilabel">Title</span>: select <span class="guilabel">Doctor</span>, <span class="guilabel">Madam</span>, <span class="guilabel">Miss</span>,
+<span class="guilabel">Mister</span>, <span class="guilabel">Professor</span>, or create a new one directly from this field.</p></li>
+<li><p><span class="guilabel">Tags</span>: enter preconfigured tags by typing them in the field, or clicking the drop-down
+menu, and selecting one. To create a new one, type the new tag in the field, and click
+<span class="guilabel">Create</span> from the resulting drop-down menu.</p></li>
+</ul>
+</section><section id="contacts-addresses-tab">
+<h3>Contacts &amp; Addresses tab<a class="headerlink" href="#contacts-addresses-tab" title="Permalink to this headline">¶</a></h3>
+<p>At the bottom of the contact form are several tabs. On the <span class="guilabel">Contacts &amp; Addresses</span> tab,
+contacts can be added that are associated with a <span class="guilabel">Company</span> and related addresses. For
+example, a specific contact person for the company can be listed here.</p>
+<p>Multiple addresses can be added on both <span class="guilabel">Individual</span> and <span class="guilabel">Company</span> contacts. To
+do so, click <span class="guilabel">Add</span> in the <span class="guilabel">Contacts &amp; Addresses</span> tab. Doing so reveals a
+<span class="guilabel">Create Contact</span> pop-up form, in which additional addresses can be configured.</p>
+<img alt="Add a contact/address to the contact form." class="align-center" src="../../_images/contact-form-add-address.png" />
+<p>On the <span class="guilabel">Create Contact</span> pop-up form, start by clicking the default <span class="guilabel">Other
+Address</span> field at the top to reveal a drop-down menu of address-related options.</p>
+<p>Select any of the following options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Contact</span>: adds another contact to the existing contact form.</p></li>
+<li><p><span class="guilabel">Invoice Address</span>: adds a specific invoice address to the existing contact form.</p></li>
+<li><p><span class="guilabel">Delivery Address</span>: adds a specific delivery address to the existing contact form.</p></li>
+<li><p><span class="guilabel">Other Address</span>: adds an alternate address to the existing contact form.</p></li>
+<li><p><span class="guilabel">Private Address</span>: adds a private address to the existing contact form.</p></li>
+</ul>
+<img alt="Create a new contact/address on a contact form." class="align-center" src="../../_images/create-contact-window.png" />
+<p>Once an option is selected, enter the corresponding contact information that should be used for the
+specified address type.</p>
+<p>Add the <span class="guilabel">Contact Name</span>, <span class="guilabel">Address</span>, <span class="guilabel">Email</span>, along with the
+<span class="guilabel">Phone</span> and/or <span class="guilabel">Mobile</span> numbers below.</p>
+<p>Set the <span class="guilabel">Job Position</span>, which appears if the <span class="guilabel">Contact</span> address type has been
+selected. This is similar to the <span class="guilabel">Individual</span> contact.</p>
+<p>To add a note, click on the text field next to <span class="guilabel">Notes</span>, and write anything that is
+applicable to the customer or contact.</p>
+<p>Then, click <span class="guilabel">Save &amp; Close</span> to save the address, and close the <span class="guilabel">Create Contact</span>
+window. Or, click <span class="guilabel">Save &amp; New</span> to save the address, and immediately input another one.</p>
+</section><section id="sales-purchase-tab">
+<h3>Sales &amp; Purchase tab<a class="headerlink" href="#sales-purchase-tab" title="Permalink to this headline">¶</a></h3>
+<p>Next, is the <span class="guilabel">Sales &amp; Purchases</span> tab, which only appears when the <em>Sales</em>, <em>Purchase</em>,
+<strong>or</strong> <em>Point of Sale</em> applications are installed.</p>
+<p>The <span class="guilabel">Fiscal Position</span> can be set on the <span class="guilabel">Sales &amp; Purchases</span> tab. Select a
+<span class="guilabel">Fiscal Position</span> from the drop-down menu.</p>
+</section><section id="sales-section">
+<h4>Sales section<a class="headerlink" href="#sales-section" title="Permalink to this headline">¶</a></h4>
+<p>Under the <span class="guilabel">Sales</span> heading, a specific <span class="guilabel">Salesperson</span> can be assigned to a
+contact. To do that, click the <span class="guilabel">Salesperson</span> drop-down field, and select one. Create a new
+<span class="guilabel">Salesperson</span> by typing the user’s name, and making the appropriate selection.</p>
+<p>Certain <span class="guilabel">Payment Terms</span>, or a certain <span class="guilabel">Pricelist</span>, can also be set, if needed.
+Click the drop-down menu next to <span class="guilabel">Payment Terms</span>, and change it to one of the preselected
+<span class="guilabel">Payment Terms</span>, or <span class="guilabel">Create</span> a new one. Select the <span class="guilabel">Pricelist</span>
+drop-down menu to choose the appropriate <span class="guilabel">Pricelist</span>.</p>
+<p>Click into the <span class="guilabel">Delivery Method</span> field to select an option from the drop-down menu.</p>
+</section><section id="point-of-sale-section">
+<h4>Point Of Sale section<a class="headerlink" href="#point-of-sale-section" title="Permalink to this headline">¶</a></h4>
+<p>Under the <span class="guilabel">Point Of Sale</span> heading, enter a <span class="guilabel">Barcode</span> that can be used to
+identify the contact. Use the <span class="guilabel">Loyalty Points</span> field to track points the user won as part
+of a <em>Loyalty Program</em>.</p>
+</section><section id="purchase-section">
+<h4>Purchase section<a class="headerlink" href="#purchase-section" title="Permalink to this headline">¶</a></h4>
+<p>Specify <span class="guilabel">Payment Terms</span>, <span class="guilabel">1099 Box</span> information, and a preferred
+<span class="guilabel">Payment Method</span> here. A <span class="guilabel">Receipt Reminder</span> can be set here, as well.</p>
+</section><section id="misc-section">
+<h4>Misc section<a class="headerlink" href="#misc-section" title="Permalink to this headline">¶</a></h4>
+<p>Under the <span class="guilabel">Misc.</span> heading, use <span class="guilabel">Reference</span> field to add any additional
+information for this contact. If this contact should only be accessible for one company in a
+multi-company database, select it from the <span class="guilabel">Company</span> field drop-down list. Use the
+<span class="guilabel">Website</span> drop-down menu to restrict the publishing of this contact to one website (if
+working on a database with multiple websites). Select one or more <span class="guilabel">Website Tags</span> to assist
+in filtering published customers on the <code class="o_code docutils literal notranslate"><span class="pre">/customers</span></code> website page. Select an <span class="guilabel">Industry</span>
+for this contact from the drop-down menu. Use the <span class="guilabel">SLA Policies</span> field to assign a
+<em>Helpdesk</em> SLA policy to this contact.</p>
+</section><section id="accounting-tab">
+<h3>Accounting tab<a class="headerlink" href="#accounting-tab" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Accounting</span> tab appears when the <em>Accounting</em> application is installed. Here, a user
+can add any related <span class="guilabel">Bank Accounts</span>, or set default <span class="guilabel">Accounting entries</span>.</p>
+<p>Under the <span class="guilabel">Miscellaneous</span> heading, use the <span class="guilabel">LEI</span> field to enter a Legal Entity
+Identifier, if necessary.</p>
+</section><section id="internal-notes-tab">
+<h3>Internal Notes tab<a class="headerlink" href="#internal-notes-tab" title="Permalink to this headline">¶</a></h3>
+<p>Following the <span class="guilabel">Accounting</span> tab is the <span class="guilabel">Internal Notes</span> tab, where notes can be
+left on this contact form, just like on the contact form noted above.</p>
+</section><section id="partner-assignment-tab">
+<h3>Partner Assignment tab<a class="headerlink" href="#partner-assignment-tab" title="Permalink to this headline">¶</a></h3>
+<p>Next is the <span class="guilabel">Partner Assignment</span> tab, which by default, includes a <span class="guilabel">Geolocation</span>
+section, and other partner options, including <span class="guilabel">Partner Activation</span> and <span class="guilabel">Partner
+Review</span> configurations. These are <strong>only</strong> present when the <em>Enterprise Resellers</em> module is
+installed.</p>
+</section><section id="membership-tab">
+<h3>Membership tab<a class="headerlink" href="#membership-tab" title="Permalink to this headline">¶</a></h3>
+<p>Finally, there is the <span class="guilabel">Membership</span> tab, which can help users manage any memberships that
+are being offered to this specific contact. It should be noted that this tab only appears when the
+<em>Members</em> applications is installed.</p>
+</section><section id="smart-buttons">
+<h2>Smart buttons<a class="headerlink" href="#smart-buttons" title="Permalink to this headline">¶</a></h2>
+<p>At the top of the contact form, there are some additional options available, known as <em>smart
+buttons</em>.</p>
+<p>Here, Odoo displays a variety of records, related to this contact, that were created on other apps.
+Odoo integrates information from every single app, so there are many smart buttons.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>For example, there is an <span class="guilabel">Opportunities</span> smart button, where all the opportunities
+related to this customer from the <em>CRM</em> app are accessible.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If the corresponding applications are installed, their related smart buttons appear
+automatically on a contact form.</p>
+</div>
+<p>A user can see any <span class="guilabel">Meetings</span>, <span class="guilabel">Sales</span>, <span class="guilabel">POS Orders</span>,
+<span class="guilabel">Subscriptions</span>, project <span class="guilabel">Tasks</span>, and the <span class="guilabel">More</span> smart button reveals
+additional options, via a drop-down menu. A user can even quickly access <span class="guilabel">Purchases</span>,
+<span class="guilabel">Helpdesk</span> tasks, <span class="guilabel">On-time Rate</span> for deliveries, <span class="guilabel">Invoiced</span>
+information, <span class="guilabel">Vendor Bills</span>, and the <span class="guilabel">Partner Ledger</span> connected to this contact.</p>
+<p>Deliveries, documents, loyalty cards, and direct debits are <em>also</em> linked to smart buttons, like
+this, should there be any outstanding/on-file for this contact.</p>
+<p>If the contact is a partner, the user can visit their partner page on the Odoo-built website by
+clicking the <span class="guilabel">Go to Website</span> smart button.</p>
+</section><section id="archive-contacts">
+<h3>Archive contacts<a class="headerlink" href="#archive-contacts" title="Permalink to this headline">¶</a></h3>
+<p>If a user decides they no longer want to have this contact active, the record can be archived. To do
+that, go to the <i class="fa fa-cog"></i> <span class="guilabel">Action</span> menu at the top of the contact form, and click
+<span class="guilabel">Archive</span>.</p>
+<p>Then, click <span class="guilabel">OK</span> from the resulting <span class="guilabel">Confirmation</span> pop-up window.</p>
+<p>With this contact successfully archived, as indicated by a banner at the top, they do not show up
+in the main contacts page, but they can still be searched for with the <span class="guilabel">Archived</span> filter.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>A contact can be <em>unarchived</em>, if the user decides to work with them again. To do that, just
+click the <i class="fa fa-cog"></i> <span class="guilabel">Action</span> menu again at the top of the archived contact form,
+and click <span class="guilabel">Unarchive</span>. Upon doing so, the <span class="guilabel">Archived</span> banner is removed, and
+the contact is restored.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../sales/sales/send_quotations/different_addresses.html"><span class="doc">Add different addresses in CRM</span></a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/contacts-2527?fullscreen=1">Odoo’s eLearning Contacts tutorial</a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Contacts</a><ul>
+<li><a class="reference internal" href="#contact-form">Contact form</a><ul>
+<li><a class="reference internal" href="#contact-type">Contact type</a></li>
+<li><a class="reference internal" href="#name">Name</a></li>
+<li><a class="reference internal" href="#address">Address</a></li>
+<li><a class="reference internal" href="#additional-fields">Additional fields</a></li>
+<li><a class="reference internal" href="#contacts-addresses-tab">Contacts &amp; Addresses tab</a></li>
+<li><a class="reference internal" href="#sales-purchase-tab">Sales &amp; Purchase tab</a><ul>
+<li><a class="reference internal" href="#sales-section">Sales section</a></li>
+<li><a class="reference internal" href="#point-of-sale-section">Point Of Sale section</a></li>
+<li><a class="reference internal" href="#purchase-section">Purchase section</a></li>
+<li><a class="reference internal" href="#misc-section">Misc section</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#accounting-tab">Accounting tab</a></li>
+<li><a class="reference internal" href="#internal-notes-tab">Internal Notes tab</a></li>
+<li><a class="reference internal" href="#partner-assignment-tab">Partner Assignment tab</a></li>
+<li><a class="reference internal" href="#membership-tab">Membership tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smart-buttons">Smart buttons</a><ul>
+<li><a class="reference internal" href="#archive-contacts">Archive contacts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="export_import_data.html" title="Export and import data"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="search.html" title="Search and filter records"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../applications.html" >User Docs</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../essentials.html" >Odoo essentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Contacts</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transfer products between warehouses using replenishment &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/warehouse_replenishment_transfer.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/warehouse_replenishment_transfer.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Transfer products between warehouses using replenishment</a><ul>
+<li><a class="reference internal" href="#configure-warehouses-for-inter-warehouse-replenishment">Configure warehouses for inter-warehouse replenishment</a></li>
+<li><a class="reference internal" href="#configure-products-for-inter-warehouse-replenishment">Configure products for inter-warehouse replenishment</a></li>
+<li><a class="reference internal" href="#replenish-one-warehouse-from-another">Replenish one warehouse from another</a><ul>
+<li><a class="reference internal" href="#process-the-delivery-order">Process the delivery order</a></li>
+<li><a class="reference internal" href="#process-the-receipt">Process the receipt</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#automate-inter-warehouse-replenishment">Automate inter-warehouse replenishment</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/warehouse_replenishment_transfer.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Transfer products between warehouses using replenishment</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="transfer-products-between-warehouses-using-replenishment">
+<h1>Transfer products between warehouses using replenishment<a class="headerlink" href="#transfer-products-between-warehouses-using-replenishment" title="Permalink to this headline">¶</a></h1>
+<p>For companies that use multiple warehouses, it is often necessary to transfer items between them.
+This is referred to as an <em>inter-warehouse transfer</em>. Odoo <em>Inventory</em> handles the administrative
+process of inter-warehouse transfers to ensure that inventory counts remain accurate during and
+after the transfer. This document will detail the method for conducting an inter-warehouse transfer
+using replenishment.</p>
+</section><section id="configure-warehouses-for-inter-warehouse-replenishment">
+<h2>Configure warehouses for inter-warehouse replenishment<a class="headerlink" href="#configure-warehouses-for-inter-warehouse-replenishment" title="Permalink to this headline">¶</a></h2>
+<p>First, ensure the <span class="guilabel">Multi-Step Routes</span> setting is enabled by navigating to
+<span class="menuselection">Inventory ‣ Configuration ‣ Settings</span>, and then check the box under the
+<span class="guilabel">Warehouse</span> tab. This will provide additional configuration options when creating a second
+warehouse that are needed for inter-warehouse replenishment.</p>
+<p>By default, Odoo comes with a main warehouse already configured. If an additional warehouse has not
+already been created, do so now from the <span class="guilabel">Inventory</span> module by selecting
+<span class="menuselection">Configuration ‣ Warehouses ‣ Create</span>. Otherwise, select the warehouse that
+products will be transferred to from the <span class="guilabel">Warehouses</span> page and then click <span class="guilabel">Edit</span>
+to change its settings. Configure the warehouse as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Warehouse</span>: choose a name that is not already being used for another warehouse (e.g.
+<code class="o_code docutils literal notranslate"><span class="pre">Alternative</span> <span class="pre">Warehouse</span></code>)</p></li>
+<li><p><span class="guilabel">Short Name</span>: choose a short name by which the warehouse will be identified (e.g.
+<code class="o_code docutils literal notranslate"><span class="pre">ALT_WH</span></code>)</p></li>
+</ul>
+<p>Click <span class="guilabel">Save</span> and the new warehouse will be created. In addition, a new <span class="guilabel">Resupply
+From</span> field will appear on the warehouse’s form. Click <span class="guilabel">Edit</span> and then check the box next
+to the warehouse that will be used to resupply the warehouse that is currently being configured.</p>
+<img alt="A warehouse settings form configured to allow resupplying between warehouses." class="align-center" src="../../../../../_images/new-warehouse-configuration1.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>For the purposes of this demonstration, the warehouse that products are transferred from
+(outgoing) will be titled “San Francisco”, and the warehouse that products are transferred to
+(incoming) will be titled “San Francisco 2”.</p>
+</div>
+</section><section id="configure-products-for-inter-warehouse-replenishment">
+<h2>Configure products for inter-warehouse replenishment<a class="headerlink" href="#configure-products-for-inter-warehouse-replenishment" title="Permalink to this headline">¶</a></h2>
+<p>Products must also be configured properly in order for them to be transferred between warehouses.
+Navigate to <span class="menuselection">Inventory ‣ Products ‣ Products</span> and select an existing product or
+<span class="guilabel">Create</span> a new one, if necessary.</p>
+<p>Then, on the product form, go to the <span class="guilabel">Inventory</span> tab and enable the checkbox for
+<span class="guilabel">X: Supply Product from Y</span>, with <em>X</em> being the warehouse receiving the transferred
+products and <em>Y</em> being the warehouse that products are transferred from.</p>
+<img alt="Enable the checkbox to resupply one warehouse from another." class="align-center" src="../../../../../_images/product-transfer-configuration.png" />
+</section><section id="replenish-one-warehouse-from-another">
+<h2>Replenish one warehouse from another<a class="headerlink" href="#replenish-one-warehouse-from-another" title="Permalink to this headline">¶</a></h2>
+<p>Starting in the <span class="menuselection">Inventory</span> module, select <span class="menuselection">Products ‣ Products</span> and
+then choose the product that will be replenished. Click the <span class="guilabel">Replenish</span> button on the top
+left of the product page and fill out the pop-up form as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Quantity</span>: the number of units that will be sent to the warehouse being replenished</p></li>
+<li><p><span class="guilabel">Scheduled Date</span>: the date that the replenishment is scheduled to take place</p></li>
+<li><p><span class="guilabel">Warehouse</span>: the warehouse that will be replenished</p></li>
+<li><p><span class="guilabel">Preferred Routes</span>: select <code class="o_code docutils literal notranslate"><span class="pre">X:</span> <span class="pre">Supply</span> <span class="pre">Product</span> <span class="pre">from</span> <span class="pre">Y</span></code>, with <em>X</em> being the warehouse to
+be replenished and <em>Y</em> being the warehouse that the product will be transferred from</p></li>
+</ul>
+<img alt="The form for replenishing a product." class="align-center" src="../../../../../_images/product-replenishment-form.png" />
+<p>Click <span class="guilabel">Confirm</span> and a delivery order will be created for the outgoing warehouse along with
+a receipt for the warehouse that will receive the product. Depending on the configuration settings
+for the outgoing and incoming warehouses, processing delivery orders and receipts will require
+between one and three steps. This document will detail how to process one-step deliveries and
+receipts.</p>
+</section><section id="process-the-delivery-order">
+<h3>Process the delivery order<a class="headerlink" href="#process-the-delivery-order" title="Permalink to this headline">¶</a></h3>
+<p>The first stage of a replenishment order is processing the delivery from the warehouse that the
+product is being transferred from. On the <span class="menuselection">Inventory</span> dashboard, select the
+<span class="guilabel">X to Process</span> button on the <span class="guilabel">Delivery Orders</span> card for the outgoing warehouse,
+then the delivery order created for the replenishment. On the delivery order page, click the
+<span class="guilabel">Check Availability</span> button in the top left to reserve the quantity of the product to be
+transferred. Once the delivery has been dispatched, click the <span class="guilabel">Validate</span> button to
+register the quantities shipped.</p>
+<img alt="The delivery orders card for the outgoing warehouse." class="align-center" src="../../../../../_images/delivery-orders-card.png" />
+</section><section id="process-the-receipt">
+<h3>Process the receipt<a class="headerlink" href="#process-the-receipt" title="Permalink to this headline">¶</a></h3>
+<p>Once the goods arrive at the incoming warehouse, the receipt created for that warehouse must be
+processed as well. Return to the <span class="menuselection">Inventory</span> dashboard and select the <span class="guilabel">X to
+Process</span> button on the <span class="guilabel">Receipts</span> card for the incoming warehouse, then the receipt
+created for the replenishment. On the receipt page, click the <span class="guilabel">Validate</span> button in the top
+left of the page to register the quantities received.</p>
+<img alt="The delivery orders card for the outgoing warehouse." class="align-center" src="../../../../../_images/receipts-card.png" />
+<p>After processing the receipt, the products transferred will now appear in the inventory of the
+incoming warehouse. The stock numbers for both warehouses can be viewed by returning to the product
+page and selecting the <span class="guilabel">X Units On Hand</span> button at the top of the screen.</p>
+</section><section id="automate-inter-warehouse-replenishment">
+<h2>Automate inter-warehouse replenishment<a class="headerlink" href="#automate-inter-warehouse-replenishment" title="Permalink to this headline">¶</a></h2>
+<p>Using reordering rules, it is possible to automate the process of replenishing one warehouse from
+another.</p>
+<p>To get started, navigate to <span class="menuselection">Inventory ‣ Products ‣ Products</span>, and then
+choose the product that will be replenished. From the product page, select the <span class="guilabel">Reordering
+Rules</span> smart button at the top of the form, and then on the next page, click <span class="guilabel">Create</span> to
+configure the form as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Location</span>: the location that the reordering rule will replenish when triggered, in this
+case, the incoming warehouse</p></li>
+<li><p><span class="guilabel">Min Quantity</span>: when the quantity on hand at the incoming warehouse falls below this
+number, the reordering rule will be triggered</p></li>
+<li><p><span class="guilabel">Max Quantity</span>: when the reordering rule is triggered, the product will be replenished
+at the incoming warehouse up to this quantity</p></li>
+<li><p><span class="guilabel">Multiple Quantity</span>: specify if the product should be replenished in batches of a
+certain quantity; for example, a product could be replenished in batches of 20</p></li>
+<li><p><span class="guilabel">UoM</span>: the unit of measure used for reordering the product; this value can simply be
+<code class="o_code docutils literal notranslate"><span class="pre">Units</span></code>, or a specific unit of measurement for weight, length, etc.</p></li>
+</ul>
+<img alt="A fully configured reordering rule." class="align-center" src="../../../../../_images/reordering-rule-configuration.png" />
+<p>Finish by clicking <span class="guilabel">Save</span> and the reordering rule will be created. Now, when the scheduler
+runs automatically each day, a transfer will be created for each reordering rule that has been
+triggered.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To manually trigger reordering rules, start from the <span class="menuselection">Inventory</span> module and select
+<span class="menuselection">Operation ‣ Run Scheduler</span>, then click the green <span class="guilabel">Run Scheduler</span>
+button in the pop-up that appears.</p>
+</div>
+<p>After the scheduler runs, a delivery order and receipt will be created for the outgoing and incoming
+warehouses, respectively. Both the delivery order and receipt should be processed using the same
+method as detailed above.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Transfer products between warehouses using replenishment</a><ul>
+<li><a class="reference internal" href="#configure-warehouses-for-inter-warehouse-replenishment">Configure warehouses for inter-warehouse replenishment</a></li>
+<li><a class="reference internal" href="#configure-products-for-inter-warehouse-replenishment">Configure products for inter-warehouse replenishment</a></li>
+<li><a class="reference internal" href="#replenish-one-warehouse-from-another">Replenish one warehouse from another</a><ul>
+<li><a class="reference internal" href="#process-the-delivery-order">Process the delivery order</a></li>
+<li><a class="reference internal" href="#process-the-receipt">Process the receipt</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#automate-inter-warehouse-replenishment">Automate inter-warehouse replenishment</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Transfer products between warehouses using replenishment</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

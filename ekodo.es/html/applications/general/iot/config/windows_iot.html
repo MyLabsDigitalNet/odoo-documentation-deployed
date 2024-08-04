@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connect Windows IoT Odoo &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/iot/config/windows_iot.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/iot/config/windows_iot.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Connect Windows IoT Odoo</a><ul>
+<li><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
+<li><a class="reference internal" href="#connect-the-windows-virtual-iot-box-to-an-odoo-database">Connect the Windows virtual IoT box to an Odoo database</a><ul>
+<li><a class="reference internal" href="#download-and-initial-installation">Download and initial installation</a></li>
+<li><a class="reference internal" href="#setting-the-destination-and-completing-the-installation">Setting the destination and completing the installation</a></li>
+<li><a class="reference internal" href="#connecting-devices">Connecting devices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#restart-windows-iot-box">Restart Windows IoT box</a></li>
+<li><a class="reference internal" href="#firewalls">Firewalls</a><ul>
+<li><a class="reference internal" href="#making-an-exception-on-windows-defender">Making an exception on Windows Defender</a><ul>
+<li><a class="reference internal" href="#create-a-rule-in-windows-defender">Create a rule in Windows Defender</a></li>
+<li><a class="reference internal" href="#configure-new-rule">Configure new rule</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#worldline-exception">Worldline exception</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uninstalling-windows-iot">Uninstalling Windows IoT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/iot/config/windows_iot.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Connect Windows IoT Odoo</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="connect-windows-iot-odoo">
+<h1>Connect Windows IoT Odoo<a class="headerlink" href="#connect-windows-iot-odoo" title="Permalink to this headline">¶</a></h1>
+<p>A Virtual IoT box is a computer program that needs to be downloaded and installed on a Windows
+computer. This requires a Windows operating system with an Odoo 16 or later database.</p>
+<p>The Windows virtual <abbr title="Internet of Things">IoT</abbr> box works the same way as a physical <abbr title="Internet of Things">IoT</abbr> box, with the ability to run most of the same devices. All <abbr title="Point of Sale">POS</abbr> devices work with it, such as a scale or printer. Payment terminals will also work, but it
+should be noted that <abbr title="Material Requirement Planning">MRP</abbr> devices are not compatible. <em>These
+include cameras or measurement tools.</em></p>
+</section><section id="pre-requisites">
+<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<p>The following items will be needed to complete the Windows <abbr title="Internet of Things">IoT</abbr>
+installation.</p>
+<ul>
+<li><p>Odoo 16 database or any version above.</p></li>
+<li><p><abbr title="Internet of Things">IoT</abbr> compatible devices (except those mentioned above). Refer to:
+<a class="reference external" href="https://www.odoo.com/app/iot-hardware">Odoo’s compatible IoT devices</a>.</p></li>
+<li><p>Device drivers for Windows.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Odoo recommends using an updated, recent version of Windows (Windows 10/11) as some older
+operating systems can cause the Windows virtual <abbr title="Internet of Things">IoT</abbr> to not work.</p>
+</div>
+</li>
+<li><p>Windows computer (laptop, desktop, or server).</p></li>
+<li><p>Odoo <abbr title="Internet of Things">IoT</abbr> subscription. Refer to: <a class="reference internal" href="https_certificate_iot.html#iot-iot-eligibility"><span class="std std-ref">Internet of Things (IoT) eligibility</span></a>.</p></li>
+</ul>
+</section><section id="connect-the-windows-virtual-iot-box-to-an-odoo-database">
+<h2>Connect the Windows virtual IoT box to an Odoo database<a class="headerlink" href="#connect-the-windows-virtual-iot-box-to-an-odoo-database" title="Permalink to this headline">¶</a></h2>
+<p>The Windows virtual IoT box is simple to setup in just a few easy steps. Follow this process when
+installing the Windows virtual IoT software for the first time.</p>
+</section><section id="download-and-initial-installation">
+<h3>Download and initial installation<a class="headerlink" href="#download-and-initial-installation" title="Permalink to this headline">¶</a></h3>
+<p>To begin the installation, navigate to the Odoo 16 or higher installation package for Community -
+Windows edition at <a class="reference external" href="https://odoo.com/download">Odoo’s download page</a>. Next, install and setup the
+Odoo <code class="file o_code docutils literal notranslate"><span class="pre">.exe</span></code> file. After the instructions screen, click <span class="guilabel">Next</span> to start the
+installation and agree to the <abbr title="Terms of Service">TOS</abbr>.</p>
+<p>During the next step of the installation, select <span class="guilabel">Odoo IoT</span> from the <span class="guilabel">Select the
+type of install</span> drop-down menu.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>For reference, the following should be installed:</p>
+<ul class="simple">
+<li><p><strong>Odoo server</strong></p></li>
+<li><p><strong>Odoo IoT</strong></p></li>
+<li><p><strong>Nginx WebServer</strong></p></li>
+<li><p><strong>Ghostscript interpreter</strong></p></li>
+</ul>
+</div>
+<p>Ensure there is enough space on the computer for the installation and click <span class="guilabel">Next</span>.</p>
+</section><section id="setting-the-destination-and-completing-the-installation">
+<h3>Setting the destination and completing the installation<a class="headerlink" href="#setting-the-destination-and-completing-the-installation" title="Permalink to this headline">¶</a></h3>
+<p>To complete the installation, select the <span class="guilabel">Destination Folder</span> and click
+<span class="guilabel">Install</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Choosing <code class="o_code docutils literal notranslate"><span class="pre">C:\odoo</span></code> as the install location will allow for the Nginx server to start. If the
+folder doesn’t exist, then create it. Otherwise the installation files will be spread throughout
+the hard drive.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Odoo’s Windows virtual IoT software should not be installed inside any of the Window’s User’s
+directories. Doing so will not allow for Nginx to initialize.</p>
+</div>
+<p>The installation may take a few minutes. When complete, click <span class="guilabel">Next</span> to continue.</p>
+<p>Ensure that the <span class="guilabel">Start Odoo</span> box is checked and click <span class="guilabel">Finish</span>. After
+installation, the Odoo server will run and automatically open <code class="o_code docutils literal notranslate"><span class="pre">http://localhost:8069</span></code> on a web
+browser. The webpage should display the <abbr title="Internet of Things">IoT</abbr> box homepage.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>A restart of the Windows IoT program may be necessary should the web browser not display
+anything. <a class="reference internal" href="#iot-restart-windows-iot"><span class="std std-ref">Restart Windows IoT box</span></a></p>
+</div>
+</section><section id="connecting-devices">
+<h3>Connecting devices<a class="headerlink" href="#connecting-devices" title="Permalink to this headline">¶</a></h3>
+<p>Next, connect the <abbr title="Internet of Things">IoT</abbr> devices to the Windows computer. Windows should
+automatically detect the device because the driver is pre-installed on the computer. If not, search
+for and install the Windows driver for the device.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Most devices connect to the Windows Machine for Windows IoT automatically through Windows
+Plug-N-Play (PnP). However, if Windows does not automatically recognize the device after
+connecting, then the administrator may need to install the corresponding drivers manually.</p>
+<p>Devices automatically recognized:</p>
+<ul class="simple">
+<li><p>Regular ink/toner based printers</p></li>
+<li><p>Receipt printers (Epson/Star)</p></li>
+<li><p>Barcode scanners</p></li>
+<li><p>Measurement devices (although some configuration of the measurement device settings is
+required) See this documentation: <a class="reference internal" href="../devices/measurement_tool.html"><span class="doc">Connect a measurement tool</span></a></p></li>
+</ul>
+<p>Devices not automatically recognized (requires manual driver download):</p>
+<ul class="simple">
+<li><p>Label printers (Zebra)</p></li>
+<li><p>Scales</p></li>
+</ul>
+<p>Reference the manufacturer’s website for the equipment in question. Then, download the drivers
+and install them on the Windows machine. Reconnect the device in question and Windows will find
+the device.</p>
+</div>
+<p>Following connecting devices to the computer, refresh the <abbr title="Internet of Things">IoT</abbr> box
+homepage and verify the device is seen. If not, reload the handlers through the <abbr title="Internet of Things">IoT</abbr> box homepage.</p>
+<p>Finally, connect Windows <abbr title="Internet of Things">IoT</abbr> to a database using existing instructions
+(manually using the Token).</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="connect.html"><span class="doc">Connect an IoT box to Odoo</span></a></p>
+</div>
+<p>Now the installation is complete, the devices connected to <abbr title="Internet of Things">IoT</abbr> can be
+used to complete processes/actions.</p>
+</section><section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+</section><section id="restart-windows-iot-box">
+<span id="iot-restart-windows-iot"></span><h3>Restart Windows IoT box<a class="headerlink" href="#restart-windows-iot-box" title="Permalink to this headline">¶</a></h3>
+<p>In some instances a manual restart of the physical <abbr title="Internet of Things">IoT</abbr> box can resolve
+the issue of an <abbr title="Internet of Things">IoT</abbr> box not showing up on the database. For the Windows
+virtual <abbr title="Internet of Things">IoT</abbr> box a manual restart of the Odoo server can resolve
+database connection issues.</p>
+<p>To restart the virtual Windows IoT server:</p>
+<ol class="arabic simple">
+<li><p>Type <code class="o_code docutils literal notranslate"><span class="pre">Services</span></code> into the Windows <span class="guilabel">Search Bar</span>.</p></li>
+<li><p>Select the <span class="menuselection">Services</span> App and scroll down to the <span class="guilabel">Odoo</span> service.</p></li>
+<li><p>Right click on <span class="guilabel">Odoo</span> and select <span class="guilabel">Start</span> or <span class="guilabel">Restart</span>. This action
+will manually restart the Odoo IoT server.</p></li>
+</ol>
+</section><section id="firewalls">
+<h3>Firewalls<a class="headerlink" href="#firewalls" title="Permalink to this headline">¶</a></h3>
+<p>Firewalls keep devices safe and secure. Sometimes they can block connections that should be made
+though. The Windows virtual <abbr title="Internet of Things">IoT</abbr> box software may not be reachable to
+the <abbr title="Local Area Network">LAN</abbr> due to a firewall preventing the connection. Consult your local
+IT support team to make exceptions (network discovery) in the <abbr title="Operating System">OS</abbr> or
+firewall program. Windows has their own firewall as do other virus protection programs.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A client might encounter a time when they are able to reach the homepage of the <abbr title="Internet of Things">IoT</abbr> box, yet they cannot access it from another computer/mobile device/tablet
+on the same network.</p>
+</div>
+</section><section id="making-an-exception-on-windows-defender">
+<h4>Making an exception on Windows Defender<a class="headerlink" href="#making-an-exception-on-windows-defender" title="Permalink to this headline">¶</a></h4>
+<p>It is possible to allow other devices to access the Windows virtual <abbr title="Internet of Things">IoT</abbr>
+box while keeping the firewall on. This is done by creating a rule on <em>Windows Defender</em> and
+allowing communication through port <code class="o_code docutils literal notranslate"><span class="pre">8069</span></code>. The following process describes the steps to take in
+order to make this exception.</p>
+</section><section id="create-a-rule-in-windows-defender">
+<h5>Create a rule in Windows Defender<a class="headerlink" href="#create-a-rule-in-windows-defender" title="Permalink to this headline">¶</a></h5>
+<p>First, open the <em>Windows Firewall</em> by navigating to the <span class="menuselection">Start Menu</span> and typing in
+<code class="o_code docutils literal notranslate"><span class="pre">Firewall</span></code>. Then, open the <span class="menuselection">Windows Defender Firewall</span> program. In the left-hand
+menu, navigate to <span class="guilabel">Advanced Settings</span>.</p>
+<p>Once <span class="guilabel">Advanced Settings</span> have been selected, click <span class="guilabel">Inbound Rules</span> in the
+left-hand menu. Then, in the right-hand menu column (under <span class="guilabel">Inbound Rules</span>), click on
+<span class="guilabel">New Rule</span> to create a new rule.</p>
+</section><section id="configure-new-rule">
+<h5>Configure new rule<a class="headerlink" href="#configure-new-rule" title="Permalink to this headline">¶</a></h5>
+<p>On the <span class="menuselection">Rule Type</span> screen, select <span class="guilabel">Port</span>. Then click <span class="guilabel">Next</span>. From
+the <span class="menuselection">Protocol and Ports</span> page leave the rule application to <span class="guilabel">TCP</span>. Then,
+select <span class="guilabel">Specific Local Ports</span> for the <span class="guilabel">ports</span> option. In the text box, type in
+<code class="o_code docutils literal notranslate"><span class="pre">8069,</span> <span class="pre">443</span></code>. Finally, click <span class="guilabel">Next</span> to continue to the next step.</p>
+<p>On the <span class="menuselection">Actions</span> page, select <span class="guilabel">Allow the connection</span> and click
+<span class="guilabel">Next</span>. The following page on the <span class="menuselection">Rule Configuration</span> wizard is the
+<span class="guilabel">Profile</span> page. On this page, select whichever connection type applies to the network the
+Windows machine is operating on. Ideally, select <span class="guilabel">Private</span> only connections. The <em>Private</em>
+connection type is the most secure connection while allowing the selected port to communicate. Click
+<span class="guilabel">Next</span> to continue.</p>
+<p>Finally, assign a new, unique name to the rule. For example, this name can be <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span></code>. Optionally,
+add a brief description in the <span class="guilabel">Description</span> field. Click <span class="guilabel">Finish</span> to complete
+the <span class="guilabel">Rule Configuration</span> wizard. Now, the new rule is active and devices can connect to
+the Windows virtual <abbr title="Internet of Things">IoT</abbr> box.</p>
+</section><section id="worldline-exception">
+<span id="iot-windows-wordline"></span><h4>Worldline exception<a class="headerlink" href="#worldline-exception" title="Permalink to this headline">¶</a></h4>
+<p><em>Worldline</em> is a payment terminal that can be connected to Odoo’s <em>PoS</em> (point of sale) system. It
+allows for a comprehensive and fluid payment experience for customers. Worldline is available in
+Belgium, the Netherlands, and Luxembourg.</p>
+<p>When using the Windows IoT server to connect the Worldline payment terminal, it is necessary to
+create an exception in the Windows firewall so that a connection can be made between the Odoo
+database/<abbr title="Internet of Things">IoT</abbr> box and Worldline.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/worldline.html"><span class="doc">Worldline</span></a></p>
+</div>
+<p>To create the exception, first, open the <em>Windows Defender Firewall</em> app on the Windows machine.
+This can be accomplished by typing <code class="o_code docutils literal notranslate"><span class="pre">windows</span> <span class="pre">defender</span></code> in the <span class="guilabel">Search</span> bar.</p>
+<p>Next, click <span class="guilabel">Advanced settings</span> in the left menu.</p>
+<img alt="Advanced settings option highlighted in the left pane of the Windows Defender Firewall app." class="align-center" src="../../../../_images/advanced-settings.png" />
+<p>In the left menu, choose <span class="guilabel">Inbound Rules</span>.</p>
+<img alt="Windows Defender left window pane with inbound rules menu item highlighted." class="align-center" src="../../../../_images/inbound-rules.png" />
+<p>After selecting <span class="guilabel">Inbound Rules</span>, select <span class="guilabel">New Rule</span> in the far right menu.</p>
+<img alt="New rule dropdown shown with new rule option highlighted." class="align-center" src="../../../../_images/new-rule.png" />
+<p>Then, for the <span class="guilabel">Rule Type</span>, select the radio button for <span class="guilabel">Port</span>. Click
+<span class="guilabel">Next</span> to continue to the rest of the configuration.</p>
+<img alt="Rule Type window open, with the radio button next to port highlighted." class="align-center" src="../../../../_images/radio-port.png" />
+<p>On the <span class="guilabel">Protocols and Ports</span> page, choose the radio button for <span class="guilabel">TCP</span>, under
+<span class="guilabel">Does this rule apply to TCP or UDP?</span>.</p>
+<p>Next, under <span class="guilabel">Does this rule apply to all local ports or specific ports?</span>, select the radio
+button for <span class="guilabel">Specific local ports</span>. Then, enter <code class="o_code docutils literal notranslate"><span class="pre">9050</span></code>, and click <span class="guilabel">Next</span> to
+continue.</p>
+<img alt="Protocol/port configuration window with TCP, specific port (9050) and Next highlighted." class="align-center" src="../../../../_images/protocol-port.png" />
+<p>The next screen is the <span class="guilabel">Action</span> page. Under <span class="guilabel">What action should be taken when a
+connection matches the specified conditions?</span>, choose the radio button for <span class="guilabel">Allow the
+connection</span>. Then, click <span class="guilabel">Next</span> to continue.</p>
+<p>A <span class="guilabel">Profile</span> page appears. Under <span class="guilabel">When does this rule apply?</span>, leave the three
+boxes checked for: <span class="guilabel">Domain</span>, <span class="guilabel">Private</span>, and <span class="guilabel">Public</span>. Click
+<span class="guilabel">Next</span> to continue to the naming convention page.</p>
+<p>On the <span class="guilabel">Name</span> page, enter <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span> <span class="pre">Worldline</span></code>, under the <span class="guilabel">Name</span> field. Enter a
+<span class="guilabel">Description (optional)</span>. Finally, once ready, click <span class="guilabel">Finish</span>.</p>
+<p>The final <span class="guilabel">Inbound rule</span> should appear as follows:</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>Odoo Worldline</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Profile</p></th>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Enabled</p></th>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Action</p></th>
+<td><p>Allow</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Override</p></th>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Program</p></th>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Local Address</p></th>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Remote Address</p></th>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Protocol</p></th>
+<td><p>TCP</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Local Port</p></th>
+<td><p>9050</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Remote Port</p></th>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Authorized Users</p></th>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Authorized Computers</p></th>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Authorized Local Principals</p></th>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Local User Owner</p></th>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>PolicyAppld</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Application Package</p></th>
+<td><p>Any</p></td>
+</tr>
+</tbody>
+</table>
+</section><section id="uninstalling-windows-iot">
+<h3>Uninstalling Windows IoT<a class="headerlink" href="#uninstalling-windows-iot" title="Permalink to this headline">¶</a></h3>
+<p>Uninstalling the Windows virtual <abbr title="Internet of Things">IoT</abbr> box is done through the Windows
+program manager. Using any Windows version, search for <code class="o_code docutils literal notranslate"><span class="pre">program</span></code>. Then, select <span class="guilabel">Add or
+Remove Programs</span> located in the control panel. Search for <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span></code> and click the <span class="guilabel">three dot
+menu</span> to uninstall.</p>
+<p>Confirm the un-installation and follow the steps to uninstall through the Odoo uninstall guide.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Connect Windows IoT Odoo</a><ul>
+<li><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
+<li><a class="reference internal" href="#connect-the-windows-virtual-iot-box-to-an-odoo-database">Connect the Windows virtual IoT box to an Odoo database</a><ul>
+<li><a class="reference internal" href="#download-and-initial-installation">Download and initial installation</a></li>
+<li><a class="reference internal" href="#setting-the-destination-and-completing-the-installation">Setting the destination and completing the installation</a></li>
+<li><a class="reference internal" href="#connecting-devices">Connecting devices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#restart-windows-iot-box">Restart Windows IoT box</a></li>
+<li><a class="reference internal" href="#firewalls">Firewalls</a><ul>
+<li><a class="reference internal" href="#making-an-exception-on-windows-defender">Making an exception on Windows Defender</a><ul>
+<li><a class="reference internal" href="#create-a-rule-in-windows-defender">Create a rule in Windows Defender</a></li>
+<li><a class="reference internal" href="#configure-new-rule">Configure new rule</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#worldline-exception">Worldline exception</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uninstalling-windows-iot">Uninstalling Windows IoT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Connect Windows IoT Odoo</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

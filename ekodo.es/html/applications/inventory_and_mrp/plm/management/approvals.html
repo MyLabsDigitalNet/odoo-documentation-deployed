@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Approvals &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/plm/management/approvals.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/plm/management/approvals.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Approvals</a><ul>
+<li><a class="reference internal" href="#add-approver">Add approver</a></li>
+<li><a class="reference internal" href="#manage-approvals">Manage approvals</a><ul>
+<li><a class="reference internal" href="#approve-ecos">Approve ECOs</a></li>
+<li><a class="reference internal" href="#automated-activities">Automated activities</a><ul>
+<li><a class="reference internal" href="#follow-up-activities">Follow-up activities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/plm/management/approvals.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Approvals</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="approvals">
+<h1>Approvals<a class="headerlink" href="#approvals" title="Permalink to this headline">¶</a></h1>
+<p id="plm-approvals">Notify stakeholders and managers automatically by assigning approvers to stages of <a class="reference internal" href="../manage_changes/engineering_change_orders.html#plm-eco"><span class="std std-ref">engineering
+change orders</span></a> (ECOs) under review. Changes can only be applied after the assigned
+approver accepts them. Approvals ensure reviews by team members, which prevents mistakes and
+premature actions.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../manage_changes/eco_type.html#plm-eco-stage-config"><span class="std std-ref">Stage configuration</span></a></p>
+</div>
+</section><section id="add-approver">
+<h2>Add approver<a class="headerlink" href="#add-approver" title="Permalink to this headline">¶</a></h2>
+<p>To add an approver, first go to the <span class="menuselection">PLM app</span>, and click on the project card of an
+ECO type to open the Gantt view of the <abbr title="Engineering Change Orders">ECOs</abbr>.</p>
+<p>On the <span class="guilabel">Engineering Change Orders</span> page, hover over the intended stage, and select the
+<span class="guilabel">⚙️ (gear)</span> icon. Then, click <span class="guilabel">Edit</span> to open a pop-up window.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Approvers can be added to any stage, but it’s strongly recommended to assign them to the
+<em>verification</em> stage, which comes before the <em>closing</em> stage, where <abbr title="Engineering Change Orders">ECOs</abbr> are applied, and the
+<abbr title="Bill of Materials">BoM</abbr> version is updated.</p>
+<p>See the documentation about <a class="reference internal" href="../manage_changes/eco_type.html#plm-eco-stage-config"><span class="std std-ref">stage types</span></a> for more information.</p>
+</div>
+<p id="plm-approvals-approval-type">In the <span class="guilabel">Edit</span> stage pop-up window, click the <span class="guilabel">Add a line</span> button, located under
+<span class="guilabel">Approvals</span>. Then, type in the approver’s position (or title) under <span class="guilabel">Role</span> (e.g.
+<code class="o_code docutils literal notranslate"><span class="pre">Engineering</span> <span class="pre">Manager</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Quality</span> <span class="pre">Team</span></code>, etc.), and select the relevant <span class="guilabel">User</span> from the
+drop-down menu.</p>
+<p>Next, set the <span class="guilabel">Approval Type</span> to <span class="guilabel">Is required to approve</span>, <span class="guilabel">Approves,
+but the approval is optional</span>, or <span class="guilabel">Comments only</span>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Assign the <code class="o_code docutils literal notranslate"><span class="pre">CTO</span></code>, “Mitchell Admin,” as a required approver for <abbr title="Engineering Change Orders">ECOs</abbr> in the <code class="o_code docutils literal notranslate"><span class="pre">Validated</span></code> stage in
+the <code class="o_code docutils literal notranslate"><span class="pre">New</span> <span class="pre">Product</span> <span class="pre">Introduction</span></code> ECO type.</p>
+<p>Approvals from the quality and marketing teams are <strong>not</strong> required to apply changes to the <abbr title="Engineering Change Order">ECO</abbr>
+because their <span class="guilabel">Approval Type</span> is set to <span class="guilabel">Approves, but the approval is
+optional</span> and <span class="guilabel">Comments only</span>, respectively.</p>
+<img alt="Set an approver that &quot;Is required to approve&quot; ECOs in the &quot;Validated&quot; stage." class="align-center" src="../../../../_images/approvers.png" />
+</div>
+</section><section id="manage-approvals">
+<h2>Manage approvals<a class="headerlink" href="#manage-approvals" title="Permalink to this headline">¶</a></h2>
+<p>Approvers can easily track their to-do approvals by navigating to the <span class="menuselection">PLM app</span>, and
+looking at the card for an ECO type, which shows the count of open tasks assigned to them.</p>
+<p>Here’s what each button on an ECO project card does:</p>
+<ol class="arabic">
+<li><p>The <span class="guilabel"># Engineering Changes</span> button displays a count of in-progress <abbr title="Engineering Change Orders">ECOs</abbr> of this ECO
+type. Clicking the button opens the Gantt view of the <span class="guilabel">Engineering Change Orders</span> page.</p></li>
+<li><p><span class="guilabel">My Validations</span> displays a count of <abbr title="Engineering Change Orders">ECOs</abbr> the approver must accept or reject.
+Clicking on this button displays <abbr title="Engineering Change Orders">ECOs</abbr> pending approval or rejected (marked with the red
+<span class="guilabel">Blocked</span> state).</p></li>
+<li><p>The <span class="guilabel">All Validations</span> button shows the count of <abbr title="Engineering Change Orders">ECOs</abbr> awaiting approval or rejected by
+any approver. Clicking it reveals these pending <abbr title="Engineering Change Orders">ECOs</abbr>.</p></li>
+<li><p><span class="guilabel">To Apply</span> displays a count of <abbr title="Engineering Change Orders">ECOs</abbr> to which the user needs to apply changes.
+Clicking on the button displays all the <abbr title="Engineering Change Orders">ECOs</abbr> to approve, and apply changes to, in the
+verification stage.</p>
+<p><abbr title="Engineering Change Orders">ECOs</abbr> marked with the green <span class="guilabel">Done</span> stage have already been approved, and the user just
+needs to click on the <abbr title="Engineering Change Order">ECO</abbr> to enter the form view, and click the <span class="guilabel">Apply Changes</span>
+button.</p>
+</li>
+</ol>
+<img alt="Display count of validations to-do and buttons to open filtered list of ECOs." class="align-center" src="../../../../_images/validation-overview.png" />
+</section><section id="approve-ecos">
+<h3>Approve ECOs<a class="headerlink" href="#approve-ecos" title="Permalink to this headline">¶</a></h3>
+<p>Navigate to an <abbr title="Engineering Change Order">ECO</abbr> in a verification stage, while logged in as the assigned approver, to see the
+<span class="guilabel">Approve</span>, <span class="guilabel">Reject</span>, and <span class="guilabel">Apply Changes</span> buttons.</p>
+<p>To approve the <abbr title="Engineering Change Order">ECO</abbr>, and apply the changes onto the production <abbr title="Bill of Materials">BoM</abbr>,
+click <span class="guilabel">Approve</span>, and then <span class="guilabel">Apply Changes</span>.</p>
+<p>Note that the <span class="guilabel">Apply Changes</span> button will <strong>not</strong> work unless the <span class="guilabel">Approve</span>
+button was clicked first. Additionally, the chatter logs the history of the clicked buttons.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>When the <span class="guilabel">Approval Type</span> is <strong>not</strong> set to <span class="guilabel">Is required to approve</span>, approval
+from the associated user is not needed before applying changes with the <span class="guilabel">Apply Changes</span>
+button. Thus, the <span class="guilabel">Apply Changes</span> button <strong>will work</strong> without requiring the
+<span class="guilabel">Approve</span> button to be clicked first.</p>
+</div>
+</section><section id="automated-activities">
+<h3>Automated activities<a class="headerlink" href="#automated-activities" title="Permalink to this headline">¶</a></h3>
+<p>When an <abbr title="Engineering Change Order">ECO</abbr> is moved to a verification stage, a planned activity is automatically created for
+assigned approvers to review the <abbr title="Engineering Change Order">ECO</abbr>. Approvers receive a notification in their activities inbox,
+accessible through the <span class="guilabel">🕘 (clock)</span> icon at the top of the page.</p>
+<p>In the to-do task list, the <span class="guilabel">Engineering Change Order (ECO)</span> notification displays the
+number of activities marked <span class="guilabel">Late</span>, <span class="guilabel">Today</span>, and <span class="guilabel">Future</span>. Clicking on
+each of these buttons shows a filtered Gantt view of the respective <abbr title="Engineering Change Orders">ECOs</abbr>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Scheduled activities are shown as a number on the <span class="guilabel">🕘 (clock)</span> icon, with <code class="o_code docutils literal notranslate"><span class="pre">5</span></code> <abbr title="Engineering Change Orders">ECOs</abbr>
+pending approval <span class="guilabel">Today</span>. Currently, there are <code class="o_code docutils literal notranslate"><span class="pre">0</span></code> <span class="guilabel">Late</span> or
+<span class="guilabel">Future</span> <abbr title="Engineering Change Orders">ECOs</abbr>.</p>
+<blockquote>
+<div><img alt="Show scheduled approvals notifications for the user." class="align-center" src="../../../../_images/todo-list.png" />
+</div></blockquote>
+</div>
+<p>By clicking a pending <abbr title="Engineering Change Order">ECO</abbr>, a <em>planned activity</em> for <span class="guilabel">ECO Approval</span> is recorded in the
+chatter. Click on the <span class="guilabel">i (Info)</span> icon to view additional information, including the
+approval’s <span class="guilabel">Created</span> date, the approver <span class="guilabel">Assigned to</span> it, and the due date.</p>
+<img alt="Show additional details of the planned ECO approval." class="align-center" src="../../../../_images/planned-activity.png" />
+</section><section id="follow-up-activities">
+<h4>Follow-up activities<a class="headerlink" href="#follow-up-activities" title="Permalink to this headline">¶</a></h4>
+<p>When <abbr title="Engineering Change Orders">ECOs</abbr> are rejected, tasks need to be assigned to project members for required modifications
+before <abbr title="Engineering Change Order">ECO</abbr> approval. To create tasks with deadlines, navigate to the rejected <abbr title="Engineering Change Order">ECO</abbr> form, and go
+to the chatter.</p>
+<p>Select the <span class="guilabel">Mark Done</span> button in the <span class="guilabel">Planned Activities</span> section of the chatter
+to close the activity, and open a pop-up window for creating tasks.</p>
+<img alt="Show *Mark Done* window to show *Done &amp; Schedule Next*, *Done*, and *Discard* buttons to close the planned activity." class="align-center" src="../../../../_images/mark-as-done.png" />
+<p>In the <span class="guilabel">Mark Done</span> window, click <span class="guilabel">Done &amp; Schedule Next</span> to open a new
+<span class="guilabel">Schedule an Activity</span> window. Next, set the <span class="guilabel">Assigned to</span> team member and the
+<span class="guilabel">Due Date</span> for completing the changes. Provide task details in the <span class="guilabel">Summary</span>
+field and the text box. Click the <span class="guilabel">Schedule</span> button to close the window.</p>
+<p>After closing the window, on the <abbr title="Engineering Change Order">ECO</abbr> form, move the <abbr title="Engineering Change Order">ECO</abbr> back one stage. Doing so ensures that
+when the team member completes the changes, and returns the <abbr title="Engineering Change Order">ECO</abbr> to the verification stage, a new
+<span class="guilabel">ECO Approval</span> task is created for the approver.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The approver creates an activity for the <span class="guilabel">Responsible</span> of the <abbr title="Engineering Change Order">ECO</abbr>, <code class="o_code docutils literal notranslate"><span class="pre">Laurie</span> <span class="pre">Poiret</span></code>,
+that details the changes required for the approver to <span class="guilabel">Accept</span> the <abbr title="Engineering Change Order">ECO</abbr>. Clicking the
+<span class="guilabel">Schedule</span> button creates a planned activity for Laurie due on <code class="o_code docutils literal notranslate"><span class="pre">08/15/2023</span></code>.</p>
+<img alt="Create a scheduled activity for follow-up changes to a rejected ECO." class="align-center" src="../../../../_images/schedule-an-activity.png" />
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Approvals</a><ul>
+<li><a class="reference internal" href="#add-approver">Add approver</a></li>
+<li><a class="reference internal" href="#manage-approvals">Manage approvals</a><ul>
+<li><a class="reference internal" href="#approve-ecos">Approve ECOs</a></li>
+<li><a class="reference internal" href="#automated-activities">Automated activities</a><ul>
+<li><a class="reference internal" href="#follow-up-activities">Follow-up activities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Approvals</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

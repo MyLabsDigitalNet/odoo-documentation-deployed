@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manage lost opportunities &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/crm/pipeline/lost_opportunities.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/crm/pipeline/lost_opportunities.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Manage lost opportunities</a><ul>
+<li><a class="reference internal" href="#mark-a-lead-as-lost">Mark a lead as lost</a></li>
+<li><a class="reference internal" href="#create-edit-lost-reasons">Create/edit lost reasons</a></li>
+<li><a class="reference internal" href="#retrieve-lost-opportunities">Retrieve lost opportunities</a></li>
+<li><a class="reference internal" href="#restore-lost-opportunities">Restore lost opportunities</a><ul>
+<li><a class="reference internal" href="#restore-multiple-opportunities-at-once">Restore multiple opportunities at once</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/crm/pipeline/lost_opportunities.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Manage lost opportunities</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="manage-lost-opportunities">
+<h1>Manage lost opportunities<a class="headerlink" href="#manage-lost-opportunities" title="Permalink to this headline">¶</a></h1>
+<p>Not all opportunities result in successful sales. In order to keep the pipeline up to date, lost
+opportunities need to be identified. Specifying the reason why an opportunity was lost provides
+additional insight that can prove useful for future opportunities.</p>
+</section><section id="mark-a-lead-as-lost">
+<h2>Mark a lead as lost<a class="headerlink" href="#mark-a-lead-as-lost" title="Permalink to this headline">¶</a></h2>
+<p>To mark a lead as lost, open the <span class="menuselection">CRM</span> application, and select a lead from the
+pipeline, by clicking on its corresponding kanban card. Doing so reveals that lead’s detail form.</p>
+<p>Then, click <span class="guilabel">Lost</span>, located at the top of the lead’s detail form.</p>
+<img alt="Botones de ganar/perder lead debajo del menu CRM." class="align-center" src="../../../../_images/lead_perdido.png" />
+<p>This opens the <span class="guilabel">Lost Reason</span> popup. From the drop-down, choose an existing lost reason. If
+no applicable reason is available, create a new one by entering it into the <span class="guilabel">Lost Reason</span>
+field, and clicking <span class="guilabel">Create</span>.</p>
+<p>Additional notes and comments can be added below the lost reason designated in the <span class="guilabel">Lost
+Reason</span> field.</p>
+<p>When all the desired information has been entered in the <span class="guilabel">Lost Reason</span> pop-up window,
+click <span class="guilabel">Submit</span>.</p>
+<img alt="Pop Up de razones por los que se perdio un lead" class="align-center" src="../../../../_images/motivo_perdida_lead.png" />
+<p>Upon clicking <span class="guilabel">Submit</span>, the pop-up window disappears, and Odoo returns to the lead detail
+form, where a new red <span class="guilabel">Lost</span> banner is now present in the upper-right corner of the lead.</p>
+<img alt="Aviso de que hemos perdido el lead" class="align-center" src="../../../../_images/aviso_perdido.png" />
+</section><section id="create-edit-lost-reasons">
+<h2>Create/edit lost reasons<a class="headerlink" href="#create-edit-lost-reasons" title="Permalink to this headline">¶</a></h2>
+<p>To create a new lost reason, or edit an existing one, navigate to <span class="menuselection">CRM app ‣
+Configuration ‣ Lost Reasons</span>.</p>
+<p>To edit an existing reason, click on the reason that should be modified. When clicked, that reason
+becomes highlighted. Once highlighted, change the description of the selected lost reason by editing
+the <span class="guilabel">Description</span> field. When done, click <span class="guilabel">Save</span> in the upper-left corner.</p>
+<p>To create a new lost reason, click <span class="guilabel">Create</span> in the upper-left corner of the
+<span class="guilabel">Lost Reasons</span> page. Doing so reveals a new blank line in the <span class="guilabel">Description</span>
+field. Then, proceed to type in the new lost reason in that new line. Once ready, click
+<span class="guilabel">Save</span>.</p>
+</section><section id="retrieve-lost-opportunities">
+<h2>Retrieve lost opportunities<a class="headerlink" href="#retrieve-lost-opportunities" title="Permalink to this headline">¶</a></h2>
+<p>To retrieve lost opportunities in Odoo <em>CRM</em>, open the <span class="menuselection">CRM app</span> to the main
+<span class="guilabel">Pipeline</span> dashboard. Then, click the <span class="guilabel">Filters</span> drop-down menu, located beneath
+the search bar.</p>
+<img alt="Search bar with lost filter emphasized." class="align-center" src="../../../../_images/filtro_perdido.png" />
+<p>From the <span class="guilabel">Filters</span> drop-down menu, select the <span class="guilabel">Lost</span> option. Upon selecting
+<span class="guilabel">Lost</span>, only the leads that have been marked as <code class="o_code docutils literal notranslate"><span class="pre">Lost</span></code> appear on the <span class="guilabel">Pipeline</span>
+page.</p>
+<p>To filter leads by a specific lost reason, select <span class="menuselection">Filters ‣ Add Custom Filter</span>.
+Doing so reveals another drop-down menu with three fields.</p>
+<p>In the top field drop-down menu, select <span class="guilabel">Lost Reason</span>. In the second field drop-down menu,
+select <span class="guilabel">Contains</span>. Then, in the third field of the <span class="guilabel">Add Custom Field</span> sub menu,
+type in the specific keyword(s). Lastly, click <span class="guilabel">Apply</span>. Upon clicking <span class="guilabel">Apply</span>,
+Odoo reveals all the lost leads with a reason that contains that specified keyword(s).</p>
+<img alt="Busca exactamente el motivo por el cual se perdio el Lead." class="align-center" src="../../../../_images/filtro_personalizado_motivo_perdida.png" />
+</section><section id="restore-lost-opportunities">
+<h2>Restore lost opportunities<a class="headerlink" href="#restore-lost-opportunities" title="Permalink to this headline">¶</a></h2>
+<p>To restore a lost opportunity, navigate to the main <span class="guilabel">Pipeline</span> dashboard on the <em>CRM</em> app,
+open the <span class="guilabel">Filters</span> drop-down menu, and select the <span class="guilabel">Lost</span> option. Doing so
+reveals all the lost opportunities on the <span class="guilabel">Pipeline</span> page.</p>
+<p>Then, click on the kanban card of the desired lost opportunity to restore, which opens that lead’s
+detail form.</p>
+<p>From the lost lead’s detail form, click <span class="guilabel">Restore</span> in the upper-left corner. Doing so
+removes the red <span class="guilabel">Lost</span> banner from the lead form, signifying the lead has been restored.</p>
+<img alt="Boton de restaurar Lead perdido" class="align-center" src="../../../../_images/restaurar_lead_perdido.png" />
+</section><section id="restore-multiple-opportunities-at-once">
+<h3>Restore multiple opportunities at once<a class="headerlink" href="#restore-multiple-opportunities-at-once" title="Permalink to this headline">¶</a></h3>
+<p>To restore multiple opportunities at once, navigate to the main <span class="guilabel">Pipeline</span> dashboard in
+the <em>CRM</em> app, open the <span class="guilabel">Filters</span> drop-down menu, and select the <span class="guilabel">Lost</span> option.</p>
+<p>Next, select the list view option, which is represented by the three-line <span class="guilabel">☰ (list)</span> icon
+in the upper-right corner. Doing so places all the leads from the <span class="guilabel">Pipeline</span> page in a
+list form. With the list form chosen, select the checkbox to the left of each desired
+opportunity/lead to be restored.</p>
+<p>Once the desired opportunities/leads have been selected, click the <span class="guilabel">⚙️ Action (gear)</span>
+drop-down menu at the top of the <span class="guilabel">Pipeline</span> page. From the <span class="guilabel">⚙️ Action (gear)</span>
+drop-down menu, select <span class="guilabel">Unarchive</span>.</p>
+<p>Doing so removes those selected lost opportunities from the <span class="guilabel">Pipeline</span> page because they
+no longer fit into the <code class="o_code docutils literal notranslate"><span class="pre">Lost</span></code> filter criteria. To reveal these newly-restored leads, delete the
+<code class="o_code docutils literal notranslate"><span class="pre">Lost</span></code> filter from the search bar.</p>
+<img alt="Boton de accion para restaurar varios leads a la vez" class="align-center" src="../../../../_images/restaurar_varios_leads.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../performance/win_loss.html"><span class="doc">Check your Win/Loss Ratio</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Manage lost opportunities</a><ul>
+<li><a class="reference internal" href="#mark-a-lead-as-lost">Mark a lead as lost</a></li>
+<li><a class="reference internal" href="#create-edit-lost-reasons">Create/edit lost reasons</a></li>
+<li><a class="reference internal" href="#retrieve-lost-opportunities">Retrieve lost opportunities</a></li>
+<li><a class="reference internal" href="#restore-lost-opportunities">Restore lost opportunities</a><ul>
+<li><a class="reference internal" href="#restore-multiple-opportunities-at-once">Restore multiple opportunities at once</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Manage lost opportunities</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

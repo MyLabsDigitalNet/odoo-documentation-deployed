@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Worldline &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/point_of_sale/payment_methods/terminals/worldline.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/point_of_sale/payment_methods/terminals/worldline.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Worldline</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#connect-an-iot-box">Connect an IoT Box</a></li>
+<li><a class="reference internal" href="#configure-the-protocol">Configure the protocol</a></li>
+<li><a class="reference internal" href="#set-the-ip-address">Set the IP address</a><ul>
+<li><a class="reference internal" href="#hostname">Hostname</a></li>
+<li><a class="reference internal" href="#port-number">Port number</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-the-payment-method">Configure the payment method</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pay-with-a-payment-terminal">Pay with a payment terminal</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/point_of_sale/payment_methods/terminals/worldline.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Worldline</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="worldline">
+<h1>Worldline<a class="headerlink" href="#worldline" title="Permalink to this headline">¶</a></h1>
+<p>Connecting a payment terminal allows you to offer a fluid payment flow to your customers and ease
+the work of your cashiers.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><ul class="simple">
+<li><p>Worldline payment terminals require an <a class="reference internal" href="../../../../general/iot.html"><span class="doc">IoT Box</span></a>.</p></li>
+<li><p>Worldline is currently only available in Belgium, the Netherlands and Luxembourg.</p></li>
+<li><p>Odoo is compatible with Worldline terminals that use the CTEP protocol (e.g., the Yomani XR and
+Yoximo terminals). If you have any doubts, contact your payment provider to ensure your
+terminal’s compatibility.</p></li>
+</ul>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="connect-an-iot-box">
+<h3>Connect an IoT Box<a class="headerlink" href="#connect-an-iot-box" title="Permalink to this headline">¶</a></h3>
+<p>Connecting a Worldline Payment Terminal to Odoo is a feature that requires an IoT Box. For more
+information on how to connect one to your database, please refer to the
+<a class="reference internal" href="../../../../general/iot/config/connect.html"><span class="doc">IoT documentation</span></a>.</p>
+</section><section id="configure-the-protocol">
+<h3>Configure the protocol<a class="headerlink" href="#configure-the-protocol" title="Permalink to this headline">¶</a></h3>
+<p>From your terminal, click on <span class="menuselection">“.” ‣ 3 ‣ stop ‣ 3 ‣ 0 ‣ 9</span>. Enter the
+technician password <strong>“1235789”</strong> and click on <span class="menuselection">OK ‣ 4 ‣ 2</span>. Then, click on
+<span class="menuselection">Change ‣ CTEP (as Protocole ECR) ‣ OK</span>. Click on <strong>OK</strong> thrice on the subsequent
+screens (<em>CTEP ticket ECR</em>, <em>ECR ticket width</em>, and <em>Character set</em>). Finally, press <strong>Stop</strong> three
+times; the terminal automatically restarts.</p>
+</section><section id="set-the-ip-address">
+<h3>Set the IP address<a class="headerlink" href="#set-the-ip-address" title="Permalink to this headline">¶</a></h3>
+<p>From your terminal, click on <span class="menuselection">“.” ‣ 3 ‣ stop ‣ 3 ‣ 0 ‣ 9</span>. Enter the
+technician password <strong>“1235789”</strong> and click on <span class="menuselection">OK ‣ 4 ‣ 9</span>. Then, click on
+<span class="menuselection">Change ‣ TCP/IP</span> (<em>TCP physical configuration</em> screen) <span class="menuselection">‣ OK ‣
+OK</span> (<em>TCP Configuration client</em> screen).</p>
+<p>Finally, set up the hostname and port number.</p>
+</section><section id="hostname">
+<h4>Hostname<a class="headerlink" href="#hostname" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line">To set up the hostname, enter your IoT box’s IP address’ sequence numbers and press <strong>OK</strong> at each
+“.” until you reach the colon symbol.</div>
+<div class="line">Then, press <strong>OK</strong> twice.</div>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><div class="line-block">
+<div class="line">Here’s an IP address sequence: <code class="o_code docutils literal notranslate"><span class="pre">10.30.19.4:8069</span></code>.</div>
+<div class="line">On the <em>Hostname screen</em>, type <span class="menuselection">10 ‣ OK ‣ 30 ‣ OK ‣ 19 ‣ OK ‣ 4
+‣ OK ‣ OK</span>.</div>
+</div>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Your IoT box’s IP address is available in your IoT Box application’s database.</p>
+</div>
+</section><section id="port-number">
+<h4>Port number<a class="headerlink" href="#port-number" title="Permalink to this headline">¶</a></h4>
+<p>On the <em>Port number</em> screen, enter <strong>9001</strong> (or <strong>9050</strong> for Windows) and click on
+<span class="menuselection">OK</span> (<em>ECR protocol SSL no</em>) <span class="menuselection">‣ OK</span>. Click on <strong>Stop</strong> three times;
+the terminal automatically restarts.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>For <strong>Windows</strong> IoT devices, it is necessary to add a firewall exception. Follow the
+<a class="reference internal" href="../../../../general/iot/config/windows_iot.html#iot-windows-wordline"><span class="std std-ref">additional instructions in the Windows IoT documentation</span></a> to add the
+exception to Windows Firewall.</p>
+</div>
+</section><section id="configure-the-payment-method">
+<h3>Configure the payment method<a class="headerlink" href="#configure-the-payment-method" title="Permalink to this headline">¶</a></h3>
+<p>Enable the payment terminal <a class="reference internal" href="../../configuration.html#configuration-settings"><span class="std std-ref">in the application settings</span></a> and
+<a class="reference internal" href="../../payment_methods.html"><span class="doc">create the related payment method</span></a>. Set the journal type as
+<span class="guilabel">Bank</span> and select <span class="guilabel">Worldline</span> in the <span class="guilabel">Use a Payment Terminal</span> field.
+Then, select your terminal device in the <span class="guilabel">Payment Terminal Device</span> field.</p>
+<img alt="../../../../../_images/worldline-payment-terminals.png" src="../../../../../_images/worldline-payment-terminals.png" />
+<p>Once the payment method is created, you can select it in your POS settings. To do so, go to the
+<a class="reference internal" href="../../configuration.html#configuration-settings"><span class="std std-ref">POS’ settings</span></a>, click <span class="guilabel">Edit</span>, and add the payment method
+under the <span class="guilabel">Payments</span> section.</p>
+<div class="alert alert-tip" id="worldline-yomani-info">
+<p class="alert-title">
+Tip</p><ul class="simple">
+<li><p>Technician password: <code class="o_code docutils literal notranslate"><span class="pre">1235789</span></code></p></li>
+<li><p>To reach Wordline’s technical assistance, call <code class="o_code docutils literal notranslate"><span class="pre">02</span> <span class="pre">727</span> <span class="pre">61</span> <span class="pre">11</span></code> and choose “merchant”. Your call
+is automatically transferred to the desired service.</p></li>
+<li><p>Configure the cashier terminal if you have both a customer and a cashier terminal.</p></li>
+<li><p>To avoid blocking the terminal, check the initial configuration beforehand.</p></li>
+<li><p>Set a fixed IP to your IoT Box’s router to prevent losing the connexion.</p></li>
+</ul>
+</div>
+</section><section id="pay-with-a-payment-terminal">
+<h2>Pay with a payment terminal<a class="headerlink" href="#pay-with-a-payment-terminal" title="Permalink to this headline">¶</a></h2>
+<p>When processing a payment, select <em>Worldline</em> as payment method. Check the amount and click on
+<em>Send</em>. Once the payment is successful, the status changes to <em>Payment Successful</em>.</p>
+<p>Once your payment is processed, the type of card used and the transaction ID appear on the payment
+record.</p>
+<img alt="../../../../../_images/worldline-payment.png" class="align-center" src="../../../../../_images/worldline-payment.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>In case of connexion issues between Odoo and the payment terminal, force the payment by
+clicking on <em>Force Done</em>, which allows you to validate the order. This option is only available
+after receiving an error message informing you that the connection failed.</p></li>
+<li><p>To cancel the payment request, click on <strong>cancel</strong>.</p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Worldline</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#connect-an-iot-box">Connect an IoT Box</a></li>
+<li><a class="reference internal" href="#configure-the-protocol">Configure the protocol</a></li>
+<li><a class="reference internal" href="#set-the-ip-address">Set the IP address</a><ul>
+<li><a class="reference internal" href="#hostname">Hostname</a></li>
+<li><a class="reference internal" href="#port-number">Port number</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-the-payment-method">Configure the payment method</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pay-with-a-payment-terminal">Pay with a payment terminal</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Worldline</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

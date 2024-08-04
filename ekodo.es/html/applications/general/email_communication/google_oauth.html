@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connect Gmail to Odoo using Google OAuth &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/email_communication/google_oauth.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/email_communication/google_oauth.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Connect Gmail to Odoo using Google OAuth</a><ul>
+<li><a class="reference internal" href="#setup-in-google">Setup in Google</a><ul>
+<li><a class="reference internal" href="#create-a-new-project">Create a new project</a></li>
+<li><a class="reference internal" href="#oauth-consent-screen">OAuth consent screen</a></li>
+<li><a class="reference internal" href="#edit-app-registration">Edit app registration</a></li>
+<li><a class="reference internal" href="#create-credentials">Create Credentials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setup-in-odoo">Setup in Odoo</a><ul>
+<li><a class="reference internal" href="#enter-google-credentials">Enter Google Credentials</a></li>
+<li><a class="reference internal" href="#configure-outgoing-email-server">Configure outgoing email server</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#google-oauth-faq">Google OAuth FAQ</a><ul>
+<li><a class="reference internal" href="#production-vs-testing-publishing-status">Production VS Testing Publishing Status</a></li>
+<li><a class="reference internal" href="#no-test-users-added">No Test Users Added</a></li>
+<li><a class="reference internal" href="#gmail-module-not-updated">Gmail Module not updated</a></li>
+<li><a class="reference internal" href="#application-type">Application Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/email_communication/google_oauth.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Connect Gmail to Odoo using Google OAuth</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="connect-gmail-to-odoo-using-google-oauth">
+<h1>Connect Gmail to Odoo using Google OAuth<a class="headerlink" href="#connect-gmail-to-odoo-using-google-oauth" title="Permalink to this headline">¶</a></h1>
+<p>Odoo is compatible with Google’s OAuth for Gmail. In order to send secure emails from a custom
+domain, all that is required is to configure a few settings on Google’s <em>Workspace</em> platform, as
+well as on the back end of the Odoo database. This configuration works by using either a personal
+email address or an address created by a custom domain.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>For more information, visit <a class="reference external" href="https://support.google.com/cloud/answer/6158849">Google’s documentation</a> on setting up OAuth.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../users/google.html"><span class="doc">Google Sign-In Authentication</span></a></p></li>
+<li><p><a class="reference internal" href="../../productivity/calendar/google.html"><span class="doc">Synchronize Google calendar with Odoo</span></a></p></li>
+</ul>
+</div>
+</section><section id="setup-in-google">
+<h2>Setup in Google<a class="headerlink" href="#setup-in-google" title="Permalink to this headline">¶</a></h2>
+</section><section id="create-a-new-project">
+<h3>Create a new project<a class="headerlink" href="#create-a-new-project" title="Permalink to this headline">¶</a></h3>
+<p>To get started, go to the <a class="reference external" href="https://console.developers.google.com">Google API Console</a>. Log in
+with your <em>Google Workspace</em> account if you have one, otherwise log in with your personal Gmail
+account (this should match the email address you want to configure in Odoo).</p>
+<p>After that, click on <span class="guilabel">Create Project</span>, located on the far right of the <span class="guilabel">OAuth
+consent screen</span>. If a project has already been created in this account, then the <span class="guilabel">New
+Project</span> option will be located on the top right under the <span class="guilabel">Select a project</span> drop-down
+menu.</p>
+<p>On the <span class="menuselection">New Project</span> screen, rename the <span class="guilabel">Project name</span> to <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span></code> and
+browse for the <span class="guilabel">Location</span>. Set the <span class="guilabel">Location</span> as the <em>Google Workspace
+organization</em>. If you are using a personal Gmail account, then leave the <span class="guilabel">Location</span> as
+<span class="guilabel">No Organization</span>.</p>
+<img alt="Project Name and Location for Google OAuth." class="align-center" src="../../../_images/new-project.png" />
+<p>Click on <span class="guilabel">Create</span> to finish this step.</p>
+</section><section id="oauth-consent-screen">
+<h3>OAuth consent screen<a class="headerlink" href="#oauth-consent-screen" title="Permalink to this headline">¶</a></h3>
+<p>If the page doesn’t redirect to the <span class="menuselection">User Type</span> options, click on <span class="guilabel">OAuth
+consent screen</span> in the left menu.</p>
+<p>Under <span class="guilabel">User Type</span> options, select the appropriate <span class="guilabel">User Type</span>, and then click on
+<span class="guilabel">Create</span> again, which will finally navigate to the <span class="menuselection">Edit app registration</span>
+page.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p><em>Personal</em> Gmail Accounts are only allowed to be <strong>External</strong> User Type, which means Google may
+require an approval, or for <em>Scopes</em> to be added on. However, using a <em>Google WorkSpace</em> account
+allows for <strong>Internal</strong> User Type to be used.</p>
+<p>Note, as well, that while the API connection is in the <em>External</em> testing mode, then no approval is
+necessary from Google. User limits in this testing mode is set to 100 users.</p>
+</div>
+</section><section id="edit-app-registration">
+<h3>Edit app registration<a class="headerlink" href="#edit-app-registration" title="Permalink to this headline">¶</a></h3>
+<p>Next we will configure the app registration of the project.</p>
+<p>On the <span class="guilabel">OAuth consent screen</span> step, under the <span class="guilabel">App information</span> section, enter
+<code class="o_code docutils literal notranslate"><span class="pre">Odoo</span></code> in the <span class="guilabel">App name</span> field. Select the organization’s email address under the
+<span class="guilabel">User support</span> email field.</p>
+<p>Next, under <span class="menuselection">App Domain ‣ Authorized domains</span>, click on <span class="guilabel">Add Domain</span> and
+enter <code class="o_code docutils literal notranslate"><span class="pre">odoo.com</span></code>.</p>
+<p>After that, under the <span class="guilabel">Developer contact information</span> section, enter the organization’s
+email address. Google uses this email address to notify the organization about any changes to your
+project.</p>
+<p>Next, click on the <span class="guilabel">Save and Continue</span> button. Then, skip the <span class="menuselection">Scopes</span> page
+by scrolling to the bottom and clicking on <span class="guilabel">Save and Continue</span>.</p>
+<p>If continuing in testing mode (External), add the email addresses being configured under the
+<span class="guilabel">Test users</span> step, by clicking on <span class="guilabel">Add Users</span>, and then the <span class="guilabel">Save and
+Continue</span> button. A summary of the app registration appears.</p>
+<p>Finally, scroll to the bottom and click on <span class="guilabel">Back to Dashboard</span> to finish setting up the
+project.</p>
+</section><section id="create-credentials">
+<h3>Create Credentials<a class="headerlink" href="#create-credentials" title="Permalink to this headline">¶</a></h3>
+<p>Now that the project is set up, credentials should be created, which includes the <em>Client ID</em> and
+<em>Client Secret</em>. First, click on <span class="guilabel">Credentials</span> in the left sidebar menu.</p>
+<p>Then, click on <span class="guilabel">Create Credentials</span> in the top menu and select <span class="guilabel">OAuth client ID</span>
+from the dropdown menu.</p>
+<ul class="simple">
+<li><p>Under <span class="guilabel">Application Type</span>, select <span class="guilabel">Web Application</span> from the dropdown menu.</p></li>
+<li><p>In the <span class="guilabel">Name</span> field, enter <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span></code>.</p></li>
+<li><p>Under the <span class="guilabel">Authorized redirect URIs</span> label, click the button <span class="guilabel">ADD URI</span>, and
+then input <code class="o_code docutils literal notranslate"><span class="pre">https://yourdbname.odoo.com/google_gmail/confirm</span></code> in the <span class="guilabel">URIs 1</span> field.
+Be sure to replace the <em>yourdbname</em> part of the URL with the actual Odoo database name.</p></li>
+<li><p>Next, click on <span class="guilabel">Create</span> to generate an OAuth <span class="guilabel">Client ID</span> and <span class="guilabel">Client
+Secret</span>. Finally, copy each generated value for later use when configuring in Odoo, and then
+navigate to the Odoo database.</p></li>
+</ul>
+<img alt="Client ID and Client Secret for Google OAuth." class="align-center" src="../../../_images/client-credentials.png" />
+</section><section id="setup-in-odoo">
+<h2>Setup in Odoo<a class="headerlink" href="#setup-in-odoo" title="Permalink to this headline">¶</a></h2>
+</section><section id="enter-google-credentials">
+<h3>Enter Google Credentials<a class="headerlink" href="#enter-google-credentials" title="Permalink to this headline">¶</a></h3>
+<p>First, open Odoo and navigate to the <span class="guilabel">Apps</span> module. Then, remove the <span class="guilabel">Apps</span>
+filter from the search bar and type in <code class="o_code docutils literal notranslate"><span class="pre">Google</span></code>. Install the module called <span class="guilabel">Google
+Gmail</span>.</p>
+<p>Next, navigate to <span class="menuselection">Settings ‣ General Settings</span>, and under the <span class="guilabel">Discuss</span>
+section, ensure that the checkbox for <span class="guilabel">Custom Email Servers</span> or <span class="guilabel">External Email
+Servers</span> is checked. This populates a new option for <span class="guilabel">Gmail Credentials</span> or <span class="guilabel">Use
+a Gmail Sever</span>. Then, copy and paste the respective values into the <span class="guilabel">Client ID</span> and
+<span class="guilabel">Client Secret</span> fields and <span class="guilabel">Save</span> the settings.</p>
+</section><section id="configure-outgoing-email-server">
+<h3>Configure outgoing email server<a class="headerlink" href="#configure-outgoing-email-server" title="Permalink to this headline">¶</a></h3>
+<p>To configure the external Gmail account, return to the top of the <span class="guilabel">Custom Email Servers</span>
+setting and then click the <span class="guilabel">Outgoing Email Servers</span> link.</p>
+<img alt="Configure Outgoing Email Servers in Odoo." class="align-center" src="../../../_images/outgoing-servers.png" />
+<p>Then, click on <span class="guilabel">New</span> or <span class="guilabel">Create</span> to create a new email server, and fill in the
+<span class="guilabel">Name</span>, <span class="guilabel">Description</span>, and the email <span class="guilabel">Username</span> (if required).</p>
+<p>Next, click on <span class="guilabel">Gmail OAuth Authentication</span> or <span class="guilabel">Gmail</span> (under the
+<span class="guilabel">Authenticate with</span> or <span class="guilabel">Connection</span> section). Finally, click on
+<span class="guilabel">Connect your Gmail Account</span>.</p>
+<p>A new window labeled <span class="guilabel">Google</span> opens to complete the authorization process. Select the
+appropriate email address that is being configured in Odoo.</p>
+<p>If the email address is a personal account, then an extra step pops up, so click
+<span class="guilabel">Continue</span> to allow the verification and connect the Gmail account to Odoo.</p>
+<p>Then, allow Odoo to access the Google account by clicking on <span class="guilabel">Continue</span> or
+<span class="guilabel">Allow</span>. After that, the page navigates back to the newly configured outgoing email
+server in Odoo. The configuration automatically loads the token in Odoo, and a tag stating
+<span class="guilabel">Gmail Token Valid</span> appears in green.</p>
+<img alt="Configure Outgoing Email Servers in Odoo." class="align-center" src="../../../_images/green-token.png" />
+<p>Finally, <span class="guilabel">Test the Connection</span>. A confirmation message should appear. The Odoo database
+can now send safe, secure emails through Google using OAuth authentication.</p>
+</section><section id="google-oauth-faq">
+<h2>Google OAuth FAQ<a class="headerlink" href="#google-oauth-faq" title="Permalink to this headline">¶</a></h2>
+</section><section id="production-vs-testing-publishing-status">
+<h3>Production VS Testing Publishing Status<a class="headerlink" href="#production-vs-testing-publishing-status" title="Permalink to this headline">¶</a></h3>
+<p>Choosing <span class="guilabel">Production</span> as the <span class="guilabel">Publishing Status</span> (instead of
+<span class="guilabel">Testing</span>) will display the following warning message:</p>
+<img alt="OAuth is Limited to 100 Sensitive Scope Logins." class="align-center" src="../../../_images/published-status.png" />
+<p>To correct this warning, navigate to the <a class="reference external" href="https://console.cloud.google.com/apis/credentials/consent">Google API Platform</a>. If the <span class="guilabel">Publishing status</span>
+is <span class="guilabel">In Production</span>, click <span class="guilabel">Back to Testing</span> to correct the issue.</p>
+</section><section id="no-test-users-added">
+<h3>No Test Users Added<a class="headerlink" href="#no-test-users-added" title="Permalink to this headline">¶</a></h3>
+<p>If no test users are added to the OAuth consent screen, then a 403 access denied error will
+populate.</p>
+<img alt="403 Access Denied Error." class="align-center" src="../../../_images/403-error.png" />
+<p>To correct this error, return to the <span class="guilabel">OAuth consent screen</span> under <span class="guilabel">APIs &amp;
+Services</span> and add test user(s) to the app. Add the email that you are configuring in Odoo.</p>
+</section><section id="gmail-module-not-updated">
+<h3>Gmail Module not updated<a class="headerlink" href="#gmail-module-not-updated" title="Permalink to this headline">¶</a></h3>
+<p>If the <em>Google Gmail</em> module in Odoo has not been updated to the latest version, then a
+<span class="guilabel">Forbidden</span> error message populates.</p>
+<img alt="Forbidden you don't have the permission to access the requested resource." class="align-center" src="../../../_images/forbidden-error.png" />
+<p>To correct this error, go to the <span class="menuselection">Apps</span> module and clear out the search terms. Then,
+search for <code class="o_code docutils literal notranslate"><span class="pre">Gmail</span></code> or <code class="o_code docutils literal notranslate"><span class="pre">Google</span></code> and upgrade the <span class="guilabel">Google Gmail</span> module. Finally, click
+on the three dots on the upper right of the module and select <span class="guilabel">Upgrade</span>.</p>
+</section><section id="application-type">
+<h3>Application Type<a class="headerlink" href="#application-type" title="Permalink to this headline">¶</a></h3>
+<p>When creating the credentials (OAuth <em>Client ID</em> and <em>Client Secret</em>), if <span class="guilabel">Desktop App</span> is
+selected for the <span class="guilabel">Application Type</span>, an <span class="guilabel">Authorization Error</span> appears.</p>
+<img alt="Error 400 Redirect URI Mismatch." class="align-center" src="../../../_images/error-400.png" />
+<p>To correct this error, delete the credentials already created and create new credentials, selecting
+<span class="guilabel">Web Application</span> for the <span class="guilabel">Application Type</span>. Then, under <span class="guilabel">Authorized
+redirect URIs</span>, click <span class="guilabel">ADD URI</span> and type:
+<code class="o_code docutils literal notranslate"><span class="pre">https://yourdbname.odoo.com/google_gmail/confirm</span></code> in the field, being sure to replace <em>yourdbname</em>
+in the URL with the Odoo database name.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Connect Gmail to Odoo using Google OAuth</a><ul>
+<li><a class="reference internal" href="#setup-in-google">Setup in Google</a><ul>
+<li><a class="reference internal" href="#create-a-new-project">Create a new project</a></li>
+<li><a class="reference internal" href="#oauth-consent-screen">OAuth consent screen</a></li>
+<li><a class="reference internal" href="#edit-app-registration">Edit app registration</a></li>
+<li><a class="reference internal" href="#create-credentials">Create Credentials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setup-in-odoo">Setup in Odoo</a><ul>
+<li><a class="reference internal" href="#enter-google-credentials">Enter Google Credentials</a></li>
+<li><a class="reference internal" href="#configure-outgoing-email-server">Configure outgoing email server</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#google-oauth-faq">Google OAuth FAQ</a><ul>
+<li><a class="reference internal" href="#production-vs-testing-publishing-status">Production VS Testing Publishing Status</a></li>
+<li><a class="reference internal" href="#no-test-users-added">No Test Users Added</a></li>
+<li><a class="reference internal" href="#gmail-module-not-updated">Gmail Module not updated</a></li>
+<li><a class="reference internal" href="#application-type">Application Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Connect Gmail to Odoo using Google OAuth</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

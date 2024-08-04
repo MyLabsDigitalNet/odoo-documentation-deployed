@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sendcloud configuration &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/shipping_receiving/setup_configuration/sendcloud_shipping.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/shipping_receiving/setup_configuration/sendcloud_shipping.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Sendcloud configuration</a><ul>
+<li><a class="reference internal" href="#setup-in-sendcloud">Setup in Sendcloud</a><ul>
+<li><a class="reference internal" href="#create-an-account-and-activate-carriers">Create an account and activate carriers</a></li>
+<li><a class="reference internal" href="#warehouse-configuration">Warehouse configuration</a></li>
+<li><a class="reference internal" href="#generate-sendcloud-credentials">Generate Sendcloud credentials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setup-in-odoo">Setup in Odoo</a><ul>
+<li><a class="reference internal" href="#install-sendcloud-shipping-module">Install Sendcloud shipping module</a></li>
+<li><a class="reference internal" href="#sendcloud-shipping-connector-configuration">Sendcloud shipping connector configuration</a></li>
+<li><a class="reference internal" href="#shipping-information">Shipping information</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generate-labels-with-sendcloud">Generate labels with Sendcloud</a></li>
+<li><a class="reference internal" href="#faq">FAQ</a><ul>
+<li><a class="reference internal" href="#shipment-is-too-heavy">Shipment is too heavy</a></li>
+<li><a class="reference internal" href="#personal-carrier-contract">Personal carrier contract</a></li>
+<li><a class="reference internal" href="#measuring-volumetric-weight">Measuring volumetric weight</a></li>
+<li><a class="reference internal" href="#unable-to-calculate-shipping-rate">Unable to calculate shipping rate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/shipping_receiving/setup_configuration/sendcloud_shipping.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sendcloud configuration</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="sendcloud-configuration">
+<h1>Sendcloud configuration<a class="headerlink" href="#sendcloud-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Sendcloud is a shipping service aggregator that facilitates the integration of European shipping
+carriers with Odoo. Once integrated, users can select shipping carriers on inventory operations in
+their Odoo database.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://support.sendcloud.com/hc/en-us/articles/360059470491-Odoo-integration">Sendcloud integration documentation</a></p>
+</div>
+</section><section id="setup-in-sendcloud">
+<h2>Setup in Sendcloud<a class="headerlink" href="#setup-in-sendcloud" title="Permalink to this headline">¶</a></h2>
+</section><section id="create-an-account-and-activate-carriers">
+<h3>Create an account and activate carriers<a class="headerlink" href="#create-an-account-and-activate-carriers" title="Permalink to this headline">¶</a></h3>
+<p>To get started, go to <a class="reference external" href="https://www.sendcloud.com">Sendcloud’s platform</a> to configure the account
+and generate the connector credentials. Log in with the Sendcloud account, or create a new one if
+needed.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>For new account creation, Sendcloud will ask for a <abbr title="Value-Added Tax Identification">VAT</abbr>
+number or <abbr title="Economic Operators' Registration and Identification">EORI</abbr> number. After
+completing the account setup, activate (or deactivate) the shipping carriers that will be used
+in the Odoo database.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Odoo integration of Sendcloud works on free Sendcloud plans <em>only</em> if a bank account is linked,
+since Sendcloud won’t ship for free. To use shipping rules, or individual custom carrier
+contacts, a paid plan of Sendcloud is <strong>required</strong>.</p>
+</div>
+</section><section id="warehouse-configuration">
+<span id="inventory-shipping-receiving-sendcloud-warehouse-config"></span><h3>Warehouse configuration<a class="headerlink" href="#warehouse-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Once logged into the Sendcloud account, navigate to <span class="menuselection">Settings ‣ Shipping ‣
+Addresses</span>, and fill in the field for <span class="guilabel">Warehouse address</span>.</p>
+<img alt="Adding addresses in the Sendcloud settings." class="align-center" src="../../../../../_images/settings-shipping.png" />
+<p>To allow Sendcloud to process returns as well, a <span class="guilabel">Return Address</span> is required. Under the
+<span class="guilabel">Miscellaneous section</span>, there is a field called <span class="guilabel">Address Name (optional)</span>. The
+Odoo warehouse name should be entered here, and the characters should be exactly the same.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><div class="line-block">
+<div class="line"><strong>SendClould configuration</strong></div>
+<div class="line"><span class="guilabel">Miscellaneous</span></div>
+<div class="line"><span class="guilabel">Address Name (optional)</span>: <code class="o_code docutils literal notranslate"><span class="pre">Warehouse</span> <span class="pre">#1</span></code></div>
+<div class="line"><span class="guilabel">Brand</span>: <code class="o_code docutils literal notranslate"><span class="pre">Default</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Odoo warehouse configuration</strong></div>
+<div class="line"><span class="guilabel">Warehouse</span>: <code class="o_code docutils literal notranslate"><span class="pre">Warehouse</span> <span class="pre">#1</span></code></div>
+<div class="line"><span class="guilabel">Short Name</span>: <code class="o_code docutils literal notranslate"><span class="pre">WH</span></code></div>
+<div class="line"><span class="guilabel">Company</span>: <code class="o_code docutils literal notranslate"><span class="pre">My</span> <span class="pre">company</span> <span class="pre">(San</span> <span class="pre">Francisco)</span></code></div>
+<div class="line"><span class="guilabel">Address</span>: <code class="o_code docutils literal notranslate"><span class="pre">My</span> <span class="pre">Company</span> <span class="pre">(San</span> <span class="pre">Francisco)</span></code></div>
+</div>
+<p>Notice how the inputs for the <span class="guilabel">Warehouse</span> field, for both the Odoo configuration and
+the Sendcloud configuration, are the exact same.</p>
+</div>
+</section><section id="generate-sendcloud-credentials">
+<h3>Generate Sendcloud credentials<a class="headerlink" href="#generate-sendcloud-credentials" title="Permalink to this headline">¶</a></h3>
+<p>In the Sendcloud account, navigate to <span class="menuselection">Settings ‣ Integrations</span> in the menu on the
+right. Next, search for <span class="guilabel">Odoo Native</span>. Then, click on <span class="guilabel">Connect</span>.</p>
+<p>After clicking on <span class="guilabel">Connect</span>, the page redirects to the <span class="guilabel">Sendcloud API</span> settings
+page, where the <span class="guilabel">Public and Secret Keys</span> are produced. The next step is to name the
+<span class="guilabel">Integration</span>. The naming convention is as follows: <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span> <span class="pre">CompanyName</span></code>, with the user’s
+company name replacing <code class="o_code docutils literal notranslate"><span class="pre">CompanyName</span></code> (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span> <span class="pre">StealthyWood</span></code>).</p>
+<p>Then, check the box next to <span class="guilabel">Service Points</span> and select the shipping services for this
+integration. After saving, the <span class="guilabel">Public and Secret Keys</span> are generated.</p>
+<img alt="Configuring the Sendcloud integration and receiving the credentials." class="align-center" src="../../../../../_images/public-secret-keys.png" />
+</section><section id="setup-in-odoo">
+<h2>Setup in Odoo<a class="headerlink" href="#setup-in-odoo" title="Permalink to this headline">¶</a></h2>
+<p>To ensure seamless Sendcloud integration with Odoo, <a class="reference internal" href="#inventory-shipping-receiving-sendcloud-module"><span class="std std-ref">install</span></a> and <a class="reference internal" href="#inventory-shipping-receiving-link-sendcloud-module"><span class="std std-ref">link</span></a> the Sendcloud shipping connector to the
+Sendcloud account. Then, <a class="reference internal" href="#inventory-shipping-receiving-sendcloud-shipping-info"><span class="std std-ref">configure Odoo fields</span></a>, so Sendcloud can accurately pull shipping
+data to generate labels.</p>
+</section><section id="install-sendcloud-shipping-module">
+<span id="inventory-shipping-receiving-sendcloud-module"></span><h3>Install Sendcloud shipping module<a class="headerlink" href="#install-sendcloud-shipping-module" title="Permalink to this headline">¶</a></h3>
+<p>After the Sendcloud account is set up and configured, it’s time to configure the Odoo database. To
+get started, go to Odoo’s <span class="guilabel">Apps</span> module, search for the <code class="o_code docutils literal notranslate"><span class="pre">Sendcloud</span> <span class="pre">Shipping</span></code>
+integration, and install it.</p>
+<img alt="Sendcloud Shipping module in the Odoo Apps module." class="align-center" src="../../../../../_images/sendcloud-mod.png" />
+</section><section id="sendcloud-shipping-connector-configuration">
+<span id="inventory-shipping-receiving-link-sendcloud-module"></span><h3>Sendcloud shipping connector configuration<a class="headerlink" href="#sendcloud-shipping-connector-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Once installed, activate the <span class="guilabel">Sendcloud Shipping</span> module in <span class="menuselection">Inventory ‣
+Configuration ‣ Settings</span>. The <span class="guilabel">Sendcloud Connector</span> setting is found under the
+<span class="guilabel">Shipping Connectors</span> section.</p>
+<p>After activating the <span class="guilabel">Sendcloud Connector</span>, click on the <span class="guilabel">Sendcloud Shipping
+Methods</span> link below the listed connector. Once on the <span class="guilabel">Shipping Methods</span> page, click
+<span class="guilabel">Create</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p><span class="guilabel">Shipping Methods</span> can also be accessed by going to <span class="menuselection">Inventory ‣
+Configuration ‣ Delivery ‣ Shipping Methods</span>.</p>
+</div>
+<p>Fill out the following fields in the <span class="guilabel">New Shipping Method</span> form:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Shipping Method</span>: type <code class="o_code docutils literal notranslate"><span class="pre">Sendcloud</span> <span class="pre">DPD</span></code>.</p></li>
+<li><p><span class="guilabel">Provider</span>: select <span class="guilabel">Sendcloud</span> from the drop-down menu.</p></li>
+<li><p><span class="guilabel">Delivery Product</span>: set the product that was configured for this shipping method or
+create a new product.</p></li>
+<li><p>In the <span class="guilabel">SendCloud Configuration</span> tab, enter the <span class="guilabel">Sendcloud Public Key</span>.</p></li>
+<li><p>In the <span class="guilabel">SendCloud Configuration</span> tab, enter the <span class="guilabel">Sendcloud Secret Key</span>.</p></li>
+<li><p>Manually <span class="guilabel">Save</span> the form by clicking the cloud icon next to the <span class="guilabel">Shipping
+Methods / New</span> breadcrumbs.</p></li>
+</ul>
+<p>After configuring and saving the form, follow these steps to load the shipping products:</p>
+<ul class="simple">
+<li><p>In the <span class="guilabel">SendCloud Configuration</span> tab of the <span class="guilabel">New Shipping Method</span> form, click
+on the <span class="guilabel">Load your SendCloud shipping products</span> link.</p></li>
+<li><p>Select the shipping products the company would like to use for deliveries and returns.</p></li>
+<li><p>Click <span class="guilabel">Select</span>.</p></li>
+</ul>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Sample Sendcloud shipping products configured in Odoo:</p>
+<div class="line-block">
+<div class="line"><span class="guilabel">DELIVERY</span></div>
+<div class="line"><span class="guilabel">Shipping Product</span>: <code class="o_code docutils literal notranslate"><span class="pre">DPD</span> <span class="pre">Home</span> <span class="pre">0-31.5kg</span></code></div>
+<div class="line"><span class="guilabel">Carrier</span>: <code class="o_code docutils literal notranslate"><span class="pre">DPD</span></code></div>
+<div class="line"><span class="guilabel">Minimum Weight</span>: <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code></div>
+<div class="line"><span class="guilabel">Maximum Weight</span>: <code class="o_code docutils literal notranslate"><span class="pre">31.50</span></code></div>
+</div>
+<p><span class="guilabel">Countries</span>: <code class="o_code docutils literal notranslate"><span class="pre">Austria</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Belgium</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Bosnia</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Herzegovina</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Bulgaria</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Croatia</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Czech</span></code>
+<code class="o_code docutils literal notranslate"><span class="pre">Republic</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Denmark</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Estonia</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Finland</span></code> <code class="o_code docutils literal notranslate"><span class="pre">France</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Germany</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Greece</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Hungary</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Iceland</span></code>
+<code class="o_code docutils literal notranslate"><span class="pre">Ireland</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Italy</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Latvia</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Liechtenstein</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Lithuania</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Luxembourg</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Monaco</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Netherlands</span></code>
+<code class="o_code docutils literal notranslate"><span class="pre">Norway</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Poland</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Portugal</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Romania</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Serbia</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Slovakia</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Slovenia</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Spain</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Sweden</span></code>
+<code class="o_code docutils literal notranslate"><span class="pre">Switzerland</span></code></p>
+<div class="line-block">
+<div class="line"><span class="guilabel">RETURN</span></div>
+<div class="line"><span class="guilabel">Return Shipping Product</span>: <code class="o_code docutils literal notranslate"><span class="pre">DPD</span> <span class="pre">Return</span> <span class="pre">0-20kg</span></code></div>
+<div class="line"><span class="guilabel">Return Carrier</span>: <code class="o_code docutils literal notranslate"><span class="pre">DPD</span></code></div>
+<div class="line"><span class="guilabel">Return Minimum Weight</span>: <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code></div>
+<div class="line"><span class="guilabel">Return Maximum Weight</span>: <code class="o_code docutils literal notranslate"><span class="pre">20.00</span></code></div>
+<div class="line"><span class="guilabel">Return Countries</span>: <code class="o_code docutils literal notranslate"><span class="pre">Belgium</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Netherlands</span></code></div>
+</div>
+</div>
+<img alt="Example of shipping products configured in Odoo." class="align-center" src="../../../../../_images/sendcloud-example.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Sendcloud does not provide test keys when a company tests the sending of a package in Odoo. This
+means if a package is created, the configured Sendcloud account will be charged, unless the
+associated package is canceled within 24 hours of creation.</p>
+<p>Odoo has a built-in layer of protection against unwanted charges when using test environments.
+Within a test environment, if a shipping method is used to create labels, then those labels are
+immediately canceled after the creation — this occurs automatically. The test and production
+environment settings can be toggled back and forth from their respective smart buttons.</p>
+</div>
+</section><section id="shipping-information">
+<span id="inventory-shipping-receiving-sendcloud-shipping-info"></span><h3>Shipping information<a class="headerlink" href="#shipping-information" title="Permalink to this headline">¶</a></h3>
+<p>To use Sendcloud to generate shipping labels, the following information <strong>must</strong> be filled out
+accurately and completely in Odoo:</p>
+<ol class="arabic">
+<li><p><strong>Customer information</strong>: when creating a quotation, ensure the selected <span class="guilabel">Customer</span> has
+a valid phone number, email address, and shipping address.</p>
+<p>To verify, select the <span class="guilabel">Customer</span> field to open their contact page. Here, add their
+shipping address in the <span class="guilabel">Contact</span> field, along with their <span class="guilabel">Mobile</span> number and
+<span class="guilabel">Email</span> address.</p>
+</li>
+<li><p><strong>Product weight</strong>: ensure all products in an order have a specified <span class="guilabel">Weight</span> in the
+<span class="guilabel">Inventory</span> tab of their product form. Refer to the <a class="reference internal" href="third_party_shipper.html#inventory-shipping-receiving-configure-weight"><span class="std std-ref">Product weight section</span></a> of this article for detailed instructions.</p></li>
+<li><p><strong>Warehouse address</strong>: ensure the warehouse name and address in Odoo match the <a class="reference internal" href="#inventory-shipping-receiving-sendcloud-warehouse-config"><span class="std std-ref">previously
+defined warehouse</span></a> in the Sendcloud
+setup. For details on warehouse configuration in Odoo, refer to the <a class="reference internal" href="third_party_shipper.html#inventory-shipping-receiving-configure-source-address"><span class="std std-ref">warehouse configuration
+section</span></a> of the third-party shipping
+documentation.</p></li>
+</ol>
+</section><section id="generate-labels-with-sendcloud">
+<h2>Generate labels with Sendcloud<a class="headerlink" href="#generate-labels-with-sendcloud" title="Permalink to this headline">¶</a></h2>
+<p>When creating a quotation in Odoo, add shipping and a <span class="guilabel">Sendcloud shipping product</span>. Then,
+<span class="guilabel">Validate</span> the delivery. Shipping label documents are automatically generated in the
+chatter, which include the following:</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">Shipping label(s)</span> depending on the number of packages.</p></li>
+<li><p><span class="guilabel">Return label(s)</span> if the Sendcloud connector is configured for returns.</p></li>
+<li><p><span class="guilabel">Customs document(s)</span> should the destination country require them.</p></li>
+</ol>
+<p>Additionally, the tracking number is now available.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>When return labels are created, Sendcloud will automatically charge the configured Sendcloud
+account.</p>
+</div>
+</section><section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+</section><section id="shipment-is-too-heavy">
+<h3>Shipment is too heavy<a class="headerlink" href="#shipment-is-too-heavy" title="Permalink to this headline">¶</a></h3>
+<p>If the shipment is too heavy for the Sendcloud service that is configured, then the weight is split
+to simulate multiple packages. Products will need to be put in different <span class="guilabel">Packages</span> to
+<span class="guilabel">Validate</span> the transfer and generate labels.</p>
+<p><span class="guilabel">Rules</span> can also be set up in Sendcloud to use other shipping methods when the weight is
+too heavy. However, note that these rules will not apply to the shipping price calculation on the
+calculation on the sales order.</p>
+</section><section id="personal-carrier-contract">
+<h3>Personal carrier contract<a class="headerlink" href="#personal-carrier-contract" title="Permalink to this headline">¶</a></h3>
+<p>Use custom prices from a direct carrier contract, via CSV upload, by first logging into Sendcloud,
+navigating to <span class="menuselection">Settings ‣ Carriers ‣ My contracts</span>, and then selecting the
+intended contract.</p>
+<img alt="Navigate to the contracts section in Sendcloud." class="align-center" src="../../../../../_images/contracts.png" />
+<p>Under the <span class="guilabel">Contract prices</span> section, click <span class="guilabel">Download CSV</span> and fill out the
+contract prices in the <span class="guilabel">price</span> column of the CSV file template.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Ensure the CSV file includes the correct prices to avoid any inaccuracies.</p>
+</div>
+<img alt="Show sample contract CSV from Sendcloud, highlighting the price column." class="align-center" src="../../../../../_images/price-csv.png" />
+<p><span class="guilabel">Upload</span> the completed CSV file to Sendcloud, then click <span class="guilabel">Save these prices</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://support.sendcloud.com/hc/en-us/articles/5163547066004">Sendcloud: How to upload contract prices with carriers</a></p>
+</div>
+</section><section id="measuring-volumetric-weight">
+<h3>Measuring volumetric weight<a class="headerlink" href="#measuring-volumetric-weight" title="Permalink to this headline">¶</a></h3>
+<p>Many carriers have several measures for weight. There is the actual weight of the products in the
+parcel, and there is the <em>volumetric weight</em> (<span class="dfn"><span>Volumetric weight is the volume that a package
+occupies when in transit. In other words it is the physical size of a package</span></span>).</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Check to see if selected carrier(s) already have defined formulas to compute the volumetric
+weight.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://support.sendcloud.com/hc/en-us/articles/360059644051-How-to-calculate-automate-parcel-volumetric-weight">Sendcloud: How to calculate &amp; automate parcel volumetric weight</a></p>
+</div>
+</section><section id="unable-to-calculate-shipping-rate">
+<h3>Unable to calculate shipping rate<a class="headerlink" href="#unable-to-calculate-shipping-rate" title="Permalink to this headline">¶</a></h3>
+<p>First, verify that the product being shipped has a weight that is supported by the selected shipping
+method. If this is set, then verify that the destination country (from the customer address) is
+supported by the carrier. The country of origin (warehouse address) should also be supported by the
+carrier.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Sendcloud configuration</a><ul>
+<li><a class="reference internal" href="#setup-in-sendcloud">Setup in Sendcloud</a><ul>
+<li><a class="reference internal" href="#create-an-account-and-activate-carriers">Create an account and activate carriers</a></li>
+<li><a class="reference internal" href="#warehouse-configuration">Warehouse configuration</a></li>
+<li><a class="reference internal" href="#generate-sendcloud-credentials">Generate Sendcloud credentials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setup-in-odoo">Setup in Odoo</a><ul>
+<li><a class="reference internal" href="#install-sendcloud-shipping-module">Install Sendcloud shipping module</a></li>
+<li><a class="reference internal" href="#sendcloud-shipping-connector-configuration">Sendcloud shipping connector configuration</a></li>
+<li><a class="reference internal" href="#shipping-information">Shipping information</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generate-labels-with-sendcloud">Generate labels with Sendcloud</a></li>
+<li><a class="reference internal" href="#faq">FAQ</a><ul>
+<li><a class="reference internal" href="#shipment-is-too-heavy">Shipment is too heavy</a></li>
+<li><a class="reference internal" href="#personal-carrier-contract">Personal carrier contract</a></li>
+<li><a class="reference internal" href="#measuring-volumetric-weight">Measuring volumetric weight</a></li>
+<li><a class="reference internal" href="#unable-to-calculate-shipping-rate">Unable to calculate shipping rate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sendcloud configuration</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

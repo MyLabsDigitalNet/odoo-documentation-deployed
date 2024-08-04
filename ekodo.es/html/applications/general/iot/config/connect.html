@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connect an IoT box to Odoo &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/iot/config/connect.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/iot/config/connect.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Connect an IoT box to Odoo</a><ul>
+<li><a class="reference internal" href="#ethernet-connection">Ethernet connection</a></li>
+<li><a class="reference internal" href="#wifi-connection">WiFi connection</a></li>
+<li><a class="reference internal" href="#manually-connecting-the-iot-box-using-the-token">Manually connecting the IoT box using the token</a></li>
+<li><a class="reference internal" href="#iot-box-schema">IoT box schema</a><ul>
+<li><a class="reference internal" href="#raspberry-pi-4">Raspberry Pi 4</a></li>
+<li><a class="reference internal" href="#raspberry-pi-3">Raspberry Pi 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/iot/config/connect.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Connect an IoT box to Odoo</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="connect-an-iot-box-to-odoo">
+<h1>Connect an IoT box to Odoo<a class="headerlink" href="#connect-an-iot-box-to-odoo" title="Permalink to this headline">¶</a></h1>
+<p>An Internet of Things (IoT) box is a micro-computer device that allows for the connection of input
+and output devices to an Odoo database. An <abbr title="Internet of Things">IoT</abbr> box subscription is
+required in order to use the <abbr title="Internet of Things">IoT</abbr> box with a secured connection. A
+computer is also required to set up the <abbr title="Internet of Things">IoT</abbr> box.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://www.odoo.com/app/iot-faq">IoT Box FAQ</a></p>
+</div>
+<p>Begin the <abbr title="Internet of Things">IoT</abbr> configuration process by <a class="reference internal" href="../../apps_modules.html#general-install"><span class="std std-ref">installing the IoT app</span></a> on the Odoo database through the <span class="menuselection">Apps</span> application.</p>
+<img alt="The Internet of Things (IoT) app on the Odoo database." class="align-center" src="../../../../_images/install-iot-app.png" />
+<p>Next, after the <em>IoT app</em> is installed, navigate to <span class="menuselection">IoT app ‣ IoT Boxes</span>, and then
+click on the <span class="guilabel">Connect</span> button located in the upper-left corner of the <span class="menuselection">IoT
+Boxes</span> dashboard.</p>
+<img alt="Connecting an IoT box to the Odoo database." class="align-center" src="../../../../_images/connect-iot.png" />
+<p>There are two recommended ways to connect the <abbr title="Internet of Things">IoT</abbr> box to the database
+once the <em>IoT app</em> is installed. Follow the steps in either of the next two sections to connect the
+<abbr title="Internet of Things">IoT</abbr> box via <a class="reference internal" href="#iot-connect-ethernet"><span class="std std-ref">wired ethernet connection</span></a> or
+via <a class="reference internal" href="#iot-connect-wifi"><span class="std std-ref">WiFi</span></a>.</p>
+<img alt="Connection steps for a wired connection or WiFi connection." class="align-center" src="../../../../_images/connect-iot-box.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The disk image that the <abbr title="Internet of Things">IoT</abbr> box SD card is formatted with is unique
+to the version of the Odoo database that the <abbr title="Internet of Things">IoT</abbr> box is running on.
+Ensure that the <abbr title="Internet of Things">IoT</abbr> box is <a class="reference internal" href="updating_iot.html#iot-config-flash"><span class="std std-ref">flashed</span></a> with
+the most up-to-date disk image.</p>
+</div>
+</section><section id="ethernet-connection">
+<span id="iot-connect-ethernet"></span><h2>Ethernet connection<a class="headerlink" href="#ethernet-connection" title="Permalink to this headline">¶</a></h2>
+<p>The following is the process to connect the <abbr title="Internet of Things">IoT</abbr> box via an ethernet
+cable to the Odoo database (by way of the ethernet port; RJ-45).</p>
+<p>First, connect all wired devices to the <abbr title="Internet of Things">IoT</abbr> box (ethernet, <abbr title="Universal Serial Bus">USB</abbr> devices, etc.). At minimum, an HDMI screen should be connected. Then, plug
+the <abbr title="Internet of Things">IoT</abbr> box into a power source.</p>
+<p>Immediately after the unit powers on and boots up, read the <em>pairing code</em> from the screen or from
+the printout of a receipt printer connected to the <abbr title="Internet of Things">IoT</abbr> box.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>By default, the <abbr title="Internet of Things">IoT</abbr> box will display the <em>pairing code</em> for a
+maximum of 5 minutes after the unit boots up. After 5 minutes, the <em>pairing code</em> will disappear
+for security purposes and the <abbr title="Internet of Things">IoT</abbr> box will need to be rebooted
+manually by unplugging the unit from the power source for ten seconds and re-plugging it back in.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If no screen is attached to the <abbr title="Internet of Things">IoT</abbr> box, then the <em>pairing code</em> can
+be accessed from the <abbr title="Internet of Things">IoT</abbr> box homepage by clicking on the
+<span class="guilabel">POS Display</span> button. For instructions on how to access the <abbr title="Internet of Things">IoT</abbr> box homepage visit <a class="reference internal" href="#iot-connect-token"><span class="std std-ref">Manually connecting the IoT box using the token</span></a>.</p>
+</div>
+<p>On the computer, navigate to <span class="menuselection">IoT app ‣ IoT Boxes</span>, and then click on the
+<span class="guilabel">Connect</span> button located in the upper-left corner of the the <span class="menuselection">IoT Boxes</span>
+dashboard. Input the <em>pairing code</em> in the <span class="guilabel">Pairing Code</span> field and click on the
+<span class="guilabel">Pair</span> button. The database will now link to the <abbr title="Internet of Things">IoT</abbr> box and
+it will appear on the <span class="menuselection">IoT Boxes</span> page.</p>
+</section><section id="wifi-connection">
+<span id="iot-connect-wifi"></span><h2>WiFi connection<a class="headerlink" href="#wifi-connection" title="Permalink to this headline">¶</a></h2>
+<p>The following is the process to connect the <abbr title="Internet of Things">IoT</abbr> box via a WiFi
+connection to the Odoo database.</p>
+<p>First, ensure there is no ethernet cable plugged into the <abbr title="Internet of Things">IoT</abbr> box.
+Then, connect all wired devices to the <abbr title="Internet of Things">IoT</abbr> box (<abbr title="Universal Serial Bus">USB</abbr> devices, etc.).</p>
+<p>After connecting the devices, plug the <abbr title="Internet of Things">IoT</abbr> box into to a power source.
+On the computer, navigate to <span class="menuselection">IoT app ‣ IoT Boxes</span>, and then click on the
+<span class="guilabel">Connect</span> button located in the upper-left corner of the the <span class="menuselection">IoT Boxes</span>
+dashboard. Then copy the <span class="guilabel">Token</span> from the <span class="guilabel">WiFi connection</span> section as this will
+later be used to link the Odoo database to the <abbr title="Internet of Things">IoT</abbr> box.</p>
+<p>Back on the computer, navigate to the available WiFi networks and connect to the <abbr title="Internet of Things">IoT</abbr> box WiFi network. The WiFi network dispersed by the <abbr title="Internet of Things">IoT</abbr> box  will start with <code class="o_code docutils literal notranslate"><span class="pre">IoTBox-xxxxxxxxxx</span></code>.</p>
+<img alt="WiFi networks available on the computer." class="align-center" src="../../../../_images/connect-iot-wifi.png" />
+<p>Upon connecting to the <abbr title="Internet of Things">IoT</abbr> box WiFi, a browser will automatically
+redirect to the <span class="menuselection">Configure Iot Box</span> wizard. Name the <abbr title="Internet of Things">IoT</abbr>
+box, then paste the previously copied <em>token</em> into the <span class="guilabel">Server Token</span> field, and then
+click on <span class="guilabel">Next</span>.</p>
+<img alt="Enter the server token into the IoT box." class="align-center" src="../../../../_images/server-token.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If the <abbr title="Internet of Things">IoT</abbr> box WiFi connection wizard doesn’t start, then see the
+documentation on <a class="reference internal" href="#iot-connect-token"><span class="std std-ref">connecting with a token</span></a>.</p>
+</div>
+<p>Now, choose the WiFi network that the <abbr title="Internet of Things">IoT</abbr> box will connect with (enter
+the password if there is one) and click on <span class="guilabel">Connect</span>. Wait a few seconds and the browser
+will redirect to the <abbr title="Internet of Things">IoT</abbr> box homepage. The computer may need to be
+manually re-connected back to the original WiFi connection, if this does not happen automatically.</p>
+<img alt="Configuring the WiFi for the IoT box." class="align-center" src="../../../../_images/configure-wifi-network-iot.png" />
+<p>After completing each step, the <abbr title="Internet of Things">IoT</abbr> box should appear when navigating
+to <span class="menuselection">IoT app ‣ IoT Boxes</span> on the Odoo database.</p>
+<img alt="The IoT box has been successfully configured on the Odoo database." class="align-center" src="../../../../_images/iot-box-connected.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <abbr title="Internet of Things">IoT</abbr> box may need to be manually rebooted upon successfully
+connecting via WiFi for the box to appear in the <em>IoT app</em> on the Odoo database. To do so, simply
+unplug the device and plug it back into the power source after ten seconds.</p>
+</div>
+</section><section id="manually-connecting-the-iot-box-using-the-token">
+<span id="iot-connect-token"></span><h2>Manually connecting the IoT box using the token<a class="headerlink" href="#manually-connecting-the-iot-box-using-the-token" title="Permalink to this headline">¶</a></h2>
+<p>A manual connection of the <abbr title="Internet of Things">IoT</abbr> box to the <abbr title="Internet of Things">IoT</abbr> app can be made using the <em>token</em>, from a computer. The <em>token</em> can be found by navigating
+to <span class="menuselection">IoT app ‣ IoT Boxes</span> and clicking on <span class="guilabel">Connect</span>.</p>
+<p>Under the <span class="guilabel">WiFi Connection</span> section of the <span class="guilabel">Connect an IoT Box</span> page that
+appears, click <span class="guilabel">Copy</span> to the right of the <span class="guilabel">Token</span>. This token will be entered
+into the <abbr title="Internet of Things">IoT</abbr> box homepage.</p>
+<p>Access the <abbr title="Internet of Things">IoT</abbr> box homepage by entering the <abbr title="Internet Protocol">IP</abbr> address of the <abbr title="Internet of Things">IoT</abbr> box into a browser window from a computer
+on the same network as the <abbr title="Internet of Things">IoT</abbr> box (preferably by ethernet connection).</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <abbr title="Internet Protocol">IP</abbr> address can be accessed by the router admin console that the
+<abbr title="Internet of Things">IoT</abbr> box is connected to, or by connecting a receipt printer to the
+<abbr title="Internet of Things">IoT</abbr> box. A receipt will print out with the <abbr title="Internet of Things">IoT</abbr> box’s <abbr title="Internet Protocol">IP</abbr> address on it.</p>
+</div>
+<p>On the <abbr title="Internet of Things">IoT</abbr> box homepage, enter the <em>token</em> under the <span class="guilabel">Server</span>
+section by clicking on <span class="guilabel">Configure</span>. Then, paste the <em>token</em> into the <span class="guilabel">Server
+Token</span> field and click <span class="guilabel">Connect</span>. The <abbr title="Internet of Things">IoT</abbr> box will then link
+to the Odoo database.</p>
+</section><section id="iot-box-schema">
+<span id="iot-connect-schema"></span><h2>IoT box schema<a class="headerlink" href="#iot-box-schema" title="Permalink to this headline">¶</a></h2>
+</section><section id="raspberry-pi-4">
+<h3>Raspberry Pi 4<a class="headerlink" href="#raspberry-pi-4" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="id1">
+<img alt="../../../../_images/iot-box-schema.png" src="../../../../_images/iot-box-schema.png" />
+<p class="caption"><span class="caption-text">The Odoo IoT box (Raspberry Pi 4) schema with labels.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</section><section id="raspberry-pi-3">
+<h3>Raspberry Pi 3<a class="headerlink" href="#raspberry-pi-3" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="id2">
+<img alt="../../../../_images/iox-box-schema-3.png" src="../../../../_images/iox-box-schema-3.png" />
+<p class="caption"><span class="caption-text">The Odoo IoT box (Raspberry Pi 3) schema with labels.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Connect an IoT box to Odoo</a><ul>
+<li><a class="reference internal" href="#ethernet-connection">Ethernet connection</a></li>
+<li><a class="reference internal" href="#wifi-connection">WiFi connection</a></li>
+<li><a class="reference internal" href="#manually-connecting-the-iot-box-using-the-token">Manually connecting the IoT box using the token</a></li>
+<li><a class="reference internal" href="#iot-box-schema">IoT box schema</a><ul>
+<li><a class="reference internal" href="#raspberry-pi-4">Raspberry Pi 4</a></li>
+<li><a class="reference internal" href="#raspberry-pi-3">Raspberry Pi 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Connect an IoT box to Odoo</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

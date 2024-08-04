@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invoicing processes &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/customer_invoices/overview.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/customer_invoices/overview.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Invoicing processes</a><ul>
+<li><a class="reference internal" href="#sales">Sales</a><ul>
+<li><a class="reference internal" href="#sales-order-invoice">Sales Order ‣ Invoice</a></li>
+<li><a class="reference internal" href="#sales-order-delivery-order-invoice">Sales Order ‣ Delivery Order ‣ Invoice</a></li>
+<li><a class="reference internal" href="#ecommerce-order-invoice">eCommerce Order ‣ Invoice</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contracts">Contracts</a><ul>
+<li><a class="reference internal" href="#regular-contracts-invoices">Regular Contracts ‣ Invoices</a></li>
+<li><a class="reference internal" href="#recurring-contracts-invoices">Recurring Contracts ‣ Invoices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#others">Others</a><ul>
+<li><a class="reference internal" href="#creating-an-invoice-manually">Creating an invoice manually</a></li>
+<li><a class="reference internal" href="#specific-modules">Specific modules</a></li>
+<li><a class="reference internal" href="#resequencing-of-the-invoices">Resequencing of the invoices</a></li>
+<li><a class="reference internal" href="#invoice-digitization-with-optical-character-recognition-ocr">Invoice digitization with optical character recognition (OCR)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/customer_invoices/overview.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Invoicing processes</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="invoicing-processes">
+<h1>Invoicing processes<a class="headerlink" href="#invoicing-processes" title="Permalink to this headline">¶</a></h1>
+<p>Depending on your business and the application you use, there are
+different ways to automate the customer invoice creation in Odoo.
+Usually, draft invoices are created by the system (with information
+coming from other documents like sales order or contracts) and
+accountant just have to validate draft invoices and send the invoices in
+batch (by regular mail or email).</p>
+<p>Depending on your business, you may opt for one of the following way to
+create draft invoices:</p>
+</section><section id="sales">
+<h2>Sales<a class="headerlink" href="#sales" title="Permalink to this headline">¶</a></h2>
+</section><section id="sales-order-invoice">
+<h3>Sales Order ‣ Invoice<a class="headerlink" href="#sales-order-invoice" title="Permalink to this headline">¶</a></h3>
+<p>In most companies, salespeople create quotations that become sales order
+once they are validated. Then, draft invoices are created based on the
+sales order. You have different options like:</p>
+<ul class="simple">
+<li><p>Invoice manually: use a button on the sale order to trigger the draft
+invoice</p></li>
+<li><p>Invoice before delivery: invoice the full order before triggering the
+delivery order</p></li>
+<li><p>Invoice based on delivery order: see next section</p></li>
+</ul>
+<p>Invoice before delivery is usually used by the eCommerce application
+when the customer pays at the order and we deliver afterwards.
+(pre-paid)</p>
+<p>For most other use cases, it’s recommended to invoice manually. It
+allows the salesperson to trigger the invoice on demand with options:
+invoice the whole order, invoice a percentage (advance), invoice some
+lines, invoice a fixed advance.</p>
+<p>This process is good for both services and physical products.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../sales/sales/invoicing/proforma.html"><span class="doc">Pro-forma invoices</span></a></p></li>
+</ul>
+</div>
+</section><section id="sales-order-delivery-order-invoice">
+<h3>Sales Order ‣ Delivery Order ‣ Invoice<a class="headerlink" href="#sales-order-delivery-order-invoice" title="Permalink to this headline">¶</a></h3>
+<p>Retailers and eCommerce usually invoice based on delivery orders,
+instead of sales order. This approach is suitable for businesses where
+the quantities you deliver may differs from the ordered quantities:
+foods (invoice based on actual Kg).</p>
+<p>This way, if you deliver a partial order, you only invoice for what you
+really delivered. If you do back orders (deliver partially and the rest
+later), the customer will receive two invoices, one for each delivery
+order.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../sales/sales/invoicing/invoicing_policy.html"><span class="doc">Invoice based on delivered or ordered quantities</span></a></p></li>
+</ul>
+</div>
+</section><section id="ecommerce-order-invoice">
+<h3>eCommerce Order ‣ Invoice<a class="headerlink" href="#ecommerce-order-invoice" title="Permalink to this headline">¶</a></h3>
+<p>An eCommerce order will also trigger the creation of the order when it
+is fully paid. If you allow paying orders by check or wire transfer,
+Odoo only creates an order and the invoice will be triggered once the
+payment is received.</p>
+</section><section id="contracts">
+<h2>Contracts<a class="headerlink" href="#contracts" title="Permalink to this headline">¶</a></h2>
+</section><section id="regular-contracts-invoices">
+<h3>Regular Contracts ‣ Invoices<a class="headerlink" href="#regular-contracts-invoices" title="Permalink to this headline">¶</a></h3>
+<p>If you use contracts, you can trigger invoice based on time and material
+spent, expenses or fixed lines of services/products. Every month, the
+salesperson will trigger invoice based on activities on the contract.</p>
+<p>Activities can be:</p>
+<ul class="simple">
+<li><p>fixed products/services, coming from a sale order linked to this contract</p></li>
+<li><p>materials purchased (that you will re-invoice)</p></li>
+<li><p>time and material based on timesheets or purchases (subcontracting)</p></li>
+<li><p>expenses like travel and accommodation that you re-invoice to the customer</p></li>
+</ul>
+<p>You can invoice at the end of the contract or trigger intermediate
+invoices. This approach is used by services companies that invoice
+mostly based on time and material. For services companies that invoice
+on fix price, they use a regular sales order.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../sales/sales/invoicing/time_materials.html"><span class="doc">Invoicing based on time and materials</span></a></p></li>
+<li><p><a class="reference internal" href="../../../sales/sales/invoicing/expense.html"><span class="doc">Reinvoice expenses to customers</span></a></p></li>
+<li><p><a class="reference internal" href="../../../sales/sales/invoicing/milestone.html"><span class="doc">Invoice project milestones</span></a></p></li>
+</ul>
+</div>
+</section><section id="recurring-contracts-invoices">
+<h3>Recurring Contracts ‣ Invoices<a class="headerlink" href="#recurring-contracts-invoices" title="Permalink to this headline">¶</a></h3>
+<p>For subscriptions, an invoice is triggered periodically, automatically.
+The frequency of the invoicing and the services/products invoiced are
+defined on the contract.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../sales/subscriptions.html"><span class="doc">Subscriptions</span></a></p></li>
+</ul>
+</div>
+</section><section id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+</section><section id="creating-an-invoice-manually">
+<h3>Creating an invoice manually<a class="headerlink" href="#creating-an-invoice-manually" title="Permalink to this headline">¶</a></h3>
+<p>Users can also create invoices manually without using contracts or a
+sales order. It’s a recommended approach if you do not need to manage
+the sales process (quotations), or the delivery of the products or
+services.</p>
+<p>Even if you generate the invoice from a sales order, you may need to
+create invoices manually in exceptional use cases:</p>
+<ul class="simple">
+<li><p>if you need to create a refund</p></li>
+<li><p>If you need to give a discount</p></li>
+<li><p>if you need to change an invoice created from a sales order</p></li>
+<li><p>if you need to invoice something not related to your core business</p></li>
+</ul>
+</section><section id="specific-modules">
+<h3>Specific modules<a class="headerlink" href="#specific-modules" title="Permalink to this headline">¶</a></h3>
+<p>Some specific modules are also able to generate draft invoices:</p>
+<ul class="simple">
+<li><p><strong>membership</strong>: invoice your members every year</p></li>
+<li><p><strong>repairs</strong>: invoice your after-sale services</p></li>
+</ul>
+</section><section id="resequencing-of-the-invoices">
+<h3>Resequencing of the invoices<a class="headerlink" href="#resequencing-of-the-invoices" title="Permalink to this headline">¶</a></h3>
+<p>It remains possible to resequence the invoices but with some restrictions:</p>
+<ol class="arabic simple">
+<li><p>The feature does not work when entries are previous to a lock date.</p></li>
+<li><p>The feature does not work if the sequence is inconsistent with the month of the entry.</p></li>
+<li><p>It does not work if the sequence leads to a duplicate.</p></li>
+<li><p>The order of the invoice remains unchanged.</p></li>
+<li><p>It is useful for people who use a numbering from another software and who want to continue the
+current year without starting over from the beginning.</p></li>
+</ol>
+</section><section id="invoice-digitization-with-optical-character-recognition-ocr">
+<h3>Invoice digitization with optical character recognition (OCR)<a class="headerlink" href="#invoice-digitization-with-optical-character-recognition-ocr" title="Permalink to this headline">¶</a></h3>
+<p><strong>Invoice digitization</strong> is the process of automatically encoding traditional paper invoices into
+invoices forms in your accounting.</p>
+<p>Odoo uses OCR and artificial intelligence technologies to recognize the content of the documents.
+Vendor bills and customer invoices forms are automatically created and populated based on scanned
+invoices.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../vendor_bills/invoice_digitization.html"><span class="doc">AI-powered document digitization</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Invoicing processes</a><ul>
+<li><a class="reference internal" href="#sales">Sales</a><ul>
+<li><a class="reference internal" href="#sales-order-invoice">Sales Order ‣ Invoice</a></li>
+<li><a class="reference internal" href="#sales-order-delivery-order-invoice">Sales Order ‣ Delivery Order ‣ Invoice</a></li>
+<li><a class="reference internal" href="#ecommerce-order-invoice">eCommerce Order ‣ Invoice</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contracts">Contracts</a><ul>
+<li><a class="reference internal" href="#regular-contracts-invoices">Regular Contracts ‣ Invoices</a></li>
+<li><a class="reference internal" href="#recurring-contracts-invoices">Recurring Contracts ‣ Invoices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#others">Others</a><ul>
+<li><a class="reference internal" href="#creating-an-invoice-manually">Creating an invoice manually</a></li>
+<li><a class="reference internal" href="#specific-modules">Specific modules</a></li>
+<li><a class="reference internal" href="#resequencing-of-the-invoices">Resequencing of the invoices</a></li>
+<li><a class="reference internal" href="#invoice-digitization-with-optical-character-recognition-ocr">Invoice digitization with optical character recognition (OCR)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Invoicing processes</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

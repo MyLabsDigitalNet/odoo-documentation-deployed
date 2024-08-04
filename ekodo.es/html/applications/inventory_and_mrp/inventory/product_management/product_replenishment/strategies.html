@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Selecting a replenishment strategy &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_replenishment/strategies.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/product_management/product_replenishment/strategies.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Selecting a replenishment strategy</a><ul>
+<li><a class="reference internal" href="#terminology">Terminology</a><ul>
+<li><a class="reference internal" href="#replenishment-report-and-reordering-rules">Replenishment report and reordering rules</a></li>
+<li><a class="reference internal" href="#make-to-order">Make to order</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#id1">Replenishment report and reordering rules</a><ul>
+<li><a class="reference internal" href="#replenishment-report-fields">Replenishment report fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#make-to-order-mto-route">Make to order (MTO) route</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_replenishment/strategies.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Selecting a replenishment strategy</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="selecting-a-replenishment-strategy">
+<h1>Selecting a replenishment strategy<a class="headerlink" href="#selecting-a-replenishment-strategy" title="Permalink to this headline">¶</a></h1>
+<p>In Odoo, there are two strategies for automatically replenishing inventory: <em>reordering rules</em> and
+the <em>make to order (MTO)</em> route. Although these strategies differ slightly, they both have similar
+consequences: triggering the automatic creation of a <abbr title="Purchase Order">PO</abbr> or <abbr title="Manufacturing Order">MO</abbr>. The choice of which strategy to
+use depends on the business’s manufacturing and delivery processes.</p>
+</section><section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+</section><section id="replenishment-report-and-reordering-rules">
+<h3>Replenishment report and reordering rules<a class="headerlink" href="#replenishment-report-and-reordering-rules" title="Permalink to this headline">¶</a></h3>
+<p>The replenishment report is a list of all products that have a negative forecast quantity.</p>
+<p><em>Reordering rules</em> are used to ensure there’s always a minimum amount of a product in-stock, in
+order to manufacture products and/or fulfill sales orders. When the stock level of a product reaches
+its minimum, Odoo automatically generates a purchase order with the quantity needed to reach the
+maximum stock level.</p>
+<p>Reordering rules can be created and managed in the replenishment report, or from the product form.</p>
+</section><section id="make-to-order">
+<span id="inventory-management-products-strategies"></span><h3>Make to order<a class="headerlink" href="#make-to-order" title="Permalink to this headline">¶</a></h3>
+<p><em>Make to order (MTO)</em> is a procurement route that creates a draft purchase order (or manufacturing
+order) each time a sales order is confirmed, <strong>regardless of the current stock level</strong>.</p>
+<p>Unlike products replenished using reordering rules, Odoo automatically links the sales order to the
+<abbr title="Purchase Order">PO</abbr> or <abbr title="Manufacturing Order">MO</abbr> generated by the <abbr title="Make to Oder">MTO</abbr> route.</p>
+<p>Another difference between reordering rules and <abbr title="Make to Oder">MTO</abbr> is, with <abbr title="Make to Oder">MTO</abbr>, Odoo generates a draft <abbr title="Purchase Order">PO</abbr> or
+<abbr title="Manufacturing Order">MO</abbr> immediately after the <abbr title="Sales Order">SO</abbr> is confirmed. With reordering rules, Odoo generates a draft <abbr title="Purchase Order">PO</abbr> or
+<abbr title="Manufacturing Order">MO</abbr> when the product’s forecasted stock falls below the set minimum quantity.</p>
+<p>In addition, Odoo automatically adds quantities to the <abbr title="Purchase Order">PO</abbr> or <abbr title="Manufacturing Order">MO</abbr> as the forecast changes, so long
+as the <abbr title="Purchase Order">PO</abbr> or <abbr title="Manufacturing Order">MO</abbr> is not confirmed.</p>
+<p>The <abbr title="Make to Oder">MTO</abbr> route is the best replenishment strategy for products that are customized, and/or for
+products that have no stock kept on-hand.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="id1">
+<h3>Replenishment report and reordering rules<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To access the replenishment report, go to <span class="menuselection">Inventory app ‣ Operations ‣
+Replenishment.</span></p>
+<p>By default, the replenishment report dashboard shows every product that needs to be manually
+reordered. If there is no specific rule for a product, Odoo assumes the <span class="guilabel">Min Quantity</span> and
+<span class="guilabel">Max Quantity</span> stock are both <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code></p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>For products that don’t have a set reordering rule, Odoo calculates the forecast based on
+confirmed sales orders, deliveries, and receipts. For products that have a set reordering rule,
+Odoo calculates the forecast normally, but also takes into account the purchase/manufacturing
+lead time and security lead time.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Before creating a new reordering rule, make sure the product has a <em>vendor</em> or a <em>bill of
+materials</em> configured on the product form. To check this, go to <span class="menuselection">Inventory app
+‣ Products ‣ Products</span>, and select the product to open its product form. The vendor, if
+configured, is listed in the <span class="guilabel">Purchase</span> tab, and the bill on materials, if configured,
+is found in the <span class="guilabel">Bill of Materials</span> smart button at the top of the form.</p>
+<p>The <span class="guilabel">Product Type</span>, located in the <span class="guilabel">General Information</span> tab on the product
+form, <strong>must</strong> be set to <span class="guilabel">Storable Product</span>. By definition, a consumable product does
+not have its inventory levels tracked, so Odoo cannot account for a consumable product in the
+replenishment report.</p>
+</div>
+<img alt="Replenishment report listing all items needing to be purchased to meet current needs." class="align-center" src="../../../../../_images/replenishment-report-dashboard.png" />
+<p>To create a new reordering rule from the replenishment report, go to <span class="menuselection">Inventory app
+‣ Operations ‣ Replenishment</span>, click <span class="guilabel">Create</span>, and select the desired product from the
+drop-down menu in the <span class="guilabel">Product</span> column. If necessary, a <span class="guilabel">Min Quantity</span> and a
+<span class="guilabel">Max Quantity</span> can be configured in the corresponding columns on the
+<span class="guilabel">Replenishment</span> report page, as well.</p>
+<p>To create a new reordering rule from the product form, go to <span class="menuselection">Inventory app ‣
+Products ‣ Products</span>, and select a product to open its product form. Click the
+<span class="guilabel">Reordering Rules</span> smart button, click <span class="guilabel">Create</span>, and fill out the fields.</p>
+</section><section id="replenishment-report-fields">
+<h4>Replenishment report fields<a class="headerlink" href="#replenishment-report-fields" title="Permalink to this headline">¶</a></h4>
+<p>The following fields are on the <span class="guilabel">Replenishment</span> report. If any of these fields are not
+visible, click the <span class="guilabel">⋮ (additional options)</span> icon on the far right side of the report, then
+click the checkbox next to a field to make it visible.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Product</span>: the product that requires a replenishment.</p></li>
+<li><p><span class="guilabel">Location</span>: the specific location where the product is stored.</p></li>
+<li><p><span class="guilabel">Warehouse</span>: the warehouse where the product is stored.</p></li>
+<li><p><span class="guilabel">On Hand</span>: the amount of product currently available.</p></li>
+<li><p><span class="guilabel">Forecast</span>: the amount of product available after all current orders (sales,
+manufacturing, purchase, etc.) are taken into account.</p></li>
+<li><p><span class="guilabel">Preferred Route</span>: how the product is procured, either <span class="guilabel">Buy</span>,
+<span class="guilabel">Manufactured</span>, <span class="guilabel">Dropship</span>, etc.</p></li>
+<li><p><span class="guilabel">Vendor</span>: the company from which the product is acquired.</p></li>
+<li><p><span class="guilabel">Bill of Materials</span>: the bill of materials for the product (if one is configured).</p></li>
+<li><p><span class="guilabel">Trigger</span>: how the replenishment is created, either <span class="guilabel">Auto</span> (automatically,
+once the <span class="guilabel">On Hand</span> quantity goes below the <span class="guilabel">Min Quantity</span>) or
+<span class="guilabel">Manual</span> (only when the replenishment is requested).</p></li>
+<li><p><span class="guilabel">Procurement Group</span>: the reference number for how the product is being acquired, such as
+a sales order, purchase order, or manufacturing order.</p></li>
+<li><p><span class="guilabel">Min Quantity</span>: the minimum amount of product that should be available. When inventory
+levels goes below this number, the replenishment is triggered.</p></li>
+<li><p><span class="guilabel">Max Quantity</span>: the amount of product that should be available after replenishing the
+product.</p></li>
+<li><p><span class="guilabel">Multiple Quantity</span>: if the product should be ordered in specific quantities, enter the
+number that should be ordered. For example, if the <span class="guilabel">Multiple Quantity</span> is set to <code class="o_code docutils literal notranslate"><span class="pre">5</span></code>,
+and only 3 are needed, 5 products are replenished.</p></li>
+<li><p><span class="guilabel">To Order</span>: the amount of product that is currently needed, and will be ordered, if the
+<span class="guilabel">Order Once</span> or <span class="guilabel">Automate Orders</span> button is clicked.</p></li>
+<li><p><span class="guilabel">UoM</span>: the unit of measure used to acquire the product.</p></li>
+<li><p><span class="guilabel">Company</span>: the company for which the product is acquired.</p></li>
+</ul>
+<p>By default, the quantity in the <span class="guilabel">To Order</span> field is the quantity required to reach the set
+<span class="guilabel">Max Quantity</span>. However, the <span class="guilabel">To Order</span> quantity can be adjusted by clicking on
+the field and changing the value. To replenish a product manually, click <span class="guilabel">Order Once</span>.</p>
+<p>To automate a replenishment from the <span class="guilabel">Replenishment</span> page, click <span class="guilabel">Automate
+Orders</span> on the right-side of the line, represented by a <span class="guilabel">🔄 (circular arrow)</span> icon.</p>
+<p>When this button is clicked, Odoo will automatically generate a draft <abbr title="Purchase Order">PO</abbr>/<abbr title="Manufacturing Order">MO</abbr> every time the
+forecasted stock level falls below the set <span class="guilabel">Min Quantity</span> of the reordering rule.</p>
+<p>On the <span class="guilabel">Replenishment</span> page, a reordering rule or manual replenishment can be temporarily
+deactivated for a given period, by clicking the <span class="guilabel">🔕 (snooze)</span> icon on the far-right of the
+line.</p>
+<img alt="Snooze options to turn off notifications for reordering for a period of time." class="align-center" src="../../../../../_images/reordering-rule-snooze-settings.png" />
+<p>A <abbr title="Purchase Order">PO</abbr> or <abbr title="Manufacturing Order">MO</abbr> created by a manual replenishment has a <span class="guilabel">Replenishment Report</span> as the
+source document. A <abbr title="Purchase Order">PO</abbr> or <abbr title="Manufacturing Order">MO</abbr> created by an automated reordering rule has the <abbr title="Sales Order">SO</abbr> reference
+number(s) that triggered the rule as the source document.</p>
+<img alt="Quote request list shows which quotes are directly from the replenishment report." class="align-center" src="../../../../../_images/rfq-source-document.png" />
+</section><section id="make-to-order-mto-route">
+<h2>Make to order (MTO) route<a class="headerlink" href="#make-to-order-mto-route" title="Permalink to this headline">¶</a></h2>
+<p>Since the <abbr title="Make to Oder">MTO</abbr> route is recommended for customized products, the route is hidden by default.</p>
+<dl class="simple">
+<dt>To activate the <abbr title="Make to Oder">MTO</abbr> route in Odoo:</dt><dd><ol class="arabic simple">
+<li><p>Go to <span class="menuselection">Inventory app ‣ Configuration  ‣ Settings</span>.</p></li>
+<li><p>Activate the <span class="guilabel">Multi-Step Routes</span> setting, located under the <span class="guilabel">Warehouse</span>
+section, and click <span class="guilabel">Save</span>.</p></li>
+<li><p>Then, go to <span class="menuselection">Inventory app ‣ Configuration  ‣ Routes</span>.</p></li>
+<li><p>Click on <span class="menuselection">Filters ‣ Archived</span> to show archived routes.</p></li>
+<li><p>Select the checkbox next to <span class="guilabel">Replenish on Order (MTO)</span>, and click on
+<span class="menuselection">Action ‣ Unarchive</span>.</p></li>
+</ol>
+</dd>
+</dl>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Activating the <span class="guilabel">Multi-Step Routes</span> setting also activates <span class="guilabel">Storage
+Locations</span>. If these features aren’t applicable to the warehouse, disable these settings after
+unarchiving the <abbr title="Make to Oder">MTO</abbr> route.</p>
+</div>
+<p>To set a product’s procurement route to <abbr title="Make to Oder">MTO</abbr>, go to <span class="menuselection">Inventory app ‣ Products ‣
+Products</span>, and click on the desired product to open its product form.</p>
+<p>Then, click the <span class="guilabel">Inventory</span> tab, and in the <span class="guilabel">Routes</span> section of options, select
+<span class="guilabel">Replenish on Order (MTO)</span>.</p>
+<p>For products purchased directly from a vendor, make sure the <span class="guilabel">Buy</span> route is selected, in
+addition to the <span class="guilabel">Replenish on Order (MTO)</span> route. Also, make sure a vendor is configured
+in the <span class="guilabel">Purchase</span> tab of the product form.</p>
+<p>For products manufactured in-house, make sure the <span class="guilabel">Manufacture</span> route is selected, in
+addition to the <span class="guilabel">Replenish on Order (MTO)</span> route. Also, make sure a bill of materials is
+configured for the product, which is accessible via the <span class="guilabel">Bill of Materials</span> smart button
+on the product form.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <abbr title="Make to Oder">MTO</abbr> route cannot be selected alone. <abbr title="Make to Oder">MTO</abbr> <strong>only</strong> works if the <span class="guilabel">Manufacture</span> or
+<span class="guilabel">Buy</span> route is also selected.</p>
+</div>
+<img alt="Replenish on Order selected on the product form." class="align-center" src="../../../../../_images/acoustic-block-screen-replenish.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Selecting a replenishment strategy</a><ul>
+<li><a class="reference internal" href="#terminology">Terminology</a><ul>
+<li><a class="reference internal" href="#replenishment-report-and-reordering-rules">Replenishment report and reordering rules</a></li>
+<li><a class="reference internal" href="#make-to-order">Make to order</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#id1">Replenishment report and reordering rules</a><ul>
+<li><a class="reference internal" href="#replenishment-report-fields">Replenishment report fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#make-to-order-mto-route">Make to order (MTO) route</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Selecting a replenishment strategy</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

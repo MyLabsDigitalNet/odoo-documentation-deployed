@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linking existing listings &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/ebay_connector/linking_listings.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/ebay_connector/linking_listings.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Linking existing listings</a><ul>
+<li><a class="reference internal" href="#turn-off-ebay-scheduled-actions">Turn off eBay scheduled actions</a><ul>
+<li><a class="reference internal" href="#sync-ebay-categories">Sync eBay categories</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#link-ebay-listings">Link eBay listings</a><ul>
+<li><a class="reference internal" href="#manual-listing-link">Manual listing link</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#turn-on-ebay-scheduled-actions">Turn on eBay scheduled Actions</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/ebay_connector/linking_listings.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Linking existing listings</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="linking-existing-listings">
+<h1>Linking existing listings<a class="headerlink" href="#linking-existing-listings" title="Permalink to this headline">¶</a></h1>
+<p>Once the eBay account is linked existing listings from within the eBay seller account need to be
+added manually to the Odoo product listings.</p>
+<p>The process will be as follows:
+- Turn off eBay scheduled actions
+- Add products and link listings
+- Turn on eBay scheduled actions</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>To learn more about the eBay connector visit these pages as well:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="setup.html"><span class="doc">eBay connector setup</span></a></p></li>
+<li><p><a class="reference internal" href="manage.html"><span class="doc">How to list a product?</span></a></p></li>
+<li><p><a class="reference internal" href="troubleshooting.html"><span class="doc">Troubleshooting eBay connector</span></a></p></li>
+</ul>
+</div>
+</section><section id="turn-off-ebay-scheduled-actions">
+<h2>Turn off eBay scheduled actions<a class="headerlink" href="#turn-off-ebay-scheduled-actions" title="Permalink to this headline">¶</a></h2>
+<p>To start linking existing listings in eBay, first turn off the eBay notifications in the scheduled
+actions in Odoo. The reason for this is so that no orders or eBay data syncs during this process.
+The <span class="guilabel">Scheduled Actions</span> can be accessed by first activating
+<a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>. After doing so, go to <span class="menuselection">Settings ‣ Technical
+‣ Automation ‣ Scheduled Actions</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p><a class="reference internal" href="../../../general/developer_mode.html"><span class="doc">Developer mode (debug mode)</span></a> must be activated to ensure the technical menu appears for
+the user.</p>
+</div>
+<p>Disabling scheduled actions enables users to sync and validate eBay data before receiving orders.
+The following are descriptions of scheduled actions that need to be temporarily deactivated:</p>
+<ul class="simple">
+<li><p><span class="guilabel">eBay: get new orders</span>: eBay pushes new orders not already in Odoo (based on
+<span class="guilabel">client_order_reference</span>, or <span class="guilabel">sales order reference</span> field). This command
+also updates existing orders, where changes we made in eBay. New and updated orders are then
+placed in draft mode. Customers will be created if they are not already in Odoo.</p></li>
+<li><p><span class="guilabel">eBay: synchronize stock</span>: eBay displays Odoo’s stock on hand.</p></li>
+<li><p><span class="guilabel">eBay: update categories</span>: eBay will push updated monthly categories (only up to fourth
+layer; a manual update required for the rest).</p></li>
+</ul>
+<p>To toggle off the eBay notification, select the entry from the <span class="guilabel">Scheduled Actions</span> list.
+Then, on the page, click the <span class="guilabel">Active</span> toggle button to turn it off.</p>
+</section><section id="sync-ebay-categories">
+<h3>Sync eBay categories<a class="headerlink" href="#sync-ebay-categories" title="Permalink to this headline">¶</a></h3>
+<p>To ensure that Odoo’s eBay products have all the categories available on eBay, the eBay categories
+should be synced to Odoo next.</p>
+<p>Navigate to <span class="menuselection">Settings ‣ Technical ‣ Automation ‣ Scheduled Actions</span>. Click into
+the scheduled action labeled: <span class="guilabel">Ebay: update categories</span> and then click <span class="guilabel">Run
+Manually</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Odoo only recognizes eBay category paths up to four layers deep. If a product has a listing of
+more than four, the category field will only populate up to the fourth layer.</p>
+<p>If product categories beyond four paths are required, users need to manually add those paths.
+This has historically been done by getting a list of all product categories beyond 4 paths,
+manually importing them into the Product Category model in Odoo, then linking them individually
+to the product.</p>
+</div>
+<p>Users can import the remaining product categories into the eBay product categories manually using
+using the <span class="guilabel">Action</span> menu and <span class="guilabel">Import</span> feature.</p>
+</section><section id="link-ebay-listings">
+<h2>Link eBay listings<a class="headerlink" href="#link-ebay-listings" title="Permalink to this headline">¶</a></h2>
+<p>To add eBay listings in Odoo, either manually add products, using a listing ID, or establish an
+automatic listing link between Odoo and eBay.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>For more information on listing a product from scratch visit: <a class="reference internal" href="manage.html#ebay-connector-listing"><span class="std std-ref">How to list a product?</span></a></p>
+</div>
+</section><section id="manual-listing-link">
+<h3>Manual listing link<a class="headerlink" href="#manual-listing-link" title="Permalink to this headline">¶</a></h3>
+<p>To add an eBay listing to products in Odoo, begin by going to <span class="menuselection">Sales app ‣ Products
+‣ Products</span> and selecting the desired product. Click on <span class="guilabel">Sell on eBay</span> (either in the
+<span class="guilabel">eBay</span> tab or under the <span class="guilabel">Product name</span>). Select <span class="guilabel">Save</span> if necessary.</p>
+<p>Still the product form, click <span class="guilabel">link to listing</span> in the top menu and enter in listing ID
+from eBay in the pop up (the listing ID is in the eBay product URL).</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>An example URL would be as such:
+<code class="o_code docutils literal notranslate"><span class="pre">www.ebay.com/itm/272222656444?hash=item3f61bc17bb:g:vJ0AAOSwslJizv8u</span></code>. The listing ID is
+<code class="o_code docutils literal notranslate"><span class="pre">272222656444</span></code> in this case. Once the listing ID has been entered the eBay listing information
+will sync into Odoo.</p>
+</div>
+</section><section id="turn-on-ebay-scheduled-actions">
+<h2>Turn on eBay scheduled Actions<a class="headerlink" href="#turn-on-ebay-scheduled-actions" title="Permalink to this headline">¶</a></h2>
+<p>The next step is to turn on the eBay notifications in the scheduled actions in Odoo so that orders
+and data are exchanged. The <span class="guilabel">Scheduled Actions</span> can be accessed by first activating
+<a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> and go to <span class="menuselection">Settings ‣ Technical ‣
+Automation ‣ Scheduled Actions</span>.</p>
+<p>Turning on the following scheduled actions allows users to sync and validate eBay data
+automatically.</p>
+<ul class="simple">
+<li><p><span class="guilabel">eBay: get new orders</span>: eBay will push all new orders not already in Odoo (based on
+client_order_reference, or sales order reference field), and will update orders if there has been
+a change from eBay. Orders will be put in draft mode. Customers will be created if they are not
+already in Odoo.</p></li>
+<li><p><span class="guilabel">eBay: synchronize stock</span>: eBay will display the stock on hand in Odoo.</p></li>
+<li><p><span class="guilabel">eBay: update categories</span>: eBay will push updated monthly categories (only up to fourth
+layer, will need to manually update the rest).</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If an order comes in and the listing from the order is not linked to a product, eBay will create
+a consumable product.product in its place. These consumables should be altered on the
+<em>Sales Order</em> while in draft state to represent a storable product, and then the user can link to
+the listing as they come in.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="manage.html"><span class="doc">How to list a product?</span></a></p></li>
+<li><p><a class="reference internal" href="troubleshooting.html"><span class="doc">Troubleshooting eBay connector</span></a></p></li>
+<li><p><a class="reference internal" href="setup.html"><span class="doc">eBay connector setup</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Linking existing listings</a><ul>
+<li><a class="reference internal" href="#turn-off-ebay-scheduled-actions">Turn off eBay scheduled actions</a><ul>
+<li><a class="reference internal" href="#sync-ebay-categories">Sync eBay categories</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#link-ebay-listings">Link eBay listings</a><ul>
+<li><a class="reference internal" href="#manual-listing-link">Manual listing link</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#turn-on-ebay-scheduled-actions">Turn on eBay scheduled Actions</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Linking existing listings</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

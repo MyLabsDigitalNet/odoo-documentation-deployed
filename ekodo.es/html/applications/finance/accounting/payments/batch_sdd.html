@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Batch payments: SEPA Direct Debit (SDD) &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/payments/batch_sdd.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/payments/batch_sdd.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Batch payments: SEPA Direct Debit (SDD)</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#sepa-direct-debit-mandates">SEPA Direct Debit Mandates</a><ul>
+<li><a class="reference internal" href="#create-a-mandate">Create a mandate</a></li>
+<li><a class="reference internal" href="#sepa-direct-debit-as-a-payment-method">SEPA Direct Debit as a payment method</a></li>
+<li><a class="reference internal" href="#close-or-revoke-a-mandate">Close or revoke a mandate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-paid-with-sepa-direct-debit-batch-payments">Get paid with SEPA Direct Debit batch payments</a><ul>
+<li><a class="reference internal" href="#customer-invoices">Customer invoices</a></li>
+<li><a class="reference internal" href="#generate-sepa-direct-debit-xml-files-to-submit-payments">Generate SEPA Direct Debit <code class="o_code docutils literal notranslate"><span class="pre">.XML</span></code> files to submit payments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/payments/batch_sdd.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Batch payments: SEPA Direct Debit (SDD)</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="batch-payments-sepa-direct-debit-sdd">
+<h1>Batch payments: SEPA Direct Debit (SDD)<a class="headerlink" href="#batch-payments-sepa-direct-debit-sdd" title="Permalink to this headline">¶</a></h1>
+<p>SEPA, the Single Euro Payments Area, is a payment-integration initiative of the European Union for
+simplification of bank transfers denominated in euros. With <strong>SEPA Direct Debit</strong> (SDD), your
+customers can sign a mandate that authorizes you to collect future payments from their bank
+accounts. This is particularly useful for recurring payments based on a subscription.</p>
+<p>You can record customer mandates in Odoo, and generate <code class="o_code docutils literal notranslate"><span class="pre">.xml</span></code> files containing pending payments made
+with an SDD mandate.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><div class="line-block">
+<div class="line">SDD is supported by all SEPA countries, which includes the 27 member states of the European
+Union as well as additional countries.</div>
+<div class="line"><a class="reference external" href="https://www.europeanpaymentscouncil.eu/document-library/other/epc-list-sepa-scheme-countries">List of all SEPA countries</a>.</div>
+</div>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Go to <span class="menuselection">Accounting app ‣ Configuration ‣ Settings</span>, activate
+<span class="guilabel">SEPA Direct Debit (SDD)</span>, and click on <span class="guilabel">Save</span>. Enter your company’s
+<span class="guilabel">Creditor Identifier</span>. This number is provided by your bank institution, or the authority
+responsible for delivering them.</p>
+<img alt="Add a SEPA Creditor Identifier to Odoo Accounting" class="align-center" src="../../../../_images/creditor-identifier.png" />
+</section><section id="sepa-direct-debit-mandates">
+<h2>SEPA Direct Debit Mandates<a class="headerlink" href="#sepa-direct-debit-mandates" title="Permalink to this headline">¶</a></h2>
+</section><section id="create-a-mandate">
+<h3>Create a mandate<a class="headerlink" href="#create-a-mandate" title="Permalink to this headline">¶</a></h3>
+<p>The <abbr title="sepa direct debit">SDD</abbr> Mandate is the document that your customers sign to authorize
+you to collect money directly from their bank accounts.</p>
+<p>To create a new mandate, go to <span class="menuselection">Accounting app ‣ Customers ‣
+Direct Debit Mandates</span>, on <span class="guilabel">Create</span>, and fill out the form. Export the PDF file by
+clicking on <span class="guilabel">Print</span>. It is then up to your customer to sign this document. Once done,
+upload the signed file and click on <span class="guilabel">Validate</span> to start running the mandate.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Make sure that the <strong>IBAN bank accounts details</strong> are correctly recorded on the debtor’s contact
+form, under the <span class="guilabel">Accounting</span> tab, and in your own <a class="reference internal" href="../bank.html"><span class="doc">Bank Account</span></a> settings.</p>
+</div>
+</section><section id="sepa-direct-debit-as-a-payment-method">
+<h3>SEPA Direct Debit as a payment method<a class="headerlink" href="#sepa-direct-debit-as-a-payment-method" title="Permalink to this headline">¶</a></h3>
+<p>SDD can be used as a payment method both on your <strong>eCommerce</strong> or on the <strong>Customer Portal</strong> by
+activating SDD as a <strong>Payment Provider</strong>. With this method, your customers can create and sign their
+mandates themselves.</p>
+<p>To do so, go to <span class="menuselection">Accounting ‣ Configuration ‣ Payment Providers</span>, click on <em>SEPA
+Direct Debit</em>, and set it up according to your needs.
+To do so, go to <span class="menuselection">Accounting app ‣ Configuration ‣ Payment Acquirers</span>, click on
+<span class="guilabel">SEPA Direct Debit</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Make sure to change the <span class="guilabel">State</span> field to <span class="guilabel">Enabled</span>, and to check
+<span class="guilabel">Online Signature</span>, as this is necessary to let your customers sign their mandates.</p>
+</div>
+<p>Customers using SDD as payment method get prompted to add their IBAN, email address, and to sign
+their SEPA Direct Debit mandate.</p>
+</section><section id="close-or-revoke-a-mandate">
+<h3>Close or revoke a mandate<a class="headerlink" href="#close-or-revoke-a-mandate" title="Permalink to this headline">¶</a></h3>
+<p>Direct debit mandates are closed automatically after their <span class="guilabel">End Date</span>. If this field is
+left blank, the mandate keeps being <strong>Active</strong> until it is <strong>Closed</strong> or <strong>Revoked</strong>.</p>
+<p>Clicking on <span class="guilabel">Close</span> updates the mandate’s end day to the current day. This means that
+invoices issued after the present day will not be processed with an SDD payment.</p>
+<p>Clicking on <span class="guilabel">Revoke</span> disables the mandate immediately. No SDD payment can be registered
+anymore, regardless of the invoice’s date. However, payments that have already been registered are
+still included in the next SDD <code class="o_code docutils literal notranslate"><span class="pre">.xml</span></code> file.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Once a mandate has been <span class="guilabel">closed</span> or <span class="guilabel">revoked</span>, it cannot be reactivated.</p>
+</div>
+</section><section id="get-paid-with-sepa-direct-debit-batch-payments">
+<h2>Get paid with SEPA Direct Debit batch payments<a class="headerlink" href="#get-paid-with-sepa-direct-debit-batch-payments" title="Permalink to this headline">¶</a></h2>
+</section><section id="customer-invoices">
+<h3>Customer invoices<a class="headerlink" href="#customer-invoices" title="Permalink to this headline">¶</a></h3>
+<p>You can register SDD payments for invoices issued to customers who have an active SDD mandate.</p>
+<p>To do so, open the invoice, click on <span class="guilabel">Register Payment</span>, and choose
+<span class="guilabel">SEPA Direct Debit</span> as payment method.</p>
+</section><section id="generate-sepa-direct-debit-xml-files-to-submit-payments">
+<h3>Generate SEPA Direct Debit <code class="o_code docutils literal notranslate"><span class="pre">.XML</span></code> files to submit payments<a class="headerlink" href="#generate-sepa-direct-debit-xml-files-to-submit-payments" title="Permalink to this headline">¶</a></h3>
+<p><code class="o_code docutils literal notranslate"><span class="pre">.xml</span></code> files with all SDD payment instructions can be uploaded to your online banking interface
+to process all payments at once.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The files generated by Odoo follow the SEPA Direct Debit <strong>PAIN.008.001.02</strong> specifications, as
+required by the SEPA customer-to-bank <a class="reference external" href="https://www.europeanpaymentscouncil.eu/document-library/implementation-guidelines/sepa-credit-transfer-customer-psp-implementation">implementation guidelines</a>,
+which ensures compatibility with the banks.</p>
+</div>
+<p>To generate your <code class="o_code docutils literal notranslate"><span class="pre">.xml</span></code> file of multiple pending SDD payments, you can create a batch payment.
+To do so, go to <span class="menuselection">Accounting app ‣ Customers ‣ Payments</span>, select the needed
+payments, then click on <span class="guilabel">Action</span>, and finally <span class="guilabel">Create a batch Payment</span>. Once
+you click on <span class="guilabel">Validate</span>, the <code class="o_code docutils literal notranslate"><span class="pre">.xml</span></code> file is directly available for download.</p>
+<img alt="Generate an .XML file for your SDD payments in Odoo Accounting" class="align-center" src="../../../../_images/xml.png" />
+<p>Finally, upload this file to your online banking interface to process the payments.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can retrieve all the generated SDD <code class="o_code docutils literal notranslate"><span class="pre">.xml</span></code> files by going to
+<span class="menuselection">Accounting app ‣ Customers ‣ Batch Payments</span>.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="batch.html"><span class="doc">Batch payments by bank deposit</span></a></p></li>
+<li><p><a class="reference internal" href="../bank.html"><span class="doc">Bank and cash accounts</span></a></p></li>
+<li><p><a class="reference external" href="https://www.europeanpaymentscouncil.eu/document-library/other/epc-list-sepa-scheme-countries">List of all SEPA countries</a></p></li>
+<li><p><a class="reference external" href="https://www.europeanpaymentscouncil.eu/document-library/implementation-guidelines/sepa-credit-transfer-inter-psp-implementation-guidelines">Sepa guidelines</a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Batch payments: SEPA Direct Debit (SDD)</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#sepa-direct-debit-mandates">SEPA Direct Debit Mandates</a><ul>
+<li><a class="reference internal" href="#create-a-mandate">Create a mandate</a></li>
+<li><a class="reference internal" href="#sepa-direct-debit-as-a-payment-method">SEPA Direct Debit as a payment method</a></li>
+<li><a class="reference internal" href="#close-or-revoke-a-mandate">Close or revoke a mandate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-paid-with-sepa-direct-debit-batch-payments">Get paid with SEPA Direct Debit batch payments</a><ul>
+<li><a class="reference internal" href="#customer-invoices">Customer invoices</a></li>
+<li><a class="reference internal" href="#generate-sepa-direct-debit-xml-files-to-submit-payments">Generate SEPA Direct Debit <code class="o_code docutils literal notranslate"><span class="pre">.XML</span></code> files to submit payments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Batch payments: SEPA Direct Debit (SDD)</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

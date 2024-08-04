@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Domain names &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script>
+    <script src="../../../../_static/tabs.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/website/configuration/domain_names.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/website/configuration/domain_names.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Domain names</a><ul>
+<li><a class="reference internal" href="#register-a-free-domain-name-with-odoo">Register a free domain name with Odoo</a><ul>
+<li><a class="reference internal" href="#dns-records">DNS records</a></li>
+<li><a class="reference internal" href="#mailbox">Mailbox</a><ul>
+<li><a class="reference internal" href="#use-a-subdomain">Use a subdomain</a></li>
+<li><a class="reference internal" href="#use-an-external-email-provider">Use an external email provider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-an-existing-domain-name">Configure an existing domain name</a><ul>
+<li><a class="reference internal" href="#add-a-cname-record">Add a CNAME record</a></li>
+<li><a class="reference internal" href="#map-a-domain-name-to-an-odoo-database">Map a domain name to an Odoo database</a><ul>
+<li><a class="reference internal" href="#ssl-encryption-https-protocol">SSL encryption (HTTPS protocol)</a></li>
+<li><a class="reference internal" href="#web-base-url-of-a-database">Web base URL of a database</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#map-a-domain-name-to-an-odoo-website">Map a domain name to an Odoo website</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/website/configuration/domain_names.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Domain names</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="domain-names">
+<h1>Domain names<a class="headerlink" href="#domain-names" title="Permalink to this headline">¶</a></h1>
+<p>Domain names are text-based addresses identifying online locations, such as websites. They provide a
+more memorable and recognizable way for people to navigate the internet than numerical IP addresses.</p>
+<p><strong>Odoo Online</strong> and <strong>Odoo.sh</strong> databases use a <strong>subdomain</strong> of the <code class="o_code docutils literal notranslate"><span class="pre">odoo.com</span></code> <strong>domain</strong> by
+default (e.g., <code class="o_code docutils literal notranslate"><span class="pre">mycompany.odoo.com</span></code>).</p>
+<p>However, you can use a custom domain name instead by <a class="reference internal" href="#domain-name-register"><span class="std std-ref">registering a free domain name</span></a> (only available for Odoo Online databases) or by <a class="reference internal" href="#domain-name-existing"><span class="std std-ref">configuring a
+domain name you already own</span></a>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://www.odoo.com/slides/slide/register-a-free-domain-name-1663">Odoo Tutorials: Register a free domain name [video]</a></p>
+</div>
+</section><section id="register-a-free-domain-name-with-odoo">
+<span id="domain-name-register"></span><h2>Register a free domain name with Odoo<a class="headerlink" href="#register-a-free-domain-name-with-odoo" title="Permalink to this headline">¶</a></h2>
+<p>To register a one-year free domain name for your Odoo Online database, sign in to your account and
+go to the <a class="reference external" href="https://www.odoo.com/my/databases">database manager</a>. Click the gear icon
+(<span class="guilabel">⚙️</span>) next to the database name and select <span class="guilabel">Domain Names</span>.</p>
+<img alt="Accessing a database's domain names configuration" src="../../../../_images/domain-names.png" />
+<p>Search for the desired domain name and check its availability.</p>
+<img alt="Searching for an available domain name" src="../../../../_images/domain-search.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Ensure the Website app is installed if the domain name registration option does not appear.</p>
+</div>
+<p>Select the desired domain name, fill in the <span class="guilabel">Domain Owner</span> form, and click
+<span class="guilabel">Register</span>. The chosen domain name is directly linked to the database.</p>
+<img alt="Filling in the domain owner information" src="../../../../_images/domain-owner.png" />
+<p>Next, you should <a class="reference internal" href="#domain-name-website-map"><span class="std std-ref">map your domain name to your Odoo website</span></a>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>A verification email from <code class="o_code docutils literal notranslate"><span class="pre">noreply@domainnameverification.net</span></code> will be sent to the email address
+provided in the <span class="guilabel">Domain Owner</span> form. It is essential to verify your email address to
+keep the domain active and receive the renewal quote before expiration.</p>
+</div>
+<p>The domain name registration is free for the first year. After this period, Odoo will continue to
+manage the domain in partnership with <strong>Gandi.net</strong>, the domain name registrar, and you will be
+charged <a class="reference external" href="https://www.gandi.net/en/domain">Gandi.net’s renewal rate</a>. Odoo sends a renewal
+quotation every year to the email address mentioned in the <span class="guilabel">Domain Owner</span> form several
+weeks before the expiration date of the domain. The domain is renewed automatically when the
+quotation is confirmed.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>The offer is only available for <strong>Odoo Online</strong> databases.</p></li>
+<li><p>The offer is limited to <strong>one</strong> domain name per client.</p></li>
+<li><p>The offer is limited to the registration of a <strong>new</strong> domain name.</p></li>
+<li><p>The offer is available to <em>One App Free</em> plans. Ensure that your website contains enough
+original content for Odoo to verify that your request is legitimate and respects <a class="reference external" href="https://www.odoo.com/acceptable-use">Odoo’s
+Acceptable Use Policy</a>. Given the high number of
+requests, it can take Odoo several days to review them.</p></li>
+</ul>
+</div>
+</section><section id="dns-records">
+<span id="domain-name-register-dns"></span><h3>DNS records<a class="headerlink" href="#dns-records" title="Permalink to this headline">¶</a></h3>
+<p>To manage your free domain name <abbr title="domain name system">DNS</abbr> records, open the <a class="reference external" href="https://www.odoo.com/my/databases">database manager</a>, click the gear icon (<span class="guilabel">⚙️</span>) next to the database
+name, select <span class="guilabel">Domain Names</span>, and click <span class="guilabel">DNS</span>.</p>
+<ul class="simple">
+<li><p><span class="guilabel">A</span>: the A record holds the IP address of the domain. It is automatically created and
+<strong>cannot</strong> be edited or deleted.</p></li>
+<li><p><span class="guilabel">CNAME</span>: CNAME records forward one domain or subdomain to another domain. One is
+automatically created to map the <code class="o_code docutils literal notranslate"><span class="pre">www.</span></code> subdomain to the database. If the database is renamed, the
+CNAME record <strong>must</strong> also be renamed.</p></li>
+<li><p><span class="guilabel">MX</span>: MX records instruct servers on where to deliver emails.</p></li>
+<li><p><span class="guilabel">TXT</span>: TXT records can be used for different purposes (e.g., to verify domain name
+ownership).</p></li>
+</ul>
+<p>Any modification to the DNS records can take up to <strong>72 hours</strong> to propagate worldwide on all
+servers.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p><a class="reference external" href="https://www.odoo.com/help">Submit a support ticket</a> if you need assistance to manage your
+domain name.</p>
+</div>
+</section><section id="mailbox">
+<h3>Mailbox<a class="headerlink" href="#mailbox" title="Permalink to this headline">¶</a></h3>
+<p>The one-year free domain name offer does <strong>not</strong> include a mailbox. There are two options to link
+your domain name with a mailbox.</p>
+</section><section id="use-a-subdomain">
+<h4>Use a subdomain<a class="headerlink" href="#use-a-subdomain" title="Permalink to this headline">¶</a></h4>
+<p>You can create a subdomain (e.g., <code class="o_code docutils literal notranslate"><span class="pre">subdomain.yourdomain.com</span></code>) to use as an alias domain for the
+database. It allows users to create records in the database from emails received on their
+<code class="o_code docutils literal notranslate"><span class="pre">email@subdomain.yourdomain.com</span></code> alias.</p>
+<p>To do so, open the <a class="reference external" href="https://www.odoo.com/my/databases">database manager</a>, click the gear icon
+(<span class="guilabel">⚙️</span>) next to the database name, and go to <span class="menuselection">Domain Names ‣ DNS ‣ Add
+DNS record ‣ CNAME</span>. Next, enter the desired subdomain in the <span class="guilabel">Name</span> field (e.g.,
+<code class="o_code docutils literal notranslate"><span class="pre">subdomain</span></code>), the original database domain with a period at the end (e.g., <code class="o_code docutils literal notranslate"><span class="pre">mycompany.odoo.com.</span></code>) in
+the <span class="guilabel">Content</span> field, and click <span class="guilabel">Add record</span>.</p>
+<p>Then, add the alias domain as your <em>own domain</em> by clicking <span class="guilabel">Use my own domain</span>, entering
+the alias domain (e.g., <code class="o_code docutils literal notranslate"><span class="pre">subdomain.yourdomain.com</span></code>), clicking <span class="guilabel">Verify</span>, and then
+<span class="guilabel">I confirm, it’s done</span>.</p>
+<p>Finally, go to your database and open the <span class="guilabel">Settings</span>. Enable <span class="guilabel">Custom Email
+Servers</span>, enter the <span class="guilabel">Alias Domain</span> (e.g., <code class="o_code docutils literal notranslate"><span class="pre">subdomain.yourdomain.com</span></code>) and click
+<span class="guilabel">Save</span>.</p>
+</section><section id="use-an-external-email-provider">
+<h4>Use an external email provider<a class="headerlink" href="#use-an-external-email-provider" title="Permalink to this headline">¶</a></h4>
+<p>To use an external email provider, you should configure an MX record. To do so, open the <a class="reference external" href="https://www.odoo.com/my/databases">database
+manager</a>, click the gear icon (<span class="guilabel">⚙️</span>) next to the
+database name, click <span class="menuselection">Domain Names ‣ DNS ‣ Add DNS record ‣ MX</span>. The values you
+should enter for the <span class="guilabel">Name</span>, <span class="guilabel">Content</span>, and <span class="guilabel">Priority</span> fields depend
+on the external email provider.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://support.google.com/a/answer/174125?hl=en">Google Workspace: MX record values</a></p></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/microsoft-365/admin/get-help-with-domains/create-dns-records-at-any-dns-hosting-provider?view=o365-worldwide#add-an-mx-record-for-email-outlook-exchange-online">Outlook and Exchange Online: Add an MX record for email</a></p></li>
+</ul>
+</div>
+</section><section id="configure-an-existing-domain-name">
+<span id="domain-name-existing"></span><h2>Configure an existing domain name<a class="headerlink" href="#configure-an-existing-domain-name" title="Permalink to this headline">¶</a></h2>
+<p>If you already have a domain name, you can use it for your Odoo website.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>It is strongly recommended to follow <strong>in order</strong> these three steps to avoid any <a class="reference internal" href="#domain-name-ssl"><span class="std std-ref">SSL
+certificate validation</span></a> issues:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#domain-name-cname"><span class="std std-ref">Add a CNAME record</span></a></p></li>
+<li><p><a class="reference internal" href="#domain-name-db-map"><span class="std std-ref">Map your domain name to your Odoo database</span></a></p></li>
+<li><p><a class="reference internal" href="#domain-name-website-map"><span class="std std-ref">Map your domain name to your Odoo website</span></a></p></li>
+</ol>
+</div>
+</section><section id="add-a-cname-record">
+<span id="domain-name-cname"></span><h3>Add a CNAME record<a class="headerlink" href="#add-a-cname-record" title="Permalink to this headline">¶</a></h3>
+<p>Adding a CNAME record to forward your domain name to the address of your Odoo database is required.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-T2RvbyBPbmxpbmU=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-T2RvbyBPbmxpbmU=" name="T2RvbyBPbmxpbmU=" role="tab" tabindex="0">Odoo Online</button><button aria-controls="panel-0-T2Rvby5zaA==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-T2Rvby5zaA==" name="T2Rvby5zaA==" role="tab" tabindex="-1">Odoo.sh</button></div><div aria-labelledby="tab-0-T2RvbyBPbmxpbmU=" class="sphinx-tabs-panel group-tab" id="panel-0-T2RvbyBPbmxpbmU=" name="T2RvbyBPbmxpbmU=" role="tabpanel" tabindex="0"><p>The CNAME record’s target address should be your database’s address as defined at its creation
+(e.g., <code class="o_code docutils literal notranslate"><span class="pre">mycompany.odoo.com</span></code>).</p>
+</div><div aria-labelledby="tab-0-T2Rvby5zaA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-T2Rvby5zaA==" name="T2Rvby5zaA==" role="tabpanel" tabindex="0"><p>The CNAME record’s target address should be the project’s main address, which can be found on
+Odoo.sh by going to <span class="menuselection">Settings ‣ Project Name</span>, or a specific branch
+(production, staging or development) by going to <span class="menuselection">Branches ‣ select the
+branch ‣ Settings ‣ Custom domains</span>, and clicking <span class="guilabel">How to set up my domain?</span>. A
+message indicates which address your CNAME record should target.</p>
+</div></div>
+<p>The specific instructions depend on your DNS hosting service.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.godaddy.com/help/add-a-cname-record-19236">GoDaddy: Add a CNAME record</a></p></li>
+<li><p><a class="reference external" href="https://www.namecheap.com/support/knowledgebase/article.aspx/9646/2237/how-to-create-a-cname-record-for-your-domain">Namecheap: How to create a CNAME record for your domain</a></p></li>
+<li><p><a class="reference external" href="https://docs.ovh.com/us/en/domains/web_hosting_how_to_edit_my_dns_zone/#add-a-new-dns-record">OVHcloud: Add a new DNS record</a></p></li>
+<li><p><a class="reference external" href="https://support.cloudflare.com/hc/en-us/articles/360019093151">Cloudflare: Manage DNS records</a></p></li>
+</ul>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Odoo only supports subdomains. To use your naked domain name <span class="dfn"><span>(a domain name without any
+subdomains or prefixes)</span></span> (<code class="o_code docutils literal notranslate"><span class="pre">yourdomain.com</span></code>), create a redirection 301 to redirect visitors to
+<code class="o_code docutils literal notranslate"><span class="pre">www.yourdomain.com</span></code>.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>You own the domain name <code class="o_code docutils literal notranslate"><span class="pre">yourdomain.com</span></code>, and your Odoo Online database’s address is
+<code class="o_code docutils literal notranslate"><span class="pre">mycompany.odoo.com</span></code>. You want to access your Odoo database primarily with the domain
+<code class="o_code docutils literal notranslate"><span class="pre">www.yourdomain.com</span></code> and also with the naked domain <code class="o_code docutils literal notranslate"><span class="pre">yourdomain.com</span></code>.</p>
+<p>To do so, create a CNAME record for the <code class="o_code docutils literal notranslate"><span class="pre">www</span></code> subdomain, with <code class="o_code docutils literal notranslate"><span class="pre">mycompany.odoo.com</span></code> as the target.
+Next, create a redirect (301 permanent or visible redirect) to redirect visitors from
+<code class="o_code docutils literal notranslate"><span class="pre">yourdomain.com</span></code> to <code class="o_code docutils literal notranslate"><span class="pre">wwww.yourdomain.com</span></code>.</p>
+</div>
+</section><section id="map-a-domain-name-to-an-odoo-database">
+<span id="domain-name-db-map"></span><h3>Map a domain name to an Odoo database<a class="headerlink" href="#map-a-domain-name-to-an-odoo-database" title="Permalink to this headline">¶</a></h3>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Ensure you have <a class="reference internal" href="#domain-name-cname"><span class="std std-ref">added a CNAME record</span></a> to your domain name’s DNS
+<strong>before</strong> mapping your domain name to your Odoo database.</p>
+<p>Failing to do so may prevent the validation of the <a class="reference internal" href="#domain-name-ssl"><span class="std std-ref">SSL certificate</span></a> and
+could result in a <em>certificate name mismatch</em> error. Web browsers often display this as a
+warning, such as <em>“Your connection is not private”</em>.</p>
+<p>If you encounter this error after mapping the domain name to your database, wait up to five
+days, as the validation may still happen. If not, you can <a class="reference external" href="https://www.odoo.com/help">submit a support ticket</a>, including screenshots of your CNAME records.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-T2RvbyBPbmxpbmU=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-T2RvbyBPbmxpbmU=" name="T2RvbyBPbmxpbmU=" role="tab" tabindex="0">Odoo Online</button><button aria-controls="panel-1-T2Rvby5zaA==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-T2Rvby5zaA==" name="T2Rvby5zaA==" role="tab" tabindex="-1">Odoo.sh</button></div><div aria-labelledby="tab-1-T2RvbyBPbmxpbmU=" class="sphinx-tabs-panel group-tab" id="panel-1-T2RvbyBPbmxpbmU=" name="T2RvbyBPbmxpbmU=" role="tabpanel" tabindex="0"><p>Open the <a class="reference external" href="https://www.odoo.com/my/databases">database manager</a>, click the gear icon
+(<span class="guilabel">⚙️</span>) next to the database name, and go to <span class="menuselection">Domain Names ‣ Use my
+own domain</span>. Then, enter the domain name (e.g., <code class="o_code docutils literal notranslate"><span class="pre">yourdomain.com</span></code>), click <span class="guilabel">Verify</span>
+and <span class="guilabel">I confirm, it’s done</span>.</p>
+<img alt="Mapping a domain name to an Odoo Online database" src="../../../../_images/map-database-online.png" />
+</div><div aria-labelledby="tab-1-T2Rvby5zaA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-T2Rvby5zaA==" name="T2Rvby5zaA==" role="tabpanel" tabindex="0"><p>On Odoo.sh, go to <span class="menuselection">Branches ‣ select your branch ‣ Settings ‣ Custom
+domains</span>, type the domain name to add, then click <span class="guilabel">Add domain</span>.</p>
+<img alt="Mapping a domain name to an Odoo.sh branch" src="../../../../_images/map-database-sh.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><span class="xref std std-ref">Odoo.sh branches: settings tab</span></p>
+</div>
+</div></div>
+</section><section id="ssl-encryption-https-protocol">
+<span id="domain-name-ssl"></span><h4>SSL encryption (HTTPS protocol)<a class="headerlink" href="#ssl-encryption-https-protocol" title="Permalink to this headline">¶</a></h4>
+<p><strong>SSL encryption</strong> allows visitors to navigate a website through a secure connection, which appears
+as the <em>https://</em> protocol at the beginning of a web address rather than the non-secure <em>http://</em>
+protocol.</p>
+<p>Odoo generates a separate SSL certificate for each domain <a class="reference internal" href="#domain-name-db-map"><span class="std std-ref">mapped to a database</span></a> using <a class="reference external" href="https://letsencrypt.org/how-it-works/">Let’s Encrypt’s certificate authority and ACME protocol</a>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Certificate generation may take up to 24 hours.</p></li>
+<li><p>Several attempts to validate your certificate are made for five days after you map your domain
+name to your database.</p></li>
+<li><p>If you use another service, you can keep using it or change to Odoo’s.</p></li>
+</ul>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>No SSL certificate is generated for naked domains <span class="dfn"><span>(domain names without any subdomains
+or prefixes)</span></span>.</p>
+</div>
+</section><section id="web-base-url-of-a-database">
+<span id="domain-name-web-base-url"></span><h4>Web base URL of a database<a class="headerlink" href="#web-base-url-of-a-database" title="Permalink to this headline">¶</a></h4>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If the Website app is installed on your database, skip this section and continue from the
+<a class="reference internal" href="#domain-name-website-map"><span class="std std-ref">Map a domain name to a website</span></a> section.</p>
+</div>
+<p>The <em>web base URL</em> or root URL of a database affects your main website address and all the
+links sent to your customers (e.g., quotations, portal links, etc.).</p>
+<p>To make your custom domain name the <em>web base URL</em> of your database, access your database using your
+custom domain name and log in as an administrator <span class="dfn"><span>(a user part of the Settings access right
+group under Administration)</span></span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If you access your database with the original Odoo address (e.g., <code class="o_code docutils literal notranslate"><span class="pre">mycompany.odoo.com</span></code>), the <em>web
+base URL</em> of your database will be updated accordingly. To prevent the automatic update of the
+<em>web base URL</em> when an administrator logs in to the database, activate the <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, go to <span class="menuselection">Settings ‣ Technical ‣ System Parameters ‣ New</span>,
+and enter <code class="o_code docutils literal notranslate"><span class="pre">web.base.url.freeze</span></code> as the <span class="guilabel">Key</span> and <code class="o_code docutils literal notranslate"><span class="pre">True</span></code> as the <span class="guilabel">Value</span>.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>You can also set the web base URL manually. To do so, activate the <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, go to <span class="menuselection">Settings ‣ Technical ‣ System Parameters</span>, and
+search for the <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> key (create it if necessary) and enter the full address of your
+website as the value (e.g., <code class="o_code docutils literal notranslate"><span class="pre">https://www.yourdomain.com</span></code>). The URL must include the protocol
+<code class="o_code docutils literal notranslate"><span class="pre">https://</span></code> (or <code class="o_code docutils literal notranslate"><span class="pre">http://</span></code>) and <em>not</em> end with a slash (<code class="o_code docutils literal notranslate"><span class="pre">/</span></code>).</p>
+</div>
+</section><section id="map-a-domain-name-to-an-odoo-website">
+<span id="domain-name-website-map"></span><h3>Map a domain name to an Odoo website<a class="headerlink" href="#map-a-domain-name-to-an-odoo-website" title="Permalink to this headline">¶</a></h3>
+<p>Mapping your domain name to your website is different than mapping it to your database:</p>
+<ul class="simple">
+<li><p>It defines your domain name as the main one for your website, helping search engines to index your
+website correctly.</p></li>
+<li><p>It defines your domain name as the base URL for your database, including portal links sent by
+email to your customers.</p></li>
+<li><p>If you have multiple websites, it maps your domain name to the appropriate website.</p></li>
+</ul>
+<p>Go to <span class="menuselection">Website ‣ Configuration ‣ Settings</span>. If you have multiple websites, select
+the one you want to configure. In the <span class="guilabel">Domain</span> field, enter the address of your website
+(e.g., <code class="o_code docutils literal notranslate"><span class="pre">https://www.yourdomain.com</span></code>) and <span class="guilabel">Save</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Mapping your domain name to your Odoo website prevents Google Search from indexing your original
+database address (e.g., <code class="o_code docutils literal notranslate"><span class="pre">mycompany.odoo.com</span></code>).</p>
+<p>If both addresses are already indexed, it may take some time before the indexation of the second
+address is removed from Google Search. You can use the <a class="reference external" href="https://search.google.com/search-console/welcome">Google Search Console</a> to fix the issue.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If you have multiple websites and companies on your database, make sure to select the right
+<span class="guilabel">Company</span> under <span class="menuselection">Website ‣ Configuration ‣ Settings</span>. Doing so
+indicates Odoo which URL to use as the <a class="reference internal" href="#domain-name-web-base-url"><span class="std std-ref">base URL</span></a> according to
+the company in use.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Domain names</a><ul>
+<li><a class="reference internal" href="#register-a-free-domain-name-with-odoo">Register a free domain name with Odoo</a><ul>
+<li><a class="reference internal" href="#dns-records">DNS records</a></li>
+<li><a class="reference internal" href="#mailbox">Mailbox</a><ul>
+<li><a class="reference internal" href="#use-a-subdomain">Use a subdomain</a></li>
+<li><a class="reference internal" href="#use-an-external-email-provider">Use an external email provider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-an-existing-domain-name">Configure an existing domain name</a><ul>
+<li><a class="reference internal" href="#add-a-cname-record">Add a CNAME record</a></li>
+<li><a class="reference internal" href="#map-a-domain-name-to-an-odoo-database">Map a domain name to an Odoo database</a><ul>
+<li><a class="reference internal" href="#ssl-encryption-https-protocol">SSL encryption (HTTPS protocol)</a></li>
+<li><a class="reference internal" href="#web-base-url-of-a-database">Web base URL of a database</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#map-a-domain-name-to-an-odoo-website">Map a domain name to an Odoo website</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Domain names</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

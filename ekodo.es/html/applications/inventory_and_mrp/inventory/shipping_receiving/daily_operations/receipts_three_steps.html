@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Process receipts in three steps &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_three_steps.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_three_steps.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Process receipts in three steps</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#receive-in-three-steps-input-quality-stock">Receive in three steps (input + quality + stock)</a><ul>
+<li><a class="reference internal" href="#create-a-purchase-order">Create a purchase order</a></li>
+<li><a class="reference internal" href="#process-a-receipt">Process a receipt</a></li>
+<li><a class="reference internal" href="#process-a-transfer-to-quality-control">Process a transfer to Quality Control</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#process-a-transfer-to-stock">Process a transfer to stock</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_three_steps.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Process receipts in three steps</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="process-receipts-in-three-steps">
+<h1>Process receipts in three steps<a class="headerlink" href="#process-receipts-in-three-steps" title="Permalink to this headline">¶</a></h1>
+<p id="inventory-receipts-three-steps">Some companies require a quality control process before receiving goods from suppliers. To
+accomplish this, Odoo has a three-step process for receiving goods.</p>
+<p>In the three-step receipt process, products are received in an input area, then transferred to a
+quality area for inspection. Products that pass the quality inspection are then transferred into
+stock. The products are not available for further processing until they are transferred out of the
+quality area and into stock.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Odoo is configured by default to <a class="reference internal" href="receipts_delivery_one_step.html#inventory-receipts-delivery-one-step"><span class="std std-ref">receive and deliver goods in one step</span></a>, so the settings need to be changed in order to utilize
+three-step receipts. First, make sure the <em>Multi-Step Routes</em> option is enabled in
+<span class="menuselection">Inventory ‣ Configuration ‣ Settings ‣ Warehouse</span>. Note that activating
+<span class="guilabel">Multi-Step Routes</span> will also activate <em>Storage Locations</em>.</p>
+<img alt="Activate multi-step routes and storage locations in Inventory settings." class="align-center" src="../../../../../_images/multi-step-routes2.png" />
+<p>Next, the warehouse needs to be configured for three-step receipts. To do that, go to
+<span class="menuselection">Inventory app ‣ Configuration ‣ Warehouses</span>, and select the desired warehouse to
+be edited. Doing so reveals the detail form for that specific warehouse.</p>
+<p>On that <span class="guilabel">Warehouse</span> detail form page, select <span class="guilabel">Receive goods in input, then
+quality and then stock (3 steps)</span> for <span class="guilabel">Incoming Shipments</span>.</p>
+<img alt="Set incoming shipment option to receive in three steps." class="align-center" src="../../../../../_images/three-step-receipt-settings.png" />
+<p>Activating three-step receipts and deliveries creates two new internal locations: <em>Input</em>
+(WH/Input), and <em>Quality Control</em> (WH/Quality Control). To rename these locations, go to
+<span class="menuselection">Inventory app ‣ Configuration ‣ Locations</span>, then click on the desired location
+to change (or update) the name.</p>
+</section><section id="receive-in-three-steps-input-quality-stock">
+<h2>Receive in three steps (input + quality + stock)<a class="headerlink" href="#receive-in-three-steps-input-quality-stock" title="Permalink to this headline">¶</a></h2>
+</section><section id="create-a-purchase-order">
+<h3>Create a purchase order<a class="headerlink" href="#create-a-purchase-order" title="Permalink to this headline">¶</a></h3>
+<p>To create a new <abbr title="Request for Quotation">RfQ</abbr>, navigate to <span class="menuselection">Purchase app ‣
+New</span>, which reveals a blank <abbr title="Request for Quotation">RfQ</abbr> form page. On this page, select a
+<span class="guilabel">Vendor</span>, add a storable <span class="guilabel">Product</span>, and click <span class="guilabel">Confirm Order</span>.</p>
+<p>A <span class="guilabel">Receipt</span> smart button will appear in the top right, and the receipt will be associated
+with the purchase order. Clicking on the <span class="guilabel">Receipt</span> smart button will show the receipt
+order.</p>
+<img alt="After confirming a purchase order, a Receipt smart button will appear." class="align-center" src="../../../../../_images/three-step-purchase-receipt.png" />
+</section><section id="process-a-receipt">
+<h3>Process a receipt<a class="headerlink" href="#process-a-receipt" title="Permalink to this headline">¶</a></h3>
+<p>One receipt and two internal transfers (one transfer to quality, and a subsequent transfer to stock)
+will be created once the purchase order is confirmed. To view these transfers, go to
+<span class="menuselection">Inventory ‣ Operations ‣ Transfers</span>.</p>
+<img alt="The status of the three receipt transfers will show which operation is ready and which ones are waiting another operation." class="align-center" src="../../../../../_images/three-step-transfers.png" />
+<p>The status of the receipt transferring the product to the input location will be <span class="guilabel">Ready</span>,
+since the receipt must be processed before any other operation can occur. The status of the two
+internal transfers will be <span class="guilabel">Waiting Another Operation</span>, since the transfers cannot be
+processed until the linked step before each transfer is completed.</p>
+<p>The status of the first internal transfer to <em>quality</em> will only change to <span class="guilabel">Ready</span> when
+the receipt has been marked <span class="guilabel">Done</span>. The status for the second internal transfer to <em>stock</em>
+will be marked <span class="guilabel">Ready</span> only after the transfer to quality has been marked
+<span class="guilabel">Done</span>.</p>
+<p>The receipt can also be found in the <span class="menuselection">Inventory</span> application. In the
+<span class="guilabel">Overview</span> dashboard, click the <span class="guilabel">1 To Process</span> smart button in the
+<span class="guilabel">Receipts</span> kanban card.</p>
+<img alt="One Receipt ready to process in the Inventory Overview kanban view." class="align-center" src="../../../../../_images/three-step-receive-kanban.png" />
+<p>Click on the receipt associated with the purchase order, then click <span class="guilabel">Validate</span> to complete
+the receipt and move the product to the <span class="guilabel">Input Location</span>.</p>
+<img alt="Validate the receipt by clicking Validate, and the product will be transferred to the WH/Quality location." class="align-center" src="../../../../../_images/validate-three-step-receipt.png" />
+</section><section id="process-a-transfer-to-quality-control">
+<h3>Process a transfer to Quality Control<a class="headerlink" href="#process-a-transfer-to-quality-control" title="Permalink to this headline">¶</a></h3>
+<p>Once the product is in the <span class="guilabel">Input Location</span>, the internal transfer is ready to move the
+product to <span class="guilabel">Quality Control</span>. In the <span class="menuselection">Inventory</span> <span class="guilabel">Overview</span>
+dashboard, click the <span class="guilabel">1 To Process</span> smart button in the <span class="guilabel">Internal Transfers</span>
+kanban card.</p>
+<img alt="One Internal Transfer ready to process in the Inventory Overview kanban view." class="align-center" src="../../../../../_images/three-step-quality-transfer.png" />
+<p>Click on the <span class="guilabel">Transfer</span> associated with the purchase order, then click
+<span class="guilabel">Validate</span> to complete the transfer and move the product to the <span class="guilabel">Quality
+Control</span> location. Once the transfer is validated, the product is ready for the quality inspection,
+but is not available for manufacturing or delivery orders.</p>
+<img alt="Validate the internal transfer to move the item to the Quality Control location." class="align-center" src="../../../../../_images/validate-three-step-quality-move.png" />
+</section><section id="process-a-transfer-to-stock">
+<h2>Process a transfer to stock<a class="headerlink" href="#process-a-transfer-to-stock" title="Permalink to this headline">¶</a></h2>
+<p>Once the product is in the <span class="guilabel">Quality Control</span> location, the final internal transfer is
+ready to move the product to <span class="guilabel">Stock</span>. In the <span class="guilabel">Inventory</span> overview dashboard,
+click the <span class="guilabel">1 To Process</span> smart button in the <span class="guilabel">Internal Transfers</span> Kanban card.</p>
+<p>Click on the final <span class="guilabel">Transfer</span> associated with the purchase order, then click
+<span class="guilabel">Validate</span> to complete the transfer and move the product to stock. Once the transfer is
+validated, the product enters the stock and is available for customer deliveries or manufacturing
+orders.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Process receipts in three steps</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#receive-in-three-steps-input-quality-stock">Receive in three steps (input + quality + stock)</a><ul>
+<li><a class="reference internal" href="#create-a-purchase-order">Create a purchase order</a></li>
+<li><a class="reference internal" href="#process-a-receipt">Process a receipt</a></li>
+<li><a class="reference internal" href="#process-a-transfer-to-quality-control">Process a transfer to Quality Control</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#process-a-transfer-to-stock">Process a transfer to stock</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Process receipts in three steps</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

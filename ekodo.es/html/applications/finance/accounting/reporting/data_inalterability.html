@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data inalterability check report &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/reporting/data_inalterability.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/reporting/data_inalterability.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Data inalterability check report</a><ul>
+<li><a class="reference internal" href="#lock-posted-entries-with-hash">Lock posted entries with hash</a></li>
+<li><a class="reference internal" href="#report-download">Report download</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/reporting/data_inalterability.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Data inalterability check report</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="data-inalterability-check-report">
+<h1>Data inalterability check report<a class="headerlink" href="#data-inalterability-check-report" title="Permalink to this headline">¶</a></h1>
+<p>Tax authorities in some countries require companies to <strong>prove their posted accounting entries are
+inalterable</strong>, meaning that once an entry has been posted, it can no longer be changed.</p>
+<p>To do so, Odoo can use the <strong>SHA-256 algorithm</strong> to create a unique fingerprint for each posted
+entry. This fingerprint is called a hash. The hash is generated by taking an entry’s essential data
+(the values of the <code class="o_code docutils literal notranslate"><span class="pre">date</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">journal_id</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">company_id</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">debit</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">credit</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">account_id</span></code>, and
+<code class="o_code docutils literal notranslate"><span class="pre">partner_id</span></code> fields), concatenating it, and inputting it to the SHA-256 hash function, which then
+outputs a fixed size (256-bit) string of characters. The hash function is deterministic (<span class="dfn"><span>the
+same input always creates the same output</span></span>): any minor modification to the original data would
+completely change the resulting hash. Consequently, the SHA-256 algorithm is often used, among
+others, for data integrity verification purposes.</p>
+<p>In addition, the previous entry’s hash is always added to the next entry to form a <strong>hash chain</strong>.
+This is used to ensure a new entry is not added afterward between two posted entries, as doing so
+would break the hash chain.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Hashes generated by the SHA-256 algorithm are theoretically not unique, as there is a finite
+number of possible values. However, this number is exceptionally high: 2²⁵⁶, which is a lot
+bigger than the number of atoms in the known universe. This is why hashes are considered unique
+in practice.</p>
+</div>
+</section><section id="lock-posted-entries-with-hash">
+<span id="data-inalterability-lock"></span><h2>Lock posted entries with hash<a class="headerlink" href="#lock-posted-entries-with-hash" title="Permalink to this headline">¶</a></h2>
+<p>To start using the hashing function, go to <span class="menuselection">Accounting ‣ Configuration &gt; Journals</span>.
+Open the journal for which you want to activate the feature, go to the <span class="guilabel">Advanced Settings</span>
+tab, and enable <span class="guilabel">Lock Posted Entries with Hash</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Once you post an entry on a locked journal, you cannot disable the feature anymore, nor edit any
+posted entry.</p>
+</div>
+</section><section id="report-download">
+<span id="data-inalterability-report"></span><h2>Report download<a class="headerlink" href="#report-download" title="Permalink to this headline">¶</a></h2>
+<p>To download the data inalterability check report, go to <span class="menuselection">Accounting ‣ Configuration
+‣ Settings ‣ Reporting</span> and click on <span class="guilabel">Download the Data Inalterability Check Report</span>.</p>
+<p>The report’s first section is an overview of all your journals and their configuration. Under the
+inalterability check column, you can see whether or not a journal’s posted entries are locked with
+a hash (V) or not (X). The coverage column tells you when a journal’s posted entries started being
+locked.</p>
+<img alt="Configuration report for two journals" class="align-center" src="../../../../_images/journal-overview.png" />
+<p>The second section gives you the result of the data consistency check for each hashed journal. You
+can view the first hashed entry and its corresponding hash and the last hashed entry and its
+corresponding hash.</p>
+<img alt="Data consistency check report for a journal" class="align-center" src="../../../../_images/data-consistency-check.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Data inalterability check report</a><ul>
+<li><a class="reference internal" href="#lock-posted-entries-with-hash">Lock posted entries with hash</a></li>
+<li><a class="reference internal" href="#report-download">Report download</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Data inalterability check report</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

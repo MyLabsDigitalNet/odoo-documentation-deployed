@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mailjet API &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/email_communication/mailjet_api.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/email_communication/mailjet_api.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Mailjet API</a><ul>
+<li><a class="reference internal" href="#set-up-in-mailjet">Set up in Mailjet</a><ul>
+<li><a class="reference internal" href="#create-api-credentials">Create API credentials</a></li>
+<li><a class="reference internal" href="#add-verified-sender-address-es">Add verified sender address(es)</a></li>
+<li><a class="reference internal" href="#add-a-domain">Add a domain</a><ul>
+<li><a class="reference internal" href="#setup-in-the-domain-s-dns">Setup in the domain’s DNS</a></li>
+<li><a class="reference internal" href="#return-to-mailjet-account-information">Return to Mailjet account information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#set-up-in-odoo">Set up in Odoo</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/email_communication/mailjet_api.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Mailjet API</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="mailjet-api">
+<h1>Mailjet API<a class="headerlink" href="#mailjet-api" title="Permalink to this headline">¶</a></h1>
+<p>Odoo is compatible with Mailjet’s <abbr title="Application Programming Interface">API</abbr> for mass mailing.
+Set up a dedicated mass mailing server through Mailjet by configuring settings in the Mailjet
+account and the Odoo database. In some circumstances, settings need to be configured on the custom
+domain’s <abbr title="Domain Name System">DNS</abbr> settings as well.</p>
+</section><section id="set-up-in-mailjet">
+<h2>Set up in Mailjet<a class="headerlink" href="#set-up-in-mailjet" title="Permalink to this headline">¶</a></h2>
+</section><section id="create-api-credentials">
+<h3>Create API credentials<a class="headerlink" href="#create-api-credentials" title="Permalink to this headline">¶</a></h3>
+<p>To get started, sign in to the <a class="reference external" href="https://app.mailjet.com/account">Mailjet Account Information</a>
+page. Next, navigate to the <span class="guilabel">Senders &amp; Domains</span> section and click on <span class="guilabel">SMTP and
+SEND API Settings</span>.</p>
+<img alt="SMTP and Send API Settings link in the Senders &amp; Domains section of Mailjet." class="align-center" src="../../../_images/api-settings.png" />
+<p>Then, copy the <abbr title="Simple Mail Transfer Protocol">SMTP</abbr> configuration settings onto a notepad.
+They can be found under the <span class="guilabel">Configuration (SMTP only)</span> section. The <abbr title="Simple Mail Transfer Protocol">SMTP</abbr> configuration settings include the server address, the security option
+needed (Use <abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr>), and the
+port number. The settings are needed to configure Mailjet in Odoo, which is covered in the
+<a class="reference internal" href="#maintain-mailjet-api-odoo-setup"><span class="std std-ref">last section</span></a>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://documentation.mailjet.com/hc/articles/360043229473">Mailjet: How can I configure my SMTP parameters?</a></p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Odoo blocks <code class="o_code docutils literal notranslate"><span class="pre">port</span> <span class="pre">25</span></code> on Odoo Online and Odoo.sh databases. <a class="reference internal" href="email_servers.html#email-servers-restriction"><span class="std std-ref">See reference here</span></a>.</p>
+</div>
+<img alt="SMTP configuration from Mailjet." class="align-center" src="../../../_images/smtp-config.png" />
+<p>Next, click on the button labeled <span class="guilabel">Retrieve your API credentials</span> to retrieve the Mailjet
+API credentials.</p>
+<p>Then, click on the eye icon to reveal the <span class="guilabel">API key</span>. Copy this key to a notepad, as this
+serves as the <span class="guilabel">Username</span> in the Odoo configuration. Next, click on the
+<span class="guilabel">Generate Secret Key</span> button to generate the <span class="guilabel">Secret Key</span>. Copy this key to a
+notepad, as this serves as the <span class="guilabel">Password</span> in the Odoo configuration.</p>
+</section><section id="add-verified-sender-address-es">
+<h3>Add verified sender address(es)<a class="headerlink" href="#add-verified-sender-address-es" title="Permalink to this headline">¶</a></h3>
+<p>The next step is to add a sender address or a domain to the Mailjet account settings so that the
+email address or domain is approved to send emails using Mailjet’s servers. First, navigate to the
+<a class="reference external" href="https://app.mailjet.com/account">Mailjet Account Information</a> page. Next, click on the
+<span class="guilabel">Add a Sender Domain or Address</span> link under the <span class="guilabel">Senders &amp; Domains</span> section.</p>
+<img alt="Add a sender domain or address in the Mailjet interface." class="align-center" src="../../../_images/add-domain-email.png" />
+<p>Determine if a sender’s email address or the entire domain needs to be added to the Mailjet
+settings. It may be easier to configure the domain as a whole if <abbr title="Domain Name System">DNS</abbr>
+access is available. Jump to the <a class="reference internal" href="#maintain-mailjet-api-add-domain"><span class="std std-ref">Add a domain</span></a> section for
+steps on adding the domain.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Either all email addresses of the Odoo database users who are sending emails using Mailjet’s
+servers need to be configured or the domain(s) of the users’ email addresses can be configured.</p>
+</div>
+<p>By default, the email address originally set up in the Mailjet account is added as a trusted
+sender. To add another email address, click on the button labeled <span class="guilabel">Add a sender address</span>.
+Then, add the email address that is configured to send from the custom domain.</p>
+<p>At minimum the following email addresses should be set up in the provider and verified in Mailjet:</p>
+<ul class="simple">
+<li><p>notifications@yourdomain.com</p></li>
+<li><p>bounce@yourdomain.com</p></li>
+<li><p>catchall@yourdomain.com</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Replace <code class="o_code docutils literal notranslate"><span class="pre">yourdomain</span></code> with the custom domain for the Odoo database. If there isn’t one, then use
+the <span class="guilabel">mail.catchall.domain</span> system parameter.</p>
+</div>
+<p>After that, fill out the <span class="guilabel">Email Information</span> form, making sure to select the appropriate
+email type: transactional email or mass emails. After completing the form, an activation email is
+sent to the email address and the trusted sender can be activated.</p>
+<p>It is recommended to set up the <abbr title="Sender Policy Framework">SPF</abbr>/<abbr title="DomainKeys Identified Mail">DKIM</abbr>/<abbr title="Domain-based Message Authentication, Reporting, and Conformance">DMARC</abbr> settings on the domain of the sender.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://documentation.mailjet.com/hc/articles/360042412734-Authenticating-Domains-with-SPF-DKIM">Mailjet’s SPF/DKIM/DMARC documentation</a></p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If the database is not using a custom domain, then in order to verify the sender’s address, a
+temporary alias (of the three email addresses mentioned above) should be set up in Odoo CRM to
+create a lead. Then, the database is able to receive the verification email and verify the
+accounts.</p>
+</div>
+</section><section id="add-a-domain">
+<span id="maintain-mailjet-api-add-domain"></span><h3>Add a domain<a class="headerlink" href="#add-a-domain" title="Permalink to this headline">¶</a></h3>
+<p>By adding an entire domain to the Mailjet account, all the sender addresses related to that domain
+are automatically validated for sending emails using Mailjet servers. First, navigate to the
+<a class="reference external" href="https://app.mailjet.com/account">Mailjet Account Information</a> page. Next, click on
+<span class="guilabel">Add a Sender Domain or Address</span> link under the <span class="guilabel">Senders &amp; Domains</span> section.
+Then, click on <span class="guilabel">Add domain</span> to add the custom domain.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The domain needs to be added to the Mailjet account and then validated through the <abbr title="Domain Name System">DNS</abbr>.</p>
+</div>
+<p>After that, fill out the <span class="guilabel">Add a new Domain</span> page on Mailjet and click
+<span class="guilabel">Continue</span>.</p>
+<p>After adding the domain, a validation page will populate. Unless the Odoo database is on-premise
+(in which case, choose <span class="guilabel">Option 1</span>), choose <span class="guilabel">Option 2: Create a DNS Record</span>.
+Copy the TXT record information to a notepad and then navigate to the domain’s <abbr title="Domain Name System">DNS</abbr> provider to complete validation.</p>
+<img alt="The TXT record information to input on the domain's DNS." class="align-center" src="../../../_images/host-value-dns.png" />
+</section><section id="setup-in-the-domain-s-dns">
+<h4>Setup in the domain’s DNS<a class="headerlink" href="#setup-in-the-domain-s-dns" title="Permalink to this headline">¶</a></h4>
+<p>After getting the TXT record information from the Mailjet account, add a TXT record to the domain’s
+<abbr title="Domain Name System">DNS</abbr>. This process varies depending on the <abbr title="Domain Name System">DNS</abbr> provider. Consult the provider for specific configuration processes. The TXT record
+information consists of the <span class="guilabel">Host</span> and <span class="guilabel">Value</span>. Paste these into
+the corresponding fields in the TXT record.</p>
+</section><section id="return-to-mailjet-account-information">
+<h4>Return to Mailjet account information<a class="headerlink" href="#return-to-mailjet-account-information" title="Permalink to this headline">¶</a></h4>
+<p>After adding the TXT record to the domain’s <abbr title="Domain Name System">DNS</abbr>, navigate back to the
+Mailjet account. Then, navigate to <span class="menuselection">Account Information ‣ Add a Sender Domain or
+Address</span>, click the gear icon next to <span class="guilabel">Domain</span>, and select <span class="guilabel">Validate</span>.</p>
+<p>This action can also be done by going to the <a class="reference external" href="https://app.mailjet.com/account/sender">Sender domains &amp; addresses</a> page on the Mailjet account information and clicking on <span class="guilabel">Manage</span>.</p>
+<p>Next, click <span class="guilabel">Check Now</span> to validate the TXT record that was added on the domain. A
+success screen will appear if the domain is configured correctly.</p>
+<img alt="Check DNS record in Mailjet." class="align-center" src="../../../_images/check-dns.png" />
+<p>After successfully setting up the domain, there is an option to <span class="guilabel">Authenticate this domain
+(SPF/DKIM)</span>. This button populates <abbr title="Sender Policy Framework">SPF</abbr> &amp; <abbr title="DomainKeys Identified Mail) records to input into the :abbr:`DNS (Domain Name System">DKIM</abbr> provider.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://documentation.mailjet.com/hc/articles/360042412734-Authenticating-Domains-with-SPF-DKIM">Mailjet’s SPF/DKIM/DMARC documentation</a></p>
+</div>
+<img alt="Authenticate the domain with SPF/DKIM records in Mailjet." class="align-center" src="../../../_images/authenticate.png" />
+</section><section id="set-up-in-odoo">
+<span id="maintain-mailjet-api-odoo-setup"></span><h2>Set up in Odoo<a class="headerlink" href="#set-up-in-odoo" title="Permalink to this headline">¶</a></h2>
+<p>To complete the setup, navigate to the Odoo database and go to the <span class="guilabel">Settings</span>. With
+<a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">Developer mode (debug mode)</span></a> turned on, go to the <span class="menuselection">Technical Menu ‣ Email ‣ Outgoing
+Mail Servers</span>. Then, create a new outgoing server configuration by clicking on the
+<span class="guilabel">Create</span> button.</p>
+<p>Next, input the <code class="o_code docutils literal notranslate"><span class="pre">SMTP</span> <span class="pre">server</span></code> (in-v3.mailjet.com), <code class="o_code docutils literal notranslate"><span class="pre">port</span> <span class="pre">number</span></code> (587 or 465), and <code class="o_code docutils literal notranslate"><span class="pre">Security</span>
+<span class="pre">(SSL/TLS)</span></code> that was copied earlier from the Mailjet account. They can also be found <a class="reference external" href="https://app.mailjet.com/account/setup">here</a>. It is recommended to use <abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> even though Mailjet may not require it.</p>
+<p>For the <span class="guilabel">Username</span>, input the <span class="guilabel">API KEY</span>. For the <span class="guilabel">Password</span>, input
+the <span class="guilabel">SECRET KEY</span> that was copied from the Mailjet account to the notepad earlier. These
+settings can be found on <span class="menuselection">Mailjet ‣  Account Settings ‣ SMTP and SEND API
+Settings</span>.</p>
+<p>Then, if the Mailjet server is used for mass emailing, set the <span class="guilabel">Priority</span> value higher
+than that of any transactional email server(s). Finally, save the settings and <span class="guilabel">Test the
+Connection</span>.</p>
+<img alt="Odoo outgoing email server settings." class="align-center" src="../../../_images/server-settings.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>In order for the notifications feature to work using Mailjet, there are three settings that need
+to be set in Odoo.</p>
+<ol class="arabic simple">
+<li><p>The <span class="guilabel">From Filter</span> needs to be set on the server configuration. It is recommended
+to set it as a domain and not a full email address. It should match the domain in the two
+proceeding steps. More information can be referenced <a class="reference internal" href="email_servers.html#email-communication-from-filter"><span class="std std-ref">here</span></a>.</p></li>
+<li><p>The <span class="guilabel">mail.default.from</span> system parameter must have the value
+<code class="o_code docutils literal notranslate"><span class="pre">notifications@yourdomain.com</span></code>.</p></li>
+<li><p>The <span class="guilabel">mail.default.from_filter</span> system parameter must have the value
+<code class="o_code docutils literal notranslate"><span class="pre">yourdomain.com</span></code>. Replace <code class="o_code docutils literal notranslate"><span class="pre">yourdomain</span></code> with the custom domain for the Odoo database. If there
+isn’t one, then use the <span class="guilabel">mail.catchall.domain</span> system parameter.</p></li>
+</ol>
+<p>For more information see <a class="reference internal" href="email_servers.html#email-communication-default"><span class="std std-ref">Using a default email address</span></a>.</p>
+<p>The <span class="guilabel">System Parameters</span> can be accessed by activating the <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>.</p>
+</div>
+<p>Once the setup is complete, the Odoo database is ready to use the Mailjet email server for mass
+mailing or transactional emails!</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Mailjet API</a><ul>
+<li><a class="reference internal" href="#set-up-in-mailjet">Set up in Mailjet</a><ul>
+<li><a class="reference internal" href="#create-api-credentials">Create API credentials</a></li>
+<li><a class="reference internal" href="#add-verified-sender-address-es">Add verified sender address(es)</a></li>
+<li><a class="reference internal" href="#add-a-domain">Add a domain</a><ul>
+<li><a class="reference internal" href="#setup-in-the-domain-s-dns">Setup in the domain’s DNS</a></li>
+<li><a class="reference internal" href="#return-to-mailjet-account-information">Return to Mailjet account information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#set-up-in-odoo">Set up in Odoo</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Mailjet API</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

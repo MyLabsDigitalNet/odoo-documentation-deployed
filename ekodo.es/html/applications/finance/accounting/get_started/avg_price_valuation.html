@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Average price on returned goods &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/avg_price_valuation.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/get_started/avg_price_valuation.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Average price on returned goods</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#using-average-cost-valuation">Using average cost valuation</a><ul>
+<li><a class="reference internal" href="#formula">Formula</a></li>
+<li><a class="reference internal" href="#compute-average-cost">Compute average cost</a><ul>
+<li><a class="reference internal" href="#product-delivery-use-case">Product delivery (use case)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#return-items-to-supplier-use-case">Return items to supplier (use case)</a><ul>
+<li><a class="reference internal" href="#eliminate-stock-valuation-errors-in-outgoing-products">Eliminate stock valuation errors in outgoing products</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anglo-saxon-accounting">Anglo-Saxon accounting</a><ul>
+<li><a class="reference internal" href="#product-reception">Product reception</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#accounts-balanced-at-received-products">Accounts balanced at received products</a><ul>
+<li><a class="reference internal" href="#in-odoo">In Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#accounts-balanced-at-received-vendor-bill">Accounts balanced at received vendor bill</a><ul>
+<li><a class="reference internal" href="#id1">In Odoo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#on-product-delivery">On product delivery</a></li>
+<li><a class="reference internal" href="#on-product-return">On product return</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/avg_price_valuation.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Average price on returned goods</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="average-price-on-returned-goods">
+<h1>Average price on returned goods<a class="headerlink" href="#average-price-on-returned-goods" title="Permalink to this headline">¶</a></h1>
+<p id="inventory-avg-cost-definition"><em>Average cost valuation</em> (AVCO) is an inventory valuation method that evaluates cost based on the
+total cost of goods bought or produced during a period, divided by the total number of items
+on-hand. Inventory valuation is used to:</p>
+<ul class="simple">
+<li><p>reflect the value of a company’s assets;</p></li>
+<li><p>keep track of the amount of unsold goods;</p></li>
+<li><p>account for monetary value in goods that have yet to generate profit;</p></li>
+<li><p>report on flow of goods throughout the quarter.</p></li>
+</ul>
+<p>Because <abbr title="Average Cost Valuation">AVCO</abbr> uses the weighted average to evaluate the cost, it is a good fit for companies that
+sell only a few different products in large quantities. In Odoo, this costing analysis is
+<em>automatically updated</em> each time products are received.</p>
+<p>Thus, when shipments are returned to their supplier, Odoo automatically generates accounting entries
+to reflect the change in inventory valuation. However, Odoo does <strong>not</strong> automatically update the
+<abbr title="Average Cost Valuation">AVCO</abbr> calculation, because <a class="reference internal" href="#inventory-avg-price-leaving-inventory"><span class="std std-ref">this can potentially create inconsistencies with inventory
+valuation</span></a>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>This document addresses a specific use case for theoretical purposes. For instructions on how to
+set up and use <abbr title="Average Cost Valuation">AVCO</abbr>, refer to the <a class="reference internal" href="../../../inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/inventory_valuation_config.html"><span class="doc">inventory valuation configuration</span></a>
+doc.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/using_inventory_valuation.html"><span class="doc">Using inventory valuation</span></a></p></li>
+<li><p><a class="reference internal" href="../../../inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/inventory_valuation_config.html#inventory-inventory-valuation-config-costing-methods"><span class="std std-ref">Other inventory valuation methods</span></a></p></li>
+</ul>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To use average cost inventory valuation on a product, navigate to <span class="menuselection">Inventory ‣
+Configuration ‣ Product Categories</span> and select the category that will be using <abbr title="Average Cost Valuation">AVCO</abbr>. On the
+product category page, set <span class="guilabel">Costing Method</span> to <code class="o_code docutils literal notranslate"><span class="pre">Average</span> <span class="pre">Cost</span> <span class="pre">(AVCO)</span></code> and
+<span class="guilabel">Inventory Valuation</span> to <code class="o_code docutils literal notranslate"><span class="pre">Automated</span></code>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../../inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/inventory_valuation_config.html"><span class="doc">Inventory valuation configuration</span></a></p>
+</div>
+</section><section id="using-average-cost-valuation">
+<h2>Using average cost valuation<a class="headerlink" href="#using-average-cost-valuation" title="Permalink to this headline">¶</a></h2>
+<p>The average cost method adjusts the inventory valuation when products are received in the warehouse.
+This section explains how it works, but if the explanation is unnecessary, skip to the <a class="reference internal" href="#inventory-avg-cost-return"><span class="std std-ref">return
+to supplier use case</span></a> section.</p>
+</section><section id="formula">
+<span id="inventory-avg-cost-formula"></span><h3>Formula<a class="headerlink" href="#formula" title="Permalink to this headline">¶</a></h3>
+<p>When new products arrive, the new average cost for each product is recomputed using the formula:</p>
+<div class="math notranslate nohighlight">
+\[Avg~Cost = \frac{(Old~Qty \times Old~Avg~Cost) + (Incoming~Qty \times Purchase~Price)}{Final~Qty}\]</div>
+<ul class="simple">
+<li><p><strong>Old Qty</strong>: product count in stock before receiving the new shipment;</p></li>
+<li><p><strong>Old Avg Cost</strong>: calculated average cost for a single product from the previous inventory
+valuation;</p></li>
+<li><p><strong>Incoming Qty</strong>: count of products arriving in the new shipment;</p></li>
+<li><p><strong>Purchase Price</strong>: estimated price of products at the reception of products (since vendor bills
+may arrive later). The amount includes not only the price for the products, but also added costs,
+such as shipping, taxes, and <a class="reference internal" href="../../../inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/integrating_landed_costs.html#inventory-reporting-landed-costs"><span class="std std-ref">landed costs</span></a>. At reception
+of the vendor bill, this price is adjusted;</p></li>
+<li><p><strong>Final Qty</strong>: quantity of on-hand stock after the stock move.</p></li>
+</ul>
+<div class="alert alert-warning" id="inventory-avg-cost-definite-rule">
+<p class="alert-title">
+Important</p><p>When products leave the warehouse, the average cost <strong>does not</strong> change. Read about why the
+average cost valuation is <strong>not</strong> adjusted <a class="reference internal" href="#inventory-avg-price-leaving-inventory"><span class="std std-ref">here</span></a>.</p>
+</div>
+</section><section id="compute-average-cost">
+<span id="inventory-avg-cost-math-table"></span><h3>Compute average cost<a class="headerlink" href="#compute-average-cost" title="Permalink to this headline">¶</a></h3>
+<p>To understand how the average cost of a product changes with each shipment, consider the following
+table of warehouse operations and stock moves. Each is a different example of how the average cost
+valuation is affected.</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Incoming Value</p></th>
+<th class="head"><p>Inventory Value</p></th>
+<th class="head"><p>Qty On Hand</p></th>
+<th class="head"><p>Avg Cost</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>$0</p></td>
+<td><p>0</p></td>
+<td><p>$0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Receive 8 tables at $10/unit</p></td>
+<td><p>8 * $10</p></td>
+<td><p>$80</p></td>
+<td><p>8</p></td>
+<td><p>$10</p></td>
+</tr>
+<tr class="row-even"><td><p>Receive 4 tables at $16/unit</p></td>
+<td><p>4 * $16</p></td>
+<td><p>$144</p></td>
+<td><p>12</p></td>
+<td><p>$12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deliver 10 tables</p></td>
+<td><p>-10 * $12</p></td>
+<td><p>$24</p></td>
+<td><p>2</p></td>
+<td><p>$12</p></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-dark" id="inventory-avg-cost-ex-1">
+<p class="alert-title">
+Exercise</p><p>Ensure comprehension of the above computations by reviewing the “Receive 8 tables at $10/unit”
+example.</p>
+<p>Initially, the product stock is 0, so all values are $0.</p>
+<p>In the first warehouse operation, <code class="o_code docutils literal notranslate"><span class="pre">8</span></code> tables are received at <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code> each. The average cost is
+calculated using the <a class="reference internal" href="#inventory-avg-cost-formula"><span class="std std-ref">formula</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[Avg~Cost = \frac{0 + 8 \times $10}{8} = \frac{$80}{8} = $10\]</div>
+<ul class="simple">
+<li><p>Since the <em>incoming quantity</em> of tables is <code class="o_code docutils literal notranslate"><span class="pre">8</span></code> and the <em>purchase price</em> for each is <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code>,</p></li>
+<li><p>The inventory value in the numerator is evaluated to <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code>;</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">$80</span></code> is divided by the total amount of tables to store, <code class="o_code docutils literal notranslate"><span class="pre">8</span></code>;</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">$10</span></code> is the average cost of a single table from the first shipment.</p></li>
+</ul>
+<p>To verify this in Odoo, in the <em>Purchase</em> app, order <code class="o_code docutils literal notranslate"><span class="pre">8</span></code> quantities of a new product, <code class="o_code docutils literal notranslate"><span class="pre">Table</span></code>,
+with no previous stock moves, for <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code> each.</p>
+<p>In the table’s <span class="guilabel">Product Category</span> field in the <span class="guilabel">General Information</span> tab of
+the product form, click the <span class="guilabel">➡️ (arrow)</span> icon, to open an <span class="guilabel">External Link</span> to
+edit the product category. Set the <span class="guilabel">Costing Method</span> to <code class="o_code docutils literal notranslate"><span class="pre">Average</span> <span class="pre">Cost</span> <span class="pre">(AVCO)</span></code> and
+<span class="guilabel">Inventory Valuation</span> to <code class="o_code docutils literal notranslate"><span class="pre">Automated</span></code>.</p>
+<p>Then, return to the purchase order. Click <span class="guilabel">Confirm Order</span>, and click <span class="guilabel">Receive
+Products</span> to confirm receipt.</p>
+<p>Next, check the inventory valuation record generated by the product reception by navigating to
+<span class="menuselection">Inventory ‣ Reporting ‣ Inventory Valuation</span>. Select the drop-down for
+<code class="o_code docutils literal notranslate"><span class="pre">Table</span></code>, and view the <span class="guilabel">Total Value</span> column for the <em>valuation layer</em> (<span class="dfn"><span>inventory
+valuation at a specific point in time = on-hand quantity * unit price</span></span>). The 8 tables in-stock
+are worth $80.</p>
+<img alt="Muestra la valoración de inventario de unh producto en concreto" class="align-center" src="../../../../_images/valoracion_stock.png" />
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>When the product category’s <span class="guilabel">Costing Method</span> is set to <span class="guilabel">AVCO</span>, then the
+average cost of a product is also displayed on the <span class="guilabel">Cost</span> field, under the
+<span class="guilabel">General Information</span> tab, on the product page itself.</p>
+</div>
+</section><section id="product-delivery-use-case">
+<h4>Product delivery (use case)<a class="headerlink" href="#product-delivery-use-case" title="Permalink to this headline">¶</a></h4>
+<p>For outgoing shipments, <a class="reference internal" href="#inventory-avg-cost-definite-rule"><span class="std std-ref">outbound products have no effect on the average cost valuation</span></a>. Although the average cost valuation is not recalculated, the
+inventory value still decreases because the product is removed from stock and delivered to the
+customer location.</p>
+<div class="alert alert-dark">
+<p class="alert-title">
+Exercise</p><p>To demonstrate that the average cost valuation is not recalculated, examine the “Deliver 10
+tables” example.</p>
+<div class="math notranslate nohighlight">
+\[Avg~Cost = \frac{12 \times $12 + (-10) \times $12}{12-10} = \frac{24}{2} = $12\]</div>
+<ol class="arabic simple">
+<li><p>Because 10 tables are being sent out to customers, the <em>incoming quantity</em> is <code class="o_code docutils literal notranslate"><span class="pre">-10</span></code>. The
+previous average cost (<code class="o_code docutils literal notranslate"><span class="pre">$12</span></code>) is used in lieu of a vendor’s <em>purchase price</em>;</p></li>
+<li><p>The <em>incoming inventory value</em> is <code class="o_code docutils literal notranslate"><span class="pre">-10</span> <span class="pre">*</span> <span class="pre">$12</span> <span class="pre">=</span> <span class="pre">-$120</span></code>;</p></li>
+<li><p>The old <em>inventory value</em> (<code class="o_code docutils literal notranslate"><span class="pre">$144</span></code>) is added to the <em>incoming inventory value</em> (<code class="o_code docutils literal notranslate"><span class="pre">-$120</span></code>), so
+<code class="o_code docutils literal notranslate"><span class="pre">$144</span> <span class="pre">+</span> <span class="pre">-$120</span> <span class="pre">=</span> <span class="pre">$24</span></code>;</p></li>
+<li><p>Only <code class="o_code docutils literal notranslate"><span class="pre">2</span></code> tables remain after shipping out <code class="o_code docutils literal notranslate"><span class="pre">10</span></code> tables from <code class="o_code docutils literal notranslate"><span class="pre">12</span></code>. So the current <em>inventory
+value</em> (<code class="o_code docutils literal notranslate"><span class="pre">$24</span></code>) is divided by the on-hand quantity (<code class="o_code docutils literal notranslate"><span class="pre">2</span></code>);</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">$24</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">$12</span></code>, which is the same average cost as the previous operation.</p></li>
+</ol>
+<p>To verify this in Odoo, sell <code class="o_code docutils literal notranslate"><span class="pre">10</span></code> tables in the <em>Sales</em> app, validate the delivery, and then
+review the inventory valuation record by going to in <span class="menuselection">Inventory ‣ Reporting ‣
+Inventory Valuation</span>. In the topmost valuation layer, delivering <code class="o_code docutils literal notranslate"><span class="pre">10</span></code> tables reduces the
+product’s value by <code class="o_code docutils literal notranslate"><span class="pre">-$120</span></code>.</p>
+<p><strong>Note</strong>: What is not represented in this stock valuation record is the revenue made from this
+sale, so this decrease is not a loss to the company.</p>
+<img alt="Muestra como las entregas reducen el valor del inventario" class="align-center" src="../../../../_images/valoracion_envio.png" />
+</div>
+</section><section id="return-items-to-supplier-use-case">
+<span id="inventory-avg-cost-return"></span><h2>Return items to supplier (use case)<a class="headerlink" href="#return-items-to-supplier-use-case" title="Permalink to this headline">¶</a></h2>
+<p>Because the price paid to suppliers can differ from the price the product is valued at with the
+<abbr title="Average Cost Valuation">AVCO</abbr> method, Odoo handles returned items in a specific way.</p>
+<ol class="arabic simple">
+<li><p>Products are returned to suppliers at the original purchase price, but;</p></li>
+<li><p>The internal cost valuation remains unchanged.</p></li>
+</ol>
+<p>The above <a class="reference internal" href="#inventory-avg-cost-math-table"><span class="std std-ref">example table</span></a> is updated as follows:</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Qty*Avg Cost</p></th>
+<th class="head"><p>Inventory Value</p></th>
+<th class="head"><p>Qty On Hand</p></th>
+<th class="head"><p>Avg Cost</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>$24</p></td>
+<td><p>2</p></td>
+<td><p>$12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Return 1 table bought at $10</p></td>
+<td><p>-1 * $12</p></td>
+<td><p>$12</p></td>
+<td><p>1</p></td>
+<td><p>$12</p></td>
+</tr>
+</tbody>
+</table>
+<p>In other words, returns to vendors are perceived by Odoo as another form of a product exiting the
+warehouse. To Odoo, because the table is valued at $12 per unit, the inventory value is reduced by
+<code class="o_code docutils literal notranslate"><span class="pre">$12</span></code> when the product is returned; the initial purchase price of <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code> is unrelated to the table’s
+average cost.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>To return a single table that was purchased for <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code>, navigate to the receipt in the <em>Inventory</em>
+app for the <a class="reference internal" href="#inventory-avg-cost-ex-1"><span class="std std-ref">8 tables purchased in Exercise 1</span></a> by going to the
+<span class="guilabel">Inventory Overview</span>, clicking on <span class="guilabel">Receipts</span>, and selecting the desired
+receipt.</p>
+<p>Then, click <span class="guilabel">Return</span> on the validated delivery order, and modify the quantity to <code class="o_code docutils literal notranslate"><span class="pre">1</span></code> in
+the reverse transfer window. This creates an outgoing shipment for the table. Select
+<span class="guilabel">Validate</span> to confirm the outgoing shipment.</p>
+<p>Return to <span class="menuselection">Inventory ‣ Reporting ‣ Inventory Valuation</span> to see how the
+outgoing shipment decreases the inventory value by $12.</p>
+<img alt="Valoración de inventario en devoluciones" class="align-center" src="../../../../_images/valoracion_devolucion.png" />
+</div>
+</section><section id="eliminate-stock-valuation-errors-in-outgoing-products">
+<span id="inventory-avg-price-leaving-inventory"></span><h3>Eliminate stock valuation errors in outgoing products<a class="headerlink" href="#eliminate-stock-valuation-errors-in-outgoing-products" title="Permalink to this headline">¶</a></h3>
+<p>Inconsistencies can occur in a company’s inventory when the average cost valuation is recalculated
+on outgoing shipments.</p>
+<p>To demonstrate this error, the table below displays a scenario in which 1 table is shipped to a
+customer and another is returned to a supplier at the purchased price.</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 15%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Qty*Price</p></th>
+<th class="head"><p>Inventory Value</p></th>
+<th class="head"><p>Qty On Hand</p></th>
+<th class="head"><p>Avg Cost</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>$24</p></td>
+<td><p>2</p></td>
+<td><p>$12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ship 1 product to customer</p></td>
+<td><p>-1 * $12</p></td>
+<td><p>$12</p></td>
+<td><p>1</p></td>
+<td><p>$12</p></td>
+</tr>
+<tr class="row-even"><td><p>Return 1 product initially bought at $10</p></td>
+<td><p>-1 * $10</p></td>
+<td><p><strong>$2</strong></p></td>
+<td><p><strong>0</strong></p></td>
+<td><p>$12</p></td>
+</tr>
+</tbody>
+</table>
+<p>In the final operation above, the final inventory valuation for the table is <code class="o_code docutils literal notranslate"><span class="pre">$2</span></code> even though there
+are <code class="o_code docutils literal notranslate"><span class="pre">0</span></code> tables left in stock.</p>
+<div class="admonition-correct-method alert">
+<p class="alert-title">
+Correct method</p><p>Use the average cost to value the return. This does not mean the company gets $12 back for a $10
+purchase; the item returned for $10 is valued internally at $12. The inventory value change
+represents a product worth $12 no longer being accounted for in company assets.</p>
+</div>
+</section><section id="anglo-saxon-accounting">
+<h2>Anglo-Saxon accounting<a class="headerlink" href="#anglo-saxon-accounting" title="Permalink to this headline">¶</a></h2>
+<p>In addition to using <abbr title="Average Cost Valuation">AVCO</abbr>, companies that use <strong>Anglo-Saxon accounting</strong> also keep a holding
+account that tracks the amount to be paid to vendors. Once a vendor delivers an order, <strong>inventory
+value</strong> increases based on the vendor price of the products that have entered the stock. The holding
+account (called <strong>stock input</strong>) is credited and only reconciled once the vendor bill is received.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/inventory_valuation_config.html#inventory-inventory-valuation-config-accounting"><span class="std std-ref">Anglo-Saxon vs. Continental</span></a></p></li>
+</ul>
+</div>
+<p>The table below reflects journal entries and accounts. The <em>stock input</em> account stores the money
+intended to pay vendors when the vendor bill has not yet been received. To balance accounts when
+returning products that have a price difference between the price the product is <strong>valued at</strong> and
+the price it was bought for, a <em>price difference</em> account is created.</p>
+<table class="table docutils" id="inventory-avg-price-price-table">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 16%" />
+<col style="width: 13%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Stock Input</p></th>
+<th class="head"><p>Price Diff</p></th>
+<th class="head"><p>Inventory Value</p></th>
+<th class="head"><p>Qty On Hand</p></th>
+<th class="head"><p>Avg Cost</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+<td><p>$0</p></td>
+<td><p>0</p></td>
+<td><p>$0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Receive 8 tables at $10</p></td>
+<td><p>($80)</p></td>
+<td></td>
+<td><p>$80</p></td>
+<td><p>8</p></td>
+<td><p>$10</p></td>
+</tr>
+<tr class="row-even"><td><p>Receive vendor bill $80</p></td>
+<td><p>$0</p></td>
+<td></td>
+<td><p>$80</p></td>
+<td><p>8</p></td>
+<td><p>$10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Receive 4 tables at $16</p></td>
+<td><p>($64)</p></td>
+<td></td>
+<td><p>$144</p></td>
+<td><p>12</p></td>
+<td><p>$12</p></td>
+</tr>
+<tr class="row-even"><td><p>Receive vendor bill $64</p></td>
+<td><p>$0</p></td>
+<td></td>
+<td><p>$144</p></td>
+<td><p>12</p></td>
+<td><p>$12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deliver 10 tables to customer</p></td>
+<td><p>$0</p></td>
+<td></td>
+<td><p>$24</p></td>
+<td><p>2</p></td>
+<td><p>$12</p></td>
+</tr>
+<tr class="row-even"><td><p>Return 1 table initially bought at $10</p></td>
+<td><p><strong>$10</strong></p></td>
+<td><p><strong>$2</strong></p></td>
+<td><p><strong>$12</strong></p></td>
+<td><p>1</p></td>
+<td><p>$12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Receive vendor refund $10</p></td>
+<td><p>$0</p></td>
+<td><p>$2</p></td>
+<td><p>$12</p></td>
+<td><p>1</p></td>
+<td><p>$12</p></td>
+</tr>
+</tbody>
+</table>
+</section><section id="product-reception">
+<h3>Product reception<a class="headerlink" href="#product-reception" title="Permalink to this headline">¶</a></h3>
+</section><section id="summary">
+<h4>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h4>
+<p>At product reception, Odoo ensures companies can pay for goods that were purchased by preemptively
+moving an amount matching the price of received goods into the <a class="reference internal" href="cheat_sheet.html"><span class="doc">liability account</span></a>, <strong>Stock Input</strong>. Then, once the bill
+has been received, the amount in the holding account is transferred to <em>Accounts Payable</em>. Transfers
+into this account means the bill has been paid. <strong>Stock Input</strong> is reconciled once the vendor bill
+is received.</p>
+<p>Inventory valuation is a method of calculating how much each in-stock product is worth internally.
+Since there is a difference between the price the product is <strong>valuated at</strong> and the price the
+product was actually <strong>purchased for</strong>, the <strong>Inventory Valuation</strong> account is unrelated to the
+crediting and debiting operations of the <strong>Stock Input</strong> account.</p>
+<p>To conceptualize all this, follow the breakdown below.</p>
+</section><section id="accounts-balanced-at-received-products">
+<h4>Accounts balanced at received products<a class="headerlink" href="#accounts-balanced-at-received-products" title="Permalink to this headline">¶</a></h4>
+<p>In this example, a company starts with zero units of a product, <code class="o_code docutils literal notranslate"><span class="pre">table</span></code>, in stock. Then, 8 tables
+are received from the vendor:</p>
+<ol class="arabic simple">
+<li><p>The <strong>Stock Input</strong> account stores <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code> of credit owed to the vendor. The amount in this account
+is unrelated to the inventory value.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">$80</span></code> worth of tables came <strong>in</strong> (<strong>debit</strong> the <em>Inventory Value</em> account <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code>), and</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">$80</span></code> must be paid <strong>out</strong> for received goods (<strong>credit</strong> the <em>Stock Input</em> account <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code>).</p></li>
+</ol>
+</section><section id="in-odoo">
+<h5>In Odoo<a class="headerlink" href="#in-odoo" title="Permalink to this headline">¶</a></h5>
+<p>Odoo generates an accounting journal entry when shipments that use <abbr title="Average Cost Valuation">AVCO</abbr> costing method are
+received. Configure a <span class="guilabel">Price Difference Account</span> by selecting the <span class="guilabel">➡️ (arrow)</span>
+icon next to the <span class="guilabel">Product Category</span> field on the product page.</p>
+<p>Under <span class="guilabel">Account Properties</span>, create a new <span class="guilabel">Price Difference Account</span> by typing in
+the name of the account and clicking <span class="guilabel">Create and Edit</span>. Then set the account
+<span class="guilabel">Type</span> as <code class="o_code docutils literal notranslate"><span class="pre">Expenses</span></code>, and click <span class="guilabel">Save</span>.</p>
+<img alt="Creación cuenta diferencia precios" class="align-center" src="../../../../_images/propiedades_cuenta.png" />
+<p>Then, receive the shipment in the <em>Purchase</em> app or <em>Inventory</em> app, and navigate to the
+<span class="menuselection">Accounting app ‣ Accounting ‣ Journal Entries</span>. In the list, find the
+<span class="guilabel">Reference</span> that matches the warehouse reception operation for the relevant product.</p>
+<img alt="Muestra la entrada en los asientos contables" class="align-center" src="../../../../_images/valoracion_inventario.png" />
+<p>Click on the line for 8 tables. This accounting journal entry shows that when the 8 tables were
+received, the <code class="o_code docutils literal notranslate"><span class="pre">Stock</span> <span class="pre">Valuation</span></code> account increased by <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code>. Conversely, the <strong>Stock Input</strong> account
+(set as <code class="o_code docutils literal notranslate"><span class="pre">Stock</span> <span class="pre">Interim</span> <span class="pre">(Received)</span></code> account by default) is credited <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code>.</p>
+<img alt="Valoracion del stcock y entrada de stock" class="align-center" src="../../../../_images/movimiento_cuenta.png" />
+</section><section id="accounts-balanced-at-received-vendor-bill">
+<h4>Accounts balanced at received vendor bill<a class="headerlink" href="#accounts-balanced-at-received-vendor-bill" title="Permalink to this headline">¶</a></h4>
+<p>In this example, a company starts with zero units of a product, table, in stock. Then, 8 tables are
+received from the vendor. When the bill is received from vendor for 8 tables:</p>
+<ol class="arabic simple">
+<li><p>Use <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code> in the <strong>Stock Input</strong> account to pay the bill. This cancels out and the account now
+holds <code class="o_code docutils literal notranslate"><span class="pre">$0</span></code>.</p></li>
+<li><p>Debit <strong>Stock Input</strong> <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code> (to reconcile this account).</p></li>
+<li><p>Credit <strong>Accounts payable</strong> <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code>. This account stores the amount the company owes others, so
+accountants use the amount to write checks to vendors.</p></li>
+</ol>
+</section><section id="id1">
+<h5>In Odoo<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<p>Once the vendor requests payment, navigate to the <span class="menuselection">Purchase app ‣ Orders ‣
+Purchase</span> and select the <abbr title="Purchase Order">PO</abbr> for 8 tables. Inside the <abbr title="Purchase Order">PO</abbr>, select <span class="guilabel">Create Bill</span>.</p>
+<p>Switch to the <span class="guilabel">Journal Items</span> tab to view how <code class="o_code docutils literal notranslate"><span class="pre">$80</span></code> is transferred from the holding
+account, <code class="o_code docutils literal notranslate"><span class="pre">Stock</span> <span class="pre">Interim</span> <span class="pre">(Received)</span></code> to <code class="o_code docutils literal notranslate"><span class="pre">Accounts</span> <span class="pre">Payable</span></code>. <span class="guilabel">Confirm</span> the bill to record
+the payment to the vendor.</p>
+<img alt="Muestra la factura vinculada a la orden de compra" class="align-center" src="../../../../_images/factura_mesas.png" />
+</section><section id="on-product-delivery">
+<h3>On product delivery<a class="headerlink" href="#on-product-delivery" title="Permalink to this headline">¶</a></h3>
+<p>In the <a class="reference internal" href="#inventory-avg-price-price-table"><span class="std std-ref">above example table</span></a>, when 10 products are delivered
+to a customer, the <strong>Stock Input</strong> account is untouched because there are no new products coming in.
+To put it simply:</p>
+<ol class="arabic simple">
+<li><p><strong>Inventory valuation</strong> is credited <code class="o_code docutils literal notranslate"><span class="pre">$120</span></code>. Subtracting from inventory valuation represents
+<code class="o_code docutils literal notranslate"><span class="pre">$120</span></code> worth of products exiting the company.</p></li>
+<li><p>Debit <strong>Accounts Receivable</strong> to record revenue from the sale.</p></li>
+</ol>
+<img alt="Muestra los apuntes contables en el pedido de compra" class="align-center" src="../../../../_images/linea_apunte_contable.png" />
+<div class="accordion accordion-flush o_spoiler alert"><div class="accordion-item"><span class="accordion-header" id="o_spoiler_header_0"><button aria-controls="o_spoiler_content_0" aria-expanded="false" class="accordion-button collapsed flex-row-reverse justify-content-end fw-bold p-0 border-bottom-0" data-bs-target="#o_spoiler_content_0" data-bs-toggle="collapse" type="button">Understand Anglo-Saxon expensing</button></span><div aria-labelledby="o_spoiler_header_0" class="accordion-collapse collapse border-bottom-0" id="o_spoiler_content_0"><div class="accordion-body"><p>In the accounting journal entry invoicing a customer for 10 tables, the accounts <strong>Product
+Sales</strong>, <strong>Tax Received</strong>, and <strong>Accounts Receivable</strong> all pertain to the sale of the product.
+<strong>Accounts Receivable</strong> is the account where the customer payment will be received.</p>
+<p>Anglo-Saxon accounting recognizes the cost of goods sold (COGS) once the sale is made. So, up
+until the product is sold, scrapped, or returned, costs of keeping the product in stock are not
+accounted for. The <strong>Expense</strong> account is debited <code class="o_code docutils literal notranslate"><span class="pre">$120</span></code> to log the costs of storing 10 tables
+during this period of time.</p>
+</div></div></div></div></section><section id="on-product-return">
+<h3>On product return<a class="headerlink" href="#on-product-return" title="Permalink to this headline">¶</a></h3>
+<p>In the <a class="reference internal" href="#inventory-avg-price-price-table"><span class="std std-ref">above example table</span></a>, when returning 1 product to a
+vendor purchased at <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code>, a company expects <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code> in the <strong>Accounts Payable</strong> account from the
+vendor. However, <strong>Stock Input</strong> account must be debited <code class="o_code docutils literal notranslate"><span class="pre">$12</span></code> because the average cost is <code class="o_code docutils literal notranslate"><span class="pre">$12</span></code> at
+the time of the return. The missing <code class="o_code docutils literal notranslate"><span class="pre">$2</span></code> is accounted for in the <span class="guilabel">Price Difference
+Account</span>, which is set up in the product’s <span class="guilabel">Product Category</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Behavior of <em>price difference accounts</em> varies from localization. In this case, the account is
+intended to store differences between vendor price and <em>automated</em> inventory valuation methods.</p>
+</div>
+<p>Summary:</p>
+<ol class="arabic simple">
+<li><p>Debit <strong>Stock Input</strong> account <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code> to move the table from stock to stock input. This move is to
+indicate that the table is to be processed for an outgoing shipment.</p></li>
+<li><p>Debit <strong>Stock Input</strong> an additional <code class="o_code docutils literal notranslate"><span class="pre">$2</span></code> to account for the <strong>Price Difference</strong>.</p></li>
+<li><p>Credit <strong>Stock Valuation</strong> <code class="o_code docutils literal notranslate"><span class="pre">$12</span></code> because the item is leaving the stock.</p></li>
+</ol>
+<img alt="2 dollar difference expensed in Price Difference account." class="align-center" src="../../../../_images/expensing-price-difference-account.png" />
+<p>Once the vendor’s refund is received,</p>
+<ol class="arabic simple">
+<li><p>Credit <strong>Stock Input</strong> account <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code> to reconcile the price of the table.</p></li>
+<li><p>Debit <strong>Accounts Payable</strong> <code class="o_code docutils literal notranslate"><span class="pre">$10</span></code> to have the accountants collect and register the payment in
+their journal.</p></li>
+</ol>
+<img alt="Return to get 10 dollars back." class="align-center" src="../../../../_images/return-credit-note.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Average price on returned goods</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#using-average-cost-valuation">Using average cost valuation</a><ul>
+<li><a class="reference internal" href="#formula">Formula</a></li>
+<li><a class="reference internal" href="#compute-average-cost">Compute average cost</a><ul>
+<li><a class="reference internal" href="#product-delivery-use-case">Product delivery (use case)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#return-items-to-supplier-use-case">Return items to supplier (use case)</a><ul>
+<li><a class="reference internal" href="#eliminate-stock-valuation-errors-in-outgoing-products">Eliminate stock valuation errors in outgoing products</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anglo-saxon-accounting">Anglo-Saxon accounting</a><ul>
+<li><a class="reference internal" href="#product-reception">Product reception</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#accounts-balanced-at-received-products">Accounts balanced at received products</a><ul>
+<li><a class="reference internal" href="#in-odoo">In Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#accounts-balanced-at-received-vendor-bill">Accounts balanced at received vendor bill</a><ul>
+<li><a class="reference internal" href="#id1">In Odoo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#on-product-delivery">On product delivery</a></li>
+<li><a class="reference internal" href="#on-product-return">On product return</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Average price on returned goods</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

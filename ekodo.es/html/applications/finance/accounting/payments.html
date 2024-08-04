@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payments &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/payments.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/payments.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Payments</a><ul>
+<li><a class="reference internal" href="#registering-payment-from-an-invoice-or-bill">Registering payment from an invoice or bill</a></li>
+<li><a class="reference internal" href="#registering-payments-not-tied-to-an-invoice-or-bill">Registering payments not tied to an invoice or bill</a><ul>
+<li><a class="reference internal" href="#matching-invoices-and-bills-with-payments">Matching invoices and bills with payments</a></li>
+<li><a class="reference internal" href="#batch-payment">Batch payment</a></li>
+<li><a class="reference internal" href="#payments-matching">Payments matching</a></li>
+<li><a class="reference internal" href="#batch-payments-matching">Batch payments matching</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#registering-a-partial-payment">Registering a partial payment</a></li>
+<li><a class="reference internal" href="#reconciling-payments-with-bank-statements">Reconciling payments with bank statements</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/payments.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Payments</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_hide_toc">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="payments">
+<h1>Payments<a class="headerlink" href="#payments" title="Permalink to this headline">¶</a></h1>
+<p>In Odoo, payments can either be automatically linked to an invoice or bill or be stand-alone records
+for use at a later date:</p>
+<ul class="simple">
+<li><p>If a payment is <strong>linked to an invoice or bill</strong>, it reduces/settles the amount due of the
+invoice. You can have multiple payments related to the same invoice.</p></li>
+<li><p>If a payment is <strong>not linked to an invoice or bill</strong>, the customer has an outstanding credit with
+your company, or your company has an outstanding debit with a vendor. You can use those
+outstanding amounts to reduce/settle unpaid invoices/bills.</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="payments/internal_transfers.html"><span class="doc">Internal transfers</span></a></p></li>
+<li><p><a class="reference internal" href="bank/reconciliation.html"><span class="doc">Bank reconciliation</span></a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/bank-configuration-1880">Odoo Tutorials: Bank Configuration</a></p></li>
+</ul>
+</div>
+</section><section id="registering-payment-from-an-invoice-or-bill">
+<h2>Registering payment from an invoice or bill<a class="headerlink" href="#registering-payment-from-an-invoice-or-bill" title="Permalink to this headline">¶</a></h2>
+<p>When clicking <span class="guilabel">Register payment</span> in a customer invoice or vendor bill, it generates a new
+journal entry and changes the amount due according to the payment amount. The counterpart is
+reflected in an <a class="reference internal" href="bank.html#bank-outstanding-accounts"><span class="std std-ref">outstanding</span></a> <strong>receipts</strong> or <strong>payments</strong> account.
+At this point, the customer invoice or vendor bill is marked as <span class="guilabel">In payment</span>. Then, when
+the outstanding account is reconciled with a bank statement line, the invoice or vendor bill changes
+to the <span class="guilabel">Paid</span> status.</p>
+<p>The information icon near the payment line displays more information about the payment. You can
+access additional information, such as the related journal, by clicking <span class="guilabel">View</span>.</p>
+<img alt="See detailed information of a payment." src="../../../_images/information-icon.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>The customer invoice or vendor bill must be in the <span class="guilabel">Posted</span> status to register the
+payment.</p></li>
+<li><p>If you unreconcile a payment, it still appears in your books but is no longer linked to the
+invoice.</p></li>
+<li><p>If you (un)reconcile a payment in a different currency, a journal entry is automatically
+created to post the currency exchange gains/losses (reversal) amount.</p></li>
+<li><p>If you (un)reconcile a payment and an invoice having cash basis taxes, a journal entry is
+automatically created to post the cash basis tax (reversal) amount.</p></li>
+</ul>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><ul class="simple">
+<li><p>If your main bank account is set as an <a class="reference internal" href="bank.html#bank-outstanding-accounts"><span class="std std-ref">outstanding account</span></a>, and the payment is registered in Odoo (not through a related
+bank statement), invoices and bills are directly registered as <span class="guilabel">Paid</span>.</p></li>
+</ul>
+</div>
+</section><section id="registering-payments-not-tied-to-an-invoice-or-bill">
+<h2>Registering payments not tied to an invoice or bill<a class="headerlink" href="#registering-payments-not-tied-to-an-invoice-or-bill" title="Permalink to this headline">¶</a></h2>
+<p>When a new payment is registered via <span class="menuselection">Customers / Vendors ‣ Payments</span> menu, it is
+not directly linked to an invoice or bill. Instead, the account receivable or the account payable is
+matched with the <strong>outstanding account</strong> until it is manually matched with its related invoice or
+bill.</p>
+</section><section id="matching-invoices-and-bills-with-payments">
+<h3>Matching invoices and bills with payments<a class="headerlink" href="#matching-invoices-and-bills-with-payments" title="Permalink to this headline">¶</a></h3>
+<p>A blue banner appears when you validate a new invoice/bill and an <strong>outstanding payment</strong> exists for
+this specific customer or vendor. It can easily be matched from the invoice or bill by clicking
+<span class="guilabel">ADD</span> under <span class="guilabel">Outstanding Credits</span> or <span class="guilabel">Outstanding Debits</span>.</p>
+<img alt="Shows the ADD option to reconcile an invoice or a bill with a payment." src="../../../_images/add-option.png" />
+<p>The invoice or bill is now marked as <span class="guilabel">In payment</span> until it is reconciled with its
+corresponding bank statement.</p>
+</section><section id="batch-payment">
+<span id="payments-batch-payments"></span><h3>Batch payment<a class="headerlink" href="#batch-payment" title="Permalink to this headline">¶</a></h3>
+<p>Batch payments allow you to group different payments to ease <a class="reference internal" href="bank/reconciliation.html"><span class="doc">reconciliation</span></a>. They are also useful when you deposit <a class="reference internal" href="payments/checks.html"><span class="doc">checks</span></a> to the
+bank or for <a class="reference internal" href="payments/pay_sepa.html"><span class="doc">SEPA payments</span></a>. To do so, go to <span class="menuselection">Accounting ‣
+Customers ‣ Batch Payments</span> or <span class="menuselection">Accounting ‣ Vendors ‣ Batch Payments</span>. In the
+list view of payments, you can select and group several payments in a batch by clicking
+<span class="menuselection">Action ‣ Create Batch Payment</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="payments/batch.html"><span class="doc">Batch payments by bank deposit</span></a></p></li>
+<li><p><a class="reference internal" href="payments/batch_sdd.html"><span class="doc">Batch payments: SEPA Direct Debit (SDD)</span></a></p></li>
+</ul>
+</div>
+</section><section id="payments-matching">
+<span id="id1"></span><h3>Payments matching<a class="headerlink" href="#payments-matching" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Payments matching</span> tool opens all unreconciled customer invoices or vendor bills and
+allows you to process them individually, matching all payments and invoices in one place. You can
+reach this tool from the <span class="menuselection">Accounting Dashboard ‣ Customer Invoices / Vendor Bills</span>,
+click the drop-down menu button (<span class="guilabel">⋮</span>), and select <span class="guilabel">Payments Matching</span>, or go to
+<span class="menuselection">Accounting ‣ Accounting ‣ Reconciliation</span>.</p>
+<img alt="Payments matching menu in the drop-down menu." src="../../../_images/payments-journal.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>During the <a class="reference internal" href="bank/reconciliation.html"><span class="doc">reconciliation</span></a>, if the sum of the debits and credits does
+not match, there is a remaining balance. This either needs to be reconciled at a later date or
+needs to be written off directly.</p>
+</div>
+</section><section id="batch-payments-matching">
+<h3>Batch payments matching<a class="headerlink" href="#batch-payments-matching" title="Permalink to this headline">¶</a></h3>
+<p>You can use the batch reconciliation feature to reconcile several outstanding payments or invoices
+simultaneously for a specific customer or vendor. Go to <span class="menuselection">Accounting ‣ Reporting ‣
+Aged Receivable / Aged Payable</span>. You can see all transactions that have not been reconciled yet for
+that partner, and when you select a customer or vendor, the <span class="guilabel">Reconcile</span> option is
+displayed.</p>
+<img alt="See the reconcile option." src="../../../_images/reconcile-option.png" />
+</section><section id="registering-a-partial-payment">
+<h2>Registering a partial payment<a class="headerlink" href="#registering-a-partial-payment" title="Permalink to this headline">¶</a></h2>
+<p>To register a <strong>partial payment</strong>, click <span class="guilabel">Register payment</span> from the related invoice or
+bill, and enter the amount received or paid. Upon entering the amount, a prompt appears to decide
+whether to <span class="guilabel">Keep open</span> the invoice or bill, or <span class="guilabel">Mark as fully paid</span>. Select
+<span class="guilabel">Keep open</span> and click <span class="guilabel">Create payment</span>. The invoice or bill is now marked as
+<span class="guilabel">Partial</span>. Select <span class="guilabel">Mark as fully paid</span> if you wish to settle the invoice or bill
+with a difference in the amount.</p>
+<img alt="Partial payment of an invoice or bill." src="../../../_images/payment-difference.png" />
+</section><section id="reconciling-payments-with-bank-statements">
+<h2>Reconciling payments with bank statements<a class="headerlink" href="#reconciling-payments-with-bank-statements" title="Permalink to this headline">¶</a></h2>
+<p>Once a payment has been registered, the status of the invoice or bill is <span class="guilabel">In payment</span>. The
+next step is <a class="reference internal" href="bank/reconciliation.html"><span class="doc">reconciling</span></a> it with the related bank statement line to
+have the transaction finalized and the invoice or bill marked as <span class="guilabel">Paid</span>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="payments/online.html">Online payments</a><ul>
+<li class="toctree-l2 o_menu_applications_finance_accounting_payments_online_install_portal_patch"><a class="reference internal" href="payments/online/install_portal_patch.html">Install the patch to disable online invoice payment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="payments/checks.html">Checks</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_batch"><a class="reference internal" href="payments/batch.html">Batch payments by bank deposit</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_batch_sdd"><a class="reference internal" href="payments/batch_sdd.html">Batch payments: SEPA Direct Debit (SDD)</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_follow_up"><a class="reference internal" href="payments/follow_up.html">Follow-up on invoices</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="payments/internal_transfers.html">Internal transfers</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="payments/pay_sepa.html">Pay with SEPA</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="payments/pay_checks.html">Pay by checks</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="payments/forecast.html">Forecast future bills to pay</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Payments</a><ul>
+<li><a class="reference internal" href="#registering-payment-from-an-invoice-or-bill">Registering payment from an invoice or bill</a></li>
+<li><a class="reference internal" href="#registering-payments-not-tied-to-an-invoice-or-bill">Registering payments not tied to an invoice or bill</a><ul>
+<li><a class="reference internal" href="#matching-invoices-and-bills-with-payments">Matching invoices and bills with payments</a></li>
+<li><a class="reference internal" href="#batch-payment">Batch payment</a></li>
+<li><a class="reference internal" href="#payments-matching">Payments matching</a></li>
+<li><a class="reference internal" href="#batch-payments-matching">Batch payments matching</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#registering-a-partial-payment">Registering a partial payment</a></li>
+<li><a class="reference internal" href="#reconciling-payments-with-bank-statements">Reconciling payments with bank statements</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Payments</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

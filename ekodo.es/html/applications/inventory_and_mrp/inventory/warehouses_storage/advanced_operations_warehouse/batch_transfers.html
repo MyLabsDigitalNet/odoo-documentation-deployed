@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Batch picking &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/batch_transfers.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/batch_transfers.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Batch picking</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#create-batch-transfers">Create batch transfers</a><ul>
+<li><a class="reference internal" href="#add-batch-from-transfers-list">Add batch from transfers list</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#process-batch-transfer">Process batch transfer</a><ul>
+<li><a class="reference internal" href="#create-backorder">Create backorder</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#process-batch-transfer-barcode-app">Process batch transfer: Barcode app</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/batch_transfers.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Batch picking</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="batch-picking">
+<h1>Batch picking<a class="headerlink" href="#batch-picking" title="Permalink to this headline">¶</a></h1>
+<p id="inventory-misc-batch-picking"><em>Batch picking</em> enables a single picker to handle multiple orders at once, reducing the time needed
+to navigate to the same location in a warehouse.</p>
+<p>When picking in batches, orders are grouped and consolidated into a picking list. After the picking,
+the batch is taken to an output location, where the products are sorted into their respective
+delivery packages.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="#inventory-management-barcode-picking"><span class="std std-ref">Use Barcode app for pickings</span></a></p>
+</div>
+<p>Since orders <em>must</em> be sorted at the output location after being picked, this picking method suits
+businesses with a few products that are ordered often. Storing high-demand items in easily
+accessible locations can increase the number of orders that are fulfilled efficiently.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To activate the batch picking option, begin by going to <span class="menuselection">Inventory app ‣
+Configuration ‣ Settings</span>. Under the <span class="guilabel">Operations</span> section, check the <span class="guilabel">Batch
+Transfers</span> box.</p>
+<img alt="Enable the *Batch Transfers* in Inventory &gt; Configuration &gt; Settings." class="align-center" src="../../../../../_images/batch-transfer-checkbox.png" />
+<p>Since batch picking is a method to optimize the <em>pick</em> operation in Odoo, the <span class="guilabel">Storage
+Locations</span> and <span class="guilabel">Multi-Step Routes</span> options under the <span class="guilabel">Warehouse</span> heading must
+also be checked on this settings page. When finished, click <span class="guilabel">Save</span>.</p>
+<img alt="Enable *Storage Locations* and *Multi-Step Routes* Inventory &gt; Configuration &gt; Settings." class="align-center" src="../../../../../_images/locations-routes-checkbox.png" />
+<p>Lastly, enable the warehouse picking feature, by navigating to the warehouse settings page, which is
+accessible from <span class="menuselection">Inventory app ‣ Configuration ‣ Warehouses</span>.</p>
+<p>From here, select the desired warehouse from the list. Then, from the radio options available for
+<span class="guilabel">Outgoing Shipments</span>, select either the <span class="guilabel">Send goods in output and then deliver
+(2 steps)</span> or <span class="guilabel">Pack goods, send goods in output and then deliver (3 steps)</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../shipping_receiving/daily_operations/receipts_delivery_two_steps.html#inventory-receipts-delivery-two-steps"><span class="std std-ref">Delivery in two steps</span></a></p></li>
+<li><p><a class="reference internal" href="../../shipping_receiving/daily_operations/delivery_three_steps.html#inventory-delivery-three-steps"><span class="std std-ref">Delivery in three steps</span></a></p></li>
+</ul>
+</div>
+<img alt="Set up 2-step or 3-step outgoing shipments." class="align-center" src="../../../../../_images/set-2-or-3-step-shipment.png" />
+</section><section id="create-batch-transfers">
+<h2>Create batch transfers<a class="headerlink" href="#create-batch-transfers" title="Permalink to this headline">¶</a></h2>
+<p>Manually create batch transfers directly from the <span class="menuselection">Inventory app ‣ Operations ‣
+Batch Transfers</span> page. Click the <span class="guilabel">New</span> button to begin creating a batch transfer.</p>
+<p>On the batch transfer form, fill the following fields out accordingly:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Responsible</span>: employee assigned to the picking. Leave this field blank if <em>any</em> worker
+can fulfill this picking.</p></li>
+<li><p><span class="guilabel">Operation Type</span>: from the drop-down menu, select the operation type under which the
+picking is categorized.</p></li>
+<li><p><span class="guilabel">Scheduled Date</span>: specifies the date by which the <span class="guilabel">Responsible</span> person should
+complete the transfer to the output location.</p></li>
+</ul>
+<p>Next, in the <span class="guilabel">Transfers</span> list, click <span class="guilabel">Add a line</span> to open the <span class="guilabel">Add:
+Transfers</span> window.</p>
+<p>If the <span class="guilabel">Operation Type</span> field was filled, the list will filter transfer records matching
+the selected <span class="guilabel">Operation Type</span>.</p>
+<p>Click the <span class="guilabel">New</span> button to create a new transfer.</p>
+<p>Once the transfer records are selected, click <span class="guilabel">Confirm</span> to confirm the batch picking.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A new batch transfer assigned to the <span class="guilabel">Responsible</span>, <code class="o_code docutils literal notranslate"><span class="pre">Joel</span> <span class="pre">Willis</span></code>, for the <code class="o_code docutils literal notranslate"><span class="pre">Pick</span></code>
+<span class="guilabel">Operation Type</span>. The <span class="guilabel">Scheduled Date</span> is set to <code class="o_code docutils literal notranslate"><span class="pre">August</span> <span class="pre">11</span></code>.</p>
+<img alt="View of *Batch Transfers* form." class="align-center" src="../../../../../_images/batch-transfer-form.png" />
+<p>Clicking the <span class="guilabel">Add a line</span> button opens the <span class="guilabel">Add:Transfers</span> window,
+displaying only pickings. This is because the <span class="guilabel">Operation Type</span> was set to <code class="o_code docutils literal notranslate"><span class="pre">Pick</span></code> on the
+batch transfer form.</p>
+<p>Click the checkbox to the left of the transfers, <code class="o_code docutils literal notranslate"><span class="pre">WH/PICK/00001</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">WH/PICK/00002</span></code>, to include
+them in the new transfer. Then, click the <span class="guilabel">Select</span> button to close the
+<span class="guilabel">Add:Transfers</span> window.</p>
+<img alt="Select multiple transfers from the *Add:Transfers* window." class="align-center" src="../../../../../_images/add-transfers-window.png" />
+</div>
+</section><section id="add-batch-from-transfers-list">
+<span id="inventory-warehouses-storage-add-batch-transfers"></span><h3>Add batch from transfers list<a class="headerlink" href="#add-batch-from-transfers-list" title="Permalink to this headline">¶</a></h3>
+<p>Another method of creating batch transfers is available using the <span class="guilabel">Add to batch</span> option in
+a list. Navigate to the <span class="menuselection">Inventory app ‣ Operations</span> drop-down menu, and select any
+of the <span class="guilabel">Transfers</span> to open a filtered list of transfers.</p>
+<img alt="Show all transfer types in a drop-down menu: Receipts, Deliveries, Internal Transfers, Manufacturings, Batch Transfers, Dropships." class="align-center" src="../../../../../_images/transfers-drop-down.png" />
+<p>On the transfers list, select the checkbox to the left of the selected transfers to add in a batch.
+Next, navigate to the <span class="guilabel">Actions ⚙️ (gear)</span> button, and click <span class="guilabel">Add to batch</span> from
+the resulting drop-down menu.</p>
+<img alt="Use *Add to batch* button, from the *Action* button's list." class="align-center" src="../../../../../_images/add-to-batch.png" />
+<p>Doing so opens an <span class="guilabel">Add to batch</span> pop-up window, wherein the employee
+<span class="guilabel">Responsible</span> for the picking can be assigned.</p>
+<p>Choose from the two radio options to add to <span class="guilabel">an existing batch transfer</span> or create
+<span class="guilabel">a new batch transfer</span>.</p>
+<p>To begin with a draft, select the <span class="guilabel">Draft</span> checkbox.</p>
+<p>Conclude the process by clicking <span class="guilabel">Confirm</span>.</p>
+<img alt="Show *Add to batch* window to create a batch transfer." class="align-center" src="../../../../../_images/add-to-batch-window.png" />
+</section><section id="process-batch-transfer">
+<h2>Process batch transfer<a class="headerlink" href="#process-batch-transfer" title="Permalink to this headline">¶</a></h2>
+<p>Handle batch transfers in the <span class="menuselection">Inventory app ‣ Operations ‣ Batch Transfers</span>
+page.</p>
+<p>From here, select the intended transfer from the list. Then, on the batch transfer form, input the
+<span class="guilabel">Done</span> quantities for each product, under the <span class="guilabel">Detailed Operations</span> tab.
+Finally, select <span class="guilabel">Validate</span> to complete the picking.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Be certain the batch transfer is complete when the <span class="guilabel">Validate</span> button is highlighted in
+purple. If the <span class="guilabel">Check Availability</span> button is highlighted instead, that means there are
+items in the batch that are currently <em>not</em> available in-stock.</p>
+</div>
+<div class="alert alert-success" id="inventory-management-batch-transfers-example">
+<p class="alert-title">
+Example</p><p>In a batch transfer involving products from pickings, <code class="o_code docutils literal notranslate"><span class="pre">WH/PICK/00001</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">WH/PICK/00002</span></code>, the
+<span class="guilabel">Detailed Operations</span> tab shows that the product, <code class="o_code docutils literal notranslate"><span class="pre">Cabinet</span> <span class="pre">with</span> <span class="pre">Doors</span></code>, has been picked
+because the <span class="guilabel">Done</span> column matches the value in the <span class="guilabel">Reserved</span> column.
+However, <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code> quantities have been picked for the other product, <code class="o_code docutils literal notranslate"><span class="pre">Cable</span> <span class="pre">Management</span> <span class="pre">Box</span></code>.</p>
+<img alt="Show batch transfer of products from two pickings in the *Detailed Operations* tab." class="align-center" src="../../../../../_images/process-batch-transfer.png" />
+</div>
+<p>Only in-stock products are visible in the <span class="guilabel">Detailed Operations</span> tab.</p>
+<p>To view the complete product list, switch to the <span class="guilabel">Operations</span> tab. On this list, the
+<span class="guilabel">Demand</span> column indicates the required quantity for the order. The <span class="guilabel">Reserved</span>
+column shows the available stock to fulfill the order. Lastly, the <span class="guilabel">Done</span> column specifies
+the products that have been picked, and are ready for the next step.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The product, <code class="o_code docutils literal notranslate"><span class="pre">Desk</span> <span class="pre">Pad</span></code>, from the same batch as the <a class="reference internal" href="#inventory-management-batch-transfers-example"><span class="std std-ref">example above</span></a>, is only visible in the <span class="guilabel">Operations</span>
+tab because there are no <span class="guilabel">Reserved</span> quantities in-stock to fulfill the batch picking.</p>
+<p>Click the <span class="guilabel">Check Availability</span> button to search the stock again for available products.</p>
+<img alt="Show unavailable reserved quantities in the *Operations* tab." class="align-center" src="../../../../../_images/operations-tab.png" />
+</div>
+</section><section id="create-backorder">
+<h3>Create backorder<a class="headerlink" href="#create-backorder" title="Permalink to this headline">¶</a></h3>
+<p>On the batch transfer form, if the <span class="guilabel">Done</span> quantity of the product is <em>less</em> than the
+<span class="guilabel">Reserved</span> quantity, a pop-up window appears.</p>
+<p>This pop-up window provides the option: <span class="guilabel">Create Backorder?</span>.</p>
+<p>Clicking the <span class="guilabel">Create Backorder</span> button automatically creates a new batch transfer,
+containing the remaining products.</p>
+<p>Click <span class="guilabel">No Backorder</span> to finish the picking <em>without</em> creating another batch picking.</p>
+<p>Click <span class="guilabel">Discard</span> to cancel the validation, and return to the batch transfer form.</p>
+<img alt="Show the *Create Backorder* pop-up." class="align-center" src="../../../../../_images/create-backorder.png" />
+</section><section id="process-batch-transfer-barcode-app">
+<span id="inventory-management-barcode-picking"></span><h2>Process batch transfer: Barcode app<a class="headerlink" href="#process-batch-transfer-barcode-app" title="Permalink to this headline">¶</a></h2>
+<p>Created batch transfers are also listed in the <span class="menuselection">Barcode</span> app, accessible by selecting
+the <span class="guilabel">Batch Transfers</span> button.</p>
+<p>By default, confirmed batch pickings appear on the <span class="guilabel">Batch Transfers</span> page. On that page,
+click on the desired batch transfer to open the detailed list of products for the picking.</p>
+<img alt="Show list of to-do batch transfers in *Barcode* app." class="align-center" src="../../../../../_images/barcode-batch-transfers.png" />
+<p>For the chosen batch transfer, follow the instructions at the top of the page in the black
+background. Begin by scanning the product’s barcode to record a single product for picking. To
+record multiple quantities, click the <span class="guilabel">✏️ (pencil)</span> icon, and enter the required
+quantities for the picking.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Products from the same order are labeled with the same color on the left. Completed pickings are
+highlighted in green.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>In a batch transfer for 2 <code class="o_code docutils literal notranslate"><span class="pre">Cabinet</span> <span class="pre">with</span> <span class="pre">Doors</span></code>, 3 <code class="o_code docutils literal notranslate"><span class="pre">Acoustic</span> <span class="pre">Bloc</span> <span class="pre">Screens</span></code>, and 4 <code class="o_code docutils literal notranslate"><span class="pre">Four</span> <span class="pre">Person</span>
+<span class="pre">Desks</span></code>, the <code class="o_code docutils literal notranslate"><span class="pre">3/3</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">4/4</span></code> <span class="guilabel">Units</span> indicate that the last two product pickings are
+complete.</p>
+<p><code class="o_code docutils literal notranslate"><span class="pre">1/2</span></code> units of the <code class="o_code docutils literal notranslate"><span class="pre">Cabinet</span> <span class="pre">with</span> <span class="pre">Doors</span></code> has already been picked, and after scanning the product
+barcode for the second cabinet, Odoo prompts the user to <code class="o_code docutils literal notranslate"><span class="pre">Scan</span> <span class="pre">a</span> <span class="pre">serial</span> <span class="pre">number</span></code> to record the
+unique serial number for <a class="reference internal" href="../../product_management/product_tracking/serial_numbers.html#inventory-serial-numbers-configure"><span class="std std-ref">product tracking</span></a>.</p>
+<img alt="Display products to be picked in barcode view." class="align-center" src="../../../../../_images/barcode-products.png" />
+</div>
+<p>Once all the products have been picked, click on <span class="guilabel">Validate</span> to mark the batch transfer as
+<span class="guilabel">Done</span>.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Batch picking</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#create-batch-transfers">Create batch transfers</a><ul>
+<li><a class="reference internal" href="#add-batch-from-transfers-list">Add batch from transfers list</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#process-batch-transfer">Process batch transfer</a><ul>
+<li><a class="reference internal" href="#create-backorder">Create backorder</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#process-batch-transfer-barcode-app">Process batch transfer: Barcode app</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Batch picking</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

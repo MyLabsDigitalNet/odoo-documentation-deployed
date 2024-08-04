@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analyze the performance of your purchases &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/purchase/advanced/analyze.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/purchase/advanced/analyze.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Analyze the performance of your purchases</a><ul>
+<li><a class="reference internal" href="#generate-customized-reports">Generate customized reports</a><ul>
+<li><a class="reference internal" href="#use-filters-to-select-the-data-you-need">Use filters to select the data you need</a><ul>
+<li><a class="reference internal" href="#add-custom-filters">Add custom filters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#measure-exactly-what-you-need">Measure exactly what you need</a><ul>
+<li><a class="reference internal" href="#visualize-your-data">Visualize your data</a></li>
+<li><a class="reference internal" href="#explore-your-data">Explore your data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/purchase/advanced/analyze.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Analyze the performance of your purchases</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="analyze-the-performance-of-your-purchases">
+<h1>Analyze the performance of your purchases<a class="headerlink" href="#analyze-the-performance-of-your-purchases" title="Permalink to this headline">¶</a></h1>
+<p>If your company regularly purchases products, you have several reasons to track and analyze your
+performance. The insights gathered can help you to better forecast and plan your future orders. For
+example, you can assess if your business is dependent on particular vendors, and the data can help
+you negotiate discounts on prices.</p>
+</section><section id="generate-customized-reports">
+<h2>Generate customized reports<a class="headerlink" href="#generate-customized-reports" title="Permalink to this headline">¶</a></h2>
+<p>Go to <em>Reporting</em> to access the purchase analysis. Simply by accessing the reporting dashboard, you
+can get a quick overview of your actual performance. By default, the reporting dashboard displays a
+line chart presenting the untaxed amount of your purchase orders per day, and below it, key metrics
+and a pivot table.</p>
+<img alt="Dashboard del informe de compras" class="align-center" src="../../../../_images/informe_compras.png" />
+<p>While the data initially presented is useful, there are several tools and features you can use to
+get even more insights on your purchases.</p>
+</section><section id="use-filters-to-select-the-data-you-need">
+<h3>Use filters to select the data you need<a class="headerlink" href="#use-filters-to-select-the-data-you-need" title="Permalink to this headline">¶</a></h3>
+<p>Odoo offers several default filters you can use and combine by clicking on <em>Filters</em>. When you
+select one or several filters, Odoo looks for all the orders that match at least one of the filters
+you have chosen and populates the chart, key metrics, and pivot table with the data. The
+pre-configured filters are:</p>
+<ol class="arabic simple">
+<li><p>All <em>Requests for Quotation</em></p></li>
+<li><p>All <em>Purchase Orders</em>, except canceled ones</p></li>
+<li><p><em>Confirmation Date Last Year</em> includes all orders that were confirmed the previous year,
+canceled purchase orders included</p></li>
+<li><p><em>Order Date</em> includes all orders - request for quotations and purchases orders (canceled ones
+included) - depending on their date of creation</p></li>
+<li><p><em>Confirmation Date</em> includes all confirmed orders, canceled ones included, depending on their
+date of confirmation</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When you have to select a period, you can use multiple years, and, with at least one year
+selected, multiple quarters and the three most recent months.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If you use the <em>Order Date</em> or <em>Confirmation Date</em> filters, the <em>Comparison</em> feature appears next
+to <em>Filters</em>. It enables you to compare the period you filtered with the previous one.</p>
+</div>
+<img alt="Use los filtros para hacer informes más precisos" class="align-center" src="../../../../_images/filtros_informe.png" />
+</section><section id="add-custom-filters">
+<h4>Add custom filters<a class="headerlink" href="#add-custom-filters" title="Permalink to this headline">¶</a></h4>
+<p>Thanks to the 31 filtering options to choose from, the possibilities of your customizing your
+dataset are almost limitless. Go to <span class="menuselection">Filters ‣ Add Custom Filter</span>, specify the
+condition the filtering option should meet (e.g. <em>is equal to</em>, <em>contains</em>, etc.), and click on
+<em>Apply</em>. If you want to select orders matching several conditions simultaneously (<em>and</em> operator),
+repeat the process to add another custom filter. If you want to use the <em>or</em> operator, don’t
+click on <em>Apply</em>, and click on <em>Add a condition</em> instead. Once you have added all the desired
+filtering options, click on <em>Apply</em>.</p>
+<img alt="Añade un filtro personalizado a tu informe" class="align-center" src="../../../../_images/filtro_personalizado.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To avoid having to recreate custom filters every time, save them by clicking on
+<span class="menuselection">Favorites ‣ Save current search ‣ Save</span>. The customized search filter can
+then be accessed by clicking on <em>Favorites</em> or can even be set as the default filter when you
+open the reporting dashboard.</p>
+</div>
+</section><section id="measure-exactly-what-you-need">
+<h3>Measure exactly what you need<a class="headerlink" href="#measure-exactly-what-you-need" title="Permalink to this headline">¶</a></h3>
+<p>Before selecting what you want to measure, you need to decide whether you prefer using the graph
+view or the pivot view. By default, the dashboard presents both views. However, the measures you
+select won’t be applied to both views. You can access each view separately by clicking on the icons
+at the top right of the dashboard.</p>
+<img alt="Cambie la vista del informe" class="align-center" src="../../../../_images/seleccion_medidas.png" />
+</section><section id="visualize-your-data">
+<h4>Visualize your data<a class="headerlink" href="#visualize-your-data" title="Permalink to this headline">¶</a></h4>
+<p>You can transform the main graph in just a click by selecting one of the three charts: bar, line or
+pie. Fourteen different measures are available, but you can only use one at a time. However, you can
+group the measure using one or several of the 19 <em>Groups</em>.</p>
+<img alt="Seleccione los filtros y medidas que desee para personalizar su vista" class="align-center" src="../../../../_images/filtros_medidas.png" />
+<p>For bar and line charts, the selected measure is your y-axis, and the first group you select is used
+to create the x-axis. Adding more group adds additional lines (line chart) or transforms your bar
+chart into a stacked bar chart. For pie charts, the more groups you select, the more slices are
+displayed.</p>
+</section><section id="explore-your-data">
+<h4>Explore your data<a class="headerlink" href="#explore-your-data" title="Permalink to this headline">¶</a></h4>
+<p>The pivot table view enables you to explore your data in great detail. Unlike the graph view, the
+pivot table enables you to add several measures at the same time. By clicking on <em>Measures</em> or on
+the <strong>+</strong> sign in the <em>Total</em> column, you can add as many as you want, each assigned to a new
+column. By clicking on the <strong>+</strong> sign in the <em>Total</em> row, you can add <em>Groups</em>. If you click on a
+group’s <strong>+</strong> sign, you can add a sub-group, and so on.</p>
+<img alt="Pivot table view in Odoo Purchase" class="align-center" src="../../../../_images/analyze-pivot-view.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can insert your pivot table’s data directly in the Spreadsheet app or export it as an Excel
+file.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Analyze the performance of your purchases</a><ul>
+<li><a class="reference internal" href="#generate-customized-reports">Generate customized reports</a><ul>
+<li><a class="reference internal" href="#use-filters-to-select-the-data-you-need">Use filters to select the data you need</a><ul>
+<li><a class="reference internal" href="#add-custom-filters">Add custom filters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#measure-exactly-what-you-need">Measure exactly what you need</a><ul>
+<li><a class="reference internal" href="#visualize-your-data">Visualize your data</a></li>
+<li><a class="reference internal" href="#explore-your-data">Explore your data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Analyze the performance of your purchases</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

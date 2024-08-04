@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-currency system &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/multi_currency.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/get_started/multi_currency.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Multi-currency system</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#main-currency">Main currency</a></li>
+<li><a class="reference internal" href="#enable-foreign-currencies">Enable foreign currencies</a></li>
+<li><a class="reference internal" href="#currency-rates">Currency rates</a><ul>
+<li><a class="reference internal" href="#manual-update">Manual update</a></li>
+<li><a class="reference internal" href="#automatic-update">Automatic update</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exchange-difference-entries">Exchange difference entries</a></li>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a></li>
+<li><a class="reference internal" href="#journals">Journals</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multi-currency-accounting">Multi-currency accounting</a><ul>
+<li><a class="reference internal" href="#invoices-bills-and-other-documents">Invoices, bills, and other documents</a></li>
+<li><a class="reference internal" href="#payment-registration">Payment registration</a></li>
+<li><a class="reference internal" href="#bank-transactions">Bank transactions</a></li>
+<li><a class="reference internal" href="#exchange-rate-journal-entries">Exchange rate journal entries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/multi_currency.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Multi-currency system</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="multi-currency-system">
+<h1>Multi-currency system<a class="headerlink" href="#multi-currency-system" title="Permalink to this headline">¶</a></h1>
+<p>Odoo allows you to issue invoices, receive bills, and record transactions in currencies other than
+the main currency configured for your company. You can also set up bank accounts in other currencies
+and run reports on your foreign currency activities.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../bank/foreign_currency.html"><span class="doc">Manage a bank account in a foreign currency</span></a></p></li>
+</ul>
+</div>
+</section><section id="configuration">
+<span id="multi-currency-config"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="main-currency">
+<span id="multi-currency-config-main-currency"></span><h3>Main currency<a class="headerlink" href="#main-currency" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>main currency</strong> is defined by default according to the company’s country. You can change it by
+going to <span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Currencies</span> and changing the
+currency in the <span class="guilabel">Main Currency</span> setting.</p>
+</section><section id="enable-foreign-currencies">
+<span id="multi-currency-config-enable"></span><h3>Enable foreign currencies<a class="headerlink" href="#enable-foreign-currencies" title="Permalink to this headline">¶</a></h3>
+<p>Go to <span class="menuselection">Accounting ‣ Configuration ‣ Currencies</span>, and enable the currencies you
+wish to use by toggling the <span class="guilabel">Active</span> button.</p>
+<img alt="Habilite las monedas o divisas que vaya a utilizar" class="align-center" src="../../../../_images/monedas.png" />
+</section><section id="currency-rates">
+<span id="multi-currency-config-rates"></span><h3>Currency rates<a class="headerlink" href="#currency-rates" title="Permalink to this headline">¶</a></h3>
+</section><section id="manual-update">
+<h4>Manual update<a class="headerlink" href="#manual-update" title="Permalink to this headline">¶</a></h4>
+<p>To manually create and set a currency rate, go to <span class="menuselection">Accounting ‣ Configuration ‣
+Currencies</span>, click on the currency you wish to change the rate of, and under the <span class="guilabel">Rates</span>
+tab, click <span class="guilabel">Add a line</span> to create a new rate.</p>
+<img alt="Modifica la tasa de cambio" class="align-center" src="../../../../_images/tasa_cambio.png" />
+</section><section id="automatic-update">
+<h4>Automatic update<a class="headerlink" href="#automatic-update" title="Permalink to this headline">¶</a></h4>
+<p>When you activate a second currency for the first time, <span class="guilabel">Automatic Currency Rates</span> appears
+under <span class="menuselection">Accounting Dashboard ‣ Configuration ‣ Settings ‣ Currencies</span>. By
+default, you have to click on the <strong>Update now</strong> button (<span class="guilabel">🗘</span>) to update the rates.</p>
+<p>Odoo can update the rates at regular intervals. To do so, change the <span class="guilabel">Interval</span> from
+<span class="guilabel">Manually</span> to <span class="guilabel">Daily</span>, <span class="guilabel">Weekly</span>, or <span class="guilabel">Monthly</span>. You can also
+select the web service from which you want to retrieve the latest currency rates by clicking on the
+<span class="guilabel">Service</span> field.</p>
+</section><section id="exchange-difference-entries">
+<span id="multi-currency-config-exch-diff"></span><h3>Exchange difference entries<a class="headerlink" href="#exchange-difference-entries" title="Permalink to this headline">¶</a></h3>
+<p>Odoo automatically records exchange differences entries on dedicated accounts, in a dedicated
+journal.</p>
+<p>You can define which journal and accounts to use to <strong>post exchange difference entries</strong> by
+going to <span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Default Accounts</span> and editing
+the <span class="guilabel">Journal</span>, <span class="guilabel">Gain Account</span>, and <span class="guilabel">Loss Account</span>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If you receive a payment for a customer invoice one month after it was issued, the exchange rate
+has likely changed since. Therefore, this fluctuation implies some profit or loss due to the
+exchange difference, which Odoo automatically records in the default <strong>Exchange Difference</strong>
+journal.</p>
+</div>
+</section><section id="chart-of-accounts">
+<span id="multi-currency-config-coa"></span><h3>Chart of accounts<a class="headerlink" href="#chart-of-accounts" title="Permalink to this headline">¶</a></h3>
+<p>Each account can have a set currency. By doing so, all moves relevant to the account are forced to
+have that account’s currency.</p>
+<p>To do so, go to <span class="menuselection">Accounting ‣ Configuration ‣ Charts of Accounts</span> and select a
+currency in the field <span class="guilabel">Account Currency</span>. If left empty, all active currencies are handled
+instead of just one.</p>
+</section><section id="journals">
+<span id="multi-currency-config-journals"></span><h3>Journals<a class="headerlink" href="#journals" title="Permalink to this headline">¶</a></h3>
+<p>If a currency is set on a <strong>journal</strong>, that journal only handles transactions in that currency.</p>
+<p>To do so, go to <span class="menuselection">Accounting ‣ Configuration ‣ Journals</span>, open the journal you
+want to edit, and select a currency in the field <span class="guilabel">Currency</span>.</p>
+<img alt="Selecciona la divisa a usar en el diario" class="align-center" src="../../../../_images/moneda_diario.png" />
+</section><section id="multi-currency-accounting">
+<span id="multi-currency-mca"></span><h2>Multi-currency accounting<a class="headerlink" href="#multi-currency-accounting" title="Permalink to this headline">¶</a></h2>
+</section><section id="invoices-bills-and-other-documents">
+<span id="multi-currency-mca-documents"></span><h3>Invoices, bills, and other documents<a class="headerlink" href="#invoices-bills-and-other-documents" title="Permalink to this headline">¶</a></h3>
+<p>For all documents, you can select the currency and journal to use for the transaction on the
+document itself.</p>
+<img alt="Seleccione la moneda a usar" class="align-center" src="../../../../_images/factura_cliente.png" />
+</section><section id="payment-registration">
+<span id="multi-currency-mca-payment"></span><h3>Payment registration<a class="headerlink" href="#payment-registration" title="Permalink to this headline">¶</a></h3>
+<p>To register a payment in a currency other than your company’s main currency, click on the
+<span class="guilabel">Register Payment</span> payment button of your document and, in the pop-up window, select a
+<strong>currency</strong> in the <span class="guilabel">Amount</span> field.</p>
+<img alt="Cambie la moneda en el momento de registrar el pago" class="align-center" src="../../../../_images/cambiar_moneda.png" />
+</section><section id="bank-transactions">
+<span id="multi-currency-mca-statements"></span><h3>Bank transactions<a class="headerlink" href="#bank-transactions" title="Permalink to this headline">¶</a></h3>
+<p>When creating or importing bank transactions, the amount is in the company’s main currency. To input
+a <strong>foreign currency</strong>, select a currency in the <span class="guilabel">Foreign Currency</span>. Once selected, enter
+the <span class="guilabel">Amount</span> in your main currency for it to automatically get converted in the foreign
+currency in the <span class="guilabel">Amount in Currency field</span>.</p>
+<img alt="The extra fields related to foreign currencies." class="align-center" src="../../../../_images/foreign-fields.png" />
+<p>When reconciling, Odoo displays both the foreign currency amount and the equivalent amount in your
+company’s main currency.</p>
+</section><section id="exchange-rate-journal-entries">
+<span id="multi-currency-mca-exch-entries"></span><h3>Exchange rate journal entries<a class="headerlink" href="#exchange-rate-journal-entries" title="Permalink to this headline">¶</a></h3>
+<p>To see <strong>exchange difference journal entries</strong>, go to <span class="menuselection">Accounting Dashboard ‣
+Accounting ‣ Journals: Miscellaneous</span>.</p>
+<img alt="Exchange rate journal entry." class="align-center" src="../../../../_images/exchange-journal-currency.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Multi-currency system</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#main-currency">Main currency</a></li>
+<li><a class="reference internal" href="#enable-foreign-currencies">Enable foreign currencies</a></li>
+<li><a class="reference internal" href="#currency-rates">Currency rates</a><ul>
+<li><a class="reference internal" href="#manual-update">Manual update</a></li>
+<li><a class="reference internal" href="#automatic-update">Automatic update</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exchange-difference-entries">Exchange difference entries</a></li>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a></li>
+<li><a class="reference internal" href="#journals">Journals</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multi-currency-accounting">Multi-currency accounting</a><ul>
+<li><a class="reference internal" href="#invoices-bills-and-other-documents">Invoices, bills, and other documents</a></li>
+<li><a class="reference internal" href="#payment-registration">Payment registration</a></li>
+<li><a class="reference internal" href="#bank-transactions">Bank transactions</a></li>
+<li><a class="reference internal" href="#exchange-rate-journal-entries">Exchange rate journal entries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Multi-currency system</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

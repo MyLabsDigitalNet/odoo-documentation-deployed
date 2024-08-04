@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Getting started with Helpdesk &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/services/helpdesk/overview/getting_started.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/services/helpdesk/overview/getting_started.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Getting started with Helpdesk</a><ul>
+<li><a class="reference internal" href="#create-helpdesk-teams">Create Helpdesk teams</a><ul>
+<li><a class="reference internal" href="#assignment-visibility">Assignment &amp; Visibility</a><ul>
+<li><a class="reference internal" href="#determine-to-whom-the-team-will-be-visible">Determine to whom the team will be visible</a></li>
+<li><a class="reference internal" href="#automatically-assign-new-tickets">Automatically assign new tickets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-or-modify-kanban-stages">Create or modify kanban stages</a><ul>
+<li><a class="reference internal" href="#add-email-and-sms-templates-to-stages">Add email and SMS templates to stages</a></li>
+<li><a class="reference internal" href="#assign-stages-to-a-team">Assign stages to a team</a></li>
+<li><a class="reference internal" href="#fold-a-stage">Fold a stage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/services/helpdesk/overview/getting_started.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Getting started with Helpdesk</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="getting-started-with-helpdesk">
+<h1>Getting started with Helpdesk<a class="headerlink" href="#getting-started-with-helpdesk" title="Permalink to this headline">¶</a></h1>
+<p>Odoo <span class="guilabel">Helpdesk</span> is a ticket-based customer support application. Teams can track,
+prioritize, and solve customer issues from their pipeline, which is organized in customizable
+stages. Multiple teams can be configured and managed in one dashboard.</p>
+</section><section id="create-helpdesk-teams">
+<h2>Create Helpdesk teams<a class="headerlink" href="#create-helpdesk-teams" title="Permalink to this headline">¶</a></h2>
+<p>Setting up multiple teams allows for tickets to be grouped by location or by support type.</p>
+<p>To view or modify <em>Helpdesk</em> teams, go to <span class="menuselection">Helpdesk ‣ Configuration ‣ Teams</span>. To
+create a new team, click on the <span class="guilabel">New</span> button in the top left of the dashboard. From there,
+name the new team, and fill out the remaining fields as defined in the following sections on the
+form.</p>
+<img alt="View of the Helpdesk teams page in Odoo Helpdesk" class="align-center" src="../../../../_images/helpdesk-teams-list.png" />
+</section><section id="assignment-visibility">
+<h3>Assignment &amp; Visibility<a class="headerlink" href="#assignment-visibility" title="Permalink to this headline">¶</a></h3>
+</section><section id="determine-to-whom-the-team-will-be-visible">
+<h4>Determine to whom the team will be visible<a class="headerlink" href="#determine-to-whom-the-team-will-be-visible" title="Permalink to this headline">¶</a></h4>
+<p>Under the <span class="guilabel">Visibility</span> section, determine who can view this team and its tickets.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Invited internal users</span> have access to the team and tickets they are following. This
+can be modified on each individual ticket.</p></li>
+<li><p><span class="guilabel">All internal users</span> have access to the team and all of its tickets without being a
+follower.</p></li>
+<li><p><span class="guilabel">Invited portal users and all internal users</span> have access to the team without being a
+follower. Portal users will only be able to access tickets that they are following.</p></li>
+</ul>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A <code class="o_code docutils literal notranslate"><span class="pre">Customer</span> <span class="pre">Support</span></code> team intended to handle general issues with shipping and product issues
+would have the visibility setting <span class="guilabel">Invited portal users and all internal users</span>.
+However, a <code class="o_code docutils literal notranslate"><span class="pre">Financial</span> <span class="pre">Services</span></code> team handling tickets related to accounting or tax information
+would only need to be visible to <span class="guilabel">Invited internal users</span>.</p>
+</div>
+</section><section id="automatically-assign-new-tickets">
+<h4>Automatically assign new tickets<a class="headerlink" href="#automatically-assign-new-tickets" title="Permalink to this headline">¶</a></h4>
+<p>When tickets are received, they will need to be assigned to a member of the support team. This can
+be done manually on each ticket individually, or through <span class="guilabel">Automatic Assignment</span>. Check the
+box next to <span class="guilabel">Automatic Assignment</span> to enable the feature for this team.</p>
+<img alt="View of a Helpdesk team settings page emphasizing the assignment and visibility features in Odoo Helpdesk" class="align-center" src="../../../../_images/assignment-visibility.png" />
+<p>Select one of the following assignment methods, based on how workload should be allocated across
+the team:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><span class="guilabel">Each user is assigned an equal number of tickets</span> assigns tickets to team members</dt><dd><p>based on total ticket count, regardless of the number of open or closed tickets they are
+currently assigned.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="guilabel">Each user has an equal number of open tickets</span> assigned tickets to team members based</dt><dd><p>on how many open tickets they are currently assigned. This option is useful for automatically
+delegating a heavier workload to high-performers who tend to close tickets quickly.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Finally, add the <span class="guilabel">Team Members</span> who will be assigned tickets for this team. Leave the
+field empty to include all employees who have the proper assignments and access rights configured in
+their user account settings.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If an employee has time off scheduled in the <span class="guilabel">Time Off</span> application, they will not be
+assigned tickets during that time. If no employees are available, the system will look ahead
+until there is a match.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../general/users.html#users-add-individual"><span class="std std-ref">Manage users</span></a></p></li>
+<li><p><a class="reference internal" href="../../../general/users/access_rights.html"><span class="doc">Access rights</span></a></p></li>
+</ul>
+</div>
+</section><section id="create-or-modify-kanban-stages">
+<h2>Create or modify kanban stages<a class="headerlink" href="#create-or-modify-kanban-stages" title="Permalink to this headline">¶</a></h2>
+<p><span class="guilabel">Stages</span> are used to organize the <em>Helpdesk</em> pipeline and track the progress of tickets.
+Stages are customizable, and can be renamed to fit the needs of each team.</p>
+<p>To view or modify <em>Helpdesk</em> stages, go to <span class="menuselection">Helpdesk ‣ Configuration ‣ Stages</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p><a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">Developer mode</span></a> must be activated in order to access the stages menu. To
+activate developer mode go to <span class="menuselection">Settings ‣ General Settings ‣ Developer Tools</span>
+and click on <span class="guilabel">Activate the developer mode</span>.</p>
+</div>
+<p>The list view shows an overview of all the stages currently available in Helpdesk. They are listed
+in the order they appear in the pipeline. To change the order of the stages, use the arrow buttons
+on the left side of the list.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Change the stage order on the kanban view by dragging and dropping individual columns.</p>
+</div>
+<img alt="View of the stage list page emphasizing the option to create a new stage" class="align-center" src="../../../../_images/stages-create-new.png" />
+<p>To create a new stage, click on the <span class="guilabel">New</span> button in the top left of the dashboard.
+Next, choose a name for the new stage, and add a description (though it is not required).
+Fill out the remaining fields following the steps below.</p>
+<img alt="View of a stage's settings page in Odoo Helpdesk" class="align-center" src="../../../../_images/stage-settings.png" />
+</section><section id="add-email-and-sms-templates-to-stages">
+<h3>Add email and SMS templates to stages<a class="headerlink" href="#add-email-and-sms-templates-to-stages" title="Permalink to this headline">¶</a></h3>
+<p>When an <span class="guilabel">Email Template</span> is added to a stage, an email is automatically sent to the the
+customer when a ticket reaches that specific stage in the helpdesk pipeline. Likewise, adding an
+<span class="guilabel">SMS Template</span> will result in an SMS text message being sent to the customer.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>SMS Text Messaging is an In-App Purchase (IAP) service that requires prepaid credits to work.
+Refer to <a class="reference external" href="https://iap-services.odoo.com/iap/sms/pricing">SMS Pricing FAQ</a> for additional
+information.</p>
+</div>
+<p>To select an existing email template, select it from the <span class="guilabel">Email Template</span> field. Click on
+the arrow key to the right of the field to edit the template.</p>
+<p>To create a new template, click the field and begin typing a new template title. Then select
+<span class="guilabel">Create and edit</span>, and complete the form details.</p>
+<p>Follow the same steps to select, edit, or create an <span class="guilabel">SMS Template</span>.</p>
+<img alt="View of an SMS template setup page in Odoo Helpdesk" class="align-center" src="../../../../_images/sms-template1.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../../general/companies/email_template.html"><span class="doc">Email templates</span></a></p>
+</div>
+</section><section id="assign-stages-to-a-team">
+<h3>Assign stages to a team<a class="headerlink" href="#assign-stages-to-a-team" title="Permalink to this headline">¶</a></h3>
+<p>Make a selection in the <span class="guilabel">Teams</span> field on the <span class="guilabel">Stages</span> form. More than one team
+may be selected, since the same stage(s) can be assigned to multiple teams.</p>
+<blockquote>
+<div><img alt="View of stage setup emphasizing teams field" class="align-center" src="../../../../_images/stages-settings-sharing.png" />
+</div></blockquote>
+</section><section id="fold-a-stage">
+<h3>Fold a stage<a class="headerlink" href="#fold-a-stage" title="Permalink to this headline">¶</a></h3>
+<p>Check the <span class="guilabel">Folded in Kanban</span> box on the <span class="guilabel">Stages</span> form to display this stage as
+<em>folded</em> by default in the kanban view for this team.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Tickets that reach a <em>folded</em> stage are considered closed. Closing a ticket before the work is
+completed can result in reporting and communication issues. This setting should only be enabled
+for stages that are considered <em>closing</em> stages.</p>
+</div>
+<p>Alternatively, stages can be temporarily folded in the kanban view, by clicking on the settings
+icon and selecting <span class="guilabel">Fold</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Manually folding a stage from the kanban view will not close the tickets in the stage.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Getting started with Helpdesk</a><ul>
+<li><a class="reference internal" href="#create-helpdesk-teams">Create Helpdesk teams</a><ul>
+<li><a class="reference internal" href="#assignment-visibility">Assignment &amp; Visibility</a><ul>
+<li><a class="reference internal" href="#determine-to-whom-the-team-will-be-visible">Determine to whom the team will be visible</a></li>
+<li><a class="reference internal" href="#automatically-assign-new-tickets">Automatically assign new tickets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-or-modify-kanban-stages">Create or modify kanban stages</a><ul>
+<li><a class="reference internal" href="#add-email-and-sms-templates-to-stages">Add email and SMS templates to stages</a></li>
+<li><a class="reference internal" href="#assign-stages-to-a-team">Assign stages to a team</a></li>
+<li><a class="reference internal" href="#fold-a-stage">Fold a stage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Getting started with Helpdesk</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

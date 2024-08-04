@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cash discounts and tax reduction &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script>
+    <script src="../../../../_static/tabs.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/customer_invoices/cash_discounts.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/customer_invoices/cash_discounts.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Cash discounts and tax reduction</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#tax-reductions">Tax reductions</a></li>
+<li><a class="reference internal" href="#cash-discount-gain-loss-accounts">Cash discount gain/loss accounts</a></li>
+<li><a class="reference internal" href="#payment-terms">Payment terms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apply-a-cash-discount-to-a-customer-invoice">Apply a cash discount to a customer invoice</a><ul>
+<li><a class="reference internal" href="#payment-reconciliation">Payment reconciliation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/customer_invoices/cash_discounts.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Cash discounts and tax reduction</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="cash-discounts-and-tax-reduction">
+<h1>Cash discounts and tax reduction<a class="headerlink" href="#cash-discounts-and-tax-reduction" title="Permalink to this headline">¶</a></h1>
+<p><strong>Cash discounts</strong> are reductions in the amount a customer must pay for goods or services offered as
+an incentive for paying their invoice promptly. These discounts are typically a percentage of the
+total invoice amount and are applied if the customer pays within a specified time. Cash discounts
+can help the company maintain a steady cash flow.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>You issue a €100 invoice on the 1st of January. The full payment is due within 30 days, and you
+also offer a 2% discount if your customer pays you within seven days.</p>
+<p>The customer can pay €98 up to the 8th of January. After that date, they would have to pay €100
+by the 31st of January.</p>
+</div>
+<p>A <a class="reference internal" href="#cash-discounts-tax-reductions"><span class="std std-ref">tax reduction</span></a> can also be applied depending on the country
+or region.</p>
+</section><section id="configuration">
+<span id="cash-discounts-configuration"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To grant cash discounts to customers, you must first set up the <a class="reference internal" href="#cash-discounts-tax-reductions"><span class="std std-ref">type of tax reduction</span></a>, verify the <a class="reference internal" href="#cash-discounts-gain-loss-accounts"><span class="std std-ref">gain and loss accounts</span></a>, and configure new <a class="reference internal" href="#cash-discounts-payment-terms"><span class="std std-ref">payment terms</span></a>.</p>
+</section><section id="tax-reductions">
+<span id="cash-discounts-tax-reductions"></span><h3>Tax reductions<a class="headerlink" href="#tax-reductions" title="Permalink to this headline">¶</a></h3>
+<p>Depending on the country or region, the base amount used to compute the tax can vary, which can lead
+to a <strong>tax reduction</strong>.</p>
+<p>To configure how the tax reduction is applied, go to <span class="menuselection">Accounting ‣ Configuration
+‣ Settings</span>, and in the <span class="guilabel">Taxes</span> section, in the <span class="guilabel">Cash Discount Tax Reduction</span>
+feature, select one of the three following options:</p>
+<dl class="simple">
+<dt>Always (upon invoice)</dt><dd><p>The tax is always reduced. The base amount used to compute the tax is the discounted amount,
+whether the customer benefits from the discount or not.</p>
+</dd>
+<dt>On early payment</dt><dd><p>The tax is reduced only if the customer pays early. The base amount used to compute the tax is the
+same as the sale: if the customer benefits from the reduction, then the tax is reduced. This means
+that, depending on the customer, the tax amount can vary after the invoice is issued.</p>
+</dd>
+<dt>Never</dt><dd><p>The tax is never reduced. The base amount used to compute the tax is the full amount, whether the
+customer benefits from the discount or not.</p>
+</dd>
+</dl>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>You issue a €100 invoice (tax-excluded) on the 1st of January, with a 21% tax rate. The full
+payment is due within 30 days, and you also offer a 2% discount if your customer pays you within
+seven days.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Always (upon invoice)</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">On early payment</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Never</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Due date</p></th>
+<th class="head"><p>Total amount due</p></th>
+<th class="head"><p>Computation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8th of January</p></td>
+<td><p>€118.58</p></td>
+<td><p>(€98 + (21% of €98))</p></td>
+</tr>
+<tr class="row-odd"><td><p>31st of January</p></td>
+<td><p>€120.58</p></td>
+<td><p>(€100 + (21% of €98))</p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Due date</p></th>
+<th class="head"><p>Total amount due</p></th>
+<th class="head"><p>Computation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8th of January</p></td>
+<td><p>€118.58</p></td>
+<td><p>(€98 + (21% of €98))</p></td>
+</tr>
+<tr class="row-odd"><td><p>31st of January</p></td>
+<td><p>€121.00</p></td>
+<td><p>(€100 + (21% of €100))</p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Due date</p></th>
+<th class="head"><p>Total amount due</p></th>
+<th class="head"><p>Computation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8th of January</p></td>
+<td><p>€119.00</p></td>
+<td><p>(€98 + (21% of €100))</p></td>
+</tr>
+<tr class="row-odd"><td><p>31st of January</p></td>
+<td><p>€121.00</p></td>
+<td><p>(€100 + (21% of €100))</p></td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p><a class="reference internal" href="../reporting/tax_returns.html#tax-returns-tax-grids"><span class="std std-ref">Tax grids</span></a>, which are used for the tax report, are correctly
+computed according to the <a class="reference internal" href="#cash-discounts-tax-reductions"><span class="std std-ref">type of tax reduction</span></a> you
+configured.</p></li>
+<li><p>The <strong>type of cash discount tax reduction</strong> may be correctly pre-configured, depending on your
+<a class="reference internal" href="../../fiscal_localizations.html#fiscal-localizations-packages"><span class="std std-ref">fiscal localization package</span></a>.</p></li>
+</ul>
+</div>
+</section><section id="cash-discount-gain-loss-accounts">
+<span id="cash-discounts-gain-loss-accounts"></span><h3>Cash discount gain/loss accounts<a class="headerlink" href="#cash-discount-gain-loss-accounts" title="Permalink to this headline">¶</a></h3>
+<p>With a cash discount, the amount you earn depends on whether the customer benefits from the cash
+discount or not. This inevitably leads to gains and losses, which are recorded on default accounts.</p>
+<p>To modify these accounts, go to <span class="menuselection">Accounting ‣ Configuration ‣ Settings</span>, and in
+the <span class="guilabel">Default Accounts</span> section, select the accounts you want to use for the
+<span class="guilabel">Cash Discount Gain account</span> and <span class="guilabel">Cash Discount Loss account</span>.</p>
+</section><section id="payment-terms">
+<span id="cash-discounts-payment-terms"></span><h3>Payment terms<a class="headerlink" href="#payment-terms" title="Permalink to this headline">¶</a></h3>
+<p>Cash discounts are defined on <a class="reference internal" href="payment_terms.html"><span class="doc">payment terms</span></a>. Configure them to your liking by
+going to <span class="menuselection">Accounting ‣ Configuration ‣ Payment Terms</span>, and make sure to fill out
+the fields <span class="guilabel">Discount %</span> and <span class="guilabel">Discount Days</span>.</p>
+<img alt="Configuration of payment terms named &quot;2/7 Net 30&quot;. The field &quot;Description on Invoices&quot; reads: &quot;Payment terms: 30 Days, 2% Early Payment Discount under 7 days&quot;." class="align-center" src="../../../../_images/payment-terms.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="payment_terms.html"><span class="doc">Payment terms and installment plans</span></a></p>
+</div>
+</section><section id="apply-a-cash-discount-to-a-customer-invoice">
+<span id="cash-discounts-customer-invoice"></span><h2>Apply a cash discount to a customer invoice<a class="headerlink" href="#apply-a-cash-discount-to-a-customer-invoice" title="Permalink to this headline">¶</a></h2>
+<p>Apply a cash discount to a customer invoice by selecting the <a class="reference internal" href="#cash-discounts-payment-terms"><span class="std std-ref">payment terms you created</span></a>. Odoo automatically computes the correct amounts, tax amounts, due
+dates, and accounting records.</p>
+<p>Under the <span class="guilabel">Journal Items</span> tab, you can display the discount details by clicking on the
+“toggle” button and adding the <span class="guilabel">Discount Date</span> and <span class="guilabel">Discount Amount</span> columns.</p>
+<img alt="An invoice of €100.00 with &quot;2/7 Net 30&quot; selected as payment terms. The &quot;Journal Items&quot; tab is open, and the &quot;Discount Date&quot; and &quot;Discount Amount&quot; columns are displayed." class="align-center" src="../../../../_images/invoice-journal-entry.png" />
+<p>The discount amount and due date are also displayed on the generated invoice sent to the customer.</p>
+<img alt="An invoice of €100.00 with the following text added to the terms and conditions: &quot;30 Days, 2% Early Payment Discount under 7 days. 118.58 € due if paid before 01/08/2023.&quot;" class="align-center" src="../../../../_images/invoice-print.png" />
+</section><section id="payment-reconciliation">
+<h3>Payment reconciliation<a class="headerlink" href="#payment-reconciliation" title="Permalink to this headline">¶</a></h3>
+<p>When you record a payment or reconcile your bank statements, Odoo takes the customer payment’s date
+into account to define if they can benefit from the cash discount or not.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If your customer pays the discount amount <em>after</em> the discount date, you can always decide
+whether to mark the invoice as fully paid with a write-off or as partially paid.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../payments.html"><span class="doc">Payments</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Cash discounts and tax reduction</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#tax-reductions">Tax reductions</a></li>
+<li><a class="reference internal" href="#cash-discount-gain-loss-accounts">Cash discount gain/loss accounts</a></li>
+<li><a class="reference internal" href="#payment-terms">Payment terms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apply-a-cash-discount-to-a-customer-invoice">Apply a cash discount to a customer invoice</a><ul>
+<li><a class="reference internal" href="#payment-reconciliation">Payment reconciliation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Cash discounts and tax reduction</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

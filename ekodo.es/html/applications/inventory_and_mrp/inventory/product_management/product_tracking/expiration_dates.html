@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expiration dates &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_tracking/expiration_dates.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/product_management/product_tracking/expiration_dates.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Expiration dates</a><ul>
+<li><a class="reference internal" href="#enable-expiration-dates">Enable expiration dates</a></li>
+<li><a class="reference internal" href="#configure-expiration-dates-on-products">Configure expiration dates on products</a></li>
+<li><a class="reference internal" href="#set-expiration-dates-on-receipts-with-lots-serial-numbers">Set expiration dates on receipts with lots &amp; serial numbers</a></li>
+<li><a class="reference internal" href="#set-expiration-dates-on-manufactured-products">Set expiration dates on manufactured products</a></li>
+<li><a class="reference internal" href="#sell-products-with-expiration-dates">Sell products with expiration dates</a></li>
+<li><a class="reference internal" href="#view-expiration-dates-for-lots-serial-numbers">View expiration dates for lots &amp; serial numbers</a><ul>
+<li><a class="reference internal" href="#expiration-alerts">Expiration alerts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_tracking/expiration_dates.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Expiration dates</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="expiration-dates">
+<h1>Expiration dates<a class="headerlink" href="#expiration-dates" title="Permalink to this headline">¶</a></h1>
+<p id="inventory-product-management-product-tracking-expiration-dates">In Odoo, <em>expiration dates</em> can be used to manage and track the lifecycles of perishable products,
+from purchase to sale. Using expiration dates reduces product loss due to unexpected expiry, and
+helps to avoid sending expired products to customers.</p>
+<p>In Odoo, only products that are tracked using <em>lots</em> and <em>serial numbers</em> can be assigned expiration
+information. Once a lot or serial number has been assigned, an expiration date can be set. This is
+especially helpful for companies (such as food manufacturers) that consistently, or exclusively, buy
+and sell perishable products.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="lots.html"><span class="doc">Lot numbers</span></a></p></li>
+<li><p><a class="reference internal" href="serial_numbers.html"><span class="doc">Use serial numbers to track products</span></a></p></li>
+</ul>
+</div>
+</section><section id="enable-expiration-dates">
+<h2>Enable expiration dates<a class="headerlink" href="#enable-expiration-dates" title="Permalink to this headline">¶</a></h2>
+<p>To enable the use of <em>expiration dates</em>, go to <span class="menuselection">Inventory app ‣ Configuration ‣
+Settings</span>, and scroll down to the <span class="guilabel">Traceability</span> section. Then, click the checkbox to
+enable the <span class="guilabel">Lots &amp; Serial Numbers</span> feature.</p>
+<p>Once that feature is activated, a new option will appear to enable <span class="guilabel">Expiration Dates</span>.
+Click that checkbox to enable the feature, and be sure to <span class="guilabel">Save</span> changes.</p>
+<img alt="Enabled lots and serial numbers and expiration dates settings." class="align-center" src="../../../../../_images/expiration-dates-enabled-settings.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Once the <span class="guilabel">Lots &amp; Serial Numbers</span> feature is activated, additional features appear to
+<span class="guilabel">Display Lots &amp; Serial Numbers on Delivery Slips</span>; to <span class="guilabel">Display Lots &amp; Serial
+Numbers on Invoices</span>; and to <span class="guilabel">Display Expiration Dates on Delivery Slips</span>. Activating
+these features helps with end-to-end traceability, making it easier to manage product recalls,
+identify “bad” batches of products, and more.</p>
+</div>
+</section><section id="configure-expiration-dates-on-products">
+<h2>Configure expiration dates on products<a class="headerlink" href="#configure-expiration-dates-on-products" title="Permalink to this headline">¶</a></h2>
+<p>Once the <span class="guilabel">Lots &amp; Serial Numbers</span> and <span class="guilabel">Expiration Dates</span> features have been
+enabled in the settings of the <em>Inventory</em> app, expiration information can be configured on
+individual products.</p>
+<p>To do so, go to <span class="menuselection">Inventory app ‣ Products ‣ Products</span>, and select a product to
+edit. Selecting a product reveals the product form for that particular item. Once on the product
+form, click <span class="guilabel">Edit</span> in the upper-left corner to make changes.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>To be tracked using lots or serial numbers, or to configure expiration information, products
+<em>must</em> have their <span class="guilabel">Product Type</span> set as <span class="guilabel">Storable Product</span> under the
+<span class="guilabel">General Information</span> tab.</p>
+</div>
+<p>Then, click the <span class="guilabel">Inventory</span> tab, and scroll down to the <span class="guilabel">Traceability</span> section.
+From here, make sure that either <span class="guilabel">By Unique Serial Number</span> or <span class="guilabel">By Lots</span> is
+checked.</p>
+<p>Once it is, a new <span class="guilabel">Expiration Date</span> checkbox appears that must also be clicked. When both
+are enabled, a new <span class="guilabel">Dates</span> field appears to the right.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If a product has stock on-hand prior to activating tracking by lots or serial numbers, an
+inventory adjustment might need to be performed in order to assign lot numbers to the existing
+stock.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>For processing large quantities of products on receipts or deliveries, it is recommended to track
+using lots, so multiple products can be traced back to the same lot, if any issues arise.</p>
+</div>
+<img alt="Expiration dates configuration on the product form." class="align-center" src="../../../../../_images/expiration-dates-product-configuration.png" />
+<p>Under the <span class="guilabel">Dates</span> field, there are four categories of expiration information to configure
+for the product:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Expiration Time</span>: the number of days after receiving products (either from a vendor or
+in stock after production) in which goods may become dangerous and should not be used or consumed.</p></li>
+<li><p><span class="guilabel">Best Before Time</span>: the number of days before the expiration date in which the goods
+start deteriorating, <strong>without</strong> necessarily being dangerous yet.</p></li>
+<li><p><span class="guilabel">Removal Time</span>: the number of days before the expiration date in which the goods should
+be removed from stock.</p></li>
+<li><p><span class="guilabel">Alert Time</span>: the number of days before the expiration date in which an alert should be
+raised on goods in a particular lot or containing a particular serial number.</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The values entered into these fields automatically compute the expiration date for goods entered
+into stock, whether purchased from a vendor or manufactured in-house.</p>
+</div>
+<p>Once all the expiration information has been configured, click <span class="guilabel">Save</span> to save all changes.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If the <span class="guilabel">Dates</span> field is not populated with any values for expiration information, dates
+(and lots) can be manually assigned upon receipts and deliveries in and out of the warehouse.
+Even when assigned, they can still be overwritten and changed manually if needed, as well.</p>
+</div>
+</section><section id="set-expiration-dates-on-receipts-with-lots-serial-numbers">
+<h2>Set expiration dates on receipts with lots &amp; serial numbers<a class="headerlink" href="#set-expiration-dates-on-receipts-with-lots-serial-numbers" title="Permalink to this headline">¶</a></h2>
+<p>Generating expiration dates for <strong>incoming</strong> goods can be done directly from the purchase order. To
+create a purchase order, go to the <span class="menuselection">Purchase</span> app and click <span class="guilabel">Create</span> to
+create a new request for quotation (RFQ).</p>
+<p>Then, fill out the information by adding a <span class="guilabel">Vendor</span>, and add products to the
+<span class="guilabel">Product</span> lines by clicking <span class="guilabel">Add a product</span>.</p>
+<p>Choose the desired quantity to order by changing the number in the <span class="guilabel">Quantity</span> column, and
+click <span class="guilabel">Confirm Order</span>. This converts the <abbr title="request for quotation">RFQ</abbr> into a
+purchase order.</p>
+<p>Click the <span class="guilabel">Receipt</span> smart button at the top of the purchase order to be taken to the
+warehouse receipt form.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Clicking <span class="guilabel">Validate</span> before assigning a serial number to the ordered product quantities
+causes a <span class="guilabel">User Error</span> popup to appear. The popup requires entry of a lot or serial
+number for the ordered products. The <abbr title="request for quotation">RFQ</abbr> cannot be validated
+without an assigned lot or serial number.</p>
+<img alt="User error popup when validating an order with no lot number." class="align-center" src="../../../../../_images/expiration-dates-user-error-popup.png" />
+</div>
+<p>From here, click the <span class="guilabel">Additional Options</span> menu (hamburger) icon located on the far-right
+of the product line. When clicked, a <span class="guilabel">Detailed Operations</span> pop-up will appear.</p>
+<p>In this pop-up, click <span class="guilabel">Add a line</span>, and assign a lot or serial number under the
+<span class="guilabel">Lot/Serial Number Name</span> field.</p>
+<p>An expiration date automatically populates, based on the configuration on the product form (if
+previously configured).</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If the <span class="guilabel">Dates</span> field on the product form has not been configured, this date can be
+manually entered.</p>
+</div>
+<p>After the expiration date has been established, mark the <span class="guilabel">Done</span> quantities, and click
+<span class="guilabel">Confirm</span> to close the pop-up. Finally, click <span class="guilabel">Validate</span>.</p>
+<img alt="Detailed operations popup showing expiration dates for ordered products." class="align-center" src="../../../../../_images/expiration-dates-detailed-operations-popup.png" />
+<p>A <span class="guilabel">Traceability</span> smart button will appear upon validating the receipt. Click the
+<span class="guilabel">Traceability</span> smart button to see the updated <span class="guilabel">Traceability Report</span>, which
+includes: a <span class="guilabel">Reference</span> document; the <span class="guilabel">Product</span> being traced; the
+<span class="guilabel">Lot/Serial #</span>; and more.</p>
+</section><section id="set-expiration-dates-on-manufactured-products">
+<h2>Set expiration dates on manufactured products<a class="headerlink" href="#set-expiration-dates-on-manufactured-products" title="Permalink to this headline">¶</a></h2>
+<p>Expiration dates can also be generated for products manufactured in-house. To assign expiration
+dates to manufactured products, a manufacturing order (MO) needs to be completed.</p>
+<p>To create a <abbr title="manufacturing order">MO</abbr>, go to <span class="menuselection">Manufacturing app ‣ Operations
+‣ Manufacturing Orders</span>, and click <span class="guilabel">Create</span>. Choose a product to manufacture from the
+<span class="guilabel">Product</span> field drop-down menu, then select the <span class="guilabel">Quantity</span> to produce.</p>
+<img alt="Manufacturing order for product with expiration date." class="align-center" src="../../../../../_images/expiration-dates-manufacturing-order.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>To manufacture a product, there must be materials to consume in the lines in the
+<span class="guilabel">Product</span> column. This can be achieved either by creating a <span class="guilabel">Bill of
+Material</span> for the <span class="guilabel">Product</span>, or manually adding materials to consume by clicking
+<span class="guilabel">Add a line</span>.</p>
+</div>
+<p>Once ready, click <span class="guilabel">Confirm</span>.</p>
+<p>Next to <span class="guilabel">Lot/Serial Number</span>, either select an existing lot number from the drop-down menu,
+or click the green <span class="guilabel">+</span> sign to automatically assign a new lot number.</p>
+<p>Then, select a number of units for the <span class="guilabel">Quantity</span> field, and click <span class="guilabel">Mark as
+Done</span>.</p>
+<p>Click on the <span class="guilabel">External Link</span> icon in the assigned <span class="guilabel">Lot/Serial Number</span> field. A
+pop-up appears, revealing a detail form for that specific number.</p>
+<p>On that pop-up, under the <span class="guilabel">Dates</span> tab, all expiration information that was previously
+configured for the product is displayed. That same information is also available on the detail form
+for that specific product, or by going to <span class="menuselection">Inventory app ‣ Products ‣ Lots/Serial
+Numbers</span>.</p>
+<img alt="Dates tab with expiration information for specific lot number." class="align-center" src="../../../../../_images/expiration-dates-dates-tab-lot-number.png" />
+</section><section id="sell-products-with-expiration-dates">
+<h2>Sell products with expiration dates<a class="headerlink" href="#sell-products-with-expiration-dates" title="Permalink to this headline">¶</a></h2>
+<p>Selling perishable products with expiration dates is done the same as any other type of product. The
+first step in selling perishable products is to create a sales order.</p>
+<p>To do that, go to <span class="menuselection">Sales app ‣ Create</span> to create a new quotation, and fill out the
+information on the sales order form.</p>
+<p>Add a <span class="guilabel">Customer</span>, click <span class="guilabel">Add a product</span> to add the desired products to the
+<span class="guilabel">Product</span> lines, and set a <span class="guilabel">Quantity</span> for the products.</p>
+<p>Then, click the <span class="guilabel">Other Info</span> tab. Under the <span class="guilabel">Delivery</span> section, change the
+<span class="guilabel">Delivery Date</span> to a date after the expected date, and click the <span class="guilabel">green
+checkmark</span> icon to confirm the date. Finally, click <span class="guilabel">Confirm</span> to confirm the sales order.</p>
+<p>Next, click the <span class="guilabel">Delivery</span> smart button at the top of the sales order to see the warehouse
+receipt form.</p>
+<p>On the warehouse receipt form, click <span class="guilabel">Validate</span>, and then <span class="guilabel">Apply</span> in the
+accompanying pop-up window, to automatically process all <span class="guilabel">Done</span> quantities, and deliver
+the products to the customer.</p>
+<p>If the products are delivered before the <span class="guilabel">Alert Date</span> set on the product form, then no
+alerts will be created.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>To sell perishable products with expiration dates, the <span class="guilabel">Removal Strategy</span> for the
+<span class="guilabel">Location</span> the products are stored in must be set to <abbr title="First Expiry, First Out">FEFO</abbr>. If there is not enough stock of perishable products in one lot, Odoo will automatically
+take the remaining quantity required from a second lot with the next-soonest expiration date.
+Removal strategies can also be set on <span class="guilabel">Product Categories</span>.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../warehouses_storage/advanced_operations_warehouse/removal.html"><span class="doc">Removal strategies (FIFO, LIFO, FEFO)</span></a></p>
+</div>
+</section><section id="view-expiration-dates-for-lots-serial-numbers">
+<h2>View expiration dates for lots &amp; serial numbers<a class="headerlink" href="#view-expiration-dates-for-lots-serial-numbers" title="Permalink to this headline">¶</a></h2>
+<p>To view (and/or group) all products with expiration dates by lot number, go to
+<span class="menuselection">Inventory app ‣ Products ‣ Lots/Serial Numbers</span>.</p>
+<p>Once there, remove any default search filters from the <span class="guilabel">Search…</span> bar. Then, click
+<span class="guilabel">Group By</span>, choose <span class="guilabel">Add Custom Group</span>, and select the <span class="guilabel">Expiration
+Date</span> parameter from the drop-down menu. Finally, click <span class="guilabel">Apply</span> to apply the filter.</p>
+<p>Doing so breaks down all perishable products, their expiration dates, and the assigned lot number.</p>
+<img alt="Group by expiration dates on lots and serial numbers page." class="align-center" src="../../../../../_images/expiration-dates-group-by-dates.png" />
+</section><section id="expiration-alerts">
+<h3>Expiration alerts<a class="headerlink" href="#expiration-alerts" title="Permalink to this headline">¶</a></h3>
+<p>To see expiration alerts, go to <span class="menuselection">Inventory app ‣ Products ‣ Lots/Serial Numbers</span>.</p>
+<p>Then, click into a <span class="guilabel">Lot/Serial Number</span> with perishable products. Doing so reveals the
+serial number detail form. On the serial number detail form, click the <span class="guilabel">Dates</span> tab to see
+all expiration information related to the products.</p>
+<p>To edit the form, click <span class="guilabel">Edit</span> in the upper-left corner of the form, then change the
+<span class="guilabel">Expiration Date</span> to today’s date (or earlier), and click <span class="guilabel">Save</span> to save
+changes.</p>
+<p>After saving, the lot number form displays a red <span class="guilabel">Expiration Alert</span> at the top of the form
+to indicate that the products in this lot are either expired or expiring soon. From here, click back
+to the <span class="guilabel">Lots/Serial Numbers</span> page (via the breadcrumbs).</p>
+<p>To see the new expiration alert, or any expiration alerts for products that are expired (or will
+expire soon), remove all of the search filters from the <span class="guilabel">Search…</span> bar on the
+<span class="guilabel">Lots/Serial Numbers</span> dashboard.</p>
+<p>Then, click <span class="guilabel">Filters</span>, and choose <span class="guilabel">Expiration Alerts</span>.</p>
+<img alt="Expiration alert for product past the expiration date." class="align-center" src="../../../../../_images/expiration-dates-expiration-alert.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Expiration dates</a><ul>
+<li><a class="reference internal" href="#enable-expiration-dates">Enable expiration dates</a></li>
+<li><a class="reference internal" href="#configure-expiration-dates-on-products">Configure expiration dates on products</a></li>
+<li><a class="reference internal" href="#set-expiration-dates-on-receipts-with-lots-serial-numbers">Set expiration dates on receipts with lots &amp; serial numbers</a></li>
+<li><a class="reference internal" href="#set-expiration-dates-on-manufactured-products">Set expiration dates on manufactured products</a></li>
+<li><a class="reference internal" href="#sell-products-with-expiration-dates">Sell products with expiration dates</a></li>
+<li><a class="reference internal" href="#view-expiration-dates-for-lots-serial-numbers">View expiration dates for lots &amp; serial numbers</a><ul>
+<li><a class="reference internal" href="#expiration-alerts">Expiration alerts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Expiration dates</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

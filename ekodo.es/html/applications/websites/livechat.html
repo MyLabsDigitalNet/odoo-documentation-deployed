@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live Chat &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script>
+    <script src="../../_static/tabs.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/livechat.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/livechat.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Live Chat</a><ul>
+<li><a class="reference internal" href="#enable-live-chat">Enable Live Chat</a></li>
+<li><a class="reference internal" href="#create-a-new-live-chat-channel">Create a new live chat channel</a><ul>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#options">Options</a><ul>
+<li><a class="reference internal" href="#livechat-button">Livechat button</a></li>
+<li><a class="reference internal" href="#livechat-window">Livechat window</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#channel-rules">Channel rules</a><ul>
+<li><a class="reference internal" href="#create-new-rules">Create new rules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#widget">Widget</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#participate-in-a-conversation">Participate in a conversation</a><ul>
+<li><a class="reference internal" href="#set-an-online-chat-name">Set an online chat name</a></li>
+<li><a class="reference internal" href="#join-or-leave-a-channel">Join or leave a channel</a></li>
+<li><a class="reference internal" href="#manage-live-chat-requests">Manage live chat requests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/livechat.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Live Chat</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="live-chat">
+<h1>Live Chat<a class="headerlink" href="#live-chat" title="Permalink to this headline">¶</a></h1>
+<p>Odoo <em>Live Chat</em> allows users to communicate with website visitors in real time. With <em>Live Chat</em>,
+leads can be qualified for their sales potential, support questions can be answered quickly, and
+issues can be directed to the appropriate team for further investigation (or follow up). <em>Live Chat</em>
+also provides the opportunity for instant feedback from customers.</p>
+</section><section id="enable-live-chat">
+<h2>Enable Live Chat<a class="headerlink" href="#enable-live-chat" title="Permalink to this headline">¶</a></h2>
+<p>In order to enable <em>Live Chat</em>, the <em>Live Chat</em> application needs to be installed. This can be done
+in one of two ways.</p>
+<ul class="simple">
+<li><p>Go to <span class="menuselection">Apps ‣ Live Chat</span> and click <span class="guilabel">Install</span>.</p></li>
+<li><p>In the <span class="menuselection">Website</span> application, go to <span class="menuselection">Configuration ‣ Settings</span>,
+scroll to the <span class="guilabel">Email &amp; Marketing</span> section, check the box next to <span class="guilabel">Livechat</span>,
+and click <span class="guilabel">Save</span>.</p></li>
+</ul>
+<img alt="View of the settings page and the live chat feature for Odoo Live Chat." class="align-center" src="../../_images/enable-setting.png" />
+<p>After the <span class="guilabel">Live Chat</span> application is installed, a live chat <span class="guilabel">Channel</span> will be
+created by default and automatically selected in the drop-down.</p>
+</section><section id="create-a-new-live-chat-channel">
+<h2>Create a new live chat channel<a class="headerlink" href="#create-a-new-live-chat-channel" title="Permalink to this headline">¶</a></h2>
+<p>To create a new live chat <em>Channel</em>, go to <span class="menuselection">Main Odoo Dashboard ‣ Live Chat app ‣
+New</span>. This will open a blank channel detail form. Enter the name of the new channel in the
+<span class="guilabel">Channel Name</span> field.</p>
+<img alt="View of a live chat channel form for Odoo Live Chat." class="align-center" src="../../_images/open-channel.png" />
+<p>To configure the remaining tabs on the channel detail form (<span class="guilabel">Operators</span>,
+<span class="guilabel">Options</span>, <span class="guilabel">Channel Rules</span>, and <span class="guilabel">Widgets</span>), follow the steps below.</p>
+</section><section id="operators">
+<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
+<p><em>Operators</em> are the users who will respond to live chat requests from customers. When a user is
+added as an operator in a live chat channel, they will be able to receive chats from website
+visitors wherever they are in the database. Chat windows will open in the bottom right corner of the
+screen.</p>
+<img alt="View of a live chat pop up window in an Odoo database." class="align-center" src="../../_images/pop-up1.png" />
+<p>The user who originally created the live chat channel will be added as an operator by default.</p>
+<p>To add additional users, navigate back to the <span class="guilabel">Website Live Chat Channels</span> dashboard via
+the breadcrumbs and click on the appropriate <span class="guilabel">Live Chat Channel</span>. Then, on the channel
+detail form, under the <span class="guilabel">Operators</span> tab, click <span class="guilabel">ADD</span> to reveal an <span class="guilabel">Add:
+Operators</span> pop-up window.</p>
+<p>In the pop-up window, search for the desired user(s). Then, click the checkbox next to the user(s)
+to be added, and click <span class="guilabel">SELECT</span>.</p>
+<p>New operators can be created and added to the list directly from this pop-up, as well, by clicking
+<span class="guilabel">New</span>, and filling out the <span class="guilabel">Create Operators</span> pop-up form. When the form is
+complete, click <span class="guilabel">SAVE &amp; CLOSE</span> (or <span class="guilabel">SAVE &amp; NEW</span> for multiple record creations).</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Current operators can be edited (or removed) by clicking on their respective boxes in the
+<span class="guilabel">Operators</span> tab, which reveals a separate <span class="guilabel">Open: Operators</span> pop-up. In that
+pop-up, adjust any information as needed, and click <span class="guilabel">Save</span>, or click <span class="guilabel">Remove</span>
+to remove that operator from the channel.</p>
+</div>
+</section><section id="options">
+<h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Options</span> tab on the live chat channel details form contains the visual and text
+settings for the live chat window.</p>
+</section><section id="livechat-button">
+<h4>Livechat button<a class="headerlink" href="#livechat-button" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Livechat Button</em> is the icon that appears in the bottom corner of the website.</p>
+<img alt="View of an Odoo website emphasizing the livechat button." class="align-center" src="../../_images/chat-button.png" />
+<p>Change the text in the <span class="guilabel">Text of the Button</span> field to update the greeting displayed in the
+text bubble when the live chat button appears on the website.</p>
+<p>Change the <span class="guilabel">Livechat Button Color</span> by clicking a color bubble to open the color selection
+window. Click the <span class="guilabel">🔄 (refresh)</span> icon to the right of the color bubbles to reset the
+colors to the default selection.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Color selection, for the button or header, can be made manually using a slider or through RGB,
+HSL, or HEX color code entries from the pop-up color selection window that appears when either of
+the color bubbles are clicked. Different options will be available, depending on your operating
+system.</p>
+</div>
+</section><section id="livechat-window">
+<h4>Livechat window<a class="headerlink" href="#livechat-window" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Livechat Window</em> is the space where the live chat conversation with website visitors takes
+place.</p>
+<p>Edit the <span class="guilabel">Welcome Message</span> to change the message a visitor sees when they open a new chat
+session. This message will appear as though it is sent by a live chat operator, and acts as both a
+greeting and an invitation to continue the conversation.</p>
+<p>Edit the <span class="guilabel">Chat Input Placeholder</span> to alter the text that appears in the box where visitors
+will type their replies.</p>
+<p>The <em>Channel Header</em> is the colored bar at the top of the chat window. The <span class="guilabel">Channel Header
+Color</span> can be changed following the same steps as the <em>Livechat Button Color</em> above.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/chat-window.png" src="../../_images/chat-window.png" />
+<p class="caption"><span class="caption-text">The Livechat Window with a purple header. The chat input placeholder reads “Ask Something…”</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</section><section id="channel-rules">
+<h3>Channel rules<a class="headerlink" href="#channel-rules" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Channel Rules</span> tab on the live chat channel details form determines when the <em>Live
+Chat Window</em> opens on the website, by configuring when a <span class="guilabel">URL Regex</span> action is triggered
+(e.g., a page visit).</p>
+<p>To create a new channel rule, click <span class="guilabel">Add a line</span>. This opens the <span class="guilabel">Open: Rules</span>
+pop-up.</p>
+<img alt="View of a channel's rules form for Odoo Live Chat." class="align-center" src="../../_images/create-rules.png" />
+</section><section id="create-new-rules">
+<h4>Create new rules<a class="headerlink" href="#create-new-rules" title="Permalink to this headline">¶</a></h4>
+<p>Fill out the fields on the <span class="guilabel">Open: Rules</span> pop-up as instructed below, then click
+<span class="guilabel">Save</span>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Live Chat Button</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Chatbot</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">URL Regex</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">Open automatically timer</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">Country</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>The <em>Livechat Button</em> is the icon that appears in the bottom corner of the website. Select
+from one of the following display options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Show</span> displays the chat button on the page(s).</p></li>
+<li><p><span class="guilabel">Show with notification</span> displays the chat button, as well as a floating text
+bubble next to the button.</p></li>
+<li><p><span class="guilabel">Open automatically</span> displays the button and automatically opens the chat window
+after a specified amount of time (designated in the <span class="guilabel">Open automatically timer</span>
+field).</p></li>
+<li><p><span class="guilabel">Hide</span> hides the chat button on the page(s).</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>If a <em>Chatbot</em> will be included on this channel, select it from the dropdown. If the chatbot
+will only be active when no operators are active, check the box labeled <span class="guilabel">Enabled
+only if no operator</span>.</p>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>In the <span class="guilabel">URL Regex</span> field, input the relative URL of the page where the chat button
+should appear.</p>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><p>This field designates the amount of time (in seconds) a page will be open before the chat
+window will open. If the <span class="guilabel">Livechat Button</span> for this rule is not set to
+<span class="guilabel">Open automatically</span>, this field will be ignored.</p>
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><p>If this channel should only be available to site visitors in specific countries, add them to
+the <span class="guilabel">Country</span> field. If this field is left blank, the channel will be available to
+all site visitors, regardless of location.</p>
+</div></div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In order to track the geographical location of visitors, <span class="guilabel">GeoIP</span> must be installed on
+the database. While this feature is installed by default on <em>Odoo Online</em>, <em>On-Premise</em> databases
+will require additional <span class="xref std std-doc">setup steps</span>.</p>
+</div>
+</section><section id="widget">
+<h3>Widget<a class="headerlink" href="#widget" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Widget</span> tab on the live chat channel details form provides the shortcode for an
+embeddable website widget. This code can be added to a website to provide access to a live chat
+window.</p>
+<p>The live chat widget can be added to websites created through Odoo by navigating to the
+<span class="menuselection">Website ‣ Configuration ‣ Settings</span>. Then scroll to the <span class="guilabel">Livechat</span>
+section, and select the channel to add to the site. Click <span class="guilabel">Save</span> to apply.</p>
+<p>To add the widget to a website created on a third-party platform, click the first <span class="guilabel">COPY</span>
+button on the <span class="guilabel">Widget</span> tab and paste the code into the <code class="o_code docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> tag on the site.</p>
+<p>Likewise, to send a live chat session to a customer, click the second <span class="guilabel">COPY</span> button on the
+<span class="guilabel">Widget</span> tab. This link can be sent directly to a customer, and once they click the link,
+it will open a new chat.</p>
+<img alt="View of the widget tab for Odoo Live Chat." class="align-center" src="../../_images/widget-code.png" />
+</section><section id="participate-in-a-conversation">
+<h2>Participate in a conversation<a class="headerlink" href="#participate-in-a-conversation" title="Permalink to this headline">¶</a></h2>
+<p>As explained above, <em>operators</em> are the users who will respond to live chat requests from customers.
+The information below outlines the necessary steps for operators participating in live chat
+conversations on an Odoo database.</p>
+</section><section id="set-an-online-chat-name">
+<h3>Set an online chat name<a class="headerlink" href="#set-an-online-chat-name" title="Permalink to this headline">¶</a></h3>
+<p>Before participating in a live chat, operators should update their <em>Online Chat Name</em>. This is the
+name that will be displayed to site visitors in the live chat conversation.</p>
+<p>To update the <span class="guilabel">Online Chat Name</span>, click on the user name in the upper-right corner of any
+page in the database. Select <span class="guilabel">My Profile</span> to open the Profile page. On the right side of
+the <span class="guilabel">Preferences</span> tab, locate the <span class="guilabel">Online Chat Name</span> field and enter the
+preferred name.</p>
+<img alt="View of the My Profile option in Odoo." class="align-center" src="../../_images/my-profile.png" />
+<p>If a users <span class="guilabel">Online Chat Name</span> is not set, the name displayed will default to the
+<span class="guilabel">User Name</span>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A user has their full name as their <span class="guilabel">User Name</span>, but they do not want to include their
+last name in a live chat conversation. They would then set their <span class="guilabel">Online Chat Name</span> to
+include only their first name.</p>
+<img alt="View of user profile in Odoo, emphasizing the Online Chat name field." class="align-center" src="../../_images/online-chat-name.png" />
+</div>
+</section><section id="join-or-leave-a-channel">
+<h3>Join or leave a channel<a class="headerlink" href="#join-or-leave-a-channel" title="Permalink to this headline">¶</a></h3>
+<p>To join a live chat channel, go to the <span class="menuselection">Live Chat</span> app and click the <span class="guilabel">JOIN</span>
+button on the kanban card for the appropriate channel.</p>
+<p>Any channel where the user is currently active will show a <span class="guilabel">LEAVE</span> button. Click this
+button to disconnect from the channel.</p>
+<img alt="View of a channel form and the option to join a channel for Odoo Live Chat." class="align-center" src="../../_images/leave-channel.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p><em>Operators</em> that do not show any activity in Odoo for more than thirty minutes will be considered
+disconnected, and subsequently removed from the channel.</p>
+</div>
+</section><section id="manage-live-chat-requests">
+<h3>Manage live chat requests<a class="headerlink" href="#manage-live-chat-requests" title="Permalink to this headline">¶</a></h3>
+<p>When an operator is active in a channel, chat windows will open in the bottom right corner of the
+screen, no matter where they are in the database. They can participate in conversations without
+leaving their current location.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Conversations can also be accessed by clicking the <span class="guilabel">Conversations</span> icon in the
+menu bar.</p>
+<img alt="View of the menu bar in Odoo emphasizing the conversations icon." class="align-center" src="../../_images/menu-bar.png" />
+</div>
+<p>Live chat conversations can also be viewed by navigating to <span class="menuselection">Dashboard ‣ Discuss</span>.
+New conversations will appear in bold under the <span class="guilabel">LIVECHAT</span> heading along the left panel.</p>
+<img alt="View of the discuss application with a message sent through live chat in Odoo." class="align-center" src="../../_images/managing-chat-responses.png" />
+<p>Click on a conversation in the left panel to select it. This will open the conversation. From this
+view, an operator can participate in the chat the same as they would in the normal chat window.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../productivity/discuss.html"><span class="doc">Get Started with Discuss</span></a></p></li>
+<li><p><a class="reference internal" href="livechat/responses.html"><span class="doc">Commands and canned responses</span></a></p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_websites_livechat_ratings"><a class="reference internal" href="livechat/ratings.html">Ratings</a></li>
+<li class="toctree-l1 o_menu_applications_websites_livechat_responses"><a class="reference internal" href="livechat/responses.html">Commands and canned responses</a></li>
+<li class="toctree-l1 o_menu_applications_websites_livechat_chatbots"><a class="reference internal" href="livechat/chatbots.html">Chatbots</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Live Chat</a><ul>
+<li><a class="reference internal" href="#enable-live-chat">Enable Live Chat</a></li>
+<li><a class="reference internal" href="#create-a-new-live-chat-channel">Create a new live chat channel</a><ul>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#options">Options</a><ul>
+<li><a class="reference internal" href="#livechat-button">Livechat button</a></li>
+<li><a class="reference internal" href="#livechat-window">Livechat window</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#channel-rules">Channel rules</a><ul>
+<li><a class="reference internal" href="#create-new-rules">Create new rules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#widget">Widget</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#participate-in-a-conversation">Participate in a conversation</a><ul>
+<li><a class="reference internal" href="#set-an-online-chat-name">Set an online chat name</a></li>
+<li><a class="reference internal" href="#join-or-leave-a-channel">Join or leave a channel</a></li>
+<li><a class="reference internal" href="#manage-live-chat-requests">Manage live chat requests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Live Chat</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

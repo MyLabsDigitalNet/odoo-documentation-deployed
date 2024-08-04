@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Synchronize Google calendar with Odoo &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/productivity/calendar/google.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/productivity/calendar/google.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Synchronize Google calendar with Odoo</a><ul>
+<li><a class="reference internal" href="#setup-in-google">Setup in Google</a><ul>
+<li><a class="reference internal" href="#select-or-create-a-project">Select (or create) a project</a></li>
+<li><a class="reference internal" href="#enable-google-calendar-api">Enable Google calendar API</a></li>
+<li><a class="reference internal" href="#oauth-consent-screen">OAuth consent screen</a></li>
+<li><a class="reference internal" href="#create-credentials">Create credentials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setup-in-odoo">Setup in Odoo</a></li>
+<li><a class="reference internal" href="#sync-calendar-in-odoo">Sync calendar in Odoo</a></li>
+<li><a class="reference internal" href="#troubleshoot-sync">Troubleshoot sync</a><ul>
+<li><a class="reference internal" href="#reset-options">Reset options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#google-oauth-faq">Google OAuth FAQ</a><ul>
+<li><a class="reference internal" href="#production-vs-testing-publishing-status">Production vs. testing publishing status</a></li>
+<li><a class="reference internal" href="#no-test-users-added">No test users added</a></li>
+<li><a class="reference internal" href="#application-type">Application Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/productivity/calendar/google.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Synchronize Google calendar with Odoo</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="synchronize-google-calendar-with-odoo">
+<h1>Synchronize Google calendar with Odoo<a class="headerlink" href="#synchronize-google-calendar-with-odoo" title="Permalink to this headline">¶</a></h1>
+<p>Synchronize Google Calendar with Odoo to see and manage meetings from both platforms (updates go in
+both directions). This integration helps organize schedules, so a meeting is never missed.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../general/users/google.html"><span class="doc">Google Sign-In Authentication</span></a></p></li>
+<li><p><a class="reference internal" href="../../general/email_communication/google_oauth.html"><span class="doc">Connect Gmail to Odoo using Google OAuth</span></a></p></li>
+</ul>
+</div>
+</section><section id="setup-in-google">
+<h2>Setup in Google<a class="headerlink" href="#setup-in-google" title="Permalink to this headline">¶</a></h2>
+</section><section id="select-or-create-a-project">
+<h3>Select (or create) a project<a class="headerlink" href="#select-or-create-a-project" title="Permalink to this headline">¶</a></h3>
+<p>Create a new Google API project and enable the Google Calendar API. First, go to the <a class="reference external" href="https://console.developers.google.com">Google API
+Console</a> and log into the Google account.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If this is the first time visiting this page, Google will prompt the user to enter a country and
+agree to the Terms of Service. Select a country from the drop-down list and agree to the
+<abbr title="Terms of Service">ToS</abbr>.</p>
+</div>
+<p>Next, click <span class="guilabel">Select a project</span> and select (or create) an API project to configure OAuth
+in, and store credentials. Click <span class="guilabel">New Project</span>.</p>
+<img alt="Create a new API project to store credentials." class="align-center" src="../../../_images/new-api-project.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Give the API Project a clear name, like “Odoo Sync”, so it can be easily identified.</p>
+</div>
+</section><section id="enable-google-calendar-api">
+<h3>Enable Google calendar API<a class="headerlink" href="#enable-google-calendar-api" title="Permalink to this headline">¶</a></h3>
+<p>Now, click on <span class="guilabel">Enabled APIs and Services</span> in the left menu. Select <span class="guilabel">Enabled APIs
+and Services</span> again if the <span class="guilabel">Search bar</span> doesn’t appear.</p>
+<img alt="Enable APIs and Services on the API Project." class="align-center" src="../../../_images/enable-apis-services.png" />
+<p>After that, search for <code class="o_code docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Calendar</span> <span class="pre">API</span></code> using the search bar and select <span class="guilabel">Google
+Calendar API</span> from the search results. Click <span class="guilabel">Enable</span>.</p>
+<img alt="Enable the Google Calendar API." class="align-center" src="../../../_images/enable-google-cal-api.png" />
+</section><section id="oauth-consent-screen">
+<h3>OAuth consent screen<a class="headerlink" href="#oauth-consent-screen" title="Permalink to this headline">¶</a></h3>
+<p>Now that the API project has been created, OAuth should be configured. To do that, click on
+<span class="guilabel">OAuth consent</span> in the left menu and then select the <span class="guilabel">User Type</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p><em>Personal</em> Gmail Accounts are only allowed to be <strong>External</strong> User Type, which means Google may
+require an approval, or for <em>Scopes</em> to be added on. However, using a <em>Google WorkSpace</em> account
+allows for <strong>Internal</strong> User Type to be used.</p>
+<p>Note, as well, that while the API connection is in the <em>External</em> testing mode, then no approval
+is necessary from Google. User limits in this testing mode is set to 100 users.</p>
+</div>
+<p>In the second step, <span class="guilabel">OAuth Consent Screen</span>, type <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span></code> in the <span class="guilabel">App name</span> field,
+select the email address for the <span class="guilabel">User support email</span> field, and type the email address
+for the <span class="guilabel">Developer contact information</span> section. Then, click <span class="guilabel">Save and
+Continue</span>.</p>
+<p>Skip the third step, <span class="menuselection">Scopes</span>, by clicking <span class="guilabel">Save and Continue</span>.</p>
+<p>Next, if continuing in testing mode (External), add the email addresses being configured under the
+<span class="guilabel">Test users</span> step, by clicking on <span class="guilabel">Add Users</span>, and then the <span class="guilabel">Save and
+Continue</span> button. A summary of the app registration appears.</p>
+<p>Finally, scroll to the bottom, and click on <span class="guilabel">Back to Dashboard</span>.</p>
+<p>Now, the OAuth consent has been configured, and it’s time to create credentials.</p>
+</section><section id="create-credentials">
+<h3>Create credentials<a class="headerlink" href="#create-credentials" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Client ID</em> and the <em>Client Secret</em> are both needed to connect Google Calendar to Odoo. This is
+the last step in the Google console. Begin by clicking <span class="guilabel">Credentials</span> in the left menu.
+Then, click <span class="guilabel">Create Credentials</span>, and select <span class="guilabel">OAuth client ID</span>, Google will open
+a guide to create credentials.</p>
+<p>Under <span class="menuselection">Create OAuth Client ID</span>, select <span class="guilabel">Website application</span> for the
+<span class="guilabel">Application Type</span> field, and type <code class="o_code docutils literal notranslate"><span class="pre">My</span> <span class="pre">Odoo</span> <span class="pre">Database</span></code> for the <span class="guilabel">Name</span>.</p>
+<ul class="simple">
+<li><p>Under the <span class="guilabel">Authorized JavaScript Origins</span> section, click <span class="guilabel">+ Add URI</span> and type
+the company’s Odoo full <abbr title="Uniform Resource Locator">URL</abbr> address.</p></li>
+<li><p>Under the <span class="guilabel">Authorized redirect URIs</span> section, click <span class="guilabel">+ Add URI</span> and type the
+company’s Odoo <abbr title="Uniform Resource Locator">URL</abbr> address followed by
+<code class="o_code docutils literal notranslate"><span class="pre">/google_account/authentication</span></code>. Finally, click <span class="guilabel">Create</span>.</p></li>
+</ul>
+<img alt="Add the authorized JavaScript origins and the authorized redirect URIs." class="align-center" src="../../../_images/uri.png" />
+<p>A <span class="guilabel">Client ID</span> and <span class="guilabel">Client Secret</span> will appear, copy these to a notepad.</p>
+</section><section id="setup-in-odoo">
+<h2>Setup in Odoo<a class="headerlink" href="#setup-in-odoo" title="Permalink to this headline">¶</a></h2>
+<p>Once the <em>Client ID</em> and the <em>Client Secret</em> are located, open the Odoo database and go to
+<span class="menuselection">Settings ‣ General Settings ‣ Integrations ‣ Google Calendar</span>. Check the box
+next to <span class="guilabel">Google Calendar</span>.</p>
+<img alt="The Google Calendar checkbox in General Settings." class="align-center" src="../../../_images/settings-google-cal.png" />
+<p>Next, copy and paste the <em>Client ID</em> and the <em>Client Secret</em> from the Google Calendar API
+credentials page into their respective fields below the <span class="guilabel">Google Calendar</span> checkbox. Then,
+click <span class="guilabel">Save</span>.</p>
+</section><section id="sync-calendar-in-odoo">
+<h2>Sync calendar in Odoo<a class="headerlink" href="#sync-calendar-in-odoo" title="Permalink to this headline">¶</a></h2>
+<p>Finally, open the <span class="menuselection">Calendar</span> app in Odoo and click on the <span class="guilabel">Google</span> sync
+button to sync Google Calendar with Odoo.</p>
+<img alt="Click the Google sync button in Odoo Calendar to sync Google Calendar with Odoo." class="align-center" src="../../../_images/sync-google.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When syncing Google Calendar with Odoo for the first time, the page will redirect to the Google
+Account. From there, select the <span class="guilabel">Email Account</span> that should have access, then select
+<span class="guilabel">Continue</span> (should the app be unverifed), and finally select <span class="guilabel">Continue</span> (to
+give permission for the transfer of data)`.</p>
+</div>
+<img alt="Give Odoo permission to access Google Calendar." class="align-center" src="../../../_images/trust-odoo.png" />
+<p>Now, Odoo Calendar is successfully synced with Google Calendar!</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Odoo highly recommends testing the Google calendar synchronization on a test database and a test
+email address (that is not used for any other purpose) before attempting to sync the desired
+Google Calendar with the user’s production database.</p>
+<p>Once a user synchronizes their Google calendar with the Odoo calendar:</p>
+<ul class="simple">
+<li><p>Creating an event in Odoo causes Google to send an invitation to all event attendees.</p></li>
+<li><p>Deleting an event in Odoo causes Google to send a cancellation to all event attendees.</p></li>
+<li><p>Adding a contact to an event causes Google to send an invitation to all event attendees.</p></li>
+<li><p>Removing a contact from an event causes Google to send a cancellation to all event attendees.</p></li>
+</ul>
+<p>Events can be created in <em>Google Calendar</em> without sending a notification by selecting
+<span class="guilabel">Don’t Send</span> when prompted to send invitation emails.</p>
+</div>
+</section><section id="troubleshoot-sync">
+<h2>Troubleshoot sync<a class="headerlink" href="#troubleshoot-sync" title="Permalink to this headline">¶</a></h2>
+<p>There may be times when the <em>Google Calendar</em> account does not sync correctly with Odoo. Sync issues
+can be seen in the database logs.</p>
+<p>In these cases, the account needs troubleshooting. A reset can be performed using the
+<span class="guilabel">Reset Account</span> button, which can be accessed by navigating to <span class="menuselection">Settings
+app ‣ Manage Users</span>. Then, select the user to modify the calendar, and click the
+<span class="guilabel">Calendar</span> tab.</p>
+<img alt="Reset buttons highlighted on the calendar tab of the user." class="align-center" src="../../../_images/google-reset.png" />
+<p>Next, click <span class="guilabel">Reset Account</span> under the correct calendar.</p>
+</section><section id="reset-options">
+<h3>Reset options<a class="headerlink" href="#reset-options" title="Permalink to this headline">¶</a></h3>
+<p>The following reset options are available for troubleshooting Google calendar sync with Odoo:</p>
+<img alt="Google calendar reset options in Odoo." class="align-center" src="../../../_images/reset-calendar.png" />
+<p><span class="guilabel">User’s Existing Events</span>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="guilabel">Leave them untouched</span>: no changes to the events.</p></li>
+<li><p><span class="guilabel">Delete from the current Google Calendar account</span>: delete the events from <em>Google
+Calendar</em>.</p></li>
+<li><p><span class="guilabel">Delete from Odoo</span>: delete the events from the Odoo calendar.</p></li>
+<li><p><span class="guilabel">Delete from both</span>: delete the events from both <em>Google Calendar</em> and Odoo calendar.</p></li>
+</ul>
+</div></blockquote>
+<p><span class="guilabel">Next Synchronization</span>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="guilabel">Synchronize only new events</span>: sync new events on <em>Google Calendar</em> and/or Odoo
+calendar.</p></li>
+<li><p><span class="guilabel">Synchronize all existing events</span>: sync all events on <em>Google Calendar</em> and/or Odoo
+calendar.</p></li>
+</ul>
+</div></blockquote>
+<p>Click <span class="guilabel">Confirm</span> after making the selection to modify the user’s events and the calendar
+synchronization.</p>
+</section><section id="google-oauth-faq">
+<h2>Google OAuth FAQ<a class="headerlink" href="#google-oauth-faq" title="Permalink to this headline">¶</a></h2>
+<p>At times there can be misconfigurations that take place, and troubleshooting is needed to resolve
+the issue. Below are the most common errors that may occur when configuring the <em>Google Calendar</em>
+for use with Odoo.</p>
+</section><section id="production-vs-testing-publishing-status">
+<h3>Production vs. testing publishing status<a class="headerlink" href="#production-vs-testing-publishing-status" title="Permalink to this headline">¶</a></h3>
+<p>Choosing <span class="guilabel">Production</span> as the <span class="guilabel">Publishing Status</span> (instead of
+<span class="guilabel">Testing</span>) displays the following warning message:</p>
+<p><code class="o_code docutils literal notranslate"><span class="pre">OAuth</span> <span class="pre">is</span> <span class="pre">limited</span> <span class="pre">to</span> <span class="pre">100</span> <span class="pre">sensitive</span> <span class="pre">scope</span> <span class="pre">logins</span> <span class="pre">until</span> <span class="pre">the</span> <span class="pre">OAuth</span> <span class="pre">consent</span> <span class="pre">screen</span> <span class="pre">is</span> <span class="pre">verified.</span> <span class="pre">This</span> <span class="pre">may</span>
+<span class="pre">require</span> <span class="pre">a</span> <span class="pre">verification</span> <span class="pre">process</span> <span class="pre">that</span> <span class="pre">can</span> <span class="pre">take</span> <span class="pre">several</span> <span class="pre">days.</span></code></p>
+<p>To correct this warning, navigate to the <a class="reference external" href="https://console.cloud.google.com/apis/credentials/consent">Google API Platform</a>. If the <span class="guilabel">Publishing Status</span>
+is <span class="guilabel">In Production</span>, click <span class="guilabel">Back to Testing</span> to correct the issue.</p>
+</section><section id="no-test-users-added">
+<h3>No test users added<a class="headerlink" href="#no-test-users-added" title="Permalink to this headline">¶</a></h3>
+<p>If no test users are added to the <span class="guilabel">OAuth consent screen</span>, then an <span class="guilabel">Error 403:
+access_denied</span> populates.</p>
+<img alt="403 Access Denied Error." class="align-center" src="../../../_images/403-error1.png" />
+<p>To correct this error, return to the <span class="guilabel">OAuth consent screen</span>, under <span class="guilabel">APIs &amp;
+Services</span>, and add test users to the app. Add the email to be configured in Odoo.</p>
+</section><section id="application-type">
+<h3>Application Type<a class="headerlink" href="#application-type" title="Permalink to this headline">¶</a></h3>
+<p>When creating the credentials (OAuth <em>Client ID</em> and <em>Client Secret</em>), if <span class="guilabel">Desktop App</span> is
+selected for the <span class="guilabel">Application Type</span>, an <span class="guilabel">Authorization Error</span> appears
+(<span class="guilabel">Error 400:redirect_uri_mismatch</span>).</p>
+<img alt="Error 400 Redirect URI Mismatch." class="align-center" src="../../../_images/error-4001.png" />
+<p>To correct this error, delete the existing credentials, and create new credentials, by selecting
+<span class="guilabel">Web Application</span> for the <span class="guilabel">Application Type</span>.</p>
+<p>Then, under <span class="guilabel">Authorized redirect URIs</span>, click <span class="guilabel">ADD URI</span>, and type:
+<code class="o_code docutils literal notranslate"><span class="pre">https://yourdbname.odoo.com/google_account/authentication</span></code> in the field, being sure to replace
+<em>yourdbname</em> in the URL with the <strong>real</strong> Odoo database name.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Ensure that the domain (used in the URI:
+<code class="o_code docutils literal notranslate"><span class="pre">https://yourdbname.odoo.com/google_account/authentication</span></code>) is the exact same domain as
+configured in the <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> system parameter.</p>
+<p>Access the <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> by activating <a class="reference internal" href="../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, and navigating to
+<span class="menuselection">Settings app ‣ Technical header menu ‣ Parameters section ‣ System
+Parameters</span>.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Synchronize Google calendar with Odoo</a><ul>
+<li><a class="reference internal" href="#setup-in-google">Setup in Google</a><ul>
+<li><a class="reference internal" href="#select-or-create-a-project">Select (or create) a project</a></li>
+<li><a class="reference internal" href="#enable-google-calendar-api">Enable Google calendar API</a></li>
+<li><a class="reference internal" href="#oauth-consent-screen">OAuth consent screen</a></li>
+<li><a class="reference internal" href="#create-credentials">Create credentials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setup-in-odoo">Setup in Odoo</a></li>
+<li><a class="reference internal" href="#sync-calendar-in-odoo">Sync calendar in Odoo</a></li>
+<li><a class="reference internal" href="#troubleshoot-sync">Troubleshoot sync</a><ul>
+<li><a class="reference internal" href="#reset-options">Reset options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#google-oauth-faq">Google OAuth FAQ</a><ul>
+<li><a class="reference internal" href="#production-vs-testing-publishing-status">Production vs. testing publishing status</a></li>
+<li><a class="reference internal" href="#no-test-users-added">No test users added</a></li>
+<li><a class="reference internal" href="#application-type">Application Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Synchronize Google calendar with Odoo</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

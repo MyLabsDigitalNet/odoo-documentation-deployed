@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deferred revenues &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/customer_invoices/deferred_revenues.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/customer_invoices/deferred_revenues.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Deferred revenues</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#configure-a-deferred-revenue-account">Configure a Deferred Revenue Account</a></li>
+<li><a class="reference internal" href="#post-an-income-to-the-right-account">Post an income to the right account</a><ul>
+<li><a class="reference internal" href="#select-the-account-on-a-draft-invoice">Select the account on a draft invoice</a></li>
+<li><a class="reference internal" href="#choose-a-different-income-account-for-specific-products">Choose a different Income Account for specific products</a></li>
+<li><a class="reference internal" href="#change-the-account-of-a-posted-journal-item">Change the account of a posted journal item</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deferred-revenues-entries">Deferred Revenues entries</a><ul>
+<li><a class="reference internal" href="#create-a-new-entry">Create a new entry</a><ul>
+<li><a class="reference internal" href="#what-does-prorata-temporis-mean">What does “Prorata Temporis” mean?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deferred-entry-from-the-sales-journal">Deferred Entry from the Sales Journal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deferred-revenue-models">Deferred Revenue Models</a><ul>
+<li><a class="reference internal" href="#apply-a-deferred-revenue-model-to-a-new-entry">Apply a Deferred Revenue Model to a new entry</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#automate-the-deferred-revenues">Automate the Deferred Revenues</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/customer_invoices/deferred_revenues.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Deferred revenues</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="deferred-revenues">
+<h1>Deferred revenues<a class="headerlink" href="#deferred-revenues" title="Permalink to this headline">¶</a></h1>
+<p><strong>Deferred revenues</strong>, or <strong>unearned revenue</strong>, are payments made in advance by customers for
+products yet to deliver or services yet to render.</p>
+<p>Such payments are a <strong>liability</strong> for the company that receives them since it still owes its
+customers these products or services. The company cannot report them on the current <strong>Profit and
+Loss statement</strong>, or <em>Income Statement</em>, since the payments will be effectively earned in the future.</p>
+<p>These future revenues must be deferred on the company’s balance sheet until the moment in time they
+can be <strong>recognized</strong>, at once or over a defined period, on the Profit and Loss statement.</p>
+<p>For example, let’s say we sell a five-year extended warranty for $ 350. We already receive the money
+now but haven’t earned it yet. Therefore, we post this new income in a deferred revenue account and
+decide to recognize it on a yearly basis. Each year, for the next 5 years, $ 70 will be recognized
+as revenue.</p>
+<p>Odoo Accounting handles deferred revenues by spreading them in multiple entries that are
+automatically created in <em>draft mode</em> and then posted periodically.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The server checks once a day if an entry must be posted. It might then take up to 24 hours before
+you see a change from <em>draft</em> to <em>posted</em>.</p>
+</div>
+</section><section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Such transactions must be posted on a <strong>Deferred Revenue Account</strong> rather than on the default income
+account.</p>
+</section><section id="configure-a-deferred-revenue-account">
+<h3>Configure a Deferred Revenue Account<a class="headerlink" href="#configure-a-deferred-revenue-account" title="Permalink to this headline">¶</a></h3>
+<p>To configure your account in the <strong>Chart of Accounts</strong>, go to <span class="menuselection">Accounting ‣
+Configuration ‣ Chart of Accounts</span>, click on <em>Create</em>, and fill out the form.</p>
+<img alt="Configuration of a Deferred Revenue Account in Odoo Accounting" class="align-center" src="../../../../_images/deferred_revenues01.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>This account’s type must be either <em>Current Liabilities</em> or <em>Non-current Liabilities</em></p>
+</div>
+</section><section id="post-an-income-to-the-right-account">
+<h3>Post an income to the right account<a class="headerlink" href="#post-an-income-to-the-right-account" title="Permalink to this headline">¶</a></h3>
+</section><section id="select-the-account-on-a-draft-invoice">
+<h4>Select the account on a draft invoice<a class="headerlink" href="#select-the-account-on-a-draft-invoice" title="Permalink to this headline">¶</a></h4>
+<p>On a draft invoice, select the right account for all the products of which the incomes must be
+deferred.</p>
+<img alt="Selection of a Deferred Revenue Account on a draft invoice in Odoo Accounting" class="align-center" src="../../../../_images/deferred_revenues02.png" />
+</section><section id="choose-a-different-income-account-for-specific-products">
+<h4>Choose a different Income Account for specific products<a class="headerlink" href="#choose-a-different-income-account-for-specific-products" title="Permalink to this headline">¶</a></h4>
+<p>Start editing the product, go to the <em>Accounting</em> tab, select the right <strong>Income Account</strong>, and
+save.</p>
+<img alt="Change of the Income Account for a product in Odoo" class="align-center" src="../../../../_images/deferred_revenues03.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>It is possible to automate the creation of revenue entries for these products (see:
+<a class="reference internal" href="#automate-the-deferred-revenues">Automate the Deferred Revenues</a>).</p>
+</div>
+</section><section id="change-the-account-of-a-posted-journal-item">
+<h4>Change the account of a posted journal item<a class="headerlink" href="#change-the-account-of-a-posted-journal-item" title="Permalink to this headline">¶</a></h4>
+<p>To do so, open your Sales Journal by going to
+<span class="menuselection">Accounting ‣ Accounting ‣ Sales</span>, select the journal item you
+want to modify, click on the account, and select the right one.</p>
+<img alt="Modification of a posted journal item's account in Odoo Accounting" class="align-center" src="../../../../_images/deferred_revenues04.png" />
+</section><section id="deferred-revenues-entries">
+<h2>Deferred Revenues entries<a class="headerlink" href="#deferred-revenues-entries" title="Permalink to this headline">¶</a></h2>
+</section><section id="create-a-new-entry">
+<h3>Create a new entry<a class="headerlink" href="#create-a-new-entry" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>Deferred Revenues entry</strong> automatically generates all journal entries in <em>draft mode</em>. They are
+then posted one by one at the right time until the full amount of the income is recognized.</p>
+<p>To create a new entry, go to <span class="menuselection">Accounting ‣ Accounting ‣ Deferred Revenues</span>, click
+on <em>Create</em>, and fill out the form.</p>
+<p>Click on <strong>select related purchases</strong> to link an existing journal item to this new entry. Some
+fields are then automatically filled out, and the journal item is now listed under the <strong>Related
+Sales</strong> tab.</p>
+<img alt="Deferred Revenue entry in Odoo Accounting" class="align-center" src="../../../../_images/deferred_revenues05.png" />
+<p>Once done, you can click on <em>Compute Revenue</em> (next to the <em>Confirm</em> button) to generate all the
+values of the <strong>Revenue Board</strong>. This board shows you all the entries that Odoo will post to
+recognize your revenue, and at which date.</p>
+<img alt="Revenue Board in Odoo Accounting" class="align-center" src="../../../../_images/deferred_revenues06.png" />
+</section><section id="what-does-prorata-temporis-mean">
+<h4>What does “Prorata Temporis” mean?<a class="headerlink" href="#what-does-prorata-temporis-mean" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>Prorata Temporis</strong> feature is useful to recognize your revenue the most accurately possible.</p>
+<p>With this feature, the first entry on the Revenue Board is computed based on the time left between
+the <em>Prorata Date</em> and the <em>First Recognition Date</em> rather than the default amount of time between
+recognitions.</p>
+<p>For example, the Revenue Board above has its first revenue with an amount of $ 4.22 rather than
+$ 70.00. Consequently, the last entry is also lower and has an amount of $ 65.78.</p>
+</section><section id="deferred-entry-from-the-sales-journal">
+<h3>Deferred Entry from the Sales Journal<a class="headerlink" href="#deferred-entry-from-the-sales-journal" title="Permalink to this headline">¶</a></h3>
+<p>You can create a deferred entry from a specific journal item in your <strong>Sales Journal</strong>.</p>
+<p>To do so, open your Sales Journal by going to
+<span class="menuselection">Accounting ‣ Accounting ‣ Sales</span>, and select the journal item you want to defer.
+Make sure that it is posted in the right account (see:
+<a class="reference internal" href="#change-the-account-of-a-posted-journal-item">Change the account of a posted journal item</a>).</p>
+<p>Then, click on <em>Action</em>, select <strong>Create Deferred Entry</strong>, and fill out the form the same way you
+would do to <a class="reference internal" href="#create-a-new-entry">create a new entry</a>.</p>
+<img alt="Create Deferred Entry from a journal item in Odoo Accounting" class="align-center" src="../../../../_images/deferred_revenues07.png" />
+</section><section id="deferred-revenue-models">
+<h2>Deferred Revenue Models<a class="headerlink" href="#deferred-revenue-models" title="Permalink to this headline">¶</a></h2>
+<p>You can create <strong>Deferred Revenue Models</strong> to create your Deferred Revenue entries faster.</p>
+<p>To create a model, go to <span class="menuselection">Accounting ‣ Configuration ‣ Deferred Revenue Models</span>,
+click on <em>Create</em>, and fill out the form the same way you would do to create a new entry.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can also convert a <em>confirmed Deferred Revenue entry</em> into a model by
+opening it from <span class="menuselection">Accounting ‣ Accounting ‣ Deferred
+Revenues</span> and then, by clicking on the button <em>Save Model</em>.</p>
+</div>
+</section><section id="apply-a-deferred-revenue-model-to-a-new-entry">
+<h3>Apply a Deferred Revenue Model to a new entry<a class="headerlink" href="#apply-a-deferred-revenue-model-to-a-new-entry" title="Permalink to this headline">¶</a></h3>
+<p>When you create a new Deferred Revenue entry,  fill out the <strong>Deferred Revenue Account</strong> with the
+right recognition account.</p>
+<p>New buttons with all the models linked to that account appear at the top of the form. Clicking on a
+model button fills out the form according to that model.</p>
+<img alt="Deferred Revenue model button in Odoo Accounting" class="align-center" src="../../../../_images/deferred_revenues08.png" />
+</section><section id="automate-the-deferred-revenues">
+<span id="deferred-revenues-automation"></span><h2>Automate the Deferred Revenues<a class="headerlink" href="#automate-the-deferred-revenues" title="Permalink to this headline">¶</a></h2>
+<p>When you create or edit an account of which the type is either <em>Current Liabilities</em> or <em>Non-current
+Liabilities</em>, you can configure it to defer the revenues that are credited on it automatically.</p>
+<p>You have three choices for the <strong>Automate Deferred Revenue</strong> field:</p>
+<ol class="arabic simple">
+<li><p><strong>No:</strong> this is the default value. Nothing happens.</p></li>
+<li><p><strong>Create in draft:</strong> whenever a transaction is posted on the account, a draft <em>Deferred Revenues
+entry</em> is created, but not validated. You must first fill out the form in
+<span class="menuselection">Accounting ‣ Accounting ‣ Deferred Revenues</span>.</p></li>
+<li><p><strong>Create and validate:</strong> you must also select a Deferred Revenue Model (see:
+<a class="reference internal" href="#deferred-revenue-models">Deferred Revenue Models</a>). Whenever a transaction is posted on the account, a <em>Deferred
+Revenues entry</em> is created and immediately validated.</p></li>
+</ol>
+<img alt="Automate Deferred Revenue on an account in Odoo Accounting" class="align-center" src="../../../../_images/deferred_revenues09.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can, for example, select this account as the default <strong>Income Account</strong> of a product to fully
+automate its sale. (see: <a class="reference internal" href="#choose-a-different-income-account-for-specific-products">Choose a different Income Account for specific products</a>).</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../get_started/chart_of_accounts.html"><span class="doc">Chart of accounts</span></a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/r/EWO">Odoo Academy: Deferred Revenues (Recognition)</a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Deferred revenues</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#configure-a-deferred-revenue-account">Configure a Deferred Revenue Account</a></li>
+<li><a class="reference internal" href="#post-an-income-to-the-right-account">Post an income to the right account</a><ul>
+<li><a class="reference internal" href="#select-the-account-on-a-draft-invoice">Select the account on a draft invoice</a></li>
+<li><a class="reference internal" href="#choose-a-different-income-account-for-specific-products">Choose a different Income Account for specific products</a></li>
+<li><a class="reference internal" href="#change-the-account-of-a-posted-journal-item">Change the account of a posted journal item</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deferred-revenues-entries">Deferred Revenues entries</a><ul>
+<li><a class="reference internal" href="#create-a-new-entry">Create a new entry</a><ul>
+<li><a class="reference internal" href="#what-does-prorata-temporis-mean">What does “Prorata Temporis” mean?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deferred-entry-from-the-sales-journal">Deferred Entry from the Sales Journal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deferred-revenue-models">Deferred Revenue Models</a><ul>
+<li><a class="reference internal" href="#apply-a-deferred-revenue-model-to-a-new-entry">Apply a Deferred Revenue Model to a new entry</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#automate-the-deferred-revenues">Automate the Deferred Revenues</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Deferred revenues</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

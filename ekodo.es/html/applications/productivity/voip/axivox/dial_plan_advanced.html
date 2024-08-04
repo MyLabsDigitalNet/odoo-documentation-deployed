@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Advanced dial plans &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/productivity/voip/axivox/dial_plan_advanced.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/productivity/voip/axivox/dial_plan_advanced.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Advanced dial plans</a><ul>
+<li><a class="reference internal" href="#advanced-elements">Advanced elements</a></li>
+<li><a class="reference internal" href="#basic-routing-elements">Basic routing elements</a><ul>
+<li><a class="reference internal" href="#digital-receptionist-scenario">Digital receptionist scenario</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-routing-elements">Advanced routing elements</a><ul>
+<li><a class="reference internal" href="#dispatcher-scenario">Dispatcher scenario</a></li>
+<li><a class="reference internal" href="#time-condition-scenario">Time condition scenario</a></li>
+<li><a class="reference internal" href="#access-list-scenario">Access list scenario</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#switches">Switches</a><ul>
+<li><a class="reference internal" href="#basic-switch">Basic switch</a><ul>
+<li><a class="reference internal" href="#add-a-switch-to-dial-plan">Add a switch to dial plan</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multi-switch">Multi-switch</a><ul>
+<li><a class="reference internal" href="#add-a-multi-switch-to-dial-plan">Add a multi-switch to dial plan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/productivity/voip/axivox/dial_plan_advanced.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Advanced dial plans</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="advanced-dial-plans">
+<h1>Advanced dial plans<a class="headerlink" href="#advanced-dial-plans" title="Permalink to this headline">¶</a></h1>
+<p>Typically, companies have a lot of incoming calls every day, but many do not want their teams to
+answer calls 24 hours a day, 7 days a week.</p>
+<p>By using Axivox advanced dial plan features, the process can be automated, and routing can be set up
+for all scenarios. This way, customers are never left waiting, or frustrated, because they cannot
+get in touch with anyone.</p>
+<p>By utilizing the advanced elements in dial plans, companies can automate call routing for certain
+days or times, like company holidays. Companies can also allow callers to enter extensions
+themselves, and get transferred automatically using a digital receptionist. This way, an
+administrative team does <strong>not</strong> have to be available around the clock.</p>
+<p>There is even the option to route callers, depending on where they are calling from in the world,
+thus maximizing efficiency.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>For more information on basic dial plans, and how to add elements, visit <a class="reference internal" href="dial_plan_basics.html"><span class="doc">Dial plan basics</span></a>.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Using a browser add-on for spelling may hinder the use of the visual editor in dial plans. Do
+<strong>not</strong> use a translator with the Axivox management console.</p>
+</div>
+</section><section id="advanced-elements">
+<h2>Advanced elements<a class="headerlink" href="#advanced-elements" title="Permalink to this headline">¶</a></h2>
+<p>In Axivox dial plans (as described in <a class="reference internal" href="dial_plan_basics.html"><span class="doc">Dial plan basics</span></a>), there are two advanced elements that
+can be used.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Record</span>: recording feature is enabled (requires plan change, enabled in Axivox
+settings).</p></li>
+<li><p><span class="guilabel">Caller ID</span>: replace the caller ID by the called number or free text.</p></li>
+</ul>
+<p>To add one of these elements, navigate to the <span class="guilabel">Dial plans</span> page, located in the menu on
+the left side of the <a class="reference external" href="https://manage.axivox.com">Axivox management console</a>.</p>
+<p>Next, click on the <span class="guilabel">Visual Editor</span> button to the right of the desired dial plan to edit
+it. Finally, open the <span class="guilabel">New element</span> drop-down menu, select the element, and click
+<span class="guilabel">Add</span>.</p>
+<img alt="Visual editor for a dial plan in Axivox, with Add and the dispatcher element highlighted." class="align-center" src="../../../../_images/visual-editor.png" />
+<p>For more information, visit <a class="reference internal" href="dial_plan_basics.html#voip-axivox-dial-plans"><span class="std std-ref">Dial plans</span></a>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <span class="guilabel">Record</span> element records calls that are routed through this element, and requires
+an additional plan change in Axivox.</p>
+</div>
+<p>To enable recording on Axivox, navigate to <span class="guilabel">Settings</span> in the <a class="reference external" href="https://manage.axivox.com">Axivox management console</a>. Then, go to the <span class="guilabel">Recording</span> drop-down menu, near the bottom
+of the page. From there, select <span class="guilabel">Enabled</span> from the drop-down menu to enable recording
+using the <span class="guilabel">Record</span> element in a dial plan.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If the <span class="guilabel">Recording</span> drop-down menu is unavailable and unable to change, then consult
+Axivox to enable the feature.</p>
+</div>
+<p>The <span class="guilabel">Caller ID</span> element allows for the replacement of the caller ID downstream, after
+routing.</p>
+<p>Upon adding the <span class="guilabel">Caller ID</span> element to the dial plan, and double-clicking it to configure
+it, two options appear.</p>
+<p>The first is a <span class="guilabel">Free text</span> field, where any text can be input to replace the caller ID.
+The second option is <span class="guilabel">Replace the caller ID by the called number</span>. This option replaces
+the caller’s ID with the <span class="guilabel">Incoming number</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>A company may want to use the <span class="guilabel">Caller ID</span> element to replace the <span class="guilabel">Incoming
+number</span>, so employees, or outside transfers, cannot see the number, and information is kept
+private.</p>
+</div>
+</section><section id="basic-routing-elements">
+<h2>Basic routing elements<a class="headerlink" href="#basic-routing-elements" title="Permalink to this headline">¶</a></h2>
+<p>Basic routing elements in Axivox dial plans provide extension-based routing. This can be done by
+adding either a <em>Menu</em> to numerically link the dial-by-numbers to an action, or by using a <em>Digital
+Receptionist</em> to automatically route or listen for an extension, based on a key input from the
+caller.</p>
+<p>The main difference between the two elements is that the <em>Digital Receptionist</em> does <strong>not</strong> need to
+be pre-configured numerically with actions. Instead, it acts as a virtual receptionist.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Menu</span>: add a dial-by-number directory and configured downstream actions (not
+terminal). For example, a dial-by-numbers function could feature an element, wherein clicking ‘2’
+takes the caller to the element linked to ‘2’ on the Menu element in the dial plan.</p></li>
+<li><p><span class="guilabel">Digital Receptionist</span>: attach a virtual dispatcher to listen for extensions.</p></li>
+</ul>
+<p>To add one of these elements, navigate to the <span class="guilabel">Dial plans</span> page, located in the menu on
+the left side of the <a class="reference external" href="https://manage.axivox.com">Axivox management console</a>. Next, click on the
+<span class="guilabel">Visual Editor</span> button to the right of the dial plan, to edit the dial plan. Then, open
+the <span class="guilabel">New element</span> drop-down menu, select the element, and click <span class="guilabel">Add</span>.</p>
+<p>For more information, visit <a class="reference internal" href="dial_plan_basics.html#voip-axivox-dial-plans"><span class="std std-ref">Dial plans</span></a>.</p>
+</section><section id="digital-receptionist-scenario">
+<h3>Digital receptionist scenario<a class="headerlink" href="#digital-receptionist-scenario" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Digital Receptionist</em> element is a listen-feature that accurately routes callers through a dial
+plan, based on the extension they enter, via the key pad.</p>
+<p>Set a <em>Digital Receptionist</em> to eliminate the need of a team, or live receptionist, to be on-call
+all the time. With that element in place, calls now reach their destination, without a real person
+interjecting.</p>
+<p>After adding the <span class="guilabel">Digital Receptionist</span> element to a dial plan, connect the appropriate
+endpoints, and double-click on the element to set the <span class="guilabel">Timeout</span> on the
+<span class="guilabel">receptionist</span> pop-up window that appears.</p>
+<p>The <span class="guilabel">Timeout</span> can be set in <code class="o_code docutils literal notranslate"><span class="pre">5</span></code> second increments, from <code class="o_code docutils literal notranslate"><span class="pre">5</span></code> seconds to <code class="o_code docutils literal notranslate"><span class="pre">60</span></code> seconds.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <span class="guilabel">Digital Receptionist</span> element <strong>requires</strong> a <span class="guilabel">Play a file</span> element on
+either side of it, to explain what action to take, and when a wrong extension is entered.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>While customizing a dial plan in a <span class="guilabel">Dialplan Editor</span> pop-up window, add a
+<span class="guilabel">Menu</span> element, with a <span class="guilabel">Greeting message</span> that might read, <code class="o_code docutils literal notranslate"><span class="pre">Press</span> <span class="pre">star</span> <span class="pre">to</span>
+<span class="pre">dial</span> <span class="pre">an</span> <span class="pre">extension</span></code>.</p>
+<p>Then, on the <span class="guilabel">Menu</span> element, for the <span class="guilabel">* (star)</span> option, link a
+<span class="guilabel">Play a file</span> element, that plays an <span class="guilabel">Audio message</span> saying, ‘Enter the
+extension of the person you are trying to reach’.</p>
+<p>Following the first <span class="guilabel">Play a file</span> element, add the <span class="guilabel">Digital Receptionist</span>
+element, followed by another <span class="guilabel">Play a file</span> element, which states, ‘That is not a valid
+extension’.</p>
+<p>This last element is in place to close the loop, should the caller not enter a correct extension.</p>
+<p>Finally, this last <span class="guilabel">Play a file</span> element is looped back into the <span class="guilabel">Menu</span>
+element.</p>
+<img alt="A digital receptionist element highlighted in an example dial plan." class="align-center" src="../../../../_images/receptionist.png" />
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Dial plan elements can be configured by double-clicking them, and selecting different features
+of the Axivox console to them.</p>
+<p>For example, an <span class="guilabel">Audio message</span> needs to be made, and then selected in a
+<span class="guilabel">Play a file</span> or <span class="guilabel">Menu</span> element.</p>
+<p>For more information, see this documentation <a class="reference internal" href="vm_audio_messages.html#voip-axivox-audio-messages"><span class="std std-ref">Audio messages</span></a>.</p>
+</div>
+</section><section id="advanced-routing-elements">
+<h2>Advanced routing elements<a class="headerlink" href="#advanced-routing-elements" title="Permalink to this headline">¶</a></h2>
+<p>Advanced routing elements route calls automatically as they are received into the incoming
+number(s). This can be configured using geo-location, whitelisting, or time-based variables. Calls
+pass through a filter prior to their final destination, and are routed, based on the set
+variable(s).</p>
+<p>The following are advanced routing elements:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Dispatcher</span>: create a call filter to route traffic, based on the geo-location of the
+caller ID.</p></li>
+<li><p><span class="guilabel">Access List</span>: create a tailored access list, with VIP customer preference.</p></li>
+<li><p><span class="guilabel">Time Condition</span>: create time conditions to route incoming traffic around holidays, or
+other sensitive time-frames.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Whitelisting is a technical term used to create a list of allowed numbers. Conversely,
+blacklisting is used to create a list of denied numbers.</p>
+</div>
+<p>To add one of these elements, navigate to the <span class="guilabel">Dial plans</span> page, located in the menu on
+the left side of the <a class="reference external" href="https://manage.axivox.com">Axivox management console</a>. Next, click on the
+<span class="guilabel">Visual Editor</span> button to the right of the dial plan, to edit the dial plan. Then, open
+the <span class="guilabel">New element</span> drop-down menu, select the element, and click <span class="guilabel">Add</span>. For more
+information, visit <a class="reference internal" href="dial_plan_basics.html#voip-axivox-dial-plans"><span class="std std-ref">Dial plans</span></a>.</p>
+</section><section id="dispatcher-scenario">
+<h3>Dispatcher scenario<a class="headerlink" href="#dispatcher-scenario" title="Permalink to this headline">¶</a></h3>
+<p>A <em>Dispatcher</em> element is a dial plan feature that directs calls, based on region or geo-location.
+In most cases, the <span class="guilabel">Dispatcher</span> element in a dial plan is linked to the <span class="guilabel">Start</span>
+element, in order to filter or screen calls as they come into an incoming number.</p>
+<p>Double-click the <span class="guilabel">Dispatcher</span> element in the <span class="guilabel">Dialplan Editor</span> pop-up window to
+configure it.</p>
+<p>This element checks numbers (routed through this element), according to regular expressions. To add
+a regular expression, click <span class="guilabel">Add a line</span> on the bottom of the <span class="guilabel">Dispatcher</span>
+pop-up window.</p>
+<p>Then, under <span class="guilabel">Name</span>, enter a recognizable name to identify this expression. This is the
+name that appears in the <span class="guilabel">Dispatcher</span> element on the dial plan showcased in the
+<span class="guilabel">Dialplan Editor</span> pop-up window.</p>
+<p>In the <span class="guilabel">Regular expression</span> field, enter the country code, or area code, which Axivox
+should route for incoming calls. This is especially helpful when a company would like to filter
+their customers to certain queues, or users based on the customer’s geo-location.</p>
+<p>To specify all numbers behind a certain country code, or area code, include <code class="o_code docutils literal notranslate"><span class="pre">d+</span></code> after the country
+code, or country code + area code.</p>
+<img alt="Dispatcher configuration panel, with name, regular expression and add a line highlighted." class="align-center" src="../../../../_images/dispatcher.png" />
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><ul class="simple">
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">02\d+</span></code>: validates the numbers starting with <code class="o_code docutils literal notranslate"><span class="pre">02</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">00\d+</span></code>: validates all numbers beginning with <code class="o_code docutils literal notranslate"><span class="pre">00</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">0052\d+</span></code> validates all numbers beginning with <code class="o_code docutils literal notranslate"><span class="pre">0052</span></code> (Mexico country code)</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">001716\d+</span></code>: validates all numbers beginning with <code class="o_code docutils literal notranslate"><span class="pre">001716</span></code> (USA country code + Western New York
+area code)</p></li>
+</ul>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>A regular expression (shortened to “regex” or “regexp”), sometimes referred to as a “rational
+expression,” is a sequence of characters that specifies a match pattern in text. In other words,
+a match is made within the given range of numbers.</p>
+</div>
+<p>When the desired configurations are complete on the <span class="guilabel">Dispatcher</span> pop-up window, be sure to
+click <span class="guilabel">Save</span>.</p>
+<p>Upon doing so, the <span class="guilabel">Dispatcher</span> element appears with different routes available to
+configure, based on the <span class="guilabel">Regular Expressions</span> that were set.</p>
+<p>Attach these routes to any <span class="guilabel">New element</span> in the <span class="guilabel">Dialplan Editor</span> pop-up window.</p>
+<p>By default, there is an <span class="guilabel">Unknown</span> path that appears on the <span class="guilabel">Dispatcher</span> element
+after setting at least one <span class="guilabel">Regular Expression</span>.</p>
+<p>Calls follow this route/path when their number does not match any <span class="guilabel">Regular Expression</span> set
+on the <span class="guilabel">Dispatcher</span> element.</p>
+<img alt="Dial plan with dispatcher element highlighted." class="align-center" src="../../../../_images/dispatcher-element.png" />
+</section><section id="time-condition-scenario">
+<h3>Time condition scenario<a class="headerlink" href="#time-condition-scenario" title="Permalink to this headline">¶</a></h3>
+<p>When a <span class="guilabel">Time Condition</span> element is added to a dial plan, it has a simple <span class="guilabel">True</span>
+and <span class="guilabel">False</span> routing.</p>
+<p>After adding the <span class="guilabel">Time Condition</span> element to a dial plan, double-click it to configure the
+variables. <span class="guilabel">Hour/Minute</span>, <span class="guilabel">Days of the week</span>, <span class="guilabel">Day of the month</span>, and
+<span class="guilabel">Month</span> can all be configured.</p>
+<p>If the time which the caller contacts the incoming number matches the set time conditions, then the
+<span class="guilabel">True</span> path is followed, otherwise the <span class="guilabel">False</span> path is followed.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>For a company that is closed yearly for the American Independence Day holiday (July 4th) the
+following time conditions should be set:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Hour/Minute</span> - <code class="o_code docutils literal notranslate"><span class="pre">0:0</span> <span class="pre">to</span> <span class="pre">23:59</span></code></p></li>
+<li><p><span class="guilabel">Day of the week</span> - <code class="o_code docutils literal notranslate"><span class="pre">All</span> <span class="pre">to</span> <span class="pre">All</span></code></p></li>
+<li><p><span class="guilabel">Day of the month</span> - <code class="o_code docutils literal notranslate"><span class="pre">From</span> <span class="pre">4</span> <span class="pre">to</span> <span class="pre">4</span></code></p></li>
+<li><p><span class="guilabel">Month</span> - <code class="o_code docutils literal notranslate"><span class="pre">July</span></code></p></li>
+</ul>
+</div>
+<p>The <span class="guilabel">Time Condition</span> element is especially useful for holidays, weekends, and to set
+working hours. When a caller reaches a destination where they can be helped, either with a real
+person or voicemail, this reduces wasted time and hangups.</p>
+<img alt="Time condition element set in a dial plan on Axivox. Time condition is highlighted." class="align-center" src="../../../../_images/time-condition.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>To set the <span class="guilabel">Timezone</span> that the <span class="guilabel">Time Condition</span> operates under, navigate to
+<a class="reference external" href="https://manage.axivox.com">Axivox management console</a>, and click <span class="guilabel">Settings</span> in the
+menu on the left. Then, set the <span class="guilabel">Timezone</span> using the second field from the bottom, by
+clicking the drop-down menu.</p>
+</div>
+</section><section id="access-list-scenario">
+<h3>Access list scenario<a class="headerlink" href="#access-list-scenario" title="Permalink to this headline">¶</a></h3>
+<p>An <em>Access List</em> element in a dial plan allows for the routing of certain numbers, and disallows
+(denies) other numbers.</p>
+<p>After adding an <span class="guilabel">Access List</span> element to a dial plan, it can be configured by
+double-clicking on the element directly in the <span class="guilabel">Dialplan Editor</span> pop-up window.</p>
+<p>Two fields appear where regular expressions can based in the <span class="guilabel">Allow</span> and <span class="guilabel">Deny</span>
+fields of the <span class="guilabel">Access List</span> pop-up window.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>For a very important customer, their number can be set in the <span class="guilabel">Allow</span> field, and these
+callers can be sent directly to management.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>A regular expression (shortened to “regex” or “regexp”), sometimes also referred to as a
+“rational expression,” is a sequence of characters that specifies a match pattern in text.</p>
+</div>
+<img alt="Access list element configuration with the allow/deny fields highlighted." class="align-center" src="../../../../_images/access-config.png" />
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><ul class="simple">
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">2\d\d</span></code>: validates numbers from <code class="o_code docutils literal notranslate"><span class="pre">200</span> <span class="pre">to</span> <span class="pre">299</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">02\d*</span></code>: validates all numbers beginning with <code class="o_code docutils literal notranslate"><span class="pre">02</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">0017165551212</span></code>: validates the number (<code class="o_code docutils literal notranslate"><span class="pre">0017165551212</span></code>)</p></li>
+</ul>
+</div>
+<p>After setting the <span class="guilabel">Allow</span> and <span class="guilabel">Deny</span> fields with regular expressions or numbers,
+click <span class="guilabel">Save</span> on the <span class="guilabel">Access List</span> pop-up window.</p>
+<p>Then, on the <span class="guilabel">Access list</span> element in the dial plan, three paths (or routes) are available
+to link to further actions.</p>
+<p>Unknown calls can be routed through the regular menu flow by adding a <span class="guilabel">Menu</span> element, and
+connecting it to the <span class="guilabel">Unknown</span> path. <span class="guilabel">Refused</span> calls can be routed to the
+<span class="guilabel">Hang up</span> element. Lastly, <span class="guilabel">Authorized</span> callers can be sent to a specific
+extension or queue.</p>
+<img alt="Access list element highlighted in an example dial plan." class="align-center" src="../../../../_images/access-list.png" />
+</section><section id="switches">
+<h2>Switches<a class="headerlink" href="#switches" title="Permalink to this headline">¶</a></h2>
+<p>A <em>Switch</em> element in Axivox is a simple activated/deactivated route action.</p>
+<p>These can be activated or chosen quickly, allowing for quick routing changes, without altering the
+dial plan.</p>
+<p>Alternate routes can be configured, so that in a moments notice, they can be switched to. This could
+be for new availability, or to adjust traffic flow for any number of reasons.</p>
+<p>Axivox allows for a simple on/off switch, and a multi-switch, which can have several paths to choose
+from.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Switch</span>: a manual on/off control that can divert traffic, based on whether it is opened
+(on) or closed (off).</p></li>
+<li><p><span class="guilabel">Multi-Switch</span>: a mechanism to create paths, and turn them on and off, to divert
+incoming calls.</p></li>
+</ul>
+</section><section id="basic-switch">
+<h3>Basic switch<a class="headerlink" href="#basic-switch" title="Permalink to this headline">¶</a></h3>
+<p>A <span class="guilabel">Switch</span> can be set in the <a class="reference external" href="https://manage.axivox.com">Axivox management console</a> by
+navigating to <span class="guilabel">Switches</span> in the left menu. To create a new switch click <span class="guilabel">Add a
+switch</span> from the <span class="guilabel">Switches</span> dashboard, configure a <span class="guilabel">Name</span> for it, and click
+<span class="guilabel">Save</span>.</p>
+<p>Then, toggle the desired switch to either <span class="guilabel">On</span> or <span class="guilabel">Off</span>, from the
+<span class="guilabel">State</span> column on the <span class="guilabel">Switches</span> dashboard.</p>
+<p>This <span class="guilabel">On</span> / <span class="guilabel">Off</span> state automatically routes traffic in a dial plan, in which
+this switch is set.</p>
+<p>The traffic travels to the <span class="guilabel">Active</span> route when <span class="guilabel">On</span> is toggled in the switch.
+The call traffic travels to the <span class="guilabel">Inactive</span> route when <span class="guilabel">Off</span> is toggled in the
+switch.</p>
+<p>Changes can be made on the fly, just be sure to click <span class="guilabel">Apply changes</span> to implement the
+them.</p>
+</section><section id="add-a-switch-to-dial-plan">
+<h4>Add a switch to dial plan<a class="headerlink" href="#add-a-switch-to-dial-plan" title="Permalink to this headline">¶</a></h4>
+<p>To add a <span class="guilabel">Switch</span> to a dial plan, navigate to <a class="reference external" href="https://manage.axivox.com">Axivox management console</a>, and click on <span class="guilabel">Dial plans</span> in the left menu. Then, click
+<span class="guilabel">Visual Editor</span> next to the desired dial plan to open the <span class="guilabel">Dialplan Editor</span>
+pop-up window.</p>
+<p>Then, from the <span class="guilabel">New element</span> drop-down menu, select <span class="guilabel">Switch</span>, and then click
+<span class="guilabel">Add</span>. Double-click on the element to further configure the <span class="guilabel">Switch</span> element.</p>
+<img alt="Switch configuration in a dial plan, with inactive and active routes highlighted." class="align-center" src="../../../../_images/switch.png" />
+</section><section id="multi-switch">
+<h3>Multi-switch<a class="headerlink" href="#multi-switch" title="Permalink to this headline">¶</a></h3>
+<p>A <em>Multi-Switch</em> element in Axivox is a switch where multiple paths can be configured, and switched
+between.</p>
+<p>To configure and set a <span class="guilabel">Multi-Switch</span> element, navigate to <a class="reference external" href="https://manage.axivox.com">Axivox management console</a>. Then, click on the <span class="guilabel">Switches</span> menu item in the left menu.</p>
+<p>Toggle to the <span class="guilabel">Multi-switch</span> tab to create, or set, a pre-configured
+<span class="guilabel">Multi-Switch</span> element.</p>
+<p>To create a new <span class="guilabel">Multi-Switch</span>, click <span class="guilabel">Create new</span>. Then, enter a
+<span class="guilabel">Name</span> for the element, and then enter the <span class="guilabel">Available choice</span>. Enter one
+<span class="guilabel">Available choice</span> per line. Do <strong>not</strong> duplicate any entries.</p>
+<p>Remember to click <span class="guilabel">Save</span> when done.</p>
+<p>To select the <span class="guilabel">State</span> of the <span class="guilabel">Multi-Switch</span>, click the drop-down menu next to
+the <span class="guilabel">Multi-Switch</span> name, under the <span class="guilabel">Multi-switch</span> tab on the
+<span class="guilabel">Switches</span> dashboard.</p>
+<p>The <span class="guilabel">State</span> chosen is the route that is followed in the dial plan. The <span class="guilabel">State</span>
+can be edited on the fly, just be sure to click <span class="guilabel">Apply changes</span>.</p>
+</section><section id="add-a-multi-switch-to-dial-plan">
+<h4>Add a multi-switch to dial plan<a class="headerlink" href="#add-a-multi-switch-to-dial-plan" title="Permalink to this headline">¶</a></h4>
+<p>To add a <span class="guilabel">Multi-Switch</span> element to a dial plan, navigate to <a class="reference external" href="https://manage.axivox.com">Axivox management console</a>, and click <span class="guilabel">Dial plans</span> in the left menu.</p>
+<p>Then, select or create a dial plan. Next, click <span class="guilabel">Visual Editor</span> on the desired dial plan.</p>
+<p>On the <span class="guilabel">Dialplan Editor</span> pop-up window that appears, click on the <span class="guilabel">New element</span>
+drop-down menu, and select <span class="guilabel">Multi-Switch</span>. Then, click <span class="guilabel">Add</span>. Double-click on
+the element to further configure the <span class="guilabel">Switch</span> element.</p>
+<img alt="Multi-switch configuration in a dial plan, with chosen route highlighted." class="align-center" src="../../../../_images/multi-switch.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Advanced dial plans</a><ul>
+<li><a class="reference internal" href="#advanced-elements">Advanced elements</a></li>
+<li><a class="reference internal" href="#basic-routing-elements">Basic routing elements</a><ul>
+<li><a class="reference internal" href="#digital-receptionist-scenario">Digital receptionist scenario</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-routing-elements">Advanced routing elements</a><ul>
+<li><a class="reference internal" href="#dispatcher-scenario">Dispatcher scenario</a></li>
+<li><a class="reference internal" href="#time-condition-scenario">Time condition scenario</a></li>
+<li><a class="reference internal" href="#access-list-scenario">Access list scenario</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#switches">Switches</a><ul>
+<li><a class="reference internal" href="#basic-switch">Basic switch</a><ul>
+<li><a class="reference internal" href="#add-a-switch-to-dial-plan">Add a switch to dial plan</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multi-switch">Multi-switch</a><ul>
+<li><a class="reference internal" href="#add-a-multi-switch-to-dial-plan">Add a multi-switch to dial plan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Advanced dial plans</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

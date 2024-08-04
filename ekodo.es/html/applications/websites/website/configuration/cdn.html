@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Set up a content delivery network (CDN) &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/website/configuration/cdn.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/website/configuration/cdn.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Set up a content delivery network (CDN)</a><ul>
+<li><a class="reference internal" href="#deploying-with-keycdn">Deploying with KeyCDN</a><ul>
+<li><a class="reference internal" href="#create-a-pull-zone-in-the-keycdn-dashboard">Create a pull zone in the KeyCDN dashboard</a></li>
+<li><a class="reference internal" href="#configure-the-odoo-instance-with-the-new-zone">Configure the Odoo instance with the new zone</a></li>
+<li><a class="reference internal" href="#prevent-security-issues-by-activating-cross-origin-resource-sharing-cors">Prevent security issues by activating cross-origin resource sharing (CORS)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/website/configuration/cdn.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Set up a content delivery network (CDN)</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="set-up-a-content-delivery-network-cdn">
+<h1>Set up a content delivery network (CDN)<a class="headerlink" href="#set-up-a-content-delivery-network-cdn" title="Permalink to this headline">¶</a></h1>
+</section><section id="deploying-with-keycdn">
+<span id="reference-cdn-keycdn"></span><h2>Deploying with KeyCDN<a class="headerlink" href="#deploying-with-keycdn" title="Permalink to this headline">¶</a></h2>
+<p>A <abbr title="Content Delivery Network">CDN</abbr> or <em>content distribution network</em>, is a geographically
+distributed network of servers that provides high speed internet content. The <abbr title="Content Delivery Network">CDN</abbr> provides quick, high-quality content delivery for content-heavy websites.</p>
+<p>This document will guide you through the setup of a <a class="reference external" href="https://www.keycdn.com">KeyCDN</a> account with an Odoo powered website.</p>
+</section><section id="create-a-pull-zone-in-the-keycdn-dashboard">
+<h3>Create a pull zone in the KeyCDN dashboard<a class="headerlink" href="#create-a-pull-zone-in-the-keycdn-dashboard" title="Permalink to this headline">¶</a></h3>
+<p>On the KeyCDN dashboard, start by navigating to the <span class="menuselection">Zones</span> menu item on the left. On
+the form, give a value to the <span class="guilabel">Zone Name</span>, which will appear as part of the <abbr title="Content Delivery Network">CDN</abbr>’s <abbr title="Uniform Resource Locator">URL</abbr>. Then, set the <span class="guilabel">Zone
+Status</span> to <span class="guilabel">active</span> to engage the zone. For the <span class="guilabel">Zone Type</span> set the value to
+<span class="guilabel">Pull</span>, and then, finally, under the <span class="guilabel">Pull Settings</span>, enter the
+<span class="guilabel">Origin URL</span>— this address should be the full Odoo database <abbr title="Uniform Resource Locator">URL</abbr>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Use <code class="o_code docutils literal notranslate"><span class="pre">https://yourdatabase.odoo.com</span></code> and replace the <em>yourdatabase</em> subdomain prefix with the
+actual name of the database. A custom <abbr title="Uniform Resource Locator">URL</abbr> can be used, as
+well, in place of the Odoo subdomain that was provided to the database.</p>
+</div>
+<img alt="KeyCDN's Zone configuration page." class="align-center" src="../../../../_images/keycdn-zone.png" />
+<p>Under the <span class="guilabel">General Settings</span> heading below the zone form, click the <span class="guilabel">Show all
+settings</span> button to expand the zone options. This should be the last option on the page. After
+expanding the <span class="guilabel">General Settings</span> ensure that the <span class="guilabel">CORS</span> option is
+<span class="guilabel">enabled</span>.</p>
+<p>Next, scroll to the bottom of the zone configuration page and <span class="guilabel">Save</span> the changes. KeyCDN
+will indicate that the new zone will be deployed. This can take about 10 minutes.</p>
+<img alt="KeyCDN deploying the new Zone." class="align-center" src="../../../../_images/zone-url.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>A new <span class="guilabel">Zone URL</span> has been generated for your Zone, in this example it is
+<code class="o_code docutils literal notranslate"><span class="pre">pulltest-xxxxx.kxcdn.com</span></code>. This value will differ for each database.</p>
+</div>
+<p>Copy this <span class="guilabel">Zone URL</span> to a text editor for later, as it will be used in the next steps.</p>
+</section><section id="configure-the-odoo-instance-with-the-new-zone">
+<h3>Configure the Odoo instance with the new zone<a class="headerlink" href="#configure-the-odoo-instance-with-the-new-zone" title="Permalink to this headline">¶</a></h3>
+<p>In the Odoo <span class="guilabel">Website</span> app, go to the <span class="menuselection">Settings</span> and then activate the
+<span class="guilabel">Content Delivery Network (CDN)</span> setting and copy/paste the <span class="guilabel">Zone URL</span> value
+from the earlier step into the <span class="guilabel">CDN Base URL</span> field. This field is only visible and
+configurable when the <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> is activated.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Ensure that there are two <em>forward slashes</em> (<code class="o_code docutils literal notranslate"><span class="pre">//</span></code>) before the <span class="guilabel">CDN Base URL</span> and one
+forward slash (<code class="o_code docutils literal notranslate"><span class="pre">/</span></code>) after the <span class="guilabel">CDN Base URL</span>.</p>
+</div>
+<p><span class="guilabel">Save</span> the settings when complete.</p>
+<img alt="Activate the CDN setting in Odoo." class="align-center" src="../../../../_images/cdn-base-url.png" />
+<p>Now the website is using the CDN for the resources matching the <span class="guilabel">CDN filters</span> regular
+expressions.</p>
+<p>In the HTML of the Odoo website, the <abbr title="content delivery network">CDN</abbr> integration is evidenced
+as working properly by checking the <abbr title="Uniform Resource Locators">URL</abbr> of images. The <em>CDN Base
+URL</em> value can be seen by using your web browser’s <span class="guilabel">Inspect</span> feature on the Odoo website.
+Look for it’s record by searching within the <span class="guilabel">Network</span> tab inside of devtools.</p>
+<img alt="The CDN Base URL can be seen using the inspect function on the Odoo website." class="align-center" src="../../../../_images/test-pull.png" />
+</section><section id="prevent-security-issues-by-activating-cross-origin-resource-sharing-cors">
+<h3>Prevent security issues by activating cross-origin resource sharing (CORS)<a class="headerlink" href="#prevent-security-issues-by-activating-cross-origin-resource-sharing-cors" title="Permalink to this headline">¶</a></h3>
+<p>A security restriction in some browsers (such as Mozilla Firefox and Google Chrome) prevents a
+remotely linked CSS file to fetch relative resources on this same external server.</p>
+<p>If the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> option isn’t enabled in the <span class="guilabel">CDN
+Zone</span>, the more obvious resulting problem on a standard Odoo website will be the lack of <em>Font
+Awesome</em> icons because the font file declared in the <em>Font Awesome</em> CSS won’t be loaded from the
+remote server.</p>
+<p>When these cross-origin resource issues occur, a security error message similar to the output
+below will appear in the web browser’s developer console:</p>
+<p><code class="o_code docutils literal notranslate"><span class="pre">Font</span> <span class="pre">from</span> <span class="pre">origin</span> <span class="pre">'http://pulltest-xxxxx.kxcdn.com'</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">blocked</span> <span class="pre">from</span> <span class="pre">loading</span> <span class="pre">/shop:1</span> <span class="pre">by</span>
+<span class="pre">Cross-Origin</span> <span class="pre">Resource</span> <span class="pre">Sharing</span> <span class="pre">policy:</span> <span class="pre">No</span> <span class="pre">'Access-Control-Allow-Origin'</span> <span class="pre">header</span> <span class="pre">is</span> <span class="pre">present</span> <span class="pre">on</span> <span class="pre">the</span>
+<span class="pre">requested</span> <span class="pre">resource.</span> <span class="pre">Origin</span> <span class="pre">'http://yourdatabase.odoo.com'</span> <span class="pre">is</span> <span class="pre">therefore</span> <span class="pre">not</span> <span class="pre">allowed</span> <span class="pre">access.</span></code></p>
+<img alt="Error message populated in the browser console." class="align-center" src="../../../../_images/odoo-security-message.png" />
+<p>Enabling the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> option in the <abbr title="Content Delivery Network">CDN</abbr> settings fixes this issue.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Set up a content delivery network (CDN)</a><ul>
+<li><a class="reference internal" href="#deploying-with-keycdn">Deploying with KeyCDN</a><ul>
+<li><a class="reference internal" href="#create-a-pull-zone-in-the-keycdn-dashboard">Create a pull zone in the KeyCDN dashboard</a></li>
+<li><a class="reference internal" href="#configure-the-odoo-instance-with-the-new-zone">Configure the Odoo instance with the new zone</a></li>
+<li><a class="reference internal" href="#prevent-security-issues-by-activating-cross-origin-resource-sharing-cors">Prevent security issues by activating cross-origin resource sharing (CORS)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Set up a content delivery network (CDN)</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

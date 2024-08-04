@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment terms and installment plans &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/customer_invoices/payment_terms.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/customer_invoices/payment_terms.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Payment terms and installment plans</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#using-payment-terms">Using payment terms</a></li>
+<li><a class="reference internal" href="#journal-entries">Journal entries</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/customer_invoices/payment_terms.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Payment terms and installment plans</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="payment-terms-and-installment-plans">
+<h1>Payment terms and installment plans<a class="headerlink" href="#payment-terms-and-installment-plans" title="Permalink to this headline">¶</a></h1>
+<p><strong>Payment terms</strong> specify all the conditions of a sale’s payment to help ensure customers pay their
+invoices correctly and on time.</p>
+<p>Payment terms are generally defined on documents such as sales orders, customer invoices, and
+vendor bills. Payment terms cover:</p>
+<ul class="simple">
+<li><p>The due date(s)</p></li>
+<li><p>Early payment discounts</p></li>
+<li><p>Any other conditions on the payment</p></li>
+</ul>
+<p>An <strong>installment plan</strong> allows the customers to pay an invoice in parts, with the amounts and
+payment dates defined beforehand by the seller.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><dl class="simple">
+<dt>Immediate Payment</dt><dd><p>The full payment is due on the day of the invoice’s issuance.</p>
+</dd>
+<dt>15 Days (or Net 15)</dt><dd><p>The full payment is due 15 days after the invoice date.</p>
+</dd>
+<dt>21 MFI</dt><dd><p>The full payment is due by the 21st of the month following the invoice date.</p>
+</dd>
+<dt>30% Advance End of Following Month</dt><dd><p>30% is due on the day of the invoice’s issuance. The remaining balance is due at the end of the
+following month.</p>
+</dd>
+<dt>2% 10, Net 30 EOM</dt><dd><p>A 2% <a class="reference internal" href="cash_discounts.html"><span class="doc">cash discount</span></a> if the payment is received within ten days.
+Otherwise, the full payment is due at the end of the month following the invoice date.</p>
+</dd>
+</dl>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Payment terms are not to be confused with <a class="reference internal" href="../../../sales/sales/invoicing/down_payment.html"><span class="doc">down payment invoices</span></a>. If, for a specific order, you issue
+multiple invoices to your customer, that is neither a payment term nor an installment plan but
+an invoicing policy.</p></li>
+<li><p>This page is about the <em>payment terms</em> feature, not <a class="reference internal" href="terms_conditions.html"><span class="doc">terms &amp; conditions</span></a>, which can be used to declare contractual obligations regarding content
+use, return policies, and other policies surrounding the sale of goods and services.</p></li>
+</ul>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/payment-terms-1679">Odoo Tutorials: payment terms</a></p></li>
+<li><p><a class="reference internal" href="cash_discounts.html"><span class="doc">Cash discounts and tax reduction</span></a></p></li>
+</ul>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To create new payment terms, follow these steps:</p>
+<ol class="arabic">
+<li><p>Go to <span class="menuselection">Accounting ‣ Configuration ‣ Payment Terms</span> and click on
+<span class="guilabel">New</span>.</p></li>
+<li><p>Enter a name in the <span class="guilabel">Payment Terms</span> field. This field is the name displayed in the
+database and is not customer-facing.</p></li>
+<li><p>Enter the text to be displayed on the document (sales order, invoice, etc.) in the
+<span class="guilabel">Description on the Invoice</span> field.</p></li>
+<li><p>Tick the <span class="guilabel">Display terms on invoice</span> checkbox to display a breakdown of each payment and
+its due date on the invoice report, if desired.</p></li>
+<li><p>In the <span class="guilabel">Terms</span> section, add a set of rules (terms) to define what needs to be paid and
+by which due date(s). Defining terms automatically calculates the payments’ due date(s). This is
+particularly helpful for managing <strong>installment plans</strong> (<span class="dfn"><span>payment terms with multiple
+terms</span></span>).</p>
+<p>To add a term, click on <span class="guilabel">Add a line</span>, define its <span class="guilabel">Due Type</span> and
+<span class="guilabel">Value</span>, and fill out the appropriate fields to define when the term is due, including
+any <a class="reference internal" href="cash_discounts.html"><span class="doc">discounts</span></a>. Due dates are calculated by taking the invoice/bill date,
+first adding the <span class="guilabel">Months</span>, and then adding the <span class="guilabel">Days</span>. If the <span class="guilabel">End
+of month</span> toggle is enabled, the due date will then be the end of that month, plus any
+<span class="guilabel">Days after End of month</span>.</p>
+</li>
+</ol>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To instead specify a number of days <em>before the end of the month</em>, use a negative value in the
+<span class="guilabel">Days after End of month</span> field.</p>
+</div>
+<p>To test that your payment terms are configured correctly, enter an invoice amount and invoice date
+in the <span class="guilabel">Example</span> section to generate the payments that would be due and their due dates
+using these payment terms.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><ul class="simple">
+<li><p>Terms are computed in the order of their due dates.</p></li>
+<li><p>The <strong>balance</strong> should always be used for the last line.</p></li>
+</ul>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>In the following example, 30% is due on the day of issuance, and the balance is due at the end of
+the following month.</p>
+<img alt="Example of Payment Terms. The last line is the balance due on the 31st of the following month." src="../../../../_images/configuration.png" />
+</div>
+</section><section id="using-payment-terms">
+<h2>Using payment terms<a class="headerlink" href="#using-payment-terms" title="Permalink to this headline">¶</a></h2>
+<p>Payment terms can be defined using the <span class="guilabel">Payment Terms</span> field on:</p>
+<ul class="simple">
+<li><p><strong>Contacts:</strong> To automatically set default payment terms on a contact’s new sales orders,
+invoices, and bills. This can be modified in the contact form, under the <span class="guilabel">Sales &amp;
+Purchase</span> tab.</p></li>
+<li><p><strong>Quotations/Sales Orders:</strong> To set specific payment terms automatically on all invoices generated
+from a quotation or sales order.</p></li>
+</ul>
+<p>Payment terms can be defined using the <span class="guilabel">Due Date</span> field, with the <span class="guilabel">Terms</span>
+drop-down list on:</p>
+<ul class="simple">
+<li><p><strong>Customer invoices:</strong> To set specific payment terms on an invoice.</p></li>
+<li><p><strong>Vendor bills:</strong> To set specific payment terms on a bill.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Setting payment terms on a vendor bill is mostly useful for managing vendor terms with multiple
+installments or cash discounts. Otherwise, manually setting the <strong>due date</strong> is enough. If
+payment terms are already defined, empty the field to select a date.</p>
+</div>
+</section><section id="journal-entries">
+<h2>Journal entries<a class="headerlink" href="#journal-entries" title="Permalink to this headline">¶</a></h2>
+<p>Invoices with specific payment terms generate different <em>journal entries</em>, with one <em>journal item</em>
+for every computed <em>due date</em>.</p>
+<p>This makes for easier <a class="reference internal" href="../payments/follow_up.html"><span class="doc">follow-ups</span></a> and
+<a class="reference internal" href="../bank/reconciliation.html"><span class="doc">reconciliation</span></a> since Odoo takes each
+due date into account, rather than just the balance due date. It also helps to get an accurate
+<a class="reference internal" href="../customer_invoices.html#customer-invoices-aging-report"><span class="std std-ref">aged receivable report</span></a>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><img alt="The amount debited to the account receivable is split into two journal items with distinct due dates" src="../../../../_images/journal-entry.png" />
+<p>In this example, an invoice of $1000 has been issued with the following payment terms: <em>30% is
+due on the day of issuance, and the balance is due at the end of the following month.</em></p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 25%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Account</p></th>
+<th class="head"><p>Due date</p></th>
+<th class="head"><p>Debit</p></th>
+<th class="head"><p>Credit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Account Receivable</p></td>
+<td><p>February 21</p></td>
+<td><p>300</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Account Receivable</p></td>
+<td><p>March 31</p></td>
+<td><p>700</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Product Sales</p></td>
+<td></td>
+<td></td>
+<td><p>1000</p></td>
+</tr>
+</tbody>
+</table>
+<p>The $1000 debited to the account receivable is split into two distinct journal items. Both of
+them have their own due date.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Payment terms and installment plans</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#using-payment-terms">Using payment terms</a></li>
+<li><a class="reference internal" href="#journal-entries">Journal entries</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Payment terms and installment plans</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

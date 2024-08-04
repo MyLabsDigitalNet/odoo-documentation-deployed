@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manage users in Axivox &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/productivity/voip/axivox/manage_users.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/productivity/voip/axivox/manage_users.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Manage users in Axivox</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#incoming-numbers">Incoming numbers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#new-users">New users</a><ul>
+<li><a class="reference internal" href="#general-tab">General tab</a></li>
+<li><a class="reference internal" href="#forwardings-tab">Forwardings tab</a></li>
+<li><a class="reference internal" href="#follow-me-tab">Follow Me tab</a></li>
+<li><a class="reference internal" href="#keys-tab">Keys tab</a></li>
+<li><a class="reference internal" href="#sip-identifiers-tab">SIP Identifiers tab</a></li>
+<li><a class="reference internal" href="#permissions-tab">Permissions tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-groups">User groups</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/productivity/voip/axivox/manage_users.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Manage users in Axivox</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="manage-users-in-axivox">
+<h1>Manage users in Axivox<a class="headerlink" href="#manage-users-in-axivox" title="Permalink to this headline">¶</a></h1>
+<p>Managing Axivox <abbr title="Voice over Internet Protocol">VoIP</abbr> users is an important part of setting up
+<abbr title="Voice over Internet Protocol">VoIP</abbr> in an Odoo database. Each Axivox user has a unique name,
+phone number and/or extension, and a voicemail. This way, they can be reached in a variety of
+convenient ways.</p>
+<p>Axivox users are organized in a simple, straightforward way in the Axivox console, so an
+administrator can manage users quickly and easily.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>This documentation covers how to configure everything through a provider called, Axivox.
+Depending on the chosen VoIP provider, the processes to manage users may be different.</p>
+</div>
+</section><section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Begin at the Axivox management console by navigating to <a class="reference external" href="https://manage.axivox.com">https://manage.axivox.com</a>. Log in with the appropriate administrator credentials.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Actions in the Axivox management console <strong>must</strong> be double-saved, in order for the changes to
+take effect. To save any changes, click <span class="guilabel">Save</span> in the individualized changes screen.
+Then, to implement those changes, click the <span class="guilabel">Apply Changes</span> button in the upper-right
+corner of the console.</p>
+</div>
+</section><section id="incoming-numbers">
+<span id="voip-axivox-incoming-number"></span><h3>Incoming numbers<a class="headerlink" href="#incoming-numbers" title="Permalink to this headline">¶</a></h3>
+<p>Incoming numbers are all the numbers a company is paying to use to receive calls.</p>
+<p>Click on <span class="menuselection">Incoming numbers</span> from the menu on the left of the Axivox management
+console. Doing so reveals the <span class="guilabel">Incoming numbers</span> page, where all the incoming numbers are
+listed, along with their <span class="guilabel">Destination</span> and SMS information.</p>
+<p>The <span class="guilabel">Destination</span> determines the action that is taken, or the path the caller follows when
+dialing said numbers.</p>
+<p>To edit the <span class="guilabel">Destination</span>, click the <span class="guilabel">Edit</span> button to the far-right of the
+incoming number line to be modified. Then, on the <span class="guilabel">Edit number</span> page that appears, the
+<span class="guilabel">Destination type for voice call</span> can be changed.</p>
+<p>The options available in the <span class="guilabel">Destination type for voice call</span> drop-down menu are as
+follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Not configured</span></p></li>
+<li><p><span class="guilabel">Extension</span></p></li>
+<li><p><span class="guilabel">Dial plan</span></p></li>
+<li><p><span class="guilabel">Voicemail</span></p></li>
+<li><p><span class="guilabel">Hang up</span></p></li>
+<li><p><span class="guilabel">Conference</span></p></li>
+</ul>
+<p>Depending on the selection made in the <span class="guilabel">Destination type for voice call</span> drop-down menu, a
+second, selection-specific drop-down menu is populated with further configuration options.
+Additionally, more fields are revealed, based on the selection made in the <span class="guilabel">Destination
+type for voice call</span> drop-down menu.</p>
+<p>Once the desired configurations are complete, click <span class="guilabel">Save</span>, then click <span class="guilabel">Apply
+changes</span> in the upper-right corner to implement them.</p>
+</section><section id="new-users">
+<h2>New users<a class="headerlink" href="#new-users" title="Permalink to this headline">¶</a></h2>
+<p>Every employee using <abbr title="Voice over Internet Protocol">VoIP</abbr> at the company needs an Axivox user
+account associated with them.</p>
+<p>To view existing users in the Axivox management console, click <span class="guilabel">Users</span> from the menu on
+the left of the console. Every user has a <span class="guilabel">Number</span>, <span class="guilabel">Name</span>, option for a
+<span class="guilabel">Voicemail</span>, and an <span class="guilabel">Outgoing number</span> specified.</p>
+<p>To create a new user in the Axivox console, click <span class="guilabel">Add a user</span> to reveal a <span class="guilabel">New
+user</span> form. The following tabs are available for configuring the new user:</p>
+<ul class="simple">
+<li><p><span class="guilabel">General</span>: basic information, including the extension of the user, can be set.</p></li>
+<li><p><span class="guilabel">Forwardings</span>: internal forwards on ‘no answer’ or busy signals.</p></li>
+<li><p><span class="guilabel">Follow Me</span>: external forward configuration.</p></li>
+<li><p><span class="guilabel">Keys</span>: set hot-keys within the <abbr title="Voice over Internet Protocol">VoIP</abbr> system.</p></li>
+<li><p><span class="guilabel">SIP Identifiers</span>: <abbr title="Session Initiation Protocol">SIP</abbr> username and password for
+external configuration.</p></li>
+<li><p><span class="guilabel">Permissions</span>: set access rights for users in the Axivox management console.</p></li>
+</ul>
+</section><section id="general-tab">
+<h3>General tab<a class="headerlink" href="#general-tab" title="Permalink to this headline">¶</a></h3>
+<p>Under the <span class="guilabel">General</span> tab of the <span class="guilabel">New user</span> form, in the <span class="guilabel">Extension</span>
+field, input an extension that is unique to the user. This is the number internal users dial to
+reach a specific employee.</p>
+<p>In the <span class="guilabel">Name</span> field, input the employee name.</p>
+<p>Next, fill out the <span class="guilabel">Email address of the user</span> field. A valid email address for the
+employee should be added here, where the user receives business emails.</p>
+<p>In the <span class="guilabel">GSM number</span> field, enter an alternative number at which the user can be reached.
+Be sure to include the country code.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>A country code is a locator code that allows access to the desired country’s phone system. The
+country code is dialed first, prior to the target number. Each country in the world has its own
+specific country code.</p>
+<p>For a list of comprehensive country codes, visit: <a class="reference external" href="https://countrycode.org">https://countrycode.org</a>.</p>
+</div>
+<img alt="General tab layout in the Axivox management console." class="align-center" src="../../../../_images/general-tab.png" />
+<p>In the <span class="guilabel">Voicemail</span> field, select either <span class="guilabel">Yes</span> or <span class="guilabel">No</span> from the
+drop-down menu.</p>
+<p>In the <span class="guilabel">Directory</span> field, the administrator has the option to leave it blank, by making no
+changes, or selecting <span class="guilabel">Default</span> from the drop-down menu. The <span class="guilabel">Directory</span> is used
+in the <em>Digital Receptionist</em> feature element of a dial-plan.</p>
+<p>At the bottom of the <span class="guilabel">General</span> tab, there are two separate options with selection boxes.</p>
+<p>The first option is <span class="guilabel">This user can receive multiple calls at the same time</span>. By selecting
+this option, users are able to receive calls when on another call.</p>
+<p>The second option, <span class="guilabel">This user must log-in to call</span>, provides the option to make it
+mandatory for the user to log in.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If a company uses physical VoIP phones on desks, and wants their employees to be able to log in
+from <em>any</em> phone or desk in the office, they would make the selection for <span class="guilabel">This user
+must log-in to call</span>.</p>
+</div>
+<p>Once the desired configurations are complete, click <span class="guilabel">Save</span>, then click <span class="guilabel">Apply
+changes</span> in the upper-right corner.</p>
+</section><section id="forwardings-tab">
+<span id="voip-axivox-forwardings-tab"></span><h3>Forwardings tab<a class="headerlink" href="#forwardings-tab" title="Permalink to this headline">¶</a></h3>
+<p>Under the <span class="guilabel">Forwardings</span> tab of the <span class="guilabel">New user</span> form, a company can decide what
+happens if someone calls a user, and the call is not answered.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Forwardings are disabled when the <span class="guilabel">Follow Me</span> option is enabled.</p>
+</div>
+<p>For example, under the <span class="guilabel">Forwarding on no answer</span> field, when the button for <span class="guilabel">Add
+a destination</span> is selected, the option to add a specific user or phone number is revealed. After
+entering the <span class="guilabel">Destination</span>, a specific time frame can be selected by sliding the
+<span class="guilabel">seconds bar</span> to the desired ring time.</p>
+<p>Additional <span class="guilabel">Destinations</span> can be added on with different ring times.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Ring times can be staggered, so the call is forwarded to another user after the first user does
+not pick up the call. The option to <span class="guilabel">Send to voicemail as a last resort</span> is available
+to the administrator, should the <span class="guilabel">Destinations</span> not pick up.</p>
+</div>
+<p>Under the <span class="guilabel">Forwarding on busy</span> field, an administrator can <span class="guilabel">Add a destination</span>.
+When clicked, they can then set the <span class="guilabel">Destination</span> (user) and time frame. Should the
+original user’s <abbr title="Voice over Internet Protocol">VoIP</abbr> extension, or incoming number, be busy,
+the call is forwarded to the destination(s).</p>
+<img alt="Manage forwarding calls to different users or phone numbers in the Forwardings tab." class="align-center" src="../../../../_images/forwardings-tab.png" />
+<p>When the desired configurations are complete, click <span class="guilabel">Save</span>, then click <span class="guilabel">Apply
+changes</span> in the upper-right corner of the page.</p>
+</section><section id="follow-me-tab">
+<h3>Follow Me tab<a class="headerlink" href="#follow-me-tab" title="Permalink to this headline">¶</a></h3>
+<p>When the <span class="guilabel">Follow Me</span> option is selected, under the <span class="guilabel">Follow Me</span> tab of the
+<span class="guilabel">New user</span> form, no <span class="menuselection">Forwardings</span> can be made.</p>
+<p>Also, when the <span class="guilabel">Follow Me</span> option is selected, the <span class="guilabel">Add a destination</span> button
+can be selected to add users, or a destination phone number, to the original user’s account. That
+way, these added numbers ring when a call is received.</p>
+<p>After entering the <span class="guilabel">Destination</span>, a specific time frame can be made by sliding the
+<span class="guilabel">seconds bar</span> to the desired ring time. Additional <span class="guilabel">Destinations</span> can be added
+with different ring times.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The original user’s <abbr title="Voice over Internet Protocol">VoIP</abbr> number does <strong>not</strong> ring with
+this option selected. Ring times can also be staggered, so the call is forwarded to another user
+after the first user does not pick up the call.</p>
+</div>
+<img alt="Ring destinations like different users or phone numbers from the Follow Me tab." class="align-center" src="../../../../_images/follow-me-tab.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The Odoo mobile app, or another <abbr title="Session Initiation Protocol">SIP</abbr> mobile client, allows
+for simultaneous ringing of the user’s extension or incoming number. For more information, visit
+the <a class="reference internal" href="../devices_integrations.html"><span class="doc">VoIP Mobile Integrations</span></a> documentation.</p>
+</div>
+<p>Once all desired configurations are complete, click <span class="guilabel">Save</span>, then click <span class="guilabel">Apply
+changes</span> in the upper-right corner.</p>
+</section><section id="keys-tab">
+<h3>Keys tab<a class="headerlink" href="#keys-tab" title="Permalink to this headline">¶</a></h3>
+<p>Under the <span class="guilabel">Keys</span> tab of the <span class="guilabel">New user</span> form, speed dial actions for the user can
+be configured. Some more advanced options are available, as well.</p>
+<p>The following options are available to set to numerical values <code class="o_code docutils literal notranslate"><span class="pre">1-20</span></code>.</p>
+<p>These actions can be set on each number:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Not configured</span>: the default action, which is nothing.</p></li>
+<li><p><span class="guilabel">BLF (Busy lamp fields)</span>: this action shows the status of other users’ phones connected
+to the Axivox phone system. This is primarily used on a desk-phone.</p></li>
+<li><p><span class="guilabel">Quick Call</span>: this action allows for a speed-dial of an external number.</p></li>
+<li><p><span class="guilabel">Line</span>: this action allows the user to call another user.</p></li>
+<li><p><span class="guilabel">Switch</span>: this action allows the user to switch between calls from a desk-phone.</p></li>
+<li><p><span class="guilabel">Pickup</span>: this action allows the user to pick up an incoming call from a desk-phone.</p></li>
+</ul>
+<img alt="Manage user page with Keys tab highlighted and number 2 key drop-down menu selected (with highlight)" class="align-center" src="../../../../_images/user-keys.png" />
+<p>Once all the desired configurations are complete, click <span class="guilabel">Save</span>, then click
+<span class="guilabel">Apply changes</span> in the upper-right corner.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Many of the preceding options have secondary options available, as well, that can be used to link
+a user, or external phone number. These <strong>must</strong> be filled out in conjunction with the initial
+action.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Number of keys</span> field can be changed by entering in the desired numerical value in
+the <span class="guilabel">Number of keys</span> field, located at the top of the <span class="guilabel">Keys</span> tab of the
+<span class="guilabel">New user</span> form.</p>
+</div>
+</section><section id="sip-identifiers-tab">
+<h3>SIP Identifiers tab<a class="headerlink" href="#sip-identifiers-tab" title="Permalink to this headline">¶</a></h3>
+<p><em>SIP</em>, which stands for Session Initiation Protocol telephony, allows one to make and receive calls
+through an internet connection. The <span class="guilabel">SIP Identifiers</span> tab on the <span class="guilabel">New user</span>
+form, contains credentials needed to configure Axivox users in Odoo and/or a different <abbr title="Session Initiation Protocol">SIP</abbr> mobile client.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>See the documentation on configuring Axivox, using the SIP identifiers:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="axivox_config.html"><span class="doc">Use VoIP services in Odoo with Axivox</span></a></p></li>
+<li><p><a class="reference internal" href="../devices_integrations.html"><span class="doc">Axivox Mobile Integrations</span></a></p></li>
+</ul>
+</div>
+<p>Under the <span class="guilabel">SIP Identifiers</span> tab, the <span class="guilabel">SIP username</span> field represents the user’s
+information that was entered in the <span class="guilabel">Extension</span> field, under the <span class="guilabel">General</span> tab.</p>
+<p>The <span class="guilabel">Domain</span> field is assigned to the company by the Axivox representative.</p>
+<p>The value in the <span class="guilabel">SIP Password</span> field is unique for every Axivox user. This value is used
+to sign into Axivox on Odoo, and for any mobile <abbr title="Session Initiation Protocol">SIP</abbr> clients.</p>
+<img alt="Important credentials used for external configurations of Axivox VoIP." class="align-center" src="../../../../_images/sip-identifiers-tab.png" />
+<p>The value listed in the <span class="guilabel">Address of the proxy server</span> field is typically:
+<code class="o_code docutils literal notranslate"><span class="pre">pabx.axivox.com</span></code>, but is subject to change by Axivox, so be sure to check the <span class="guilabel">SIP
+Identifiers</span> tab for the most accurate value.</p>
+<p>Once all desired configurations have been made, click <span class="guilabel">Save</span>, then click <span class="guilabel">Apply
+changes</span> in the upper-right corner.</p>
+</section><section id="permissions-tab">
+<h3>Permissions tab<a class="headerlink" href="#permissions-tab" title="Permalink to this headline">¶</a></h3>
+<p>Under the <span class="guilabel">Permissions</span> tab of a <span class="guilabel">New user</span> form, a <span class="guilabel">Username</span> and
+<span class="guilabel">Password</span> can be entered for the user.</p>
+<p>Beneath those fields, the following permissions can be granted to Axivox users for portal access:</p>
+<ul class="simple">
+<li><p><span class="guilabel">User portal access</span></p></li>
+<li><p><span class="guilabel">User management</span></p></li>
+<li><p><span class="guilabel">Administrator access</span></p></li>
+<li><p><span class="guilabel">Phone management</span></p></li>
+<li><p><span class="guilabel">User group management</span></p></li>
+<li><p><span class="guilabel">Phone number management</span></p></li>
+<li><p><span class="guilabel">Dial plan management</span></p></li>
+<li><p><span class="guilabel">Pickup group management</span></p></li>
+<li><p><span class="guilabel">Switch management</span></p></li>
+<li><p><span class="guilabel">Conference management</span></p></li>
+<li><p><span class="guilabel">Queue management</span></p></li>
+<li><p><span class="guilabel">Voicemail management</span></p></li>
+<li><p><span class="guilabel">Audio messages management</span></p></li>
+<li><p><span class="guilabel">Music on hold management</span></p></li>
+<li><p><span class="guilabel">Directory management</span></p></li>
+<li><p><span class="guilabel">Call list</span></p></li>
+<li><p><span class="guilabel">Connected user list</span></p></li>
+<li><p><span class="guilabel">Global settings</span></p></li>
+<li><p><span class="guilabel">Apply changes button</span></p></li>
+<li><p><span class="guilabel">Invoice download</span></p></li>
+<li><p><span class="guilabel">Invoice details</span></p></li>
+<li><p><span class="guilabel">Blacklist management</span></p></li>
+<li><p><span class="guilabel">Conference participant management</span></p></li>
+</ul>
+<p>To access credentials for the Axivox user portal, navigate to the top of the
+<span class="menuselection">Permissions</span> tab. Then, copy the <span class="guilabel">Username</span>, and enter the correct
+<span class="guilabel">Password</span> for the individual user. There is a minimum of 8 characters for a user
+password.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>These are the same permissions granted to the Axivox administrator that are listed in the menu on
+the left in the Axivox management console. Should a selection state <span class="guilabel">No</span>, or
+<span class="guilabel">No access</span>, then the menu option does <strong>not</strong> populate for the user.</p>
+</div>
+<p>Once all the desired configurations are complete, click <span class="guilabel">Save</span>, then click
+<span class="guilabel">Apply changes</span> in the upper-right corner.</p>
+<p>Upon finishing the setup for a new user, an <a class="reference internal" href="#voip-axivox-incoming-number"><span class="std std-ref">Incoming numbers</span></a> can be linked.</p>
+<img alt="Manage a user page, with the permissions tab highlighted, along with the first permission highlighted indicating a no selection." class="align-center" src="../../../../_images/user-permissions.png" />
+</section><section id="user-groups">
+<span id="voip-axivox-user-groups"></span><h2>User groups<a class="headerlink" href="#user-groups" title="Permalink to this headline">¶</a></h2>
+<p>A user group is a grouping of Axivox users that can be linked to a queue for call center
+capability.</p>
+<p>To begin using user groups, navigate to <a class="reference external" href="https://manage.axivox.com">https://manage.axivox.com</a>.</p>
+<p>Then, log in with the appropriate administrator credentials. From the menu on the left of the Axivox
+administrative panel, click into <span class="guilabel">User Groups</span>.</p>
+<p>To add a user group from the <span class="guilabel">User Groups</span> page, click <span class="guilabel">Add a group</span>.</p>
+<p>Next, name the group, by entering text into the <span class="guilabel">Name</span> field. Then, add a member to the
+group by typing the first few letters of the user’s name into the <span class="guilabel">Members</span> field. The
+user populates in a drop-down menu below the field. Then, click on the desired user, and they are
+added to the user group.</p>
+<p>Repeat this process to add more users to the group.</p>
+<p>Once all desired configurations are complete, click <span class="guilabel">Save</span>, then click <span class="guilabel">Apply
+changes</span> in the upper-right corner.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Manage users in Axivox</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#incoming-numbers">Incoming numbers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#new-users">New users</a><ul>
+<li><a class="reference internal" href="#general-tab">General tab</a></li>
+<li><a class="reference internal" href="#forwardings-tab">Forwardings tab</a></li>
+<li><a class="reference internal" href="#follow-me-tab">Follow Me tab</a></li>
+<li><a class="reference internal" href="#keys-tab">Keys tab</a></li>
+<li><a class="reference internal" href="#sip-identifiers-tab">SIP Identifiers tab</a></li>
+<li><a class="reference internal" href="#permissions-tab">Permissions tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-groups">User groups</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Manage users in Axivox</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

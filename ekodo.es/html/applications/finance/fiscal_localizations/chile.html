@@ -1,0 +1,1202 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chile &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/chile.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/fiscal_localizations/chile.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Chile</a><ul>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#company-information">Company information</a></li>
+<li><a class="reference internal" href="#accounting-settings">Accounting settings</a><ul>
+<li><a class="reference internal" href="#fiscal-information">Fiscal information</a></li>
+<li><a class="reference internal" href="#electronic-invoice-data">Electronic invoice data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dte-incoming-email-server">DTE incoming email server</a><ul>
+<li><a class="reference internal" href="#certificate">Certificate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multicurrency">Multicurrency</a></li>
+<li><a class="reference internal" href="#partner-information">Partner information</a></li>
+<li><a class="reference internal" href="#document-types">Document types</a><ul>
+<li><a class="reference internal" href="#use-on-invoices">Use on invoices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#journals">Journals</a><ul>
+<li><a class="reference internal" href="#create-a-sales-journal">Create a sales journal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caf">CAF</a><ul>
+<li><a class="reference internal" href="#upload-caf-files">Upload CAF files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a></li>
+<li><a class="reference internal" href="#taxes">Taxes</a></li>
+<li><a class="reference internal" href="#usage-and-testing">Usage and testing</a><ul>
+<li><a class="reference internal" href="#electronic-invoice-workflow">Electronic invoice workflow</a></li>
+<li><a class="reference internal" href="#customer-invoice-emission">Customer invoice emission</a><ul>
+<li><a class="reference internal" href="#validation-and-dte-status">Validation and DTE status</a></li>
+<li><a class="reference internal" href="#crossed-references">Crossed references</a></li>
+<li><a class="reference internal" href="#invoice-pdf-report">Invoice PDF report</a></li>
+<li><a class="reference internal" href="#commercial-validation">Commercial validation</a></li>
+<li><a class="reference internal" href="#processed-for-claimed-invoices">Processed for claimed invoices</a></li>
+<li><a class="reference internal" href="#common-errors">Common errors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#credit-notes">Credit notes</a><ul>
+<li><a class="reference internal" href="#use-cases">Use cases</a><ul>
+<li><a class="reference internal" href="#cancel-referenced-document">Cancel referenced document</a></li>
+<li><a class="reference internal" href="#correct-referenced-document">Correct referenced document</a></li>
+<li><a class="reference internal" href="#corrects-referenced-document-amount">Corrects referenced document amount</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debit-notes">Debit notes</a><ul>
+<li><a class="reference internal" href="#chile-use-cases">Use cases</a><ul>
+<li><a class="reference internal" href="#add-debt-on-invoices">Add debt on invoices</a></li>
+<li><a class="reference internal" href="#cancel-credit-notes">Cancel credit notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vendor-bills">Vendor bills</a><ul>
+<li><a class="reference internal" href="#reception">Reception</a></li>
+<li><a class="reference internal" href="#acceptation">Acceptation</a></li>
+<li><a class="reference internal" href="#claim">Claim</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#electronic-purchase-invoice">Electronic purchase invoice</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#generate-an-electronic-purchase-invoice">Generate an electronic purchase invoice</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delivery-guide">Delivery guide</a><ul>
+<li><a class="reference internal" href="#delivery-guide-from-a-sales-process">Delivery guide from a sales process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#electronic-receipt">Electronic receipt</a><ul>
+<li><a class="reference internal" href="#id2">Validation and DTE status</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#electronic-export-of-goods">Electronic export of goods</a><ul>
+<li><a class="reference internal" href="#contact-configurations">Contact configurations</a></li>
+<li><a class="reference internal" href="#chilean-customs">Chilean customs</a></li>
+<li><a class="reference internal" href="#pdf-report">PDF report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#financial-reports">Financial reports</a><ul>
+<li><a class="reference internal" href="#balance-tributario-de-8-columnas">Balance tributario de 8 columnas</a></li>
+<li><a class="reference internal" href="#propuesta-f29">Propuesta F29</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/chile.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Chile</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="chile">
+<h1>Chile<a class="headerlink" href="#chile" title="Permalink to this headline">¶</a></h1>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Watch the two webinar recordings below for a general presentation of the localization, and search
+the playlist for tutorials to discover practical workflows while using Odoo in Chile.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/BHnByZiyYcM">Webinar: intro and demo</a>.</p></li>
+<li><p><a class="reference external" href="https://youtu.be/X7i4PftnEdU">Webinar: delivery guide</a>.</p></li>
+<li><p><a class="reference external" href="https://youtube.com/playlist?list=PL1-aSABtP6AB6UY7VUFnVgeYOaz33fb4P">Playlist of tutorials</a>.</p></li>
+</ul>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=3qYkgbmBYHw">Chilean localization app tour</a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/smart-tutorial-localizacion-de-chile-131">Chilean localization smart tutorial</a></p></li>
+</ul>
+</div>
+</section><section id="modules">
+<span id="chile-configuration"></span><h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../general/apps_modules.html#general-install"><span class="std std-ref">Install</span></a> the following modules to utilize all the features of the Chilean
+localization.</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Technical name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Chile - Accounting</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_cl</span></code></p></td>
+<td><p>Adds the minimal accounting features required for a company to operate in Chile under the
+<abbr title="Servicio de Impuestos Internos">SII</abbr> regulations and guidelines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Chile - Accounting Reports</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_cl_reports</span></code></p></td>
+<td><p>Adds the <em>Propuesta F29</em> and <em>Balance Tributario (8 columnas)</em> reports.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Chile - E-invoicing</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_cl_edi</span></code></p></td>
+<td><p>Includes all technical and functional requirements to generate and receive electronic
+invoices online based on the <abbr title="Servicio de Impuestos Internos">SII</abbr> regulations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Chile - Electronic Receipt</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_cl_boletas</span></code></p></td>
+<td><p>Includes all technical and functional requirements to generate and receive electronic
+invoices digitally based on the <abbr title="Servicio de Impuestos Internos">SII</abbr> regulations.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Electronic Exports of Goods for Chile</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_cl_edi_exports</span></code></p></td>
+<td><p>Includes technical and functional requirements to generate electronic invoices for exporting
+goods based on the <abbr title="Servicio de Impuestos Internos">SII</abbr> and customs regulations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Chile - E-Invoicing Delivery Guide</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_cl_edi_stock</span></code></p></td>
+<td><p>Includes all technical and functional requirements to generate delivery guides via web
+service based on the <abbr title="Servicio de Impuestos Internos">SII</abbr> regulations.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Odoo automatically installs the appropriate package for the company according to the country
+selected at the creation of the database.</p></li>
+<li><p>The <em>Chile - E-Invoicing Delivery Guide</em> module depends on the <em>Inventory</em> application.</p></li>
+</ul>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>All features are only available if the company already completed the <a class="reference external" href="https://www.sii.cl/factura_electronica/factura_mercado/proceso_certificacion.htm">SII Sistema de Facturación
+de Mercado</a>
+certification process.</p>
+</div>
+</section><section id="company-information">
+<h2>Company information<a class="headerlink" href="#company-information" title="Permalink to this headline">¶</a></h2>
+<p>Navigate to <span class="menuselection">Settings ‣ Companies: Update Info</span> and ensure the following company
+information is up-to-date and correctly filled in:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Company Name</span></p></li>
+<li><p><span class="guilabel">Address</span>:</p>
+<ul>
+<li><p><span class="guilabel">Street</span></p></li>
+<li><p><span class="guilabel">City</span></p></li>
+<li><p><span class="guilabel">State</span></p></li>
+<li><p><span class="guilabel">ZIP</span></p></li>
+<li><p><span class="guilabel">Country</span></p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Tax ID</span>: enter the identification number for the selected <a class="reference internal" href="#chile-fiscal-info"><span class="std std-ref">Taxpayer Type</span></a>.</p></li>
+<li><p><span class="guilabel">Activity Names</span>: select up to four activity codes.</p></li>
+<li><p><span class="guilabel">Company Activity Description</span>: enter a short description of the company’s activity.</p></li>
+</ul>
+</section><section id="accounting-settings">
+<h2>Accounting settings<a class="headerlink" href="#accounting-settings" title="Permalink to this headline">¶</a></h2>
+<p>Next, navigate to <span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Chilean
+Localization</span> and follow the instructions to configure the:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#chile-fiscal-info"><span class="std std-ref">Fiscal information</span></a></p></li>
+<li><p><a class="reference internal" href="#chile-electronic-invoice"><span class="std std-ref">Electronic invoice data</span></a></p></li>
+<li><p><a class="reference internal" href="#chile-dte-email"><span class="std std-ref">DTE incoming email server</span></a></p></li>
+<li><p><a class="reference internal" href="#chile-certificate"><span class="std std-ref">Signature certificates</span></a></p></li>
+</ul>
+</section><section id="fiscal-information">
+<span id="chile-fiscal-info"></span><h3>Fiscal information<a class="headerlink" href="#fiscal-information" title="Permalink to this headline">¶</a></h3>
+<p>Configure the following <span class="guilabel">Tax payer information</span>:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Taxpayer Type</span> by selecting the taxpayer type that applies:</p>
+<ul>
+<li><p><span class="guilabel">VAT Affected (1st Category)</span>: for invoices that charge taxes to customers</p></li>
+<li><p><span class="guilabel">Fees Receipt Issuer (2nd Category)</span>: for suppliers who issue fees receipt (Boleta)</p></li>
+<li><p><span class="guilabel">End consumer</span>: only issues receipts</p></li>
+<li><p><span class="guilabel">Foreigner</span></p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">SII Office</span>: select your company’s <abbr title="Servicio de Impuestos Internos">SII</abbr>
+regional office</p></li>
+</ul>
+</section><section id="electronic-invoice-data">
+<span id="chile-electronic-invoice"></span><h3>Electronic invoice data<a class="headerlink" href="#electronic-invoice-data" title="Permalink to this headline">¶</a></h3>
+<p>Select your <span class="guilabel">SII Web Services</span> environment:</p>
+<ul class="simple">
+<li><p><span class="guilabel">SII - Test</span>: for test databases using test <abbr title="Folio Authorization Code">CAFs</abbr> obtained from the <abbr title="Servicio de Impuestos Internos">SII</abbr>. In this mode,
+the direct connection flows can be tested, with the files being sent to the <abbr title="Servicio de Impuestos Internos">SII</abbr>.</p></li>
+<li><p><span class="guilabel">SII - Production</span>: for production databases.</p></li>
+<li><p><span class="guilabel">SII - Demo Mode</span>: files are created and accepted automatically in demo mode but are
+<strong>not</strong> sent to the <abbr title="Servicio de Impuestos Internos">SII</abbr>. For this reason, rejection
+errors or <em>Accepted with Objections</em> will not appear in this mode. Every internal validation can
+be tested in demo mode. Avoid selecting this option in a production database.</p></li>
+</ul>
+<p>Then, enter the <span class="guilabel">Legal Electronic Invoicing Data</span>:</p>
+<ul class="simple">
+<li><p><span class="guilabel">SII Resolution N°</span></p></li>
+<li><p><span class="guilabel">SII Resolution Date</span></p></li>
+</ul>
+<img alt="Required information for electronic invoice." class="align-center" src="../../../_images/electronic-invoice-data.png" />
+</section><section id="dte-incoming-email-server">
+<span id="chile-dte-email"></span><h2>DTE incoming email server<a class="headerlink" href="#dte-incoming-email-server" title="Permalink to this headline">¶</a></h2>
+<p>The <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> <span class="guilabel">Email Box Electronic Invoicing</span> can
+be defined to receive your customers’ claim and acceptance emails. Enabling this option from
+<span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Chilean Localization</span> is necessary if
+you want to use <em>Email Box Electronic Invoicing</em> as the <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> incoming email server.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>In order to receive your SII documents, it’s necessary to set up your own email server. More
+information on how to do this can be found in this documentation:
+<a class="reference internal" href="../../general/email_communication/email_servers.html"><span class="doc">Send and receive emails in Odoo with an email server</span></a></p>
+</div>
+<p>Begin by clicking <span class="guilabel">Configure DTE Incoming Email</span>, then click <span class="guilabel">New</span> to add a
+server and fill in the following fields:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Name</span>: give the server a name.</p></li>
+<li><p><span class="guilabel">Server Type</span>: select the server type used.</p>
+<ul>
+<li><p><span class="guilabel">IMAP Server</span></p></li>
+<li><p><span class="guilabel">POP Server</span></p></li>
+<li><p><span class="guilabel">Local Server</span>: uses a local script to fetch emails and create new records. The
+script can be found in the <span class="guilabel">Configuration</span> section with this option selected.</p></li>
+<li><p><span class="guilabel">Gmail OAuth Authentication</span>: requires your Gmail API credentials to be configured in
+the general settings. A direct link to the configuration can be found in the <span class="guilabel">Login
+Information</span> section.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">DTE Server</span>: enable this option. By checking this option, this email account will be
+used to receive the electronic invoices from the suppliers, and communications from the <abbr title="Servicio de Impuestos Internos">SII</abbr> regarding the electronic invoices issued. In this case, this
+email should match both emails declared on the <abbr title="Servicio de Impuestos Internos">SII</abbr> site
+in the section: <em>ACTUALIZACION DE DATOS DEL CONTRIBUYENTE</em>, <em>Mail Contacto SII</em> and <em>Mail Contacto
+Empresas</em>.</p></li>
+</ul>
+<p>In the <span class="guilabel">Server &amp; Login</span> tab (for IMAP and POP servers):</p>
+<ul class="simple">
+<li><p><span class="guilabel">Server Name</span>: enter the hostname or IP of the server.</p></li>
+<li><p><span class="guilabel">Port</span>: enter the server port.</p></li>
+<li><p><span class="guilabel">SSL/TLS</span>: enable this option if connections are encrypted using the SSL/TLS protocol.</p></li>
+<li><p><span class="guilabel">Username</span>: enter the server login username.</p></li>
+<li><p><span class="guilabel">Password</span>: enter the server login password.</p></li>
+</ul>
+<img alt="Incoming email server configuration for Chilean DTE." class="align-center" src="../../../_images/dte-incoming-email.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Before going live, it is recommended to archive or remove all emails related to vendor bills that
+are not required to be processed in Odoo from your inbox.</p>
+</div>
+</section><section id="certificate">
+<span id="chile-certificate"></span><h3>Certificate<a class="headerlink" href="#certificate" title="Permalink to this headline">¶</a></h3>
+<p>A digital certificate in <code class="o_code docutils literal notranslate"><span class="pre">.pfx</span></code> format is required to generate the electronic invoice signature. To
+add one, click <span class="guilabel">Configure Signature Certificates</span> under the <span class="guilabel">Signature
+Certificates</span> section. Then, click <span class="guilabel">New</span> to configure the certificate:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Certificate Key</span>: click <span class="guilabel">Upload your file</span> and select the <code class="o_code docutils literal notranslate"><span class="pre">.pfx</span></code> file.</p></li>
+<li><p><span class="guilabel">Certificate Passkey</span>: enter the file’s passphrase.</p></li>
+<li><p><span class="guilabel">Subject Serial Number</span>: depending on the certificate format, the field might not be
+automatically populated. In that case, enter the certificate’s legal representative <abbr title="Rol Único Tributario">RUT</abbr>.</p></li>
+<li><p><span class="guilabel">Certificate Owner</span>: select one if you need to restrict the certificate for a specific
+user. Leave the field empty to share it with all billing users.</p></li>
+</ul>
+<img alt="Digital certificate configuration." class="align-center" src="../../../_images/new-certificate.png" />
+</section><section id="multicurrency">
+<h2>Multicurrency<a class="headerlink" href="#multicurrency" title="Permalink to this headline">¶</a></h2>
+<p>The official currency rate is provided by <a class="reference external" href="https://mindicador.cl">Chilean mindicador.cl</a>. Navigate
+to <span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Currencies: Automatic Currency
+Rates</span> to set an <span class="guilabel">Interval</span> for when the rate is automatically updated, or to select
+another <span class="guilabel">Service</span>.</p>
+</section><section id="partner-information">
+<h2>Partner information<a class="headerlink" href="#partner-information" title="Permalink to this headline">¶</a></h2>
+<p>Configuring partner contacts is also required to send <abbr title="Servicio de Impuestos Internos">SII</abbr>
+electronic invoices. Open the <span class="menuselection">Contacts</span> app to do so and fill in the following
+fields on a new or existing contact form.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Name</span></p></li>
+<li><p><span class="guilabel">Email</span></p></li>
+<li><p><span class="guilabel">Identification Number</span></p></li>
+<li><p><span class="guilabel">Taxpayer Type</span></p></li>
+<li><p><span class="guilabel">Activity Description</span></p></li>
+</ul>
+<p>In the <span class="guilabel">Electronic Invoicing</span> tab:</p>
+<ul class="simple">
+<li><p><span class="guilabel">DTE Email</span>: enter the sender’s email address for the partner.</p></li>
+<li><p><span class="guilabel">Delivery Guide Price</span>: select which price the delivery guide displays, if any.</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">DTE Email</span> is the email used for sending electronic documents and must be set in
+the contact that will be part of an electronic document.</p>
+</div>
+<img alt="Chilean electronic invoice data for partners." class="align-center" src="../../../_images/dte-email-electronic-invoice.png" />
+</section><section id="document-types">
+<h2>Document types<a class="headerlink" href="#document-types" title="Permalink to this headline">¶</a></h2>
+<p>Accounting documents are categorized by <abbr title="Servicio de Impuestos Internos">SII</abbr>-defined
+document types.</p>
+<p>Document types are created automatically upon installation of the localization module, and can be
+managed by navigating to <span class="menuselection">Accounting ‣ Configuration ‣ Document Types</span>.</p>
+<img alt="Chilean fiscal document types list." class="align-center" src="../../../_images/chilean-document-types.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Several document types are inactive by default but can be activated by toggling the
+<span class="guilabel">Active</span> option.</p>
+</div>
+</section><section id="use-on-invoices">
+<h3>Use on invoices<a class="headerlink" href="#use-on-invoices" title="Permalink to this headline">¶</a></h3>
+<p>The document type on each transaction is determined by:</p>
+<ul class="simple">
+<li><p>The journal related to the invoice, identifying if the journal uses documents.</p></li>
+<li><p>The condition applied based on the type of issuer and recipient (e.g., the buyer or vendor’s
+fiscal regime).</p></li>
+</ul>
+</section><section id="journals">
+<h2>Journals<a class="headerlink" href="#journals" title="Permalink to this headline">¶</a></h2>
+<p><em>Sales journals</em> in Odoo usually represent a business unit or location.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><ul class="simple">
+<li><p>Ventas Santiago.</p></li>
+<li><p>Ventas Valparaiso.</p></li>
+</ul>
+</div>
+<p>For retail stores it is common to have one journal per <abbr title="Point of Sale">POS</abbr>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><ul class="simple">
+<li><p>Cashier 1.</p></li>
+<li><p>Cashier 2.</p></li>
+</ul>
+</div>
+<p>The <em>purchase</em> transactions can be managed with a single journal, but sometimes companies use more
+than one journal in order to handle some accounting transactions that are not related to vendor
+bills. This configuration can easily be set by using the following model.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><ul class="simple">
+<li><p>Tax payments to the government.</p></li>
+<li><p>Employees payments.</p></li>
+</ul>
+</div>
+</section><section id="create-a-sales-journal">
+<h3>Create a sales journal<a class="headerlink" href="#create-a-sales-journal" title="Permalink to this headline">¶</a></h3>
+<p>To create a sales journal, navigate to <span class="menuselection">Accounting ‣ Configuration ‣ Journals</span>.
+Then, click the <span class="guilabel">New</span> button, and fill in the following required information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Type</span>: select <span class="guilabel">Sale</span> from the drop-down menu for customer invoice journals.</p></li>
+<li><p><span class="guilabel">Point of sale type</span>: if the sales journal will be used for electronic documents, the
+option <span class="guilabel">Online</span> must be selected. Otherwise, if the journal is used for invoices
+imported from a previous system or if you are using the <abbr title="Servicio de Impuestos Internos">SII</abbr> portal <em>Facturación MiPyme</em>, you can use the option <span class="guilabel">Manual</span>.</p></li>
+<li><p><span class="guilabel">Use Documents</span>: check this field if the journal will use document types. This field is
+only applicable to purchase and sales journals that can be related to the different sets of
+document types available in Chile. By default, all the sales journals created will use documents.</p></li>
+</ul>
+<p>Next, from the <span class="guilabel">Jounal Entries</span> tab, define the <span class="guilabel">Default Income Account</span> and
+<span class="guilabel">Dedicated Credit Note Squence</span> in the <span class="guilabel">Accounting Information</span> section.
+Configuring these fields is required for one of the debit notes <a class="reference internal" href="#chile-use-cases"><span class="std std-ref">use cases</span></a>.</p>
+</section><section id="caf">
+<span id="chile-caf-documentation"></span><h2>CAF<a class="headerlink" href="#caf" title="Permalink to this headline">¶</a></h2>
+<p>A <em>folio authorization code</em> (CAF) is required for each document type that will be issued
+electronically. The <abbr title="Folio Authorization Code">CAF</abbr> is a file the <abbr title="Servicio de Impuestos Internos">SII</abbr> provides to the issuer with the folios/sequences authorized for the electronic
+invoice documents.</p>
+<p>Your company can request multiple folios and obtain several <abbr title="Folio Authorization Codes">CAFs</abbr>
+linked to different folio ranges. These <abbr title="Folio Authorization Code">CAFs</abbr> are shared within
+all journals, so you only need one active <abbr title="Folio Authorization Code">CAF</abbr> per document type,
+and it will be applied to all journals.</p>
+<p>Please refer to the <a class="reference external" href="https://palena.sii.cl/dte/mn_timbraje.html">SII documentation</a> to check the
+details on how to acquire the <abbr title="Folio Authorization Code">CAF</abbr> files.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <abbr title="Folio Authorization Code">CAFs</abbr> required by the <abbr title="Servicio de Impuestos Internos">SII</abbr> are different from production to test (certification mode). Make sure you have the
+correct <abbr title="Folio Authorization Code">CAF</abbr> set depending on your environment.</p>
+</div>
+</section><section id="upload-caf-files">
+<h3>Upload CAF files<a class="headerlink" href="#upload-caf-files" title="Permalink to this headline">¶</a></h3>
+<p>Once the <abbr title="Folio Authorization Code">CAF</abbr> files have been acquired from the <abbr title="Servicio de Impuestos Internos">SII</abbr> portal, they need to be uploaded in the database by navigating to
+<span class="menuselection">Accounting ‣ Configuration: Chilean SII ‣ CAFs</span>. Then, click the <span class="guilabel">New</span>
+begin the configuration. On the <abbr title="Folio Authorization Code">CAF</abbr> form, upload your <abbr title="Folio Authorization Code">CAF</abbr> file by clicking the <span class="guilabel">Upload your file</span> button and then click
+<span class="guilabel">Save</span>.</p>
+<p>Once uploaded, the status changes to <span class="guilabel">In Use</span>. At this moment, when a transaction is used
+for this document type, the invoice number takes the first folio in the sequence.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The document types have to be active before uploading the <abbr title="Folio Authorization Code">CAF</abbr>
+files. In case some folios have been used in the previous system, the next valid folio has to be
+set when the first transaction is created.</p>
+</div>
+</section><section id="chart-of-accounts">
+<h2>Chart of accounts<a class="headerlink" href="#chart-of-accounts" title="Permalink to this headline">¶</a></h2>
+<p>The chart of accounts is installed by default as part of the data set included in the localization
+module. The accounts are mapped automatically in:</p>
+<ul class="simple">
+<li><p>Taxes</p></li>
+<li><p>Default Account Payable</p></li>
+<li><p>Default Account Receivable</p></li>
+<li><p>Transfer Accounts</p></li>
+<li><p>Conversion Rate</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../accounting/get_started/chart_of_accounts.html"><span class="doc">Chart of accounts</span></a></p>
+</div>
+</section><section id="taxes">
+<h2>Taxes<a class="headerlink" href="#taxes" title="Permalink to this headline">¶</a></h2>
+<p>As part of the localization module, taxes are created automatically with their related financial
+account and configuration. These taxes can be managed from <span class="menuselection">Accounting ‣
+Configuration ‣ Taxes</span>.</p>
+<p>Chile has several tax types, the most common ones are:</p>
+<ul class="simple">
+<li><p><strong>VAT</strong>: the regular VAT can have several rates.</p></li>
+<li><p><strong>ILA</strong>: the tax for alcoholic drinks.</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../accounting/taxes.html"><span class="doc">Taxes</span></a></p>
+</div>
+</section><section id="usage-and-testing">
+<h2>Usage and testing<a class="headerlink" href="#usage-and-testing" title="Permalink to this headline">¶</a></h2>
+</section><section id="electronic-invoice-workflow">
+<h3>Electronic invoice workflow<a class="headerlink" href="#electronic-invoice-workflow" title="Permalink to this headline">¶</a></h3>
+<p>In the Chilean localization, the electronic invoice workflow includes customer invoice issuance and
+vendor bill reception. The following diagram explains how information is shared to the <abbr title="Servicio de Impuestos Internos">SII</abbr>, customers, and vendors.</p>
+<img alt="Diagram with Electronic invoice transactions." class="align-center" src="../../../_images/electronic-invoice-workflow.png" />
+</section><section id="customer-invoice-emission">
+<h3>Customer invoice emission<a class="headerlink" href="#customer-invoice-emission" title="Permalink to this headline">¶</a></h3>
+<p>After the partners and journals are created and configured, the invoices are created in the standard
+way. For Chile, one of the differences is the document type that is automatically selected based on
+the taxpayer. The document type can be changed manually if needed on the invoice by navigating to
+<span class="menuselection">Accounting ‣ Customers ‣ Invoices</span>.</p>
+<img alt="Customer invoice document type selection." class="align-center" src="../../../_images/customer-invoice-document-type.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p><span class="guilabel">Documents type 33</span> electronic invoice must have at least one item with tax, otherwise
+the <abbr title="Servicio de Impuestos Internos">SII</abbr> rejects the document validation.</p>
+</div>
+</section><section id="validation-and-dte-status">
+<span id="chile-electronic-invoice-validation"></span><h4>Validation and DTE status<a class="headerlink" href="#validation-and-dte-status" title="Permalink to this headline">¶</a></h4>
+<p>Once all invoice information is filled, either manually or automatically when generated from a sales
+order, validate the invoice. After the invoice is posted:</p>
+<ul>
+<li><p>The <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> file is created automatically and recorded
+in the chatter.</p></li>
+<li><p>The <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> <abbr title="Servicio de Impuestos Internos">SII</abbr>
+status is set as <span class="guilabel">Pending</span> to be sent.</p>
+<img alt="DTE XML File displayed in chatter." class="align-center" src="../../../_images/xml-creation.png" />
+</li>
+</ul>
+<p>The <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> status is updated automatically by Odoo with a
+scheduled action that runs every day at night, if the response from the <abbr title="Servicio de Impuestos Internos">SII</abbr> is needed immediately, you can do it manually as well by following the
+<abbr title="Documentos Tributarios Electrónicos">DTE</abbr> status workflow:</p>
+<img alt="Transition of DTE status flow." class="align-center" src="../../../_images/dte-status-flow.png" />
+<ol class="arabic">
+<li><p>The first step is to send the <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> to the <abbr title="Servicio de Impuestos Internos">SII</abbr>. This can be sent manually by clicking the <span class="guilabel">Enviar
+Ahora</span> button. This generates a <span class="guilabel">SII Tack number</span> for the invoice, which is used to
+check the details sent by the <abbr title="Servicio de Impuestos Internos">SII</abbr> via email. Then, the
+<span class="guilabel">DTE status</span> is updated to <span class="guilabel">Ask for Status</span>.</p></li>
+<li><p>Once the <abbr title="Servicio de Impuestos Internos">SII</abbr> response is received, Odoo updates the
+<span class="guilabel">DTE status</span>. To do it manually, click on the button <span class="guilabel">Verify on SII</span>. The
+result can either be <span class="guilabel">Accepted</span>, <span class="guilabel">Accepted With Objection</span> or
+<span class="guilabel">Rejected</span>.</p>
+<img alt="Identification transaction for invoice and Status update." class="align-center" src="../../../_images/dte-status-steps.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>There are intermediate statuses in the <abbr title="Serviciqo de Impuestos Internos">SII</abbr> before
+acceptance or rejection. It’s recommended to <strong>NOT</strong> continuously click <span class="guilabel">Verify in
+SII</span> for smooth processing.</p>
+<img alt="Electronic invoice data statuses." class="align-center" src="../../../_images/chatter-internal-statuses.png" />
+</div>
+</li>
+<li><p>The final response from the <abbr title="Servicio de Impuestos Internos">SII</abbr> can take on one of these
+values:</p>
+<ul>
+<li><p><span class="guilabel">Accepted</span>: indicates the invoice information is correct, our document is now
+fiscally valid and it’s automatically sent to the customer.</p></li>
+<li><p><span class="guilabel">Accepted with objections</span>: indicates the invoice information is correct, but a minor
+issue was identified, nevertheless the document is now fiscally valid and it’s automatically
+sent to the customer.</p></li>
+<li><p><span class="guilabel">Rejected</span>: indicates the invoice information is incorrect and must be corrected.
+Details are sent to emails you registered in the <abbr title="Servicio de Impuestos Internos">SII</abbr>.
+If it is properly configured in Odoo, the details are also retrieved in the chatter once the
+email server is processed.</p>
+<p>If the invoice is rejected please follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Change the document to <span class="guilabel">Draft</span>.</p></li>
+<li><p>Make the required corrections based on the message received from the <abbr title="Servicio de Impuestos Internos">SII</abbr> in the chatter.</p></li>
+<li><p>Post the invoice again.</p></li>
+</ol>
+<img alt="Message when an invoice is rejected." class="align-center" src="../../../_images/rejected-invoice.png" />
+</li>
+</ul>
+</li>
+</ol>
+</section><section id="crossed-references">
+<h4>Crossed references<a class="headerlink" href="#crossed-references" title="Permalink to this headline">¶</a></h4>
+<p>When the invoice is created, as a result of another fiscal document, the information related to the
+originator document must be registered in the <span class="guilabel">Cross-Reference</span> tab. This tab is commonly
+used for credit or debit notes, however, in some cases it can be used for customer invoices, as
+well. In the case of the credit and debit notes, they are set automatically by Odoo.</p>
+<img alt="Crossed referenced document(s)." class="align-center" src="../../../_images/cross-reference-tab-registration.png" />
+</section><section id="invoice-pdf-report">
+<span id="chile-electronic-invoice-pdf-report"></span><h4>Invoice PDF report<a class="headerlink" href="#invoice-pdf-report" title="Permalink to this headline">¶</a></h4>
+<p>Once the invoice is accepted and validated by the <abbr title="Servicio de Impuestos Internos">SII</abbr> and
+the PDF is printed, it includes the fiscal elements that indicate that the document is fiscally
+valid.</p>
+<img alt="SII Validation fiscal elements." class="align-center" src="../../../_images/sii-validation-elements.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If you are hosted in Odoo SH or On-Premise, you should manually install the <a class="reference external" href="https://pypi.org/project/pdf417gen/">pdf417gen</a> library. Use the following command to install it:
+<strong class="command o_code">pip install pdf417gen</strong>.</p>
+</div>
+</section><section id="commercial-validation">
+<h4>Commercial validation<a class="headerlink" href="#commercial-validation" title="Permalink to this headline">¶</a></h4>
+<p>Once the invoice has been sent to the customer:</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">DTE Partner Status</span> changes to <span class="guilabel">Sent</span>.</p></li>
+<li><p>The customer must send a reception confirmation email.</p></li>
+<li><p>Subsequently, if commercial terms and invoice data are correct, an acceptance confirmation is
+sent; otherwise, a claim is sent.</p></li>
+<li><p>The field <span class="guilabel">DTE Acceptance Status</span> is updated automatically.</p></li>
+</ol>
+<img alt="Message with the commercial acceptance from the customer." class="align-center" src="../../../_images/partner-dte-status.png" />
+</section><section id="processed-for-claimed-invoices">
+<h4>Processed for claimed invoices<a class="headerlink" href="#processed-for-claimed-invoices" title="Permalink to this headline">¶</a></h4>
+<p>Once the invoice has been accepted by the <abbr title="Servicio de Impuestos Internos">SII</abbr>, <strong>it can not
+be cancelled in Odoo</strong>. In case you get a claim for your customer, the correct way to proceed is
+with a credit note to either cancel the invoice or correct it. Please refer to the
+<a class="reference internal" href="#chile-credit-notes"><span class="std std-ref">Credit notes</span></a> section for more details.</p>
+<img alt="Invoice Commercial status updated to claimed." class="align-center" src="../../../_images/accepted-invoice.png" />
+</section><section id="common-errors">
+<h4>Common errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">¶</a></h4>
+<p>There are multiple reasons behind a rejection from the <abbr title="Servicio de Impuestos Internos">SII</abbr>,
+but these are some of the common errors you might have and how to solve them:</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><strong>Error:</strong> <code class="o_code docutils literal notranslate"><span class="pre">RECHAZO-</span> <span class="pre">DTE</span> <span class="pre">Sin</span> <span class="pre">Comuna</span> <span class="pre">Origen</span></code></div>
+<div class="line"><strong>Hint:</strong> make sure the company address is properly filled including the state and city.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Error:</strong> <code class="o_code docutils literal notranslate"><span class="pre">en</span> <span class="pre">Monto</span> <span class="pre">-</span> <span class="pre">IVA</span> <span class="pre">debe</span> <span class="pre">declararse</span></code></div>
+<div class="line"><strong>Hint:</strong> the invoice lines should include one VAT tax, make sure you add one on each invoice
+line.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Error:</strong> <code class="o_code docutils literal notranslate"><span class="pre">Rut</span> <span class="pre">No</span> <span class="pre">Autorizado</span> <span class="pre">a</span> <span class="pre">Firmar</span></code></div>
+<div class="line"><strong>Hint:</strong> the <abbr title="Rol Único Tributario">RUT</abbr> entered is not allowed to invoice
+electronically, make sure the company <abbr title="Rol Único Tributario">RUT</abbr> is correct and is valid
+in the <abbr title="Servicio de Impuestos Internos">SII</abbr> to invoice electronically.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Error:</strong> <code class="o_code docutils literal notranslate"><span class="pre">Fecha/Número</span> <span class="pre">Resolucion</span> <span class="pre">Invalido</span> <span class="pre">RECHAZO-</span> <span class="pre">CAF</span> <span class="pre">Vencido</span> <span class="pre">:</span> <span class="pre">(Firma_DTE[AAAA-MM-DD]</span> <span class="pre">-</span>
+<span class="pre">CAF[AAAA-MM-DD])</span> <span class="pre">&amp;gt;</span> <span class="pre">6</span> <span class="pre">meses</span></code></div>
+<div class="line"><strong>Hint:</strong> try to add a new CAF related to this document as the one you’re using is expired.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Error:</strong> <code class="o_code docutils literal notranslate"><span class="pre">Element</span> <span class="pre">'{http://www.sii.cl/SiiDte%7DRutReceptor':</span> <span class="pre">This</span> <span class="pre">element</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">expected.</span>
+<span class="pre">Expected</span> <span class="pre">is</span> <span class="pre">(</span> <span class="pre">{http://www.sii.cl/SiiDte%7DRutEnvia</span> <span class="pre">).</span></code></div>
+<div class="line"><strong>Hint:</strong> Make sure the field <span class="guilabel">Document Type</span> and <span class="guilabel">VAT</span> are set in the
+customer and in the main company.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Error:</strong> <code class="o_code docutils literal notranslate"><span class="pre">Usuario</span> <span class="pre">sin</span> <span class="pre">permiso</span> <span class="pre">de</span> <span class="pre">envio.</span></code></div>
+<div class="line"><strong>Hint:</strong> this error indicates that most likely, your company has not passed the <a class="reference external" href="https://www.sii.cl/factura_electronica/factura_mercado/proceso_certificacion.htm">Certification
+process</a> in
+the <abbr title="Servicio de Impuestos Internos">SII</abbr> - Sistema de Facturación de Mercado. If this is
+the case, please contact your Account Manager or Customer Support as this certification is not
+part of the Odoo services, but we can give you some alternatives. If you already passed the
+certification process, this error appears when a user different from the owner of the
+certificate is trying to send <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> files to the
+<abbr title="Servicio de Impuestos Internos">SII</abbr>.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Error:</strong> <code class="o_code docutils literal notranslate"><span class="pre">CARATULA</span></code></div>
+<div class="line"><strong>Hint:</strong> there are just five reasons why this error could show up and all of them are related
+to the <em>Caratula</em> section of the XML:</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>The company’s <abbr title="Rol Único Tributario">RUT</abbr> number is incorrect or missing.</p></li>
+<li><p>The certificate owner <abbr title="Rol Único Tributario">RUT</abbr> number is incorrect or missing.</p></li>
+<li><p>The <abbr title="Servicio de Impuestos Internos">SII’s</abbr> <abbr title="Rol Único Tributario">RUT</abbr> number
+(this should be correct by default) is incorrect or missing.</p></li>
+<li><p>The resolution date is incorrect or missing.</p></li>
+<li><p>The resolution number is incorrect or missing.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section><section id="credit-notes">
+<span id="chile-credit-notes"></span><h3>Credit notes<a class="headerlink" href="#credit-notes" title="Permalink to this headline">¶</a></h3>
+<p>When a cancellation or correction is needed over a validated invoice, a credit note must be
+generated. It is important to consider that a <abbr title="Folio Authorization Code">CAF</abbr> file is
+required for the credit note, which is identified as <span class="guilabel">Document Type</span> <span class="guilabel">61</span> in the
+<abbr title="Servicio de Impuestos Internos">SII</abbr>. Please refer to the <a class="reference internal" href="#chile-caf-documentation"><span class="std std-ref">CAF section</span></a> for more information on the process to load the <abbr title="Folio Authorization Code">CAF</abbr> on each document type.</p>
+<img alt="Creation of CAF for Credit notes." class="align-center" src="../../../_images/credit-note-document-type.png" />
+</section><section id="use-cases">
+<h4>Use cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h4>
+</section><section id="cancel-referenced-document">
+<h5>Cancel referenced document<a class="headerlink" href="#cancel-referenced-document" title="Permalink to this headline">¶</a></h5>
+<p>In case you need to cancel or invalidate an invoice, navigate to <span class="menuselection">Accounting ‣
+Customers ‣ Invoices</span> and select the desired invoice. Then, use the button <span class="guilabel">Add Credit
+Note</span> and select <span class="guilabel">Full Refund</span>, in this case the <abbr title="Servicio de Impuestos Internos">SII</abbr> reference code is automatically set to <span class="guilabel">Anula Documento de referencia</span>.</p>
+<img alt="Credit note canceling the referenced document." class="align-center" src="../../../_images/credit-note-cancel-ref-doc.png" />
+</section><section id="correct-referenced-document">
+<h5>Correct referenced document<a class="headerlink" href="#correct-referenced-document" title="Permalink to this headline">¶</a></h5>
+<p>If a correction in the invoice information is required, for example the street name on the original
+invoice is wrong, then use the button <span class="guilabel">Add Credit Note</span>, select <span class="guilabel">Partial Refund</span>
+and select the option <span class="guilabel">Only Text Correction</span>. In this case the <span class="guilabel">SII Reference
+Code</span> field is automatically set to <span class="guilabel">Corrects Referenced Document Text</span>.</p>
+<img alt="Credit note correcting referenced document text." class="align-center" src="../../../_images/credit-note-correct-text.png" />
+<p>Odoo creates a credit note with the corrected text in an invoice and <span class="guilabel">Price</span> <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code>.</p>
+<img alt="Credit note with the corrected value on the invoice lines." class="align-center" src="../../../_images/text-correction-label.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Make sure to define the <span class="guilabel">Default Credit Account</span> in the sales journal specifically for
+this use case.</p>
+</div>
+</section><section id="corrects-referenced-document-amount">
+<h5>Corrects referenced document amount<a class="headerlink" href="#corrects-referenced-document-amount" title="Permalink to this headline">¶</a></h5>
+<p>When a correction on the amounts is required, use the button <span class="guilabel">Add Credit note</span> and select
+<span class="guilabel">Partial Refund</span>. In this case the <span class="guilabel">SII Reference Code</span> is automatically set to
+<span class="guilabel">Corrige el monto del Documento de Referencia</span>.</p>
+<img alt="Credit note for partial refund to correct amounts, using the SII reference code 3." class="align-center" src="../../../_images/credit-note-correct-amount.png" />
+</section><section id="debit-notes">
+<h3>Debit notes<a class="headerlink" href="#debit-notes" title="Permalink to this headline">¶</a></h3>
+<p>In Chilean localization, debit notes, in addition to credit notes, can be created using the
+<span class="guilabel">Add Debit Note</span> button, with two main use cases.</p>
+</section><section id="chile-use-cases">
+<span id="id1"></span><h4>Use cases<a class="headerlink" href="#chile-use-cases" title="Permalink to this headline">¶</a></h4>
+</section><section id="add-debt-on-invoices">
+<h5>Add debt on invoices<a class="headerlink" href="#add-debt-on-invoices" title="Permalink to this headline">¶</a></h5>
+<p>The primary use case for debit notes is to increase the value of an existing invoice. To do so,
+select option <span class="guilabel">3. Corrige el monto del Documento de Referencia</span> for the
+<span class="guilabel">Reference Code SII</span> field.</p>
+<img alt="Debit note correcting referenced document amount." class="align-center" src="../../../_images/debit-note-correct-amount.png" />
+<p>In this case Odoo automatically includes the <span class="guilabel">Source Invoice</span> in the <span class="guilabel">Cross
+Reference</span> tab.</p>
+<img alt="Automatic reference to invoice in a debit note." class="align-center" src="../../../_images/auto-ref-debit-note.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can only add debit notes to an invoice already accepted by the SII.</p>
+</div>
+</section><section id="cancel-credit-notes">
+<h5>Cancel credit notes<a class="headerlink" href="#cancel-credit-notes" title="Permalink to this headline">¶</a></h5>
+<p>In Chile, debits notes are used to cancel a valid credit note. To do this, click the <span class="guilabel">Add
+Debit Note</span> button and select the <span class="guilabel">1: Anula Documentos de referencia</span> option for the
+<span class="guilabel">Reference Code SII</span> field.</p>
+<img alt="Debit note to cancel the referenced document (credit note)." class="align-center" src="../../../_images/debit-note-cancel-ref-doc.png" />
+</section><section id="vendor-bills">
+<h3>Vendor bills<a class="headerlink" href="#vendor-bills" title="Permalink to this headline">¶</a></h3>
+<p>As part of the Chilean localization, you can configure your incoming email server to match the one
+you have registered in the <abbr title="Servicio de Impuestos Internos">SII</abbr> in order to:</p>
+<ul class="simple">
+<li><p>Automatically receive the vendor bills <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> and
+create the vendor bill based on this information.</p></li>
+<li><p>Automatically send the reception acknowledgement to your vendor.</p></li>
+<li><p>Accept or claim the document and send this status to your vendor.</p></li>
+</ul>
+</section><section id="reception">
+<h4>Reception<a class="headerlink" href="#reception" title="Permalink to this headline">¶</a></h4>
+<p>As soon as the vendor email with the attached <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> is
+received:</p>
+<ol class="arabic simple">
+<li><p>The vendor bill maps all the information included in the XML.</p></li>
+<li><p>An email is sent to the vendor with the reception acknowledgement.</p></li>
+<li><p>The <span class="guilabel">DTE Status</span> is set as <span class="guilabel">Acuse de Recibido Enviado</span>.</p></li>
+</ol>
+</section><section id="acceptation">
+<h4>Acceptation<a class="headerlink" href="#acceptation" title="Permalink to this headline">¶</a></h4>
+<p>If all the commercial information is correct on your vendor bill, then you can accept the document
+using the <span class="guilabel">Aceptar Documento</span> button. Once this is done, the <span class="guilabel">DTE Acceptation
+Status</span> changes to <span class="guilabel">Accepted</span> and an email of acceptance is sent to the vendor.</p>
+<img alt="Button for accepting vendor bills." class="align-center" src="../../../_images/accept-vendor-bill-btn.png" />
+</section><section id="claim">
+<h4>Claim<a class="headerlink" href="#claim" title="Permalink to this headline">¶</a></h4>
+<p>In case there is a commercial issue or the information is not correct on your vendor bill, you can
+claim the document before validating it, using the <span class="guilabel">Claim</span> button. Once this is done, the
+<span class="guilabel">DTE Acceptation Status</span> changes to <span class="guilabel">Claim</span> and a rejection email is sent to the
+vendor.</p>
+<img alt="Claim button in vendor bills to inform the vendor all the document is commercially rejected." class="align-center" src="../../../_images/claim-vendor-bill-btn.png" />
+<p>If you claim a vendor bill, the status changes from <span class="guilabel">Draft</span> to <span class="guilabel">Cancel</span>
+automatically. Considering this as best practice, all the claimed documents should be canceled as
+they won’t be valid for your accounting records.</p>
+</section><section id="electronic-purchase-invoice">
+<h3>Electronic purchase invoice<a class="headerlink" href="#electronic-purchase-invoice" title="Permalink to this headline">¶</a></h3>
+<p>The <em>electronic purchase invoice</em> is a feature included in the <code class="o_code docutils literal notranslate"><span class="pre">l10n_cl_edi</span></code> module.</p>
+<p>Once all configurations have been made for <a class="reference internal" href="#chile-electronic-invoice"><span class="std std-ref">electronic invoices</span></a>
+(e.g., uploading a valid company certificate, setting up master data, etc.), the electronic
+purchase invoices need their own <abbr title="Folio Authorization Code">CAFs</abbr>. Please refer to the
+<a class="reference internal" href="#chile-caf-documentation"><span class="std std-ref">CAF documentation</span></a> to check the details on how to acquire the
+<abbr title="Folio Authorization Code">CAFs</abbr> for electronic purchase invoices.</p>
+<p>Electronic purchase invoices are useful when vendors are not obligated to expedite an electronic
+vendor bill for your purchase. Still, your obligations require a document to be sent to the
+<abbr title="Servicio de Impuestos Internos">SII</abbr> as proof of purchase.</p>
+</section><section id="configuration">
+<h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
+<p>To generate an electronic purchase invoice from a vendor bill, the bill must be created in a
+purchase journal with the <em>Use Documents</em> feature enabled. It is possible to modify an existing
+purchase journal or create a new one in the following process.</p>
+<p>To modify the existing purchase journal, or create a new purchase journal, navigate to
+<span class="menuselection">Accounting ‣ Configuration ‣ Journals</span>. Then, click the <span class="guilabel">New</span> button,
+and fill in the following required information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Type</span>: select <span class="guilabel">Purchase</span> from the drop-down menu for vendor bill journals.</p></li>
+<li><p><span class="guilabel">Use Documents</span>: check this field so the journal can generate electronic documents (in
+this case the electronic purchase invoice).</p></li>
+</ul>
+</section><section id="generate-an-electronic-purchase-invoice">
+<h4>Generate an electronic purchase invoice<a class="headerlink" href="#generate-an-electronic-purchase-invoice" title="Permalink to this headline">¶</a></h4>
+<p>To generate this type of document, it is necessary to create a vendor bill in Odoo. To do so,
+navigate to <span class="menuselection">Accounting ‣ Vendors ‣ Bills</span>, and click the <span class="guilabel">New</span> button.</p>
+<p>When all of the electronic purchase invoice information is filled, select the option <span class="guilabel">(46)
+Electronic Purchase Invoice</span> in the <span class="guilabel">Document Type</span> field:</p>
+<p>After the vendor bill is posted:</p>
+<ul class="simple">
+<li><p>The <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> file (Electronic Tax Document) is
+automatically created and added to the chatter.</p></li>
+<li><p>The <span class="guilabel">DTE SII Status</span> is set as <span class="guilabel">Pending to be sent</span>.</p></li>
+</ul>
+<p>Odoo automatically updates the <em>DTE Status</em> every night using a scheduled action. To get a response
+from the <abbr title="Servicio de Impuestos Internos">SII</abbr> immediately, click the <span class="guilabel">Send now to
+SII</span> button.</p>
+</section><section id="delivery-guide">
+<h3>Delivery guide<a class="headerlink" href="#delivery-guide" title="Permalink to this headline">¶</a></h3>
+<p>To install the <span class="guilabel">Delivery Guide</span> module, go to <span class="menuselection">Apps</span> and search for <code class="o_code docutils literal notranslate"><span class="pre">Chile</span>
+<span class="pre">(l10n_cl)</span></code>. Then click <span class="guilabel">Install</span> on the module <span class="guilabel">Chile - E-Invoicing Delivery
+Guide</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p><span class="guilabel">Chile - E-Invoicing Delivery Guide</span> has a dependency with <span class="guilabel">Chile -
+Facturación Electrónica</span>. Odoo will install the dependency automatically when the
+<span class="guilabel">Delivery Guide</span> module is installed.</p>
+</div>
+<p>The <em>Delivery Guide</em> module includes the ability to send the <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> to <abbr title="Servicio de Impuestos Internos">SII</abbr> and the stamp in PDF reports for
+deliveries.</p>
+<p>Once all configurations have been made for <a class="reference internal" href="#chile-electronic-invoice"><span class="std std-ref">electronic invoices</span></a>
+(e.g., uploading a valid company certificate, setting up master data, etc.), delivery guides need
+their own <abbr title="Folio Authorization Code">CAFs</abbr>. Please refer to the <a class="reference internal" href="#chile-caf-documentation"><span class="std std-ref">CAF documentation</span></a> to check the details on how to acquire the <abbr title="Folio Authorization Code">CAF</abbr> for electronic Delivery Guides.</p>
+<p>Verify the following important information in the <span class="guilabel">Price for the Delivery Guide</span>
+configuration:</p>
+<ul class="simple">
+<li><p><span class="guilabel">From Sales Order</span>: delivery guide takes the product price from the sales order and
+shows it on the document.</p></li>
+<li><p><span class="guilabel">From Product Template</span>: Odoo takes the price configured in the product template and
+shows it on the document.</p></li>
+<li><p><span class="guilabel">No show price</span>: no price is shown in the delivery guide.</p></li>
+</ul>
+<p>Electronic delivery guides are used to move stock from one place to another and they can represent
+sales, sampling, consignment, internal transfers, and basically any product move.</p>
+</section><section id="delivery-guide-from-a-sales-process">
+<h4>Delivery guide from a sales process<a class="headerlink" href="#delivery-guide-from-a-sales-process" title="Permalink to this headline">¶</a></h4>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>A delivery guide should <strong>not</strong> be longer than one page or contain more than 60 product lines.</p>
+</div>
+<p>When a sales order is created and confirmed, a delivery order is generated. After validating the
+delivery order, the option to create a delivery guide is activated.</p>
+<img alt="Create Delivery Guide button on a sales process." class="align-center" src="../../../_images/delivery-guide-creation-btn.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>When clicking on <span class="guilabel">Create Delivery Guide</span> for the first time, a warning message pops up,
+stating the following:</p>
+<p><code class="o_code docutils literal notranslate"><span class="pre">No</span> <span class="pre">se</span> <span class="pre">encontró</span> <span class="pre">una</span> <span class="pre">secuencia</span> <span class="pre">para</span> <span class="pre">la</span> <span class="pre">guía</span> <span class="pre">de</span> <span class="pre">despacho.</span> <span class="pre">Por</span> <span class="pre">favor,</span> <span class="pre">establezca</span> <span class="pre">el</span> <span class="pre">primer</span> <span class="pre">número</span>
+<span class="pre">dentro</span> <span class="pre">del</span> <span class="pre">campo</span> <span class="pre">número</span> <span class="pre">para</span> <span class="pre">la</span> <span class="pre">guía</span> <span class="pre">de</span> <span class="pre">despacho</span></code></p>
+<img alt="First Delivery Guide number warning message." class="align-center" src="../../../_images/delivery-guide-number-warning.png" />
+</div>
+<p>This warning message means the user needs to indicate the next sequence number Odoo has to take to
+generate the delivery guide (e.g. next available <abbr title="Folio Authorization Code">CAF</abbr> number), and
+only happens the first time a delivery guide is created in Odoo. After the first document has been
+correctly generated, Odoo takes the next available number in the <abbr title="Folio Authorization Code">CAF</abbr> file to generate the following delivery guide.</p>
+<p>After the delivery guide is created:</p>
+<ul class="simple">
+<li><p>The <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> file (Electronic Tax Document) is
+automatically created and added to the <span class="guilabel">chatter</span>.</p></li>
+<li><p>The <span class="guilabel">DTE SII Status</span> is set as <span class="guilabel">Pending to be sent</span>.</p></li>
+</ul>
+<img alt="Chatter notes of Delivery Guide creation." class="align-center" src="../../../_images/chatter-delivery-guide.png" />
+<p>The <span class="guilabel">DTE Status</span> is automatically updated by Odoo with a scheduled action that runs every
+night. To get a response from the <abbr title="Servicio de Impuestos Internos">SII</abbr> immediately, press
+the <span class="guilabel">Send now to SII</span> button.</p>
+<p>Once the delivery guide is sent, it may then be printed by clicking on the <span class="guilabel">Print Delivery
+Guide</span> button.</p>
+<img alt="Printing Delivery Guide PDF." class="align-center" src="../../../_images/print-delivery-guide-btn.png" />
+<p>Delivery guide will have fiscal elements that indicate that the document is fiscally valid when
+printed (if hosted in <em>Odoo SH</em> or on <em>On-premise</em> remember to manually add the
+<span class="guilabel">pdf417gen</span> library mentioned in the <a class="reference internal" href="#chile-electronic-invoice-pdf-report"><span class="std std-ref">Invoice PDF report section</span></a>).</p>
+</section><section id="electronic-receipt">
+<h3>Electronic receipt<a class="headerlink" href="#electronic-receipt" title="Permalink to this headline">¶</a></h3>
+<p>To install the <span class="guilabel">Electronic Receipt</span> module, go to <span class="menuselection">Apps</span> and search for
+<code class="o_code docutils literal notranslate"><span class="pre">Chile</span> <span class="pre">(l10n_cl)</span></code>. Then click <span class="guilabel">Install</span> on the module <span class="guilabel">Chile - Electronic
+Receipt</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p><span class="guilabel">Chile - Electronic Receipt</span> has a dependency with <span class="guilabel">Chile - Facturación
+Electrónica</span>. Odoo will install the dependency automatically when the <span class="guilabel">E-invoicing
+Delivery Guide</span> module is installed.</p>
+</div>
+<p>Once all configurations have been made for <a class="reference internal" href="#chile-electronic-invoice"><span class="std std-ref">electronic invoices</span></a>
+(e.g., uploading a valid company certificate, setting up master data, etc.), electronic receipts
+need their own <abbr title="Folio Authorization Code">CAFs</abbr>. Please refer to the <a class="reference internal" href="#chile-caf-documentation"><span class="std std-ref">CAF documentation</span></a> to check the details on how to acquire the <abbr title="Folio Authorization Code">CAFs</abbr> for electronic receipts.</p>
+<p>Electronic receipts are useful when clients do not need an electronic invoice. By default, there is
+a partner in the database called <span class="guilabel">Anonymous Final Consumer</span> with a generic <abbr title="Rol Único Tributario">RUT</abbr> <code class="o_code docutils literal notranslate"><span class="pre">66666666-6</span></code> and taxpayer type of <span class="guilabel">Final Consumer</span>. This partner can be
+used for electronic receipts or a new record may be created for the same purpose.</p>
+<img alt="Electronic Receipt module." class="align-center" src="../../../_images/electronic-receipt-customer.png" />
+<p>Although electronic receipts should be used for final consumers with a generic <abbr title="Rol Único Tributario">RUT</abbr>, it can also be used for specific partners. After the partners and journals are created
+and configured, the electronic receipts are created in the standard way as electronic invoice, but
+the type of document <span class="guilabel">(39) Electronic Receipt</span> should be selected in the invoice form:</p>
+<img alt="Document type 39 for Electronic Receipts." class="align-center" src="../../../_images/document-type-39.png" />
+</section><section id="id2">
+<h4>Validation and DTE status<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>When all of the electronic receipt information is filled, manually (or automatically) proceed to
+validate the receipt from the sales order. By default, <span class="guilabel">Electronic Invoice</span> is selected as
+the <span class="guilabel">Document Type</span>, however in order to validate the receipt correctly, make sure to edit
+the <span class="guilabel">Document Type</span> and change to <span class="guilabel">Electronic Receipt</span>.</p>
+<p>After the receipt is posted:</p>
+<ul class="simple">
+<li><p>The <abbr title="Documentos Tributarios Electrónicos">DTE</abbr> file (Electronic Tax Document) is created
+automatically and added to the <span class="guilabel">chatter</span>.</p></li>
+<li><p>The <span class="guilabel">DTE SII Status</span> is set as <span class="guilabel">Pending to be sent</span>.</p></li>
+</ul>
+<img alt="Electronic Receipts STE creation status." class="align-center" src="../../../_images/electronic-receipt-ste-status.png" />
+<p>The <span class="guilabel">DTE Status</span> is automatically updated by Odoo with a scheduled action that runs every
+day at night. To get a response from the <abbr title="Servicio de Impuestos Internos">SII</abbr> immediately,
+press the <span class="guilabel">Send now to SII</span> button.</p>
+<p>Please refer to the <a class="reference internal" href="#chile-electronic-invoice-validation"><span class="std std-ref">DTE Workflow</span></a> for electronic
+invoices as the workflow for electronic receipt follows the same process.</p>
+</section><section id="electronic-export-of-goods">
+<h3>Electronic export of goods<a class="headerlink" href="#electronic-export-of-goods" title="Permalink to this headline">¶</a></h3>
+<p>To install the <span class="guilabel">Electronic Exports of Goods</span> module, go to <span class="menuselection">Apps</span> and
+search for <code class="o_code docutils literal notranslate"><span class="pre">Chile</span> <span class="pre">(l10n_cl)</span></code>. Then click <span class="guilabel">Install</span> on the module <span class="guilabel">Electronic
+Exports of Goods for Chile</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p><span class="guilabel">Chile - Electronic Exports of Goods for Chile</span> has a dependency with <span class="guilabel">Chile
+- Facturación Electrónica</span>.</p>
+</div>
+<p>Once all configurations have been made for <a class="reference internal" href="#chile-electronic-invoice"><span class="std std-ref">electronic invoices</span></a>
+(e.g., uploading a valid company certificate, setting up master data, etc.), electronic exports of
+goods need their own <abbr title="Folio Authorization Code">CAFs</abbr>. Please refer to the <a class="reference internal" href="#chile-caf-documentation"><span class="std std-ref">CAF
+documentation</span></a> to check the details on how to acquire the <abbr title="Folio Authorization Code">CAFs</abbr> for electronic receipts.</p>
+<p>Electronic invoices for the export of goods are tax documents that are used not only for the
+<abbr title="Servicio de Impuestos Internos">SII</abbr> but are also used with customs and contain the
+information required by it.</p>
+</section><section id="contact-configurations">
+<h4>Contact configurations<a class="headerlink" href="#contact-configurations" title="Permalink to this headline">¶</a></h4>
+<img alt="Taxpayer Type needed for the Electronic Exports of Goods module." class="align-center" src="../../../_images/taxpayer-type-export-goods.png" />
+</section><section id="chilean-customs">
+<h4>Chilean customs<a class="headerlink" href="#chilean-customs" title="Permalink to this headline">¶</a></h4>
+<p>When creating an electronic exports of goods invoice, these new fields in the <span class="guilabel">Other Info</span>
+tab are required to comply with Chilean regulations.</p>
+<img alt="Chilean customs fields." class="align-center" src="../../../_images/chilean-custom-fields.png" />
+</section><section id="pdf-report">
+<h4>PDF report<a class="headerlink" href="#pdf-report" title="Permalink to this headline">¶</a></h4>
+<p>Once the invoice is accepted and validated by the <abbr title="Servicio de Impuestos Internos">SII</abbr> and
+the PDF is printed, it includes the fiscal elements that indicate that the document is fiscally
+valid and a new section needed for customs.</p>
+<img alt="PDF report section for the Electronic Exports of Goods PDF Report." class="align-center" src="../../../_images/pdf-report-section.png" />
+</section><section id="financial-reports">
+<h2>Financial reports<a class="headerlink" href="#financial-reports" title="Permalink to this headline">¶</a></h2>
+</section><section id="balance-tributario-de-8-columnas">
+<h3>Balance tributario de 8 columnas<a class="headerlink" href="#balance-tributario-de-8-columnas" title="Permalink to this headline">¶</a></h3>
+<p>This report presents the accounts in detail (with their respective balances), classifying them
+according to their origin and determining the level of profit or loss that the business had within
+the evaluated period of time.</p>
+<p>You can find this report in <span class="menuselection">Accounting ‣ Reporting ‣ Balance Sheet</span> and
+selecting in the <span class="guilabel">Report</span> field the option <span class="guilabel">Chilean Fiscal Balance (8 Columns)
+(CL)</span>.</p>
+<img alt="Location of the Reporte Balance Tributario de 8 Columnas." class="align-center" src="../../../_images/locate-fiscal-balance-report.png" />
+<img alt="Chilean Fiscal Balance (8 Columns)." class="align-center" src="../../../_images/8-col-fiscal-balance-report.png" />
+</section><section id="propuesta-f29">
+<h3>Propuesta F29<a class="headerlink" href="#propuesta-f29" title="Permalink to this headline">¶</a></h3>
+<p>The form <em>F29</em> is a new system that the <abbr title="Servicio de Impuestos Internos">SII</abbr> enabled to
+taxpayers, and that replaces the <em>Purchase and Sales Books</em>. This report is integrated by Purchase
+Register (CR) and the Sales Register (RV). Its purpose is to support the transactions related to
+VAT, improving its control and declaration.</p>
+<p>This record is supplied by the electronic tax documents (DTE’s) that have been received by the
+<abbr title="Servicio de Impuestos Internos">SII</abbr>.</p>
+<p>You can find this report in <span class="menuselection">Accounting ‣ Reporting ‣ Tax Reports</span> and selecting
+the <span class="guilabel">Report</span> option <span class="guilabel">Propuesta F29 (CL)</span>.</p>
+<img alt="Location of the Propuesta F29 (CL) Report." class="align-center" src="../../../_images/locate-propuesta-f29-report.png" />
+<p>It is possible to set the <abbr title="Provisional Monthly Payments rate">PPM</abbr> and the
+<span class="guilabel">Proportional Factor for the fiscal year</span> from the <span class="menuselection">Accounting ‣
+Configuration ‣ Settings</span>.</p>
+<img alt="Default PPM and Proportional Factor for the Propuesta F29 Report." class="align-center" src="../../../_images/f29-report.png" />
+<p>Or manually in the reports by clicking on the <span class="guilabel">✏️ (pencil)</span> icon.</p>
+<img alt="Manual PPM for the Propuesta F29 Report." class="align-center" src="../../../_images/manual-ppm-f29-report.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Chile</a><ul>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#company-information">Company information</a></li>
+<li><a class="reference internal" href="#accounting-settings">Accounting settings</a><ul>
+<li><a class="reference internal" href="#fiscal-information">Fiscal information</a></li>
+<li><a class="reference internal" href="#electronic-invoice-data">Electronic invoice data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dte-incoming-email-server">DTE incoming email server</a><ul>
+<li><a class="reference internal" href="#certificate">Certificate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multicurrency">Multicurrency</a></li>
+<li><a class="reference internal" href="#partner-information">Partner information</a></li>
+<li><a class="reference internal" href="#document-types">Document types</a><ul>
+<li><a class="reference internal" href="#use-on-invoices">Use on invoices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#journals">Journals</a><ul>
+<li><a class="reference internal" href="#create-a-sales-journal">Create a sales journal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caf">CAF</a><ul>
+<li><a class="reference internal" href="#upload-caf-files">Upload CAF files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a></li>
+<li><a class="reference internal" href="#taxes">Taxes</a></li>
+<li><a class="reference internal" href="#usage-and-testing">Usage and testing</a><ul>
+<li><a class="reference internal" href="#electronic-invoice-workflow">Electronic invoice workflow</a></li>
+<li><a class="reference internal" href="#customer-invoice-emission">Customer invoice emission</a><ul>
+<li><a class="reference internal" href="#validation-and-dte-status">Validation and DTE status</a></li>
+<li><a class="reference internal" href="#crossed-references">Crossed references</a></li>
+<li><a class="reference internal" href="#invoice-pdf-report">Invoice PDF report</a></li>
+<li><a class="reference internal" href="#commercial-validation">Commercial validation</a></li>
+<li><a class="reference internal" href="#processed-for-claimed-invoices">Processed for claimed invoices</a></li>
+<li><a class="reference internal" href="#common-errors">Common errors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#credit-notes">Credit notes</a><ul>
+<li><a class="reference internal" href="#use-cases">Use cases</a><ul>
+<li><a class="reference internal" href="#cancel-referenced-document">Cancel referenced document</a></li>
+<li><a class="reference internal" href="#correct-referenced-document">Correct referenced document</a></li>
+<li><a class="reference internal" href="#corrects-referenced-document-amount">Corrects referenced document amount</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debit-notes">Debit notes</a><ul>
+<li><a class="reference internal" href="#chile-use-cases">Use cases</a><ul>
+<li><a class="reference internal" href="#add-debt-on-invoices">Add debt on invoices</a></li>
+<li><a class="reference internal" href="#cancel-credit-notes">Cancel credit notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vendor-bills">Vendor bills</a><ul>
+<li><a class="reference internal" href="#reception">Reception</a></li>
+<li><a class="reference internal" href="#acceptation">Acceptation</a></li>
+<li><a class="reference internal" href="#claim">Claim</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#electronic-purchase-invoice">Electronic purchase invoice</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#generate-an-electronic-purchase-invoice">Generate an electronic purchase invoice</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delivery-guide">Delivery guide</a><ul>
+<li><a class="reference internal" href="#delivery-guide-from-a-sales-process">Delivery guide from a sales process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#electronic-receipt">Electronic receipt</a><ul>
+<li><a class="reference internal" href="#id2">Validation and DTE status</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#electronic-export-of-goods">Electronic export of goods</a><ul>
+<li><a class="reference internal" href="#contact-configurations">Contact configurations</a></li>
+<li><a class="reference internal" href="#chilean-customs">Chilean customs</a></li>
+<li><a class="reference internal" href="#pdf-report">PDF report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#financial-reports">Financial reports</a><ul>
+<li><a class="reference internal" href="#balance-tributario-de-8-columnas">Balance tributario de 8 columnas</a></li>
+<li><a class="reference internal" href="#propuesta-f29">Propuesta F29</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Chile</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

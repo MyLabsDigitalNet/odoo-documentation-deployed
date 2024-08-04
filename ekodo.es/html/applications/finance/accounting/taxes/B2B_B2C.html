@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>B2B (tax excluded) and B2C (tax included) pricing &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/B2B_B2C.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/taxes/B2B_B2C.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">B2B (tax excluded) and B2C (tax included) pricing</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#ecommerce">eCommerce</a></li>
+<li><a class="reference internal" href="#setting-your-products">Setting your products</a></li>
+<li><a class="reference internal" href="#setting-the-b2c-fiscal-position">Setting the B2C fiscal position</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-by-creating-a-quotation">Test by creating a quotation</a></li>
+<li><a class="reference internal" href="#avoid-changing-every-sale-order">Avoid changing every sale order</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/B2B_B2C.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">B2B (tax excluded) and B2C (tax included) pricing</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="b2b-tax-excluded-and-b2c-tax-included-pricing">
+<h1>B2B (tax excluded) and B2C (tax included) pricing<a class="headerlink" href="#b2b-tax-excluded-and-b2c-tax-included-pricing" title="Permalink to this headline">¶</a></h1>
+<p>When working with consumers, prices are usually expressed with taxes
+included in the price (e.g., in most eCommerce). But, when you work in a
+B2B environment, companies usually negotiate prices with taxes excluded.</p>
+<p>Odoo manages both use cases easily, as long as you register your prices
+on the product with taxes excluded or included, but not both together.
+If you manage all your prices with tax included (or excluded) only, you
+can still easily do sales order with a price having taxes excluded (or
+included): that’s easy.</p>
+<p>This documentation is only for the specific use case where you need to
+have two references for the price (tax included or excluded), for the
+same product. The reason of the complexity is that there is not a
+symmetrical relationship with prices included and prices excluded, as
+shown in this use case, in belgium with a tax of 21%:</p>
+<ul class="simple">
+<li><p>Your eCommerce has a product at <strong>10€ (taxes included)</strong></p></li>
+<li><p>This would do <strong>8.26€ (taxes excluded)</strong> and a <strong>tax of 1.74€</strong></p></li>
+</ul>
+<p>But for the same use case, if you register the price without taxes on
+the product form (8.26€), you get a price with tax included at 9.99€,
+because:</p>
+<ul class="simple">
+<li><p><strong>8.26€ * 1.21 = 9.99€</strong></p></li>
+</ul>
+<p>So, depending on how you register your prices on the product form, you
+will have different results for the price including taxes and the price
+excluding taxes:</p>
+<ul class="simple">
+<li><p>Taxes Excluded: <strong>8.26€ &amp; 10.00€</strong></p></li>
+<li><p>Taxes Included: <strong>8.26€ &amp; 9.99€</strong></p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If you buy 100 pieces at 10€ taxes included, it gets even more
+tricky. You will get: <strong>1000€ (taxes included) = 826.45€ (price) +
+173.55€ (taxes)</strong> Which is very different from a price per piece at
+8.26€ tax excluded.</p>
+</div>
+<p>This documentation explains how to handle the very specific use case
+where you need to handle the two prices (tax excluded and included) on
+the product form within the same company.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In terms of finance, you have no more revenues selling your
+product at 10€ instead of 9.99€ (for a 21% tax), because your revenue
+will be exactly the same at 9.99€, only the tax is 0.01€ higher. So, if
+you run an eCommerce in Belgium, make your customer a favor and set your
+price at 9.99€ instead of 10€. Please note that this does not apply to
+20€ or 30€, or other tax rates, or a quantity &gt;1. You will also make you
+a favor since you can manage everything tax excluded, which is less
+error prone and easier for your salespeople.</p>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>The best way to avoid this complexity is to choose only one way of
+managing your prices and stick to it: price without taxes or price with
+taxes included. Define which one is the default stored on the product
+form (on the default tax related to the product), and let Odoo compute
+the other one automatically, based on the pricelist and fiscal position.
+Negotiate your contracts with customers accordingly. This perfectly
+works out-of-the-box and you have no specific configuration to do.</p>
+<p>If you can not do that and if you really negotiate some prices with tax
+excluded and, for other customers, others prices with tax included, you
+must:</p>
+<ol class="arabic simple">
+<li><p>always store the default price <strong>tax excluded</strong> on the product form, and
+apply a tax (price excluded on the product form)</p></li>
+<li><p>create a pricelist with prices in <strong>tax included</strong>, for specific
+customers</p></li>
+<li><p>create a fiscal position that switches the tax excluded to a tax
+included</p></li>
+<li><p>assign both the pricelist and the fiscal position to customers who
+want to benefit to this pricelist and fiscal position</p></li>
+</ol>
+<p>For the purpose of this documentation, we will use the above use case:</p>
+<ul class="simple">
+<li><p>your product default sale price is 8.26€ tax excluded</p></li>
+<li><p>but we want to sell it at 10€, tax included, in our shops or
+eCommerce website</p></li>
+</ul>
+</section><section id="ecommerce">
+<span id="b2b-b2c-ecommerce"></span><h3>eCommerce<a class="headerlink" href="#ecommerce" title="Permalink to this headline">¶</a></h3>
+<p>If you only use B2C or B2B prices on your website, simply select the appropriate setting in the
+<strong>Website</strong> app settings.</p>
+<p>If you have both B2B and B2C prices on a single website, please follow these instructions:</p>
+<ol class="arabic simple">
+<li><p>Activate the <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> and go to <span class="menuselection">General Settings
+‣ Users &amp; Companies ‣ Groups</span>.</p></li>
+<li><p>Open either <code class="o_code docutils literal notranslate"><span class="pre">Technical</span> <span class="pre">/</span> <span class="pre">Tax</span> <span class="pre">display</span> <span class="pre">B2B</span></code> or <code class="o_code docutils literal notranslate"><span class="pre">Technical</span> <span class="pre">/</span> <span class="pre">Tax</span> <span class="pre">display</span> <span class="pre">B2C</span></code>.</p></li>
+<li><p>Under the <span class="guilabel">Users</span> tab, add the users requiring access to the price type. Add B2C users
+in the B2C group and B2B users in the B2B group.</p></li>
+</ol>
+</section><section id="setting-your-products">
+<h3>Setting your products<a class="headerlink" href="#setting-your-products" title="Permalink to this headline">¶</a></h3>
+<p>Your company must be configured with tax excluded by default. This is
+usually the default configuration, but you can check your <strong>Default Sale
+Tax</strong> from the menu <span class="menuselection">Configuration ‣ Settings</span>
+of the Accounting application.</p>
+<img alt="../../../../_images/price_B2C_B2B01.png" class="align-center" src="../../../../_images/price_B2C_B2B01.png" />
+<p>Once done, you can create a <strong>B2C</strong> pricelist. You can activate the
+pricelist feature per customer from the menu:
+<span class="menuselection">Configuration ‣ Settings</span> of the Sale application.
+Choose the option <strong>different prices per customer segment</strong>.</p>
+<p>Once done, create a B2C pricelist from the menu
+<span class="menuselection">Configuration ‣ Pricelists</span>.
+It’s also good to rename the default pricelist into B2B to avoid confusion.</p>
+<p>Then, create a product at 8.26€, with a tax of 21% (defined as tax not
+included in price) and set a price on this product for B2C customers at
+10€, from the <span class="menuselection">Sales ‣ Products</span>
+menu of the Sales application:</p>
+<img alt="../../../../_images/price_B2C_B2B02.png" class="align-center" src="../../../../_images/price_B2C_B2B02.png" />
+</section><section id="setting-the-b2c-fiscal-position">
+<h3>Setting the B2C fiscal position<a class="headerlink" href="#setting-the-b2c-fiscal-position" title="Permalink to this headline">¶</a></h3>
+<p>From the accounting application, create a B2C fiscal position from this
+menu: <span class="menuselection">Configuration ‣ Fiscal Positions</span>.
+This fiscal position should map the VAT 21% (tax excluded of price)
+with a VAT 21% (tax included in price)</p>
+<img alt="../../../../_images/price_B2C_B2B03.png" class="align-center" src="../../../../_images/price_B2C_B2B03.png" />
+</section><section id="test-by-creating-a-quotation">
+<h2>Test by creating a quotation<a class="headerlink" href="#test-by-creating-a-quotation" title="Permalink to this headline">¶</a></h2>
+<p>Create a quotation from the Sale application, using the
+<span class="menuselection">Sales ‣ Quotations</span> menu. You should have the
+following result: 8.26€ + 1.73€ = 9.99€.</p>
+<img alt="../../../../_images/price_B2C_B2B04.png" class="align-center" src="../../../../_images/price_B2C_B2B04.png" />
+<p>Then, create a quotation but <strong>change the pricelist to B2C and the
+fiscal position to B2C</strong> on the quotation, before adding your product.
+You should have the expected result, which is a total price of 10€ for
+the customer: 8.26€ + 1.74€ = 10.00€.</p>
+<img alt="../../../../_images/price_B2C_B2B05.png" class="align-center" src="../../../../_images/price_B2C_B2B05.png" />
+<p>This is the expected behavior for a customer of your shop.</p>
+</section><section id="avoid-changing-every-sale-order">
+<h2>Avoid changing every sale order<a class="headerlink" href="#avoid-changing-every-sale-order" title="Permalink to this headline">¶</a></h2>
+<p>If you negotiate a contract with a customer, whether you negotiate tax
+included or tax excluded, you can set the pricelist and the fiscal
+position on the customer form so that it will be applied automatically
+at every sale of this customer.</p>
+<p>The pricelist is in the <strong>Sales &amp; Purchases</strong> tab of the customer form,
+and the fiscal position is in the accounting tab.</p>
+<p>Note that this is error prone: if you set a fiscal position with tax
+included in prices but use a pricelist that is not included, you might
+have wrong prices calculated for you. That’s why we usually recommend
+companies to only work with one price reference.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">B2B (tax excluded) and B2C (tax included) pricing</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#ecommerce">eCommerce</a></li>
+<li><a class="reference internal" href="#setting-your-products">Setting your products</a></li>
+<li><a class="reference internal" href="#setting-the-b2c-fiscal-position">Setting the B2C fiscal position</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-by-creating-a-quotation">Test by creating a quotation</a></li>
+<li><a class="reference internal" href="#avoid-changing-every-sale-order">Avoid changing every sale order</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">B2B (tax excluded) and B2C (tax included) pricing</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Closing tickets &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/services/helpdesk/advanced/close_tickets.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/services/helpdesk/advanced/close_tickets.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Closing tickets</a><ul>
+<li><a class="reference internal" href="#manually-close-solved-tickets">Manually close solved tickets</a></li>
+<li><a class="reference internal" href="#automatically-close-inactive-tickets">Automatically close inactive tickets</a></li>
+<li><a class="reference internal" href="#allow-customers-to-close-their-own-tickets">Allow customers to close their own tickets</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/services/helpdesk/advanced/close_tickets.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Closing tickets</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="closing-tickets">
+<h1>Closing tickets<a class="headerlink" href="#closing-tickets" title="Permalink to this headline">¶</a></h1>
+<p>Once work has been completed on a <em>Helpdesk</em> ticket in Odoo, there are several ways it can be
+closed. Manually closing solved tickets keeps the pipeline up to date, while automatically closing
+inactive tickets prevents unnecessary blocking issues. Allowing customers to close their own tickets
+minimizes confusion around whether an issue is considered solved or not. This results in increased
+operational capacity for support teams, and higher customer satisfaction.</p>
+</section><section id="manually-close-solved-tickets">
+<h2>Manually close solved tickets<a class="headerlink" href="#manually-close-solved-tickets" title="Permalink to this headline">¶</a></h2>
+<p>As work on a ticket progresses, it is moved along to the next stage in the pipeline. Once the issue
+is solved, the ticket is moved to a <em>folded</em> stage. This marks the ticket as <em>closed</em>.</p>
+<p>To fold a stage, navigate to the <span class="menuselection">Helpdesk</span> dashboard and click on a team to open the
+pipeline. Hover over a stage’s heading, and then click the gear icon that appears in the top-right
+corner of that stage’s kanban column.</p>
+<img alt="View of stage on Helpdesk pipeline with emphasis on gear icon and edit stage option." class="align-center" src="../../../../_images/closing-edit-stage-gear.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Clicking the gear icon also displays the option to <span class="guilabel">Fold</span> the stage. This setting folds
+the stage <em>temporarily</em> to simplify the kanban view. This does <em>not</em> close the tickets in this
+stage. It also does not permanently fold the stage. If a stage needs to be folded so the tickets
+can be marked as closed, continue following the steps below.</p>
+</div>
+<p>From the menu that appears, select <span class="guilabel">Edit Stage</span>. This will open the stage’s settings.
+Check the box labeled <span class="guilabel">Folded in Kanban</span> towards the top of the window, and then
+<span class="guilabel">Save &amp; Close</span> to confirm the changes. Now, tickets that reach this stage will be
+considered as <em>closed</em>.</p>
+<blockquote>
+<div><img alt="Stage settings page." class="align-center" src="../../../../_images/closing-folded-setting.png" />
+</div></blockquote>
+</section><section id="automatically-close-inactive-tickets">
+<h2>Automatically close inactive tickets<a class="headerlink" href="#automatically-close-inactive-tickets" title="Permalink to this headline">¶</a></h2>
+<p>Tickets that are inactive for a set period of time can be automatically closed. At that point, they
+will be moved to a folded stage.</p>
+<p>Go to the team’s settings page by going to <span class="menuselection">Helpdesk ‣ Configuration ‣ Teams</span>.
+Under the <span class="guilabel">Self-Service</span> section, enable <span class="guilabel">Automatic Closing</span>.</p>
+<p>If one of the team’s stages is set to be folded in the kanban view, it will be the default selection
+in the <span class="guilabel">Move to Stage</span> field. If the team has more than one folded stage, the stage that
+occurs first in the pipeline will be the default. If no stage is folded, the default selection will
+be the last stage in the pipeline.</p>
+<p>The <span class="guilabel">After days of inactivity</span> field defaults to <code class="o_code docutils literal notranslate"><span class="pre">7</span></code>, but can be adjusted if necessary.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>The <span class="guilabel">After days of inactivity</span> field does <strong>not</strong> take the working calendar into
+account when tracking the amount of time a ticket has been inactive.</p>
+</div>
+<p>If only certain stages should be used to track days of inactivity, they can be added to the
+<span class="guilabel">In Stages</span> field.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A team’s pipeline is created with the following stages:</p>
+<ul class="simple">
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">New</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">Customer</span> <span class="pre">Feedback</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">Closed</span></code></p></li>
+</ul>
+<p>Tickets can linger in the <span class="guilabel">Customer Feedback stage</span>, because once an issue is solved,
+customers may not respond immediately. At that point, the tickets can be closed automatically.
+However, tickets in the <span class="guilabel">New</span> and <span class="guilabel">In Progress</span> stages may remain inactive
+due to assignment or workload issues. Closing these tickets automatically would result in issues
+going unsolved.</p>
+<p>Therefore, the <span class="guilabel">Automatic Closing</span> settings would be configured as below:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Automatic Closing</span>: <em>checked</em></p></li>
+<li><p><span class="guilabel">Move to Stage</span>: <code class="o_code docutils literal notranslate"><span class="pre">Solved</span></code></p></li>
+<li><p><span class="guilabel">After``7</span><span class="guilabel">days of inactivity</span></p></li>
+<li><p><span class="guilabel">In Stages</span>: <code class="o_code docutils literal notranslate"><span class="pre">Customer</span> <span class="pre">Feedback</span></code></p></li>
+</ul>
+<img alt="Example of Automatic Closing settings." class="align-center" src="../../../../_images/closing-automatic-settings-example.png" />
+</div>
+</section><section id="allow-customers-to-close-their-own-tickets">
+<h2>Allow customers to close their own tickets<a class="headerlink" href="#allow-customers-to-close-their-own-tickets" title="Permalink to this headline">¶</a></h2>
+<p>Enabling the <span class="guilabel">Closure by Customers</span> setting allows customers to close their own ticket(s)
+when they determine that their issue has been resolved.</p>
+<p>Start by navigating to <span class="menuselection">Helpdesk ‣ Configuration ‣ Teams</span> and select a team. On
+the team’s settings page, scroll to the <span class="guilabel">Self-Service</span> section and check the box for
+<span class="guilabel">Closure by Customers</span>.</p>
+<img alt="Customer closing setting in Odoo Helpdesk." class="align-center" src="../../../../_images/closing-by-customer-setting.png" />
+<p>Once the ticket closing settings are enabled, a <span class="guilabel">Close Ticket</span> button will be available
+for customers when they view their ticket through the customer portal.</p>
+<img alt="Customer view of ticket closing in Odoo Helpdesk." class="align-center" src="../../../../_images/closing-customer-view.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Customers are able to view their tickets by clicking the <span class="guilabel">View the ticket</span> link they
+receive by email. The link is included in the <span class="guilabel">Request Acknowledgment</span> template, which
+is added to the first stage of a team by default. This link does not require a customer to have
+access to the portal to view or respond to their ticket.</p>
+<p>Customers with access to the portal will be able to view their tickets under <span class="menuselection">My
+Account ‣ Tickets</span>.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Closing tickets</a><ul>
+<li><a class="reference internal" href="#manually-close-solved-tickets">Manually close solved tickets</a></li>
+<li><a class="reference internal" href="#automatically-close-inactive-tickets">Automatically close inactive tickets</a></li>
+<li><a class="reference internal" href="#allow-customers-to-close-their-own-tickets">Allow customers to close their own tickets</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Closing tickets</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

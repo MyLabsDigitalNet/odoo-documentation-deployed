@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AvaTax integration &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/avatax.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/taxes/avatax.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">AvaTax integration</a><ul>
+<li><a class="reference internal" href="#set-up-on-avatax">Set up on AvaTax</a><ul>
+<li><a class="reference internal" href="#create-basic-company-profile">Create basic company profile</a></li>
+<li><a class="reference internal" href="#connect-to-avatax">Connect to AvaTax</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#odoo-configuration">Odoo configuration</a><ul>
+<li><a class="reference internal" href="#fiscal-country">Fiscal country</a></li>
+<li><a class="reference internal" href="#company-settings">Company settings</a></li>
+<li><a class="reference internal" href="#module-installation">Module installation</a></li>
+<li><a class="reference internal" href="#odoo-avatax-settings">Odoo AvaTax settings</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#credentials">Credentials</a></li>
+<li><a class="reference internal" href="#transaction-options">Transaction options</a></li>
+<li><a class="reference internal" href="#address-validation">Address validation</a></li>
+<li><a class="reference internal" href="#test-connection">Test connection</a></li>
+<li><a class="reference internal" href="#sync-parameters">Sync parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiscal-position">Fiscal position</a><ul>
+<li><a class="reference internal" href="#avatax-accounts">AvaTax accounts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tax-mapping">Tax mapping</a><ul>
+<li><a class="reference internal" href="#product-category-mapping">Product category mapping</a></li>
+<li><a class="reference internal" href="#product-mapping">Product mapping</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/avatax.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AvaTax integration</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_hide_toc">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="avatax-integration">
+<h1>AvaTax integration<a class="headerlink" href="#avatax-integration" title="Permalink to this headline">¶</a></h1>
+<p>Avalara’s <em>AvaTax</em> is a cloud-based tax software. Integrating <em>AvaTax</em> with Odoo provides real-time
+and region-specific tax calculations when users sell, purchase, and invoice items in Odoo. <em>AvaTax</em>
+tax calculation is supported with every United Nations charted country, including inter-border
+transactions.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p><em>AvaTax</em> is only available for integration with databases/companies that have locations in the
+United States and Canada. This means the fiscal position/country of a database can only be set to
+the United States or Canada. For more information, reference this documentation:
+<a class="reference internal" href="#avatax-fiscal-country"><span class="std std-ref">Fiscal country</span></a>.</p>
+</div>
+<p><em>AvaTax</em> accounts for location-based tax rates for each state, county, and city. It improves
+remittance accuracy by paying close attention to laws, rules, jurisdiction boundaries, and special
+circumstances (like, tax holidays, and product exemptions). Companies who integrate with <em>AvaTax</em>
+can maintain control of tax-calculations in-house with this simple <abbr title="application programming interface">API</abbr> integration.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Some limitations exist in Odoo while using <em>AvaTax</em> for tax calculation:</p>
+<ul class="simple">
+<li><p><em>AvaTax</em> is <strong>not</strong> supported in Odoo’s <em>Point of Sale</em> app, because a dynamic tax calculation
+model is excessive for transactions within a single delivery address, such as stores or
+restaurants.</p></li>
+<li><p><em>AvaTax</em> and Odoo use the company address and <strong>not</strong> the warehouse address.</p></li>
+<li><p>Exercise tax is <strong>not</strong> supported. This includes tobacco/vape taxes, fuel taxes, and other
+specific industries.</p></li>
+</ul>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>Avalara’s support documents: <a class="reference external" href="https://community.avalara.com/support/s/document-item?language=en_US&amp;bundleId=dqa1657870670369_dqa1657870670369&amp;topicId=About_AvaTax.html&amp;_LANG=enus">About AvaTax</a></p>
+</div>
+</section><section id="set-up-on-avatax">
+<h2>Set up on AvaTax<a class="headerlink" href="#set-up-on-avatax" title="Permalink to this headline">¶</a></h2>
+<p>To use <em>AvaTax</em>, an account with Avalara is required for the setup. If one has not been set up yet,
+connect with Avalara to purchase a license: <a class="reference external" href="https://www.avalara.com/us/en/get-started.html">Avalara: Let’s Talk</a>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Upon account setup, take note of the <em>AvaTax</em> <span class="guilabel">Account ID</span>. This will be needed in the
+<a class="reference internal" href="#avatax-credentials"><span class="std std-ref">Odoo setup</span></a>. In Odoo, this number is the <span class="guilabel">API ID</span>.</p>
+</div>
+<p>Then, <a class="reference external" href="https://community.avalara.com/support/s/document-item?bundleId=dqa1657870670369_dqa1657870670369&amp;topicId=Create_a_Basic_company_profile.html&amp;_LANG=enus">create a basic company profile</a>.</p>
+</section><section id="create-basic-company-profile">
+<h3>Create basic company profile<a class="headerlink" href="#create-basic-company-profile" title="Permalink to this headline">¶</a></h3>
+<p>Collect essential business details for the next step: locations where tax is collected,
+products/services sold (and their sales locations), and customer tax exemptions, if applicable.
+Follow the Avalara documentation for creating a basic company profile:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://community.avalara.com/support/s/document-item?bundleId=dqa1657870670369_dqa1657870670369&amp;topicId=Add_your_company_information.html&amp;_LANG=enus">Add company information</a>.</p></li>
+<li><p><a class="reference external" href="https://community.avalara.com/support/s/document-item?bundleId=dqa1657870670369_dqa1657870670369&amp;topicId=Tell_us_where_you_collect_and_pay_tax.html&amp;_LANG=enus">Tell us where the company collects and pays tax</a>.</p></li>
+<li><p><a class="reference external" href="https://community.avalara.com/support/s/document-item?bundleId=dqa1657870670369_dqa1657870670369&amp;topicId=Verify_your_jurisdictions_and_activate_your_company.html&amp;_LANG=enus">Verify jurisdictions and activate the company</a>.</p></li>
+<li><p><a class="reference external" href="https://community.avalara.com/support/s/document-item?bundleId=dqa1657870670369_dqa1657870670369&amp;topicId=Add_other_company_locations_for_location-based_filing.html&amp;_LANG=enus">Add other company locations for location-based filing</a>.</p></li>
+<li><p><a class="reference external" href="https://community.avalara.com/support/s/document-item?bundleId=dqa1657870670369_dqa1657870670369&amp;topicId=Add_marketplace_transactions_to_your_company_profile.html&amp;_LANG=enus">Add a marketplace to the company profile</a>.</p></li>
+</ol>
+</section><section id="connect-to-avatax">
+<span id="avatax-create-avalara-credentials"></span><h3>Connect to AvaTax<a class="headerlink" href="#connect-to-avatax" title="Permalink to this headline">¶</a></h3>
+<p>After creating the basic company profile in Avalara, connect to <em>AvaTax</em>. This step links Odoo and
+<em>AvaTax</em> bidirectionally.</p>
+<p>Navigate to either Avalara’s <a class="reference external" href="https://sandbox.admin.avalara.com/">sandbox</a> or <a class="reference external" href="https://admin.avalara.com/">production</a> environment. This will depend on which type of Avalara account the
+company would like to integrate.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://knowledge.avalara.com/bundle/fzc1692293626742/page/sandbox-vs-production.html">Sandbox vs production environments in Avalara</a>.</p>
+</div>
+<p>Log in to create the <span class="guilabel">License Key</span>. Go to <span class="menuselection">Settings ‣ License and API
+Keys</span>. Click <span class="guilabel">Generate License Key</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>A warning appears stating: <code class="o_code docutils literal notranslate"><span class="pre">If</span> <span class="pre">your</span> <span class="pre">business</span> <span class="pre">app</span> <span class="pre">is</span> <span class="pre">connected</span> <span class="pre">to</span> <span class="pre">Avalara</span> <span class="pre">solutions,</span> <span class="pre">the</span>
+<span class="pre">connection</span> <span class="pre">will</span> <span class="pre">be</span> <span class="pre">broken</span> <span class="pre">until</span> <span class="pre">you</span> <span class="pre">update</span> <span class="pre">the</span> <span class="pre">app</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">new</span> <span class="pre">license</span> <span class="pre">key.</span> <span class="pre">This</span> <span class="pre">action</span> <span class="pre">cannot</span>
+<span class="pre">be</span> <span class="pre">undone.</span></code></p>
+<p>Generating a new license key breaks the connection with existing business apps using the <em>AvaTax</em>
+integration. Make sure to update these apps with the new license key.</p>
+</div>
+<p>If this will be the first <abbr title="application programming interface">API</abbr> integration being made
+with <em>AvaTax</em> and Odoo, then click <span class="guilabel">Generate license key</span>.</p>
+<p>If this is an additional license key, ensure the previous connection can be broken. There is
+<strong>only</strong> one license key associated with each of the Avalara sandbox and production accounts.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Copy this key to a safe place. It is <strong>strongly encouraged</strong> to backup the license key for future
+reference. This key cannot be retrieved after leaving this screen.</p>
+</div>
+</section><section id="odoo-configuration">
+<h2>Odoo configuration<a class="headerlink" href="#odoo-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Before using <em>AvaTax</em>, there are some additional configurations in Odoo to ensure tax calculations
+are made accurately.</p>
+<p>Verify that the Odoo database contains necessary data. The country initially set up in the database
+determines the fiscal position, and aids <em>AvaTax</em> in calculating accurate tax rates.</p>
+</section><section id="fiscal-country">
+<span id="avatax-fiscal-country"></span><h3>Fiscal country<a class="headerlink" href="#fiscal-country" title="Permalink to this headline">¶</a></h3>
+<p>To set the <span class="guilabel">Fiscal Country</span>, navigate to <span class="menuselection">Accounting app ‣ Configuration
+‣ Settings</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../fiscal_localizations.html"><span class="doc">Fiscal localizations</span></a></p>
+</div>
+<p>Under the <span class="guilabel">Taxes</span> section, set the <span class="guilabel">Fiscal Country</span> feature to <span class="guilabel">United
+States</span> or <span class="guilabel">Canada</span>. Then, click <span class="guilabel">Save</span>.</p>
+</section><section id="company-settings">
+<h3>Company settings<a class="headerlink" href="#company-settings" title="Permalink to this headline">¶</a></h3>
+<p>All companies operating under the Odoo database should have a full and complete address listed in
+the settings. Navigate to the <span class="menuselection">Settings app</span>, and under the <span class="guilabel">Companies</span>
+section, ensure there is only one company operating the Odoo database. Click <span class="guilabel">Update Info</span>
+to open a separate page to update company details.</p>
+<p>If there are multiple companies operating in the database, click <span class="guilabel">Manage Companies</span> to
+load a list of companies to select from. Update company information by clicking into the specific
+company.</p>
+<p>Database administrators should ensure that the <span class="guilabel">Street…</span>, <span class="guilabel">Street2…</span>,
+<span class="guilabel">City</span>, <span class="guilabel">State</span>, <span class="guilabel">ZIP</span>, and <span class="guilabel">Country</span> are all updated for
+the companies.</p>
+<p>This ensures accurate tax calculations and smooth end-of-year accounting operations.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../general/companies.html"><span class="doc">Companies</span></a></p></li>
+<li><p><a class="reference internal" href="../get_started.html"><span class="doc">Get started</span></a></p></li>
+</ul>
+</div>
+</section><section id="module-installation">
+<h3>Module installation<a class="headerlink" href="#module-installation" title="Permalink to this headline">¶</a></h3>
+<p>Next, ensure that the Odoo <em>AvaTax</em> module is installed. To do so, navigate to the
+<span class="menuselection">Apps application</span>. In the <span class="guilabel">Search…</span> bar, type in <code class="o_code docutils literal notranslate"><span class="pre">avatax</span></code>, and press
+<kbd class="kbd o_code docutils literal notranslate">Enter</kbd>. The following results populate:</p>
+<table class="colwidths-given table docutils">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Technical name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Avatax</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">account_avatax</span></code></p></td>
+<td><p>Default <em>AvaTax</em> module. This module adds the base <em>AvaTax</em> features for tax calculation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Avatax for SO</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">account_avatax_sale</span></code></p></td>
+<td><p>Includes the information needed for tax calculation on sales orders in Odoo.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Avatax for Subscriptions</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">account_avatax_sale_subscription</span></code></p></td>
+<td><p>This module includes the features required for tax calculation on subscriptions in Odoo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Account Avatax - Ecommerce</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">website_sale_account_avatax</span></code></p></td>
+<td><p>Includes tax calculation features for the checkout process on Odoo eCommerce.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Account AvaTax - Ecommerce - Delivery</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">website_sale_delivery_avatax</span></code></p></td>
+<td><p>Includes tax calculation features for the delivery process on Odoo eCommerce.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Click the <span class="guilabel">Install</span> button on the module labeled <span class="guilabel">Avatax</span>: <code class="o_code docutils literal notranslate"><span class="pre">account_avatax</span></code>.
+Doing so installs the following modules:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Avatax</span>: <code class="o_code docutils literal notranslate"><span class="pre">account_avatax</span></code></p></li>
+<li><p><span class="guilabel">Avatax for SO</span>: <code class="o_code docutils literal notranslate"><span class="pre">account_avatax_sale</span></code></p></li>
+<li><p><span class="guilabel">Account Avatax - Ecommerce</span>: <code class="o_code docutils literal notranslate"><span class="pre">website_sale_account_avatax</span></code></p></li>
+</ul>
+<p>Should <em>AvaTax</em> be needed for Odoo <em>Subscriptions</em>, or for delivery tax in Odoo <em>eCommerce</em>, then
+install those modules individually by clicking on <span class="guilabel">Install</span>.</p>
+</section><section id="odoo-avatax-settings">
+<span id="avatax-credentials"></span><h3>Odoo AvaTax settings<a class="headerlink" href="#odoo-avatax-settings" title="Permalink to this headline">¶</a></h3>
+<p>To integrate the <em>AvaTax</em> <abbr title="application programming interface">API</abbr> with Odoo, go to
+<span class="menuselection">Accounting app ‣ Configuration ‣ Settings</span> section. The <span class="guilabel">AvaTax</span>
+fields in the <span class="guilabel">Taxes</span> section is where the <em>AvaTax</em> configurations are made and the
+credentials are entered in.</p>
+<img alt="Configure AvaTax settings" class="align-center" src="../../../../_images/avatax-configuration-settings.png" />
+</section><section id="prerequisites">
+<h4>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h4>
+<p>First, select the <span class="guilabel">Environment</span> in which the company wishes to use <em>AvaTax</em> in. It can
+either be <span class="guilabel">Sandbox</span> or <span class="guilabel">Production</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>For help determining which <em>AvaTax</em> environment to use (either <span class="guilabel">Production</span> or
+<span class="guilabel">Sandbox</span>), visit: <a class="reference external" href="https://knowledge.avalara.com/bundle/fzc1692293626742/page/sandbox-vs-production.html">Sandbox vs Production environments</a>.</p>
+</div>
+</section><section id="credentials">
+<h4>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">¶</a></h4>
+<p>Now, the credentials can be entered in. The <em>AvaTax</em> <span class="guilabel">Account ID</span> should be entered in the
+<span class="guilabel">API ID</span> field, and the <span class="guilabel">License Key</span> should be entered in the <span class="guilabel">API
+Key</span> field.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <span class="guilabel">Account ID</span> can be found by logging into the <em>AvaTax</em> portal (<a class="reference external" href="https://sandbox.admin.avalara.com/">sandbox</a> or <a class="reference external" href="https://admin.avalara.com/">production</a>). In the
+upper-right corner, click on the initials of the user and <span class="guilabel">Account</span>. The
+<span class="guilabel">Account ID</span> is listed first.</p>
+<p>To access the <span class="guilabel">License Key</span> see this documentation:
+<a class="reference internal" href="#avatax-create-avalara-credentials"><span class="std std-ref">Connect to AvaTax</span></a>.</p>
+</div>
+<p>For the <span class="guilabel">Company Code</span> field, enter the Avalara company code for the company being
+configured. Avalara interprets this as <code class="o_code docutils literal notranslate"><span class="pre">DEFAULT</span></code>, if it is not set. The <span class="guilabel">Company Code</span> can
+be accessed in the Avalara management portal.</p>
+<p>First, log into the <em>AvaTax</em> portal (<a class="reference external" href="https://sandbox.admin.avalara.com/">sandbox</a> or <a class="reference external" href="https://admin.avalara.com/">production</a>). Then, navigate to <span class="menuselection">Settings ‣ Manage Companies</span>.
+The <span class="guilabel">Company Code</span> value is located in the row of the <span class="guilabel">Company</span> in the
+<span class="guilabel">Company Code</span> column.</p>
+<img alt="AvaTax company code highlighted on the company details page." class="align-center" src="../../../../_images/company-code.png" />
+</section><section id="transaction-options">
+<h4>Transaction options<a class="headerlink" href="#transaction-options" title="Permalink to this headline">¶</a></h4>
+<p>There are two transactional settings in the Odoo <em>AvaTax</em> settings that can be configured:
+<span class="guilabel">Use UPC</span> and <span class="guilabel">Commit Transactions</span>.</p>
+<p>If the checkbox next to <span class="guilabel">Use UPC</span> is ticked, the transactions will use Universal Product
+Codes (UPC), instead of custom defined codes in Avalara. Consult a certified public accountant (CPA)
+for specific guidance.</p>
+<p>Should the <span class="guilabel">Commit Transactions</span> checkbox be ticked, then, the transactions in the Odoo
+database will be committed for reporting in <em>AvaTax</em>.</p>
+</section><section id="address-validation">
+<h4>Address validation<a class="headerlink" href="#address-validation" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Address Validation</em> feature ensures that the most up-to-date address by postal standards is set
+on a contact in Odoo. This is important to provide accurate tax calculations for customers.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <span class="guilabel">Address Validation</span> feature only works with partners/customers in North America.</p>
+</div>
+<p>Additionally, tick the checkbox next to the <span class="guilabel">Address validation</span> field.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>For accurate tax calculations, it is best practice to enter a complete address for the contacts
+saved in the database. However, <em>AvaTax</em> can still function by implementing a best effort attempt
+using only the <span class="guilabel">Country</span>, <span class="guilabel">State</span>, and <span class="guilabel">Zip code</span>. These are the
+three minimum required fields.</p>
+</div>
+<p><span class="guilabel">Save</span> the settings to implement the configuration.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Manually <span class="guilabel">Validate</span> the address by navigating to the <span class="menuselection">Contacts app</span>, and
+selecting a contact. Now that the <em>AvaTax</em> module has been configured on the database, a
+<span class="guilabel">Validate</span> button appears directly below the <span class="guilabel">Address</span>.</p>
+<p>Click <span class="guilabel">Validate</span>, and a pop-up window appears with a <span class="guilabel">Validated Address</span> and
+<span class="guilabel">Original Address</span> listed. If the <span class="guilabel">Validated Address</span> is the correct mailing
+address for tax purposes, click <span class="guilabel">Save Validated</span>.</p>
+<img alt="Validate address pop-up window in Odoo with &quot;Save Validated&quot; button and &quot;Validated Address&quot; highlighted." class="align-center" src="../../../../_images/validate-address.png" />
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>All previously-entered addresses for contacts in the Odoo database will need to be validated
+using the manually validate process outlined above. Addresses are not automatically validated if
+they were entered previously. This only occurs upon tax calculation.</p>
+</div>
+</section><section id="test-connection">
+<h4>Test connection<a class="headerlink" href="#test-connection" title="Permalink to this headline">¶</a></h4>
+<p>After entering all the above information into the <em>AvaTax</em> setup on Odoo, click <span class="guilabel">Test
+connection</span>. This ensures the <span class="guilabel">API ID</span> and <span class="guilabel">API KEY</span> are correct, and a
+connection is made between Odoo and the <em>AvaTax</em> application programming interface (API).</p>
+</section><section id="sync-parameters">
+<h4>Sync parameters<a class="headerlink" href="#sync-parameters" title="Permalink to this headline">¶</a></h4>
+<p>Upon finishing the configuration and settings of the <em>AvaTax</em> section, click the <span class="guilabel">Sync
+Parameters</span> button. This action synchronizes the exemption codes from <em>AvaTax</em>.</p>
+</section><section id="fiscal-position">
+<span id="avatax-fiscal-positions"></span><h3>Fiscal position<a class="headerlink" href="#fiscal-position" title="Permalink to this headline">¶</a></h3>
+<p>Next, navigate to <span class="menuselection">Accounting app ‣ Configuration ‣ Accounting: Fiscal
+Positions</span>. A <span class="guilabel">Fiscal Position</span> is listed named, <span class="guilabel">Automatic Tax Mapping
+(AvaTax)</span>. Click it to open <em>AvaTax’s</em> fiscal position configuration page.</p>
+<p>Here, ensure that the <span class="guilabel">Use AvaTax API</span> checkbox is ticked.</p>
+<p>Optionally, tick the checkbox next to the field labeled: <span class="guilabel">Detect Automatically</span>. Should
+this option be ticked, then, Odoo will automatically apply this <span class="guilabel">Fiscal Position</span> for
+transactions in Odoo.</p>
+<p>Enabling <span class="guilabel">Detect Automatically</span> also makes specific parameters, such as <span class="guilabel">VAT
+required</span>, <span class="guilabel">Foreign Tax ID</span>, <span class="guilabel">Country Group</span>, <span class="guilabel">Country</span>,
+<span class="guilabel">Federal States</span>, or <span class="guilabel">Zip Range</span> appear. Filling these parameters filters the
+<span class="guilabel">Fiscal Position</span> usage. Leaving them blank ensures all calculations are made using this
+<span class="guilabel">Fiscal Position</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Should the <span class="guilabel">Detect Automatically</span> checkbox not be ticked, each customer will need to
+have the <span class="guilabel">Fiscal Position</span> set on their <span class="guilabel">Sales and Purchase</span> tab of the
+contact record. To do so, navigate to <span class="menuselection">Sales app ‣ Order ‣ Customers</span>, or
+<span class="menuselection">Contacts app ‣ Contacts</span>. Then, select a customer or contact to set the fiscal
+position on.</p>
+<p>Navigate to the <span class="guilabel">Sales and Purchase</span> tab, and down to the section labeled,
+<span class="guilabel">Fiscal Position</span>. Set the <span class="guilabel">Fiscal Position</span> field to the fiscal position
+for the customer.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="fiscal_positions.html"><span class="doc">Fiscal positions (tax and account mapping)</span></a></p>
+</div>
+</section><section id="avatax-accounts">
+<h4>AvaTax accounts<a class="headerlink" href="#avatax-accounts" title="Permalink to this headline">¶</a></h4>
+<p>Upon selecting the checkbox option for <span class="guilabel">Use AvaTax API</span> a new <span class="guilabel">AvaTax</span> tab
+appears. Click into this tab to reveal two different settings.</p>
+<p>The first setting is the <span class="guilabel">AvaTax Invoice Account</span>, while the second is, <span class="guilabel">AvaTax
+Refund Account</span>. Ensure both accounts are set for smooth end-of-year record keeping. Consult a
+certified public accountant (CPA) for specific guidance on setting both accounts.</p>
+<p>Click <span class="guilabel">Save</span> to implement the changes.</p>
+</section><section id="tax-mapping">
+<h3>Tax mapping<a class="headerlink" href="#tax-mapping" title="Permalink to this headline">¶</a></h3>
+<p>The <em>AvaTax</em> integration is available on sale orders and invoices with the included <em>AvaTax</em> fiscal
+position.</p>
+</section><section id="product-category-mapping">
+<h4>Product category mapping<a class="headerlink" href="#product-category-mapping" title="Permalink to this headline">¶</a></h4>
+<p>Before using the integration, specify an <span class="guilabel">Avatax Category</span> on the product categories.
+Navigate to <span class="menuselection">Inventory app ‣ Configuration ‣ Product Categories</span>. Select the
+product category to add the <span class="guilabel">AvaTax Category</span> to. In the <span class="guilabel">AvaTax Category</span>
+field, select a category from the drop-down menu, or <span class="guilabel">Search More…</span> to open the complete
+list of options.</p>
+<img alt="Specify AvaTax Category on products." class="align-center" src="../../../../_images/avatax-category.png" />
+</section><section id="product-mapping">
+<h4>Product mapping<a class="headerlink" href="#product-mapping" title="Permalink to this headline">¶</a></h4>
+<p><em>AvaTax</em> Categories may be set on individual products, as well. To set the <span class="guilabel">Avatax
+Category</span> navigate to <span class="menuselection">Inventory app ‣ Products ‣ Products</span>. Select the product
+to add the <span class="guilabel">Avatax Category</span> to. Under the <span class="guilabel">General Information</span> tab, on the
+far-right, is a selector field labeled: <span class="guilabel">Avatax Category</span>. Finally, click the drop-down
+menu, and select a category, or <span class="guilabel">Search More…</span> to find one that is not listed.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If both the product, and its category, have an <span class="guilabel">AvaTax Category</span> set, the product’s
+<span class="guilabel">AvaTax Category</span> takes precedence.</p>
+</div>
+<img alt="Override product categories as needed." class="align-center" src="../../../../_images/override-avatax-product-category.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Mapping an <span class="guilabel">AvaTax Category</span> on either the <em>Product</em> or <em>Product Category</em> should be
+completed for every <em>Product</em> or <em>Product Category</em>, depending the route that is chosen.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="fiscal_positions.html"><span class="doc">Fiscal positions (tax and account mapping)</span></a></p></li>
+<li><p><a class="reference internal" href="avatax/avatax_use.html"><span class="doc">AvaTax use</span></a></p></li>
+<li><p><a class="reference internal" href="avatax/avalara_portal.html"><span class="doc">Avalara (Avatax) portal</span></a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/us-tax-compliance-avatax-2858?fullscreen=1">US Tax Compliance: Avatax elearning video</a></p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_finance_accounting_taxes_avatax_avatax_use"><a class="reference internal" href="avatax/avatax_use.html">AvaTax use</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_taxes_avatax_avalara_portal"><a class="reference internal" href="avatax/avalara_portal.html">Avalara (Avatax) portal</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">AvaTax integration</a><ul>
+<li><a class="reference internal" href="#set-up-on-avatax">Set up on AvaTax</a><ul>
+<li><a class="reference internal" href="#create-basic-company-profile">Create basic company profile</a></li>
+<li><a class="reference internal" href="#connect-to-avatax">Connect to AvaTax</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#odoo-configuration">Odoo configuration</a><ul>
+<li><a class="reference internal" href="#fiscal-country">Fiscal country</a></li>
+<li><a class="reference internal" href="#company-settings">Company settings</a></li>
+<li><a class="reference internal" href="#module-installation">Module installation</a></li>
+<li><a class="reference internal" href="#odoo-avatax-settings">Odoo AvaTax settings</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#credentials">Credentials</a></li>
+<li><a class="reference internal" href="#transaction-options">Transaction options</a></li>
+<li><a class="reference internal" href="#address-validation">Address validation</a></li>
+<li><a class="reference internal" href="#test-connection">Test connection</a></li>
+<li><a class="reference internal" href="#sync-parameters">Sync parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiscal-position">Fiscal position</a><ul>
+<li><a class="reference internal" href="#avatax-accounts">AvaTax accounts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tax-mapping">Tax mapping</a><ul>
+<li><a class="reference internal" href="#product-category-mapping">Product category mapping</a></li>
+<li><a class="reference internal" href="#product-mapping">Product mapping</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AvaTax integration</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

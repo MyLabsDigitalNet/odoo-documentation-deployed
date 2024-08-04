@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chart of accounts &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/chart_of_accounts.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/get_started/chart_of_accounts.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Chart of accounts</a><ul>
+<li><a class="reference internal" href="#configuration-of-an-account">Configuration of an account</a><ul>
+<li><a class="reference internal" href="#code-and-name">Code and name</a></li>
+<li><a class="reference internal" href="#type">Type</a><ul>
+<li><a class="reference internal" href="#assets-deferred-expenses-and-deferred-revenues-automation">Assets, deferred expenses, and deferred revenues automation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#default-taxes">Default taxes</a></li>
+<li><a class="reference internal" href="#tags">Tags</a></li>
+<li><a class="reference internal" href="#account-groups">Account groups</a><ul>
+<li><a class="reference internal" href="#create-account-groups-manually">Create account groups manually</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#allow-reconciliation">Allow reconciliation</a></li>
+<li><a class="reference internal" href="#deprecated">Deprecated</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/chart_of_accounts.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Chart of accounts</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="chart-of-accounts">
+<h1>Chart of accounts<a class="headerlink" href="#chart-of-accounts" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>chart of accounts (COA)</strong> is the list of all the accounts used to record financial
+transactions in the general ledger of an organization. The chart of accounts can be found under
+<span class="menuselection">Accounting‣Configuration‣Chart of Accounts</span>.</p>
+<p>When browsing your chart of accounts, you can sort the accounts by <span class="guilabel">Code</span>,
+<span class="guilabel">Account Name</span>, or <span class="guilabel">Type</span>, but other options are available in the drop-down menu
+<span class="guilabel">(⋮)</span>.</p>
+<img alt="Group the accounts by type in Odoo Accounting" class="align-center" src="../../../../_images/plan_de_cuentas.png" />
+</section><section id="configuration-of-an-account">
+<h2>Configuration of an account<a class="headerlink" href="#configuration-of-an-account" title="Permalink to this headline">¶</a></h2>
+<p>The country you select during the creation of your database (or additional company in your database)
+determines which <a class="reference internal" href="../../fiscal_localizations.html"><span class="doc">fiscal localization package</span></a> is installed by
+default. This package includes a standard chart of accounts already configured according to the
+country’s regulations. You can use it directly or set it according to your company’s needs.</p>
+<p>To create a new account, go to <span class="menuselection">Accounting‣Configuration‣Chart of Accounts</span>,
+click <span class="guilabel">Create</span>, and fill in (at the minimum) the required fields
+(<span class="guilabel">Code, Account Name, Type</span>).</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>It is not possible to modify the <strong>fiscal localization</strong> of a company once a journal entry has
+been posted.</p>
+</div>
+</section><section id="code-and-name">
+<h3>Code and name<a class="headerlink" href="#code-and-name" title="Permalink to this headline">¶</a></h3>
+<p>Each account is identified by its <span class="guilabel">Code</span> and <span class="guilabel">Name</span>, which also indicate the
+account’s purpose.</p>
+</section><section id="type">
+<span id="chart-of-account-type"></span><h3>Type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h3>
+<p>Correctly configuring the <strong>account type</strong> is critical as it serves multiple purposes:</p>
+<ul class="simple">
+<li><p>Information on the account’s purpose and behavior</p></li>
+<li><p>Generate country-specific legal and financial reports</p></li>
+<li><p>Set the rules to close a fiscal year</p></li>
+<li><p>Generate opening entries</p></li>
+</ul>
+<p>To configure an account type, open the <span class="guilabel">Type</span> field’s drop-down selector and select the
+corresponding type from the following list:</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 26%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Report</p></th>
+<th class="head"><p>Category</p></th>
+<th class="head"><p>Account Types</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="12"><p>Balance Sheet</p></td>
+<td rowspan="6"><p>Assets</p></td>
+<td><p>Receivable</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank and Cash</p></td>
+</tr>
+<tr class="row-even"><td><p>Current Assets</p></td>
+</tr>
+<tr class="row-odd"><td><p>Non-current Assets</p></td>
+</tr>
+<tr class="row-even"><td><p>Prepayments</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fixed Assets</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>Liabilities</p></td>
+<td><p>Payable</p></td>
+</tr>
+<tr class="row-odd"><td><p>Credit Card</p></td>
+</tr>
+<tr class="row-even"><td><p>Current Liabilities</p></td>
+</tr>
+<tr class="row-odd"><td><p>Non-current Liabilities</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Equity</p></td>
+<td><p>Equity</p></td>
+</tr>
+<tr class="row-odd"><td><p>Current Year Earnings</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><p>Profit &amp; Loss</p></td>
+<td rowspan="2"><p>Income</p></td>
+<td><p>Income</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other Income</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>Expense</p></td>
+<td><p>Expense</p></td>
+</tr>
+<tr class="row-odd"><td><p>Depreciation</p></td>
+</tr>
+<tr class="row-even"><td><p>Cost of Revenue</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other</p></td>
+<td><p>Other</p></td>
+<td><p>Off-Balance Sheet</p></td>
+</tr>
+</tbody>
+</table>
+</section><section id="assets-deferred-expenses-and-deferred-revenues-automation">
+<h4>Assets, deferred expenses, and deferred revenues automation<a class="headerlink" href="#assets-deferred-expenses-and-deferred-revenues-automation" title="Permalink to this headline">¶</a></h4>
+<p>Some <strong>account types</strong> can <strong>automate</strong> the creation of <a class="reference internal" href="../vendor_bills/assets.html#assets-automation"><span class="std std-ref">assets</span></a> entries,
+<a class="reference internal" href="../vendor_bills/deferred_expenses.html#deferred-expenses-automation"><span class="std std-ref">deferred expenses</span></a> entries, and
+<a class="reference internal" href="../customer_invoices/deferred_revenues.html#deferred-revenues-automation"><span class="std std-ref">deferred revenues</span></a> entries. To <strong>automate</strong> entries, click
+<span class="guilabel">Setup</span> on an account line and go to the <span class="guilabel">Automation</span> tab.</p>
+<p>You have three choices for the <span class="guilabel">Automation</span> tab:</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">No</span>: this is the default value. Nothing happens.</p></li>
+<li><p><span class="guilabel">Create in draft</span>: whenever a transaction is posted on the account, a draft entry is
+created but not validated. You must first fill out the corresponding form.</p></li>
+<li><p><span class="guilabel">Create and validate</span>: you must also select a <span class="guilabel">Deferred Expense Model</span>.
+Whenever a transaction is posted on the account, an entry is created and immediately validated.</p></li>
+</ol>
+</section><section id="default-taxes">
+<h3>Default taxes<a class="headerlink" href="#default-taxes" title="Permalink to this headline">¶</a></h3>
+<p>In the <span class="guilabel">Setup</span> menu of an account, select a <strong>default tax</strong> to be applied when this
+account is chosen for a product sale or purchase.</p>
+</section><section id="tags">
+<h3>Tags<a class="headerlink" href="#tags" title="Permalink to this headline">¶</a></h3>
+<p>Some accounting reports require <strong>tags</strong> to be set on the relevant accounts. To add a tag, under
+<span class="guilabel">Setup</span>, click the <span class="guilabel">Tags</span> field and select an existing tag or <span class="guilabel">Create</span>
+a new one.</p>
+</section><section id="account-groups">
+<h3>Account groups<a class="headerlink" href="#account-groups" title="Permalink to this headline">¶</a></h3>
+<p><strong>Account groups</strong> are useful to list multiple accounts as <em>sub-accounts</em> of a bigger account and
+thus consolidate reports such as the <strong>Trial Balance</strong>. By default, groups are handled automatically
+based on the code of the group. For example, a new account <code class="o_code docutils literal notranslate"><span class="pre">131200</span></code> is going to be part of the group
+<code class="o_code docutils literal notranslate"><span class="pre">131000</span></code>. You can attribute a specific group to an account in the <span class="guilabel">Group</span> field under
+<span class="guilabel">Setup</span>.</p>
+</section><section id="create-account-groups-manually">
+<h4>Create account groups manually<a class="headerlink" href="#create-account-groups-manually" title="Permalink to this headline">¶</a></h4>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Regular users should not need to create account groups manually. The following section is only
+intended for rare and advanced use cases.</p>
+</div>
+<p>To create a new account group, activate <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> and head to
+<span class="menuselection">Accounting app‣Configuration‣Account Groups</span>. Here, create a new group and enter
+the <span class="guilabel">name, code prefix, and company</span> to which that group account should be available. Note
+that you must enter the same code prefix in both <span class="guilabel">From</span> and <span class="guilabel">to</span> fields.</p>
+<img alt="Creación de grupos de cuentas" class="align-center" src="../../../../_images/grupo_cuentas.png" />
+<p>To display your <strong>Trial Balance</strong> report with your account groups, go to
+<span class="menuselection">Accounting‣Reporting‣Trial Balance</span>, then open the <span class="guilabel">Options</span> menu and
+select <span class="guilabel">Hierarchy and Subtotals</span>.</p>
+<img alt="Account Groups in the Trial Balance in Odoo Accounting" src="../../../../_images/chart-of-accounts-groups.png" />
+</section><section id="allow-reconciliation">
+<h3>Allow reconciliation<a class="headerlink" href="#allow-reconciliation" title="Permalink to this headline">¶</a></h3>
+<p>Some accounts, such as accounts made to record the transactions of a payment method, can be used for
+the reconciliation of journal entries.</p>
+<p>For example, an invoice paid with a credit card can be marked as <span class="guilabel">paid</span> if reconciled with
+its payment. Therefore, the account used to record credit card payments needs to be configured as
+<strong>allowing reconciliation</strong>.</p>
+<p>To do so, check the <span class="guilabel">Allow Reconciliation</span> box in the account’s settings, and
+<span class="guilabel">Save</span>; or enable the button from the chart of accounts view.</p>
+<img alt="Permite conciliaciones" src="../../../../_images/permitir_conciliacion.png" />
+</section><section id="deprecated">
+<h3>Deprecated<a class="headerlink" href="#deprecated" title="Permalink to this headline">¶</a></h3>
+<p>It is not possible to delete an account once a transaction has been recorded on it. You can make
+them unusable by using the <strong>Deprecated</strong> feature: check the <span class="guilabel">Deprecated</span> box in the
+account’s settings, and <span class="guilabel">Save</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="cheat_sheet.html"><span class="doc">Accounting cheat sheet</span></a></p></li>
+<li><p><a class="reference internal" href="../vendor_bills/assets.html"><span class="doc">Non-current assets and fixed assets</span></a></p></li>
+<li><p><a class="reference internal" href="../vendor_bills/deferred_expenses.html"><span class="doc">Deferred expenses and prepayments</span></a></p></li>
+<li><p><a class="reference internal" href="../customer_invoices/deferred_revenues.html"><span class="doc">Deferred revenues</span></a></p></li>
+<li><p><a class="reference internal" href="../../fiscal_localizations.html"><span class="doc">Fiscal localizations</span></a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/chart-of-accounts-1630">Odoo Tutorials: Chart of accounts</a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/update-your-chart-of-accounts-1658">Odoo Tutorials: Update your chart of accounts</a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Chart of accounts</a><ul>
+<li><a class="reference internal" href="#configuration-of-an-account">Configuration of an account</a><ul>
+<li><a class="reference internal" href="#code-and-name">Code and name</a></li>
+<li><a class="reference internal" href="#type">Type</a><ul>
+<li><a class="reference internal" href="#assets-deferred-expenses-and-deferred-revenues-automation">Assets, deferred expenses, and deferred revenues automation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#default-taxes">Default taxes</a></li>
+<li><a class="reference internal" href="#tags">Tags</a></li>
+<li><a class="reference internal" href="#account-groups">Account groups</a><ul>
+<li><a class="reference internal" href="#create-account-groups-manually">Create account groups manually</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#allow-reconciliation">Allow reconciliation</a></li>
+<li><a class="reference internal" href="#deprecated">Deprecated</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Chart of accounts</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

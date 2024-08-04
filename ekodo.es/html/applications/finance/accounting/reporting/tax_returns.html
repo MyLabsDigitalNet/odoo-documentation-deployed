@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tax return (VAT declaration) &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/reporting/tax_returns.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/reporting/tax_returns.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Tax return (VAT declaration)</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#tax-return-periodicity">Tax Return Periodicity</a></li>
+<li><a class="reference internal" href="#tax-grids">Tax Grids</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#close-a-tax-period">Close a tax period</a><ul>
+<li><a class="reference internal" href="#tax-lock-date">Tax Lock Date</a></li>
+<li><a class="reference internal" href="#tax-report">Tax Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/reporting/tax_returns.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tax return (VAT declaration)</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="tax-return-vat-declaration">
+<h1>Tax return (VAT declaration)<a class="headerlink" href="#tax-return-vat-declaration" title="Permalink to this headline">¶</a></h1>
+<p>Companies with a registered <abbr title="Value Added Tax">VAT</abbr> number must submit a <strong>tax return</strong> on
+a monthly or quarterly basis, depending on their turnover and the registration regulation. A tax
+return - or VAT return - gives the tax authorities information about the taxable transactions made
+by the company. The <strong>output tax</strong> is charged on the number of goods and services sold by a
+business, while the <strong>input tax</strong> is the tax added to the price when goods or services are
+purchased. Based on these values, the company can calculate the tax amount they have to pay or be
+refunded.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>You can find additional information about VAT and its mechanism on this page from the European
+Commission: <a class="reference external" href="https://ec.europa.eu/taxation_customs/business/vat/what-is-vat_en">“What is VAT?”</a>.</p>
+</div>
+</section><section id="prerequisites">
+<span id="tax-returns-prerequisites"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+</section><section id="tax-return-periodicity">
+<span id="tax-returns-periodicity"></span><h3>Tax Return Periodicity<a class="headerlink" href="#tax-return-periodicity" title="Permalink to this headline">¶</a></h3>
+<p>The configuration of the <strong>Tax Return Periodicity</strong> allows Odoo to compute your tax return correctly
+and also to send you a reminder to never miss a tax return deadline.</p>
+<p>To do so, go to <span class="menuselection">Accounting ‣ Configuration ‣ Settings</span>. Under the
+<span class="guilabel">Tax Return Periodicity</span>, you can set:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Periodicity</span>: define here whether you submit your tax return on a monthly or quarterly
+basis;</p></li>
+<li><p><span class="guilabel">Reminder</span>: define when Odoo should remind you to submit your tax return;</p></li>
+<li><p><span class="guilabel">Journal</span>: select the journal in which to record the tax return.</p></li>
+</ul>
+<img alt="Configure how often tax returns have to be made in Odoo Accounting" class="align-center" src="../../../../_images/tax_return_periodicity.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>This is usually configured during the <a class="reference internal" href="../get_started.html"><span class="doc">app’s initial set up</span></a>.</p>
+</div>
+</section><section id="tax-grids">
+<span id="tax-returns-tax-grids"></span><h3>Tax Grids<a class="headerlink" href="#tax-grids" title="Permalink to this headline">¶</a></h3>
+<p>Odoo generates tax reports based on the <span class="guilabel">Tax Grids</span> settings that are configured on your
+taxes. Therefore, it is crucial to make sure that all recorded transactions use the right taxes.
+You can see the <span class="guilabel">Tax Grids</span> by opening the <span class="guilabel">Journal Items</span> tab of any
+invoice and bill.</p>
+<img alt="see which tax grids are used to record transactions in Odoo Accounting" class="align-center" src="../../../../_images/tax_return_grids.png" />
+<p>To configure your tax grids, go to <span class="menuselection">Accounting ‣ Configuration ‣ Taxes</span>,
+and open the tax you want to modify. There, you can edit your tax settings, along with the tax
+grids that are used to record invoices or credit notes.</p>
+<img alt="Configure taxes and their tax grids in Odoo Accounting" class="align-center" src="../../../../_images/tax_return_taxes.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Taxes and reports are usually already pre-configured in Odoo: a <a class="reference internal" href="../../fiscal_localizations.html#fiscal-localizations-packages"><span class="std std-ref">fiscal localization package</span></a> is installed according to the country you select at the creation
+of your database.</p>
+</div>
+</section><section id="close-a-tax-period">
+<span id="tax-returns-close"></span><h2>Close a tax period<a class="headerlink" href="#close-a-tax-period" title="Permalink to this headline">¶</a></h2>
+</section><section id="tax-lock-date">
+<span id="tax-returns-lock-date"></span><h3>Tax Lock Date<a class="headerlink" href="#tax-lock-date" title="Permalink to this headline">¶</a></h3>
+<p>Any new transaction whose accounting date prior to the <span class="guilabel">Tax Lock Date</span> has its tax values
+moved to the next open tax period. This is useful to make sure that no change can be made to a
+report once its period is closed.</p>
+<p>Therefore, we recommend locking your tax date before working on your
+<span class="guilabel">Closing Journal Entry</span>.
+This way, other users cannot modify or add transactions that would have an impact on the
+<span class="guilabel">Closing Journal Entry</span>, which can help you avoid some tax declaration errors.</p>
+<p>To check the current <span class="guilabel">Tax Lock Date</span>, or to edit it, go to
+<span class="menuselection">Accounting ‣ Accounting ‣ Actions: Lock Dates</span>.</p>
+<img alt="Lock your tax for a specific period in Odoo Accounting" class="align-center" src="../../../../_images/tax_return_lock.png" />
+</section><section id="tax-report">
+<span id="tax-returns-report"></span><h3>Tax Report<a class="headerlink" href="#tax-report" title="Permalink to this headline">¶</a></h3>
+<p>Once all the transactions involving taxes have been posted for the period you want to report, open
+your <span class="guilabel">Tax Report</span> by going to <span class="menuselection">Accounting ‣ Reporting ‣
+Audit Reports: Tax Report</span>. Make sure to select the right period you want to declare by using the
+date filter, this way you can have an overview of your tax report. From this view, you can easily
+access different formats of your tax report, such as <code class="o_code docutils literal notranslate"><span class="pre">PDF</span></code> and XLSX. These include all the values to
+report to the tax authorities, along with the amount you have to pay or be refunded.</p>
+<img alt="download the PDF with your Tax Report in Odoo Accounting" class="align-center" src="../../../../_images/tax_return_report.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If you forgot to lock your tax date before clicking on <span class="guilabel">Closing Journal Entry</span>, then
+Odoo automatically locks your fiscal period on the same date as the accounting date of your
+entry. This safety mechanism can prevent some fiscal errors, but it is advised to lock your tax
+date manually before, as described above.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../taxes.html"><span class="doc">Taxes</span></a></p></li>
+<li><p><a class="reference internal" href="../get_started.html"><span class="doc">Get started</span></a></p></li>
+<li><p><a class="reference internal" href="../../fiscal_localizations.html"><span class="doc">Fiscal localizations</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Tax return (VAT declaration)</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#tax-return-periodicity">Tax Return Periodicity</a></li>
+<li><a class="reference internal" href="#tax-grids">Tax Grids</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#close-a-tax-period">Close a tax period</a><ul>
+<li><a class="reference internal" href="#tax-lock-date">Tax Lock Date</a></li>
+<li><a class="reference internal" href="#tax-report">Tax Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tax return (VAT declaration)</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

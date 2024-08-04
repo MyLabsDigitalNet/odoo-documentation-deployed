@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventory valuation configuration &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script>
+    <script src="../../../../../_static/tabs.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/inventory_valuation_config.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/inventory_valuation_config.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Inventory valuation configuration</a><ul>
+<li><a class="reference internal" href="#types-of-accounting">Types of accounting</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#costing-method">Costing method</a></li>
+<li><a class="reference internal" href="#inventory-valuation">Inventory valuation</a><ul>
+<li><a class="reference internal" href="#expense-account">Expense account</a></li>
+<li><a class="reference internal" href="#stock-input-output-automated-only">Stock input/output (automated only)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inventory-valuation-reporting">Inventory valuation reporting</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_valuation/inventory_valuation_config.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Inventory valuation configuration</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="inventory-valuation-configuration">
+<h1>Inventory valuation configuration<a class="headerlink" href="#inventory-valuation-configuration" title="Permalink to this headline">¶</a></h1>
+<p>All of a company’s stock on-hand contributes to the valuation of its inventory. That value should
+be reflected in the company’s accounting records to accurately show the value of the company and
+all of its assets.</p>
+<p>By default, Odoo uses a periodic inventory valuation (also known as manual inventory valuation).
+This method implies that the accounting team posts journal entries based on the physical inventory
+of the company, and that warehouse employees take the time to count the stock. In Odoo, this method
+is reflected inside each product category, where the <span class="guilabel">Costing Method</span> field will be set to
+<code class="o_code docutils literal notranslate"><span class="pre">Standard</span> <span class="pre">Price</span></code> by default, and the <span class="guilabel">Inventory Valuation</span> field will be set to <code class="o_code docutils literal notranslate"><span class="pre">Manual</span></code>.</p>
+<img alt="The Inventory Valuation fields are located on the Product Categories form." class="align-center" src="../../../../../_images/inventory-valuation-fields.png" />
+<p>Alternatively, automated inventory valuation is an integrated valuation method that updates the
+inventory value in real-time by creating journal entries whenever there are stock moves initiated
+between locations in a company’s inventory.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Automated inventory valuation is a method recommended for expert accountants, given the extra
+steps involved in journal entry configuration. Even after the initial setup, the method will
+need to be periodically checked to ensure accuracy, and adjustments may be needed on an ongoing
+basis depending on the needs and priorities of the business.</p>
+</div>
+</section><section id="types-of-accounting">
+<span id="inventory-inventory-valuation-config-accounting"></span><h2>Types of accounting<a class="headerlink" href="#types-of-accounting" title="Permalink to this headline">¶</a></h2>
+<p>Accounting entries will depend on the accounting mode: <em>Continental</em> or <em>Anglo-Saxon</em>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Verify the accounting mode by activating the <a class="reference internal" href="../../../../general/developer_mode.html#developer-mode"><span class="std std-ref">Developer mode (debug mode)</span></a> and navigating to
+<span class="menuselection">Accounting app ‣ Configuration ‣ Settings</span>.</p>
+<p>Then, in the search bar, look for <span class="guilabel">Anglo-Saxon Accounting</span>, to see if the feature is
+enabled. If it is <strong>not</strong> enabled, Continental accounting mode is in use.</p>
+<img alt="Show the Anglo-Saxon accounting mode feature." class="align-center" src="../../../../../_images/anglo-saxon.png" />
+</div>
+<p>In <em>Anglo-Saxon</em> accounting, the costs of goods sold (COGS) are reported when products are sold or
+delivered. This means that the cost of a good is only recorded as an expense when a customer is
+invoiced for a product. So for <strong>manual</strong> valuation method, set the <span class="guilabel">Expense Account</span> to
+<code class="o_code docutils literal notranslate"><span class="pre">Stock</span> <span class="pre">Valuation</span></code> for the current asset type; for <strong>automatic</strong> valuation method, set the the
+<span class="guilabel">Expense Account</span> to an <em>Expenses</em> or a <em>Cost of Revenue</em> type (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Cost</span> <span class="pre">of</span> <span class="pre">Production</span></code>,
+<code class="o_code docutils literal notranslate"><span class="pre">Cost</span> <span class="pre">of</span> <span class="pre">Goods</span> <span class="pre">Sold</span></code>, etc.).</p>
+<p>In <em>Continental</em> accounting, the cost of a good is reported as soon as a product is received into
+stock. Because of this, the <span class="guilabel">Expense Account</span> can be set to <strong>either</strong> <em>Expenses</em> or a
+<em>Cost of Revenue</em> type, however, it is more commonly set to an <em>Expenses</em> account.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="#inventory-management-config-inventory-valuation"><span class="std std-ref">Details about configuring Expense and Stock accounts</span></a></p>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Make changes to inventory valuation options by navigating to <span class="menuselection">Inventory app ‣
+Configuration ‣ Product Categories</span>. In the <span class="guilabel">Inventory Valuation</span> section, select the
+desired <span class="guilabel">Costing Method</span> and <span class="guilabel">Inventory Valuation</span> options.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>It is possible to use different valuation settings for different product categories.</p>
+</div>
+<img alt="Show inventory valuation configuration options." class="align-center" src="../../../../../_images/config-inventory-valuation.png" />
+</section><section id="costing-method">
+<span id="inventory-inventory-valuation-config-costing-methods"></span><h3>Costing method<a class="headerlink" href="#costing-method" title="Permalink to this headline">¶</a></h3>
+<p>From the product category’s configuration page, choose the desired <span class="guilabel">Costing Method</span>:</p>
+<ul>
+<li><p><span class="guilabel">Standard Price</span>: the default costing method in Odoo. The cost of the product is
+manually defined on the product form, and this cost is used to compute the valuation. Even if the
+purchase price on a purchase order differs, the valuation will still use the cost defined on the
+product form.</p></li>
+<li><p><span class="guilabel">Average Cost (AVCO)</span>: calculates the valuation of a product based on the average cost
+of that product, divided by the total number of available stock on-hand. With this costing method,
+inventory valuation is <em>dynamic</em>, and constantly adjusts based on the purchase price of products.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When choosing <span class="guilabel">Average Cost (AVCO)</span> as the <span class="guilabel">Costing Method</span>, changing the
+numerical value in the <span class="guilabel">Cost</span> field for products in the respective product category
+creates a new record in the <em>Inventory Valuation</em> report to adjust the value of the product.
+The <span class="guilabel">Cost</span> amount will then automatically update based on the average purchase price
+both of inventory on hand and the costs accumulated from validated purchase orders.</p>
+</div>
+</li>
+<li><p><span class="guilabel">First In First Out (FIFO)</span>: tracks the costs of incoming and outgoing items in
+real-time and uses the real price of the products to change the valuation. The oldest purchase
+price is used as the cost for the next good sold until an entire lot of that product is sold. When
+the next inventory lot moves up in the queue, an updated product cost is used based on the
+valuation of that specific lot. This method is arguably the most accurate inventory valuation
+method for a variety of reasons, however, it is highly sensitive to input data and human error.</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Changing the costing method greatly impacts inventory valuation. It is highly recommended to
+consult an accountant first before making any adjustments here.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="using_inventory_valuation.html"><span class="doc">Using inventory valuation</span></a></p>
+</div>
+<p>When the <span class="guilabel">Costing Method</span> is changed, products already in stock that were using the
+<span class="guilabel">Standard</span> costing method <strong>do not</strong> change value; rather, the existing units keep their
+value, and any product moves from then on affect the average cost, and the cost of the product will
+change. If the value in the <span class="guilabel">Cost</span> field on a product form is changed manually, Odoo will
+generate a corresponding record in the <em>Inventory Valuation</em> report.</p>
+</section><section id="inventory-valuation">
+<span id="inventory-management-config-inventory-valuation"></span><h3>Inventory valuation<a class="headerlink" href="#inventory-valuation" title="Permalink to this headline">¶</a></h3>
+<p>Inventory valuation in Odoo can be set to be updated manually or automatically. While <em>Expense</em>
+accounts apply to both, the <em>Stock Input</em> and <em>Stock Output</em> accounts are only used for automated
+valuation.</p>
+<p>Refer to the <a class="reference internal" href="#inventory-management-expense-account"><span class="std std-ref">Expense</span></a> and <a class="reference internal" href="#inventory-management-stock-account"><span class="std std-ref">Stock input/output</span></a> sections for details on configuring each account type.</p>
+</section><section id="expense-account">
+<span id="inventory-management-expense-account"></span><h4>Expense account<a class="headerlink" href="#expense-account" title="Permalink to this headline">¶</a></h4>
+<p>To configure the <em>expense account</em>, go to the <span class="guilabel">Account Properties</span> section of the intended
+product category (<span class="menuselection">Inventory app ‣ Configuration ‣ Product Categories</span>). Then,
+choose an existing account from the <span class="guilabel">Expense Account</span> drop-down menu.</p>
+<p>To ensure the chosen account is the correct <span class="guilabel">Type,</span> click the <i class="fa fa-arrow-right"></i> <span class="guilabel">(right arrow)</span> icon to the
+right of the account. Then, set the account type based on the information below.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-QW5nbG8tU2F4b24=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-QW5nbG8tU2F4b24=" name="QW5nbG8tU2F4b24=" role="tab" tabindex="0">Anglo-Saxon</button><button aria-controls="panel-0-Q29udGluZW50YWw=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q29udGluZW50YWw=" name="Q29udGluZW50YWw=" role="tab" tabindex="-1">Continental</button></div><div aria-labelledby="tab-0-QW5nbG8tU2F4b24=" class="sphinx-tabs-panel group-tab" id="panel-0-QW5nbG8tU2F4b24=" name="QW5nbG8tU2F4b24=" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-QXV0b21hdGVk" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-QXV0b21hdGVk" name="QXV0b21hdGVk" role="tab" tabindex="0">Automated</button><button aria-controls="panel-1-TWFudWFs" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-TWFudWFs" name="TWFudWFs" role="tab" tabindex="-1">Manual</button></div><div aria-labelledby="tab-1-QXV0b21hdGVk" class="sphinx-tabs-panel group-tab" id="panel-1-QXV0b21hdGVk" name="QXV0b21hdGVk" role="tabpanel" tabindex="0"><p>In Anglo-Saxon accounting for automated inventory valuation, set the <span class="guilabel">Expense
+Account</span> to the <code class="o_code docutils literal notranslate"><span class="pre">Expenses</span></code> account. Then, click the <i class="fa fa-arrow-right"></i> <span class="guilabel">(right arrow)</span> icon to the right of
+the account.</p>
+<p>In the pop-up window, choose <span class="guilabel">Expenses</span> or <span class="guilabel">Cost of Revenue</span> from
+the <span class="guilabel">Type</span> drop-down menu.</p>
+<img alt="Show **Expense Account** field, and external link icon." class="align-center" src="../../../../../_images/external-link1.png" />
+</div><div aria-labelledby="tab-1-TWFudWFs" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-TWFudWFs" name="TWFudWFs" role="tabpanel" tabindex="0"><p>To configure the <span class="guilabel">Expense Account</span>, choose <span class="guilabel">Stock Valuation</span> from
+the field’s drop-down menu. Verify the account’s type by clicking the <i class="fa fa-arrow-right"></i> <span class="guilabel">(right arrow)</span>
+icon, and then ensure the <span class="guilabel">Type</span> is <span class="guilabel">Current Assets</span>.</p>
+<img alt="Show the **Expense Account** field." class="align-center" src="../../../../../_images/manual-anglo-saxon-expense.png" />
+</div></div>
+</div><div aria-labelledby="tab-0-Q29udGluZW50YWw=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q29udGluZW50YWw=" name="Q29udGluZW50YWw=" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-2-QXV0b21hdGVk" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-QXV0b21hdGVk" name="QXV0b21hdGVk" role="tab" tabindex="0">Automated</button><button aria-controls="panel-2-TWFudWFs" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-TWFudWFs" name="TWFudWFs" role="tab" tabindex="-1">Manual</button></div><div aria-labelledby="tab-2-QXV0b21hdGVk" class="sphinx-tabs-panel group-tab" id="panel-2-QXV0b21hdGVk" name="QXV0b21hdGVk" role="tabpanel" tabindex="0"><p>Set the <span class="guilabel">Expense Account</span> to the <span class="guilabel">Expenses</span> or <span class="guilabel">Cost of
+Revenue</span> account type.</p>
+</div><div aria-labelledby="tab-2-TWFudWFs" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-TWFudWFs" name="TWFudWFs" role="tabpanel" tabindex="0"><p>Set the <span class="guilabel">Expense Account</span> to the <span class="guilabel">Expenses</span> or <span class="guilabel">Cost of
+Revenue</span> account type.</p>
+</div></div>
+</div></div>
+</section><section id="stock-input-output-automated-only">
+<span id="inventory-management-stock-account"></span><h4>Stock input/output (automated only)<a class="headerlink" href="#stock-input-output-automated-only" title="Permalink to this headline">¶</a></h4>
+<p>To configure the <span class="guilabel">Stock Input Account</span> and <span class="guilabel">Stock Output Account</span>, go to
+<span class="menuselection">Inventory app ‣ Configuration ‣ Product Categories</span> and select the desired
+product category.</p>
+<p>In the <span class="guilabel">Inventory Valuation</span> field, select <span class="guilabel">Automated</span>. Doing so makes the
+<span class="guilabel">Account Stock Properties</span> section appear. These accounts are defined as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Stock Valuation Account</span>: when automated inventory valuation is enabled on a product,
+this account will hold the current value of the products.</p></li>
+<li><p><span class="guilabel">Stock Journal</span>: accounting journal where entries are automatically posted when a
+product’s inventory valuation changes.</p></li>
+<li><p><span class="guilabel">Stock Input Account</span>: counterpart journal items for all incoming stock moves will be
+posted in this account, unless there is a specific valuation account set on the source location.
+This is the default value for all products in a given category, and can also be set directly on
+each product.</p></li>
+<li><p><span class="guilabel">Stock Output Account</span>: counterpart journal items for all outgoing stock moves will be
+posted in this account, unless there is a specific valuation account set on the destination
+location. This is the default value for all products in a given category, and can also be set
+directly on each product.</p></li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-3-QW5nbG8tU2F4b24=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-QW5nbG8tU2F4b24=" name="QW5nbG8tU2F4b24=" role="tab" tabindex="0">Anglo-Saxon</button><button aria-controls="panel-3-Q29udGluZW50YWw=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-Q29udGluZW50YWw=" name="Q29udGluZW50YWw=" role="tab" tabindex="-1">Continental</button></div><div aria-labelledby="tab-3-QW5nbG8tU2F4b24=" class="sphinx-tabs-panel group-tab" id="panel-3-QW5nbG8tU2F4b24=" name="QW5nbG8tU2F4b24=" role="tabpanel" tabindex="0"><p>In Anglo-Saxon accounting, the <span class="guilabel">Stock Input Account</span> and <span class="guilabel">Stock Output
+Account</span> are set to <em>different</em> <span class="guilabel">Current Assets</span> accounts. This way, delivering
+products and invoicing the customer balance the <em>Stock Output</em> account, while receiving
+products and billing vendors balance the <em>Stock Input</em> account.</p>
+<p>To modify the account type, go to the click the <i class="fa fa-arrow-right"></i> <span class="guilabel">(right arrow)</span> icon to the right of the stock
+input/output account. In the pop-up window, choose <span class="guilabel">Current Assets</span> from the
+<span class="guilabel">Type</span> drop-down menu.</p>
+<div class="figure align-center" id="id1">
+<img alt="Display account setup page, highlighting the **Type** field." src="../../../../../_images/account-type.png" />
+<p class="caption"><span class="caption-text">The <em>Stock Input</em> account is set to <code class="o_code docutils literal notranslate"><span class="pre">Stock</span> <span class="pre">Interim</span> <span class="pre">(Received)</span></code>, a <em>Current Asset</em> account
+type.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div aria-labelledby="tab-3-Q29udGluZW50YWw=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-Q29udGluZW50YWw=" name="Q29udGluZW50YWw=" role="tabpanel" tabindex="0"><p>In Continental accounting, the <span class="guilabel">Stock Input Account</span> and <span class="guilabel">Stock Output
+Account</span> are set to <strong>the same</strong> <span class="guilabel">Current Assets</span> account. That way, one account can
+be balanced when items are bought and sold.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The stock input and output accounts are both set to <code class="o_code docutils literal notranslate"><span class="pre">Stock</span> <span class="pre">Interim</span> <span class="pre">(Received)</span></code>, a
+<span class="guilabel">Current Assets</span> account type. They can also be set to the <code class="o_code docutils literal notranslate"><span class="pre">Stock</span> <span class="pre">Interim</span>
+<span class="pre">(Delivered)</span></code>, as long as the input and output accounts are assigned to the <strong>same</strong>
+account.</p>
+<img alt="Show the Stock Input and Output accounts." class="align-center" src="../../../../../_images/continental-stock-account.png" />
+</div>
+</div></div>
+</section><section id="inventory-valuation-reporting">
+<h2>Inventory valuation reporting<a class="headerlink" href="#inventory-valuation-reporting" title="Permalink to this headline">¶</a></h2>
+<p>To start, go to <span class="menuselection">Accounting ‣ Reporting ‣ Balance Sheet</span>. At the top of the
+dashboard, change the <span class="guilabel">As of</span> field value to <span class="guilabel">Today</span>, and adjust the filtering
+<span class="guilabel">Options</span> to <span class="guilabel">Unfold All</span> in order to see all of the latest data displayed, all
+at once.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../../../finance/accounting/get_started/cheat_sheet.html"><span class="doc">Accounting cheat sheet</span></a></p>
+</div>
+<p>Under the parent <span class="guilabel">Current Assets</span> line item, look for the nested <span class="guilabel">Stock
+Valuation Account</span> line item, where the total valuation of all of the inventory on hand is
+displayed.</p>
+<p>Access more specific information with the <span class="guilabel">Stock Valuation Account</span> drop-down menu, by
+selecting either the <span class="guilabel">General Ledger</span> to see an itemized view of all of the journal
+entries, or by selecting <span class="guilabel">Journal Items</span> to review all of the individualized journal
+entries that were submitted to the account. As well, annotations to the <span class="guilabel">Balance Sheet</span>
+can be added by choosing <span class="guilabel">Annotate</span>, filling in the text box, and clicking
+<span class="guilabel">Save</span>.</p>
+<img alt="See the full inventory valuation breakdown in Odoo Accounting app." class="align-center" src="../../../../../_images/stock-valuation-breakdown-in-accounting.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Inventory valuation configuration</a><ul>
+<li><a class="reference internal" href="#types-of-accounting">Types of accounting</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#costing-method">Costing method</a></li>
+<li><a class="reference internal" href="#inventory-valuation">Inventory valuation</a><ul>
+<li><a class="reference internal" href="#expense-account">Expense account</a></li>
+<li><a class="reference internal" href="#stock-input-output-automated-only">Stock input/output (automated only)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inventory-valuation-reporting">Inventory valuation reporting</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Inventory valuation configuration</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

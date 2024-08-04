@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AvaTax use &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/avatax/avatax_use.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/taxes/avatax/avatax_use.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">AvaTax use</a><ul>
+<li><a class="reference internal" href="#tax-calculation">Tax calculation</a><ul>
+<li><a class="reference internal" href="#automatic-triggers">Automatic triggers</a></li>
+<li><a class="reference internal" href="#manual-triggers">Manual triggers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#avatax-synchronization">AvaTax synchronization</a></li>
+<li><a class="reference internal" href="#fixed-price-discounts">Fixed price discounts</a></li>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/avatax/avatax_use.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AvaTax use</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="avatax-use">
+<h1>AvaTax use<a class="headerlink" href="#avatax-use" title="Permalink to this headline">¶</a></h1>
+<p>AvaTax is a tax calculation software that can be integrated with Odoo in the United States and
+Canada. Once the <a class="reference internal" href="../avatax.html"><span class="doc">integration setup</span></a> is complete, the calculated tax is simple and
+automatic.</p>
+</section><section id="tax-calculation">
+<h2>Tax calculation<a class="headerlink" href="#tax-calculation" title="Permalink to this headline">¶</a></h2>
+<p>Automatically calculate taxes on Odoo quotations and invoices with AvaTax by confirming the
+documents during the sales flow. Alternatively, calculate the taxes manually by clicking the
+<span class="guilabel">Compute taxes using Avatax</span> button while these documents are in draft mode.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Clicking the <span class="guilabel">Compute taxes using Avatax</span> button recalculates taxes if any product
+lines are edited on the invoice.</p>
+</div>
+<img alt="Sales quotation with the confirm and compute taxes using AvaTax buttons highlighted." class="align-center" src="../../../../../_images/calculate-avatax.png" />
+<p>The tax calculation is triggered during the following <a class="reference internal" href="#avatax-automatic-triggers"><span class="std std-ref">automatic trigger</span></a> and <a class="reference internal" href="#avatax-manual-triggers"><span class="std std-ref">manual trigger</span></a> circumstances.</p>
+</section><section id="automatic-triggers">
+<span id="avatax-automatic-triggers"></span><h3>Automatic triggers<a class="headerlink" href="#automatic-triggers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When the sales rep sends the quote by email with <span class="guilabel">Send by email</span> button (pop-up).</p></li>
+<li><p>When the customer views the online quote on the portal.</p></li>
+<li><p>When a quote is confirmed and becomes a sales order.</p></li>
+<li><p>When the customer views the invoice on the portal.</p></li>
+<li><p>When a draft invoice is validated.</p></li>
+<li><p>When the customer views the subscription in the portal.</p></li>
+<li><p>When a subscription generates an invoice.</p></li>
+<li><p>When the customer gets to the last screen of the eCommerce checkout.</p></li>
+</ul>
+</section><section id="manual-triggers">
+<span id="avatax-manual-triggers"></span><h3>Manual triggers<a class="headerlink" href="#manual-triggers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="guilabel">Compute taxes using Avatax</span> button at the bottom of the quote.</p></li>
+<li><p><span class="guilabel">Compute taxes using Avatax</span> button at the top of the invoice.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Use the <span class="guilabel">Avalara Partner Code</span> field that is available on customer records, quotations,
+and invoices to cross-reference data in Odoo and AvaTax. This field is located under the
+<span class="menuselection">Other info</span> tab of the sales order or quotation in the <span class="guilabel">Sales</span> section.</p>
+<p>On the customer record, navigate to <em>Contacts app</em> and select a contact. Then open the
+<span class="guilabel">Sales &amp; Purchase</span> tab and the <span class="guilabel">Avalara Partner Code</span> under the
+<span class="guilabel">Sales</span> section.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <span class="guilabel">Automatic Tax Mapping (AvaTax)</span> fiscal position is also applied on those Odoo
+documents, like subscriptions.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../fiscal_positions.html"><span class="doc">Fiscal positions (tax and account mapping)</span></a></p></li>
+</ul>
+</div>
+</section><section id="avatax-synchronization">
+<h2>AvaTax synchronization<a class="headerlink" href="#avatax-synchronization" title="Permalink to this headline">¶</a></h2>
+<p>Synchronization occurs with AvaTax, when the <em>invoice</em> is created in Odoo. This means the sales tax
+is recorded with Avalara (AvaTax software developer).</p>
+<p>To do so, navigate to <span class="menuselection">Sales app ‣ Orders ‣ Quotations</span>. Select a quotation from
+the list.</p>
+<p>After confirming a quotation and validating the delivery, click <span class="guilabel">Create Invoice</span>. Indicate
+whether it is a <span class="guilabel">Regular invoice</span>, <span class="guilabel">Down payment (percentage)</span>, or
+<span class="guilabel">Down payment (fixed amount)</span>.</p>
+<p>Then click <span class="guilabel">Create and view invoice</span>. The recorded taxes can be seen in the
+<span class="guilabel">Journal Items</span> tab of the invoice. There will be different taxes depending on the
+location of the <span class="guilabel">Delivery Address</span>.</p>
+<img alt="Journal items highlighted on a invoice in Odoo." class="align-center" src="../../../../../_images/journal-items.png" />
+<p>Finally, press the <span class="guilabel">Confirm</span> button to complete the invoice and synchronize with the
+AvaTax portal.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>An invoice cannot be <span class="guilabel">Reset to draft</span> because this causes de-synchronization with the
+AvaTax Portal. Instead, click <span class="guilabel">Add credit note</span> and state: <code class="o_code docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">with</span> <span class="pre">AvaTax</span> <span class="pre">Portal</span></code>.
+See this documentation: <a class="reference internal" href="../../customer_invoices/credit_notes.html"><span class="doc">Credit notes and refunds</span></a>.</p>
+</div>
+</section><section id="fixed-price-discounts">
+<h2>Fixed price discounts<a class="headerlink" href="#fixed-price-discounts" title="Permalink to this headline">¶</a></h2>
+<p>Add a fixed price discount to a valuable customer by click <span class="guilabel">Add a line</span> on the customer’s
+invoice. Add the product discount and set the <span class="guilabel">Price</span> to either a positive or negative
+value. To recalculate the taxes, click <span class="guilabel">Compute taxes using Avatax</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Tax calculation can even be done on negative subtotals and credit notes.</p>
+</div>
+</section><section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to log Avalara/<em>AvaTax</em> actions in Odoo for further analysis, or verification of
+functionality. Logging is accessible through the <em>AvaTax</em> settings.</p>
+<p>To start logging <em>AvaTax</em> actions, first, navigate to the <span class="menuselection">Accounting app ‣
+Configuration ‣ Settings</span>.</p>
+<p>Then, in the <span class="guilabel">Taxes</span> section, under the <span class="guilabel">AvaTax</span> settings, click
+<span class="guilabel">Start logging for 30 minutes</span>.</p>
+<p>Upon starting the log process, Odoo will log all Avalara/<em>AvaTax</em> actions performed in the database.</p>
+<p>To view the logs, click on <span class="guilabel">Show logs</span> to the right of the <span class="guilabel">Start logging for 30
+minutes</span>. This reveals a detailed list of Avalara/<em>AvaTax</em> actions. This list is sortable by the
+following columns:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Created on</span>: timestamp of the <em>AvaTax</em> calculation.</p></li>
+<li><p><span class="guilabel">Created by</span>: numeric value of the user in the database.</p></li>
+<li><p><span class="guilabel">Database name</span>: name of the database.</p></li>
+<li><p><span class="guilabel">Type</span>: two values can be chosen for this field, <span class="guilabel">Server</span> or
+<span class="guilabel">Client</span>.</p></li>
+<li><p><span class="guilabel">Name</span>: Avalara service name. In this case, it will be <em>AvaTax</em>.</p></li>
+<li><p><span class="guilabel">Level</span>: by default, this will be <code class="o_code docutils literal notranslate"><span class="pre">INFO</span></code>.</p></li>
+<li><p><span class="guilabel">Path</span>: indicates the path taken to make the calculation.</p></li>
+<li><p><span class="guilabel">Line</span>: indicates the line the calculation is made on.</p></li>
+<li><p><span class="guilabel">Function</span>: indicates the calculation taken on the line.</p></li>
+</ul>
+<img alt="Avalara logging page with top row of list highlighted." class="align-center" src="../../../../../_images/logging.png" />
+<p>Click into the log line to reveal another field, called <span class="guilabel">Message</span>.</p>
+<p>This field populates a raw transcription of the transaction, which involves the creation (or
+adjustment) of a sales invoice using the Avalara <em>AvaTax</em> API.</p>
+<p>The transaction includes details, such as addresses for shipping from and to, line items describing
+the products or services, tax codes, tax amounts, and other relevant information.</p>
+<p>The <span class="guilabel">Message</span> contains the calculated taxes for different jurisdictions and confirms the
+creation (or adjustment) of the transaction.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Custom fields can be made using Odoo <em>Studio</em>. Click the <i class="fa fa-ellipsis-v"></i>
+<span class="guilabel">(ellipsis)</span> menu to the far-right of the header row. Then click <i class="fa fa-plus"></i>
+<span class="guilabel">Add custom field</span>. This action opens Odoo <em>Studio</em>.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Odoo <em>Studio</em> requires a <em>custom</em> pricing plan. Consult the database’s customer success manager
+for more information on switching plans. Or to see if Odoo <em>Studio</em> is included in the database’s
+current pricing plan. See this documentation: <span class="xref std std-doc">../../../../studio</span>.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../avatax.html"><span class="doc">AvaTax integration</span></a></p></li>
+<li><p><a class="reference internal" href="avalara_portal.html"><span class="doc">Avalara (Avatax) portal</span></a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/us-tax-compliance-avatax-2858?fullscreen=1">US Tax Compliance: Avatax elearning video</a></p></li>
+<li><p><a class="reference internal" href="../fiscal_positions.html"><span class="doc">Fiscal positions (tax and account mapping)</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">AvaTax use</a><ul>
+<li><a class="reference internal" href="#tax-calculation">Tax calculation</a><ul>
+<li><a class="reference internal" href="#automatic-triggers">Automatic triggers</a></li>
+<li><a class="reference internal" href="#manual-triggers">Manual triggers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#avatax-synchronization">AvaTax synchronization</a></li>
+<li><a class="reference internal" href="#fixed-price-discounts">Fixed price discounts</a></li>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AvaTax use</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Routes and push/pull rules &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/use_routes.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/use_routes.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Routes and push/pull rules</a><ul>
+<li><a class="reference internal" href="#inside-the-warehouse">Inside the warehouse</a></li>
+<li><a class="reference internal" href="#pull-rules">Pull rules</a></li>
+<li><a class="reference internal" href="#push-rules">Push rules</a></li>
+<li><a class="reference internal" href="#use-routes-and-rules">Use routes and rules</a><ul>
+<li><a class="reference internal" href="#pre-configured-routes">Pre-configured routes</a></li>
+<li><a class="reference internal" href="#custom-routes">Custom Routes</a><ul>
+<li><a class="reference internal" href="#rules">Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-flow">Example flow</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/use_routes.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Routes and push/pull rules</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="routes-and-push-pull-rules">
+<span id="use-routes"></span><h1>Routes and push/pull rules<a class="headerlink" href="#routes-and-push-pull-rules" title="Permalink to this headline">¶</a></h1>
+<p>In inventory management, the supply chain strategy determines when products should be
+purchased/manufactured, delivered to distribution centers, and made available to the retail
+channel.</p>
+<p>In Odoo, a product’s supply chain strategy can be configured using <em>Routes</em>, which feature <em>Pull
+and Push Rules</em>. Once everything is properly configured, the Inventory app can automatically
+generate transfers following the configured push/pull rules.</p>
+</section><section id="inside-the-warehouse">
+<h2>Inside the warehouse<a class="headerlink" href="#inside-the-warehouse" title="Permalink to this headline">¶</a></h2>
+<p>In a generic warehouse, there are receiving docks, a quality control area, storage locations,
+picking and packing areas, and shipping docks. All products go through all these locations. As the
+products move through the locations, each location triggers the products’ specified route and
+rules.</p>
+<img alt="View of a generic warehouse with stock and quality control area." class="align-center" src="../../../../../_images/stock-example.png" />
+<p>In this example, vendor trucks unload pallets of ordered products at the receiving docks. Operators
+then scan the products in the receiving area. Depending on the product’s route and rules, some of
+these products are sent to a quality control area (for example, products that are components used
+in the manufacturing process), while others are directly stored in their respective locations.</p>
+<img alt="View of a generic push to rule when receiving products." class="align-center" src="../../../../../_images/push-to-rule-example.png" />
+<p>Here is an example of a fulfillment route. In the morning, items are picked for all the orders that
+need to be prepared during the day. These items are picked from storage locations and moved to the
+picking area, close to where the orders are packed. Then, the orders are packed in their respective
+boxes, and conveyor belts bring them to the shipping docks, ready to be delivered to customers.</p>
+<img alt="View of a generic pull from rule when preparing deliveries." class="align-center" src="../../../../../_images/pull-from-rule-example.png" />
+</section><section id="pull-rules">
+<h2>Pull rules<a class="headerlink" href="#pull-rules" title="Permalink to this headline">¶</a></h2>
+<p>With <em>Pull Rules</em>, a demand for some products triggers procurements, while <em>Push Rules</em> are
+triggered by products arriving in a specific location.</p>
+<p>Pull Rules are used to fulfill a sales order. Odoo generates a need at the <em>Customer Location</em> for
+each product in the order. Because pull rules are triggered by a need, Odoo looks for a pull rule
+defined on the <em>Customer Location</em>.</p>
+<p>In this case, a “delivery order” pull rule that transfers products from the <em>Shipping Area</em> to the
+<em>Customer Location</em> is found, and a transfer between the two locations is created.</p>
+<p>Then, Odoo finds another pull rule that tries to fulfill the need for the <em>Shipping Area</em>: the
+“packing” rule that transfers products from the <em>Packing Area</em> to the <em>Shipping Area</em>. Finally,
+other pull rules are triggered until a transfer between the <em>Stock</em> and the <em>Picking Area</em> is
+created.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>All these product transfers are automatically generated by Odoo based on the pull rules, starting
+from the end (the customer location) and going backward (the stock warehouse). While working, the
+operator processes these transfers in the opposite order: first the picking, then the packing,
+and finally the delivery order.</p>
+</div>
+</section><section id="push-rules">
+<h2>Push rules<a class="headerlink" href="#push-rules" title="Permalink to this headline">¶</a></h2>
+<p>On the other hand, <em>Push Rules</em> are much easier to understand. Instead of generating documents
+based on needs, they are triggered in real time when products arrive in a specific location. Push
+rules basically say: “when a product arrives at a specific location, move it to another location.”</p>
+<p>An example of a push rule would be: when a product arrives in the <em>Receipt Area</em>, move it to the
+<em>Storage Location</em>. As different push rules can be applied to different products, the user can
+assign different storage locations for different products.</p>
+<p>Another push rule could be: when products arrive at a location, move them to the <em>Quality Control
+Area</em>. Then, once the quality check is done, move them to their <em>Storage Location</em>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Push rules can only be triggered if there are no pull rules that have already generated the
+product transfers.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Sets of push/pull rules like those are called <em>Routes</em>. The grouping on the rule decides if
+products are grouped in the same transfer or not. For example, during the picking operation, all
+orders and their products are grouped in one transfer, whereas the packing operation respects the
+grouping per customer order.</p>
+</div>
+</section><section id="use-routes-and-rules">
+<span id="use-routes-routes-rules"></span><h2>Use routes and rules<a class="headerlink" href="#use-routes-and-rules" title="Permalink to this headline">¶</a></h2>
+<p>Since <em>Routes</em> are a collection of <em>Push and Pull Rules</em>, Odoo helps you manage advanced route
+configurations such as:</p>
+<ul class="simple">
+<li><p>Manage product manufacturing chains.</p></li>
+<li><p>Manage default locations per product.</p></li>
+<li><p>Define routes within the stock warehouse according to business needs, such as quality control,
+after-sales services, or supplier returns.</p></li>
+<li><p>Help rental management by generating automated return moves for rented products.</p></li>
+</ul>
+<p>To configure a route for a product, first, open the <span class="guilabel">Inventory</span> application and go to
+<span class="menuselection">Configuration ‣ Settings</span>. Then, in the <span class="guilabel">Warehouse</span> section, enable the
+<span class="guilabel">Multi-Step Routes</span> feature and click <span class="guilabel">Save</span>.</p>
+<img alt="Activate the Multi-Step Routes feature in Odoo Inventory." class="align-center" src="../../../../../_images/multi-steps-routes-feature.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Storage Locations</span> feature is automatically activated with the
+<span class="guilabel">Multi-Step Routes</span> feature.</p>
+</div>
+<p>Once this first step is completed, the user can use pre-configured routes that come with Odoo, or
+they can create custom routes.</p>
+</section><section id="pre-configured-routes">
+<h3>Pre-configured routes<a class="headerlink" href="#pre-configured-routes" title="Permalink to this headline">¶</a></h3>
+<p>To access Odoo’s pre-configured routes, go to <span class="menuselection">Inventory ‣ Configuration ‣
+Warehouses</span>. Then, open a warehouse form. In the <span class="guilabel">Warehouse Configuration</span> tab, the user
+can view the warehouse’s pre-configured routes for <span class="guilabel">Incoming Shipments</span> and
+<span class="guilabel">Outgoing Shipments</span>.</p>
+<img alt="A pre-configured warehouse in Odoo Inventory." class="align-center" src="../../../../../_images/example-preconfigured-warehouse.png" />
+<p>Some more advanced routes, such as pick-pack-ship, are also available. The user can select the
+route that best fits their business needs. Once the <span class="guilabel">Incoming Shipments</span> and
+<span class="guilabel">Outgoing Shipments</span> routes are set, head to <span class="menuselection">Inventory ‣ Configuration
+‣ Routes</span> to see the specific routes that Odoo generated.</p>
+<img alt="View of all the preconfigured routes Odoo offers." class="align-center" src="../../../../../_images/preconfigured-routes.png" />
+<p>On the <span class="guilabel">Routes</span> page, click on a route to open the route form. In the route form, the
+user can view which places the route is <span class="guilabel">Applicable On</span>. The user can also set the route
+to only apply on a specific <span class="guilabel">Company</span>. This is useful for multi-company environments; for
+example, a user can have a company and warehouse in Country A and a second company and warehouse in
+Country B.</p>
+<img alt="View of a route example applicable on product categories and warehouses." class="align-center" src="../../../../../_images/routes-example.png" />
+<p>At the bottom of the route form, the user can view the specific <span class="guilabel">Rules</span> for the route.
+Each <span class="guilabel">Rule</span> has an <span class="guilabel">Action</span>, a <span class="guilabel">Source Location</span>, and a
+<span class="guilabel">Destination Location</span>.</p>
+<img alt="An example of rules with push &amp; pull actions in Odoo Inventory." class="align-center" src="../../../../../_images/rules-example.png" />
+</section><section id="custom-routes">
+<h3>Custom Routes<a class="headerlink" href="#custom-routes" title="Permalink to this headline">¶</a></h3>
+<p>To create a custom route, go to <span class="menuselection">Inventory ‣ Configuration ‣ Routes</span>, and click
+on <span class="guilabel">Create</span>. Next, choose the places where this route can be selected. A route can be
+applicable on a combination of places.</p>
+<img alt="View of a pick-pack-ship route." class="align-center" src="../../../../../_images/advanced-custom-route.png" />
+<p>Each place has a different behavior, so it is important to tick only the useful ones and adapt each
+route accordingly. Then, configure the <span class="guilabel">Rules</span> of the route.</p>
+<p>If the route is applicable on a product category, the route still needs to be manually set on the
+product category form by going to <span class="menuselection">Inventory ‣ Configuration ‣ Product
+Categories</span>. Then, select the product category and open the form. Next, click <span class="guilabel">Edit</span> and
+under the <span class="guilabel">Logistics</span> section, set the <span class="guilabel">Routes</span>.</p>
+<p>When applying the route on a product category, all the rules configured in the route are applied to
+<strong>every</strong> product in the category. This can be helpful if the business uses the dropshipping
+process for all the products from the same category.</p>
+<img alt="View of a route applied to the &quot;all&quot; product category." class="align-center" src="../../../../../_images/routes-logistic-section.png" />
+<p>The same behavior applies to the warehouses. If the route can apply to <span class="guilabel">Warehouses</span>, all
+the transfers occurring inside the chosen warehouse that meet the conditions of the route’s rules
+will then follow that route.</p>
+<img alt="View of the warehouse drop-down menu when selecting applicable on warehouse." class="align-center" src="../../../../../_images/applicable-on-warehouse.png" />
+<p>If the route is applicable on <span class="guilabel">Sales Order Lines</span>, it is more or less the opposite. The
+route must be manually chosen when creating a quotation. This is useful if some products go through
+different routes.</p>
+<p>Remember to toggle the visibility of the <span class="guilabel">Route</span> column on the quotation/sales order.
+Then, the route can be chosen on each line of the quotation/sales order.</p>
+<img alt="View of the menu allowing to add new lines to sales orders." class="align-center" src="../../../../../_images/add-routes-to-sales-lines.png" />
+<p>Finally, there are routes that can be applied to products. Those work more or less like the product
+categories: once selected, the route must be manually set on the product form.</p>
+<p>To set a route on a product, go to <span class="menuselection">Inventory ‣ Products ‣ Products</span> and select
+the desired product. Then, go to the <span class="guilabel">Inventory</span> tab and under the <span class="guilabel">Operations</span>
+section, select the <span class="guilabel">Routes</span>.</p>
+<img alt="View of a product form, where the route must be selected." class="align-center" src="../../../../../_images/on-product-route.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Rules must be set on the route in order for the route to work.</p>
+</div>
+</section><section id="rules">
+<h4>Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h4>
+<p>The rules are defined on the route form. First, go to <span class="menuselection">Inventory ‣ Configuration
+‣ Routes</span> and open the desired route form. Next, click <span class="guilabel">Edit</span> and in the
+<span class="guilabel">Rules</span> section, click on <span class="guilabel">Add a line</span>.</p>
+<img alt="View of the rules menu, where it is possible to add new rules." class="align-center" src="../../../../../_images/add-new-rules.png" />
+<p>The available rules trigger various actions. If Odoo offers <em>Push</em> and <em>Pull</em> rules, others are
+also available. Each rule has an <span class="guilabel">Action</span>:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Pull From</span>: this rule is triggered by a need for the product in a specific location.
+The need can come from a sales order being validated or from a manufacturing order requiring a
+specific component. When the need appears in the destination location, Odoo generates a picking to
+fulfill this need.</p></li>
+<li><p><span class="guilabel">Push To</span>: this rule is triggered by the arrival of some products in the defined source
+location. In the case of the user moving products to the source location, Odoo generates a picking
+to move those products to the destination location.</p></li>
+<li><p><span class="guilabel">Pull &amp; Push</span>: this rule allows the generation of pickings in the two situations
+explained above. This means that when products are required at a specific location, a transfer is
+created from the previous location to fulfill that need. This creates a need in the previous
+location and a rule is triggered to fulfill it. Once the second need is fulfilled, the products
+are pushed to the destination location and all the needs are fulfilled.</p></li>
+<li><p><span class="guilabel">Buy</span>: when products are needed at the destination location, a request for quotation is
+created to fulfill the need.</p></li>
+<li><p><span class="guilabel">Manufacture</span>: when products are needed in the source location, a manufacturing order
+is created to fulfill the need.</p></li>
+</ul>
+<img alt="Overview of a &quot;Pull From&quot; rule that creates a transfer between the stock and the packing zone." class="align-center" src="../../../../../_images/pull-from-rule-stock-to-packing.png" />
+<p>The <span class="guilabel">Operation Type</span> must also be defined on the rule. This defines which kind of picking
+is created from the rule.</p>
+<p>If the rule’s <span class="guilabel">Action</span> is set to <span class="guilabel">Pull From</span> or <span class="guilabel">Pull &amp; Push</span>, a
+<span class="guilabel">Supply Method</span> must be set. The <span class="guilabel">Supply Method</span> defines what happens at the
+source location:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Take From Stock</span>: the products are taken from the available stock of the source
+location.</p></li>
+<li><p><span class="guilabel">Trigger Another Rule</span>: the system tries to find a stock rule to bring the products to
+the source location. The available stock is ignored.</p></li>
+<li><p><span class="guilabel">Take From Stock, if Unavailable, Trigger Another Rule</span>: the products are taken from
+the available stock of the source location. If there is no stock available, the system tries to
+find a rule to bring the products to the source location.</p></li>
+</ul>
+</section><section id="example-flow">
+<h2>Example flow<a class="headerlink" href="#example-flow" title="Permalink to this headline">¶</a></h2>
+<p>In this example, let’s use a custom <em>Pick - Pack - Ship</em> route to try a full flow with an advanced
+custom route.</p>
+<p>First, a quick look at the route’s rules and their supply methods. There are three rules, all
+<span class="guilabel">Pull From</span> rules. The <span class="guilabel">Supply Methods</span> for each rule are the following:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Take From Stock</span>: When products are needed in the <span class="guilabel">WH/Packing Zone</span>, <em>picks</em>
+(internal transfers from <span class="guilabel">WH/Stock</span> to <span class="guilabel">WH/Packing Zone</span>) are created from
+<span class="guilabel">WH/Stock</span> to fulfill the need.</p></li>
+<li><p><span class="guilabel">Trigger Another Rule</span>: When products are needed in <span class="guilabel">WH/Output</span>, <em>packs</em>
+(internal transfers from <span class="guilabel">WH/Packing Zone</span> to <span class="guilabel">WH/Output</span>) are created from
+<span class="guilabel">WH/Packing Zone</span> to fulfill the need.</p></li>
+<li><p><span class="guilabel">Trigger Another Rule</span>: When products are needed in <span class="guilabel">Partner
+Locations/Customers</span>, <em>delivery orders</em> are created from <span class="guilabel">WH/Output</span> to fulfill the
+need.</p></li>
+</ul>
+<img alt="Overview of all the transfers created by the pick - pack - ship route." class="align-center" src="../../../../../_images/transfers-overview.png" />
+<p>This means that, when a customer orders products that have a <em>pick - pack - ship</em> route set on it,
+a delivery order is created to fulfill the order.</p>
+<img alt="View of the operations created by a pull from transfer." class="align-center" src="../../../../../_images/operations-on-transfers.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If the source document for multiple tranfers is the same sales order, the status is not the same.
+The status will be <span class="guilabel">Waiting Another Operation</span> if the previous transfer in the list is
+not done yet.</p>
+</div>
+<img alt="View of the transfers' various statuses at the beginning of the process." class="align-center" src="../../../../../_images/waiting-status.png" />
+<p>To prepare the delivery order, packed products are needed at the output area, so an internal
+transfer is requested from the packing zone.</p>
+<img alt="View of the detailed operations for a transfer between the packing and output zones." class="align-center" src="../../../../../_images/detailed-operations-2.png" />
+<p>Obviously, the packing zone needs products ready to be packed. So, an internal transfer is
+requested to the stock and employees can gather the required products from the warehouse.</p>
+<img alt="View of the detailed operations for a transfer between the stock and packing zones." class="align-center" src="../../../../../_images/detailed-operations-transfer.png" />
+<p>As explained in the introduction of the documentation, the last step in the process (for this
+route, the delivery order) is the first to be triggered, which then triggers other rules until we
+reach the first step in the process (here, the internal transfer from the stock to the packing
+area). Now, everything is ready to be processed so the customer can get the ordered items.</p>
+<p>In this example, the product is delivered to the customer when all the rules have been triggered and
+the transfers are done.</p>
+<img alt="View of the transfers' statuses when the route is completed." class="align-center" src="../../../../../_images/transfers-status.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Routes and push/pull rules</a><ul>
+<li><a class="reference internal" href="#inside-the-warehouse">Inside the warehouse</a></li>
+<li><a class="reference internal" href="#pull-rules">Pull rules</a></li>
+<li><a class="reference internal" href="#push-rules">Push rules</a></li>
+<li><a class="reference internal" href="#use-routes-and-rules">Use routes and rules</a><ul>
+<li><a class="reference internal" href="#pre-configured-routes">Pre-configured routes</a></li>
+<li><a class="reference internal" href="#custom-routes">Custom Routes</a><ul>
+<li><a class="reference internal" href="#rules">Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-flow">Example flow</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Routes and push/pull rules</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

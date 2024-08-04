@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payslips &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/hr/payroll/payslips.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/hr/payroll/payslips.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Payslips</a><ul>
+<li><a class="reference internal" href="#to-pay">To pay</a><ul>
+<li><a class="reference internal" href="#create-new-payslip">Create new payslip</a><ul>
+<li><a class="reference internal" href="#required-fields">Required fields</a></li>
+<li><a class="reference internal" href="#optional-fields">Optional fields</a></li>
+<li><a class="reference internal" href="#save-and-process-new-payslip">Save and process new payslip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#all-payslips">All payslips</a></li>
+<li><a class="reference internal" href="#batches">Batches</a><ul>
+<li><a class="reference internal" href="#create-a-new-batch">Create a new batch</a></li>
+<li><a class="reference internal" href="#generate-commission-payslips">Generate commission payslips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/hr/payroll/payslips.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Payslips</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="payslips">
+<h1>Payslips<a class="headerlink" href="#payslips" title="Permalink to this headline">¶</a></h1>
+<p>Payslips are created either by the employees themselves or their managers, and are approved by
+authorized employees (typically managers). Then, once payslips are approved, employees are issued
+payslips and are paid either by check or direct deposit, depending on how their employee profile is
+configured.</p>
+<p>The <span class="guilabel">Payslips</span> drop-down header of the <span class="menuselection">Payroll</span> application consists of
+three sections: <span class="guilabel">To Pay</span>, <span class="guilabel">All Payslips</span>, and <span class="guilabel">Batches</span>.</p>
+<p>These three sections provide all the tools needed to create payslips for employees, including
+individual payslips, a batch of payslips, or commission payslips.</p>
+<img alt="Payslips menu selection in Payroll." class="align-center" src="../../../_images/payslips.png" />
+</section><section id="to-pay">
+<h2>To pay<a class="headerlink" href="#to-pay" title="Permalink to this headline">¶</a></h2>
+<p>Click on <span class="menuselection">Payroll app ‣ Payslips ‣ To Pay</span> to see the payslips that need to be
+paid. On this page, Odoo displays the payslips that have not been generated yet, and can be created
+from this dashboard.</p>
+<img alt="View all payslips that need to be paid on the Payslips To Pay page." class="align-center" src="../../../_images/all-pay-slips.png" />
+<p>Each payslip will list the <span class="guilabel">Reference</span> number for the individual payslip, the
+<span class="guilabel">Employee</span> name, <span class="guilabel">Batch Name</span>, the <span class="guilabel">From</span> and <span class="guilabel">To</span> date
+range, the <span class="guilabel">Company</span>, the <span class="guilabel">Basic Wage</span>, <span class="guilabel">Net Wage</span>, and the
+<span class="guilabel">Status</span> of the payslip.</p>
+<p>Clicking on an individual payslip entry will show the details for the individual payslip.</p>
+</section><section id="create-new-payslip">
+<span id="payroll-new-payslip"></span><h3>Create new payslip<a class="headerlink" href="#create-new-payslip" title="Permalink to this headline">¶</a></h3>
+<p>A new payslip can be created from the <span class="guilabel">Payslips To Pay</span> page (<span class="menuselection">Payroll app
+‣ Payslips ‣ To Pay</span>) or the <span class="guilabel">Employee Payslips</span> page (<span class="menuselection">Payroll app
+‣ Payslips ‣ All Payslips</span>), by clicking the <span class="guilabel">Create</span> button in the top-left corner.</p>
+<p>Clicking <span class="guilabel">Create</span> reveals a blank payslip form, wherein the necessary payslip information
+can be entered.</p>
+</section><section id="required-fields">
+<h4>Required fields<a class="headerlink" href="#required-fields" title="Permalink to this headline">¶</a></h4>
+<p>On the blank payslip form, a number of fields are required to be filled in with the necessary
+information. These required fields are represented by <strong>bold</strong> lines.</p>
+<img alt="The necessary fields for a new payslip." class="align-center" src="../../../_images/new-payslip.png" />
+<ul class="simple">
+<li><p><span class="guilabel">Employee</span>: Type in the name of an employee, or select the desired employee from the
+drop-down list. Upon selecting an employee, several other fields on the payslip form may
+auto-populate. Typically, after making a selection in the <span class="guilabel">Employee</span> field, Odoo
+auto-populates the <span class="guilabel">Contract</span>, <span class="guilabel">Structure</span>, and <span class="guilabel">Payslip Name</span>
+fields, but <strong>only</strong> if that information is already on that employee’s form in the <em>Employees</em>
+app.</p></li>
+<li><p><span class="guilabel">Period</span>: Click the default date to reveal a pop-up calendar. On this calendar, use the
+<span class="guilabel">&lt; (less-than)</span> and <span class="guilabel">&gt; (greater than)</span> icons to select the desired month, and
+click on the desired day to select that specific date as the start date for the payslip. Repeat
+this process to add an end date for the payslip in the field below.</p></li>
+<li><p><span class="guilabel">Contract</span>: Using the drop-down menu, select the desired contract for the employee. Only
+the available corresponding contracts for the selected employee appear as options.</p></li>
+<li><p><span class="guilabel">Structure</span>: Using the drop-down menu, select the salary structure type. Only the
+available corresponding structures for the selected contract for that specific employee appear as
+options.</p></li>
+<li><p><span class="guilabel">Payslip Name</span>: In the blank field, type in the name for the payslip. The name should be
+short and descriptive, such as <code class="o_code docutils literal notranslate"><span class="pre">April</span> <span class="pre">2023</span></code>.</p></li>
+<li><p><span class="guilabel">Company</span>: In the <span class="guilabel">Accounting Information</span> tab, select the company the payslip
+applies to from the <span class="guilabel">Company</span> drop-down menu.</p></li>
+<li><p><span class="guilabel">Salary Journal</span>: In the <span class="guilabel">Accounting Information</span> tab, enter the salary
+journal in which the payment will be reflected, and found in the <em>Accounting</em> application.</p></li>
+</ul>
+<img alt="The necessary fields for a new payslip in the Accounting Information tab." class="align-center" src="../../../_images/new-payslip-tab.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>It is recommended to check with the accounting department to ensure every entry that affects the
+<em>Accounting</em> application is correct.</p>
+</div>
+</section><section id="optional-fields">
+<h4>Optional fields<a class="headerlink" href="#optional-fields" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><span class="guilabel">Reference</span>: Any note or reference message for the new entry can be entered here.</p></li>
+<li><p><span class="guilabel">Company Car</span>: If applicable, select the company car from the drop-down.</p></li>
+<li><p><span class="guilabel">Worked Days</span>: In the <span class="guilabel">Worked Days &amp; Inputs</span> tab, the entries under
+<span class="guilabel">Worked Days</span> (including the <span class="guilabel">Type</span>, <span class="guilabel">Description</span>,
+<span class="guilabel">Number of Days</span>, <span class="guilabel">Number of Hours</span>, and <span class="guilabel">Amount</span>) are automatically
+filled in, based on what was entered for the <span class="guilabel">Period</span>, <span class="guilabel">Contract</span>, and
+<span class="guilabel">Structure</span> fields of the payslip form.</p></li>
+<li><p><span class="guilabel">Salary Computation</span>: The <span class="guilabel">Salary Computation</span> tab is automatically filled in
+after the <span class="guilabel">Compute Sheet</span> button is clicked. Doing so displays all the wages,
+deductions, taxes, etc. for the entry.</p></li>
+<li><p><span class="guilabel">Batch Name</span>: Located in the <span class="guilabel">Accounting Information</span> tab, select the payslip
+batch this new payslip should be added to from the drop-down menu.</p></li>
+<li><p><span class="guilabel">Date Account</span>: Located in the <span class="guilabel">Accounting Information</span> tab, enter the date on
+which the payslip should be posted, by clicking on the drop-down menu, and navigating to the
+correct month and year using the <span class="guilabel">&lt; &gt; (less-than/greater-than)</span> icons in the calendar
+pop-up window. Then, click on the desired date.</p></li>
+<li><p><span class="guilabel">Salary Journal</span>: This field, located in the <span class="guilabel">Accounting Information</span> tab,
+represents the journal that the payslip will be logged in, and is automatically selected when the
+<span class="guilabel">Contract</span> and <span class="guilabel">Structure</span> are entered in the payslip form.</p></li>
+<li><p><span class="guilabel">Accounting Entry</span>: This field, located in the <span class="guilabel">Accounting Information</span> tab,
+is automatically filled in once the payslip is confirmed.</p></li>
+</ul>
+</section><section id="save-and-process-new-payslip">
+<h4>Save and process new payslip<a class="headerlink" href="#save-and-process-new-payslip" title="Permalink to this headline">¶</a></h4>
+<p>When all the necessary information on the payslip is entered, click <span class="guilabel">Save</span> to save the
+data, or click <span class="guilabel">Discard</span> to delete the entry.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Saving the entry is not required in order to compute the sheet, although it is considered best
+practice to do so. The <span class="guilabel">Compute Sheet</span> button can be clicked without first saving the
+payslip. Doing so will save the entry <em>and</em> compute the sheet.</p>
+</div>
+<p>Click the <span class="guilabel">Compute Sheet</span> button to register all the
+information, and have the <span class="guilabel">Salary Computation</span> tab populated. If any modifications need to
+be made, click the <span class="guilabel">Edit</span> button, make the desired changes, then click the
+<span class="guilabel">Recompute Worked Days</span> button to have the changes reflected in the <span class="guilabel">Worked
+Days</span> and <span class="guilabel">Salary Computation</span> tabs.</p>
+<p>To print the payslip, click the <span class="guilabel">Print</span> button. To cancel the payslip, click the
+<span class="guilabel">Cancel Payslip</span> button.</p>
+<p>Once everything on the payslip form is correct, click the <span class="guilabel">Create Draft Entry</span> button to
+create the payslip. The chatter is automatically updated to show the email sent to the employee,
+along with a PDF copy of the payslip.</p>
+<img alt="The new payslip is emailed to the employee and the email appears in the chatter." class="align-center" src="../../../_images/payslip-chatter.png" />
+<p>Next, the payment must be sent to the employee. To do this, click the <span class="guilabel">Make Payment</span>
+button. Doing so reveals a pop-up form, in which the desired <span class="guilabel">Bank Journal</span> that the
+payment should be made against must be selected from a drop-down menu. Then, click the
+<span class="guilabel">Confirm</span> button to confirm the journal, and return to the payslip.</p>
+<img alt="Click Make Payment to send the payment to the employee." class="align-center" src="../../../_images/make-payment.png" />
+<p>If a payment needs to be cancelled or refunded, click the corresponding <span class="guilabel">Refund</span> or
+<span class="guilabel">Cancel Payslip</span> button, located at the top of the payslip form.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>In order for a payslip to be paid, the employee <em>must</em> have a bank account entered in their
+contact information. If there is no bank information, a payslip cannot be paid, and an error will
+appear when the <span class="guilabel">Make Payment</span> button is clicked. Banking information can be found in
+the <span class="guilabel">Private Information</span> tab on the employee’s card. Edit the employee card, and add
+banking information, if it is missing.</p>
+<img alt="Banking information can be entered in an employee's card." class="align-center" src="../../../_images/banking.png" />
+</div>
+</section><section id="all-payslips">
+<h2>All payslips<a class="headerlink" href="#all-payslips" title="Permalink to this headline">¶</a></h2>
+<p>To view all payslips regardless of status, go to <span class="menuselection">Payroll app ‣ Payslips ‣ All
+Payslips</span>. Here, all payslips are organized by batch (in a default list view).</p>
+<p>Click on the <span class="guilabel">▶ (arrow)</span> next to the individual batch name to view all the payslips in
+that particular batch, along with all the payslip details. The number of payslips in the batch is
+written in parenthesis after the batch name. The <span class="guilabel">Status</span> for each individual payslip
+appears on the far-right side, indicating if it is in <span class="guilabel">Draft Mode</span>, <span class="guilabel">Waiting</span>,
+or if it is <span class="guilabel">Done</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p><span class="guilabel">Draft</span> indicates the payslip is created, and there is still time to make edits,
+since the amounts are not calculated.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">Waiting</span></code> indicates the payslip has been calculated and the salary details can be found in the
+<em>Salary Computation</em> tab.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">Done</span></code> indicates the payslip is calculated and ready to be paid.</p></li>
+</ul>
+</div>
+<img alt="View all payslips organized by batches. Click on the arrow to expand each batch." class="align-center" src="../../../_images/all-payslips.png" />
+<p>Click on an individual payslip to view the details for that payslip on a separate page. Using the
+breadcrumb menu, click <span class="guilabel">Employee Payslips</span> to go back to the list view of all payslips.</p>
+<p>A new payslip can be created from the <span class="guilabel">Employee Payslips</span> page, by clicking the
+<span class="guilabel">Create</span> button in the upper-left corner. Doing so reveals a separate blank payslip form
+page. On that blank payslip form page, enter all the necessary information, as described in the
+<a class="reference internal" href="#payroll-new-payslip"><span class="std std-ref">Create a new payslip</span></a> section.</p>
+<p>To print PDF versions of payslips from the <span class="guilabel">Payslips to Pay</span> or <span class="guilabel">Employee
+Payslips</span> pages, first select the desired payslips by clicking on the individual checkbox next to
+each payslip to be printed. Or, click the box next to <span class="guilabel">Reference</span>, which selects all
+visible payslips on the page. Then, click the <span class="guilabel">Print</span> button to print the payslips.</p>
+<img alt="Click on the Print smart button to print payslips to a PDF." class="align-center" src="../../../_images/print.png" />
+<p>Payslips can also be exported to an Excel spreadsheet. When exporting, all payslips are exported
+regardless of whether some are selected or not. Click on the <span class="guilabel">Export All</span> button (download
+icon) to export all payslips to an Excel spreadsheet.</p>
+<img alt="Click on the Export All smart button to export all payslips to an Excel payslip." class="align-center" src="../../../_images/export.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Both <em>To Pay</em> and <em>All Payslips</em> display all the detailed information for each payslip.</p>
+</div>
+</section><section id="batches">
+<h2>Batches<a class="headerlink" href="#batches" title="Permalink to this headline">¶</a></h2>
+<p>To view payslips in batches, navigate to <span class="menuselection">Payroll app ‣ Payslips ‣ Batches</span> to
+display all the payslip batches that have been created. These payslip batches are displayed in a
+list view, by default.</p>
+<p>Each batch displays the <span class="guilabel">Name</span>, <span class="guilabel">Date From</span> and <span class="guilabel">Date To</span> dates,
+whether it was a <span class="guilabel">Credit note</span>, its <span class="guilabel">Status</span>, and the <span class="guilabel">Company</span>.</p>
+<img alt="View displaying all batches created." class="align-center" src="../../../_images/batches.png" />
+<p>Click on an individual batch to view the details for that batch on a separate page. On this batch
+detail page, modifications can be made. To make any modifications to a batch, click the
+<span class="guilabel">Edit</span> button. Then, proceed to make any necessary changes.</p>
+<p>When all desired changes have been made, click either <span class="guilabel">Save</span> to save the changes, or
+<span class="guilabel">Discard</span> to revert back to the original data.</p>
+<p>After modifications have been saved, click the <span class="guilabel">Generate Payslips</span> button to reveal a
+<span class="guilabel">Generate Payslips</span> pop-up form, in which payslips affected by the changes can be created
+or modified.</p>
+<p>All payslips associated with the batch are displayed in the employees section of the
+<span class="guilabel">Generate Payslips</span> pop-up. To filter the results by either the <span class="guilabel">Salary
+Structure</span> and/or the <span class="guilabel">Department</span>, select a salary structure and/or department from the
+respective drop-down menus.</p>
+<p>Only employees that match the selected <span class="guilabel">Salary Structure</span> and/or <span class="guilabel">Department</span>
+appear in the employees list. Click the <span class="guilabel">Generate</span> button at the bottom of the
+<span class="guilabel">Generate Payslips</span> pop-up window to generate the modified payslips, and close the pop-up
+window.</p>
+<img alt="Generate payslips from the edited batch." class="align-center" src="../../../_images/generate-payslips-batch.png" />
+<p>Back on the batch details page, click the <span class="guilabel">Create Draft Entry</span> smart button to create a
+draft of the payslips.</p>
+<img alt="Generate payslips from the edited batch." class="align-center" src="../../../_images/draft-from-batch.png" />
+<p>Once the draft payslips are created, the button changes to say <span class="guilabel">Make Payment</span>. Click the
+<span class="guilabel">Make Payment</span> button. A pop-up window appears, in which the bank journal information must
+be entered. Select the <span class="guilabel">Bank Journal</span> from the drop-down list, and click
+<span class="guilabel">Confirm</span> to process the payslips, and pay the employees.</p>
+<p>On the batch detail page, the number of payslips in the batch is accessible via the
+<span class="guilabel">Payslips</span> smart button, located in the top-right corner. Individual payslips for the
+batch can be viewed by clicking the <span class="guilabel">Payslips</span> smart button in the top-right corner.</p>
+<p>Use the breadcrumb menu to navigate back to the individual batch detail page, or back to the list of
+all batches.</p>
+<img alt="Click the Payslips smart button to view the individual payslips in the batch." class="align-center" src="../../../_images/payslip-batches.png" />
+</section><section id="create-a-new-batch">
+<h3>Create a new batch<a class="headerlink" href="#create-a-new-batch" title="Permalink to this headline">¶</a></h3>
+<p>To create a new batch of payslips from the <span class="guilabel">Payslips Batches</span> page
+(<span class="menuselection">Payroll app ‣ Payslips ‣ Batches</span>), click the <span class="guilabel">Create</span> button in the
+upper-left corner. Doing so reveals a blank payslip batch form on a separate page.</p>
+<p>On the new payslip batch form, enter the <span class="guilabel">Name</span> for the batch, and select the date range
+to which the batch applies, by clicking the <span class="guilabel">▼ (drop-down arrow)</span> icon in the
+<span class="guilabel">Period</span> fields, which reveals a calendar pop-up window. From this calendar pop-up window,
+navigate to the correct month, and click on the corresponding day for both the start and end dates.</p>
+<img alt="Enter the details for the new batch." class="align-center" src="../../../_images/new-batch-details.png" />
+<p>If the batch is a credit note, check the box next to <span class="guilabel">Credit Note</span>. Then, in the
+<span class="guilabel">Generation Date</span> field, select the date the payslips should be generated from a calendar
+pop-up window. This generated date is reflected in the accounting journal entries.</p>
+<p>Lastly, in the <span class="guilabel">Company</span> field, select the company these payslips are written against.</p>
+<p>When all the information on the payslip batch form is correct, click the <span class="guilabel">Save</span> button to
+save the information. To delete the entry, click the <span class="guilabel">Discard</span> button.</p>
+<p>To create the payslips for the newly-created batch, click the <span class="guilabel">Generate Payslips</span> button
+at the top of the form.</p>
+<p>When clicked, a pop-up window appears showing all the payslips that will be created. To remove any
+individual payslips, click the black <span class="guilabel">✖ (x mark)</span> icon at the far right of the payslip
+line.</p>
+<p>If a specific <span class="guilabel">Salary Structure</span> or <span class="guilabel">Department</span> needs to be specified for the
+batch, select them from the corresponding drop-down menus.</p>
+<p>Click the <span class="guilabel">Generate</span> button at the bottom of the pop-up window to create the payslips for
+the batch.</p>
+<img alt="Generate payslips for the new batch." class="align-center" src="../../../_images/generate-payslips.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>On the <span class="guilabel">Generate Payslips</span> pop-up window, selecting a <span class="guilabel">Department</span> and/or
+<span class="guilabel">Salary Structure</span> only displays payslips that apply to those specifically-selected
+parameters.</p>
+</div>
+<p>If there are any errors or issues preventing the payslips from being generated, an error message
+appears in the top-right section. This error box disappears on its own after several seconds, or the
+<span class="guilabel">✖ (x mark)</span> icon can be clicked to close the alert.</p>
+<p>To remedy the issue, make any necessary modifications (e.g. removing any payslip lines that cannot
+be processed), then click the <span class="guilabel">Generate</span> button again.</p>
+<p>Once the payslips have been successfully generated, the screen returns to the payslip batch form.</p>
+<p>From here, click the <span class="guilabel">Generate Draft Entry</span> button to change the payslips’ status from
+<span class="guilabel">Draft</span> to <span class="guilabel">Done</span>.</p>
+<p>Once payslips have been generated, click the <span class="guilabel">Make Payment</span> button to process the
+payments. Doing so reveals a pop-up window, in which the proper banking information must be entered.
+In this pop-up window, select the appropriate <span class="guilabel">Bank Journal</span> from the drop-down menu, and
+enter the appropriate file name.</p>
+<p>When done, click the <span class="guilabel">Confirm</span> button to confirm the information, or click
+<span class="guilabel">Cancel</span> to discard.</p>
+</section><section id="generate-commission-payslips">
+<h3>Generate commission payslips<a class="headerlink" href="#generate-commission-payslips" title="Permalink to this headline">¶</a></h3>
+<p>Commission payslips can be generated directly from the <span class="guilabel">Payslips Batches</span> page
+(<span class="menuselection">Payroll app ‣ Payslips ‣ Batches</span>). To generate commission payslips from this
+page, click on the desired batch (or batches) to create commissions payslips for, then click the
+<span class="guilabel">Generate Commission Payslips</span> button.</p>
+<p>Doing so reveals a <span class="guilabel">Generate Commission Payslip</span> pop-up window, in which the necessary
+information <strong>must</strong> be filled out.</p>
+<img alt="Enter the commission details." class="align-center" src="../../../_images/commission-details.png" />
+<p>On this pop-up window, click on the drop-down menus, located beside the <span class="guilabel">Period</span> field, to
+reveal calendar pop-up windows. On these calendar pop-up windows, select the desired period for
+which the payslips are being generated. Using the <span class="guilabel">&lt; (left)</span> and <span class="guilabel">&gt; (right)</span>
+arrows, navigate to the correct month, and click on the date to select it.</p>
+<p>In the <span class="guilabel">Department</span> field, select the desired department from the drop-down menu.</p>
+<p>When a department is selected, the employees listed for that department appear in the
+<span class="guilabel">Employee</span> section.</p>
+<p>Under the <span class="guilabel">Employee</span> section, enter the <span class="guilabel">Commission Amount</span> for each employee in
+the appropriate column. To remove an employee, click the <span class="guilabel">🗑️ (trash)</span> icon to remove the
+line.</p>
+<p>Add a new entry by clicking <span class="guilabel">Add a Line</span>, and entering the <span class="guilabel">Employee</span> and the
+appropriate <span class="guilabel">Commission Amount</span>.</p>
+<p>Click the <span class="guilabel">Upload Your File</span> button to add a file, if necessary. Any file type is
+accepted.</p>
+<p>Using the drop-down menu beside the <span class="guilabel">Commission Type</span> field, select either
+<span class="guilabel">Classic Commission</span> or <span class="guilabel">Warrant</span>. <span class="guilabel">Classic</span> is the most typical of
+commission, while <span class="guilabel">Warrant</span> is primarily used for Belgium companies.</p>
+<p>Once all the commissions are properly entered, click the <span class="guilabel">Generate Payslips</span> button to
+create the commission payslips.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Payslips</a><ul>
+<li><a class="reference internal" href="#to-pay">To pay</a><ul>
+<li><a class="reference internal" href="#create-new-payslip">Create new payslip</a><ul>
+<li><a class="reference internal" href="#required-fields">Required fields</a></li>
+<li><a class="reference internal" href="#optional-fields">Optional fields</a></li>
+<li><a class="reference internal" href="#save-and-process-new-payslip">Save and process new payslip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#all-payslips">All payslips</a></li>
+<li><a class="reference internal" href="#batches">Batches</a><ul>
+<li><a class="reference internal" href="#create-a-new-batch">Create a new batch</a></li>
+<li><a class="reference internal" href="#generate-commission-payslips">Generate commission payslips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Payslips</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

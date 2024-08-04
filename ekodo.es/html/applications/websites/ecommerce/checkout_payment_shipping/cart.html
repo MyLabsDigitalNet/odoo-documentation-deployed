@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add to cart &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/ecommerce/checkout_payment_shipping/cart.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/ecommerce/checkout_payment_shipping/cart.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Add to cart</a><ul>
+<li><a class="reference internal" href="#add-to-cart-action-customization">‘Add to Cart’ action customization</a></li>
+<li><a class="reference internal" href="#replace-add-to-cart-button-by-contact-us-button">Replace ‘Add to Cart’ button by ‘Contact Us’ button</a></li>
+<li><a class="reference internal" href="#customizable-add-to-cart-button">Customizable ‘Add to Cart’ button</a></li>
+<li><a class="reference internal" href="#buy-now-button">‘Buy Now’ button</a></li>
+<li><a class="reference internal" href="#re-order-from-portal">Re-order from portal</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/ecommerce/checkout_payment_shipping/cart.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Add to cart</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="add-to-cart">
+<h1>Add to cart<a class="headerlink" href="#add-to-cart" title="Permalink to this headline">¶</a></h1>
+<p>The <span class="guilabel">Add to Cart</span> button can be customized in multiple ways. You can:</p>
+<ul class="simple">
+<li><p>Choose on which page customers go after clicking the ‘Add to Cart’ button;</p></li>
+<li><p>Hide the ‘Add to Cart’ button to prevent sales;</p></li>
+<li><p>Add a ‘Buy Now’ button to skip the cart step and lead customers straight to checkout;</p></li>
+<li><p>Create additional ‘Add to Cart / Buy Now’ buttons;</p></li>
+<li><p>Add an ‘Order Again’ button to the customer portal.</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="checkout.html"><span class="doc">Checkout</span></a></p>
+</div>
+</section><section id="add-to-cart-action-customization">
+<h2>‘Add to Cart’ action customization<a class="headerlink" href="#add-to-cart-action-customization" title="Permalink to this headline">¶</a></h2>
+<p>When customers click on the <span class="guilabel">Add to Cart</span> button, the product is added to their cart, and
+customers remain <strong>by default</strong> on the product’s page. However, customers can either immediately be
+<strong>redirected</strong> to their cart, or given the choice on what to do through a <strong>dialog box</strong>.</p>
+<p>To change the default behavior, go to <span class="menuselection">Website ‣ Configuration ‣ Settings</span>. Under
+the <span class="guilabel">Shop - Checkout Process</span> section, look for <span class="guilabel">Add to Cart</span> and select one of
+the options.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If a product has <a class="reference internal" href="../managing_products/cross_upselling.html"><span class="doc">optional products</span></a>, the <strong>dialog
+box</strong> will always appear.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../managing_products/catalog.html"><span class="doc">Catalog</span></a></p>
+</div>
+</section><section id="replace-add-to-cart-button-by-contact-us-button">
+<span id="cart-prevent-sale"></span><h2>Replace ‘Add to Cart’ button by ‘Contact Us’ button<a class="headerlink" href="#replace-add-to-cart-button-by-contact-us-button" title="Permalink to this headline">¶</a></h2>
+<p>You can replace the ‘Add to Cart’ button with a ‘Contact Us’ button which redirects users to the URL
+of your choice.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Hiding the <span class="guilabel">Add to Cart</span> button is often used by B2B eCommerces that need to restrict
+purchases only to <a class="reference internal" href="checkout.html#checkout-sign"><span class="std std-ref">customers with an account</span></a>, but still want to
+display an online product catalog for those without.</p>
+</div>
+<p>To do so, go to <span class="menuselection">Website ‣ Configuration ‣ Settings ‣ Shop - Products</span> and tick
+<span class="guilabel">Prevent Sale of Zero Priced Product</span>. This creates a new <span class="guilabel">Button url</span> field
+where you can enter the <strong>redirect URL</strong> to be used. Then, set the price of the product to <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code>
+either from the <strong>product’s template</strong>, or from a
+<a class="reference internal" href="../../../sales/sales/products_prices/prices/pricing.html"><span class="doc">pricelist</span></a>.</p>
+<img alt="Contact us button on product page" class="align-center" src="../../../../_images/cart-contactus.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The ‘Contact Us’ button and ‘<em>Not Available For Sale</em>’ text can both be modified using the
+<strong>website builder</strong> on the product’s page (<span class="menuselection">Edit ‣ Customize</span>) by clicking on
+them.</p>
+</div>
+</section><section id="customizable-add-to-cart-button">
+<h2>Customizable ‘Add to Cart’ button<a class="headerlink" href="#customizable-add-to-cart-button" title="Permalink to this headline">¶</a></h2>
+<p>You can also create a customizable ‘Add to Cart’ button and link it to a specific product. The
+<strong>customized button</strong> can be added on any page of the website as an <strong>inner content</strong> building
+block, and is an <em>additional</em> button to the regular <span class="guilabel">Add to Cart</span> button.</p>
+<p>To add it, go on the <span class="guilabel">Shop</span> page of your choice, click <span class="menuselection">Edit ‣ Blocks</span>
+and place the building block. Once placed, you have the following options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Product</span>: select the product to link the button with. Selecting a product renders the
+<span class="guilabel">Action</span> field available;</p></li>
+<li><p><span class="guilabel">Action</span>: choose if the button should <span class="guilabel">Add to Cart</span> or <span class="guilabel">Buy Now</span>
+(instant checkout).</p></li>
+</ul>
+<img alt="Customizable 'Add to Cart' button" class="align-center" src="../../../../_images/cart-add.png" />
+</section><section id="buy-now-button">
+<span id="cart-buy-now"></span><h2>‘Buy Now’ button<a class="headerlink" href="#buy-now-button" title="Permalink to this headline">¶</a></h2>
+<p>You can enable the ‘Buy Now’ button to instantly take the customer to <strong>checkout</strong> instead
+of adding the product to the cart. The <span class="guilabel">Buy Now</span> button is an <em>additional</em> button and
+does not replace the <span class="guilabel">Add to Cart</span> button. To enable it, go to
+<span class="menuselection">Website ‣ Configuration ‣ Settings ‣ Shop - Checkout Process</span> and tick
+<span class="guilabel">Buy Now</span>.</p>
+<img alt="Buy Now button" class="align-center" src="../../../../_images/cart-buy-now.png" />
+</section><section id="re-order-from-portal">
+<h2>Re-order from portal<a class="headerlink" href="#re-order-from-portal" title="Permalink to this headline">¶</a></h2>
+<p>Customers have the possibility to <strong>re-order</strong> items from <strong>previous sales orders</strong> on the customer
+portal. To do so, go to <span class="menuselection">Website ‣ Configuration ‣ Settings ‣ Shop - Checkout
+Process</span> and enable <span class="guilabel">Re-order From Portal</span>. Customers can find the <span class="guilabel">Order Again</span>
+button on their <strong>sales order</strong> from the <strong>customer portal</strong>.</p>
+<img alt="Re-order button" class="align-center" src="../../../../_images/cart-reorder.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Add to cart</a><ul>
+<li><a class="reference internal" href="#add-to-cart-action-customization">‘Add to Cart’ action customization</a></li>
+<li><a class="reference internal" href="#replace-add-to-cart-button-by-contact-us-button">Replace ‘Add to Cart’ button by ‘Contact Us’ button</a></li>
+<li><a class="reference internal" href="#customizable-add-to-cart-button">Customizable ‘Add to Cart’ button</a></li>
+<li><a class="reference internal" href="#buy-now-button">‘Buy Now’ button</a></li>
+<li><a class="reference internal" href="#re-order-from-portal">Re-order from portal</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Add to cart</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

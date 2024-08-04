@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assign leads with predictive lead scoring &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/crm/track_leads/lead_scoring.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/crm/track_leads/lead_scoring.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Assign leads with predictive lead scoring</a><ul>
+<li><a class="reference internal" href="#predictive-lead-scoring">Predictive lead scoring</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#change-the-probability-manually">Change the probability manually</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assign-leads-based-on-probability">Assign leads based on probability</a><ul>
+<li><a class="reference internal" href="#configure-rule-based-assignment">Configure rule-based assignment</a></li>
+<li><a class="reference internal" href="#configure-assignment-rules">Configure assignment rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/crm/track_leads/lead_scoring.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Assign leads with predictive lead scoring</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="assign-leads-with-predictive-lead-scoring">
+<h1>Assign leads with predictive lead scoring<a class="headerlink" href="#assign-leads-with-predictive-lead-scoring" title="Permalink to this headline">¶</a></h1>
+<p>The Odoo <em>CRM</em> app can automatically assign leads/opportunities to sales teams and salespeople. A
+standard practice is to assign leads based on the probability of winning each lead. Companies can
+prioritize the leads that are more likely to result in successful deals by quickly assigning them
+to the appropriate salespeople.</p>
+<p>Odoo automatically calculates the probability of winning each lead using a method called <em>predictive
+lead scoring</em>.</p>
+</section><section id="predictive-lead-scoring">
+<h2>Predictive lead scoring<a class="headerlink" href="#predictive-lead-scoring" title="Permalink to this headline">¶</a></h2>
+<p>Predictive lead scoring is a machine-learning model that uses historical data from Odoo <em>CRM</em> to
+score open leads/opportunities.</p>
+<p>As a company processes opportunities through the CRM pipeline, Odoo collects data on which
+opportunities are won and lost. Predictive lead scoring uses this data to predict the probability
+of winning each new lead or opportunity.</p>
+<p>The more opportunities that are sent through the CRM pipeline, the more data Odoo collects,
+resulting in more accurate probabilities.</p>
+<p>Specifically, Odoo’s predictive lead scoring uses the <em>naive Bayes</em> probability model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+P(A | B) = \frac{P(A) \times P(B | A)}{P(B)}
+\end{equation}\]</div>
+<p>The probability of success of each opportunity is displayed on the opportunity form, and it updates
+automatically as the opportunity progresses through the CRM pipeline.</p>
+<img alt="The probability of success displayed on the opportunity form." class="align-center" src="../../../../_images/score_leads.png" />
+<p>When an opportunity moves to the next stage, its probability of success automatically increases
+according to the predictive lead scoring algorithm.</p>
+</section><section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Predictive lead scoring is always active in Odoo <em>CRM</em>. However, the variables used to calculate the
+probability of success can be customized in the settings.</p>
+<p>To customize the variables used by predictive lead scoring, go to <span class="menuselection">CRM ‣
+Configuration ‣ Settings</span>. Under <span class="guilabel">Predictive Lead Scoring</span>, click on the
+<span class="guilabel">Update Probabilities</span> button.</p>
+<p>Then, click on the drop-down menu to choose which variables the predictive lead scoring feature
+will take into account.</p>
+<img alt="The Update Probabilities window in the Predictive Lead Scoring settings." class="align-center" src="../../../../_images/change_probabilities.png" />
+<p>Any number of the following variables can be activated:</p>
+<ul class="simple">
+<li><p><span class="guilabel">State</span>: the geographical state from which the opportunity originates</p></li>
+<li><p><span class="guilabel">Country</span>: the geographical country from which the opportunity originates</p></li>
+<li><p><span class="guilabel">Phone Quality</span>: whether or not a phone number is listed for the opportunity</p></li>
+<li><p><span class="guilabel">Email Quality</span>: whether or not an email address is listed for the opportunity</p></li>
+<li><p><span class="guilabel">Source</span>: the source of an opportunity (e.g. search engine, social media)</p></li>
+<li><p><span class="guilabel">Language</span>: the spoken language specified on the opportunity</p></li>
+<li><p><span class="guilabel">Tags</span>: the tags placed on the opportunity</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The variables <code class="o_code docutils literal notranslate"><span class="pre">Stage</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">Team</span></code> are always in effect. <code class="o_code docutils literal notranslate"><span class="pre">Stage</span></code> refers to the CRM pipeline stage
+that an opportunity is in. <code class="o_code docutils literal notranslate"><span class="pre">Team</span></code> refers to the sales team that is assigned to an opportunity.
+Predictive lead scoring <em>always</em> takes into account these two variables, regardless of which
+optional variables are selected.</p>
+</div>
+<p>Next, click on the date field next to the option <span class="guilabel">Consider leads created as of the:</span> to
+select the date from which predictive lead scoring will begin its calculations.</p>
+<p>Lastly, click <span class="guilabel">Confirm</span> to save changes.</p>
+</section><section id="change-the-probability-manually">
+<h3>Change the probability manually<a class="headerlink" href="#change-the-probability-manually" title="Permalink to this headline">¶</a></h3>
+<p>An opportunity’s probability of success can be changed manually on the opportunity form. Click on
+the probability number to edit it.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Manually changing the probability removes the automatic probability updates for that
+opportunity. The probability will no longer update automatically as the opportunity moves
+through each stage of the pipeline.</p>
+</div>
+<p>To reactivate automatic probability, click on the gear icon next to the probability percentage.</p>
+<img alt="The gear icon used to reactivate automatic probability on an opportunity form." class="align-center" src="../../../../_images/gear_icon_probability.png" />
+</section><section id="assign-leads-based-on-probability">
+<h2>Assign leads based on probability<a class="headerlink" href="#assign-leads-based-on-probability" title="Permalink to this headline">¶</a></h2>
+<p>Odoo <em>CRM</em> can assign leads/opportunities to sales teams and salespeople based on specified rules.
+Create assignment rules based on the leads’ probability of success to prioritize those that are
+more likely to result in deals.</p>
+</section><section id="configure-rule-based-assignment">
+<h3>Configure rule-based assignment<a class="headerlink" href="#configure-rule-based-assignment" title="Permalink to this headline">¶</a></h3>
+<p>To activate <em>rule-based assignment</em>, navigate to <span class="menuselection">CRM ‣ Configuration ‣
+Settings</span>, and activate <span class="guilabel">Rule-Based Assignment</span>.</p>
+<p>The rule-based assignment feature can be set to run <span class="guilabel">Manually</span>, meaning an Odoo user must
+manually trigger the assignment, or <span class="guilabel">Repeatedly</span>, meaning Odoo will automatically trigger
+the assignment according to the chosen time period.</p>
+<p>To set up automatic lead assignment, select <span class="guilabel">Repeatedly</span> for the <span class="guilabel">Running</span>
+section. Then, customize how often Odoo will trigger the automatic assignment in the
+<span class="guilabel">Repeat every</span> section.</p>
+<img alt="The Rule-Based Assignment setting in CRM settings." class="align-center" src="../../../../_images/rules_based_asigned.png" />
+<p>If rule-based assignment is set to run <span class="guilabel">Repeatedly</span>, the assignment can still be
+triggered manually using the circular arrow icon in the <span class="guilabel">Rule-Based Assignment</span> settings
+(or using the <span class="guilabel">Assign Leads</span> button on the sales team configuration page).</p>
+</section><section id="configure-assignment-rules">
+<h3>Configure assignment rules<a class="headerlink" href="#configure-assignment-rules" title="Permalink to this headline">¶</a></h3>
+<p>Next, configure the <em>assignment rules</em> for each sales team and/or salesperson. These rules
+determine which leads Odoo assigns to which people. To get started, navigate to <span class="menuselection">CRM
+‣ Configuration ‣ Sales Teams</span>, and select a sales team.</p>
+<p>On the sales team configuration form, under <span class="guilabel">Assignment Rules</span>, click on <span class="guilabel">Edit
+Domain</span> to configure the rules that Odoo uses to determine lead assignment for this sales team. The
+rules can include anything that may be relevant for this company or team, and any number of rules
+can be added.</p>
+<p>Click <span class="guilabel">Add Filter</span> to start creating assignment rules. Click on the <span class="guilabel">+</span> sign on
+the right of the assignment rule to add another line. Click on the <span class="guilabel">x</span> symbol to remove
+the line.</p>
+<p>To create an assignment rule based on an opportunity’s probability of success, click on the far
+left drop-down menu of an assignment rule line, and select <span class="guilabel">Probability</span>.</p>
+<p>From the middle drop-down menu, select the desired equation symbol—most likely the symbol for
+<em>greater than</em>, <em>less than</em>, <em>greater than or equal to</em>, or <em>less than or equal to</em>.</p>
+<p>In the far right space, enter the desired number value of the probability. Finally, click
+<span class="guilabel">Save</span> to save changes.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>To configure an assignment rule such that a sales team receives leads that have a probability of
+success of 20% or greater, create a <span class="guilabel">Domain</span> line that reads: <code class="o_code docutils literal notranslate"><span class="pre">Probability</span> <span class="pre">&gt;=</span> <span class="pre">20</span></code>.</p>
+<img alt="Sales team domain set to probability greater than or equal to twenty percent." class="align-center" src="../../../../_images/lead_probability_domain.png" />
+</div>
+<p>Separate assignment rules can also be configured for individual team members. From the sales team
+configuration page, click on a team member in the <span class="guilabel">Members</span> tab, then edit the
+<span class="guilabel">Domain</span> section. Click <span class="guilabel">Save</span> to save changes.</p>
+<p>If automatic lead assignment is configured in the settings, both the sales team and individual team
+members have the option to <span class="guilabel">Skip auto assignment</span>. Check this box to omit a particular
+sales team or salesperson from being assigned leads automatically by Odoo’s rule-based assignment
+feature. If <span class="guilabel">Skip auto assignment</span> is activated, the sales team or salesperson can still
+be assigned leads manually.</p>
+<p>To manually assign leads to this sales team, click on the <span class="guilabel">Assign Leads</span> button at the
+top of the sales team configuration page. This will assign any leads that are currently unassigned
+and match this team’s specified domain.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Assign leads with predictive lead scoring</a><ul>
+<li><a class="reference internal" href="#predictive-lead-scoring">Predictive lead scoring</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#change-the-probability-manually">Change the probability manually</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assign-leads-based-on-probability">Assign leads based on probability</a><ul>
+<li><a class="reference internal" href="#configure-rule-based-assignment">Configure rule-based assignment</a></li>
+<li><a class="reference internal" href="#configure-assignment-rules">Configure assignment rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Assign leads with predictive lead scoring</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

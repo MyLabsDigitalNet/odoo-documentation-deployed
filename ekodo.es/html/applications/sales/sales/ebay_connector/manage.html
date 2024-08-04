@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to list a product? &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/ebay_connector/manage.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/ebay_connector/manage.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">How to list a product?</a><ul>
+<li><a class="reference internal" href="#listing-without-variation">Listing without variation</a></li>
+<li><a class="reference internal" href="#listing-with-variations">Listing with variations</a></li>
+<li><a class="reference internal" href="#product-identifiers">Product identifiers</a><ul>
+<li><a class="reference internal" href="#ean-and-upc-identifiers">EAN and UPC identifiers</a></li>
+<li><a class="reference internal" href="#listing-with-item-specifics">Listing with item specifics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#process-invoices-and-payments">Process invoices and payments</a><ul>
+<li><a class="reference internal" href="#posting-payment">Posting payment</a></li>
+<li><a class="reference internal" href="#reconciling-payments">Reconciling payments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/ebay_connector/manage.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">How to list a product?</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="how-to-list-a-product">
+<h1>How to list a product?<a class="headerlink" href="#how-to-list-a-product" title="Permalink to this headline">¶</a></h1>
+<p id="ebay-connector-listing">In order to list a product on eBay and Odoo there are two methods in Odoo to do so:</p>
+<ol class="arabic simple">
+<li><p>(<em>Preferred method</em>) Make a product in Odoo and list the item eBay.</p>
+<ul class="simple">
+<li><p>Click <span class="guilabel">List Item on eBay</span> in the top menu of the product template. The product
+template can be accessed by navigating to <span class="menuselection">Sales app ‣ Products ‣ Product</span>
+and selecting the individual product.</p></li>
+</ul>
+</li>
+<li><p>(<em>Less preferred method</em>) List the item on eBay, then create the product in Odoo, and finally
+link product to the item on eBay.</p>
+<ul class="simple">
+<li><p>Click <span class="guilabel">Link With Existing eBay Listing</span> in the top menu on the product template.The
+product template can be accessed by navigating to <span class="menuselection">Sales app ‣ Product ‣
+Product</span> and selecting the individual product.</p></li>
+</ul>
+</li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If an order comes in and the listing from the order is not linked to a product, eBay will create
+a consumable product.product in its place. These consumables should be altered on the <em>sales
+order</em> while in draft state to represent a storable product, and then the user can link to the
+listing as they come in.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>To learn more about the eBay connector visit these pages as well:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="setup.html"><span class="doc">eBay connector setup</span></a></p></li>
+<li><p><a class="reference internal" href="linking_listings.html"><span class="doc">Linking existing listings</span></a></p></li>
+<li><p><a class="reference internal" href="troubleshooting.html"><span class="doc">Troubleshooting eBay connector</span></a></p></li>
+</ul>
+</div>
+</section><section id="listing-without-variation">
+<h2>Listing without variation<a class="headerlink" href="#listing-without-variation" title="Permalink to this headline">¶</a></h2>
+<p>Access the product template by navigating to <span class="menuselection">Sales app ‣ Products ‣ Product</span> and
+selecting the individual product.</p>
+<p>In order to list a product, select the <span class="guilabel">Sell on eBay</span> field on a product template.
+<span class="guilabel">Sell on eBay</span> is either in an <span class="guilabel">eBay</span> tab or under the <span class="guilabel">Product
+name</span>. Click <span class="guilabel">Save</span> if necessary.</p>
+<img alt="The eBay template form listed in the product template in Odoo." class="align-center" src="../../../../_images/manage-ebay-template.png" />
+<p>When the <span class="guilabel">Use Stock Quantity</span> field is checked, the quantity set on eBay will be the Odoo
+<em>Forecast Quantity</em> (Odoo <em>Inventory</em> app).</p>
+<p>The <span class="guilabel">Description Template</span> allows the administrator to use templates in listings. The
+default template only use the <span class="guilabel">eBay Description</span> field of the product. HTML can be used
+inside the <span class="guilabel">Description Template</span> and in the <span class="guilabel">eBay Description</span> in Odoo 14.
+Starting in Odoo 15, the powerbox feature is available to use in the template and description.
+Simply type a forward slash <code class="o_code docutils literal notranslate"><span class="pre">/</span></code> to reveal a menu with formatting, layout, and text options. To add
+an image, type <code class="o_code docutils literal notranslate"><span class="pre">/image</span></code>.</p>
+<p>To use images in the listing, another option is to add them as <em>Attachments</em> on the product
+template.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>For more information on template configuration in Odoo visit:
+<a class="reference internal" href="../../../general/companies/email_template.html"><span class="doc">Email templates</span></a>.</p>
+</div>
+</section><section id="listing-with-variations">
+<h2>Listing with variations<a class="headerlink" href="#listing-with-variations" title="Permalink to this headline">¶</a></h2>
+<p>When the <span class="guilabel">Sell on eBay</span> is checked on a product containing variations with
+<span class="guilabel">Fixed Price</span> as <span class="guilabel">Listing Type</span>, the eBay form is slightly different. Go to the
+<span class="guilabel">Variants</span> tab to or click <span class="guilabel">Configure Variants</span> in the top menu to configure the
+variant settings. Pricing can be configured for each variation.</p>
+<p>When the <span class="guilabel">Listing Type</span> is changed to <span class="guilabel">Fixed Price</span>, Odoo presents a
+variant table at the bottom of the <span class="guilabel">eBay</span> tab, in which the <span class="guilabel">Fixed Price</span> can be
+entered, and the decision to <span class="guilabel">Publish on eBay</span> can be made for specific variants, along
+with other options.</p>
+<img alt="The fixed price listing type in the eBay tab on a product form in Odoo sales." class="align-center" src="../../../../_images/fixed-listing-price.png" />
+</section><section id="product-identifiers">
+<h2>Product identifiers<a class="headerlink" href="#product-identifiers" title="Permalink to this headline">¶</a></h2>
+<p>Products identifiers such as EAN, UPC, Brand or MPN are required in most of the eBay categories.</p>
+</section><section id="ean-and-upc-identifiers">
+<h3>EAN and UPC identifiers<a class="headerlink" href="#ean-and-upc-identifiers" title="Permalink to this headline">¶</a></h3>
+<p>The module manages the EAN and UPC identifiers with the <span class="guilabel">Barcode</span> field of the product
+variant. If the <span class="guilabel">Barcode</span> field is empty or is value is not valid, the EAN and UPC values
+will be set as ‘Does not apply’ as recommended by eBay.</p>
+<p>Barcodes can be found on the product template, under the the <span class="guilabel">General Information</span> tab.
+Access the product template, first, by navigating to <span class="menuselection">Sales app ‣ Products ‣
+Product</span> and selecting the individual product.</p>
+</section><section id="listing-with-item-specifics">
+<h3>Listing with item specifics<a class="headerlink" href="#listing-with-item-specifics" title="Permalink to this headline">¶</a></h3>
+<p>In order to add item specifics, one should create a product attribute with a single value in the
+<span class="guilabel">Attributes &amp; Variants</span> tab on the product form. Examples of item specifics include: <code class="o_code docutils literal notranslate"><span class="pre">MPN</span></code>
+or <code class="o_code docutils literal notranslate"><span class="pre">Brand</span></code>. The Brand and MPN values are working as item specifics and should be defined in the
+<span class="guilabel">Attributes &amp; Variants</span> tab on the product form. If these values are not set, ‘Does not
+apply’ will be used for the eBay listing.</p>
+</section><section id="process-invoices-and-payments">
+<h2>Process invoices and payments<a class="headerlink" href="#process-invoices-and-payments" title="Permalink to this headline">¶</a></h2>
+</section><section id="posting-payment">
+<h3>Posting payment<a class="headerlink" href="#posting-payment" title="Permalink to this headline">¶</a></h3>
+<p>When eBay orders are placed they are always paid for up front, via the eBay site. At no point will
+users pay for items on eBay through Odoo. Therefore, once orders are synced into Odoo from eBay they
+are already paid for. Odoo’s invoicing and payment functionalities are not utilized. However,
+invoices need to be created and marked as Paid to “close” the <em>Sales Order</em>.</p>
+<p>Users can opt to mass create and post invoices in batches. To do so, navigate to Quotations in the
+list view by going to <span class="menuselection">Sales app ‣ Orders ‣ Quotations</span>. In the upper right
+corner, select the list view icon. Hover over the icons to reveal the name of each. Then check the
+boxes on the left that invoices should be made for and go to the <span class="guilabel">Action</span> menu or ⚙️ [Gear
+icon] . Click on <span class="guilabel">Create Invoices</span>.</p>
+<p>A pop-up will appear and click on the <span class="guilabel">Create and view invoice</span> button. A new screen will
+populate with the newly created invoices. Next, select all of them by clicking on the box icon next
+to <span class="guilabel">Number</span> in the header row of the list, this will select all the records. Then navigate
+to the <span class="guilabel">Action</span> menu and click <span class="guilabel">Post entries</span>. Following this step, a pop-up
+will appear and click on <span class="guilabel">Post journal entries</span>. This will take the invoices out of
+<em>draft</em> and set them to <em>posted</em>.</p>
+</section><section id="reconciling-payments">
+<h3>Reconciling payments<a class="headerlink" href="#reconciling-payments" title="Permalink to this headline">¶</a></h3>
+<p>Users typically utilize PayPal to receive payment from eBay, and then send lump sums from PayPal
+into their bank account. To reconcile this income, users can reconcile the one PayPal transfer with
+all related invoices.</p>
+<p>First navigate to the <span class="guilabel">Accounting Dashboard</span> by going to the <span class="menuselection">Accounting
+app ‣ Dashboard ‣ Bank</span>. <span class="guilabel">Create</span> a new transaction and enter the <span class="guilabel">Label</span>
+as <code class="o_code docutils literal notranslate"><span class="pre">eBay</span> <span class="pre">Sales</span></code>. Fill out the <span class="guilabel">Amount</span> and enter a <span class="guilabel">Statement</span> date in. Click on
+<span class="guilabel">Create and edit</span>.</p>
+<p>For the <span class="guilabel">Ending Balance</span> field, enter the same account that was entered for the
+<span class="guilabel">Amount</span> above. Click on <span class="guilabel">Save</span>. Next, open the new balance that needs to be
+reconciled. Under the tab marked: <span class="guilabel">Match Existing Entries</span> select the entries that are
+included in this balance.</p>
+<p>After adding all the necessary entries, click <span class="guilabel">Validate</span> to complete the reconciliation.
+To verify the payment, navigate to <span class="menuselection">Customers ‣ Invoices</span> and select the desired
+customer invoice. The <em>Paid</em> label should appear under the <span class="guilabel">Payment Status</span> column.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="troubleshooting.html"><span class="doc">Troubleshooting eBay connector</span></a></p></li>
+<li><p><a class="reference internal" href="linking_listings.html"><span class="doc">Linking existing listings</span></a></p></li>
+<li><p><a class="reference internal" href="setup.html"><span class="doc">eBay connector setup</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">How to list a product?</a><ul>
+<li><a class="reference internal" href="#listing-without-variation">Listing without variation</a></li>
+<li><a class="reference internal" href="#listing-with-variations">Listing with variations</a></li>
+<li><a class="reference internal" href="#product-identifiers">Product identifiers</a><ul>
+<li><a class="reference internal" href="#ean-and-upc-identifiers">EAN and UPC identifiers</a></li>
+<li><a class="reference internal" href="#listing-with-item-specifics">Listing with item specifics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#process-invoices-and-payments">Process invoices and payments</a><ul>
+<li><a class="reference internal" href="#posting-payment">Posting payment</a></li>
+<li><a class="reference internal" href="#reconciling-payments">Reconciling payments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">How to list a product?</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

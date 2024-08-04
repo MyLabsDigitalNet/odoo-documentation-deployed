@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Service Level Agreements (SLA) &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script>
+    <script src="../../../../_static/tabs.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/services/helpdesk/overview/sla.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/services/helpdesk/overview/sla.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Service Level Agreements (SLA)</a><ul>
+<li><a class="reference internal" href="#create-a-new-sla-policy">Create a new SLA policy</a><ul>
+<li><a class="reference internal" href="#define-the-criteria-for-an-sla-policy">Define the criteria for an SLA policy</a></li>
+<li><a class="reference internal" href="#establish-a-target-for-an-sla-policy">Establish a target for an SLA policy</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#meeting-sla-deadlines">Meeting SLA deadlines</a></li>
+<li><a class="reference internal" href="#analyzing-sla-performance">Analyzing SLA performance</a><ul>
+<li><a class="reference internal" href="#using-the-pivot-view">Using the Pivot view</a></li>
+<li><a class="reference internal" href="#using-the-graph-view">Using the Graph view</a></li>
+<li><a class="reference internal" href="#using-the-cohort-view">Using the Cohort view</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/services/helpdesk/overview/sla.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Service Level Agreements (SLA)</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="service-level-agreements-sla">
+<h1>Service Level Agreements (SLA)<a class="headerlink" href="#service-level-agreements-sla" title="Permalink to this headline">¶</a></h1>
+<p>A Service Level Agreement (SLA) defines the level of service a customer can expect from a supplier.
+SLAs provide a timeline that tells customers when they can expect results, and keeps the support
+team on target.</p>
+</section><section id="create-a-new-sla-policy">
+<h2>Create a new SLA policy<a class="headerlink" href="#create-a-new-sla-policy" title="Permalink to this headline">¶</a></h2>
+<p>To create a new <abbr title="Service Level Agreement">SLA</abbr> Policy, navigate to the team’s page under
+<span class="menuselection">Helpdesk ‣ Configuration ‣ Teams</span>. Select a team, scroll to the
+<span class="guilabel">Performance</span> section, and then check the selection box next to <span class="guilabel">SLA Policies</span>
+to enable it for that specific team.</p>
+<img alt="View of a team page in Helpdesk focusing on the SLA Policies setting" class="align-center" src="../../../../_images/sla-enable.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The value indicated next to the <span class="guilabel">Working Hours</span> field is used to determine the
+deadline for <abbr title="Service Level Agreement">SLA</abbr> policies. By default, this is determined by
+the value set in the <span class="guilabel">Company Working Hours</span> field under <span class="menuselection">Settings app
+‣ Employees ‣ Work Organization</span>.</p>
+</div>
+<p>To create a new policy, click the smart button on the team`s settings page or go to
+<span class="menuselection">Helpdesk ‣  Configuration ‣ SLA Policies</span>, and click <span class="guilabel">New</span>. Start by
+entering a <span class="guilabel">Title</span> and a <span class="guilabel">Description</span> for the new policy, and proceed to fill
+out the form using the steps below.</p>
+</section><section id="define-the-criteria-for-an-sla-policy">
+<h3>Define the criteria for an SLA policy<a class="headerlink" href="#define-the-criteria-for-an-sla-policy" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Criteria</span> section is used to identify what tickets this policy will be applied to.
+Fill out the following fields to adjust the selection criteria:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Team</span>: a policy can only be applied to one team. <em>This field is required.</em></p></li>
+<li><p><span class="guilabel">Priority</span>: the priority level for a ticket is identified by selecting the number of
+stars representing the priority level on the kanban card or the ticket itself. The <abbr title="Service Level Agreement">SLA</abbr> will only be applied once the priority level has been updated on the
+ticket to match the <abbr title="Service Level Agreement">SLA</abbr> criteria. If no selection is made in
+this field, this policy will only apply to tickets marked as <code class="o_code docutils literal notranslate"><span class="pre">Low</span> <span class="pre">Priority</span></code> (zero stars).</p></li>
+<li><p><span class="guilabel">Types</span>: ticket types can be helpful when indicating when a ticket is a
+customer question, that can be solved with a quick response, or an issue, that may require
+additional investigation. Multiple ticket types can be selected for this field. If no
+selection is made, this policy will apply to all ticket types.</p></li>
+<li><p><span class="guilabel">Tags</span>: tags are applied to briefly indicate what the ticket is about. Multiple tags
+can be applied to a single ticket.</p></li>
+<li><p><span class="guilabel">Customers</span>: individual contacts or companies may be selected in this field.</p></li>
+<li><p><span class="guilabel">Sales Order Items</span>: this field is available only if a team has the <em>Timesheets</em> app
+enabled. This allows the ticket to tie directly to a specific line on a sales order, which must
+be indicated on the ticket in the <span class="guilabel">Sales Order Item</span> field.</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Unless otherwise indicated, multiple selections can be made for each field. (i.e. multiple
+<span class="guilabel">Tags</span> can be included in a policy, but only one <span class="guilabel">Priority</span> level)</p>
+</div>
+<img alt="View of a blank SLA policy record" class="align-center" src="../../../../_images/sla-create-new.png" />
+</section><section id="establish-a-target-for-an-sla-policy">
+<h3>Establish a target for an SLA policy<a class="headerlink" href="#establish-a-target-for-an-sla-policy" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Target</span> is the stage a ticket needs to reach, and the time alloted to reach that
+stage, in order to satisfy the <abbr title="Service Level Agreement">SLA</abbr> policy. Any stage assigned to a
+team may be selected for the <span class="guilabel">Reach Stage</span> field. Time spent in stages selected in
+<span class="guilabel">Excluding Stages</span> will not be included in the calculation of the <abbr title="Service Level Agreement">SLA</abbr> deadline.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>An <abbr title="Service Level Agreement">SLA</abbr> titled <code class="o_code docutils literal notranslate"><span class="pre">8</span> <span class="pre">Hours</span> <span class="pre">to</span> <span class="pre">Close</span></code> tracks the working time before
+a ticket is completed, and would have <code class="o_code docutils literal notranslate"><span class="pre">Solved</span></code> as the <span class="guilabel">Reach Stage</span>. However, if the
+<abbr title="Service Level Agreement">SLA</abbr> was titled <code class="o_code docutils literal notranslate"><span class="pre">2</span> <span class="pre">Days</span> <span class="pre">to</span> <span class="pre">Start</span></code>, it tracks the working time
+before work on a ticket has begun, and would have <code class="o_code docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code> as the <span class="guilabel">Reach Stage</span>.</p>
+</div>
+</section><section id="meeting-sla-deadlines">
+<h2>Meeting SLA deadlines<a class="headerlink" href="#meeting-sla-deadlines" title="Permalink to this headline">¶</a></h2>
+<p>Once it is determined that a ticket fits the criteria of an <abbr title="Service Level Agreement">SLA</abbr>
+policy, a deadline is calculated. The deadline is based on the creation date of the ticket, and the
+targeted working hours. The deadline is then added to the ticket, as well as a white tag indicating
+the name of the <abbr title="Service Level Agreement">SLA</abbr> applied.</p>
+<img alt="View of a ticket's form emphasizing an open SLA deadline on a ticket in Odoo Helpdesk" class="align-center" src="../../../../_images/sla-open-deadline.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If a ticket fits the criteria for more than one <abbr title="Service Level Agreement">SLA</abbr>, the
+earliest occurring deadline will be displayed on the ticket. Once that deadline has passed, the
+next deadline will be displayed.</p>
+</div>
+<p>Once a ticket satisfies an <abbr title="Service Level Agreement">SLA</abbr> policy, the <abbr title="Service Level Agreement">SLA</abbr> tag turns green, and the <span class="guilabel">Deadline</span> field disappears from view on the.</p>
+<img alt="View of a ticket's form emphasizing a satisfied SLA in Odoo Helpdesk" class="align-center" src="../../../../_images/sla-deadline.png" />
+<p>If the <abbr title="Service Level Agreement">SLA</abbr> deadline passes and the ticket has not moved to the
+<span class="guilabel">Reach Stage</span>, the <abbr title="Service Level Agreement">SLA</abbr> tag will turn red. Once the
+<abbr title="Service Level Agreement">SLA</abbr> has failed, the red tag will stay on the ticket, even after
+the ticket is moved to the <span class="guilabel">Reach Stage</span>.</p>
+<img alt="View of a ticket's form with a failing and passing SLA in Odoo Helpdesk" class="align-center" src="../../../../_images/sla-passing-failing.png" />
+</section><section id="analyzing-sla-performance">
+<h2>Analyzing SLA performance<a class="headerlink" href="#analyzing-sla-performance" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="guilabel">SLA Status Analysis</span> report tracks how quickly an <abbr title="Service Level Agreement">SLA</abbr> is fulfilled, as well as the success rate of individual policies. Navigate to the report
+and corresponding pivot table by going to <span class="menuselection">Helpdesk ‣ Reporting ‣ SLA Status
+Analysis</span>.</p>
+</section><section id="using-the-pivot-view">
+<h3>Using the Pivot view<a class="headerlink" href="#using-the-pivot-view" title="Permalink to this headline">¶</a></h3>
+<p>By default, the report is displayed in a <span class="guilabel">Pivot</span> view, and is filtered to show the number
+of SLAs failed and the failure rate over the last 30 days, grouped by team.</p>
+<img alt="View of the SLA status analysis report in Odoo Helpdesk" class="align-center" src="../../../../_images/sla-status-analysis.png" />
+<p>To add the number of SLAs passed or in progress, click the <span class="guilabel">Measures</span> button to reveal a
+drop-down menu of reporting criteria, and choose from the options available based on the
+measurements preferred. Whenever a measurement is picked, a check mark will appear in the drop-down
+menu to indicate that that measurement is included, and a corresponding new column will emerge in
+the pivot table to show the relevant calculations.</p>
+<p>To add a group to a row or column, click the plus :guilabel:` + ` button next to
+<span class="guilabel">Total</span>, and then select one of the groups. To remove one, click the minus :guilabel:` - `
+button and deselect.</p>
+</section><section id="using-the-graph-view">
+<h3>Using the Graph view<a class="headerlink" href="#using-the-graph-view" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Status Analysis</span> report can also be viewed as a <span class="guilabel">Bar</span>, <span class="guilabel">Line</span>, or
+<span class="guilabel">Pie</span> Chart. Toggle between these views by selecting the appropriate icon at the top of
+the chart.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Bar Chart</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Line Chart</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Pie Chart</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><img alt="View of the SLA status analysis report in bar view" class="align-center" src="../../../../_images/sla-report-bar.png" />
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><img alt="View of the SLA status analysis report in line view" class="align-center" src="../../../../_images/sla-report-line.png" />
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><img alt="View of the SLA status analysis report in pie chart view" class="align-center" src="../../../../_images/sla-report-pie.png" />
+</div></div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Both the <span class="guilabel">Bar Chart</span> and <span class="guilabel">Line Chart</span> can be viewed <span class="guilabel">Stacked</span>.
+This presents two or more groups to appear on top of each other instead of next to each other,
+making it easier to compare data.</p>
+</div>
+</section><section id="using-the-cohort-view">
+<h3>Using the Cohort view<a class="headerlink" href="#using-the-cohort-view" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Cohort</span> view is used to track the changes in data over a period of time. To display
+the <span class="guilabel">Status Analysis</span> report in a <span class="guilabel">Cohort</span> view, click the icon in the top right
+corner above the chart.</p>
+<img alt="View of the SLA status analysis report in cohort view" class="align-center" src="../../../../_images/sla-report-cohort.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../essentials/reporting.html#reporting-views"><span class="std std-ref">Reporting views</span></a></p></li>
+<li><p><a class="reference internal" href="../advanced/close_tickets.html"><span class="doc">Allow customers to close their tickets</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Service Level Agreements (SLA)</a><ul>
+<li><a class="reference internal" href="#create-a-new-sla-policy">Create a new SLA policy</a><ul>
+<li><a class="reference internal" href="#define-the-criteria-for-an-sla-policy">Define the criteria for an SLA policy</a></li>
+<li><a class="reference internal" href="#establish-a-target-for-an-sla-policy">Establish a target for an SLA policy</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#meeting-sla-deadlines">Meeting SLA deadlines</a></li>
+<li><a class="reference internal" href="#analyzing-sla-performance">Analyzing SLA performance</a><ul>
+<li><a class="reference internal" href="#using-the-pivot-view">Using the Pivot view</a></li>
+<li><a class="reference internal" href="#using-the-graph-view">Using the Graph view</a></li>
+<li><a class="reference internal" href="#using-the-cohort-view">Using the Cohort view</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Service Level Agreements (SLA)</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

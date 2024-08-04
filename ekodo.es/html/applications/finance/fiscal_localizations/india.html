@@ -1,0 +1,674 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>India &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/india.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/fiscal_localizations/india.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">India</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#e-invoice-system">e-Invoice system</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
+<li><a class="reference internal" href="#nic-e-invoice-registration">NIC e-Invoice registration</a></li>
+<li><a class="reference internal" href="#configuration-in-odoo">Configuration in Odoo</a><ul>
+<li><a class="reference internal" href="#journals">Journals</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflow">Workflow</a><ul>
+<li><a class="reference internal" href="#invoice-validation">Invoice validation</a></li>
+<li><a class="reference internal" href="#invoice-pdf-report">Invoice PDF report</a></li>
+<li><a class="reference internal" href="#e-invoice-cancellation">e-Invoice cancellation</a></li>
+<li><a class="reference internal" href="#gst-e-invoice-verification">GST e-Invoice verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#e-way-bill">E-Way bill</a><ul>
+<li><a class="reference internal" href="#id2">Setup</a><ul>
+<li><a class="reference internal" href="#api-registration-on-nic-e-way-bill">API registration on NIC E-Way bill</a></li>
+<li><a class="reference internal" href="#india-e-waybill-configuration">Configuration in Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#india-e-waybill-workflow">Workflow</a><ul>
+<li><a class="reference internal" href="#send-an-e-way-bill">Send an E-Way bill</a></li>
+<li><a class="reference internal" href="#india-invoice-validation-e-way">Invoice validation</a></li>
+<li><a class="reference internal" href="#id6">Invoice PDF report</a></li>
+<li><a class="reference internal" href="#e-way-bill-cancellation">E-Way bill cancellation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indian-gst-return-filing">Indian GST Return filing</a><ul>
+<li><a class="reference internal" href="#enable-api-access">Enable API access</a></li>
+<li><a class="reference internal" href="#indian-gst-service-in-odoo">Indian GST Service In Odoo</a></li>
+<li><a class="reference internal" href="#file-in-gst-return">File-in GST Return</a><ul>
+<li><a class="reference internal" href="#send-gstr-1">Send GSTR-1</a></li>
+<li><a class="reference internal" href="#receive-gstr-2b">Receive GSTR-2B</a></li>
+<li><a class="reference internal" href="#gstr-3-report">GSTR-3 report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tax-reports">Tax reports</a><ul>
+<li><a class="reference internal" href="#gstr-1-report">GSTR-1 report</a></li>
+<li><a class="reference internal" href="#india-gstr-3-report">GSTR-3 report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/india.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">India</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="india">
+<h1>India<a class="headerlink" href="#india" title="Permalink to this headline">¶</a></h1>
+</section><section id="installation">
+<span id="india-installation"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../general/apps_modules.html#general-install"><span class="std std-ref">Install</span></a> the following modules to get all the features of the Indian
+localization:</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Technical name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Indian - Accounting</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_in</span></code></p></td>
+<td><p>Default <a class="reference internal" href="../fiscal_localizations.html#fiscal-localizations-packages"><span class="std std-ref">fiscal localization package</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Indian E-invoicing</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_in_edi</span></code></p></td>
+<td><p><a class="reference internal" href="#india-e-invoicing"><span class="std std-ref">Indian e-invoicing integration</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Indian E-waybill</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_in_edi_ewaybill</span></code></p></td>
+<td><p><a class="reference internal" href="#india-e-waybill"><span class="std std-ref">Indian E-way bill integration</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Indian - GSTR India eFiling</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_in_reports_gstr</span></code></p></td>
+<td><p><a class="reference internal" href="#india-gstr"><span class="std std-ref">Indian GST Return filing</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Indian - Accounting Reports</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_in_reports</span></code></p></td>
+<td><p><a class="reference internal" href="#india-gstr-reports"><span class="std std-ref">Indian tax reports</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Indian - Purchase Report(GST)</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_in_purchase</span></code></p></td>
+<td><p>Indian GST Purchase report</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Indian - Sale Report(GST)</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_in_sale</span></code></p></td>
+<td><p>Indian GST Sale report</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Indian - Stock Report(GST)</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_in_stock</span></code></p></td>
+<td><p>Indian GST Stock report</p></td>
+</tr>
+</tbody>
+</table>
+<img alt="Indian localization modules" src="../../../_images/india-modules.png" />
+</section><section id="e-invoice-system">
+<span id="india-e-invoicing"></span><h2>e-Invoice system<a class="headerlink" href="#e-invoice-system" title="Permalink to this headline">¶</a></h2>
+<p>Odoo is compliant with the <strong>Indian Goods and Services Tax (GST) e-Invoice system</strong> requirements.</p>
+</section><section id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+</section><section id="nic-e-invoice-registration">
+<span id="india-e-invoicing-api"></span><h4>NIC e-Invoice registration<a class="headerlink" href="#nic-e-invoice-registration" title="Permalink to this headline">¶</a></h4>
+<p>You must register on the <abbr title="National Informatics Centre">NIC</abbr> e-Invoice portal to get your
+<strong>API credentials</strong>. You need these credentials to <a class="reference internal" href="#india-e-invoicing-configuration"><span class="std std-ref">configure your Odoo Accounting app</span></a>.</p>
+<ol class="arabic">
+<li><p>Log in to the <a class="reference external" href="https://einvoice1.gst.gov.in/">NIC e-Invoice portal</a> by clicking
+<span class="guilabel">Login</span> and entering your <span class="guilabel">Username</span> and <span class="guilabel">Password</span>;</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If you are already registered on the NIC portal, you can use the same login credentials.</p>
+</div>
+<img alt="Register Odoo ERP system on e-invoice web portal" src="../../../_images/e-invoice-system-login.png" />
+</li>
+<li><p>From the dashboard, go to <span class="menuselection">API Registration ‣ User Credentials ‣ Create API
+User</span>;</p></li>
+<li><p>After that, you should receive an <abbr title="one-time password">OTP</abbr> code on your registered mobile
+number. Enter the OTP code and click <span class="guilabel">Verify OTP</span>;</p></li>
+<li><p>Select <span class="guilabel">Through GSP</span> for the API interface, set <span class="guilabel">Tera Software Limited</span> as
+GSP, and type in a <span class="guilabel">Username</span> and <span class="guilabel">Password</span> for your API. Once it is done,
+click <span class="guilabel">Submit</span>.</p>
+<img alt="Submit API specific Username and Password" src="../../../_images/submit-api-registration-details.png" />
+</li>
+</ol>
+</section><section id="configuration-in-odoo">
+<span id="india-e-invoicing-configuration"></span><h4>Configuration in Odoo<a class="headerlink" href="#configuration-in-odoo" title="Permalink to this headline">¶</a></h4>
+<p>To enable the e-Invoice service in Odoo, go to <span class="menuselection">Accounting ‣ Configuration ‣
+Settings ‣ Indian Electronic Invoicing</span>, and enter the <span class="guilabel">Username</span> and
+<span class="guilabel">Password</span> previously set for the API.</p>
+<img alt="Setup e-invoice service" src="../../../_images/e-invoice-setup.png" />
+</section><section id="journals">
+<span id="india-e-invoicing-journals"></span><h5>Journals<a class="headerlink" href="#journals" title="Permalink to this headline">¶</a></h5>
+<p>To automatically send e-Invoices to the NIC e-Invoice portal, you must first configure your <em>sales</em>
+journal by going to <span class="menuselection">Accounting ‣ Configuration ‣ Journals</span>, opening your <em>sales</em>
+journal, and in the <span class="guilabel">Advanced Settings</span> tab, under <span class="guilabel">Electronic Data
+Interchange</span>, enable <span class="guilabel">E-Invoice (IN)</span> and save.</p>
+</section><section id="workflow">
+<span id="india-e-invoicing-workflow"></span><h3>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h3>
+</section><section id="invoice-validation">
+<span id="india-invoice-validation"></span><h4>Invoice validation<a class="headerlink" href="#invoice-validation" title="Permalink to this headline">¶</a></h4>
+<p>Once an invoice is validated, a confirmation message is displayed at the top. Odoo automatically
+uploads the JSON-signed file of validated invoices to the NIC e-Invoice portal after some time. If
+you want to process the invoice immediately, click <span class="guilabel">Process now</span>.</p>
+<img alt="Indian e-invoicing confirmation message" src="../../../_images/e-invoice-process.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>You can find the JSON-signed file in the attached files in the chatter.</p></li>
+<li><p>You can check the document’s <abbr title="electronic data interchange">EDI</abbr> status under the
+<span class="guilabel">EDI Document</span> tab or the <span class="guilabel">Electronic invoicing</span> field of the invoice.</p></li>
+</ul>
+</div>
+</section><section id="invoice-pdf-report">
+<span id="india-invoice-pdf-report"></span><h4>Invoice PDF report<a class="headerlink" href="#invoice-pdf-report" title="Permalink to this headline">¶</a></h4>
+<p>Once an invoice is validated and submitted, the invoice PDF report can be printed. The report
+includes the <abbr title="Invoice Reference Number">IRN</abbr>, <span class="guilabel">Ack. No</span> (acknowledgment number) and
+<span class="guilabel">Ack. Date</span> (acknowledgment date), and QR code. These certify that the invoice is a valid
+fiscal document.</p>
+<img alt="IRN and QR code" src="../../../_images/invoice-report.png" />
+</section><section id="e-invoice-cancellation">
+<span id="india-edi-cancellation"></span><h4>e-Invoice cancellation<a class="headerlink" href="#e-invoice-cancellation" title="Permalink to this headline">¶</a></h4>
+<p>If you want to cancel an e-Invoice, go to the <span class="guilabel">Other info</span> tab of the invoice and fill out
+the <span class="guilabel">Cancel reason</span> and <span class="guilabel">Cancel remarks</span> fields. Then, click <span class="guilabel">Request
+EDI cancellation</span>. The status of the <span class="guilabel">Electronic invoicing</span> field changes to <span class="guilabel">To
+Cancel</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Doing so cancels both the <a class="reference internal" href="#india-e-invoicing"><span class="std std-ref">e-Invoice</span></a> and the <a class="reference internal" href="#india-e-waybill"><span class="std std-ref">E-Way bill</span></a>.</p>
+</div>
+<img alt="cancel reason and remarks" src="../../../_images/e-invoice-cancellation.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>If you want to abort the cancellation before processing the invoice, then click <span class="guilabel">Call
+Off EDI Cancellation</span>.</p></li>
+<li><p>Once you request to cancel the e-Invoice, Odoo automatically submits the JSON-signed file to
+the NIC e-Invoice portal. You can click <span class="guilabel">Process now</span> if you want to process the
+invoice immediately.</p></li>
+</ul>
+</div>
+</section><section id="gst-e-invoice-verification">
+<span id="india-verify-e-invoice"></span><h4>GST e-Invoice verification<a class="headerlink" href="#gst-e-invoice-verification" title="Permalink to this headline">¶</a></h4>
+<p>After submitting an e-Invoice, you can verify if the invoice is signed from the GST e-Invoice system
+website itself.</p>
+<ol class="arabic">
+<li><p>Download the JSON file from the attached files. It can be found in the chatter of the related
+invoice;</p></li>
+<li><p>Open the <a class="reference external" href="https://einvoice1.gst.gov.in/">NIC e-Invoice portal</a> and go to
+<span class="menuselection">Search ‣ Verify Signed Invoice</span>;</p></li>
+<li><p>Select the JSON file and submit it;</p>
+<img alt="select the JSON file for verify invoice" src="../../../_images/verify-invoice.png" />
+<p>If the file is signed, a confirmation message is displayed.</p>
+<img alt="verified e-invoice" src="../../../_images/signed-invoice.png" />
+</li>
+</ol>
+</section><section id="e-way-bill">
+<span id="india-e-waybill"></span><h2>E-Way bill<a class="headerlink" href="#e-way-bill" title="Permalink to this headline">¶</a></h2>
+</section><section id="id2">
+<h3>Setup<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Odoo is compliant with the <strong>Indian Goods and Services Tax (GST) E-waybill system</strong> requirements.</p>
+</section><section id="api-registration-on-nic-e-way-bill">
+<span id="india-e-waybill-api"></span><h4>API registration on NIC E-Way bill<a class="headerlink" href="#api-registration-on-nic-e-way-bill" title="Permalink to this headline">¶</a></h4>
+<p>You must register on the <abbr title="National Informatics Centre">NIC</abbr> E-Way bill portal to create your
+<strong>API credentials</strong>. You need these credentials to <a class="reference internal" href="#india-e-waybill-configuration"><span class="std std-ref">configure your Odoo Accounting app</span></a>.</p>
+<ol class="arabic">
+<li><p>Log in to the <a class="reference external" href="https://ewaybillgst.gov.in/">NIC E-Way bill portal</a> by clicking
+<span class="guilabel">Login</span> and entering your <span class="guilabel">Username</span> and <span class="guilabel">Password</span>;</p></li>
+<li><p>From your dashboard, go to <span class="menuselection">Registration ‣ For GSP</span>;</p></li>
+<li><p>Click <span class="guilabel">Send OTP</span>. Once you have received the code on your registered mobile number,
+enter it and click <span class="guilabel">Verify OTP</span>;</p></li>
+<li><p>Check if <span class="guilabel">Tera Software Limited</span> is already on the registered GSP/ERP list. If so, use
+the username and password used to log in to the NIC portal. Otherwise, follow the next steps;</p>
+<img alt="E-Way bill list of registered GSP/ERP" src="../../../_images/e-waybill-gsp-list.png" />
+</li>
+<li><p>Select <span class="guilabel">Add/New</span>, select <span class="guilabel">Tera Software Limited</span> as your GSP Name, create a
+<span class="guilabel">Username</span> and a <span class="guilabel">Password</span> for your API, and click <span class="guilabel">Add</span>.</p>
+<img alt="Submit GSP API registration details" src="../../../_images/e-waybill-registration-details.png" />
+</li>
+</ol>
+</section><section id="india-e-waybill-configuration">
+<span id="id3"></span><h4>Configuration in Odoo<a class="headerlink" href="#india-e-waybill-configuration" title="Permalink to this headline">¶</a></h4>
+<p>To set up the E-Way bill service, go to <span class="menuselection">Accounting ‣ Configuration ‣ Settings
+‣ Indian Electronic WayBill ‣ Setup E-Way bill</span>, and enter your <span class="guilabel">Username</span> and
+<span class="guilabel">Password</span>.</p>
+<img alt="E-way bill setup odoo" src="../../../_images/e-waybill-configuration.png" />
+</section><section id="india-e-waybill-workflow">
+<span id="id4"></span><h3>Workflow<a class="headerlink" href="#india-e-waybill-workflow" title="Permalink to this headline">¶</a></h3>
+</section><section id="send-an-e-way-bill">
+<span id="india-e-waybill-send"></span><h4>Send an E-Way bill<a class="headerlink" href="#send-an-e-way-bill" title="Permalink to this headline">¶</a></h4>
+<p>You can manually send an E-Way bill by clicking <span class="guilabel">Send E-Way bill</span>. To send the E-Way bill
+automatically when an invoice or a bill is confirmed, enable <span class="guilabel">E-Way bill (IN)</span> in your
+<a class="reference internal" href="#india-e-invoicing-journals"><span class="std std-ref">Sales or Purchase journal</span></a>.</p>
+<img alt="Send E-waybill button on invoices" src="../../../_images/e-waybill-send-button.png" />
+</section><section id="india-invoice-validation-e-way">
+<span id="id5"></span><h4>Invoice validation<a class="headerlink" href="#india-invoice-validation-e-way" title="Permalink to this headline">¶</a></h4>
+<p>Once an invoice has been issued and sent via <span class="guilabel">Send E-Way bill</span>, a confirmation message is
+displayed.</p>
+<img alt="Indian e-Way bill confirmation message" src="../../../_images/e-waybill-process.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>You can find the JSON-signed file in the attached files in the chatter.</p></li>
+<li><p>Odoo automatically uploads the JSON-signed file to the government portal after some time. Click
+<span class="guilabel">Process now</span> if you want to process the invoice immediately.</p></li>
+</ul>
+</div>
+</section><section id="id6">
+<h4>Invoice PDF report<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>You can print the invoice PDF report once you have submitted the E-Way bill. The report includes the
+<strong>E-Way bill number</strong> and the <strong>E-Way bill validity date</strong>.</p>
+<img alt="E-way bill acknowledgment number and date" src="../../../_images/e-waybill-invoice-report.png" />
+</section><section id="e-way-bill-cancellation">
+<span id="india-e-waybill-cancellation"></span><h4>E-Way bill cancellation<a class="headerlink" href="#e-way-bill-cancellation" title="Permalink to this headline">¶</a></h4>
+<p>If you want to cancel an E-Way bill, go to the <span class="guilabel">E-Way bill</span> tab of the related invoice and
+fill out the <span class="guilabel">Cancel reason</span> and <span class="guilabel">Cancel remarks</span> fields. Then, click
+<span class="guilabel">Request EDI Cancellation</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Doing so cancels both the <a class="reference internal" href="#india-e-invoicing"><span class="std std-ref">e-Invoice</span></a> (if applicable) and the
+<a class="reference internal" href="#india-e-waybill"><span class="std std-ref">E-Way bill</span></a>.</p>
+</div>
+<img alt="Cancel reason and remarks" src="../../../_images/e-waybill-cancellation.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>If you want to abort the cancellation before processing the invoice, click <span class="guilabel">Call Off
+EDI Cancellation</span>.</p></li>
+<li><p>Once you request to cancel the E-Way bill, Odoo automatically submits the JSON-signed file to
+the government portal. You can click <span class="guilabel">Process Now</span> if you want to process the invoice
+immediately.</p></li>
+</ul>
+</div>
+</section><section id="indian-gst-return-filing">
+<span id="india-gstr"></span><h2>Indian GST Return filing<a class="headerlink" href="#indian-gst-return-filing" title="Permalink to this headline">¶</a></h2>
+</section><section id="enable-api-access">
+<span id="india-gstr-api"></span><h3>Enable API access<a class="headerlink" href="#enable-api-access" title="Permalink to this headline">¶</a></h3>
+<p>To file GST Returns in Odoo, you must first enable API access on the GST portal.</p>
+<ol class="arabic">
+<li><p>Log into the <a class="reference external" href="https://services.gst.gov.in/services/login">GST portal</a> by entering your
+<span class="guilabel">Username</span> and <span class="guilabel">Password</span>, and go to <span class="guilabel">My Profile</span> on your <strong>profile
+menu</strong>;</p>
+<img alt="Click On the My Profile from profile" src="../../../_images/gst-portal-my-profile.png" />
+</li>
+<li><p>Select <span class="guilabel">Manage API Access</span>, and click <span class="guilabel">Yes</span> to enable API access;</p>
+<img alt="Click Yes" src="../../../_images/gst-portal-api-yes.png" />
+</li>
+<li><p>Doing so enables a <span class="guilabel">Duration</span> drop-down menu. Select the <span class="guilabel">Duration</span> of your
+preference, and click <span class="guilabel">Confirm</span>.</p></li>
+</ol>
+</section><section id="indian-gst-service-in-odoo">
+<span id="india-gstr-configuration"></span><h3>Indian GST Service In Odoo<a class="headerlink" href="#indian-gst-service-in-odoo" title="Permalink to this headline">¶</a></h3>
+<p>Once you have enabled the <a class="reference internal" href="#india-gstr-api"><span class="std std-ref">API access</span></a> on the GST portal, you can set up the
+<span class="guilabel">Indian GST Service</span> in Odoo.</p>
+<p>Go to <span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Indian GST Service</span> and enter
+the <span class="guilabel">GST Username</span>. Click <span class="guilabel">Send OTP</span>, enter the code, and finally,
+<span class="guilabel">Validate</span>.</p>
+<blockquote>
+<div><img alt="Please enter your GST portal Username as Username" src="../../../_images/gst-setup.png" />
+</div></blockquote>
+</section><section id="file-in-gst-return">
+<span id="india-gstr-workflow"></span><h3>File-in GST Return<a class="headerlink" href="#file-in-gst-return" title="Permalink to this headline">¶</a></h3>
+<p>When the <span class="guilabel">Indian GST Service</span> is configured, you can file your GST return. Go to
+<span class="menuselection">Accounting ‣ Reporting ‣ India ‣ GST Return periods</span> and create a new <strong>GST
+Return Period</strong> if it does not exist. GST Return file-in is done in <strong>three steps</strong> in Odoo:</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p><strong>Tax Return Periodicity</strong> can be
+<a class="reference internal" href="../accounting/reporting/tax_returns.html"><span class="doc">configured</span></a> according to the user’s
+needs.</p>
+</div>
+</section><section id="send-gstr-1">
+<span id="india-gstr-1"></span><h4>Send GSTR-1<a class="headerlink" href="#send-gstr-1" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p>The user can verify the <a class="reference internal" href="#india-gstr-1-report"><span class="std std-ref">GSTR-1</span></a> report before uploading it to the
+<strong>GST portal</strong> by clicking <span class="guilabel">GSTR-1 Report</span>;</p></li>
+<li><p>If the <strong>GSTR-1</strong> report is correct, then click <span class="guilabel">Push to GSTN</span> to send it to the <strong>GST
+portal</strong>. The status of the <span class="guilabel">GSTR-1</span> report changes to <span class="guilabel">Sending</span>;</p>
+<img alt="GSTR-1 in the Sending Status" src="../../../_images/gst-gstr-1-sending.png" />
+</li>
+<li><p>After a few seconds, the status of the <strong>GSTR-1</strong> report changes to <span class="guilabel">Waiting for
+Status</span>. It means that the <strong>GSTR-1</strong> report has been sent to the <span class="guilabel">GST Portal</span> and is
+being verified on the <span class="guilabel">GST Portal</span>;</p>
+<img alt="GSTR-1 in the Waiting for Status" src="../../../_images/gst-gstr-1-waiting.png" />
+</li>
+<li><p>Once more, after a few seconds, the status either changes to <span class="guilabel">Sent</span> or <span class="guilabel">Error
+in Invoice</span>. The status <span class="guilabel">Error in Invoice</span> indicates that some of the invoices are not
+correctly filled out to be validated by the <strong>GST portal</strong>;</p>
+<ul>
+<li><p>If the state of the <strong>GSTR-1</strong> is <span class="guilabel">Sent</span>, it means your <strong>GSTR-1</strong> report is ready to
+be filed on the <strong>GST portal</strong>.</p>
+<img alt="GSTR-1 Sent" src="../../../_images/gst-gstr-1-sent.png" />
+</li>
+<li><p>If the state of the <strong>GSTR-1</strong> is <span class="guilabel">Error in Invoice</span>, invoices can be checked for
+errors in the <span class="guilabel">Log Note</span>. Once issues have been resolved, the user can click
+<span class="guilabel">Push to GSTN</span> to submit the file again on the <strong>GST portal</strong>.</p>
+<img alt="GSTR-1 Error in Invoice" src="../../../_images/gst-gstr-1-error.png" />
+</li>
+</ul>
+<img alt="GSTR-1 Error in Invoice Log" src="../../../_images/gst-gstr-1-error-log.png" />
+</li>
+<li><p>Click <span class="guilabel">Mark as Filed</span> after filing the <strong>GSTR-1</strong> report on the <strong>GST portal</strong>. The
+status of the report changes to <span class="guilabel">Filed</span> in <strong>Odoo</strong>.</p>
+<img alt="GSTR-1 in the Filed Status" src="../../../_images/gst-gstr-1-filed.png" />
+</li>
+</ol>
+</section><section id="receive-gstr-2b">
+<span id="india-gstr-2b"></span><h4>Receive GSTR-2B<a class="headerlink" href="#receive-gstr-2b" title="Permalink to this headline">¶</a></h4>
+<p>Users can retrieve the <strong>GSTR-2B Report</strong> from the <strong>GST portal</strong>. This automatically reconciles
+the <strong>GSTR-2B</strong> report with your Odoo bills;</p>
+<ol class="arabic">
+<li><p>Click <span class="guilabel">Fetch GSTR-2B Summary</span> to retrieve the <strong>GSTR-2B</strong> summary. After a few seconds,
+the status of the report changes to <span class="guilabel">Waiting for Reception</span>. This means Odoo is trying
+to receive the <strong>GSTR-2B</strong> report from the <strong>GST portal</strong>;</p>
+<img alt="GSTR-2B in Waiting for Reception" src="../../../_images/gst-gstr-2b-waiting.png" />
+</li>
+<li><p>Once more, after a few seconds, the status of the <strong>GSTR-2B</strong> changes to the <span class="guilabel">Being
+Processed</span>. It means Odoo is reconciling the <strong>GSTR-2B</strong> report with your Odoo bills;</p>
+<img alt="GSTR-2B in Waiting for Reception" src="../../../_images/gst-gstr-2b-processed.png" />
+</li>
+<li><p>Once it is done, the status of the <strong>GSTR-2B</strong> report changes to either <span class="guilabel">Matched</span> or
+<span class="guilabel">Partially Matched</span>;</p>
+<ul>
+<li><p>If the status is <span class="guilabel">Matched</span>:</p>
+<blockquote>
+<div><img alt="GSTR-2B Matched" src="../../../_images/gst-gstr-2b-matched.png" />
+</div></blockquote>
+</li>
+<li><p>If the status is <span class="guilabel">Partially Matched</span>, you can make changes in bills by clicking
+<span class="guilabel">View Reconciled Bills</span>. Once it is done, click <span class="guilabel">re-match</span>.</p>
+<blockquote>
+<div><img alt="GSTR-2B Partially Matched" src="../../../_images/gst-gstr-2b-partially.png" />
+<img alt="GSTR-2B Reconciled Bills" src="../../../_images/gst-gstr-2b-reconcile.png" />
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</section><section id="gstr-3-report">
+<span id="india-gstr-3"></span><h4>GSTR-3 report<a class="headerlink" href="#gstr-3-report" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference internal" href="#india-gstr-3-report"><span class="std std-ref">GSTR-3</span></a> report is a monthly summary of <strong>sales</strong> and <strong>purchases</strong>.
+This return is auto-generated by extracting information from <strong>GSTR-1</strong> and <strong>GSTR-2</strong>.</p>
+<ol class="arabic">
+<li><p>Users can compare the <strong>GSTR-3</strong> report with the <strong>GSTR-3</strong> report available on the
+<strong>GST portal</strong> to verify if they match by clicking <span class="guilabel">GSTR-3 Report</span>;</p></li>
+<li><p>Once the <strong>GSTR-3</strong> report has been verified by the user and the tax amount on the <strong>GST portal</strong>
+has been paid. Once paid, the report can be <strong>closed</strong> by clicking <span class="guilabel">Closing Entry</span>;</p>
+<img alt="GSTR-3" src="../../../_images/gst-gstr-3.png" />
+</li>
+<li><p>In <span class="guilabel">Closing Entry</span>, add the tax amount paid on the <strong>GST portal</strong> using challan, and
+click <span class="guilabel">POST</span> to post the <span class="guilabel">Closing Entry</span>;</p>
+<img alt="GSTR-3 Post Entry" src="../../../_images/gst-gstr-3-post.png" />
+</li>
+<li><p>Once posted, the <strong>GSTR-3</strong> report status changes to <span class="guilabel">Filed</span>.</p>
+<img alt="GSTR-3 Filed" src="../../../_images/gst-gstr-3-filed.png" />
+</li>
+</ol>
+</section><section id="tax-reports">
+<span id="india-gstr-reports"></span><h2>Tax reports<a class="headerlink" href="#tax-reports" title="Permalink to this headline">¶</a></h2>
+</section><section id="gstr-1-report">
+<span id="india-gstr-1-report"></span><h3>GSTR-1 report<a class="headerlink" href="#gstr-1-report" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">GSTR-1</span> report is divided into sections. It displays the <span class="guilabel">Base</span> amount,
+<abbr title="Central Goods and Services Tax">CGST</abbr>, <abbr title="State Goods and Service Tax">SGST</abbr>,
+<abbr title="Integrated Goods and Services Tax">IGST</abbr>, and <span class="guilabel">CESS</span> for each section.</p>
+<blockquote>
+<div><img alt="GSTR-1 Report" src="../../../_images/gst-gstr-1-sale-report.png" />
+</div></blockquote>
+</section><section id="india-gstr-3-report">
+<span id="id7"></span><h3>GSTR-3 report<a class="headerlink" href="#india-gstr-3-report" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">GSTR-3</span> report contains different sections:</p>
+<ul>
+<li><p>Details of inward and outward supply subject to a <strong>reverse charge</strong>;</p></li>
+<li><p>Eligible <abbr title="Income Tax Credit">ITC</abbr>;</p></li>
+<li><p>Values of <strong>exempt</strong>, <strong>Nil-rated</strong>, and <strong>non-GST</strong> inward supply;</p></li>
+<li><p>Details of inter-state supplies made to <strong>unregistered</strong> persons.</p>
+<blockquote>
+<div><img alt="GSTR-3 Report" src="../../../_images/gst-gstr-3-report.png" />
+</div></blockquote>
+</li>
+</ul>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">India</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#e-invoice-system">e-Invoice system</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
+<li><a class="reference internal" href="#nic-e-invoice-registration">NIC e-Invoice registration</a></li>
+<li><a class="reference internal" href="#configuration-in-odoo">Configuration in Odoo</a><ul>
+<li><a class="reference internal" href="#journals">Journals</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflow">Workflow</a><ul>
+<li><a class="reference internal" href="#invoice-validation">Invoice validation</a></li>
+<li><a class="reference internal" href="#invoice-pdf-report">Invoice PDF report</a></li>
+<li><a class="reference internal" href="#e-invoice-cancellation">e-Invoice cancellation</a></li>
+<li><a class="reference internal" href="#gst-e-invoice-verification">GST e-Invoice verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#e-way-bill">E-Way bill</a><ul>
+<li><a class="reference internal" href="#id2">Setup</a><ul>
+<li><a class="reference internal" href="#api-registration-on-nic-e-way-bill">API registration on NIC E-Way bill</a></li>
+<li><a class="reference internal" href="#india-e-waybill-configuration">Configuration in Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#india-e-waybill-workflow">Workflow</a><ul>
+<li><a class="reference internal" href="#send-an-e-way-bill">Send an E-Way bill</a></li>
+<li><a class="reference internal" href="#india-invoice-validation-e-way">Invoice validation</a></li>
+<li><a class="reference internal" href="#id6">Invoice PDF report</a></li>
+<li><a class="reference internal" href="#e-way-bill-cancellation">E-Way bill cancellation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indian-gst-return-filing">Indian GST Return filing</a><ul>
+<li><a class="reference internal" href="#enable-api-access">Enable API access</a></li>
+<li><a class="reference internal" href="#indian-gst-service-in-odoo">Indian GST Service In Odoo</a></li>
+<li><a class="reference internal" href="#file-in-gst-return">File-in GST Return</a><ul>
+<li><a class="reference internal" href="#send-gstr-1">Send GSTR-1</a></li>
+<li><a class="reference internal" href="#receive-gstr-2b">Receive GSTR-2B</a></li>
+<li><a class="reference internal" href="#gstr-3-report">GSTR-3 report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tax-reports">Tax reports</a><ul>
+<li><a class="reference internal" href="#gstr-1-report">GSTR-1 report</a></li>
+<li><a class="reference internal" href="#india-gstr-3-report">GSTR-3 report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">India</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

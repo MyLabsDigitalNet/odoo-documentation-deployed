@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multiple websites &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/website/configuration/multi_website.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/website/configuration/multi_website.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Multiple websites</a><ul>
+<li><a class="reference internal" href="#website-creation">Website creation</a></li>
+<li><a class="reference internal" href="#switching-websites">Switching websites</a></li>
+<li><a class="reference internal" href="#website-specific-configuration">Website-specific configuration</a><ul>
+<li><a class="reference internal" href="#content-availability">Content availability</a><ul>
+<li><a class="reference internal" href="#website-pages">Website pages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ecommerce-features">eCommerce features</a><ul>
+<li><a class="reference internal" href="#customer-accounts">Customer accounts</a></li>
+<li><a class="reference internal" href="#pricing">Pricing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reporting">Reporting</a><ul>
+<li><a class="reference internal" href="#analytics">Analytics</a></li>
+<li><a class="reference internal" href="#other-reporting-data">Other reporting data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/website/configuration/multi_website.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Multiple websites</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="multiple-websites">
+<h1>Multiple websites<a class="headerlink" href="#multiple-websites" title="Permalink to this headline">¶</a></h1>
+<p>Odoo allows you to create multiple websites from the same database. This can be useful, for example,
+if you have multiple brands operating under your organization, or to create separate websites for
+different products/services, or different audiences. In these cases, having different websites can
+help avoid confusion and make it easier to tailor your digital outreach strategies and reach your
+target audience.</p>
+<p>Each website can be designed and configured independently with its own <a class="reference internal" href="domain_names.html"><span class="doc">domain name</span></a>, theme, pages,
+menus, <a class="reference internal" href="translate.html"><span class="doc">languages</span></a>, <a class="reference internal" href="../../ecommerce/managing_products/products.html"><span class="doc">products</span></a>,
+assigned sales team, etc. They can also <a class="reference internal" href="#multi-website-website-content"><span class="std std-ref">share content and pages</span></a>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Duplicate content (i.e., pages and content shared between multiple websites) can have a negative
+impact on <a class="reference internal" href="../pages/seo.html"><span class="doc">Search Engine Optimization (SEO)</span></a>.</p>
+</div>
+</section><section id="website-creation">
+<h2>Website creation<a class="headerlink" href="#website-creation" title="Permalink to this headline">¶</a></h2>
+<p>To create a new website, proceed as follows:</p>
+<ol class="arabic">
+<li><p>Go to <span class="menuselection">Website ‣ Configuration ‣ Settings</span>.</p></li>
+<li><p>Click <span class="guilabel">+ New Website</span>.</p>
+<img alt="New website button" src="../../../../_images/create-website.png" />
+</li>
+<li><p>Specify the <span class="guilabel">Website Name</span> and <span class="guilabel">Website domain</span>. Each website must be
+published under its own <a class="reference internal" href="domain_names.html"><span class="doc">domain</span></a>.</p></li>
+<li><p>Adapt the <span class="guilabel">Company name</span>, <span class="guilabel">Languages</span> and <span class="guilabel">Default language</span>
+if needed.</p></li>
+<li><p>Click the <span class="guilabel">Create</span> button.</p></li>
+</ol>
+<p>You can then start building your new website.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>By default, all website-related apps that you have installed (e.g. <strong>eCommerce</strong>,
+<strong>Forum</strong>, <strong>Blog</strong>, etc.) and their related website pages are also available on the
+new website. You can remove them by amending the website’s menu.</p>
+</div>
+</section><section id="switching-websites">
+<h2>Switching websites<a class="headerlink" href="#switching-websites" title="Permalink to this headline">¶</a></h2>
+<p>To switch from one website to another, click the menu next to the <span class="guilabel">+New</span> button in the
+top right corner and select the website you want to switch to.</p>
+<img alt="Website selector" src="../../../../_images/switch-websites.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When you switch websites, you are redirected to the other website, to the same page (URL) as the
+current one. If the page you are currently viewing does not exist on the other website, you are
+redirected to a 404 error page. Once redirected, click <span class="guilabel">Create page</span> to create the
+page.</p>
+<img alt="Create a page from a 404 error page" src="../../../../_images/404-create-page.png" />
+</div>
+</section><section id="website-specific-configuration">
+<h2>Website-specific configuration<a class="headerlink" href="#website-specific-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Most website settings are website-specific, which means they can be enabled/disabled per website. To
+adapt the settings for a website, go to <span class="menuselection">Website ‣ Configuration ‣ Settings</span>.
+Select the desired website in the field <span class="guilabel">Settings of Website</span> at the top of the
+<span class="guilabel">Settings</span> page, in the <strong>yellow</strong> banner. Then, adapt the options for that specific
+website.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Websites are created with the default settings; the settings are not copied from one website to
+the other.</p></li>
+<li><p>In a <a class="reference internal" href="../../../general/companies.html"><span class="doc">multi-company environment</span></a>, each website can be
+linked to a specific company in your database so that only company-related data (e.g.,
+products, jobs, events, etc.) is displayed on the website. To display company-specific data,
+set the desired company in the <span class="guilabel">Company</span> field.</p></li>
+</ul>
+</div>
+</section><section id="content-availability">
+<span id="multi-website-website-content"></span><h3>Content availability<a class="headerlink" href="#content-availability" title="Permalink to this headline">¶</a></h3>
+<p>By default, pages, products, events, etc. created from the frontend (using the
+<span class="guilabel">+New</span> button) are only available on the website from which it was created. Records
+created from the backend, however, are made available on all websites by default. The content’s
+availability can be changed in the backend, in the <span class="guilabel">Website</span> field. For example, for
+products, go to <span class="menuselection">eCommerce ‣ Products</span>, then select the product and go to the
+<span class="guilabel">Sales</span> tab. For forums, go to <span class="menuselection">Configuration ‣ Forums</span>, then select the
+forum.</p>
+<img alt="Website field in Forum form" src="../../../../_images/forum-multi-website.png" />
+<p id="website-field">Records and features can be made available:</p>
+<ul class="simple">
+<li><p>On all websites: leave the <span class="guilabel">Website</span> field empty;</p></li>
+<li><p>Only on one website: set the <span class="guilabel">Website</span> field accordingly;</p></li>
+<li><p>On some websites: in this case, you should duplicate the item and set the <span class="guilabel">Website</span>
+field.</p></li>
+</ul>
+</section><section id="website-pages">
+<h4>Website pages<a class="headerlink" href="#website-pages" title="Permalink to this headline">¶</a></h4>
+<p>To modify the website on which a page is to be published, proceed as follows:</p>
+<ol class="arabic">
+<li><p>Go to <span class="menuselection">Website ‣ Site ‣ Pages</span>.</p></li>
+<li><p>Select the website on which the page is currently published.</p>
+<img alt="Display pages per website" src="../../../../_images/pages-switch-websites.png" />
+</li>
+<li><p>Tick the check box next to the page(s) you want to change.</p></li>
+<li><p>Click the <span class="guilabel">Website</span> field and select the website, or empty it to publish the page on
+all websites.</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Each website must have its own homepage; you may not use the same homepage for several websites.</p>
+</div>
+</section><section id="ecommerce-features">
+<h2>eCommerce features<a class="headerlink" href="#ecommerce-features" title="Permalink to this headline">¶</a></h2>
+<p>eCommerce features such as products, eCommerce categories, pricelists, discounts, payment providers,
+etc. can be restricted to <a class="reference internal" href="#website-field"><span class="std std-ref">a specific website</span></a>.</p>
+</section><section id="customer-accounts">
+<h3>Customer accounts<a class="headerlink" href="#customer-accounts" title="Permalink to this headline">¶</a></h3>
+<p>You can <a class="reference internal" href="../../ecommerce/ecommerce_management/customer_accounts.html"><span class="doc">allow your customers to use the same account</span></a> on all of your websites by enabling the
+<span class="guilabel">Shared Customer Accounts</span> check box in the website settings.</p>
+</section><section id="pricing">
+<h3>Pricing<a class="headerlink" href="#pricing" title="Permalink to this headline">¶</a></h3>
+<p>Products can be priced differently based on the website using <a class="reference internal" href="../../ecommerce/managing_products/price_management.html#ecommerce-pricelists"><span class="std std-ref">pricelists</span></a>. The following configuration is required:</p>
+<ol class="arabic simple">
+<li><p>Go to <span class="menuselection">Website ‣ Configuration ‣ Settings</span>.</p></li>
+<li><p>Scroll down to the <span class="guilabel">Shop - Products</span> section and select the <span class="guilabel">Pricelists</span>
+option <span class="guilabel">Multiple prices per product</span>.</p></li>
+<li><p>Click <span class="guilabel">Pricelists</span> to define new pricelists or edit existing ones.</p></li>
+<li><p>Select the pricelist or click <span class="guilabel">New</span> to create a new one, then select the
+<span class="guilabel">Configuration</span> tab and set the <span class="guilabel">Website</span> field.</p></li>
+</ol>
+</section><section id="reporting">
+<h2>Reporting<a class="headerlink" href="#reporting" title="Permalink to this headline">¶</a></h2>
+</section><section id="analytics">
+<h3>Analytics<a class="headerlink" href="#analytics" title="Permalink to this headline">¶</a></h3>
+<p>Each website has its own <a class="reference internal" href="../reporting/analytics.html#analytics-plausible"><span class="std std-ref">analytics</span></a>. To switch between websites, click
+the buttons in the upper right corner.</p>
+<img alt="Switch websites in analytics" src="../../../../_images/analytics-switch-websites.png" />
+</section><section id="other-reporting-data">
+<h3>Other reporting data<a class="headerlink" href="#other-reporting-data" title="Permalink to this headline">¶</a></h3>
+<p>Other reporting data such as eCommerce dashboard data, online sales analyses and visitors can be
+grouped by website if necessary. Click <span class="guilabel">Group by –&gt; Website</span>.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Multiple websites</a><ul>
+<li><a class="reference internal" href="#website-creation">Website creation</a></li>
+<li><a class="reference internal" href="#switching-websites">Switching websites</a></li>
+<li><a class="reference internal" href="#website-specific-configuration">Website-specific configuration</a><ul>
+<li><a class="reference internal" href="#content-availability">Content availability</a><ul>
+<li><a class="reference internal" href="#website-pages">Website pages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ecommerce-features">eCommerce features</a><ul>
+<li><a class="reference internal" href="#customer-accounts">Customer accounts</a></li>
+<li><a class="reference internal" href="#pricing">Pricing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reporting">Reporting</a><ul>
+<li><a class="reference internal" href="#analytics">Analytics</a></li>
+<li><a class="reference internal" href="#other-reporting-data">Other reporting data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Multiple websites</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

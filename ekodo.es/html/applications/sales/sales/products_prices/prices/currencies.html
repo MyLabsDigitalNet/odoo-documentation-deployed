@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Foreign currencies &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/products_prices/prices/currencies.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/products_prices/prices/currencies.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Foreign currencies</a><ul>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#view-edit-and-add-currencies">View, edit, and add currencies</a><ul>
+<li><a class="reference internal" href="#currency-detail-form">Currency detail form</a></li>
+<li><a class="reference internal" href="#main-currency-detail-form">Main currency detail form</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-new-currency">Create new currency</a></li>
+<li><a class="reference internal" href="#currency-specific-pricelists">Currency-specific pricelists</a></li>
+<li><a class="reference internal" href="#auto-conversion-from-public-price">Auto-conversion from public price</a></li>
+<li><a class="reference internal" href="#set-product-prices">Set product prices</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/products_prices/prices/currencies.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Foreign currencies</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="foreign-currencies">
+<h1>Foreign currencies<a class="headerlink" href="#foreign-currencies" title="Permalink to this headline">¶</a></h1>
+<p>With Odoo, pricelists can be used to manage prices in a number of foreign currencies. Specifically,
+Odoo has the ability to work with 167 total currencies.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In order to use multiple currencies in Odoo <em>Sales</em>, the <em>Accounting</em> application <strong>must</strong> be
+installed.</p>
+</div>
+</section><section id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>Once the <em>Accounting</em> app has been installed, foreign currencies can be added to the database.
+Navigate to <span class="menuselection">Accounting app ‣ Configuration ‣ Settings</span>, scroll to the
+<span class="guilabel">Currencies</span> section, and locate the <span class="guilabel">Main Currency</span> setting.</p>
+<img alt="Configurar moneda principal en los ajustes de Odoo" class="align-center" src="../../../../../_images/moneda_ajustes.png" />
+<p>Odoo automatically sets the main currency as the currency of the country the company is based in.</p>
+<p>To change the main currency of the company, select the drop-down menu in the <span class="guilabel">Currency</span>
+field, select the desired currency, and be sure to <span class="guilabel">Save</span> the changes.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>All payment methods <strong>must</strong> be in the same currency as the sales journal, or the company
+currency, if the company currency is not set. If it is not the same, a <span class="guilabel">Validation
+Error</span> message appears.</p>
+</div>
+</section><section id="view-edit-and-add-currencies">
+<h2>View, edit, and add currencies<a class="headerlink" href="#view-edit-and-add-currencies" title="Permalink to this headline">¶</a></h2>
+<p>To view, edit, and add currencies to the database, making them available on pricelists and on the
+<span class="guilabel">Main Currency</span> drop-down menu, click the <span class="guilabel">Currencies</span> link, located beneath the
+<span class="guilabel">Currency</span> field on the <span class="menuselection">Accounting app ‣ Settings</span> page.</p>
+<p>When the <span class="guilabel">Currencies</span> link is clicked, a separate <span class="guilabel">Currencies</span> page is revealed.</p>
+<img alt="Listado de monedas en la pagina de monedas de Odoo" class="align-center" src="../../../../../_images/listado_monedas.png" />
+<p>On this page, Odoo provides a master list of 167 global currencies. Each row shows the corresponding
+<span class="guilabel">Currency</span>, <span class="guilabel">Symbol</span>, <span class="guilabel">Name</span>, date of the <span class="guilabel">Last Update</span>, and
+<span class="guilabel">Current Rate</span> (compared to the default currency of the country in which the company is
+based).</p>
+<p>To the far right, there are two columns, which can be toggled on or off:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Use on eBay</span>: this currency can be used with the connected eBay account (if
+applicable).</p></li>
+<li><p><span class="guilabel">Active</span>: this currency is activated, which means it can be added to a pricelist, or
+used as the main currency of the company, if desired (via <span class="menuselection">Accounting app ‣
+Configuration ‣ Settings ‣ Currencies section</span>).</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>By default, all the <span class="guilabel">Active</span> currency options are at the top of the list.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>It is recommended that <em>at least</em> one pricelist is created per <span class="guilabel">Active</span> currency. See
+<a class="reference internal" href="pricing.html"><span class="doc">Pricelists, discounts, and formulas</span></a> to learn more about pricelist configuration.</p>
+</div>
+<p>To toggle options on/off, click the toggle switch in the row for the corresponding column. When <em>on</em>
+the color of the switch is green. When <em>off</em>, the color of the switch is grey.</p>
+</section><section id="currency-detail-form">
+<h3>Currency detail form<a class="headerlink" href="#currency-detail-form" title="Permalink to this headline">¶</a></h3>
+<p>To edit any currency on the <span class="guilabel">Currencies</span> page, click the desired currency to reveal the
+detail form for that specific currency, and proceed to make any necessary changes.</p>
+<img alt="Ficha de moneda en Odoo" class="align-center" src="../../../../../_images/ficha_moneda.png" />
+<p>On the currency detail form, the relevant currency code appears in the <span class="guilabel">Currency</span> field.
+Beneath that, the name for the currency is in the <span class="guilabel">Name</span> field.</p>
+<p>Then, toggle the currency’s availability with the <span class="guilabel">Active</span> toggle: <em>on</em> is indicated with
+a green switch, and <em>off</em> is indicated with a grey switch.</p>
+<p>On the right of the currency detail form, the appropriate <span class="guilabel">Currency Unit</span> (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Dollars</span></code>)
+and <span class="guilabel">Currency Subunit</span> (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Cents</span></code>) can be found.</p>
+<p>If the currency is meant to be used for eBay purposes, toggle the <span class="guilabel">Use on eBay</span> option to
+the desired activation.</p>
+<p>Next, under the <span class="guilabel">Rates</span> tab, the various conversion rates can be viewed, added, or
+deleted. Each row shows the <span class="guilabel">Date</span> of that specific rate, the <span class="guilabel">Company</span> to which
+it is connected, followed by the <span class="guilabel">Unit per…</span> and <span class="guilabel">…per Unit</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <em>…</em> in each of the last two columns represents the main currency set for the company. For
+example, if the main currency is set to <code class="o_code docutils literal notranslate"><span class="pre">USD</span></code>, the columns are titled <span class="guilabel">Unit per USD</span>
+and <span class="guilabel">USD per Unit</span>.</p>
+</div>
+<p>To add a new rate, click <span class="guilabel">Add a line</span> in the <span class="guilabel">Rates</span> tab, and proceed to fill in
+the necessary information in the aforementioned columns.</p>
+</section><section id="main-currency-detail-form">
+<h3>Main currency detail form<a class="headerlink" href="#main-currency-detail-form" title="Permalink to this headline">¶</a></h3>
+<p>If the selected currency is the main currency of the company, a blue banner appears at the top of
+the currency detail form with the message: <span class="guilabel">This is your company’s currency.</span>.</p>
+<img alt="Detalles de una moneda principal" class="align-center" src="../../../../../_images/divisa_principal.png" />
+<p>All the fields are the same as a typical currency detail form, but there will <strong>not</strong> be a
+<span class="guilabel">Rates</span> tab because all other currency rates are based off the main currency of the
+company.</p>
+</section><section id="create-new-currency">
+<h2>Create new currency<a class="headerlink" href="#create-new-currency" title="Permalink to this headline">¶</a></h2>
+<p>If a desired currency isn’t on the <span class="guilabel">Currencies</span> page, click the <span class="guilabel">New</span> button to
+open a blank currency template form.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The same <span class="guilabel">New</span> button is located in the upper-right corner of any currency detail form.</p>
+</div>
+<img alt="Ficha de una nueva moneda en Odoo" class="align-center" src="../../../../../_images/nueva_moneda.png" />
+<p>On the blank currency detail form, proceed to enter the desired currency code in the
+<span class="guilabel">Currency</span> field. Beneath that, enter the name for the currency in the <span class="guilabel">Name</span>
+field.</p>
+<p>Then, toggle the currency’s availability with the <span class="guilabel">Active</span> toggle switch.</p>
+<p>On the right of the currency detail form, enter the appropriate <span class="guilabel">Currency Unit</span> (e.g.
+<code class="o_code docutils literal notranslate"><span class="pre">Dollars</span></code>) and appropriate <span class="guilabel">Currency Subunit</span> (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Cents</span></code>).</p>
+<p>Next, under the <span class="guilabel">Rates</span> tab, add a new rate by clicking <span class="guilabel">Add a line</span>. Then,
+proceed to confirm and adjust the <span class="guilabel">Date</span>, <span class="guilabel">Company</span>, <span class="guilabel">Unit per…</span>,
+and <span class="guilabel">…per Unit</span> fields to ensure all the auto-populated information is accurate.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <em>…</em> in each of the last two columns represents the main currency set for the company. For
+example, if the main currency is set to <code class="o_code docutils literal notranslate"><span class="pre">USD</span></code>, the columns are titled <span class="guilabel">Unit per USD</span>
+and <span class="guilabel">USD per Unit</span>.</p>
+</div>
+</section><section id="currency-specific-pricelists">
+<h2>Currency-specific pricelists<a class="headerlink" href="#currency-specific-pricelists" title="Permalink to this headline">¶</a></h2>
+<p>It is recommended that <em>at least</em> one pricelist is created per active currency in the database. To
+create (or assign) a pricelist to a specific currency, start by navigating to <span class="menuselection">Sales
+app ‣ Products ‣ Pricelists</span>.</p>
+<p>From the <span class="guilabel">Pricelists</span> page, either select an existing pricelist to edit, or click
+<span class="guilabel">New</span> to create a new pricelist.</p>
+<p>On the pricelist detail form, for either a new or existing pricelist, adjust the
+<span class="guilabel">Currency</span> field as desired.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="pricing.html"><span class="doc">Pricelists, discounts, and formulas</span></a> to learn more about pricelist configuration.</p>
+</div>
+</section><section id="auto-conversion-from-public-price">
+<h2>Auto-conversion from public price<a class="headerlink" href="#auto-conversion-from-public-price" title="Permalink to this headline">¶</a></h2>
+<p>It should be noted that the public price seen on products is directly related to the main currency
+the company has set, which is configured by navigating to <span class="menuselection">Accounting app ‣
+Configuration ‣ Settings ‣ Currencies section ‣ Main Currency ‣ Currency drop-down menu</span>.</p>
+<p>The sales price automatically updates if the pricelist is changed to a different pricelist that has
+a different currency than the company’s main currency. The change in price is directly related to
+the updated conversion rate for that currency.</p>
+</section><section id="set-product-prices">
+<h2>Set product prices<a class="headerlink" href="#set-product-prices" title="Permalink to this headline">¶</a></h2>
+<p>In order to have product prices set in place to avoid any changes in currency rates, start by
+navigating to <span class="menuselection">Sales app ‣ Products ‣ Products</span>.</p>
+<p>From the <span class="guilabel">Products</span> page, select the desired product to modify. Or, create a new product
+by clicking the <span class="guilabel">New</span> button.</p>
+<p>Then, on the product detail form, click the <span class="guilabel">Extra Prices</span> smart button, located in the
+upper-left corner. Doing so reveals a separate <span class="guilabel">Price Rules</span> page, specific to that
+particular product.</p>
+<img alt="Establecer precios de productos basados en listas de precios en moneda extranjera" class="align-center" src="../../../../../_images/precios_productos.png" />
+<p>Click <span class="guilabel">New</span>, and select the desired pricelist from the drop-down menu in the
+<span class="guilabel">Pricelist</span> column.</p>
+<p>The <span class="guilabel">Applied On</span> field is auto-populated with the product, so proceed to enter in the
+desired figures in the <span class="guilabel">Min. Quantity</span> and <span class="guilabel">Price</span> fields.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The figure in the <span class="guilabel">Min. Quantity</span> field means the <span class="guilabel">Price</span> being set will
+<strong>only</strong> trigger if at least that amount of product is purchased.</p>
+</div>
+<p>If necessary, configure a <span class="guilabel">Start Date</span> and <span class="guilabel">End Date</span> for the set prices.
+Leaving those columns blank ensures the set price will remain valid, regardless of the date of sale.</p>
+<p>If working in a multi-company environment, designate to which company this price rule should be
+applied in the <span class="guilabel">Company</span> field. Leaving that field blank ensures the price rule applies to
+all companies in the database.</p>
+<p>With those configurations complete, regardless of any changes/updates in conversion, whenever those
+designated pricelists are applied to a customer trying to purchase this specific product, these
+pre-determined set prices appear.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="pricing.html"><span class="doc">Pricelists, discounts, and formulas</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Foreign currencies</a><ul>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#view-edit-and-add-currencies">View, edit, and add currencies</a><ul>
+<li><a class="reference internal" href="#currency-detail-form">Currency detail form</a></li>
+<li><a class="reference internal" href="#main-currency-detail-form">Main currency detail form</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-new-currency">Create new currency</a></li>
+<li><a class="reference internal" href="#currency-specific-pricelists">Currency-specific pricelists</a></li>
+<li><a class="reference internal" href="#auto-conversion-from-public-price">Auto-conversion from public price</a></li>
+<li><a class="reference internal" href="#set-product-prices">Set product prices</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Foreign currencies</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

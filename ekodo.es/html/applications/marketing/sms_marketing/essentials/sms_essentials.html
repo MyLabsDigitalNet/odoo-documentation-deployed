@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMS essentials &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/marketing/sms_marketing/essentials/sms_essentials.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/marketing/sms_marketing/essentials/sms_essentials.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">SMS essentials</a><ul>
+<li><a class="reference internal" href="#sms-marketing-dashboard">SMS marketing dashboard</a></li>
+<li><a class="reference internal" href="#create-sms-messages">Create SMS messages</a><ul>
+<li><a class="reference internal" href="#writing-sms-messages">Writing SMS messages</a></li>
+<li><a class="reference internal" href="#track-links-used-in-sms-messages">Track links used in SMS messages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adjust-sms-settings">Adjust SMS settings</a></li>
+<li><a class="reference internal" href="#send-sms-messages">Send SMS messages</a></li>
+<li><a class="reference internal" href="#visualize-reports">Visualize reports</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/marketing/sms_marketing/essentials/sms_essentials.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">SMS essentials</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="sms-essentials">
+<h1>SMS essentials<a class="headerlink" href="#sms-essentials" title="Permalink to this headline">¶</a></h1>
+<p>Utilizing <abbr title="Short Message Service">SMS</abbr> outreach in communication strategies can help
+companies expand their market reach, especially in some countries, where emails might not be very
+common, or even used at all.</p>
+<p>Odoo’s <em>SMS Marketing</em> application can also help boost conversion rates around valuable actions,
+such as event registrations, free trials, purchases, etc., since text and mobile-based marketing
+channels typically yield higher <abbr title="click-to-open rate">CTOR</abbr> and <abbr title="click-through rate">CTR</abbr> outcomes.</p>
+</section><section id="sms-marketing-dashboard">
+<h2>SMS marketing dashboard<a class="headerlink" href="#sms-marketing-dashboard" title="Permalink to this headline">¶</a></h2>
+<p>When the application is opened, Odoo displays the main <span class="guilabel">SMS Marketing</span> dashboard, which
+showcases the various SMS mailings that have been created, along with pertinent information and data
+related to that specific message.</p>
+<p>The <span class="guilabel">Kanban</span> view is the default Odoo uses when the application is opened, which provides
+an organized display of the SMS mailings that have been created, and what their current status is at
+the moment.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>An <abbr title="Short Message Service">SMS</abbr> mailing can have one of the following statuses:
+<span class="guilabel">Draft</span>, <span class="guilabel">In Queue</span>, <span class="guilabel">Sending</span>, or <span class="guilabel">Sent</span>.</p>
+</div>
+<p>In the upper right corner of the main <span class="guilabel">SMS Marketing</span> dashboard, there are a few different
+view options to choose from. Each one provides a unique take on the same SMS information.</p>
+<p>The <span class="guilabel">List</span> view provides the same useful data related to SMS mailings, but in a more
+traditional list layout.</p>
+<p>The <span class="guilabel">Calendar</span> view provides a simple calendar, making it easy to see when SMS mailings
+are going to be sent (or have been sent). If a future date is clicked, Odoo reveals a blank SMS
+template that, when completed, will be scheduled to be sent on that specific future date.</p>
+<p>Lastly, the <span class="guilabel">Graph</span> view visualizes that same SMS-related data in series of graphs and
+charts. Odoo also provides various ways to sort and group the data for more detailed analysis.</p>
+</section><section id="create-sms-messages">
+<h2>Create SMS messages<a class="headerlink" href="#create-sms-messages" title="Permalink to this headline">¶</a></h2>
+<p>To start, click <span class="guilabel">Create</span> on the main <span class="guilabel">SMS Marketing</span> dashboard, and Odoo reveals
+a blank SMS template form, which can be configured in a number of different ways.</p>
+<img alt="Creating an SMS marketing template." class="align-center" src="../../../../_images/sms-create.png" />
+<p>First, give the mailing a <span class="guilabel">Subject</span>, which describes what the mailing is about.</p>
+<p>Next, in the <span class="guilabel">Recipients</span> field, choose to whom this <abbr title="Short Message Service">SMS</abbr>
+will be sent. By default, Odoo has <span class="guilabel">Mailing List</span> selected. If this is the desired
+<span class="guilabel">Recipients</span> field option, specify which mailing list Odoo should send this <abbr title="Short Message Service">SMS</abbr> to in the <span class="guilabel">Select Mailing List</span> field.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>To create (or edit) a mailing list, go to <span class="menuselection">Mailing Lists ‣ Mailing List</span>. There,
+Odoo displays all previously created mailing lists, along with various types of data related to
+that specific list (e.g. number of contacts, mailings, recipients, etc.).</p>
+<p>To learn more about mailing lists and contacts, check out <a class="reference internal" href="mailing_lists_blacklists.html"><span class="doc">Mailing lists and blacklists</span></a>.</p>
+</div>
+<img alt="View of the mailing list page in the SMS marketing application." class="align-center" src="../../../../_images/sms-mailing-list1.png" />
+<p>To reveal all the possible options in the <span class="guilabel">Recipients</span> field, click the field to see all
+the choices Odoo makes available.</p>
+<p>When another field (other than <span class="guilabel">Mailing List</span>) is selected, the option to specify that
+chosen field even further becomes available — either with a default recipient filter equation that
+appears automatically (which can be customized to fit any business need), or, if no default
+recipient filter equation is present, an <span class="guilabel">Add Filter</span> button will appear.</p>
+<p>Clicking the <span class="guilabel">Add Filter</span> button, reveals fully customizable domain rule fields, which can
+be configured similar to an equation. You can create multiple recipient rules, if necessary.</p>
+<p>Then, Odoo will only send the <abbr title="Short Message Service">SMS</abbr> to recipients who fit into
+whatever criteria is configured in those fields. Multiple rules can be added.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If <span class="guilabel">Contact</span> is chosen, all of the <em>Contacts</em> records in the Odoo database (vendors,
+customers, etc.) will receive the <abbr title="Short Message Service">SMS</abbr>, by default — unless more
+specific recipient rules are entered.</p>
+<p>For instance, the message below will only be sent to contacts in the database that are located in
+the United States (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Country</span></code> &gt; <code class="o_code docutils literal notranslate"><span class="pre">Country</span> <span class="pre">Name</span></code> equals <code class="o_code docutils literal notranslate"><span class="pre">United</span> <span class="pre">States</span></code>), and they haven’t
+blacklisted themselves from any mailings (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Blacklist</span></code> &gt; <code class="o_code docutils literal notranslate"><span class="pre">is</span></code> &gt; <code class="o_code docutils literal notranslate"><span class="pre">not</span> <span class="pre">set</span></code>).</p>
+<img alt="Contact recipients on SMS marketing." class="align-center" src="../../../../_images/contact-recipient.png" />
+</div>
+</section><section id="writing-sms-messages">
+<h3>Writing SMS messages<a class="headerlink" href="#writing-sms-messages" title="Permalink to this headline">¶</a></h3>
+<p>Enter the content of the <abbr title="Short Message Service">SMS</abbr> in the text field, found in the
+<span class="guilabel">SMS Content</span> tab. Links and emojis can also be included. Beneath the text field, Odoo
+displays how many characters are used in the message, along with how many <abbr title="Short Message Service">SMS</abbr> mailings it will take to deliver the complete message.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To check the price of sending an <abbr title="Short Message Service">SMS</abbr> for a country, click on the
+<span class="guilabel">Information</span> icon.</p>
+</div>
+<img alt="SMS price check icon." class="align-center" src="../../../../_images/sms-price-check.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Credits must be purchased from Odoo in order to take advantage of the <em>SMS Marketing</em> app;
+<abbr title="Short Message Service">SMS</abbr> messages will not be sent without credits.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://iap-services.odoo.com/iap/sms/pricing">Odoo SMS - FAQ</a></p>
+</div>
+</section><section id="track-links-used-in-sms-messages">
+<h3>Track links used in SMS messages<a class="headerlink" href="#track-links-used-in-sms-messages" title="Permalink to this headline">¶</a></h3>
+<p>When links are used in <abbr title="Short Message Service">SMS</abbr> messages, Odoo automatically generates
+link trackers to gather analytical data and metrics related to those specific links, which can be
+found by going to <span class="menuselection">Configuration ‣ Link Tracker</span>.</p>
+<img alt="SMS Link Tracker page." class="align-center" src="../../../../_images/sms-link-tracker.png" />
+</section><section id="adjust-sms-settings">
+<h2>Adjust SMS settings<a class="headerlink" href="#adjust-sms-settings" title="Permalink to this headline">¶</a></h2>
+<p>Under the <span class="guilabel">Settings</span> tab of the SMS template, there is an option to <span class="guilabel">Include
+opt-out link</span>. If activated, the recipient is able to unsubscribe from the mailing list, thus
+avoiding all future mailings.</p>
+<p>An employee can be designated as the <span class="guilabel">Responsible</span> in the <span class="guilabel">Tracking</span> section of
+the <span class="guilabel">Settings</span> tab, as well.</p>
+<img alt="SMS Settings tab." class="align-center" src="../../../../_images/sms-settings-tab.png" />
+</section><section id="send-sms-messages">
+<h2>Send SMS messages<a class="headerlink" href="#send-sms-messages" title="Permalink to this headline">¶</a></h2>
+<p>Once a mailing is created, choose when Odoo should deliver the message from the following options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Send</span>: sends the message immediately. Consider using this option if the recipient list
+is highly refined, or in cases that involve fast approaching deadlines, such as a “flash sale.”</p></li>
+<li><p><span class="guilabel">Schedule</span>: choose a day (and time) for Odoo to send the mailing. This is typically the
+best option for mailings related to a specific event. Such a method can also be used to promote a
+limited-time offer, or to help plan a company’s content strategy in advance.</p></li>
+<li><p><span class="guilabel">Test</span>: allows for an <abbr title="Short Message Service">SMS</abbr> to be sent to one or multiple
+numbers for test purposes. Remember to use a comma between phone numbers if multiple numbers are
+used as recipients.</p></li>
+</ul>
+</section><section id="visualize-reports">
+<h2>Visualize reports<a class="headerlink" href="#visualize-reports" title="Permalink to this headline">¶</a></h2>
+<p>On the <span class="guilabel">Reporting</span> page (accessible via the <span class="menuselection">Reporting</span> option in the
+header menu), there are options to apply different combinations of <span class="guilabel">Filters</span> and
+<span class="guilabel">Measures</span> to view metrics in a number of different layouts (e.g. <span class="guilabel">Graph</span>,
+<span class="guilabel">List</span>, and <span class="guilabel">Cohort</span> views.)</p>
+<p>Each <span class="guilabel">Reporting</span> metric view option allows for more extensive performance analysis of
+<abbr title="Short Message Service">SMS</abbr> mailings.</p>
+<p>For example, while in the default <span class="guilabel">Graph</span> view, <abbr title="Short Message Service">SMS</abbr> data
+is visualized as different graphs and charts, which can be sorted and grouped in various ways (e.g.
+<span class="guilabel">Measures</span> drop down menu).</p>
+<img alt="Reporting page in SMS Marketing." class="align-center" src="../../../../_images/sms-reporting-page.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>SMS messages can be sent using automated actions in Odoo. Odoo <em>Studio</em> is required to use
+automated actions.</p>
+<p>To install Odoo <em>Studio</em>, go to <span class="menuselection">Apps application</span>. Then, using the
+<span class="guilabel">Search…</span> bar, and search for <code class="o_code docutils literal notranslate"><span class="pre">studio</span></code>.</p>
+<p>If it is not already installed, click <span class="guilabel">Install</span>.</p>
+<p>Adding the <em>Studio</em> application upgrades the subscription status to <em>Custom</em>, which increases the
+cost. Consult <a class="reference external" href="https://www.odoo.com/contactus">support</a>, or reach out to the database’s
+customer success manager, with any questions on upgrading.</p>
+<p>To use automated actions, navigate in <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, to
+<span class="menuselection">Settings app ‣ Technical menu ‣ Automation section ‣ Automated Actions</span>.
+Then, click <span class="guilabel">New</span> to create a new action.</p>
+<p>Enter an <span class="guilabel">Action Name</span>, and select a <span class="guilabel">Model</span> to implement this action on.</p>
+<p>Ensure the <span class="guilabel">Active</span> toggle is set to <em>on</em>, represented by a full-green switch, in order
+for the automated action to run.</p>
+<p>Set the <span class="guilabel">Trigger</span> to either <span class="guilabel">On Creation</span>, <span class="guilabel">On Update</span>,
+<span class="guilabel">On Creation &amp; Update</span>, <span class="guilabel">On Deletion</span>, <span class="guilabel">Based on Form
+Modification</span>, or <span class="guilabel">Based on Timed Condition</span>.</p>
+<p>Based on the selection for the <span class="guilabel">Trigger</span>, additional fields may populate.</p>
+<p>Under the <span class="guilabel">Apply on</span> field, a record filter using a domain can be created. Ensure a
+model has been selected before setting any domains on the <span class="guilabel">Apply on</span> field. Click
+<span class="guilabel">Edit Domain</span> to set record parameters.</p>
+<p>Under <span class="guilabel">Action To Do</span> drop-down field, select <span class="guilabel">Send SMS Text Message</span>. Next,
+set the <span class="guilabel">SMS Template</span>, and choose whether the SMS message should be logged as a note,
+by ticking the checkbox next to <span class="guilabel">Log as Note</span>.</p>
+<img alt="Automated action template with action to do, SMS template and log as note highlighted." class="align-center" src="../../../../_images/automated-action-sms.png" />
+<p>To implement the automated action, save it; either by navigating away, or manually saving it
+(using the <span class="guilabel">☁️ (cloud)</span> icon).</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="sms_campaign_settings.html"><span class="doc">SMS campaign settings</span></a></p></li>
+<li><p><a class="reference internal" href="mailing_lists_blacklists.html"><span class="doc">Mailing lists and blacklists</span></a></p></li>
+<li><p><a class="reference internal" href="../../../essentials/in_app_purchase.html"><span class="doc">In-app purchases (IAP)</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">SMS essentials</a><ul>
+<li><a class="reference internal" href="#sms-marketing-dashboard">SMS marketing dashboard</a></li>
+<li><a class="reference internal" href="#create-sms-messages">Create SMS messages</a><ul>
+<li><a class="reference internal" href="#writing-sms-messages">Writing SMS messages</a></li>
+<li><a class="reference internal" href="#track-links-used-in-sms-messages">Track links used in SMS messages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adjust-sms-settings">Adjust SMS settings</a></li>
+<li><a class="reference internal" href="#send-sms-messages">Send SMS messages</a></li>
+<li><a class="reference internal" href="#visualize-reports">Visualize reports</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">SMS essentials</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

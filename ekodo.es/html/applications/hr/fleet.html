@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fleet &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/hr/fleet.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/hr/fleet.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Fleet</a><ul>
+<li><a class="reference internal" href="#settings">Settings</a><ul>
+<li><a class="reference internal" href="#end-date-contract-alert">End Date Contract Alert</a></li>
+<li><a class="reference internal" href="#new-vehicle-request">New Vehicle Request</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manufacturers">Manufacturers</a><ul>
+<li><a class="reference internal" href="#add-a-manufacturer">Add a manufacturer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vehicle-models">Vehicle Models</a><ul>
+<li><a class="reference internal" href="#preconfigured-models">Preconfigured Models</a></li>
+<li><a class="reference internal" href="#add-a-new-model">Add a new model</a><ul>
+<li><a class="reference internal" href="#information-tab">Information tab</a><ul>
+<li><a class="reference internal" href="#model">Model</a></li>
+<li><a class="reference internal" href="#salary">Salary</a></li>
+<li><a class="reference internal" href="#engine">Engine</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vendors-tab">Vendors tab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model-category">Model Category</a><ul>
+<li><a class="reference internal" href="#add-a-new-model-category">Add a new model category</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/hr/fleet.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Fleet</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_hide_toc">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="fleet">
+<h1>Fleet<a class="headerlink" href="#fleet" title="Permalink to this headline">¶</a></h1>
+<p>This document outlines all of the configurations and settings for the <em>Fleet</em> application, including
+<a class="reference internal" href="#fleet-settings"><span class="std std-ref">settings</span></a>, <a class="reference internal" href="#fleet-manufacturers"><span class="std std-ref">manufacturers</span></a>, <a class="reference internal" href="#fleet-models"><span class="std std-ref">vehicle models</span></a>, and <a class="reference internal" href="#fleet-categories"><span class="std std-ref">model categories</span></a>.</p>
+</section><section id="settings">
+<span id="fleet-settings"></span><h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>To access the settings menu, go to <span class="menuselection">Fleet application ‣ Configuration ‣
+Settings</span>. There are only two settings that need configuration, the vehicle contract end date alert
+delay, and a new vehicle request limit.</p>
+<img alt="Settings available for the Fleet application." class="align-center" src="../../_images/fleet-settings.png" />
+</section><section id="end-date-contract-alert">
+<h3>End Date Contract Alert<a class="headerlink" href="#end-date-contract-alert" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">End Date Contract Alert</span> field defines an alert delay for the persons responsible for
+vehicle contracts. The responsible person(s) will receive an email informing them a vehicle contract
+is about to expire in the number of days defined in this field.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>To determine who the responsible person is for a contract, open an individual contract. The
+person listed as <span class="guilabel">Responsible</span> under the <span class="guilabel">Contract Information</span> section of
+the contract is the person who will receive the alert.</p>
+<p>To access all contracts, navigate to <span class="menuselection">Fleet app ‣ Fleet ‣ Contracts</span> and all
+contracts appear in the list. Click on a <span class="guilabel">Contract</span> to view it.</p>
+<p>An individual contract can also be found by navigating to <span class="menuselection">Fleet app ‣ Fleet ‣
+Fleet</span> and clicking on an individual vehicle. On the vehicle form, click the
+<span class="guilabel">Contracts</span> smart button at the top of the page. The contract(s) associated with this
+vehicle only appears in the list. Click on an individual contract to open it. The
+<span class="guilabel">Responsible</span> person is listed on the contract.</p>
+</div>
+</section><section id="new-vehicle-request">
+<h3>New Vehicle Request<a class="headerlink" href="#new-vehicle-request" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">New Vehicle Request</span> field sets a limit on how many new vehicles are requested based
+on fleet availability. An employee filling out the salary configurator form (after being offered a
+position), will <em>not</em> be able to request a new car if the number of existing cars is greater than
+the number specified in the <span class="guilabel">New Vehicle Request</span> field. Enter the specific number limit
+for existing available cars in this field.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If the <span class="guilabel">New Vehicle Request</span> limit is set to 20 vehicles, and there are 25 vehicles
+available, an employee would not be able to request a new vehicle. If there are only 10 cars
+available, then the employee would be able to request a new vehicle.</p>
+</div>
+</section><section id="manufacturers">
+<span id="fleet-manufacturers"></span><h2>Manufacturers<a class="headerlink" href="#manufacturers" title="Permalink to this headline">¶</a></h2>
+<p>Odoo <em>Fleet</em> comes pre-configured with sixty-six commonly used car and bicycle manufacturers in the
+database, along with their logos. To view the pre-loaded manufacturers, go to <span class="menuselection">Fleet
+app ‣ Configuration ‣ Manufacturers</span>.</p>
+<p>The manufacturers appear in a list view in alphabetical order. Each manufacturer’s card lists how
+many specific models are configured for each particular manufacturer. Odoo comes with forty six
+pre-configured <a class="reference internal" href="#fleet-models"><span class="std std-ref">models</span></a> from four major auto manufacturers and one
+major bicycle manufacturer: Audi, BMW, Mercedes, Opel (cars), and Eddy Merckx (bicycle).</p>
+<img alt="Manufacturer card with the amount of models listed." class="align-center" src="../../_images/manufacturer.png" />
+</section><section id="add-a-manufacturer">
+<h3>Add a manufacturer<a class="headerlink" href="#add-a-manufacturer" title="Permalink to this headline">¶</a></h3>
+<p>To add a new manufacturer to the database, click <span class="guilabel">Create</span>. A manufacturer form will load.
+Only two pieces of information are needed, the <span class="guilabel">Name</span> of the manufacturer, and the logo.
+Type the name of the manufacturer in the name field, and select an image to upload for the logo.
+When the information is entered, click <span class="guilabel">Save</span>.</p>
+</section><section id="vehicle-models">
+<span id="fleet-models"></span><h2>Vehicle Models<a class="headerlink" href="#vehicle-models" title="Permalink to this headline">¶</a></h2>
+<p>Many manufacturers have a variety of models that they produce. When adding a vehicle to the fleet,
+it is important to specify the vehicle model being added. Odoo comes with pre-configured car models
+from four major auto manufacturers, and one pre-configured bicycle model from one bicycle
+manufacturer: Audi, BMW, Mercedes, Opel (cars), and Eddy Merckx (bicycle). If a vehicle <em>other</em> than
+the pre-configured models from these manufacturers are part of a fleet, the model (and/or
+manufacturer) needs to be added to the database.</p>
+</section><section id="preconfigured-models">
+<h3>Preconfigured Models<a class="headerlink" href="#preconfigured-models" title="Permalink to this headline">¶</a></h3>
+<p>The following models are pre-loaded in Odoo and do not need to be added to the database:</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 23%" />
+<col style="width: 22%" />
+<col style="width: 18%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>AUDI</p></th>
+<th class="head"><p>BMW</p></th>
+<th class="head"><p>Eddy Merckx</p></th>
+<th class="head"><p>Mercedes</p></th>
+<th class="head"><p>Opel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A1</p></td>
+<td><p>Serie 1</p></td>
+<td><p>SanRemo76</p></td>
+<td><p>Class A</p></td>
+<td><p>Agilia</p></td>
+</tr>
+<tr class="row-odd"><td><p>A3</p></td>
+<td><p>Serie 3</p></td>
+<td></td>
+<td><p>Class B</p></td>
+<td><p>Ampera</p></td>
+</tr>
+<tr class="row-even"><td><p>A4</p></td>
+<td><p>Serie 5</p></td>
+<td></td>
+<td><p>Class C</p></td>
+<td><p>Antara</p></td>
+</tr>
+<tr class="row-odd"><td><p>A5</p></td>
+<td><p>Serie 6</p></td>
+<td></td>
+<td><p>Class CL</p></td>
+<td><p>Astra</p></td>
+</tr>
+<tr class="row-even"><td><p>A6</p></td>
+<td><p>Serie 7</p></td>
+<td></td>
+<td><p>Class CLS</p></td>
+<td><p>AstraGTC</p></td>
+</tr>
+<tr class="row-odd"><td><p>A7</p></td>
+<td><p>Serie Hybrid</p></td>
+<td></td>
+<td><p>Class E</p></td>
+<td><p>Combo Tour</p></td>
+</tr>
+<tr class="row-even"><td><p>A8</p></td>
+<td><p>Serie M</p></td>
+<td></td>
+<td><p>Class GL</p></td>
+<td><p>Corsa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Q3</p></td>
+<td><p>Serie X</p></td>
+<td></td>
+<td><p>Class GLK</p></td>
+<td><p>Insignia</p></td>
+</tr>
+<tr class="row-even"><td><p>Q5</p></td>
+<td><p>Serie Z4</p></td>
+<td></td>
+<td><p>Class M</p></td>
+<td><p>Meriva</p></td>
+</tr>
+<tr class="row-odd"><td><p>Q7</p></td>
+<td></td>
+<td></td>
+<td><p>Class R</p></td>
+<td><p>Mokka</p></td>
+</tr>
+<tr class="row-even"><td><p>TT</p></td>
+<td></td>
+<td></td>
+<td><p>Class S</p></td>
+<td><p>Zafira</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td><p>Class SLK</p></td>
+<td><p>Zafira Tourer</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+<td><p>Class SLS</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section><section id="add-a-new-model">
+<span id="fleet-add-model"></span><h3>Add a new model<a class="headerlink" href="#add-a-new-model" title="Permalink to this headline">¶</a></h3>
+<p>New vehicle models can easily be added to the database. To add a new model, navigate to
+<span class="menuselection">Fleet app ‣ Configuration ‣ Vehicle Models</span>. Click <span class="guilabel">Create</span> and a
+vehicle model form will load. Enter the following information on the form, then click
+<span class="guilabel">Save</span>. Be advised, some fields are specific to Belgian based companies, so not all fields
+or sections may be visible depending on the location of the company.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Model name</span>: enter the model name in the field.</p></li>
+<li><p><span class="guilabel">Manufacturer</span>: select the manufacturer from the drop-down menu. If the manufacturer is
+not configured, type in the manufacturer and then click <span class="guilabel">Create</span> or <span class="guilabel">Create &amp;
+Edit</span>.</p></li>
+<li><p><span class="guilabel">Vehicle Type</span>: select one of two preconfigured vehicle types, either <span class="guilabel">Car</span> or
+<span class="guilabel">Bike</span>, from the drop-down menu. The vehicle types are hardcoded in Odoo and are
+integrated with the <em>Payroll</em> application since vehicles can be part of an employee’s benefits.
+Adding additional vehicle types is not possible as it will affect payroll.</p></li>
+<li><p><span class="guilabel">Category</span>: select the category the vehicle is categorized under from the drop-down
+menu. To create a new category, type in the category and then click <span class="guilabel">Create (new
+category)</span>.</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When the manufacturer is selected, the logo for the manufacturer will automatically load in the
+image box in the top right corner.</p>
+</div>
+</section><section id="information-tab">
+<h4>Information tab<a class="headerlink" href="#information-tab" title="Permalink to this headline">¶</a></h4>
+</section><section id="model">
+<h5>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><span class="guilabel">Seats Number</span>: enter how many passengers the vehicle can accommodate.</p></li>
+<li><p><span class="guilabel">Doors Number</span>: enter the number of doors the vehicle has.</p></li>
+<li><p><span class="guilabel">Color</span>: enter the color of the vehicle.</p></li>
+<li><p><span class="guilabel">Model Year</span>: enter the year the vehicle was manufactured.</p></li>
+<li><p><span class="guilabel">Trailer Hitch</span>: check this box if the vehicle has a trailer hitch installed.</p></li>
+</ul>
+</section><section id="salary">
+<h5>Salary<a class="headerlink" href="#salary" title="Permalink to this headline">¶</a></h5>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Salary</span> section only appears for Belgian-based companies, and only if the company
+has their localization setting set to Belgium. The cost values are all <strong>monthly</strong> with the
+exception of the <span class="guilabel">Catalog Value (VAT Incl.)</span>.</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">Can be requested</span>: check this box if employees can request this model vehicle.</p></li>
+<li><p><span class="guilabel">Catalog Value (VAT Incl.)</span>: enter the <abbr title="Manufacturer's Suggested Retail Price">MSRP</abbr> for the vehicle at the time of purchase or lease.</p></li>
+<li><p><span class="guilabel">C02 fee</span>: this value is automatically calculated based on Belgian laws and regulations,
+and cannot be modified. The value is based on the value entered in the <span class="guilabel">CO2 Emissions</span>
+field in the <span class="guilabel">Engine</span> section of the vehicle form.</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Modifying the <span class="guilabel">CO2 Emissions</span> field will adjust the value in the <span class="guilabel">CO2 fee</span>
+field.</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">Cost (Depreciated)</span>: enter the monthly cost for the vehicle, which appears in the
+salary configurator that is available to a future employee when they are offered a job position.
+This value impacts the gross and net salary of the employee who is assigned to the vehicle. This
+figure is depreciated over time according to local tax laws. The <span class="guilabel">Cost (Depreciated)</span>
+does not depreciate automatically on the <em>vehicle model</em>, it only depreciates based on the
+<em>contract</em> linked to a specific vehicle and not on the general model.</p></li>
+<li><p><span class="guilabel">Total Cost (Depreciated)</span>: this value is the <span class="guilabel">Cost (Depreciated)</span> and the
+<span class="guilabel">C02 fee</span> fields combined, and also is depreciated over time.</p></li>
+</ul>
+</section><section id="engine">
+<h5>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><span class="guilabel">Fuel Type</span>: select the type of fuel the vehicle uses form the drop-down menu. The
+options are <span class="guilabel">Diesel</span>, <span class="guilabel">Gasoline</span>, <span class="guilabel">Hybrid Diesel</span>, <span class="guilabel">Hybrid
+Gasoline</span>, <span class="guilabel">Plug-in Hybrid Diesel</span>, <span class="guilabel">Plug-in Hybrid Gasoline</span>,
+<span class="guilabel">CNG</span>, <span class="guilabel">LPG</span>, <span class="guilabel">Hydrogen</span>, or <span class="guilabel">Electric</span>.</p></li>
+<li><p><span class="guilabel">CO2 Emissions</span>: enter the average carbon dioxide emissions the vehicle produces in
+grams per kilometer (g/km). This information is provided by the car manufacturer.</p></li>
+<li><p><span class="guilabel">CO2 Standard</span>: enter the standard amount of carbon dioxide in grams per kilometer
+(g/km) for a similar sized vehicle.</p></li>
+<li><p><span class="guilabel">Transmission</span>: select the transmission type from the drop-down menu, either
+<span class="guilabel">Manual</span> or <span class="guilabel">Automatic</span>.</p></li>
+<li><p><span class="guilabel">Power</span>: if the vehicle is electric or hybrid, enter the power the vehicle uses in
+kilowatts (kW).</p></li>
+<li><p><span class="guilabel">Horsepower</span>: enter the vehicle’s horsepower in this field.</p></li>
+<li><p><span class="guilabel">Horsepower Taxation</span>: enter the amount that is taxed based on the size of the vehicle’s
+engine. This is determined by local taxes and regulations, and varies depending on the location.
+It is recommended to check with the accounting department to ensure this value is correct.</p></li>
+<li><p><span class="guilabel">Tax Deduction</span>: this field auto-populates according to the engine specifications, and
+cannot be modified. The percentage is based on the localization settings and local tax laws.</p></li>
+</ul>
+</section><section id="vendors-tab">
+<h4>Vendors tab<a class="headerlink" href="#vendors-tab" title="Permalink to this headline">¶</a></h4>
+<p>Vehicle specific vendors, such as car dealerships, are not listed separately from other vendors. The
+vendors that a vehicle can be purchased from also appear in the list of vendors used by the
+<em>Purchase</em> app.</p>
+<p>The vendor(s) the vehicle can be purchased from may be added in this tab. To add a vendor, click
+<span class="guilabel">Add</span>, and a pop-up loads with a list of all the vendors currently in the database. Select
+the vendor to add by clicking the checkbox next to the vendor name, then click <span class="guilabel">Select</span>.
+There is no limit to the number of vendors that can be added to this list.</p>
+<p>If a vendor is not in the database, add a vendor by clicking <span class="guilabel">Create</span>. A vendor form will
+load. Enter the information in the vendor tab, then click <span class="guilabel">Save &amp; Close</span> to add the vendor
+and close the window, or <span class="guilabel">Save &amp; New</span> to add the current vendor and create another new
+vendor.</p>
+<img alt="Vendor form to fill out when adding a new vendor." class="align-center" src="../../_images/vendor.png" />
+</section><section id="model-category">
+<span id="fleet-categories"></span><h2>Model Category<a class="headerlink" href="#model-category" title="Permalink to this headline">¶</a></h2>
+<p>To best organize a fleet, it is recommended to have vehicle models housed under a specific category,
+to more easily see what kinds of vehicles are in the fleet. Model categories are set on the
+<a class="reference internal" href="#fleet-add-model"><span class="std std-ref">vehicle model form</span></a>.</p>
+<p>To view all the models currently set up, navigate to <span class="menuselection">Fleet application ‣
+Configuration ‣ Model Category</span>. All models are displayed in a list view.</p>
+</section><section id="add-a-new-model-category">
+<h3>Add a new model category<a class="headerlink" href="#add-a-new-model-category" title="Permalink to this headline">¶</a></h3>
+<p>To add a new category, click <span class="guilabel">Create</span>. A new entry line appears at the bottom of the list.
+Type in the new category, then click <span class="guilabel">Save</span> to save the entry.</p>
+<p>To reorganize how the categories appear in the list, click on the up and down arrows to the left of
+the category to be moved, and drag the line to the desired position. The order of the list does not
+affect the database in any way. However, it may be preferable to view the vehicle categories in a
+specific order, for example, by size, or the numbers of passengers the vehicle can carry.</p>
+<img alt="List view of the models in the fleet." class="align-center" src="../../_images/models.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="fleet/new_vehicle.html"><span class="doc">Create new vehicles</span></a></p></li>
+<li><p><a class="reference internal" href="fleet/service.html"><span class="doc">Services</span></a></p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_hr_fleet_new_vehicle"><a class="reference internal" href="fleet/new_vehicle.html">Create new vehicles</a></li>
+<li class="toctree-l1 o_menu_applications_hr_fleet_service"><a class="reference internal" href="fleet/service.html">Services</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Fleet</a><ul>
+<li><a class="reference internal" href="#settings">Settings</a><ul>
+<li><a class="reference internal" href="#end-date-contract-alert">End Date Contract Alert</a></li>
+<li><a class="reference internal" href="#new-vehicle-request">New Vehicle Request</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manufacturers">Manufacturers</a><ul>
+<li><a class="reference internal" href="#add-a-manufacturer">Add a manufacturer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vehicle-models">Vehicle Models</a><ul>
+<li><a class="reference internal" href="#preconfigured-models">Preconfigured Models</a></li>
+<li><a class="reference internal" href="#add-a-new-model">Add a new model</a><ul>
+<li><a class="reference internal" href="#information-tab">Information tab</a><ul>
+<li><a class="reference internal" href="#model">Model</a></li>
+<li><a class="reference internal" href="#salary">Salary</a></li>
+<li><a class="reference internal" href="#engine">Engine</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vendors-tab">Vendors tab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model-category">Model Category</a><ul>
+<li><a class="reference internal" href="#add-a-new-model-category">Add a new model category</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Fleet</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

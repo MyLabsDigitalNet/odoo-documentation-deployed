@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scrap during manufacturing &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/manufacturing/management/scrap_manufacturing.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/manufacturing/management/scrap_manufacturing.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Scrap during manufacturing</a><ul>
+<li><a class="reference internal" href="#scrap-manufacturing-components">Scrap manufacturing components</a></li>
+<li><a class="reference internal" href="#scrap-components-from-tablet-view">Scrap components from tablet view</a></li>
+<li><a class="reference internal" href="#scrap-finished-products">Scrap finished products</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/manufacturing/management/scrap_manufacturing.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Scrap during manufacturing</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="scrap-during-manufacturing">
+<h1>Scrap during manufacturing<a class="headerlink" href="#scrap-during-manufacturing" title="Permalink to this headline">¶</a></h1>
+<p>During the manufacturing process, the need to scrap manufacturing components or finished products
+may arise. This can be necessary if a component or product is damaged, or unusable for any other
+reason.</p>
+<p>By default, scrapping a component or finished product removes it from physical inventory and places
+it in a virtual location titled <em>Virtual Locations/Scrap</em>. A virtual location is <strong>not</strong> a physical
+space, but rather a designation in Odoo that is used to track items that are no longer in physical
+inventory.</p>
+<p>Odoo <em>Manufacturing</em> allows for both components and finished products to be scrapped within a
+manufacturing order. The specific type of item that can be scrapped during a manufacturing order
+depends on the stage of the manufacturing process.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Scrap orders can be viewed by navigating to <span class="menuselection">Inventory ‣ Operations ‣ Scrap</span>.
+Each scrap order shows the date and time the order was created, along with the product and
+quantity that was scrapped.</p>
+<p>To view the total quantity of each item scrapped, navigate to <span class="menuselection">Inventory ‣
+Configuration ‣ Locations</span>, then remove the <span class="guilabel">Internal</span> filter from the
+<span class="guilabel">Search…</span> bar to display all virtual locations. From the list, select the
+<span class="guilabel">Virtual Locations/Scrap</span> location.</p>
+</div>
+</section><section id="scrap-manufacturing-components">
+<h2>Scrap manufacturing components<a class="headerlink" href="#scrap-manufacturing-components" title="Permalink to this headline">¶</a></h2>
+<p>To scrap components during the manufacturing process, begin by navigating to
+<span class="menuselection">Manufacturing ‣ Manufacturing Orders</span>, then select a manufacturing order or click
+<span class="guilabel">Create</span> to configure a new one. If a new manufacturing order is created, select a product
+from the <span class="guilabel">Product</span> drop-down menu, then click <span class="guilabel">Confirm</span>.</p>
+<p>Once the manufacturing order has been confirmed, a <span class="guilabel">Scrap</span> button appears at the top of
+the page. Click the button and a <span class="guilabel">Scrap</span> pop-up window appears.</p>
+<img alt="The scrap button on a manufacturing order." class="align-center" src="../../../../_images/scrap-button.png" />
+<p>From the <span class="guilabel">Product</span> drop-down menu on the <span class="guilabel">Scrap</span> pop-up window, select the
+component that is being scrapped, then enter the quantity in the <span class="guilabel">Quantity</span> field.
+Finally, click <span class="guilabel">Done</span> to scrap the component.</p>
+<img alt="The Scrap pop-up window." class="align-center" src="../../../../_images/scrap-pop-up1.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Before clicking <span class="guilabel">Mark As Done</span> on a manufacturing order, only the components of the
+finished product can be scrapped, <strong>not</strong> the finished product itself. This is because Odoo
+recognizes that the finished product cannot be scrapped before it has been manufactured.</p>
+</div>
+<p>After scrapping a component, continue the manufacturing process using the required quantity of the
+component that was scrapped. The on-hand stock count for the component that was scrapped updates to
+reflect both the scrapped quantity and the quantity consumed during manufacturing.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If the manufacturing of a table requires four units of a table leg, and two units of the table
+leg were scrapped during the manufacturing process, the total quantity of table legs consumed
+will be six: four units used to manufacture the table plus two units scrapped.</p>
+</div>
+</section><section id="scrap-components-from-tablet-view">
+<h2>Scrap components from tablet view<a class="headerlink" href="#scrap-components-from-tablet-view" title="Permalink to this headline">¶</a></h2>
+<p>Components can also be scrapped from the manufacturing tablet view. To do so, select the
+<span class="guilabel">Work Orders</span> tab on a manufacturing order, then click the <span class="guilabel">📱 (tablet view)</span>
+icon for a work order.</p>
+<img alt="The tablet view icon for a work order." class="align-center" src="../../../../_images/tablet-view-icon.png" />
+<p>With tablet view open, click the <span class="guilabel">☰ (menu)</span> button at the top left of the screen, then
+select the <span class="guilabel">Scrap</span> button on the <span class="guilabel">Menu</span> pop-up window. The <span class="guilabel">Scrap</span>
+pop-up window then appears.</p>
+<img alt="The Scrap button on the Menu pop-up window of the manufacturing tablet view." class="align-center" src="../../../../_images/tablet-scrap-button.png" />
+<p>Finally, select a component from the <span class="guilabel">Product</span> drop-down menu and enter the quantity being
+scrapped in the <span class="guilabel">Quantity</span> field. Click <span class="guilabel">Done</span> to scrap the component.</p>
+</section><section id="scrap-finished-products">
+<h2>Scrap finished products<a class="headerlink" href="#scrap-finished-products" title="Permalink to this headline">¶</a></h2>
+<p>Odoo also allows for finished products to be scrapped from a manufacturing order once the order is
+completed. After clicking <span class="guilabel">Mark as Done</span>, click the <span class="guilabel">Scrap</span> button to make the
+<span class="guilabel">Scrap</span> pop-up window appear.</p>
+<p>Since the components have been consumed to create the finished product, they will no longer appear
+in the <span class="guilabel">Product</span> drop-down menu. Instead, the finished product will be available as an
+option. Select the finished product and enter the quantity to be scrapped in the
+<span class="guilabel">Quantity</span> field. Click <span class="guilabel">Done</span> to scrap the finished product.</p>
+<p>The on-hand stock count for the product that was scrapped will update to reflect both the scrapped
+quantity and the quantity produced during manufacturing.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If five units of a chair were manufactured, but two units were scrapped after manufacturing was
+completed, then the on-hand inventory of the chair will increase by three: five units
+manufactured minus two units scrapped.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Scrap during manufacturing</a><ul>
+<li><a class="reference internal" href="#scrap-manufacturing-components">Scrap manufacturing components</a></li>
+<li><a class="reference internal" href="#scrap-components-from-tablet-view">Scrap components from tablet view</a></li>
+<li><a class="reference internal" href="#scrap-finished-products">Scrap finished products</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Scrap during manufacturing</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

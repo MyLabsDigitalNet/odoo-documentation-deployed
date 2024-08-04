@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Make work centers unavailable using Time Off &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/manufacturing/management/work_center_time_off.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/manufacturing/management/work_center_time_off.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Make work centers unavailable using Time Off</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#add-time-off-for-a-work-center">Add time off for a work center</a></li>
+<li><a class="reference internal" href="#route-orders-to-an-alternative-work-center">Route orders to an alternative work center</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/manufacturing/management/work_center_time_off.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Make work centers unavailable using Time Off</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="make-work-centers-unavailable-using-time-off">
+<h1>Make work centers unavailable using Time Off<a class="headerlink" href="#make-work-centers-unavailable-using-time-off" title="Permalink to this headline">¶</a></h1>
+<p>In Odoo, <em>work centers</em> are used to carry out manufacturing operations at specific locations.
+However, if a work center cannot be used for some reason, work orders begin to pile up at the work
+center until it is operational again.</p>
+<p>As a result, it is necessary to make the work center unavailable in Odoo so that the platform routes
+new work orders to alternative work centers that are operational. Using Odoo <em>Time Off</em>, it is
+possible to designate a work center as being unavailable for a set period of time. Doing so ensures
+that manufacturing operations can continue until the impacted work center is available again.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Before a work center can be designated as unavailable, the Odoo platform must be properly
+configured. First, it is necessary to enable <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>. This allows the
+<span class="guilabel">Time Off</span> smart button to appear on each work center’s <span class="guilabel">Working Hours</span> pop-up
+window.</p>
+<p>Enable developer mode by going to <span class="menuselection">Settings</span>, scrolling to the bottom of the page,
+and clicking <span class="guilabel">Activate the developer mode</span> under the <span class="guilabel">Developer Tools</span> heading.</p>
+<img alt="The &quot;Activate the developer mode&quot; button." class="align-center" src="../../../../_images/developer-mode-button.png" />
+<p>Next, install the <em>Time Off</em> app. This is the app used for assigning time off to all resources
+within Odoo, including employees and work centers. Navigate to <span class="menuselection">Apps</span>, then type
+<code class="o_code docutils literal notranslate"><span class="pre">Time</span> <span class="pre">Off</span></code> in the <span class="guilabel">Search…</span> bar. The card for the <span class="guilabel">Time Off</span> module should be
+the only one that appears on the page. Click the green <span class="guilabel">Install</span> button on the card to
+install the app.</p>
+<img alt="The Time Off module installation card." class="align-center" src="../../../../_images/time-off-install-card.png" />
+<p>The last step is to properly configure work centers. For this workflow, it is necessary to have at
+least two work centers: one that is made unavailable and a second that receives the work orders that
+the other cannot accept. If no second work center is configured, Odoo cannot route work orders away
+from the unavailable work center and they will pile up in its queue.</p>
+<p>To create a work center, navigate to <span class="menuselection">Manufacturing ‣ Configuration ‣ Work
+Centers ‣ Create</span>.</p>
+<p>Make sure that both work centers have the same equipment listed under the <span class="guilabel">Equipment</span> tab.
+This ensures that operations carried out at one work center can also be performed at the other.</p>
+<img alt="The equipment tab on a work center form." class="align-center" src="../../../../_images/work-center-equipment-tab.png" />
+<p>For the work center that will be made unavailable, select the second work center on the
+<span class="guilabel">Alternative Workcenters</span> drop-down menu. Now, Odoo knows to send work orders to the
+second work center when the first is unavailable for any reason.</p>
+<img alt="A work center form configured with an alternative work center." class="align-center" src="../../../../_images/alternative-work-center-selection.png" />
+</section><section id="add-time-off-for-a-work-center">
+<h2>Add time off for a work center<a class="headerlink" href="#add-time-off-for-a-work-center" title="Permalink to this headline">¶</a></h2>
+<p>With configuration completed, time off can now be assigned to the work center that will be made
+unavailable. Begin by navigating to <span class="menuselection">Manufacturing ‣ Configuration ‣ Work
+Centers</span> and selecting the affected work center. Click <span class="guilabel">Edit</span>, and then the <span class="guilabel">↗
+(external link)</span> button next to the <span class="guilabel">Working Hours</span> drop-down menu.</p>
+<img alt="The Working Hours &quot;External link&quot; button on the work center form." class="align-center" src="../../../../_images/working-hours-button.png" />
+<p>A pop-up appears, titled <span class="guilabel">Open: Working Hours</span>. The standard working hours for the work
+center are listed here, along with various other details about it. Since developer mode was enabled,
+there is a <span class="guilabel">Time Off</span> button in the top right of the pop-up. Click it to be taken to the
+<span class="guilabel">Resource Time Off</span> page.</p>
+<img alt="The Time Off button on the Working Hours pop-up." class="align-center" src="../../../../_images/time-off-button.png" />
+<p>On this page, click <span class="guilabel">Create</span> to configure a new time-off entry. On the time-off form, note
+the <span class="guilabel">Reason</span> for the work center closure (broken, maintenance, etc.), select the affected
+work center as the <span class="guilabel">Resource</span>, and choose a <span class="guilabel">Start Date</span> and <span class="guilabel">End
+Date</span> to specify the period during which the work center will be unavailable. Click <span class="guilabel">Save</span>
+and the time off for the work center is logged in Odoo.</p>
+<img alt="The &quot;Resource Time Off&quot; form." class="align-center" src="../../../../_images/time-off-form.png" />
+</section><section id="route-orders-to-an-alternative-work-center">
+<h2>Route orders to an alternative work center<a class="headerlink" href="#route-orders-to-an-alternative-work-center" title="Permalink to this headline">¶</a></h2>
+<p>Once a work center is within its specified time-off period, work orders sent to it can be
+automatically routed to an alternative work center using the <span class="guilabel">Plan</span> button.</p>
+<p>Begin by creating a new manufacturing order by selecting <span class="menuselection">Operations ‣
+Manufacturing Orders ‣ Create</span>. On the manufacturing order form, specify a <span class="guilabel">Product</span>
+that uses the unavailable work center for one of its operations. Click <span class="guilabel">Confirm</span> to
+confirm the work order.</p>
+<p>On the confirmed work order, select the <span class="guilabel">Work Orders</span> tab. By default, the unavailable
+work center is specified in the <span class="guilabel">Work Center</span> column. There is also a green
+<span class="guilabel">Plan</span> button on the top left of the page.</p>
+<img alt="The Plan button on a manufacturing order." class="align-center" src="../../../../_images/mo-plan-button.png" />
+<p>Click <span class="guilabel">Plan</span> and the work center listed under the <span class="guilabel">Work Orders</span> tab is
+automatically changed to the alternative work center.</p>
+<img alt="The selected work center updates automatically after clicking the Plan button." class="align-center" src="../../../../_images/work-center-planning.png" />
+<p>Once the time-off period for the unavailable work center ends, Odoo recognizes that the work center
+is available again. At this point, clicking the <span class="guilabel">Plan</span> button does not route work orders
+to an alternative work center unless the first one is at capacity.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Make work centers unavailable using Time Off</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#add-time-off-for-a-work-center">Add time off for a work center</a></li>
+<li><a class="reference internal" href="#route-orders-to-an-alternative-work-center">Route orders to an alternative work center</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Make work centers unavailable using Time Off</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

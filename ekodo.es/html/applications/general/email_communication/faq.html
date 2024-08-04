@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Email issues &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/email_communication/faq.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/email_communication/faq.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Email issues</a><ul>
+<li><a class="reference internal" href="#outgoing-emails">Outgoing emails</a><ul>
+<li><a class="reference internal" href="#email-is-not-sent">Email is not sent</a><ul>
+<li><a class="reference internal" href="#common-error-messages">Common error messages</a><ul>
+<li><a class="reference internal" href="#daily-limit-reached">Daily limit reached</a></li>
+<li><a class="reference internal" href="#smtp-error">SMTP error</a><ul>
+<li><a class="reference internal" href="#no-error-populated">No error populated</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email-is-sent-late">Email is sent late</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#incoming-emails">Incoming emails</a><ul>
+<li><a class="reference internal" href="#email-is-not-received">Email is not received</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-help-from-odoo-support">Get help from Odoo support</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/email_communication/faq.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Email issues</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="email-issues">
+<h1>Email issues<a class="headerlink" href="#email-issues" title="Permalink to this headline">¶</a></h1>
+<p>This document contains an explanation of the most recurring emailing issues in Odoo.</p>
+</section><section id="outgoing-emails">
+<h2>Outgoing emails<a class="headerlink" href="#outgoing-emails" title="Permalink to this headline">¶</a></h2>
+</section><section id="email-is-not-sent">
+<span id="red-envelop"></span><h3>Email is not sent<a class="headerlink" href="#email-is-not-sent" title="Permalink to this headline">¶</a></h3>
+<p>The first indicator showing that an email has not been sent is the presence of a red <span class="guilabel">✉️
+(envelope)</span> icon, next to the date and time of the message, located in the chatter.</p>
+<img alt="Red envelope icon displayed in chatter." class="align-center" src="../../../_images/red-envelop.png" />
+<p>Unsent emails also appear in the Odoo email queue. In <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, the
+email queue can be accessed by going to <span class="menuselection">Settings app ‣ Technical menu ‣ Email
+‣ Emails</span>. Unsent emails appear in turquoise, while sent emails appear in grey.</p>
+</section><section id="common-error-messages">
+<h4>Common error messages<a class="headerlink" href="#common-error-messages" title="Permalink to this headline">¶</a></h4>
+</section><section id="daily-limit-reached">
+<span id="email-communication-daily-limit-mail"></span><h5>Daily limit reached<a class="headerlink" href="#daily-limit-reached" title="Permalink to this headline">¶</a></h5>
+<img alt="Warning in Odoo upon email limit reached." class="align-center" src="../../../_images/email-limit.png" />
+<p>Each email service provider has its own email sending limits. The limits may be daily, hourly, or
+sometimes, per minute. This is the same for Odoo, which limits a customer’s sending to prevent
+Odoo’s email servers from being blacklisted.</p>
+<p>Here are the default limits for new databases:</p>
+<ul class="simple">
+<li><p><strong>200 emails per day</strong> for Odoo Online and Odoo.sh databases with an active subscription.</p></li>
+<li><p><strong>20 emails per day</strong> for one-app free databases.</p></li>
+<li><p><strong>50 emails per day</strong> for trial databases.</p></li>
+<li><p>In the case of migration, the daily limit might be reset to 50 emails per day.</p></li>
+</ul>
+<p>If the daily limit is reached:</p>
+<ul class="simple">
+<li><p>Contact the Odoo support team, who may increase the daily limit depending on the following
+factors:</p>
+<ol class="arabic simple">
+<li><p>How many users are in the database?</p></li>
+<li><p>Which apps are installed?</p></li>
+<li><p>The bounce rate: the percentage of email addresses that did not receive emails because they
+were returned by a mail server on its way to the final recipient.</p></li>
+</ol>
+</li>
+<li><p>Use an external outgoing email server to be independent of Odoo’s mail limit (refer to the
+corresponding <a class="reference internal" href="email_servers.html"><span class="doc">email documentation</span></a>).</p></li>
+<li><p>Wait until 11 PM (UTC) for the daily limit to reset, and retry sending the email. In
+<a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, go to <span class="menuselection">Settings app ‣ Technical menu ‣
+Email ‣ Emails</span>, then click the <span class="guilabel">Retry</span> button next to an unsent email.</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>The daily email limit is comprehensive to the database. By default, any internal message,
+notification, logged note, etc. counts as an email in the daily limit if it notifies someone via
+email. This can be mitigated by receiving <a class="reference internal" href="../../productivity/discuss.html#discuss-app-notification-preferences"><span class="std std-ref">notifications in Odoo</span></a>, instead of emails.</p>
+</div>
+</section><section id="smtp-error">
+<h5>SMTP error<a class="headerlink" href="#smtp-error" title="Permalink to this headline">¶</a></h5>
+<p>Simple Mail Transport Protocol (SMTP) error messages explain why an email wasn’t transmitted
+successfully. <abbr title="Simple Mail Transport Protocol">SMTP</abbr> is a protocol to describe the email
+structure, and transmits data from messages over the Internet. The error messages generated by email
+services are helpful tools to diagnose and troubleshoot email problems.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>This is an example of a 554 SMTP permanent delivery error: <code class="o_code docutils literal notranslate"><span class="pre">554:</span> <span class="pre">delivery</span> <span class="pre">error:</span> <span class="pre">Sorry,</span> <span class="pre">your</span>
+<span class="pre">message</span> <span class="pre">to</span> <span class="pre">------@yahoo.com</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">delivered.</span> <span class="pre">This</span> <span class="pre">mailbox</span> <span class="pre">is</span> <span class="pre">disabled</span> <span class="pre">(554.30).</span> <span class="pre">-</span>
+<span class="pre">mta4471.mail.bf1.yahoo.com</span> <span class="pre">---</span> <span class="pre">Below</span> <span class="pre">this</span> <span class="pre">line</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">copy</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">message.</span></code></p>
+</div>
+<p>The debug menu can be used to investigate SMTP sending issues from a database. To access the menu,
+<a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> must be activated. Once activated, navigate to the
+<span class="menuselection">Debug Menu</span> in the top right of the menu bar (the <span class="guilabel">🐞 (bug)</span> icon),
+<span class="menuselection">Debug Menu ‣ Manage Messages</span></p>
+<p>The <span class="guilabel">Manage Messages</span> menu opens a list of all the messages sent in a particular record.
+Within each message there is information on sending, including the type, and subtype, of the
+message.</p>
+<p>Other information includes to whom the message was sent, and whether Odoo received a bounce-back
+message from an email server.</p>
+<img alt="Manage messages menu option on the debug menu." class="align-center" src="../../../_images/manage-messages.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>A user must be on a view in Odoo that has a chatter in order for the <span class="guilabel">Manage Messages</span>
+menu option to appear.</p>
+</div>
+</section><section id="no-error-populated">
+<h6>No error populated<a class="headerlink" href="#no-error-populated" title="Permalink to this headline">¶</a></h6>
+<p>Odoo is not always capable of providing information for the reason it failed. The different email
+providers implement a personalized policy of bounced emails, and it is not always possible for Odoo
+to interpret it correctly.</p>
+<p>If this is a recurring problem with the same client, or the same domain, do not hesitate to contact
+<a class="reference external" href="https://www.odoo.com/help">Odoo Support</a> for help in finding a reason.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>One of the most common reasons for an email failing to send with no error message is related to
+<a class="reference internal" href="email_domain.html#email-communication-spf-compliant"><span class="std std-ref">SPF</span></a> and/or <a class="reference internal" href="email_domain.html#email-communication-dkim-compliant"><span class="std std-ref">DKIM</span></a> configuration. Also, check to make sure the
+<code class="o_code docutils literal notranslate"><span class="pre">mail.bounce.alias</span></code> is defined in the <em>system parameters</em>. Access system parameters in
+<a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> by navigating to <span class="menuselection">Settings app ‣
+Technical menu ‣ Parameters ‣ System Parameters</span>.</p>
+</div>
+</section><section id="email-is-sent-late">
+<h3>Email is sent late<a class="headerlink" href="#email-is-sent-late" title="Permalink to this headline">¶</a></h3>
+<p>Email campaigns send at a scheduled time, using a delay pre-programed in the database. Odoo uses a
+delayed task to send emails that are considered “not urgent” (newsletter formats, such as: mass
+mailing, marketing automation, and events). The system utility <strong>cron</strong> can be used to schedule
+programs to run automatically at predetermined intervals. Odoo uses that policy in order to avoid
+cluttering the mail servers and, instead, prioritizes individual communication. This <strong>cron</strong> is
+called <span class="guilabel">Mail: Email Queue Manager</span>, and can be accessed in <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> by going to <span class="menuselection">Settings app ‣ Technical menu ‣ Automation ‣
+Scheduled Actions</span>.</p>
+<img alt="Email scheduled to be sent later." class="align-center" src="../../../_images/email-scheduled-later.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>What is a <strong>cron</strong>? A cron is an action that Odoo runs in the background to execute particular
+code to complete a task.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>By default, the <em>Mass Mailing cron</em> runs every 60 minutes. This can be changed to no less than 5
+minutes. However, running the action every 5 minutes would bog down the Odoo database (stress the
+system), so this is not recommended. To edit the mass mailing cron, select the scheduled action
+<span class="guilabel">Mail: Email Queue Manager</span>, and proceed to make any necessary adjustments.</p>
+</div>
+<p>Emails that are considered urgent (communication from one person to another, such as sales orders,
+invoices, purchase orders, etc.) are sent immediately.</p>
+</section><section id="incoming-emails">
+<h2>Incoming emails<a class="headerlink" href="#incoming-emails" title="Permalink to this headline">¶</a></h2>
+<p>When there is an issue with incoming emails, there might not be an indication, per se, in Odoo. It
+is the sending email client, who tries to contact a database, that will get a bounce-back message
+(most of the time a <span class="guilabel">550: mailbox unavailable</span> error message).</p>
+</section><section id="email-is-not-received">
+<h3>Email is not received<a class="headerlink" href="#email-is-not-received" title="Permalink to this headline">¶</a></h3>
+<p>The steps that should be taken depend on the Odoo platform where the database is hosted.</p>
+<p><strong>Odoo.sh</strong> users can find their live logs on the folder <code class="file o_code docutils literal notranslate"><span class="pre">~/logs/</span></code>.</p>
+<p>Logs are a stored collection of all the tasks completed in a database. They are a text-only
+representation, complete with timestamps of every action taken on the Odoo database. This can be
+helpful to track emails leaving the database. Failure to send can also be seen by logs that indicate
+that the message tried to send repeatedly. Logs will show every action to the email servers from the
+database.</p>
+<p>The folder <code class="file o_code docutils literal notranslate"><span class="pre">~/logs/</span></code> (accessed by the command line or on the Odoo.sh dashboard) of an Odoo.sh
+database contains a list of files containing the logs of the database. The log files are created
+everyday at 5:00 AM (UTC).</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The two most recent days (today and yesterday) are not compressed, while the older ones are, in
+order to save space. The naming of the files for today and yesterday are respectively:
+<code class="file o_code docutils literal notranslate"><span class="pre">odoo.log</span></code> and <code class="file o_code docutils literal notranslate"><span class="pre">odoo.log.1</span></code>.</p>
+<p>For the following days, they are named with their dates, and then compressed. Use the command
+<strong class="command o_code">grep</strong> and <strong class="command o_code">zgrep</strong> (for the compressed ones) to search through the files.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>For more information on logs and how to access them via the Odoo.sh dashboard, see <span class="xref std std-ref">this
+administration documentation</span>.</p>
+<p>For more information on accessing logs via the command line visit <span class="xref std std-ref">this developer
+documentation</span>.</p>
+</div>
+<p><strong>Odoo Online</strong> users won’t have access to the logs. However <a class="reference external" href="https://www.odoo.com/help">Odoo Support</a> can be contacted if there is a recurring issue with the same client or
+domain.</p>
+</section><section id="get-help-from-odoo-support">
+<h2>Get help from Odoo support<a class="headerlink" href="#get-help-from-odoo-support" title="Permalink to this headline">¶</a></h2>
+<p>In order to get helped efficiently, please provide as much information as possible. Here is a list
+of what can be helpful when reaching out to the Odoo Support team about an issue:</p>
+<ol class="arabic">
+<li><p>Send a copy of the email headers. The <code class="o_code docutils literal notranslate"><span class="pre">.EML</span></code> file (or <strong>headers</strong>) of the email is the file
+format containing all the technical information required for an investigation. The documentation
+from the email provider might explain how to access the EML file/header files. Once the headers
+of the email are obtained, adding it into the Odoo Support ticket is the most efficient way for
+the Odoo Support team to investigate.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://support.google.com/mail/answer/29436">Gmail documentation on headers</a></p></li>
+<li><p><a class="reference external" href="https://support.microsoft.com/en-us/office/view-internet-message-headers-in-outlook-cd039382-dc6e-4264-ac74-c048563d212c#tab=Web">Outlook documentation on headers</a></p></li>
+</ul>
+</div>
+</li>
+<li><p>Explain the exact flow that is being followed to normally receive those emails in Odoo. Here are
+examples of questions whose answers can be useful:</p>
+<ul class="simple">
+<li><p>Is this a notification message from a reply being received in Odoo?</p></li>
+<li><p>Is this a message being sent from the Odoo database?</p></li>
+<li><p>Is there an incoming email server being used, or is the email somehow being redirected?</p></li>
+<li><p>Is there an example of an email that has been correctly forwarded?</p></li>
+</ul>
+</li>
+<li><p>Provide answers to the following questions:</p>
+<ul class="simple">
+<li><p>Is it a generic issue, or is it specific to a use case? If specific to a use case, which one
+exactly?</p></li>
+<li><p>Is it working as expected? In case the email is sent using Odoo, the bounce email should reach
+the Odoo database, and display the <a class="reference internal" href="#red-envelop"><span class="std std-ref">red envelope</span></a>.</p></li>
+</ul>
+</li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The bounce system parameter needs to be set in the technical settings in order for the database
+to correctly receive bounce messages. To access this setting, go to <span class="menuselection">Settings app
+‣ Technical menu ‣ Parameters ‣ System Parameters</span>. Then select the parameter name
+<span class="guilabel">mail.bounce.alias</span> and set the value to <code class="o_code docutils literal notranslate"><span class="pre">bounce</span></code> if it isn’t already set.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Email issues</a><ul>
+<li><a class="reference internal" href="#outgoing-emails">Outgoing emails</a><ul>
+<li><a class="reference internal" href="#email-is-not-sent">Email is not sent</a><ul>
+<li><a class="reference internal" href="#common-error-messages">Common error messages</a><ul>
+<li><a class="reference internal" href="#daily-limit-reached">Daily limit reached</a></li>
+<li><a class="reference internal" href="#smtp-error">SMTP error</a><ul>
+<li><a class="reference internal" href="#no-error-populated">No error populated</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email-is-sent-late">Email is sent late</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#incoming-emails">Incoming emails</a><ul>
+<li><a class="reference internal" href="#email-is-not-received">Email is not received</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-help-from-odoo-support">Get help from Odoo support</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Email issues</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

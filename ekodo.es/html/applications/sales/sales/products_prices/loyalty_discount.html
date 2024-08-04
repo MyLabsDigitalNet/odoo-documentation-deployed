@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Discount and loyalty programs &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/products_prices/loyalty_discount.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/products_prices/loyalty_discount.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Discount and loyalty programs</a><ul>
+<li><a class="reference internal" href="#configure-the-settings">Configure the settings</a></li>
+<li><a class="reference internal" href="#configure-discount-and-loyalty-programs">Configure discount and loyalty programs</a><ul>
+<li><a class="reference internal" href="#program-types">Program types</a></li>
+<li><a class="reference internal" href="#conditional-rules">Conditional rules</a></li>
+<li><a class="reference internal" href="#rewards">Rewards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/products_prices/loyalty_discount.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Discount and loyalty programs</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="discount-and-loyalty-programs">
+<h1>Discount and loyalty programs<a class="headerlink" href="#discount-and-loyalty-programs" title="Permalink to this headline">¶</a></h1>
+<p>The Odoo <em>Sales</em>, <em>eCommerce</em>, and <em>Point of Sale</em> applications allow users to create discount and
+loyalty programs that customers can use for online and in-store shopping. These programs offer more
+varied, public, and time-sensitive pricing options than <a class="reference internal" href="prices/pricing.html"><span class="doc">pricelists</span></a>.</p>
+</section><section id="configure-the-settings">
+<h2>Configure the settings<a class="headerlink" href="#configure-the-settings" title="Permalink to this headline">¶</a></h2>
+<p>To begin using discount and loyalty programs, navigate to <span class="menuselection">Sales ‣ Configuration
+‣ Settings</span>. Under the <span class="guilabel">Pricing</span> heading, activate the <span class="guilabel">Discounts, Loyalty &amp;
+Gift Card</span> setting by checking the box next to the feature. Finally, click <span class="guilabel">Save</span> to save
+the changes.</p>
+</section><section id="configure-discount-and-loyalty-programs">
+<h2>Configure discount and loyalty programs<a class="headerlink" href="#configure-discount-and-loyalty-programs" title="Permalink to this headline">¶</a></h2>
+<p>To create discount and loyalty programs, go to <span class="menuselection">Sales ‣ Products ‣ Discount &amp;
+Loyalty</span>.</p>
+<p>If no discount or loyalty programs have been created yet, Odoo provides a choice of templates to
+help create the first program. Choose one of the template cards, or click <span class="guilabel">New</span> to create
+a new program from scratch.</p>
+<p>Or, if there are already existing programs, select an existing program to edit it.</p>
+<img alt="Plantillas de descuentos y lealtad" class="align-center" src="../../../../_images/plantilla_descuento.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Templates only appear when no programs have been created, and they disappear once the first
+program is created.</p>
+</div>
+<p>Creating or editing a program opens the program form.</p>
+<p>The program form contains the following options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Program Name</span>: Enter the name of the program. The program name is <em>not</em> visible to the
+customer.</p></li>
+<li><p><span class="guilabel">Program Type</span>: Select the desired <a class="reference internal" href="#sales-pricing-management-program-types"><span class="std std-ref">program type</span></a>.</p></li>
+<li><p><span class="guilabel">Currency</span>: Select the currency used for the program.</p></li>
+<li><p><span class="guilabel">Points Unit</span>: Enter the name of the points used for the <span class="guilabel">Loyalty Cards</span>
+program (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Loyalty</span> <span class="pre">Points</span></code>). The points unit name <em>is</em> visible to the customer. This field is
+only available when the <span class="guilabel">Program Type</span> is set to <span class="guilabel">Loyalty Cards</span>.</p></li>
+<li><p><span class="guilabel">Validity</span>: Select the date until which the program is valid. Leave this field blank for
+no end date, meaning the program is always valid and does not expire.</p></li>
+<li><p><span class="guilabel">Limit Usage</span>: Check this box and enter a number to limit the number of times the
+program can be used during the <span class="guilabel">Validity</span> period.</p></li>
+<li><p><span class="guilabel">Company</span>: In the case of multiple companies, choose the company for which the program
+is available.</p></li>
+<li><p><span class="guilabel">Available On</span>: Select the app(s) on which the program is available.</p></li>
+<li><p><span class="guilabel">Website</span>: Select the website(s) on which the program is available. Leave this field
+blank to make it available on all websites.</p></li>
+<li><p><span class="guilabel">Point of Sale</span>: Select the point(s) of sale at which the program is available. Leave
+this field blank to make it available at all <abbr title="Point of Sale">PoS</abbr>.</p></li>
+</ul>
+<img alt="Formulario de tarjeta de lealtad" class="align-center" src="../../../../_images/form_tarjeta_lealtad.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The options available on the program form vary depending on the <a class="reference internal" href="#sales-pricing-management-program-types"><span class="std std-ref">Program Type</span></a> selected.</p>
+</div>
+<p>All of the existing cards, codes, coupons, etc. that have been generated for the program are
+accessible through the smart button located in the upper-right corner of the form.</p>
+<img alt="Botón inteligente de tarjetas de fidelidad" class="align-center" src="../../../../_images/boton_inteligente_tarjeta.png" />
+</section><section id="program-types">
+<span id="sales-pricing-management-program-types"></span><h3>Program types<a class="headerlink" href="#program-types" title="Permalink to this headline">¶</a></h3>
+<p>The different <span class="guilabel">Program Types</span> available on the program form are:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Coupons</span>: Generate and share single-use coupon codes that grant immediate access to
+rewards.</p></li>
+<li><p><span class="guilabel">Next Order Coupons</span>: Generate and share single-use coupon codes that grant access to
+rewards on the customer’s next order.</p></li>
+<li><p><span class="guilabel">Loyalty Cards</span>: When making purchases, the customer accumulates points to exchange for
+rewards on current and/or future orders.</p></li>
+<li><p><span class="guilabel">Promotions</span>: Set conditional rules for ordering products, which, when fulfilled, grant
+access to rewards for the customer.</p></li>
+<li><p><span class="guilabel">Discount Code</span>: Set codes which, when entered upon checkout, grant discounts to the
+customer.</p></li>
+<li><p><span class="guilabel">Buy X Get Y</span>: For every X item bought, the customer is granted 1 credit. After
+accumulating a specified amount of credits, the customer can trade them in to receive Y item.</p></li>
+</ul>
+</section><section id="conditional-rules">
+<h3>Conditional rules<a class="headerlink" href="#conditional-rules" title="Permalink to this headline">¶</a></h3>
+<p>Next, configure the <span class="guilabel">Conditional rules</span> that determine when the program applies to a
+customer’s order.</p>
+<p>In the <span class="guilabel">Rules &amp; Rewards</span> tab, click <span class="guilabel">Add</span> next to <span class="guilabel">Conditional rules</span>
+to add <em>conditions</em> to the program. This reveals a <span class="guilabel">Create Conditional rules</span> pop-up
+window.</p>
+<img alt="Reglas condicionales en la vista de tarjeta de fidelidad" class="align-center" src="../../../../_images/reglas_condicionales.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The options for <span class="guilabel">Conditional rules</span> vary depending on the selected <a class="reference internal" href="#sales-pricing-management-program-types"><span class="std std-ref">Program Type</span></a>.</p>
+</div>
+<p>The following options are available for configuring conditional rules:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Discount Code</span>: Enter a custom code to be used for the <span class="guilabel">Discount Code</span>
+program, or use the default one generated by Odoo. This field is only available when the
+<span class="guilabel">Program Type</span> is set to <span class="guilabel">Discount Code</span>.</p></li>
+<li><p><span class="guilabel">Minimum Quantity</span>: Enter the minimum number of products that must be purchased in order
+to access the reward. Set the minimum quantity to at least <code class="o_code docutils literal notranslate"><span class="pre">1</span></code> to ensure that the customer must
+make a purchase in order to access the reward.</p></li>
+<li><p><span class="guilabel">Minimum Purchase</span>: Enter the minimum amount (in currency), with <span class="guilabel">tax
+Included</span> or <span class="guilabel">tax Excluded</span>, that must be spent in order to access the reward. If both a
+minimum quantity <em>and</em> minimum purchase amount are entered, then the customer’s order must meet
+both conditions.</p></li>
+<li><p><span class="guilabel">Products</span>: Select the specific product(s) for which the program applies. Leave this
+field blank to apply it to all products.</p></li>
+<li><p><span class="guilabel">Categories</span>: Select the category of products for which the program applies. Choose
+<span class="guilabel">All</span> to apply it to all product categories.</p></li>
+<li><p><span class="guilabel">Product Tag:</span> Select a tag to apply the program to products with that specific tag.</p></li>
+<li><p><span class="guilabel">Grant</span>: Enter the number of points the customer earns <span class="guilabel">per order</span>,
+<span class="guilabel">per currency spent</span>, or <span class="guilabel">per unit paid</span> (for the <span class="guilabel">Loyalty Cards</span>
+and <span class="guilabel">Buy X Get Y</span> programs).</p></li>
+</ul>
+<img alt="Abrir reglas condicionales para tarjetas de fidelidad" class="align-center" src="../../../../_images/abrir_reglas.png" />
+<p>Click <span class="guilabel">Save &amp; Close</span> to save the rule and close the pop-up window, or click
+<span class="guilabel">Save &amp; New</span> to save the rule and immediately create a new one.</p>
+</section><section id="rewards">
+<h3>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">¶</a></h3>
+<p>In the <span class="guilabel">Rules &amp; Rewards</span> tab of the program form, click <span class="guilabel">Add</span> next to
+<span class="guilabel">Rewards</span> to add <em>rewards</em> to the program. This reveals a <span class="guilabel">Create Rewards</span>
+pop-up window.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The options for <span class="guilabel">Rewards</span> vary depending on the selected <a class="reference internal" href="#sales-pricing-management-program-types"><span class="std std-ref">Program Type</span></a>.</p>
+</div>
+<p>The following options are available for configuring rewards:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Reward Type</span>: Select the reward type among <span class="guilabel">Free Product</span>,
+<span class="guilabel">Discount</span>, and <span class="guilabel">Free Shipping</span>. The other options for reward configuration
+depend on the <span class="guilabel">Reward Type</span> selected.</p>
+<ul>
+<li><p><span class="guilabel">Free Product</span>:</p>
+<ul>
+<li><p><span class="guilabel">Quantity Rewarded</span>: Select the number of free products rewarded to the customer.</p></li>
+<li><p><span class="guilabel">Product</span>: Select the product given for free as a reward. Only one product can be
+selected.</p></li>
+<li><p><span class="guilabel">Product Tag</span>: Select a tag to further specify the free product eligible for the
+reward.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Discount</span>:</p>
+<ul>
+<li><p><span class="guilabel">Discount</span>: Enter the discounted amount in either <span class="guilabel">percentage</span>,
+<span class="guilabel">currency per point</span>, or <span class="guilabel">currency per order</span>. Then, select whether the
+discount applies to the entire <span class="guilabel">Order</span>, only the <span class="guilabel">Cheapest Product</span> on the
+order, or only <span class="guilabel">Specific Products</span>.</p></li>
+<li><p><span class="guilabel">Max Discount</span>: Enter the maximum amount (in currency) that this reward may grant as
+a discount. Leave this field at <code class="o_code docutils literal notranslate"><span class="pre">0</span></code> for no limit.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Free Shipping</span>:</p>
+<ul>
+<li><p><span class="guilabel">Max Discount</span>: Enter the maximum amount (in currency) that this reward may grant as
+a discount. Leave this field at <code class="o_code docutils literal notranslate"><span class="pre">0</span></code> for no limit.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="guilabel">In exchange of</span>: Enter the number of points required to exchange for the reward (for
+the <span class="guilabel">Loyalty Cards</span> and <span class="guilabel">Buy X Get Y</span> programs).</p></li>
+<li><p><span class="guilabel">Description on order</span>: Enter the description of the reward, which is displayed to the
+customer upon checkout.</p></li>
+</ul>
+<img alt="Crear nuevas reglas condicionales para tarjetas de fidelidad" class="align-center" src="../../../../_images/crear_regla.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Discount and loyalty programs</a><ul>
+<li><a class="reference internal" href="#configure-the-settings">Configure the settings</a></li>
+<li><a class="reference internal" href="#configure-discount-and-loyalty-programs">Configure discount and loyalty programs</a><ul>
+<li><a class="reference internal" href="#program-types">Program types</a></li>
+<li><a class="reference internal" href="#conditional-rules">Conditional rules</a></li>
+<li><a class="reference internal" href="#rewards">Rewards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Discount and loyalty programs</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

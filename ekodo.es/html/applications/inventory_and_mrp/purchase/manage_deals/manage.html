@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manage vendor bills &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/purchase/manage_deals/manage.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/purchase/manage_deals/manage.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Manage vendor bills</a><ul>
+<li><a class="reference internal" href="#bill-control-policies">Bill control policies</a><ul>
+<li><a class="reference internal" href="#way-matching">3-way matching</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-and-manage-vendor-bills-on-receipts">Create and manage vendor bills on receipts</a><ul>
+<li><a class="reference internal" href="#with-the-bill-control-policy-set-to-ordered-quantities">With the bill control policy set to ordered quantities</a></li>
+<li><a class="reference internal" href="#with-the-bill-control-policy-set-to-received-quantities">With the bill control policy set to received quantities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-and-manage-vendor-bills-in-accounting">Create and manage vendor bills in Accounting</a></li>
+<li><a class="reference internal" href="#batch-billing">Batch billing</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/purchase/manage_deals/manage.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Manage vendor bills</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="manage-vendor-bills">
+<h1>Manage vendor bills<a class="headerlink" href="#manage-vendor-bills" title="Permalink to this headline">¶</a></h1>
+<p id="inventory-purchase-manage-deals-manage">A <em>vendor bill</em> is an invoice received for products and/or services that a company purchases from a
+vendor. Vendor bills record payables as they arrive from vendors, and can include amounts owed for
+the goods and/or services purchased, sales taxes, freight and delivery charges, and more.</p>
+<p>In Odoo, a vendor bill can be created at different points in the purchasing process, depending on
+the <em>bill control</em> policy chosen in the <em>Purchase</em> app settings.</p>
+</section><section id="bill-control-policies">
+<h2>Bill control policies<a class="headerlink" href="#bill-control-policies" title="Permalink to this headline">¶</a></h2>
+<p>To view and edit the default bill control policy and make changes to it, go to
+<span class="menuselection">Purchase app ‣ Configuration ‣ Settings</span>, and scroll down to the
+<span class="guilabel">Invoicing</span> section.</p>
+<p>Here, there are two <span class="guilabel">Bill Control</span> policy options: <span class="guilabel">Ordered quantities</span> and
+<span class="guilabel">Received quantities</span>. After a policy is selected, click <span class="guilabel">Save</span> to save changes.</p>
+<img alt="Bill control policies in purchase app settings." class="align-center" src="../../../../_images/configuracion_facturacion.png" />
+<p>The policy selected will be the default for any new product created. The definition of each policy
+is as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Ordered quantities</span>: creates a vendor bill as soon as a purchase order is confirmed.
+The products and quantities in the purchase order are used to generate a draft bill.</p></li>
+<li><p><span class="guilabel">Received quantities</span>: a bill is only created <strong>after</strong> part of the total order has been
+received. The products and quantities <strong>received</strong> are used to generate a draft bill.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If a product needs a different control policy, the default bill control policy can be overridden
+by going to the <span class="guilabel">Purchase</span> tab in a product’s template, and modifying its
+<span class="guilabel">Control Policy</span> field.</p>
+</div>
+<img alt="Control de políticas en el formulario de producto" class="align-center" src="../../../../_images/control_politicas.png" />
+</section><section id="way-matching">
+<h3>3-way matching<a class="headerlink" href="#way-matching" title="Permalink to this headline">¶</a></h3>
+<p><em>3-way matching</em> ensures vendor bills are only paid once some (or all) of the products included in
+the purchase order have actually been received.</p>
+<p>To activate it, go to <span class="menuselection">Purchase app ‣ Configuration ‣ Settings</span>, and scroll down
+to the <span class="guilabel">Invoicing</span> section. Then, check the box next to <span class="guilabel">3-way matching:
+purchases, receptions, and bills</span>, and click <span class="guilabel">Save</span> to save changes.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p><span class="guilabel">3-way matching</span> is <strong>only</strong> intended to work with the <span class="guilabel">Bill Control</span> policy
+set to <span class="guilabel">Received quantities</span>.</p>
+<img alt="Activated three-way matching feature in purchase settings." class="align-center" src="../../../../_images/manage-three-way-matching.png" />
+</div>
+</section><section id="create-and-manage-vendor-bills-on-receipts">
+<h2>Create and manage vendor bills on receipts<a class="headerlink" href="#create-and-manage-vendor-bills-on-receipts" title="Permalink to this headline">¶</a></h2>
+<p>When products are received into a company’s warehouse, receipts are created. Once the company
+processes the received quantities, they can choose to create a vendor bill directly from the
+warehouse receipt form. Depending on the bill control policy chosen in the settings, vendor bill
+creation is completed at different steps of the procurement process.</p>
+</section><section id="with-the-bill-control-policy-set-to-ordered-quantities">
+<h3>With the bill control policy set to ordered quantities<a class="headerlink" href="#with-the-bill-control-policy-set-to-ordered-quantities" title="Permalink to this headline">¶</a></h3>
+<p>To create and manage vendor bills on receipts using the <em>ordered quantities</em> bill control policy,
+first go to <span class="menuselection">Purchase app ‣ Configuration ‣ Settings</span>, scroll down to the
+<span class="guilabel">Invoicing</span> section, and select <span class="guilabel">Ordered quantities</span> under <span class="guilabel">Bill
+Control</span>. Then, click <span class="guilabel">Save</span> to save changes.</p>
+<p>Next, go to the <span class="menuselection">Purchase</span> app, and click <span class="guilabel">Create</span> to create a new request
+for quotation (RFQ). Doing so reveals a blank <abbr title="request for quotation">RFQ</abbr> detail form.</p>
+<p>On the blank detail form, add a vendor to the <abbr title="request for quotation">RFQ</abbr> in the
+<span class="guilabel">Vendor</span> field, and add products to the <span class="guilabel">Product</span> lines by clicking
+<span class="guilabel">Add a line</span>.</p>
+<p>Then, confirm the <abbr title="request for quotation">RFQ</abbr> by clicking the <span class="guilabel">Confirm Order</span>
+button above the detail form. Doing so turns the <abbr title="request for quotation">RFQ</abbr> into a purchase
+order.</p>
+<p>Then, click the <span class="guilabel">Create Bill</span> button to create a vendor bill for the purchase order.</p>
+<p>Clicking the <span class="guilabel">Create Bill</span> button reveals the <span class="guilabel">Draft Bill</span> page for the purchase
+order.</p>
+<p>On the <span class="guilabel">Draft Bill</span>, click the <span class="guilabel">Edit</span> button to modify the bill, and add a bill
+date in the <span class="guilabel">Bill Date</span> field. If needed, add additional products to the
+<span class="guilabel">Product</span> lines by clicking <span class="guilabel">Add a line</span> in the <span class="guilabel">Invoice Lines</span> tab.</p>
+<p>Next, confirm the bill by clicking the <span class="guilabel">Confirm</span> button on the <span class="guilabel">Draft Bill</span>
+page.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Since the bill control policy is set to <em>ordered quantities</em>, the draft bill can be confirmed as
+soon as it is created, before any products have been received.</p>
+</div>
+<p>On the new <span class="guilabel">Vendor Bill</span>, add a <span class="guilabel">Bill Reference</span> number, which can be used to
+match the bill with additional documents (such as the <abbr title="purchase order">PO</abbr>). Then, click
+<span class="menuselection">Confirm ‣ Register Payment</span>. Doing so causes a pop-up to appear, wherein a payment
+<span class="guilabel">Journal</span> can be chosen; a <span class="guilabel">Payment Method</span> selected; and a <span class="guilabel">Recipient
+Bank Account</span> can be selected from a drop-down menu.</p>
+<p>Additionally, the bill <span class="guilabel">Amount</span>, <span class="guilabel">Payment Date</span>, and <span class="guilabel">Memo</span>
+(<span class="dfn"><span>Reference Number</span></span>) can be changed from this pop-up. Once ready, click <span class="guilabel">Create
+Payment</span> to finish creating the <span class="guilabel">Vendor Bill</span>. Doing so causes a green <span class="guilabel">In
+Payment</span> banner to display on the <abbr title="request for quotation">RFQ</abbr> form.</p>
+<img alt="Vendor bill form for ordered quantities control policy." class="align-center" src="../../../../_images/gestion_cantidades_ordenadas.png" />
+</section><section id="with-the-bill-control-policy-set-to-received-quantities">
+<h3>With the bill control policy set to received quantities<a class="headerlink" href="#with-the-bill-control-policy-set-to-received-quantities" title="Permalink to this headline">¶</a></h3>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>If the creation of a vendor bill is attempted without receiving any quantities of a product
+(while using the <em>received quantities</em> bill control policy), an error message appears, and
+settings must be changed before proceeding.</p>
+</div>
+<p>To create and manage vendor bills on receipts using the <em>received quantities</em> bill control policy,
+first go to <span class="menuselection">Purchase app ‣ Configuration ‣ Settings</span>, scroll down to the
+<span class="guilabel">Invoicing</span> section, and select <span class="guilabel">Received quantities</span> under <span class="guilabel">Bill
+Control</span>. Then, click <span class="guilabel">Save</span> to save changes.</p>
+<p>Next, go to the <span class="menuselection">Purchase</span> app, and click <span class="guilabel">Create</span> to create a new
+<abbr title="request for quotation">RFQ</abbr>. Doing so reveals a blank <abbr title="request for quotation">RFQ</abbr>
+detail form.</p>
+<p>On the blank detail form, add a vendor to the <abbr title="request for quotation">RFQ</abbr> in the
+<span class="guilabel">Vendor</span> field, and add products to the <span class="guilabel">Product</span> lines by clicking
+<span class="guilabel">Add a line</span>.</p>
+<p>Then, confirm the <abbr title="request for quotation">RFQ</abbr> by clicking the <span class="guilabel">Confirm Order</span>
+button above the detail form. Doing so turns the <abbr title="request for quotation">RFQ</abbr> into a purchase
+order.</p>
+<p>Finally, click the <span class="guilabel">Create Bill</span> button to create a bill for the purchase order.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Clicking <span class="guilabel">Create Bill</span> before any products have been received will cause a
+<span class="guilabel">User Error</span> pop-up to appear. The <span class="guilabel">Purchase Order</span> requires the receipt of
+at least partial quantity of the items included on the order to create a vendor bill.</p>
+</div>
+<img alt="Error de usuario para cantidades entregadas" class="align-center" src="../../../../_images/error_usuario.png" />
+<p>Next, click the <span class="guilabel">Receipt</span> smart button to view the warehouse receipt form.</p>
+<p>On the warehouse receipt form, click <span class="menuselection">Validate ‣ Apply</span> to mark the
+<span class="guilabel">Done</span> quantities. Then, navigate back to the <span class="menuselection">Purchase Order</span> (via the
+breadcrumbs), and click the <span class="guilabel">Create Bill</span> button on the purchase order form.</p>
+<p>Doing so reveals the <span class="guilabel">Draft Bill</span> for the purchase order. On the <span class="guilabel">Draft Bill</span>,
+click the <span class="guilabel">Edit</span> button, and add a <span class="guilabel">Bill Date</span>. If needed, add additional
+products to the <span class="guilabel">Product</span> lines by clicking <span class="guilabel">Add a line</span>.</p>
+<p>Next, click the <span class="guilabel">Confirm</span> button to confirm the <span class="guilabel">Draft Bill</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Since the bill control policy is set to <em>received quantities</em>, the draft bill can <strong>only</strong> be
+confirmed when at least some of the quantities are received.</p>
+</div>
+<p>On the new <span class="guilabel">Vendor Bill</span>, add a <span class="guilabel">Bill Reference</span> number, which can be used to
+match the bill with additional documents (such as the <abbr title="purchase order">PO</abbr>). Then, click
+<span class="menuselection">Confirm ‣ Register Payment</span>. Doing so causes a pop-up to appear, wherein a payment
+<span class="guilabel">Journal</span> can be chosen; a <span class="guilabel">Payment Method</span> selected; and a <span class="guilabel">Recipient
+Bank Account</span> can be selected from a drop-down menu.</p>
+<p>Additionally, the bill <span class="guilabel">Amount</span>, <span class="guilabel">Payment Date</span>, and <span class="guilabel">Memo</span>
+(<span class="dfn"><span>Reference Number</span></span>) can be changed from this pop-up. Once ready, click <span class="guilabel">Create
+Payment</span> to finish creating the vendor bill. Doing so causes a green <strong>In Payment</strong> banner to
+display on the <abbr title="request for quotation">RFQ</abbr> form.</p>
+</section><section id="create-and-manage-vendor-bills-in-accounting">
+<h2>Create and manage vendor bills in Accounting<a class="headerlink" href="#create-and-manage-vendor-bills-in-accounting" title="Permalink to this headline">¶</a></h2>
+<p>Vendor bills can also be created directly from the <em>Accounting</em> app, <strong>without</strong> having to create a
+purchase order first. To do this, go to <span class="menuselection">Accounting app ‣ Vendors ‣ Bills</span>, and
+click <span class="guilabel">Create</span>. Doing so reveals a blank vendor bill detail form.</p>
+<p>On this blank vendor bill detail form, add a vendor in the <span class="guilabel">Vendor</span> field, and add
+products to the <span class="guilabel">Product</span> lines (under the <span class="guilabel">Invoice Lines</span> tab), by clicking
+<span class="guilabel">Add a line</span>. Then, add a bill date in the <span class="guilabel">Bill Date</span> field, and any other
+necessary information. Finally, click <span class="guilabel">Confirm</span> to confirm the bill.</p>
+<p>From here, click the <span class="guilabel">Journal Items</span> tab to view (or change) the <span class="guilabel">Account</span>
+journals that were populated based on the configuration on the corresponding <span class="guilabel">Vendor</span> and
+<span class="guilabel">Product</span> forms.</p>
+<p>Then, click <span class="guilabel">Add Credit Note</span> or <span class="guilabel">Add Debit Note</span> to add credit or debit notes
+to the bill. Or, add a <span class="guilabel">Bill Reference</span> number (while in <span class="guilabel">Edit</span> mode).</p>
+<p>Then, when ready, click <span class="menuselection">Register Payment ‣ Create Payment</span> to complete the
+<span class="guilabel">Vendor Bill</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To tie the draft bill to an existing purchase order, click the drop-down menu next to
+<span class="guilabel">Auto-Complete</span>, and select a <abbr title="purchase order">PO</abbr> from the menu. The bill will
+auto-populate with the information from the <abbr title="purchase order">PO</abbr>.</p>
+<img alt="Lista desplegable de autocompletar en una factura de proveedor en borrador" class="align-center" src="../../../../_images/completar_automaticamente.png" />
+</div>
+</section><section id="batch-billing">
+<h2>Batch billing<a class="headerlink" href="#batch-billing" title="Permalink to this headline">¶</a></h2>
+<p>Vendor bills can be processed and managed in batches in the <em>Accounting</em> app.</p>
+<p>To do this, go to <span class="menuselection">Accounting app ‣ Vendors ‣ Bills</span>. Then, click the
+<span class="guilabel">checkbox</span> at the top left of the page, beside the <span class="guilabel">Number</span> column, under the
+<span class="guilabel">Create</span> button. This selects all existing vendor bills with a <span class="guilabel">Posted</span> or
+<span class="guilabel">Draft</span> <span class="guilabel">Status</span>.</p>
+<p>From here, click the <span class="guilabel">Action</span> gear icon to export, delete, or send &amp; print the bills;
+click the <span class="guilabel">Print</span> icon to print the invoices or bills; or click <span class="guilabel">Register
+Payment</span> to create and process payments for multiple vendor bills at once.</p>
+<p>When <span class="guilabel">Register Payment</span> is selected, a pop-up appears. In this pop-up window, select the
+appropriate journal in the <span class="guilabel">Journal</span> field, choose a payment date in the
+<span class="guilabel">Payment Date</span> field, and choose a <span class="guilabel">Payment Method</span>. There is also the option to
+<span class="guilabel">Group Payments</span> on this pop-up, as well.</p>
+<p>When ready, click the <span class="guilabel">Create Payment</span> button, which creates a list of journal entries on
+a separate page. This list of journal entries are all tied to their appropriate vendor bills.</p>
+<img alt="Ventana emergente de registro de pago" class="align-center" src="../../../../_images/registro_pago.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Register Payment</span> option for vendor bills in batches will only work for journal
+entries whose <span class="guilabel">Status</span> is set to <span class="guilabel">Posted</span>.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="control_bills.html"><span class="doc">Bill control policies</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Manage vendor bills</a><ul>
+<li><a class="reference internal" href="#bill-control-policies">Bill control policies</a><ul>
+<li><a class="reference internal" href="#way-matching">3-way matching</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-and-manage-vendor-bills-on-receipts">Create and manage vendor bills on receipts</a><ul>
+<li><a class="reference internal" href="#with-the-bill-control-policy-set-to-ordered-quantities">With the bill control policy set to ordered quantities</a></li>
+<li><a class="reference internal" href="#with-the-bill-control-policy-set-to-received-quantities">With the bill control policy set to received quantities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-and-manage-vendor-bills-in-accounting">Create and manage vendor bills in Accounting</a></li>
+<li><a class="reference internal" href="#batch-billing">Batch billing</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Manage vendor bills</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

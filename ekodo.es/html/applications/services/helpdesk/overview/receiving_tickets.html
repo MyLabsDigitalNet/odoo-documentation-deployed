@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Start receiving tickets &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/services/helpdesk/overview/receiving_tickets.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/services/helpdesk/overview/receiving_tickets.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Start receiving tickets</a><ul>
+<li><a class="reference internal" href="#enable-channel-options-to-submit-tickets">Enable channel options to submit tickets</a><ul>
+<li><a class="reference internal" href="#email-alias">Email Alias</a></li>
+<li><a class="reference internal" href="#website-form">Website Form</a><ul>
+<li><a class="reference internal" href="#customize-the-website-ticket-form">Customize the website ticket form</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#live-chat">Live Chat</a><ul>
+<li><a class="reference internal" href="#customize-the-live-chat-channel">Customize the live chat channel</a><ul>
+<li><a class="reference internal" href="#add-operators">Add operators</a></li>
+<li><a class="reference internal" href="#modify-channel-options">Modify channel options</a></li>
+<li><a class="reference internal" href="#create-channel-rules">Create channel rules</a></li>
+<li><a class="reference internal" href="#use-the-live-chat-widget">Use the live chat widget</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-a-support-ticket-from-a-live-chat-session">Create a support ticket from a live chat session</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#prioritizing-tickets">Prioritizing tickets</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/services/helpdesk/overview/receiving_tickets.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Start receiving tickets</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="start-receiving-tickets">
+<h1>Start receiving tickets<a class="headerlink" href="#start-receiving-tickets" title="Permalink to this headline">¶</a></h1>
+<p>Odoo <em>Helpdesk</em> offers multiple channels where customers can reach out for assistance, such as
+email, live chat, and through a website’s submission form. The variety of these contact options
+provides customers with multiple opportunities to receive support quickly, while also giving the
+support team the ability to manage multi-channel support tickets from one central location.</p>
+</section><section id="enable-channel-options-to-submit-tickets">
+<h2>Enable channel options to submit tickets<a class="headerlink" href="#enable-channel-options-to-submit-tickets" title="Permalink to this headline">¶</a></h2>
+<p>Go to <span class="menuselection">Helpdesk ‣ Configuration ‣ Teams</span> and choose an existing team, or click
+<span class="guilabel">New</span> to <a class="reference internal" href="getting_started.html"><span class="doc">create a new team</span></a>.</p>
+<p>On the team’s settings page, scroll down to <span class="guilabel">Channels</span>. Select one or more channel(s) to
+enable by checking the respective box(es).</p>
+<ul class="simple">
+<li><p><span class="guilabel">Email Alias</span></p></li>
+<li><p><span class="guilabel">Website Form</span></p></li>
+<li><p><span class="guilabel">Live Chat</span></p></li>
+</ul>
+</section><section id="email-alias">
+<h3>Email Alias<a class="headerlink" href="#email-alias" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Email Alias</em> setting automatically creates tickets from messages sent to that team’s
+specified email alias.</p>
+<p>To alter a <em>Helpdesk</em> team’s email alias, navigate to the <span class="guilabel">Teams</span> settings page. Find
+<span class="guilabel">Email Alias</span>, under the <span class="guilabel">Channels</span> heading, and then type in the desired team
+alias in the field.</p>
+<p>When a new <em>Helpdesk</em> team is created, an <span class="guilabel">Email Alias</span> is created, as well. This alias
+can be changed in the <span class="guilabel">Alias</span> field.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If the database does not have a custom domain already configured, click <span class="guilabel">Configure a
+custom domain</span> to be redirected to the <span class="guilabel">Settings</span> page. From there, enable
+<span class="guilabel">Custom Email Servers</span>.</p>
+</div>
+<img alt="View of the settings page of a helpdesk team emphasizing the email alias feature in Odoo Helpdesk." class="align-center" src="../../../../_images/receiving-tickets-email-alias.png" />
+<p>When an email is received, the subject line from the email becomes the title of a new <em>Helpdesk</em>
+ticket. The body of the email is also added to the ticket under the <span class="guilabel">Description</span> tab and
+in the ticket’s <span class="guilabel">Chatter</span> section.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The configuration steps outlined above are for <strong>Odoo Online</strong> and <strong>Odoo.sh</strong> databases. For
+<strong>On-premise</strong> databases, additional configuration for custom email servers and email aliases
+may be required.</p>
+</div>
+</section><section id="website-form">
+<h3>Website Form<a class="headerlink" href="#website-form" title="Permalink to this headline">¶</a></h3>
+<p>Enabling the <em>Website Form</em> setting adds a new page to the website with a customizable
+form. A new ticket is created once the required form fields are filled out and submitted.</p>
+<p>To activate the website form, navigate to a team’s settings page under <span class="menuselection">Configuration
+‣ Teams</span>. Find the <span class="guilabel">Website Form</span> feature under the <span class="guilabel">Channels</span> section, and
+check the box.</p>
+<p>After the feature is activated, click the <span class="guilabel">Go to Website</span> smart button at the top of the
+that <span class="guilabel">Teams</span> settings page to view and edit the new website form, which is created
+automatically by Odoo.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>After enabling the website form, the <em>Teams</em> settings page may need to be refreshed before the
+<em>Go to Website</em> smart button appears.</p>
+<p>As well, if a <em>Help Center</em> is published, the smart button will navigate there first. Simply click
+the <span class="guilabel">Contact Us</span> button at the bottom of the forum to navigate to the ticket submission
+form.</p>
+</div>
+<img alt="View of the settings page of a helpdesk team emphasizing the Go to Website button in Odoo Helpdesk." class="align-center" src="../../../../_images/receiving-tickets-go-to-website.png" />
+</section><section id="customize-the-website-ticket-form">
+<h4>Customize the website ticket form<a class="headerlink" href="#customize-the-website-ticket-form" title="Permalink to this headline">¶</a></h4>
+<p>To customize the default ticket submission form, click the <span class="guilabel">Edit</span> button in the upper
+right corner of the page. Then click on one of the fields in the form.</p>
+<p>Add, remove, or update fields as necessary to alter the information submitted by customers. Fields
+can be made marked as <span class="guilabel">Required</span>, by toggling the switch from gray to blue in the website
+builder’s editor window, located under the <span class="guilabel">Field</span> section. As well, other pertinent field
+information can be edited here, such as:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Type</span>: which matches an Odoo model value to the field (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Customer</span> <span class="pre">Name</span></code>).</p></li>
+<li><p><span class="guilabel">Input Type</span>: to determine what time of input the field should be, like <code class="o_code docutils literal notranslate"><span class="pre">Text</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Email</span></code>,
+<code class="o_code docutils literal notranslate"><span class="pre">Telephone</span></code> or <code class="o_code docutils literal notranslate"><span class="pre">URL</span></code>.</p></li>
+<li><p><span class="guilabel">Label</span>: to give the form field a label (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Full</span> <span class="pre">Name</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Address</span></code>, etc.). Also
+control the label position on the form by using the nested <span class="guilabel">Position</span> options.</p></li>
+<li><p><span class="guilabel">Description</span>: which, optionally, adds an editable line under the input box to provide
+additional contextual information related to the field.</p></li>
+<li><p><span class="guilabel">Placeholder</span>: to add a sample input value.</p></li>
+<li><p><span class="guilabel">Default value</span>: to add common use case values that most customers would find valuable</p></li>
+<li><p><span class="guilabel">Required</span>: which sets the field as mandatory before the form can be submitted.</p></li>
+<li><p><span class="guilabel">Visibility</span>: to allow for absolute or conditional visibility of the field. Nested
+options, such as device visibility, appear when certain options are selected.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Text blocks can be added in the farthest 1/3 column of the ticket form page, next to the ticket
+form. This is an ideal place to include team information such as additional contact details,
+hours, or common helpful articles that link to the <span class="guilabel">Forum</span>.</p>
+</div>
+<img alt="View of the unpublished website form to submit a ticket for Odoo Helpdesk." class="align-center" src="../../../../_images/receiving-tickets-web-form.png" />
+<p>Once the form has been optimized and is ready for public use, <span class="guilabel">Save</span> the changes, and then
+publish the form by clicking on the <span class="guilabel">Unpublished</span> button.</p>
+</section><section id="live-chat">
+<h3>Live Chat<a class="headerlink" href="#live-chat" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Live Chat</em> feature allows website visitors to connect directly with a support agent or chatbot.
+During these conversations, <em>Helpdesk</em> tickets can be instantly created by using the
+<a class="reference internal" href="../../../websites/livechat/responses.html"><span class="doc">response command</span></a> <code class="o_code docutils literal notranslate"><span class="pre">/helpdesk</span></code>.</p>
+<p>To enable <em>Live Chat</em>, navigate to the <span class="menuselection">Configuration ‣ Teams</span> list view, select a
+team, and on the <span class="guilabel">Teams</span> settings page, click the check box next to <span class="guilabel">Live Chat</span>,
+under the <span class="guilabel">Channels</span> heading.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If this is the first time <em>Live Chat</em> has been enabled on the database, the page may need to be
+saved manually and refreshed before any further steps can be taken.</p>
+</div>
+<p>With the <span class="guilabel">Live Chat</span> setting engaged, click on <span class="guilabel">View Channels</span>. Then, on the
+<span class="guilabel">Website Live Chat Channels</span> dashboard, select the kanban card for the channel that was
+created for the <em>Helpdesk</em> team, or create a <span class="guilabel">New</span> one if necessary. When a kanban card is
+selected, additional options await on the channel’s form.</p>
+</section><section id="customize-the-live-chat-channel">
+<h4>Customize the live chat channel<a class="headerlink" href="#customize-the-live-chat-channel" title="Permalink to this headline">¶</a></h4>
+<p>When an individual channel is clicked on the <span class="guilabel">Website Live Chat Channels</span> dashboard, Odoo
+directs the page to the channel form. From there, the <span class="guilabel">Channel Name</span> can be edited,
+however Odoo names this to match the <em>Helpdesk</em> team’s kanban pipeline, by default.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If a <em>Helpdesk</em> team is named <code class="o_code docutils literal notranslate"><span class="pre">Customer</span> <span class="pre">Care</span></code>, a <em>Live Chat</em> channel will be created with the
+same name.</p>
+<img alt="View of the kanban cards for the available Live Chat channels." class="align-center" src="../../../../_images/receiving-tickets-live-chat-join-channel.png" />
+</div>
+<p>On the channel form, navigate through the tabs to complete the setup.</p>
+</section><section id="add-operators">
+<h5>Add operators<a class="headerlink" href="#add-operators" title="Permalink to this headline">¶</a></h5>
+<p><em>Operators</em> are the users who will act as agents and respond to live chat requests from customers.
+The user who originally created the live chat channel will be added by default.</p>
+<p>To add additional users, navigate and click on the live chat channel from the <span class="guilabel">Website
+Live Chat Channels</span> dashboard, and on the <span class="guilabel">Operators</span> tab, click <span class="guilabel">ADD</span>.</p>
+<p>Then, click the check box next to the users to be added, and click <span class="guilabel">SELECT</span>.
+<span class="guilabel">New</span> operators can be created and added to the list, as well, by filling out the
+<span class="guilabel">Create Operators</span> form and then clicking <span class="guilabel">SAVE &amp; CLOSE</span> (or <span class="guilabel">SAVE &amp;
+NEW</span> for multiplerecord creations).</p>
+<p>As well, current operators can be edited or removed by clicking on their respective boxes in the
+<span class="guilabel">Operators</span> tab, and then adjusting their form values, or by using one of the form buttons
+located at the bottom of the form, such as <span class="guilabel">REMOVE</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Users can add themselves as an operator by clicking the <span class="guilabel">Join</span> button on a <em>Live Chat</em>
+channel.</p>
+</div>
+</section><section id="modify-channel-options">
+<h5>Modify channel options<a class="headerlink" href="#modify-channel-options" title="Permalink to this headline">¶</a></h5>
+<p>The <span class="guilabel">Options</span> tab contains the visual and text settings for the live chat window.</p>
+<p>Change the text in the <span class="guilabel">Text of the Button</span> field to update the greeting displayed in the
+text bubble when the live chat button appears on the website.</p>
+<p>Edit the <span class="guilabel">Welcome Message</span> to change the message a visitor sees when they open the chat
+window. This message will appear as though it is sent by a live chat operator, and should be an
+invitation to continue the conversation.</p>
+<p>Edit the <span class="guilabel">Chat Input Placeholder</span> to change the text that appears in the box where
+visitors will type their replies.</p>
+<p>Change the <span class="guilabel">Livechat Button Color</span> and the <span class="guilabel">Channel Header Color</span> by
+clicking a color bubble to open the color selection window. Click the refresh icon to the right of
+the color bubbles to reset the colors to the default selection.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Color selection, for the button or header, can be made manually, or through RGB, HSL or HEX code
+selection. Different options will be available, depending on your operating system.</p>
+</div>
+</section><section id="create-channel-rules">
+<h5>Create channel rules<a class="headerlink" href="#create-channel-rules" title="Permalink to this headline">¶</a></h5>
+<p>The <span class="guilabel">Channel Rules</span> tab determines when the live chat window opens on the website by logic
+of when a <span class="guilabel">URL Regex</span> action is triggered (e.g., a page visit).</p>
+<p>Edit existing rules, or create a new one by clicking <span class="guilabel">Add a line</span>, and fill out the pop-up
+form details based on how the rule should apply.</p>
+<p>If a <span class="guilabel">Chatbot</span> will be included on this channel, select it from the dropdown. If the
+chatbot will only be active when no operators are available, check the box labeled
+<span class="guilabel">Enabled only if no operator</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If a chatbot is added to a live chat channel, then 3 new smart buttons will appear on the channel
+settings form: <span class="guilabel">Chatbots</span>, <span class="guilabel">Sessions</span>, and <span class="guilabel">% Happy</span>.</p>
+<ul class="simple">
+<li><p>The <span class="guilabel">Chatbots</span> smart button is where the chatbot can be programmed with a
+<span class="guilabel">Script</span>. Each line in the <span class="guilabel">Script</span> contains a <span class="guilabel">Message</span>,
+<span class="guilabel">Step Type</span>, <span class="guilabel">Answers</span>, and conditional <span class="guilabel">Only If</span> logic that
+applies when certain pre-filled answers are chosen. To create more steps in the
+<span class="guilabel">Script</span>, click <span class="guilabel">Add a line</span> and fill out the script steps form according
+to the desired logic.</p></li>
+<li><p><span class="guilabel">Sessions</span> is where live chat sessions are recorded in order of descending
+<span class="guilabel">Session Date</span>, by default. Each record includes the <span class="guilabel">Attendees</span> involved
+in the live chat session, the <span class="guilabel"># Messages</span>, as well as any <span class="guilabel">Rating</span> that
+was received when the session ended.</p></li>
+<li><p>The <span class="guilabel">% Happy</span> smart button includes a log of ratings that were left by live chat
+attendees, and are labeled by date, time, and the support agent who was responsible for the
+live chat session.</p></li>
+</ul>
+</div>
+<p>Add the URL for the pages this channel will be applied to in the <span class="guilabel">URL Regex</span> field. If
+this channel will only be available to users in specific countries, add them to the
+<span class="guilabel">Country</span> field. If this field is left blank, the channel will be available to all site
+visitors.</p>
+<img alt="View of the kanban cards for the available Live Chat channels." class="align-center" src="../../../../_images/receiving-tickets-channel-rules.png" />
+</section><section id="use-the-live-chat-widget">
+<h5>Use the live chat widget<a class="headerlink" href="#use-the-live-chat-widget" title="Permalink to this headline">¶</a></h5>
+<p>The <span class="guilabel">Widget</span> tab on the live chat channel form offers an embeddable website widget, or a
+shortcode for instant customer/supplier access to a live chat window.</p>
+<p>The live chat <span class="guilabel">Widget</span> can be applied to websites created through Odoo by navigating to
+the <span class="menuselection">Website ‣ Configuration ‣ Settings</span>. Then scroll to the <span class="guilabel">Live
+Chat</span> section, and select the channel to add to the site. Click <span class="guilabel">Save</span> to apply.</p>
+<p>To add the widget to a website created on a third-party platform, click <span class="guilabel">COPY</span> and paste
+the code into the <code class="o_code docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> tag on the site.</p>
+<p>Likewise, to send a live chat session to a customer or supplier, click the second <span class="guilabel">COPY</span>
+button which contains a link to join directly.</p>
+</section><section id="create-a-support-ticket-from-a-live-chat-session">
+<h4>Create a support ticket from a live chat session<a class="headerlink" href="#create-a-support-ticket-from-a-live-chat-session" title="Permalink to this headline">¶</a></h4>
+<p>Once live chat is enabled, operators will be able to communicate with site visitors in real time.</p>
+<p>During the conversation, an operator can use the shortcut <a class="reference internal" href="../../../websites/livechat/responses.html"><span class="doc">command</span></a> <code class="o_code docutils literal notranslate"><span class="pre">/helpdesk</span></code> to create a ticket without leaving
+the chat window. The transcript from the conversation will be added to the new ticket, under the
+<span class="guilabel">Description</span> tab.</p>
+</section><section id="prioritizing-tickets">
+<h2>Prioritizing tickets<a class="headerlink" href="#prioritizing-tickets" title="Permalink to this headline">¶</a></h2>
+<p>All tickets include a <span class="guilabel">Priority</span> field. The highest priority tickets will appear at the
+top of the kanban and list views.</p>
+<img alt="View of a team's kanban view and the prioritized tasks in Odoo Helpdesk." class="align-center" src="../../../../_images/receiving-tickets-priority.png" />
+<p>The priority levels are represented by stars:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 stars = <em>Low Priority</em></p></li>
+<li><p>1 star = <em>Medium Priority</em></p></li>
+<li><p>2 stars = <em>High Priority</em></p></li>
+<li><p>3 stars = <em>Urgent</em></p></li>
+</ul>
+</div></blockquote>
+<p>Tickets will be set to low priority (0 stars) by default. To change the priority level, select the
+appropriate number of stars on the kanban card, or on the ticket.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>As priority levels can be used as criteria for assigning <a class="reference internal" href="sla.html"><span class="doc">SLAs</span></a>, changing the priority
+level of a ticket can alter the <abbr title="Service Level Agreement">SLA</abbr> deadline.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../advanced/close_tickets.html"><span class="doc">Closing tickets</span></a></p></li>
+<li><p><a class="reference internal" href="../../../general/email_communication/email_servers.html"><span class="doc">Send and receive emails in Odoo with an email server</span></a></p></li>
+<li><p><a class="reference internal" href="../../../websites/livechat.html"><span class="doc">Live Chat</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Start receiving tickets</a><ul>
+<li><a class="reference internal" href="#enable-channel-options-to-submit-tickets">Enable channel options to submit tickets</a><ul>
+<li><a class="reference internal" href="#email-alias">Email Alias</a></li>
+<li><a class="reference internal" href="#website-form">Website Form</a><ul>
+<li><a class="reference internal" href="#customize-the-website-ticket-form">Customize the website ticket form</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#live-chat">Live Chat</a><ul>
+<li><a class="reference internal" href="#customize-the-live-chat-channel">Customize the live chat channel</a><ul>
+<li><a class="reference internal" href="#add-operators">Add operators</a></li>
+<li><a class="reference internal" href="#modify-channel-options">Modify channel options</a></li>
+<li><a class="reference internal" href="#create-channel-rules">Create channel rules</a></li>
+<li><a class="reference internal" href="#use-the-live-chat-widget">Use the live chat widget</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-a-support-ticket-from-a-live-chat-session">Create a support ticket from a live chat session</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#prioritizing-tickets">Prioritizing tickets</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Start receiving tickets</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

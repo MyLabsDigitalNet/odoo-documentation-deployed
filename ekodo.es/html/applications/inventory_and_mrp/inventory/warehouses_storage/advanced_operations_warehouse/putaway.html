@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Putaway rules &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/putaway.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/putaway.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Putaway rules</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#define-putaway-rule">Define putaway rule</a></li>
+<li><a class="reference internal" href="#putaway-rule-priority">Putaway rule priority</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#storage-categories">Storage categories</a><ul>
+<li><a class="reference internal" href="#id1">Configuration</a></li>
+<li><a class="reference internal" href="#define-storage-category">Define storage category</a></li>
+<li><a class="reference internal" href="#storage-categories-in-putaway-rules">Storage categories in putaway rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/putaway.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Putaway rules</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="putaway-rules">
+<h1>Putaway rules<a class="headerlink" href="#putaway-rules" title="Permalink to this headline">¶</a></h1>
+<p>Putaway is the process of routing products to appropriate storage locations upon shipment arrival.</p>
+<p>Odoo can accomplish this seamlessly using <em>putaway rules</em>, which dictate how products move through
+specified warehouse locations.</p>
+<p>Upon shipment arrival, operations are generated based on putaway rules to efficiently move products
+to specified locations, and ensure easy retrieval for future delivery orders.</p>
+<p>In warehouses that process specific kinds of products, putaway rules can also prevent volatile
+substances from being stored in close proximity, by directing them to different locations determined
+by the warehouse manager.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://www.youtube.com/watch?v=nCQMf6sj_w8">Odoo Tutorials: Putaway Rules</a></p>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To use putaway rules, navigate to <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>, and
+activate the <span class="guilabel">Multi-Step Routes</span> feature under the <span class="guilabel">Warehouse</span> section. By doing
+so, the <span class="guilabel">Storage Locations</span> feature is also automatically activated.</p>
+<p>Finally, click <span class="guilabel">Save</span>.</p>
+<img alt="Activate Multi-Step Routes in Inventory configuration settings." class="align-center" src="../../../../../_images/activate-multi-step-routes.png" />
+</section><section id="define-putaway-rule">
+<span id="inventory-routes-putaway-rule"></span><h3>Define putaway rule<a class="headerlink" href="#define-putaway-rule" title="Permalink to this headline">¶</a></h3>
+<p>To manage where specific products are routed for storage, navigate to <span class="menuselection">Inventory app
+‣ Configuration ‣ Putaway Rules</span>. Use the <span class="guilabel">Create</span> button to configure a new putaway
+rule on a <span class="guilabel">Product</span> or <span class="guilabel">Product Category</span> that the rule affects.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Putaway rules can be defined either per product/product category, and/or package type (the
+<em>Packages</em> setting must be enabled in <span class="menuselection">Inventory app ‣ Configuration ‣
+Settings</span> for that).</p>
+</div>
+<p>In the same line, the <span class="guilabel">When product arrives in</span> location is where the putaway rule is
+triggered to create an operation to move the product to the <span class="guilabel">Store to</span> location.</p>
+<p>For this to work, the <span class="guilabel">Store to</span> location must be a <em>sub-location</em> of the first (e.g.,
+<code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Fruits</span></code> is a specific, named location inside <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock</span></code> to make the products stored here
+easier to find).</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>In a warehouse location, <strong>WH/Stock</strong>, there are the following sub-locations:</p>
+<ul class="simple">
+<li><p>WH/Stock/Fruits</p></li>
+<li><p>WH/Stock/Vegetables</p></li>
+</ul>
+<p>Ensure all apples are stored in the fruits section by filling the field <span class="guilabel">Store to</span> with
+the location <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Fruits</span></code> when the <span class="guilabel">Product</span>, <code class="o_code docutils literal notranslate"><span class="pre">Apple</span></code> arrives in <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock</span></code>.</p>
+<p>Repeat this for all products and hit <span class="guilabel">Save</span>.</p>
+<img alt="Create putaway rules for apples and carrots." class="align-center" src="../../../../../_images/create-putaway-rules.png" />
+</div>
+</section><section id="putaway-rule-priority">
+<h3>Putaway rule priority<a class="headerlink" href="#putaway-rule-priority" title="Permalink to this headline">¶</a></h3>
+<p>Odoo selects a putaway rule based on the following priority list (from highest to lowest) until a
+match is found:</p>
+<ol class="arabic simple">
+<li><p>Package type and product</p></li>
+<li><p>Package type and product category</p></li>
+<li><p>Package type</p></li>
+<li><p>Product</p></li>
+<li><p>Product category</p></li>
+</ol>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><blockquote>
+<div><p>The product <code class="o_code docutils literal notranslate"><span class="pre">Lemonade</span> <span class="pre">can</span></code> has the following putaway rules configured:</p>
+<ol class="arabic simple">
+<li><p>When receiving a <code class="o_code docutils literal notranslate"><span class="pre">Pallet</span></code> (<span class="guilabel">Package Type</span>) of <code class="o_code docutils literal notranslate"><span class="pre">Lemonade</span> <span class="pre">cans</span></code>, it is redirected to
+<code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Pallets/PAL1</span></code>.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">Lemonade</span> <span class="pre">can</span></code>’s <span class="guilabel">Product Category</span> is <code class="o_code docutils literal notranslate"><span class="pre">All/drinks</span></code>, and when receiving a <code class="o_code docutils literal notranslate"><span class="pre">Box</span></code> of
+any item in this product category, items are redirected to <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Shelf</span> <span class="pre">1</span></code>.</p></li>
+<li><p>Any product on a <code class="o_code docutils literal notranslate"><span class="pre">Pallet</span></code> is redirected to <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Pallets</span></code></p></li>
+<li><p>The product <code class="o_code docutils literal notranslate"><span class="pre">Lemonade</span> <span class="pre">can</span></code> is redirected to <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Shelf</span> <span class="pre">2</span></code></p></li>
+<li><p>Items in the <code class="o_code docutils literal notranslate"><span class="pre">All/drinks</span></code> product category are redirected to <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Small</span> <span class="pre">Refrigerator</span></code>.</p></li>
+</ol>
+</div></blockquote>
+<img alt="Some examples of putaway rules." class="align-center" src="../../../../../_images/putaway-example.png" />
+</div>
+</section><section id="storage-categories">
+<h2>Storage categories<a class="headerlink" href="#storage-categories" title="Permalink to this headline">¶</a></h2>
+<p>A <em>storage category</em> is an extra location attribute. Storage categories allow the user to define
+the quantity of products that can be stored in the location, and how the location will be selected
+with putaway rules.</p>
+</section><section id="id1">
+<h3>Configuration<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To enable storage categories, go to <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>,
+and activate the <span class="guilabel">Storage Categories</span> feature in the <span class="guilabel">Warehouse</span> section. Then,
+click <span class="guilabel">Save</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <span class="guilabel">Storage Locations</span> feature <strong>must</strong> be enabled to enable <span class="guilabel">Storage
+Categories</span>.</p>
+</div>
+</section><section id="define-storage-category">
+<h3>Define storage category<a class="headerlink" href="#define-storage-category" title="Permalink to this headline">¶</a></h3>
+<p>To create a storage category, go to <span class="menuselection">Inventory app ‣ Configuration ‣ Storage
+Categories</span> and click <span class="guilabel">Create</span>.</p>
+<p>On the storage category form, type a name for the <span class="guilabel">Storage Category</span> field.</p>
+<p>Options are available to limit the capacity by weight, by product, or by package type. The
+<span class="guilabel">Allow New Product</span> field defines when the location is considered available to store a
+product:</p>
+<ul class="simple">
+<li><p><span class="guilabel">If location is empty</span>: a product can be added there only if the location is empty.</p></li>
+<li><p><span class="guilabel">If products are the same</span>: a product can be added there only if the same product is
+already there.</p></li>
+<li><p><span class="guilabel">Allow mixed products</span>: several different products can be stored in this location at
+the same time.</p></li>
+</ul>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Create putaway rules for pallet-stored items and ensure real-time storage capacity checks by
+creating the <code class="o_code docutils literal notranslate"><span class="pre">High</span> <span class="pre">Frequency</span> <span class="pre">pallets</span></code> storage category.</p>
+<p>Name the <span class="guilabel">Storage Category</span>, and select <span class="guilabel">If all products are same</span> in the
+<span class="guilabel">Allow New Product</span> field.</p>
+<p>Then, define package capacity in the <span class="guilabel">Capacity by Package</span> tab, specifying the number
+of packages for the designated <span class="guilabel">Package Type</span> and setting a maximum of <code class="o_code docutils literal notranslate"><span class="pre">2.00</span></code> <code class="o_code docutils literal notranslate"><span class="pre">Pallets</span></code>
+for a specific location.</p>
+<img alt="Create a storage category on the page." class="align-center" src="../../../../../_images/storage-category.png" />
+</div>
+<p>Once the storage category settings are saved, the storage category can be linked to a location.</p>
+<p>To do that, navigate to the location by going to <span class="menuselection">Inventory app ‣ Configuration ‣
+Locations</span>, and select the location. Click <span class="guilabel">Edit</span> and select the created category in the
+<span class="guilabel">Storage Category</span> field.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Assign the <code class="o_code docutils literal notranslate"><span class="pre">High</span> <span class="pre">Frequency</span> <span class="pre">pallets</span></code> storage category to the <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/pallets/PAL</span> <span class="pre">1</span></code>
+sub-location.</p>
+<img alt="When a Storage Category is created, it can be linked to a warehouse location." class="align-center" src="../../../../../_images/location-storage-category.png" />
+</div>
+</section><section id="storage-categories-in-putaway-rules">
+<h3>Storage categories in putaway rules<a class="headerlink" href="#storage-categories-in-putaway-rules" title="Permalink to this headline">¶</a></h3>
+<p>To continue the example from above, apply the <code class="o_code docutils literal notranslate"><span class="pre">High</span> <span class="pre">Frequency</span> <span class="pre">Pallets</span></code> on the <code class="o_code docutils literal notranslate"><span class="pre">PAL1</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">PAL2</span></code>
+locations and <a class="reference internal" href="#inventory-routes-putaway-rule"><span class="std std-ref">rework the putaway rules</span></a> as follows:</p>
+<p>Assume one pallet of lemonade cans is received:</p>
+<ul class="simple">
+<li><p>If PAL1 and PAL2 are empty, the pallet will be redirected to WH/Stock/Pallets/PAL1.</p></li>
+<li><p>If PAL1 is full, the pallet will be redirected to WH/Stock/Pallets/PAL2.</p></li>
+<li><p>If PAL1 and 2 are full, the pallet will be redirected to WH/Stock/Pallets.</p></li>
+</ul>
+<img alt="Storage Categories used in a variety of putaway rules." class="align-center" src="../../../../../_images/smart-putaways.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Putaway rules</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#define-putaway-rule">Define putaway rule</a></li>
+<li><a class="reference internal" href="#putaway-rule-priority">Putaway rule priority</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#storage-categories">Storage categories</a><ul>
+<li><a class="reference internal" href="#id1">Configuration</a></li>
+<li><a class="reference internal" href="#define-storage-category">Define storage category</a></li>
+<li><a class="reference internal" href="#storage-categories-in-putaway-rules">Storage categories in putaway rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Putaway rules</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ogone &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/payment_providers/ogone.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/payment_providers/ogone.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Ogone</a><ul>
+<li><a class="reference internal" href="#settings-in-ogone">Settings in Ogone</a><ul>
+<li><a class="reference internal" href="#create-an-api-user">Create an API user</a></li>
+<li><a class="reference internal" href="#set-up-ogone-for-odoo">Set up Ogone for Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#settings-in-odoo">Settings in Odoo</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/payment_providers/ogone.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Ogone</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="ogone">
+<h1>Ogone<a class="headerlink" href="#ogone" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.ingenico.com/">Ogone</a>, also known as <strong>Ingenico Payment Services</strong> is a France-based
+company that provides the technology involved in secure electronic transactions.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../payment_providers.html#payment-providers-add-new"><span class="std std-ref">Enable a payment provider</span></a></p></li>
+<li><p><a class="reference external" href="https://epayments-support.ingenico.com/get-started/">Ogone’s documentation</a>.</p></li>
+</ul>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>The provider Ogone is deprecated. It is recommended to use <a class="reference internal" href="stripe.html"><span class="doc">Stripe</span></a> instead.</p>
+</div>
+</section><section id="settings-in-ogone">
+<h2>Settings in Ogone<a class="headerlink" href="#settings-in-ogone" title="Permalink to this headline">¶</a></h2>
+</section><section id="create-an-api-user">
+<h3>Create an API user<a class="headerlink" href="#create-an-api-user" title="Permalink to this headline">¶</a></h3>
+<p>Log into your Ogone account and head to the <span class="guilabel">Configuration</span> tab.</p>
+<p>You need to create an <strong>API user</strong> to be used in the creation of transactions from Odoo. While you
+can use your main account to do so, using an <strong>API user</strong> ensures that if the credentials used in
+Odoo are leaked, no access to your Ogone configuration is possible. Additionally, passwords for
+<strong>API users</strong> do not need to be updated regularly, unlike normal users.</p>
+<p>To create an <strong>API user</strong>, go to <span class="menuselection">Configuration ‣ Users</span> and click on
+<span class="guilabel">New User</span>. The following fields must be configured:</p>
+<ul class="simple" id="ogone-ogone">
+<li><p><span class="guilabel">UserID</span>: you can choose anything you want.</p></li>
+<li><p><span class="guilabel">User’s Name, E-mail and Timezone</span>: you can enter the information you want.</p></li>
+<li><p><span class="guilabel">Profile</span>: should be set to <span class="guilabel">Admin</span>.</p></li>
+<li><p><span class="guilabel">Special user for API</span>: should be checked.</p></li>
+</ul>
+<p>After the creation of the user, you are required to generate a password. Save the password and
+<strong>UserID</strong>, as they will be required later on during the setup.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If you already have an user set up, make sure it is activated without any error. If not, simply
+click the <span class="guilabel">Activate(Errors)</span> button to reset the user.</p>
+</div>
+</section><section id="set-up-ogone-for-odoo">
+<h3>Set up Ogone for Odoo<a class="headerlink" href="#set-up-ogone-for-odoo" title="Permalink to this headline">¶</a></h3>
+<p>Ogone must now be configured to accept payments from Odoo. Head to <span class="menuselection">Configuration ‣
+Technical Information ‣ Global Security Parameters</span>, select <span class="guilabel">SHA-512</span> as
+<span class="guilabel">Hash Algorithm</span> and <span class="guilabel">UTF-8</span> as <span class="guilabel">character encoding</span>. Then, go to the
+<span class="guilabel">Data and Origin verification</span> tab of the same page and leave the URL field of the
+<span class="guilabel">e-Commerce and Alias Gateway</span> section blank.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If you need to use another algorithm, such as <code class="o_code docutils literal notranslate"><span class="pre">sha-1</span></code> or <code class="o_code docutils literal notranslate"><span class="pre">sha-256</span></code>, within Odoo, activate the
+<a class="reference internal" href="../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> and go to the <strong>Payment Providers</strong> page in
+<span class="menuselection">Accounting ‣ Configuration ‣ Payment Providers</span>. Click on <span class="guilabel">Ogone</span>,
+and in the <span class="guilabel">Credentials</span> tab, select the algorithm you wish to use in the
+<span class="guilabel">Hash function</span> field.</p>
+</div>
+<p>You are now required to generate <strong>SHA-IN</strong> passphrases. <strong>SHA-IN</strong> and <strong>SHA-OUT</strong> passphrases are
+used to digitally sign the transaction requests and responses between Odoo and Ogone. By using these
+secret passphrases and the <code class="o_code docutils literal notranslate"><span class="pre">sha-1</span></code> algorithm, both systems can ensure that the information they
+receive from the other was not altered or tampered with.</p>
+<p>Enter the same <strong>SHA-IN</strong> passphrase in both <span class="guilabel">Checks for e-Commerce &amp; Alias Gateway</span> and
+<span class="guilabel">Checks for DirectLink and Batch (Automatic)</span>. You can leave the IP address field blank.</p>
+<p>Your <strong>SHA-IN</strong> and <strong>SHA-OUT</strong> passphrases should be different, and between 16 and 32 characters
+long. Make sure to use the same <strong>SHA-IN</strong> and <strong>SHA-OUT</strong> passphrases throughout the entire Ogone
+configuration, as Odoo only allows a single <strong>SHA-IN</strong> and single <strong>SHA-OUT</strong> passphrase.</p>
+<p>In order to retrieve the <strong>SHA-OUT</strong> key, log into your Ogone account, go to
+<span class="menuselection">Configuration ‣ Technical Information ‣ Transaction feedback ‣ All
+transaction submission modes</span>, and get or generate your <strong>API Key</strong> and <strong>Client Key</strong>. Be careful
+to copy your API key as you’ll not be allowed to get it later without generating a new one.</p>
+<p>When done, head to <span class="menuselection">Configuration ‣ Technical Information ‣ Transaction Feedback</span>
+and check the following options:</p>
+<ul class="simple">
+<li><p>The <span class="guilabel">URL</span> fields for <span class="guilabel">HTTP redirection in the browser</span> can be left empty, as
+Odoo will specify these URLs for every transaction request.</p></li>
+<li><p><span class="guilabel">I would like to receive transaction feedback parameters on the redirection URLs</span>:
+should be checked.</p></li>
+<li><p><span class="guilabel">Direct HTTP server-to-server request</span>: should to be set to <code class="o_code docutils literal notranslate"><span class="pre">Online</span> <span class="pre">but</span> <span class="pre">switch</span> <span class="pre">to</span> <span class="pre">a</span>
+<span class="pre">deferred</span> <span class="pre">request</span> <span class="pre">when</span> <span class="pre">the</span> <span class="pre">online</span> <span class="pre">request</span> <span class="pre">fails</span></code>.</p></li>
+<li><p>Both <strong>URL</strong> fields should contain the same following URL, with <code class="o_code docutils literal notranslate"><span class="pre">&lt;example&gt;</span></code> replaced by your
+database: <code class="o_code docutils literal notranslate"><span class="pre">https://&lt;example&gt;/payment/ogone/return</span></code>.</p></li>
+<li><p><span class="guilabel">Dynamic eCommerce Parameters</span> should contain the following values: <code class="o_code docutils literal notranslate"><span class="pre">ALIAS</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">AMOUNT</span></code>,
+<code class="o_code docutils literal notranslate"><span class="pre">CARDNO</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">CN</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">CURRENCY</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">IP</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">NCERROR</span></code> <code class="o_code docutils literal notranslate"><span class="pre">ORDERID</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">PAYID</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">PM</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">STATUS</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">TRXDATE</span></code>. Other
+parameters can be included (if you have another integration with Ogone that requires them), but
+are not advised.</p></li>
+<li><p>In the <span class="guilabel">All transaction submission modes</span> section, fill out <strong>SHA-OUT</strong> passphrase and
+disable <code class="o_code docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">request</span> <span class="pre">for</span> <span class="pre">status</span> <span class="pre">change</span></code>.</p></li>
+</ul>
+<p>To allow your customers to save their credit card credentials for future use, head to
+<span class="menuselection">Configuration ‣ Alias ‣ My alias information</span>. From this tab, you can configure
+how the user can have its card details saved, for how long the information is saved, if a checkbox
+to save the card information should be displayed, etc.</p>
+</section><section id="settings-in-odoo">
+<h2>Settings in Odoo<a class="headerlink" href="#settings-in-odoo" title="Permalink to this headline">¶</a></h2>
+<p>To set up Ogone in Odoo, head to <span class="menuselection">Accounting ‣ Configuration ‣ Payment Providers</span>
+and open the Ogone provider. In the <span class="guilabel">Credentials</span> tab, enter the <strong>PSPID</strong> of your Ogone
+account, and fill out the other fields as configured in your <a class="reference internal" href="#ogone-ogone"><span class="std std-ref">Ogone portal</span></a>.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Ogone</a><ul>
+<li><a class="reference internal" href="#settings-in-ogone">Settings in Ogone</a><ul>
+<li><a class="reference internal" href="#create-an-api-user">Create an API user</a></li>
+<li><a class="reference internal" href="#set-up-ogone-for-odoo">Set up Ogone for Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#settings-in-odoo">Settings in Odoo</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Ogone</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

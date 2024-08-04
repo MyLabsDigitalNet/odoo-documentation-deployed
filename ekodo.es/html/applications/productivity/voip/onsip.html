@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Use VoIP services in Odoo with OnSIP &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/productivity/voip/onsip.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/productivity/voip/onsip.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Use VoIP services in Odoo with OnSIP</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#odoo-voip-setting">Odoo VoIP setting</a></li>
+<li><a class="reference internal" href="#odoo-user-setting">Odoo user setting</a></li>
+<li><a class="reference internal" href="#incoming-calls">Incoming calls</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#missing-parameters">Missing parameters</a></li>
+<li><a class="reference internal" href="#incorrect-number">Incorrect number</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#onsip-on-mobile-phone">OnSIP on mobile phone</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/productivity/voip/onsip.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Use VoIP services in Odoo with OnSIP</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="use-voip-services-in-odoo-with-onsip">
+<h1>Use VoIP services in Odoo with OnSIP<a class="headerlink" href="#use-voip-services-in-odoo-with-onsip" title="Permalink to this headline">¶</a></h1>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>OnSIP <abbr title="voice over internet protocol">VoIP</abbr> services are only available in the <strong>United
+States</strong> (US). OnSIP <abbr title="voice over internet protocol">VoIP</abbr> services are widely available in
+the lower-48, contiguous United States. In Alaska or Hawaii, charges for service can be higher.</p>
+<p>Additionally, a <abbr title="United States">US</abbr> billing address, and <abbr title="United States">US</abbr> credit
+card are required to use the service.</p>
+<p>Before setting up an account with OnSIP, the business will need to make sure the business
+telephone numbers are portable to OnSIP.</p>
+<p>OnSIP makes every attempt to work with all telephone service providers. However, certain local or
+regional guidelines may preclude the company’s current provider from releasing the number.</p>
+</div>
+</section><section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Odoo <em>VoIP</em> can be set up to work together with <a class="reference external" href="https://info.onsip.com/odoo/">OnSIP (Odoo Landing Page)</a>. OnSIP is a VoIP provider. An account is needed with OnSIP in order
+to use this service.</p>
+<p>Before setting up an account with OnSIP, make sure the company’s home area, and the areas that will
+be called, are covered by OnSIP services.</p>
+<p>After opening an OnSIP account, follow the configuration procedure below to configure it on an Odoo
+database.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To configure the Odoo database to connect to OnSIP services, first navigate to the
+<span class="menuselection">Apps application</span> from the main Odoo dashboard. Then, remove the default <code class="o_code docutils literal notranslate"><span class="pre">Apps</span></code>
+filter from the <span class="guilabel">Search…</span> bar, and search for <code class="o_code docutils literal notranslate"><span class="pre">VoIP</span> <span class="pre">OnSIP</span></code>.</p>
+<p>Next, install the <span class="guilabel">VOIP OnSIP</span> module.</p>
+<img alt="View of OnSIP app in the app search results." class="align-center" src="../../../_images/install-onsip.png" />
+</section><section id="odoo-voip-setting">
+<h3>Odoo VoIP setting<a class="headerlink" href="#odoo-voip-setting" title="Permalink to this headline">¶</a></h3>
+<p>After installing the <em>VOIP OnSIP</em> module, go to the <span class="menuselection">Settings app</span>, scroll down to
+the <span class="guilabel">Integrations</span> section, and locate the <span class="guilabel">Asterisk (VoIP)</span> fields. Then,
+proceed to fill in those three fields with the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">OnSIP Domain</span>: the domain that was assigned when creating an account on <a class="reference external" href="https://www.onsip.com/">OnSIP</a>.</p></li>
+<li><p><span class="guilabel">WebSocket</span>: <code class="o_code docutils literal notranslate"><span class="pre">wss://edge.sip.onsip.com</span></code></p></li>
+<li><p><span class="guilabel">VoIP Environment</span>: <span class="guilabel">Production</span></p></li>
+</ul>
+<img alt="VoIP configuration settings in Odoo Settings app." class="align-center" src="../../../_images/asterisk-setting.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To access the OnSIP domain, navigate to <a class="reference external" href="https://www.onsip.com/">OnSIP</a> and log in. Then, click
+the <span class="guilabel">Administrators</span> link in the top-right of the page.</p>
+<p>Next, in the left menu, click <span class="guilabel">Users</span>, and then select any user. By default, the
+selected user opens on the <span class="guilabel">User Info</span> tab.</p>
+<p>Click on the <span class="guilabel">Phone Settings</span> tab to reveal OnSIP configuration credentials (first
+column).</p>
+<img alt="Domain setting revealed (highlighted) on administrative panel of OnSIP management console." class="align-center" src="../../../_images/domain-setting.png" />
+</div>
+</section><section id="odoo-user-setting">
+<h3>Odoo user setting<a class="headerlink" href="#odoo-user-setting" title="Permalink to this headline">¶</a></h3>
+<p>Next, the user needs to be set up in Odoo. Every user associated with an OnSIP user <strong>must</strong> also be
+configured in the Odoo user’s settings/preferences.</p>
+<p>To do that, navigate to <span class="menuselection">Settings app ‣ Manage Users ‣ Select the User</span>.</p>
+<p>On the user form, click <span class="guilabel">Edit</span> to configure the user’s OnSIP account. Then, click the
+<span class="guilabel">Preferences</span> tab, and scroll to the <span class="guilabel">VoIP</span> section.</p>
+<p>In this section, fill in the fields with OnSIP credentials.</p>
+<p>Fill in the following fields with the associated credentials listed below:</p>
+<ul class="simple">
+<li><p><span class="guilabel">VoIP Username</span> / <span class="guilabel">Extension Number</span> = OnSIP <span class="guilabel">Username</span></p></li>
+<li><p><span class="guilabel">OnSIP Auth Username</span> = OnSIP <span class="guilabel">Auth Username</span></p></li>
+<li><p><span class="guilabel">VoIP secret</span> = OnSIP <span class="guilabel">SIP Password</span></p></li>
+<li><p><span class="guilabel">External device number</span> = OnSIP <span class="guilabel">Ext.</span> (extension without the <code class="o_code docutils literal notranslate"><span class="pre">x</span></code>)</p></li>
+</ul>
+<img alt="OnSIP user credentials with username, auth username, SIP password, and extension highlighted." class="align-center" src="../../../_images/onsip-creds.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The OnSIP extension can be found in the <em>User</em> banner line above the tabs.</p>
+</div>
+<p>When these steps are complete, navigate away from the user form in Odoo to save the configurations.</p>
+<p>Once saved, Odoo users can make phone calls by clicking the <span class="guilabel">☎️ (phone)</span> icon in the
+top-right corner of Odoo.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>Additional setup and troubleshooting steps can be found on <a class="reference external" href="https://support.onsip.com/hc/en-us">OnSIP’s knowledge base</a>.</p>
+</div>
+</section><section id="incoming-calls">
+<h3>Incoming calls<a class="headerlink" href="#incoming-calls" title="Permalink to this headline">¶</a></h3>
+<p>The Odoo database also receives incoming calls that produce pop-up windows in Odoo. When those call
+pop-up windows appear, click the green <span class="guilabel">📞 (phone)</span> icon to answer the call.</p>
+<p>To ignore the call, click the red <span class="guilabel">📞 (phone)</span> icon.</p>
+<img alt="Incoming call shown in the Odoo VoIP widget." class="align-center" src="../../../_images/incoming-call.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="voip_widget.html"><span class="doc">VoIP widget</span></a></p>
+</div>
+</section><section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
+</section><section id="missing-parameters">
+<h4>Missing parameters<a class="headerlink" href="#missing-parameters" title="Permalink to this headline">¶</a></h4>
+<p>If a <em>Missing Parameters</em> message appears in the Odoo widget, make sure to refresh the Odoo browser
+window (or tab), and try again.</p>
+<img alt="Missing parameter message in the Odoo VoIP widget." class="align-center" src="../../../_images/onsip04.png" />
+</section><section id="incorrect-number">
+<h4>Incorrect number<a class="headerlink" href="#incorrect-number" title="Permalink to this headline">¶</a></h4>
+<p>If an <em>Incorrect Number</em> message appears in the Odoo widget, make sure to use the international
+format for the number. This means leading with the international country code.</p>
+<p>A country code is a locator code that allows access to the desired country’s phone system. The
+country code is dialed first, prior to the target number. Each country in the world has its own
+specific country code.</p>
+<p>For example, <code class="o_code docutils literal notranslate"><span class="pre">16505555555</span></code> (where <code class="o_code docutils literal notranslate"><span class="pre">1</span></code> is the international prefix for the United States).</p>
+<img alt="Incorrect number message populated in the Odoo VoIP widget." class="align-center" src="../../../_images/onsip05.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>For a list of comprehensive country codes, visit: <a class="reference external" href="https://countrycode.org">https://countrycode.org</a>.</p>
+</div>
+</section><section id="onsip-on-mobile-phone">
+<h2>OnSIP on mobile phone<a class="headerlink" href="#onsip-on-mobile-phone" title="Permalink to this headline">¶</a></h2>
+<p>In order to make and receive phone calls when the user is not in front of Odoo on their computer, a
+softphone app on a mobile phone can be used in parallel with Odoo <em>VoIP</em>.</p>
+<p>This is useful for convenient, on-the-go calls, and to make sure incoming calls are heard. Any SIP
+softphone will work.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="devices_integrations.html"><span class="doc">Devices and integrations</span></a></p></li>
+<li><p><a class="reference external" href="https://www.onsip.com/app/download">OnSIP App Download</a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Use VoIP services in Odoo with OnSIP</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#odoo-voip-setting">Odoo VoIP setting</a></li>
+<li><a class="reference internal" href="#odoo-user-setting">Odoo user setting</a></li>
+<li><a class="reference internal" href="#incoming-calls">Incoming calls</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#missing-parameters">Missing parameters</a></li>
+<li><a class="reference internal" href="#incorrect-number">Incorrect number</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#onsip-on-mobile-phone">OnSIP on mobile phone</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Use VoIP services in Odoo with OnSIP</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

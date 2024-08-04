@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shipping cost invoicing &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/invoicing.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/invoicing.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Shipping cost invoicing</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#add-shipping-method">Add shipping method</a></li>
+<li><a class="reference internal" href="#invoice-cost-on-sales-order">Invoice cost on sales order</a></li>
+<li><a class="reference internal" href="#invoice-real-shipping-costs">Invoice real shipping costs</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/invoicing.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Shipping cost invoicing</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="shipping-cost-invoicing">
+<h1>Shipping cost invoicing<a class="headerlink" href="#shipping-cost-invoicing" title="Permalink to this headline">¶</a></h1>
+<p>Invoicing customers for shipping after delivery ensures accurate charges based on real-time shipping
+factors like distance, weight, and method.</p>
+<p>In Odoo, shipping costs can be invoiced in two ways:</p>
+<ol class="arabic simple">
+<li><p>Agree with the customer on a fixed cost and <a class="reference internal" href="#inventory-shipping-invoice-so"><span class="std std-ref">include it in the sale order.</span></a></p></li>
+<li><p><a class="reference internal" href="#inventory-shipping-invoice-shipping"><span class="std std-ref">Invoice shipping costs to the customer post-delivery</span></a>, reflecting the actual expenses incurred by the business.</p></li>
+</ol>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To set prices to delivery methods, go to <span class="menuselection">Inventory app ‣ Configuration ‣
+Settings</span>. Under the <span class="guilabel">Shipping</span> section, enable the <span class="guilabel">Delivery Methods</span> feature.
+Then, click <span class="guilabel">Save</span>.</p>
+<img alt="Enable the &quot;Delivery Methods&quot; feature in Settings." class="align-center" src="../../../../../_images/enable-delivery.png" />
+</section><section id="add-shipping-method">
+<h2>Add shipping method<a class="headerlink" href="#add-shipping-method" title="Permalink to this headline">¶</a></h2>
+<p>Next, configure the the price of each delivery method by going to <span class="menuselection">Inventory app ‣
+Configuration ‣ Shipping Methods</span> and click the <span class="guilabel">Create</span> button. Doing so opens a form
+to provide details about the shipping provider, including:</p>
+<ul>
+<li><p><span class="guilabel">Shipping Method</span> (<em>required</em>) the name of the delivery method (e.g. <code class="o_code docutils literal notranslate"><span class="pre">flat-rate</span>
+<span class="pre">shipping</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">same</span> <span class="pre">day</span> <span class="pre">delivery</span></code>, etc.).</p></li>
+<li><p><span class="guilabel">Provider</span> (<em>required</em>): choose the delivery service, like FedEx, if using a
+third-party carrier Ensure the integration with the shipping carrier is properly installed and
+select the provider from the drop-down menu.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../setup_configuration/third_party_shipper.html"><span class="doc">Third-party shipping carriers</span></a></p>
+</div>
+</li>
+<li><p><span class="guilabel">Company</span>: if the shipping method should apply to a specific company, select it from the
+drop-down menu. Leave the field blank to apply the method to all companies.</p></li>
+<li><p><span class="guilabel">Website</span>: configure shipping methods for an e-commerce page. Select the applicable
+website from the drop-down menu, or leave it blank to apply the method to all web pages.</p></li>
+<li><p><span class="guilabel">Delivery Product</span> (<em>required</em>): the product listed on the <a class="reference internal" href="#inventory-shipping-invoice-on-so"><span class="std std-ref">sales order line</span></a> as the delivery charge.</p></li>
+<li><p><span class="guilabel">Free if order amount is above</span>: checking this box enables free shipping if the customer
+spends above the specified amount.</p></li>
+</ul>
+</section><section id="invoice-cost-on-sales-order">
+<span id="inventory-shipping-invoice-so"></span><h2>Invoice cost on sales order<a class="headerlink" href="#invoice-cost-on-sales-order" title="Permalink to this headline">¶</a></h2>
+<p>To invoice shipping costs on the sales order, before the item is delivered, go to the
+<span class="menuselection">Sales app</span> and select the desired sales order.</p>
+<p>On the sales order, click the <span class="guilabel">Add Shipping</span> button at the bottom-right corner.</p>
+<img alt="Click &quot;Add Shipping&quot; button at the bottom right, near the total." class="align-center" src="../../../../../_images/add-shipping.png" />
+<p>In the <span class="guilabel">Add a shipping method</span> pop-up window, choose the intended carrier in the
+<span class="guilabel">Shipping Method</span> field.</p>
+<p>Then, click the <span class="guilabel">Get Rate</span> button to the calculate shipping price based on real-time
+shipping data Odoo’s shipping carrier integration.</p>
+<p>The <span class="guilabel">Cost</span> is automatically calculated using the weight of the items in the order.
+Finally, click the <span class="guilabel">Add</span> button to close the window.</p>
+<img alt="Calculate shipping by selecting a shipping method." class="align-center" src="../../../../../_images/add-a-shipping-method.png" />
+<p id="inventory-shipping-invoice-on-so">On the sales order, the delivery product appears in the <span class="guilabel">Order Lines</span> tab, with the
+<span class="guilabel">Unit Price</span> set as the shipping cost calculated in the <span class="guilabel">Add a shipping method</span>
+pop-up window.</p>
+<img alt="Show delivery product on the sales order line." class="align-center" src="../../../../../_images/delivery-product.png" />
+<p>Finally, after the product is delivered, click the <span class="guilabel">Create invoice</span> button, and an invoice
+is created that includes the shipping cost that was added earlier.</p>
+<img alt="Show &quot;Create Invoice&quot; button." class="align-center" src="../../../../../_images/create-invoice.png" />
+<p>Then, click the <span class="guilabel">Create and View Invoice</span> button, and a draft invoice is generated, with
+the shipping cost included in the <span class="guilabel">Invoice Lines</span> tab.</p>
+<img alt="Show delivery product in the invoice line." class="align-center" src="../../../../../_images/invoice-line.png" />
+</section><section id="invoice-real-shipping-costs">
+<span id="inventory-shipping-invoice-shipping"></span><h2>Invoice real shipping costs<a class="headerlink" href="#invoice-real-shipping-costs" title="Permalink to this headline">¶</a></h2>
+<p>To modify the invoice to reflect the real cost of shipping, follow the steps <a class="reference internal" href="#inventory-shipping-invoice-so"><span class="std std-ref">above</span></a> to create an invoice with a delivery product with a <span class="guilabel">Unit
+Price</span> of zero.</p>
+<p>Then, on a draft invoice, modify the <span class="guilabel">Unit Price</span> to reflect the real shipping cost.
+Finally, invoice the customer the adjusted shipping cost by clicking <span class="guilabel">Confirm</span>.</p>
+<img alt="Show delivery product on the invoice line." class="align-center" src="../../../../../_images/invoice-cost.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../setup_configuration/third_party_shipper.html"><span class="doc">Third-party shipping carriers</span></a></p></li>
+<li><p><a class="reference internal" href="../setup_configuration/labels.html"><span class="doc">Print shipping labels</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Shipping cost invoicing</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#add-shipping-method">Add shipping method</a></li>
+<li><a class="reference internal" href="#invoice-cost-on-sales-order">Invoice cost on sales order</a></li>
+<li><a class="reference internal" href="#invoice-real-shipping-costs">Invoice real shipping costs</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Shipping cost invoicing</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

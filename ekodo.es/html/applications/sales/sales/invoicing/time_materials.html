@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invoicing based on time and materials &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/invoicing/time_materials.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/invoicing/time_materials.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Invoicing based on time and materials</a><ul>
+<li><a class="reference internal" href="#app-and-settings-configuration">App and settings configuration</a></li>
+<li><a class="reference internal" href="#service-product-configuration">Service product configuration</a></li>
+<li><a class="reference internal" href="#add-time-spent-to-sales-order">Add time spent to sales order</a></li>
+<li><a class="reference internal" href="#invoice-time-spent">Invoice time spent</a></li>
+<li><a class="reference internal" href="#expenses-configuration">Expenses configuration</a></li>
+<li><a class="reference internal" href="#add-expenses-to-sales-order">Add expenses to sales order</a></li>
+<li><a class="reference internal" href="#invoice-expenses">Invoice expenses</a></li>
+<li><a class="reference internal" href="#purchase-configuration">Purchase configuration</a></li>
+<li><a class="reference internal" href="#add-purchase-to-sales-order">Add purchase to sales order</a></li>
+<li><a class="reference internal" href="#invoice-purchase">Invoice purchase</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/invoicing/time_materials.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Invoicing based on time and materials</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="invoicing-based-on-time-and-materials">
+<h1>Invoicing based on time and materials<a class="headerlink" href="#invoicing-based-on-time-and-materials" title="Permalink to this headline">¶</a></h1>
+<p>Invoicing based on time and/or materials is typically used when accurately estimating the size of a
+project isn’t possible, or when the requirements of a project may change.</p>
+<p>This is different from a fixed-price contract, when a customer agrees to pay a specified total for
+the fulfillment of the contract—no matter what needs to be paid to the employees, sub-contractors,
+vendors, suppliers, and so on.</p>
+<p>The Odoo <em>Sales</em> app can invoice for time and various other expenses (e.g. transport, lodging), as
+well as purchases needed to fulfill an order.</p>
+</section><section id="app-and-settings-configuration">
+<h2>App and settings configuration<a class="headerlink" href="#app-and-settings-configuration" title="Permalink to this headline">¶</a></h2>
+<p>First, in order to accurately keep track of the progress of a project, the Odoo <em>Project</em> and
+<em>Accounting</em> apps <strong>must</strong> be installed.</p>
+<p>To install the <em>Project</em> app, navigate to <span class="menuselection">Odoo main dashboard ‣ Apps</span>. Then, on
+the <span class="guilabel">Apps</span> page, locate the <span class="guilabel">Project</span> app block, and click <span class="guilabel">Activate</span>.
+The page automatically refreshes and returns to the main Odoo dashboard, where the <em>Project</em> app is
+now available to access.</p>
+<p>Repeat the same process to install the <em>Accounting</em> application.</p>
+<p>After installation, click the <span class="guilabel">Accounting</span> app icon from the main Odoo dashboard, and
+navigate to <span class="menuselection">Configuration ‣ Settings</span>. On the <span class="guilabel">Settings</span> page, scroll
+down to the <span class="guilabel">Analytics</span> section, and ensure the box next to <span class="guilabel">Analytic
+Accounting</span> is checked.</p>
+<img alt="Ativar la contabilidad analitica en los ajustes de Odoo" class="align-center" src="../../../../_images/activar_contanalitica.png" />
+<p>Then, click <span class="guilabel">Save</span> to save all changes.</p>
+<p>Then, navigate to <span class="menuselection">Odoo main dashboard ‣ Project app ‣ Configuration ‣
+Settings</span>. On the <span class="guilabel">Settings</span> page, in the <span class="guilabel">Time Management</span> section, ensure the
+box beside the <span class="guilabel">Timesheets</span> feature is checked.</p>
+<p>Then, click <span class="guilabel">Save</span> to save all changes.</p>
+<img alt="Activar el registro de tareas en los ajustes de Odoo" class="align-center" src="../../../../_images/registros_tareas.png" />
+</section><section id="service-product-configuration">
+<span id="sales-invoicing-configured-service-product"></span><h2>Service product configuration<a class="headerlink" href="#service-product-configuration" title="Permalink to this headline">¶</a></h2>
+<p>With the <em>Timesheets</em> feature activated in the <em>Project</em> app, it is now possible to invoice for time
+spent on a project, but <strong>only</strong> when the following product configurations have been made.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Invoicing for time spent on a project is <strong>only</strong> possible with products that have <em>Service</em> set
+as the <em>Product Type</em> on their product form.</p>
+</div>
+<p>To configure a service product, first navigate to <span class="menuselection">Sales app ‣ Products ‣
+Products</span>. On the <span class="guilabel">Products</span> page, select the desired service product to be configured, or
+click <span class="guilabel">New</span> to create a new product.</p>
+<p>From the product form, in the <span class="guilabel">General Information</span> tab, set the <span class="guilabel">Product Type</span>
+to <span class="guilabel">Service</span>. Then, open the drop-down menu in the <span class="guilabel">Invoicing Policy</span> field, and
+select <span class="guilabel">Based on Timesheets</span>.</p>
+<p>Next, from the <span class="guilabel">Create on Order</span> drop-down menu, select <span class="guilabel">Project &amp; Task</span>. That
+setting indicates that, when a sales order is created with this specific service product, a new
+project and task is created in the <em>Project</em> app.</p>
+<img alt="Los ajustes correctos para el campo crear bajo pedido para un producto de servicio" class="align-center" src="../../../../_images/producto_como_servicio.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The option <span class="guilabel">Task</span> can be chosen instead from the <span class="guilabel">Create on Order</span> drop-down
+menu. If <span class="guilabel">Task</span> is chosen, select an existing project that the task will appear in from
+<span class="guilabel">Project</span> field, which only appears if <span class="guilabel">Task</span> is chosen in the
+<span class="guilabel">Create on Order</span> field.</p>
+</div>
+</section><section id="add-time-spent-to-sales-order">
+<h2>Add time spent to sales order<a class="headerlink" href="#add-time-spent-to-sales-order" title="Permalink to this headline">¶</a></h2>
+<p>After properly configuring a service product with the correct <em>Invoicing Policy</em> and <em>Create on
+Order</em> options, it is possible to add time spent to a sales order.</p>
+<p>To see that in action, navigate to <span class="menuselection">Sales app ‣ New</span> to open a blank quotation
+form. Then, proceed to add a <span class="guilabel">Customer</span>, and in the <span class="guilabel">Order Lines</span> tab, click
+<span class="guilabel">Add a product</span>, and select the properly <a class="reference internal" href="#sales-invoicing-configured-service-product"><span class="std std-ref">configured service product</span></a> from the drop-down menu.</p>
+<p>Next, click <span class="guilabel">Confirm</span> to confirm the order.</p>
+<p>After confirming the sales order, two smart buttons appear at the top of the order form:
+<span class="guilabel">Projects</span> and <span class="guilabel">Tasks</span>.</p>
+<img alt="Botones inteligentes en la ficha de presupuesto" class="align-center" src="../../../../_images/botones_inteligentes.png" />
+<p>If the <span class="guilabel">Projects</span> smart button is clicked, it reveals the specific project related to this
+sales order. If the <span class="guilabel">Tasks</span> smart button is clicked, it reveals the specific project task
+related to this sales order. Both are also accessible in the <em>Project</em> app.</p>
+<p>In order to add time spent on a sales order, click the <span class="guilabel">Tasks</span> smart button.</p>
+<p>On the task form, select the <span class="guilabel">Timesheets</span> tab. From the <span class="guilabel">Timesheets</span> tab,
+employees can be assigned to work on the project, and the time they spend working on the task can be
+added by the employees or by the person who created the sales order.</p>
+<p>To add an employee, and the time spent working on the task, click <span class="guilabel">Add a line</span> in the
+<span class="guilabel">Timesheets</span> tab. Then, select the appropriate <span class="guilabel">Date</span> and <span class="guilabel">Employee</span>.
+There is also the option to add a brief description of the work done during this time in the
+<span class="guilabel">Description</span> column, but it’s not required.</p>
+<p>Lastly, enter the amount of time worked on the task in the <span class="guilabel">Hours Spent</span> column, and click
+away to complete that line in the <span class="guilabel">Timesheets</span> tab.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The time entered in the <span class="guilabel">Hours Spent</span> column is immediately reflected in the
+<span class="guilabel">Allocated Time</span> field (located near the top of the task form) as a percentage, which
+reflects how much of the total allocated work hours have been done so far.</p>
+<p>That same information is found as numerical hours in the <span class="guilabel">Hours Spent</span> and
+<span class="guilabel">Remaining Hours</span> fields, located at the bottom of the <span class="guilabel">Timesheets</span> tab.</p>
+<img alt="Como aparece la pestaña de hojas de tiempo en un formulario de tarea en Odoo" class="align-center" src="../../../../_images/horas_dedicadas.png" />
+</div>
+<p>Repeat this process for however many employees and hours have been worked on the project.</p>
+</section><section id="invoice-time-spent">
+<h2>Invoice time spent<a class="headerlink" href="#invoice-time-spent" title="Permalink to this headline">¶</a></h2>
+<p>Once all the necessary employees and time spent have been added to the project task, return to the
+sales order to invoice the customer for those hours. To do that, either click the <span class="guilabel">Sales
+Order</span> smart button at the top of the task form, or return to the sales order via the breadcrumb
+links, located in the upper-left of the screen.</p>
+<p>Back on the sales order form, the time that was added to the task is reflected in the
+<span class="guilabel">Order Lines</span> tab (in the <span class="guilabel">Delivered</span> column) and in the new <span class="guilabel">Recorded
+Hours</span> smart button at the top of the sales order.</p>
+<p>To invoice the customer for time spent on the project, click <span class="guilabel">Create Invoice</span>, and select
+<span class="guilabel">Regular invoice</span> from the <span class="guilabel">Create invoices</span> pop-up window. Then, click
+<span class="guilabel">Create Draft Invoice</span>.</p>
+<p>Doing so reveals a <span class="guilabel">Customer Invoice Draft</span>, clearly showing all the work that’s been done
+in the <span class="guilabel">Invoice Lines</span> tab.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Pay attention to the <span class="guilabel">Analytic Distribution</span> column in the <span class="guilabel">Customer
+Invoice</span>, as that information is necessary to ensure other time/material invoicing tasks are
+completed properly and accurately.</p>
+<img alt="Borrador de factura mostrando el tiempo dedicado en el pedido de venta en Odoo" class="align-center" src="../../../../_images/linea_pedido.png" />
+</div>
+<p>Click <span class="guilabel">Confirm</span> to confirm the invoice and continue with the invoicing process.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="invoicing_policy.html"><span class="doc">Invoice based on delivered or ordered quantities</span></a></p>
+</div>
+</section><section id="expenses-configuration">
+<h2>Expenses configuration<a class="headerlink" href="#expenses-configuration" title="Permalink to this headline">¶</a></h2>
+<p>In order to track and invoice expenses related to a sales order, the Odoo <em>Expenses</em> app <strong>must</strong> be
+installed.</p>
+<p>To install the <em>Expenses</em> app, navigate to <span class="menuselection">Odoo main dashboard ‣ Apps</span>. Then, on
+the <span class="guilabel">Apps</span> page, locate the <span class="guilabel">Expenses</span> app block, and click
+<span class="guilabel">Activate</span>.</p>
+<p>The page automatically refreshes and returns to the main Odoo dashboard, where the
+<span class="guilabel">Expenses</span> app is now available to access.</p>
+</section><section id="add-expenses-to-sales-order">
+<span id="sales-invoicing-add-expenses-sales-order"></span><h2>Add expenses to sales order<a class="headerlink" href="#add-expenses-to-sales-order" title="Permalink to this headline">¶</a></h2>
+<p>To add an expense to a sales order, first navigate to the <span class="menuselection">Expenses</span> app. Then, from
+the main <em>Expenses</em> dashboard, click <span class="guilabel">New</span>, which reveals a blank expense form.</p>
+<p>On the expense form, add a <span class="guilabel">Description</span> of the expense (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Hotel</span> <span class="pre">Stay</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Plane</span>
+<span class="pre">Ticket</span></code>). Next, in the <span class="guilabel">Category</span> field, select the appropriate option from the drop-down
+menu (e.g. <span class="guilabel">Meals</span>, <span class="guilabel">Miles</span>, <span class="guilabel">Travel &amp; Accommodation</span>).</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Expense categories can be added and modified by navigating to <span class="menuselection">Expenses app ‣
+Configuration ‣ Expense Categories</span>.</p>
+</div>
+<p>Then, enter the total amount of the expense in the <span class="guilabel">Total</span> field, as well as any
+<span class="guilabel">Included Taxes</span> that may apply. Next, ensure that the correct <span class="guilabel">Employee</span> is
+selected, and designate who paid for the expense in the <span class="guilabel">Paid By</span> field: the
+<span class="guilabel">Employee (to reimburse)</span> or the <span class="guilabel">Company</span>.</p>
+<p>Next, in the <span class="guilabel">Customer to Reinvoice</span> field, select the appropriate sales order from the
+drop-down menu. Then, select that same sales order information from the <span class="guilabel">Analytic
+Distribution</span> field, as well.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Analytic Distribution</span> field will <strong>only</strong> have the corresponding sales order as
+an option if the sales order contains a service product that is billed based on <em>Timesheets</em>,
+<em>Milestones</em>, or <em>Delivered Quantities</em>.</p>
+</div>
+<img alt="Como rellenar correctamente la ficha de gastos de Odoo" class="align-center" src="../../../../_images/agregar_gasto.png" />
+<p>If there are any receipts that should be uploaded and attached to the expense, click the
+<span class="guilabel">Attach Receipt</span> button, and upload the necessary documents to the expense. This is
+<strong>not</strong> required, but it may affect whether or not an expense is approved.</p>
+<p>When all the information has been entered, click <span class="guilabel">Create Report</span> to create an expense
+report detailing all the expense information that was just entered.</p>
+<img alt="Cómo se ve un Resumen de Informe de Gastos en Odoo Expenses." class="align-center" src="../../../../_images/reporte_creado.png" />
+<p>Then, there’s the option to <span class="guilabel">Submit to Manager</span> for approval. Once approved, the
+<span class="guilabel">Report in Next Payslip</span> appears.</p>
+<p>To showcase a complete flow in this example, select <span class="guilabel">Submit to Manager</span>. Then, the manager
+would click <span class="guilabel">Approve</span> to approve this expense, and click <span class="guilabel">Post Journal Entries</span>
+to post this expense to the accounting journal.</p>
+</section><section id="invoice-expenses">
+<h2>Invoice expenses<a class="headerlink" href="#invoice-expenses" title="Permalink to this headline">¶</a></h2>
+<p>To invoice a customer for an <a class="reference internal" href="#sales-invoicing-add-expenses-sales-order"><span class="std std-ref">expense on a sales order</span></a>, navigate to the related sales order, either from the
+<span class="menuselection">Sales</span> app or from the expense report in the <span class="menuselection">Expenses</span> app. From the
+expense report, click the <span class="guilabel">Sales Orders</span> smart button at the top of the page.</p>
+<p>If the expense report was linked to the sales order, the newly-configured expense now has its own
+line in the <span class="guilabel">Order Lines</span> tab, and can be invoiced to the customer.</p>
+<img alt="El gasto aparece en las lineas de pedido de la orden de venta" class="align-center" src="../../../../_images/gastos_factura.png" />
+<p>To invoice the customer for the expense on the sales order, click <span class="guilabel">Create Invoice</span>, select
+<span class="guilabel">Regular Invoice</span> from the <span class="guilabel">Create invoices</span> pop-up window, then click
+<span class="guilabel">Create Draft Invoice</span>.</p>
+<p>Doing so reveals a <span class="guilabel">Customer Invoice Draft</span> for the expense. Then, the invoicing process
+can be completed as usual.</p>
+<img alt="Ejemplo de factura de cliente por un gasto generado a partir de un pedido de venta" class="align-center" src="applications/sales/sales/invoicing/time_materials/gastos_factura(2).png" />
+</section><section id="purchase-configuration">
+<h2>Purchase configuration<a class="headerlink" href="#purchase-configuration" title="Permalink to this headline">¶</a></h2>
+<p>In order to invoice a customer for purchases made on a sales order, the <em>Purchase</em> application
+<strong>must</strong> be installed.</p>
+<p>To install the <em>Purchase</em> application, navigate to <span class="menuselection">Odoo main dashboard ‣ Apps</span>.
+Then, on the <span class="guilabel">Apps</span> page, locate the <span class="guilabel">Purchase</span> app block, and click
+<span class="guilabel">Activate</span>. The page automatically refreshes and returns to the main Odoo dashboard, where
+the <span class="guilabel">Purchase</span> app is now available to access.</p>
+</section><section id="add-purchase-to-sales-order">
+<span id="sales-invoicing-add-purchase-to-sales-order"></span><h2>Add purchase to sales order<a class="headerlink" href="#add-purchase-to-sales-order" title="Permalink to this headline">¶</a></h2>
+<p>To add a purchase to a sales order, a purchase order must first be created. To create a purchase
+order, navigate to <span class="menuselection">Purchase app ‣ New</span> to reveal a blank purchase order form.</p>
+<p>First, add a <span class="guilabel">Vendor</span> to the purchase order. Then, under the <span class="guilabel">Products</span> tab,
+click the <span class="guilabel">extra column options</span> drop-down menu, represented by two horizontal lines with
+dots on them, located to the far-right of the column headers. From that drop-down menu, select
+<span class="guilabel">Analytic Distribution</span>.</p>
+<img alt="Añadir la distribucion analitica al despegable de la compra" class="align-center" src="../../../../_images/desplegable_analitico.png" />
+<p>After adding the <span class="guilabel">Analytic Distribution</span> column to the headers on the <span class="guilabel">Products</span>
+tab of the purchase order form, proceed to add the product(s) to the purchase order. To do that,
+click <span class="guilabel">Add a product</span>, and select the desired product from the drop-down menu. Repeat for
+all the products to add.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>In order for a purchase to be properly invoiced on a sales order, the product on the purchase
+order <strong>must</strong> be marked as <span class="guilabel">Can be Expensed</span>, have an <span class="guilabel">Invoicing Policy</span> set
+to <span class="guilabel">Delivered quantities</span>, and have the <span class="guilabel">At cost</span> option selected in the
+<span class="guilabel">Re-Invoice Expenses</span> field on its product form.</p>
+<img alt="Configuración del producto para que un pedido de compra sea facturado en un pedido de venta" class="align-center" src="../../../../_images/facturar_compra.png" />
+</div>
+<p>Then, select the appropriate <span class="guilabel">Analytic Distribution</span> associated with the sales order to
+which this purchase order is related. To do that, click the empty <span class="guilabel">Analytic Distribution</span>
+field to reveal an <span class="guilabel">Analytic</span> pop-up window.</p>
+<p>Then, from the <span class="guilabel">Departments</span> drop-down menu, select the analytic distribution associated
+with the desired sales order to be invoiced for the purchase.</p>
+<img alt="Cómo seleccionar el departamento de Distribución Analítica desde un pedido de compra" class="align-center" src="../../../../_images/departamentos_analitica.png" />
+<p>Once all the information is entered in the <span class="guilabel">Products</span> tab of the purchase order, confirm
+the order by clicking <span class="guilabel">Confirm Order</span>. Then, click <span class="guilabel">Receive Products</span> when the
+products have been received. This creates a receipt form.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If any serial/lot numbers must be entered before validating the receipt of products, then on the
+receipt form, click the <span class="guilabel">details</span> icon represented by four horizontal lines located to
+the far-right of the product line.</p>
+<p>This reveals a <span class="guilabel">Detailed Operations</span> tab, in which the necessary <span class="guilabel">Lot/Serial
+Number(s)</span> and <span class="guilabel">Done</span> quantity can be added. When ready, click <span class="guilabel">Confirm</span> to
+confirm the data.</p>
+</div>
+<p>Then, click <span class="guilabel">Validate</span> to validate the purchase order.</p>
+<p>Next, return to the purchase order, via the breadcrumb links at the top of the page, and click
+<span class="guilabel">Create Bill</span> to create a vendor bill that can be invoiced to the customer on the attached
+sales order.</p>
+<img alt="Borrador de factura del proveedor para un pedido de compra" class="align-center" src="../../../../_images/borrador_gasto.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Make sure to enter a <span class="guilabel">Bill Date</span> on the <span class="guilabel">Vendor Bill Draft</span> before
+confirming. If a <span class="guilabel">Bill Date</span> is <em>not</em> entered, an error window appears, requesting that
+information to be entered before confirmation can occur.</p>
+</div>
+<p>Then, click <span class="guilabel">Confirm</span> to confirm the vendor bill, which is then automatically added to the
+sales order, where it can be invoiced directly to the customer attached to it.</p>
+</section><section id="invoice-purchase">
+<h2>Invoice purchase<a class="headerlink" href="#invoice-purchase" title="Permalink to this headline">¶</a></h2>
+<p>To invoice a customer for a purchase on a sales order, first <a class="reference internal" href="#sales-invoicing-add-purchase-to-sales-order"><span class="std std-ref">add the purchase to the sales
+order</span></a>, then navigate to the desired sales order in
+the <span class="menuselection">Sales</span> app.</p>
+<p>On the sales order that was attached to the purchase order, the purchased product now has its own
+product line under the <span class="guilabel">Order Lines</span> tab, and it is ready to be invoiced.</p>
+<img alt="Purchase order product on sales order to be invoiced to customer via Odoo Sales." class="align-center" src="../../../../_images/purchase-order-on-sales-order.png" />
+<p>To invoice the customer for the purchase, simply click <span class="guilabel">Create Invoice</span>, select
+<span class="guilabel">Regular Invoice</span> from the <span class="guilabel">Create invoices</span> pop-up window, then click
+<span class="guilabel">Create Draft Invoice</span>.</p>
+<p>Doing so reveals a <span class="guilabel">Customer Invoice Draft</span> with the newly-added purchase order product in
+the <span class="guilabel">Invoice Lines</span> tab.</p>
+<img alt="Customer invoice draft with purchase product attached to sales order in Odoo." class="align-center" src="../../../../_images/draft-invoice-with-purchase-product.png" />
+<p>To complete the invoicing process, click <span class="guilabel">Confirm</span> to confirm the invoice, and then click
+<span class="guilabel">Register Payment</span> in the <span class="guilabel">Register Payment</span> pop-up form.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Invoicing based on time and materials</a><ul>
+<li><a class="reference internal" href="#app-and-settings-configuration">App and settings configuration</a></li>
+<li><a class="reference internal" href="#service-product-configuration">Service product configuration</a></li>
+<li><a class="reference internal" href="#add-time-spent-to-sales-order">Add time spent to sales order</a></li>
+<li><a class="reference internal" href="#invoice-time-spent">Invoice time spent</a></li>
+<li><a class="reference internal" href="#expenses-configuration">Expenses configuration</a></li>
+<li><a class="reference internal" href="#add-expenses-to-sales-order">Add expenses to sales order</a></li>
+<li><a class="reference internal" href="#invoice-expenses">Invoice expenses</a></li>
+<li><a class="reference internal" href="#purchase-configuration">Purchase configuration</a></li>
+<li><a class="reference internal" href="#add-purchase-to-sales-order">Add purchase to sales order</a></li>
+<li><a class="reference internal" href="#invoice-purchase">Invoice purchase</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Invoicing based on time and materials</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

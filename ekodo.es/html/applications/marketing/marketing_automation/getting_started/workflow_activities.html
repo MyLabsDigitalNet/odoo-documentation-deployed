@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campaign workflow activities &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/marketing/marketing_automation/getting_started/workflow_activities.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/marketing/marketing_automation/getting_started/workflow_activities.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Campaign workflow activities</a><ul>
+<li><a class="reference internal" href="#add-workflow-activities">Add workflow activities</a><ul>
+<li><a class="reference internal" href="#activity-types">Activity types</a><ul>
+<li><a class="reference internal" href="#email-activity">Email activity</a></li>
+<li><a class="reference internal" href="#server-action-activity">Server action activity</a></li>
+<li><a class="reference internal" href="#sms-activity">SMS activity</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#trigger">Trigger</a></li>
+<li><a class="reference internal" href="#expiry-duration">Expiry duration</a></li>
+<li><a class="reference internal" href="#activity-and-applied-filters">Activity and applied filters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflow-activity">Workflow activity</a></li>
+<li><a class="reference internal" href="#child-activities">Child activities</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/marketing/marketing_automation/getting_started/workflow_activities.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Campaign workflow activities</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="campaign-workflow-activities">
+<h1>Campaign workflow activities<a class="headerlink" href="#campaign-workflow-activities" title="Permalink to this headline">¶</a></h1>
+<p>When creating a marketing campaign in the <em>Marketing Automation</em> app, users can plan marketing
+activities that can be triggered when certain actions or inactions occur. These can be activities
+such as, automated emails, SMS, or internal server actions.</p>
+</section><section id="add-workflow-activities">
+<h2>Add workflow activities<a class="headerlink" href="#add-workflow-activities" title="Permalink to this headline">¶</a></h2>
+<p>To add workflow activities to a marketing campaign, navigate to the bottom of a pre-existing or new
+campaign detail form, beneath the target audience configuration fields, and click <span class="guilabel">Add new
+activity</span>.</p>
+<p>Doing so reveals a <span class="guilabel">Create Activities</span> pop-up window. This pop-up window is a blank
+activity template, where specific parameters can be set for that particular activity.</p>
+<img alt="A workflow activity template pop-up window in Odoo Marketing Automation." class="align-center" src="../../../../_images/activity-template.png" />
+<p>First, enter a name for the activity in the <span class="guilabel">Activity Name</span> field. Then, proceed to
+configure the following options.</p>
+<p>Once ready, either click: <span class="guilabel">Save &amp; Close</span> to save the activity and close the pop-up form,
+<span class="guilabel">Save &amp; New</span> to save the activity and instantly create an additional activity on a fresh
+<span class="guilabel">Create Activities</span> pop-up form, or <span class="guilabel">Discard</span> to delete the activity.</p>
+</section><section id="activity-types">
+<h3>Activity types<a class="headerlink" href="#activity-types" title="Permalink to this headline">¶</a></h3>
+<p>Then, select the <span class="guilabel">Activity Type</span>. Choose between <span class="guilabel">Email</span>, <span class="guilabel">Server
+Action</span> (an internal action within the database), or <span class="guilabel">SMS</span>.</p>
+<p>The field below the <span class="guilabel">Activity Type</span> changes, depending on the chosen <span class="guilabel">Activity
+Type</span>.</p>
+</section><section id="email-activity">
+<h4>Email activity<a class="headerlink" href="#email-activity" title="Permalink to this headline">¶</a></h4>
+<p>If <span class="guilabel">Email</span> is the <span class="guilabel">Activity Type</span>, the option to choose a premade/pre-configured
+<span class="guilabel">Mail Template</span> becomes available. A mail template can also be created on-the-fly, as
+well.</p>
+<p>To create a new template directly from the <span class="guilabel">Mail Template</span> field, start typing the title
+of the new template into the blank field beside <span class="guilabel">Mail Template</span>, and select
+<span class="guilabel">Create and edit…</span> to reveal a <span class="guilabel">Create Marketing Template</span> pop-up window.</p>
+<img alt="The create and edit email drop-down option on create activities pop-up window." class="align-center" src="../../../../_images/email-activity-create-edit.png" />
+<p>In that pop-up window, proceed to create and configure the new email template.</p>
+<img alt="The create marketing template email pop-up window in Odoo Marketing Automation." class="align-center" src="../../../../_images/create-marketing-template-popup-window.png" />
+</section><section id="server-action-activity">
+<h4>Server action activity<a class="headerlink" href="#server-action-activity" title="Permalink to this headline">¶</a></h4>
+<p>If <span class="guilabel">Server Action</span> is the <span class="guilabel">Activity Type</span>, the option to choose a specific
+<span class="guilabel">Server Action</span> (e.g. Message for sales person, Create Leads on Website clicks, etc.)
+becomes available.</p>
+<p>The option to create a new server action directly from the <span class="guilabel">Server Action</span> is also
+available. To do that, type in the name of the new action, then click <span class="guilabel">Create and Edit…</span>
+from the drop-down menu.</p>
+<img alt="The create and edit option in the server action field on campaign detail form." class="align-center" src="../../../../_images/server-action-create-edit-option.png" />
+<p>Or, as an alternative, click the empty <span class="guilabel">Server Action</span> field to reveal a drop-down menu,
+and select <span class="guilabel">Search More…</span> to reveal a <span class="guilabel">Search: Server Action</span> pop-up window,
+containing all the pre-configured server action options to choose from.</p>
+<p>To create a new server action from this pop-up window, and click <span class="guilabel">New</span>.</p>
+<img alt="The new button found on a server action pop-up in Odoo marketing automation application." class="align-center" src="../../../../_images/search-server-action-new-button.png" />
+<p>Either option reveals a blank <span class="guilabel">Create Server Action</span> pop-up, wherein a custom server
+action can be created and configured.</p>
+</section><section id="sms-activity">
+<h4>SMS activity<a class="headerlink" href="#sms-activity" title="Permalink to this headline">¶</a></h4>
+<p>If <span class="guilabel">SMS</span> is the <span class="guilabel">Activity Type</span>, the option to choose a premade/pre-configured
+<span class="guilabel">SMS Template</span> becomes available. A SMS template can also be created on-the-fly directly
+from this field.</p>
+<p>To create a new template directly from the <span class="guilabel">SMS Template</span> field, start typing the title
+of the new template into the blank field beside <span class="guilabel">SMS Template</span>, and select
+<span class="guilabel">Create and edit…</span> from the drop-down menu.</p>
+<img alt="The create and edit email drop-down option on create activities pop-up window." class="align-center" src="../../../../_images/create-edit-sms-option.png" />
+<p>Doing so reveals a <span class="guilabel">Create Marketing Template</span> pop-up window. In that pop-up window,
+proceed to create and configure the new SMS template.</p>
+<img alt="The create marketing template pop-up window to create a SMS template on-the-fly." class="align-center" src="../../../../_images/sms-marketing-template-popup.png" />
+</section><section id="trigger">
+<h3>Trigger<a class="headerlink" href="#trigger" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Trigger</span> field on the <span class="guilabel">Create Activities</span> pop-up form allows users to
+choose when the designated workflow activity should be triggered.</p>
+<p>Start by selecting a number in the top field. In the next <span class="guilabel">Trigger</span> field, designate if
+it should be <span class="guilabel">Hours</span>, <span class="guilabel">Days</span>, <span class="guilabel">Weeks</span>, or <span class="guilabel">Months</span>. Then,
+click the final field, where it reads <span class="guilabel">beginning of the workflow</span> be default to reveal a
+a drop-down menu of other trigger options.</p>
+<img alt="A list of the trigger options available on the workflow activities pop-up form." class="align-center" src="../../../../_images/trigger-options-drop-down-menu.png" />
+<p>The trigger options are as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">beginning of the workflow</span>: the activity will be triggered at the previously-configured
+time after the beginning of the entire workflow.</p></li>
+<li><p><span class="guilabel">another activity</span>: the activity will be triggered at the previously-configured time
+after another specific activity in the workflow.</p></li>
+<li><p><span class="guilabel">Mail:opened</span>: the activity will be triggered at the previously-configured time if the
+sent mail in the workflow has been opened by the recipient.</p></li>
+<li><p><span class="guilabel">Mail:not opened</span>: the activity will be triggered at the previously-configured time if
+the sent mail in the workflow has not been opened by the recipient.</p></li>
+<li><p><span class="guilabel">Mail: replied</span>: the activity will be triggered at the previously-configured time if the
+sent mail in the workflow has been replied to by the recipient.</p></li>
+<li><p><span class="guilabel">Mail: not replied</span>: the activity will be triggered at the previously-configured time if
+the sent mail in the workflow has not been replied to by the recipient.</p></li>
+<li><p><span class="guilabel">Mail: clicked</span>: the activity will be triggered at the previously-configured time if the
+sent mail in the workflow has been clicked by the recipient, after it’s been opened.</p></li>
+<li><p><span class="guilabel">Mail: not clicked</span>: the activity will be triggered at the previously-configured time if
+the sent mail in the workflow has not been clicked by the recipient, after it’s been opened.</p></li>
+<li><p><span class="guilabel">Mail: bounced</span>: the activity will be triggered at the previously-configured time if the
+sent mail in the workflow has been bounced back for any reason.</p></li>
+<li><p><span class="guilabel">SMS: clicked</span>: the activity will be triggered at the previously-configured time if the
+sent SMS in the workflow has been clicked by the recipient, after it’s been opened.</p></li>
+<li><p><span class="guilabel">SMS: not clicked</span>: the activity will be triggered at the previously-configured time if
+the sent SMS in the workflow has not been clicked by the recipient, after it’s been opened.</p></li>
+<li><p><span class="guilabel">SMS: bounced</span>: the activity will be triggered at the previously-configured time if the
+sent SMS in the workflow has been bounced back for any reason.</p></li>
+</ul>
+</section><section id="expiry-duration">
+<h3>Expiry duration<a class="headerlink" href="#expiry-duration" title="Permalink to this headline">¶</a></h3>
+<p>Next, on the <span class="guilabel">Create Activities</span> pop-up form is the <span class="guilabel">Expiry Duration</span> option.</p>
+<p>The <span class="guilabel">Expiry Duration</span> checkbox provides the option to configure the activity to stop the
+actions after a specific amount of time (after the scheduled date).</p>
+<p>When selected, a <span class="guilabel">Cancel after</span> field appears, in which the number of <span class="guilabel">Hours,
+Days, Weeks, or Months</span> can be configured for the actions to cease after the initial date.</p>
+<img alt="A list of the expiry duration options available on the workflow activities pop-up form." class="align-center" src="../../../../_images/expiry-duration-field-options.png" />
+</section><section id="activity-and-applied-filters">
+<h3>Activity and applied filters<a class="headerlink" href="#activity-and-applied-filters" title="Permalink to this headline">¶</a></h3>
+<p>Moving down into the <span class="guilabel">Domain</span> section of the <span class="guilabel">Create Activities</span> pop-up form,
+there is the <span class="guilabel">Activity Filter</span> and <span class="guilabel">Applied Filter</span> fields.</p>
+<p>The <span class="guilabel">Activity Filter</span> field provides the option to configure a recipient filter domain
+that applies to this activity <em>and</em> its child activities. In works in the same fashion as a typical
+target audience filter.</p>
+<p>To add an activity filter, click <span class="guilabel">Add condition</span> in the <span class="guilabel">Activity Filter</span> field
+and proceed to configure a custom activity filter equation rule(s).</p>
+<img alt="How to add an activity filter to a workflow activity in Odoo Marketing Automation." class="align-center" src="../../../../_images/activity-filter-option.png" />
+<p>This option is not a required field. If left alone, the activity applies to all records related to
+the target audience of the overall campaign.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="target_audience.html"><span class="doc">Target an audience</span></a></p></li>
+</ul>
+</div>
+<p>The <span class="guilabel">Applied Filter</span> field is non-configurable. It’s simply a summary of when the activity
+will be performed, <em>only</em> if it satisfies the specified domain (e.g. the rules configured in the
+<span class="guilabel">Activity Filter</span> field).</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>After the activity’s settings are fully configured, click <span class="guilabel">Save &amp; Close</span> to save the
+activity and return to the marketing automation campaign form, <span class="guilabel">Save &amp; New</span> to save the
+activity and immediately create another one in a fresh <span class="guilabel">Create Activities</span> pop-up
+window, or <span class="guilabel">Discard</span> to delete the activity and return to the marketing automation
+campaign form.</p>
+</div>
+</section><section id="workflow-activity">
+<h2>Workflow activity<a class="headerlink" href="#workflow-activity" title="Permalink to this headline">¶</a></h2>
+<p>Once an activity is created and saved, it appears as an activity card in the <span class="guilabel">Workflow</span>
+section, located at the bottom of the marketing automation campaign form. The analytics related to
+each activity is displayed as a line graph.</p>
+<img alt="Typical workflow activity in Odoo Marketing Automation." class="align-center" src="../../../../_images/workflow-activity.png" />
+<p>The configured <span class="guilabel">Trigger</span> time for that activity can be found to the left of the
+<span class="guilabel">Workflow Activity</span> card in the <span class="guilabel">Workflow</span> section.</p>
+<p>Once the activity has been triggered, a figure representing the number of <span class="guilabel">Success</span> or
+<span class="guilabel">Rejected</span> activities will be displayed to the right of the graph.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If the <span class="guilabel">Activity Type</span> of the activity is set to <span class="guilabel">Email</span> or <span class="guilabel">SMS</span>,
+there are more in-depth analytics beneath the activity graph data, detailing how many messages
+have been <span class="guilabel">Sent</span>, and what percentage of those have been <span class="guilabel">Clicked</span>,
+<span class="guilabel">Replied</span> to, or <span class="guilabel">Bounced</span>.</p>
+</div>
+</section><section id="child-activities">
+<h2>Child activities<a class="headerlink" href="#child-activities" title="Permalink to this headline">¶</a></h2>
+<p>There is also the option to add a <em>child activity</em> by clicking <span class="guilabel">Add child activity</span>,
+located at the bottom of each activity block in the <span class="guilabel">Workflow</span> section of a marketing
+campaign form.</p>
+<p>Child activities are sub-activities that are connected to and triggered by the activity above it,
+which is known as its <em>parent activity</em>. A child activity is easy to recognize, as its slightly
+indented beneath its parent activity.</p>
+<img alt="A typical child activity indented beneath its parent activity." class="align-center" src="../../../../_images/indented-child-activity.png" />
+<p>Odoo provides a number of triggering options to launch a child activity - all of which depend on the
+trigger configurations related to its parent activity. Under the desired parent activity, hover over
+<span class="guilabel">Add child activity</span>, to reveal a menu of child activity trigger options.</p>
+<img alt="The various child activity trigger options in the workflow section of a campaign." class="align-center" src="../../../../_images/child-activity-trigger-options.png" />
+<p>Select any of the following child activity triggers:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Add Another Activity</span>: instantly adds another activity.</p></li>
+<li><p><span class="guilabel">Opened</span>: the next activity will be triggered if the recipient opens the mailing.</p></li>
+<li><p><span class="guilabel">Not Opened</span>: the next activity will be triggered if the recipient does not open the
+mailing.</p></li>
+<li><p><span class="guilabel">Replied</span>: the next activity will be triggered if the recipient replies to the mailing.</p></li>
+<li><p><span class="guilabel">Not Replied</span>: the next activity will be triggered if the recipient does not reply to
+the mailing.</p></li>
+<li><p><span class="guilabel">Clicked</span>: the next activity will be triggered if the recipient clicks on a link
+included in the mailing.</p></li>
+<li><p><span class="guilabel">Not Clicked</span>: the next activity will be triggered if the recipient does not click on a
+link included in the mailing.</p></li>
+<li><p><span class="guilabel">Bounced</span>: the next activity will be triggered if the mailing is bounced (not sent).</p></li>
+</ul>
+<p>Once a trigger is selected, the user can configure the child activity the same way they would for a
+regular workflow activity.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="testing_running.html"><span class="doc">Testing/running campaigns</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Campaign workflow activities</a><ul>
+<li><a class="reference internal" href="#add-workflow-activities">Add workflow activities</a><ul>
+<li><a class="reference internal" href="#activity-types">Activity types</a><ul>
+<li><a class="reference internal" href="#email-activity">Email activity</a></li>
+<li><a class="reference internal" href="#server-action-activity">Server action activity</a></li>
+<li><a class="reference internal" href="#sms-activity">SMS activity</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#trigger">Trigger</a></li>
+<li><a class="reference internal" href="#expiry-duration">Expiry duration</a></li>
+<li><a class="reference internal" href="#activity-and-applied-filters">Activity and applied filters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflow-activity">Workflow activity</a></li>
+<li><a class="reference internal" href="#child-activities">Child activities</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Campaign workflow activities</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

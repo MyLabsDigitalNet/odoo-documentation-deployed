@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>One-step manufacturing &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/manufacturing/management/one_step_manufacturing.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/manufacturing/management/one_step_manufacturing.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">One-step manufacturing</a><ul>
+<li><a class="reference internal" href="#create-manufacturing-order">Create manufacturing order</a></li>
+<li><a class="reference internal" href="#process-manufacturing-order">Process manufacturing order</a><ul>
+<li><a class="reference internal" href="#basic-workflow">Basic workflow</a></li>
+<li><a class="reference internal" href="#tablet-view-workflow">Tablet view workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/manufacturing/management/one_step_manufacturing.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">One-step manufacturing</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="one-step-manufacturing">
+<h1>One-step manufacturing<a class="headerlink" href="#one-step-manufacturing" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="manufacturing-management-one-step-manufacturing"></span><p>Odoo <em>Manufacturing</em> allows users to manufacture products using one, two, or three steps. When using
+one-step manufacturing, Odoo creates a manufacturing order (MO), but does not generate transfers for
+the movement of components out of inventory or finished products into stock. Inventory counts still
+update based on the number of components used and products manufactured, but the act of transferring
+them to and from inventory is not tracked.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The number of steps used in manufacturing is set at the warehouse level, allowing for each
+warehouse to use a different number of steps. To change the number of steps used for a specific
+warehouse, begin by navigating to <span class="menuselection">Inventory ‣ Configuration ‣ Warehouses</span>,
+and then select a warehouse from the <span class="guilabel">Warehouses</span> screen.</p>
+<p>On the <span class="guilabel">Warehouse Configuration</span> tab, find the <span class="guilabel">Manufacture</span> radio input
+field, and select one of the three options: <span class="guilabel">Manufacture (1 step)</span>, <span class="guilabel">Pick
+components and then manufacture (2 steps)</span>, or <span class="guilabel">Pick components, manufacture and then
+store products (3 steps)</span>.</p>
+<img alt="The Manufacture radio input field on a warehouse configuration page." class="align-center" src="../../../../_images/manufacturing-type.png" />
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Products must be properly configured before they can be manufactured in Odoo. For details on how
+to do so, see the documentation on how to <a class="reference internal" href="configure_manufacturing_product.html#manufacturing-management-configure-manufacturing-product"><span class="std std-ref">configure a product for manufacturing</span></a>.</p>
+</div>
+</section><section id="create-manufacturing-order">
+<h2>Create manufacturing order<a class="headerlink" href="#create-manufacturing-order" title="Permalink to this headline">¶</a></h2>
+<p>To manufacture a product in Odoo <em>Manufacturing</em>, begin by navigating to
+<span class="menuselection">Manufacturing ‣ Operations ‣ Manufacturing Orders</span>, and then click
+<span class="guilabel">New</span> to create a new <abbr title="Manufacturing Order">MO</abbr>.</p>
+<p>On the new <abbr title="Manufacturing Order">MO</abbr>, select the product to be produced from the <span class="guilabel">Product</span> drop-down menu. The
+<span class="guilabel">Bill of Material</span> field auto-populates with the associated bill of materials (BoM).</p>
+<p>If a product has more than one <abbr title="Bill of Materials">BoM</abbr> configured for it, the specific <abbr title="Bill of Materials">BoM</abbr> can be selected in the
+<span class="guilabel">Bill of Material</span> field, and the <span class="guilabel">Product</span> field auto-populates with the
+associated product.</p>
+<p>After a <abbr title="Bill of Materials">BoM</abbr> has been selected, the <span class="guilabel">Components</span> and <span class="guilabel">Work Orders</span> tabs
+auto-populate with the components and operations specified on the <abbr title="Bill of Materials">BoM</abbr>. If additional components or
+operations are required for the <abbr title="Manufacturing Order">MO</abbr> being configured, add them to the <span class="guilabel">Components</span> and
+<span class="guilabel">Work Orders</span> tabs by clicking <span class="guilabel">Add a line</span>.</p>
+</section><section id="process-manufacturing-order">
+<h2>Process manufacturing order<a class="headerlink" href="#process-manufacturing-order" title="Permalink to this headline">¶</a></h2>
+<p>An <abbr title="Manufacturing Order">MO</abbr> is processed by completing all of the work orders listed under its <span class="guilabel">Work Orders</span>
+tab. This can be done on the <abbr title="Manufacturing Order">MO</abbr> itself, or from the work order tablet view.</p>
+</section><section id="basic-workflow">
+<h3>Basic workflow<a class="headerlink" href="#basic-workflow" title="Permalink to this headline">¶</a></h3>
+<p>To complete work orders from the <abbr title="Manufacturing Order">MO</abbr> itself, begin by navigating to <span class="menuselection">Manufacturing
+‣ Operations ‣ Manufacturing Orders</span>, and then select an <abbr title="Manufacturing Order">MO</abbr>.</p>
+<p>On the <abbr title="Manufacturing Order">MO</abbr> page, select the <span class="guilabel">Work Orders</span> tab. Once work begins on the first work order
+that needs to be completed, click the <span class="guilabel">Start</span> button for that work order. Odoo
+<em>Manufacturing</em> then starts a timer that keeps track of how long the work order takes to complete.</p>
+<img alt="The Start button for an operation on a manufacturing order." class="align-center" src="../../../../_images/start-button.png" />
+<p>When the work order is completed, click the <span class="guilabel">Done</span> button for that work order. Repeat the
+same process for each work order listed on the <span class="guilabel">Work Orders</span> tab.</p>
+<img alt="The Done button for an operation on a manufacturing order." class="align-center" src="../../../../_images/done-button.png" />
+<p>After completing all of the work orders, click <span class="guilabel">Produce All</span> at the top of the screen to
+mark the <abbr title="Manufacturing Order">MO</abbr> as <span class="guilabel">Done</span>, and register the manufactured product(s) into inventory.</p>
+</section><section id="tablet-view-workflow">
+<h3>Tablet view workflow<a class="headerlink" href="#tablet-view-workflow" title="Permalink to this headline">¶</a></h3>
+<p>To complete the work orders for an <abbr title="Manufacturing Order">MO</abbr> using the tablet view, begin by navigating to
+<span class="menuselection">Manufacturing ‣ Operations ‣ Manufacturing Orders</span>, and then select a
+manufacturing order.</p>
+<p>Next, click on the <span class="guilabel">Work Orders</span> tab, and then select the <span class="guilabel">📱 (tablet)</span> button
+on the line of the first work order to be processed. This opens the tablet view.</p>
+<img alt="The tablet view button for a work order on a manufacturing order." class="align-center" src="../../../../_images/tablet-view-button1.png" />
+<p>After opening the tablet view, Odoo <em>Manufacturing</em> automatically starts a timer that keeps track of
+how long the work order takes to complete. After completing the work order, click the
+<span class="guilabel">Mark as Done</span> button in the top-right corner of the tablet view.</p>
+<p>Clicking <span class="guilabel">Mark as Done</span> while there is at least one more work order left to complete opens
+a page that lists the next work order. Click on that work order to open it in the tablet view.</p>
+<p>Once the final work order for the <abbr title="Manufacturing Order">MO</abbr> has been reached, a <span class="guilabel">Mark as Done and Close MO</span>
+button appears on the tablet view in addition to the <span class="guilabel">Mark as Done</span> button. Click
+<span class="guilabel">Mark as Done and Close MO</span> to mark the <abbr title="Manufacturing Order">MO</abbr> as <span class="guilabel">Done</span> and register the
+manufactured product(s) into inventory.</p>
+<p>It is also possible to complete the final operation while keeping the <abbr title="Manufacturing Order">MO</abbr> open, by clicking
+<span class="guilabel">Mark as Done</span>. In this case, the <abbr title="Manufacturing Order">MO</abbr> can be closed later by clicking the
+<span class="guilabel">Produce All</span> button on the order.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">One-step manufacturing</a><ul>
+<li><a class="reference internal" href="#create-manufacturing-order">Create manufacturing order</a></li>
+<li><a class="reference internal" href="#process-manufacturing-order">Process manufacturing order</a><ul>
+<li><a class="reference internal" href="#basic-workflow">Basic workflow</a></li>
+<li><a class="reference internal" href="#tablet-view-workflow">Tablet view workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">One-step manufacturing</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

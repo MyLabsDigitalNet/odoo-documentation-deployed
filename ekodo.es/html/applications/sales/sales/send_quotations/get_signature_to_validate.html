@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online signatures for order confirmations &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/send_quotations/get_signature_to_validate.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/send_quotations/get_signature_to_validate.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Online signatures for order confirmations</a><ul>
+<li><a class="reference internal" href="#activate-online-signatures">Activate online signatures</a></li>
+<li><a class="reference internal" href="#order-confirmations-with-online-signatures">Order confirmations with online signatures</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/send_quotations/get_signature_to_validate.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Online signatures for order confirmations</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="online-signatures-for-order-confirmations">
+<h1>Online signatures for order confirmations<a class="headerlink" href="#online-signatures-for-order-confirmations" title="Permalink to this headline">¶</a></h1>
+<p>The Odoo <em>Sales</em> application provides customers with the ability to confirm orders, via an online
+signature, directly on the sales order. Once the sales order is electronically signed by the
+customer, the salesperson attached to the sales order is instantly notified that the order is
+confirmed.</p>
+</section><section id="activate-online-signatures">
+<h2>Activate online signatures<a class="headerlink" href="#activate-online-signatures" title="Permalink to this headline">¶</a></h2>
+<p>In order to have customers confirm orders with an online signature, the <em>Online Signature</em> feature
+<strong>must</strong> be activated.</p>
+<p>To activate the <em>Online Signature</em> feature, go to <span class="menuselection">Sales app ‣ Configuration ‣
+Settings</span>, scroll to the <span class="guilabel">Quotations &amp; Orders</span> heading, and activate the
+<span class="guilabel">Online Signature</span> feature by checking the box beside it.</p>
+<img alt="Activar firma electronica desde el menu" class="align-center" src="../../../../_images/activar_firma.png" />
+<p>Then, click the <span class="guilabel">Save</span> button in the top-left corner.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When making a quotation template, the online signature feature is the <span class="guilabel">Signature</span>
+option, located in the <span class="guilabel">Online confirmation</span> field of the quotation template form.</p>
+<img alt="La opción de firma de confirmación en línea que se encuentra en cada plantilla de cotización en Odoo." class="align-center" src="../../../../_images/confirmacion_en_linea.png" />
+</div>
+</section><section id="order-confirmations-with-online-signatures">
+<h2>Order confirmations with online signatures<a class="headerlink" href="#order-confirmations-with-online-signatures" title="Permalink to this headline">¶</a></h2>
+<p>When clients access quotations online through their customer portal, there’s a <span class="guilabel">Sign &amp;
+Pay</span> button directly on the quotation.</p>
+<img alt="Boton de firmar y pagar en el presupuesto de Odoo" class="align-center" src="../../../../_images/aceptar_firmar.png" />
+<p>When clicked, a <span class="guilabel">Validate Order</span> pop-up window appears. In this pop-up window, the
+<span class="guilabel">Full Name</span> field is auto-populated, based on the contact information in the database.</p>
+<img alt="La ventana emergente de &quot;Validar Pedido&quot; para firmas en línea en Odoo Ventas." class="align-center" src="../../../../_images/vista_firma.png" />
+<p>Then, customers have the option to enter an online signature with any of the following options:
+<span class="guilabel">Auto</span>, <span class="guilabel">Draw</span>, or <span class="guilabel">Load</span>.</p>
+<p><span class="guilabel">Auto</span> lets Odoo automatically generate an online signature based on the information in
+the <span class="guilabel">Full Name</span> field. <span class="guilabel">Draw</span> lets the customer use the cursor to create a
+custom signature directly on the pop-up window. And <span class="guilabel">Load</span> lets the customer upload a
+previously-created signature file from their computer.</p>
+<p>After the customer has chosen any of the three previously mentioned signature options
+(<span class="guilabel">Auto</span>, <span class="guilabel">Draw</span>, or <span class="guilabel">Load</span>), they will click the <span class="guilabel">Accept &amp;
+Sign</span> button.</p>
+<p>When <span class="guilabel">Accept &amp; Sign</span> is clicked, the various payment method options become available for
+them to choose from (if the <em>online payment</em> option applies to this quotation).</p>
+<p>Then, when the quotation is paid and confirmed, a delivery order is automatically created (if the
+Odoo <em>Inventory</em> app is installed).</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="quote_template.html"><span class="doc">Quotation templates</span></a></p></li>
+<li><p><a class="reference internal" href="get_paid_to_validate.html"><span class="doc">Online payment order confirmation</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Online signatures for order confirmations</a><ul>
+<li><a class="reference internal" href="#activate-online-signatures">Activate online signatures</a></li>
+<li><a class="reference internal" href="#order-confirmations-with-online-signatures">Order confirmations with online signatures</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Online signatures for order confirmations</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

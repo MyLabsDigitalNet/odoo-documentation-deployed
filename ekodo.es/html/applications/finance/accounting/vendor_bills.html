@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vendor bills &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/vendor_bills.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/vendor_bills.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Vendor bills</a><ul>
+<li><a class="reference internal" href="#bill-creation">Bill creation</a><ul>
+<li><a class="reference internal" href="#manually">Manually</a></li>
+<li><a class="reference internal" href="#automatically">Automatically</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bill-completion">Bill completion</a></li>
+<li><a class="reference internal" href="#bill-confirmation">Bill confirmation</a></li>
+<li><a class="reference internal" href="#bill-payment">Bill Payment</a></li>
+<li><a class="reference internal" href="#aged-payable-report">Aged payable report</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/vendor_bills.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Vendor bills</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_hide_toc">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="vendor-bills">
+<h1>Vendor bills<a class="headerlink" href="#vendor-bills" title="Permalink to this headline">¶</a></h1>
+<p>In Odoo, we can register vendor bills <strong>manually</strong> or <strong>automatically</strong>, while the
+<strong>Aged Payable report</strong> provides an overview of all outstanding bills to help us pay the correct
+amounts on time.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p>Tutorial <a class="reference external" href="https://www.odoo.com/slides/slide/registering-a-vendor-bill-1683?fullscreen=1">Registering a vendor bill</a></p></li>
+<li><p><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/manage.html"><span class="doc">Manage vendor bills</span></a></p></li>
+</ul>
+</div>
+</section><section id="bill-creation">
+<h2>Bill creation<a class="headerlink" href="#bill-creation" title="Permalink to this headline">¶</a></h2>
+</section><section id="manually">
+<h3>Manually<a class="headerlink" href="#manually" title="Permalink to this headline">¶</a></h3>
+<p>Create a vendor bill manually by going to <span class="menuselection">Accounting ‣ Vendors ‣ Bills</span> and
+clicking <span class="guilabel">Create</span>.</p>
+</section><section id="automatically">
+<h3>Automatically<a class="headerlink" href="#automatically" title="Permalink to this headline">¶</a></h3>
+<p>Vendor bills can be automatically created by <strong>sending an email</strong> to an <a class="reference internal" href="vendor_bills/invoice_digitization.html#invoice-digitization-email-alias"><span class="std std-ref">email alias</span></a> associated with the purchase journal, or by <strong>uploading a PDF</strong>
+in <span class="menuselection">Accounting ‣ Vendors ‣ Bills</span> and then clicking <span class="guilabel">Upload</span>.</p>
+</section><section id="bill-completion">
+<h2>Bill completion<a class="headerlink" href="#bill-completion" title="Permalink to this headline">¶</a></h2>
+<p>Whether the bill is created manually or automatically, make sure the following fields are
+appropriately completed:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Vendor</span>: Odoo automatically fills some information based on the vendor’s registered
+information, previous purchase orders, or bills.</p></li>
+<li><p><span class="guilabel">Bill Reference</span>: add the sales order reference provided by the vendor and is used to do
+the <a class="reference internal" href="payments.html#payments-matching"><span class="std std-ref">matching</span></a> when you receive the products.</p></li>
+<li><p><span class="guilabel">Auto-Complete</span>: select a past bill/purchase order to automatically complete the
+document. The <span class="guilabel">Vendor</span> field should be completed prior to completing this field.</p></li>
+<li><p><span class="guilabel">Bill Date</span>: is the issuance date of the document.</p></li>
+<li><p><span class="guilabel">Accounting Date</span>: is the date on which the document is registered in your accounting.</p></li>
+<li><p><span class="guilabel">Payment Reference</span>: when registering the payment, it is automatically indicated in the
+<span class="guilabel">Memo</span> field.</p></li>
+<li><p><span class="guilabel">Recipient Bank</span>: to indicate to which account number the payment has to be made.</p></li>
+<li><p><span class="guilabel">Due Date</span> or <span class="guilabel">Terms</span> to pay the bill.</p></li>
+<li><p><span class="guilabel">Journal</span>: select in which journal the bill should be recorded and the <a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Currency</span></a>.</p></li>
+</ul>
+<img alt="filling the vendor bill" class="align-center" src="../../../_images/bill-completion.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Bills can be <a class="reference internal" href="vendor_bills/invoice_digitization.html"><span class="doc">digitized</span></a> for
+automatic completion by clicking <span class="guilabel">Send for Digitization</span>.</p></li>
+<li><p>If you upload the bill, the PDF document is displayed on the right of the screen, allowing you
+to easily fill in the bill information.</p></li>
+</ul>
+</div>
+</section><section id="bill-confirmation">
+<h2>Bill confirmation<a class="headerlink" href="#bill-confirmation" title="Permalink to this headline">¶</a></h2>
+<p>Click <span class="guilabel">Confirm</span> when the document is completed. The status of your document changes to
+<span class="guilabel">Posted</span> and a journal entry is generated based on the configuration on the invoice.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Once confirmed, it is no longer possible to update it. Click <span class="guilabel">Reset to draft</span> if
+changes are required.</p>
+</div>
+</section><section id="bill-payment">
+<h2>Bill Payment<a class="headerlink" href="#bill-payment" title="Permalink to this headline">¶</a></h2>
+<p>Upon payment of the vendor bill, click on <span class="guilabel">Register Payment</span>. A new window pops up.</p>
+<p>Select the <span class="guilabel">Journal</span>, the <span class="guilabel">Payment Method</span>, the <span class="guilabel">Amount</span> you wish to
+pay (full or partial payment), and the <span class="guilabel">Currency</span>. Odoo fills the <span class="guilabel">Memo</span> field
+automatically if the <span class="guilabel">Payment Reference</span> has been set correctly in the vendor bill. If
+the field is empty, we recommend you select the vendor invoice number as a reference.</p>
+<p>Once confirmed, an <span class="guilabel">In Payment</span> banner appears on the bill until it is <a class="reference internal" href="bank/reconciliation.html"><span class="doc">reconciled</span></a>.</p>
+</section><section id="aged-payable-report">
+<h2>Aged payable report<a class="headerlink" href="#aged-payable-report" title="Permalink to this headline">¶</a></h2>
+<p>To get an overview of your open vendor bills and their related due dates, you can use the
+<strong>Aged Payable report</strong>. Go to <span class="menuselection">Accounting ‣ Reporting ‣ Partner Reports: Aged
+payable</span>.</p>
+<p>Click on a vendor’s name to open up the details of all outstanding bills, the amounts due, the due
+dates, etc.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>By clicking the <span class="guilabel">Save</span> button, you can export the information available on the screen
+as a PDF or XLSX file and save it in the folder of your choice.</p></li>
+<li><p>You might receive several bills for the same purchase order if your vendor is in back-order and
+is sending you invoices as they ship the products, or if your vendor is sending you a partial
+bill or asking for a deposit.</p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_finance_accounting_vendor_bills_invoice_digitization"><a class="reference internal" href="vendor_bills/invoice_digitization.html">AI-powered document digitization</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="vendor_bills/assets.html">Non-current assets and fixed assets</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="vendor_bills/deferred_expenses.html">Deferred expenses and prepayments</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Vendor bills</a><ul>
+<li><a class="reference internal" href="#bill-creation">Bill creation</a><ul>
+<li><a class="reference internal" href="#manually">Manually</a></li>
+<li><a class="reference internal" href="#automatically">Automatically</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bill-completion">Bill completion</a></li>
+<li><a class="reference internal" href="#bill-confirmation">Bill confirmation</a></li>
+<li><a class="reference internal" href="#bill-payment">Bill Payment</a></li>
+<li><a class="reference internal" href="#aged-payable-report">Aged payable report</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Vendor bills</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

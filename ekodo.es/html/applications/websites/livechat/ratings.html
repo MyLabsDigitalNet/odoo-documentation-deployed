@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ratings &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/livechat/ratings.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/livechat/ratings.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Ratings</a><ul>
+<li><a class="reference internal" href="#rate-live-chat-conversations">Rate live chat conversations</a></li>
+<li><a class="reference internal" href="#publish-customer-ratings">Publish customer ratings</a><ul>
+<li><a class="reference internal" href="#add-ratings-page-to-site">Add ratings page to site</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#customer-ratings-report">Customer ratings report</a><ul>
+<li><a class="reference internal" href="#hide-individual-ratings">Hide individual ratings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/livechat/ratings.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Ratings</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="ratings">
+<h1>Ratings<a class="headerlink" href="#ratings" title="Permalink to this headline">¶</a></h1>
+<p>At the end of a <em>Live Chat</em> conversation, customers have the opportunity to rate the quality of
+support they received from the live chat <em>operator</em>. Customers provide ratings as soon as they close
+the conversation. This allows operators to receive immediate feedback on their performance. It also
+allows customers the chance to share any final comments before leaving the chat window.</p>
+</section><section id="rate-live-chat-conversations">
+<h2>Rate live chat conversations<a class="headerlink" href="#rate-live-chat-conversations" title="Permalink to this headline">¶</a></h2>
+<p>Customers end a <em>live chat</em> conversation by clicking the <span class="guilabel">X</span> in the upper right-hand
+corner of the chat window. They are then prompted to select an icon that reflects their level of
+satisfaction. The icons represent the following ratings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Satisfied</strong> - <em>green smiling face</em></p></li>
+<li><p><strong>Okay</strong> - <em>yellow neutral face</em></p></li>
+<li><p><strong>Dissatisfied</strong> - <em>red frowning face</em></p></li>
+</ul>
+</div></blockquote>
+<img alt="View of the chat window from a user's side for Odoo Live Chat." class="align-center" src="../../../_images/live-chat-ratings-faces.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When customers end a conversation, a field marked <span class="guilabel">Receive a copy of this conversation</span>
+appears under the <em>ratings</em> icons. Customers can enter their email either before or after they
+submit a rating.</p>
+</div>
+<p>If the customer selects <span class="guilabel">Satisfied (smile)</span> icon, they are presented with a thank you
+message and a <span class="guilabel">Close Conversation</span> link.</p>
+<img alt="View of customer's live chat window with thank you message." class="align-center" src="../../../_images/live-chat-thank-you.png" />
+<p>If the customer selects either <span class="guilabel">Okay (neutral)</span> icon or <span class="guilabel">Dissatisfied (frown)</span>
+icon, a text box will appear. Customers can add comments in this text box to explain why they chose
+this rating. This message will be sent to the live chat operator, along with the rating icon.</p>
+<img alt="View of a chat window from an operator's window highlighting a rating for Odoo Live Chat." class="align-center" src="../../../_images/live-chat-ratings-operator-window.png" />
+</section><section id="publish-customer-ratings">
+<h2>Publish customer ratings<a class="headerlink" href="#publish-customer-ratings" title="Permalink to this headline">¶</a></h2>
+<p>To publish a channel’s ratings on the website, first navigate to a live chat channel’s record by
+going to the <span class="menuselection">Live Chat</span> app and clicking on the kanban card for that team. Then
+click on the <span class="guilabel">Go to Website</span> smart button. This will open the <span class="guilabel">Live Chat Channel
+Statistics</span> page.</p>
+<p>In the upper right corner of the page, click the red <span class="guilabel">Unpublished</span> slider.  The slider
+changes from <span class="guilabel">Unpublished</span> to <span class="guilabel">Published</span>.</p>
+<img alt="View of the published ratings on the portal for Odoo Live Chat." class="align-center" src="../../../_images/live-chat-ratings-unpublished.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The customer notes that are submitted with the rating will <em>not</em> be published on the website.
+These are kept internal. Only a statistical overview of the operators’ performance for the
+<em>channel</em> appears on the website.</p>
+</div>
+</section><section id="add-ratings-page-to-site">
+<h3>Add ratings page to site<a class="headerlink" href="#add-ratings-page-to-site" title="Permalink to this headline">¶</a></h3>
+<p>Once the rating page has been published, it has to be manually added to the website. To do this, go
+to the main Odoo dashboard and open the <em>Website</em> application. <span class="menuselection">Website app‣ Site
+‣ Content ‣ Pages</span>, then click <span class="guilabel">New</span>.</p>
+<p>This will open a <span class="guilabel">New Page</span> pop-up window. In the <span class="guilabel">Page Title</span> field, enter
+<code class="o_code docutils literal notranslate"><span class="pre">livechat</span></code>. This acts as the URL for the published webpage.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The URL <em>must</em> be named <code class="o_code docutils literal notranslate"><span class="pre">livechat</span></code> in order for the database to recognize and connect the
+ratings page. After the page has been published, the page title can be changed later under the
+<span class="guilabel">Menu Editor</span>.</p>
+</div>
+<p>Click <span class="guilabel">Create</span>, and the newly created webpage will open. The <span class="guilabel">Webpage Editor</span>
+appears in the right panel.</p>
+<p>The page lists the names of the <span class="guilabel">Live Chat Channels</span> whose ratings pages have been
+published. On the left side of the channel name is a speech bubble icon, which users can click on to
+go to the ratings’ page for the respective channel.</p>
+<img alt="View of the webpage for Live Chat ratings emphasizing the channel icon." class="align-center" src="../../../_images/live-chat-published-icon.png" />
+<p>Make any desired changes or additions to this page, then click <span class="guilabel">Save</span> in the top right of
+the webpage editor. The website editor side panel closes, and the webpage remains on the screen.</p>
+<p>To publish the <code class="o_code docutils literal notranslate"><span class="pre">livechat</span></code> webpage, return to the list of webpages by navigating to
+<span class="menuselection">Site ‣ Content ‣ Pages</span>. Click the checkbox to the left of <code class="o_code docutils literal notranslate"><span class="pre">livechat</span></code> in the
+list of pages to select the page and highlight the line. Then, click the checkbox under the column
+labeled <span class="guilabel">Is Published</span>. The field with the checkbox is highlighted in white. Click the
+checkbox a second time to activate the <span class="guilabel">Is Published</span> box. The webpage is now published.</p>
+<img alt="View of the list of pages for a website with the 'is published' box emphasized." class="align-center" src="../../../_images/live-chat-is-published.png" />
+<p>Once the page has been added to the site, ratings are set to be published by default. However,
+individual ratings can be manually selected to be hidden from the public. The rating will still be
+included in internal reports, and can still be viewed by internal teams. However, public website
+visitors and portal users will not have access.</p>
+<p>See <a class="reference internal" href="#livechat-overview-hide-ratings"><span class="std std-ref">Hide individual ratings</span></a> for more information.</p>
+</section><section id="customer-ratings-report">
+<h2>Customer ratings report<a class="headerlink" href="#customer-ratings-report" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="guilabel">Customer Ratings</span> report (<span class="menuselection">Live Chat ‣ Report ‣ Customer Ratings</span>)
+displays an overview of the ratings received on individual support tickets, as well as any
+additional comments submitted with the rating.</p>
+<img alt="View of the customer ratings report in Odoo Live Chat." class="align-center" src="../../../_images/live-chat-ratings-report.png" />
+<p>The report defaults to a kanban view, with each rating represented by a different card. To switch to
+a different view, click on one of the icons in the upper-right corner of the screen. The report is
+available in <em>list</em> view, <em>pivot</em> view, and <em>graph</em> view.</p>
+<p>Click on an individual rating to see additional details about the conversation, and the rating.</p>
+</section><section id="hide-individual-ratings">
+<span id="livechat-overview-hide-ratings"></span><h3>Hide individual ratings<a class="headerlink" href="#hide-individual-ratings" title="Permalink to this headline">¶</a></h3>
+<p>Ratings are set to be published by default. However, individual ratings can be manually selected to
+be hidden from the public. The rating will still be included in internal reports, and can still be
+viewed by internal teams. However, public website visitors and portal users will not have access.</p>
+<p>To hide a rating, go to <span class="menuselection">Live Chat app ‣ Reports ‣ Customer Ratings</span>. Click on
+the kanban card for the rating to be hidden. On the individual rating’s detail page, check the box
+labeled <span class="guilabel">Visible Internally Only</span>.</p>
+<img alt="View of an individual rating's detail page with the visible internally setting checked." class="align-center" src="../../../_images/live-chat-ratings-visible-internally.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../livechat.html"><span class="doc">Live Chat</span></a></p></li>
+<li><p><a class="reference internal" href="responses.html"><span class="doc">Commands and canned responses</span></a></p></li>
+<li><p><a class="reference internal" href="../website.html"><span class="doc">Website</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Ratings</a><ul>
+<li><a class="reference internal" href="#rate-live-chat-conversations">Rate live chat conversations</a></li>
+<li><a class="reference internal" href="#publish-customer-ratings">Publish customer ratings</a><ul>
+<li><a class="reference internal" href="#add-ratings-page-to-site">Add ratings page to site</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#customer-ratings-report">Customer ratings report</a><ul>
+<li><a class="reference internal" href="#hide-individual-ratings">Hide individual ratings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Ratings</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

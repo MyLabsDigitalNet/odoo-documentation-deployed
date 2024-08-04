@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scheduled delivery dates &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/scheduled_dates.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/scheduled_dates.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Scheduled delivery dates</a><ul>
+<li><a class="reference internal" href="#lead-time-types">Lead time types</a></li>
+<li><a class="reference internal" href="#sales-lead-times">Sales lead times</a><ul>
+<li><a class="reference internal" href="#customer-lead-time">Customer lead time</a></li>
+<li><a class="reference internal" href="#sales-security-lead-time">Sales security lead time</a></li>
+<li><a class="reference internal" href="#deliver-several-products">Deliver several products</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#purchase-lead-times">Purchase lead times</a><ul>
+<li><a class="reference internal" href="#vendor-lead-time">Vendor lead time</a></li>
+<li><a class="reference internal" href="#purchase-security-lead-time">Purchase security lead time</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manufacturing-lead-times">Manufacturing lead times</a><ul>
+<li><a class="reference internal" href="#manufacturing-lead-time">Manufacturing lead time</a></li>
+<li><a class="reference internal" href="#manufacturing-security-lead-time">Manufacturing security lead time</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#global-example">Global example</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/scheduled_dates.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Scheduled delivery dates</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="scheduled-delivery-dates">
+<h1>Scheduled delivery dates<a class="headerlink" href="#scheduled-delivery-dates" title="Permalink to this headline">¶</a></h1>
+<p>Accurately forecasting delivery dates is vital for fulfilling customer expectations. In Odoo, the
+<em>Inventory</em> app allows for comprehensive lead time configuration, allowing coordination and planning
+of manufacturing orders, deliveries, and receptions.</p>
+</section><section id="lead-time-types">
+<h2>Lead time types<a class="headerlink" href="#lead-time-types" title="Permalink to this headline">¶</a></h2>
+<p>Different lead times for different operations can impact various stages of the order fulfillment
+process. Here’s a summary of the types of lead times in Odoo:</p>
+<img alt="Show graphic of all lead times working together." class="align-center" src="../../../../../_images/all-lead-times.png" />
+<ul class="simple">
+<li><p><a class="reference internal" href="#inventory-management-customer-lt"><span class="std std-ref">Customer lead time</span></a>: The default time frame for
+fulfilling customer orders. The customer lead time is the number of days from the date the sales
+order (SO) is confirmed to the date the products are shipped from the warehouse. This is also
+known as <em>delivery lead time</em>.</p></li>
+<li><p><a class="reference internal" href="#inventory-management-sales-security-lt"><span class="std std-ref">Sales security lead time</span></a>: moves the <em>scheduled
+delivery date</em> forward by a specified number of days. This serves as a buffer to allow the team
+ample time to prepare the outgoing shipment earlier, considering the possibility of delays in the
+fulfillment process.</p></li>
+<li><p><a class="reference internal" href="#inventory-management-purchase-lt"><span class="std std-ref">Purchase lead time</span></a>: the number of days from the
+confirmation of a purchase order (PO) to the receipt of products. It provides insight on the time
+it takes for products to arrive at the warehouse, facilitating effective scheduling and planning
+of supplier deliveries.</p></li>
+<li><p><a class="reference internal" href="#inventory-management-purchase-security-lt"><span class="std std-ref">Purchase security lead time</span></a>: advances the order
+deadline on a <abbr title="Purchase Order">PO</abbr> by a specified number of days. This proactive approach
+of placing orders earlier mitigates the risk of vendor or shipping delays. Thus, for products that
+are set to replenish to order, the need appears on the <em>Replenishment report</em> earlier, according
+to the specified number of days.</p></li>
+<li><p><a class="reference internal" href="#inventory-management-manuf-lt"><span class="std std-ref">Manufacturing lead time</span></a>: the number of days needed to
+complete a manufacturing order (MO) from the date of confirmation. This lead time includes
+weekends (non-working hours in Odoo), and is used to forecast an approximate production date for a
+finished good.</p></li>
+<li><p><a class="reference internal" href="#inventory-management-manuf-security-lt"><span class="std std-ref">Manufacturing security lead time</span></a>: moves the
+scheduled date of the <abbr title="Manufacturing Order">MO</abbr> forward by a specified number of days. When
+used in conjunction with <a class="reference internal" href="../../product_management/product_replenishment/strategies.html#inventory-management-products-strategies"><span class="std std-ref">replenish to order</span></a>, the
+security lead time makes the need appear earlier on the replenishment report.</p></li>
+</ul>
+</section><section id="sales-lead-times">
+<span id="inventory-management-customer-lt"></span><h2>Sales lead times<a class="headerlink" href="#sales-lead-times" title="Permalink to this headline">¶</a></h2>
+<p>Customer lead times and sales security lead times can be configured to automatically compute an
+<em>expected delivery date</em> on a <abbr title="Sales Order">SO</abbr>. The expected delivery date ensures a
+realistic <em>delivery dates</em> setting for shipments from the warehouse.</p>
+<p>Odoo issues a warning message if the set delivery date is earlier than the expected date, as it may
+not be feasible to fulfill the order by that time, which would impact other warehouse operations.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A <abbr title="Sales Order">SO</abbr> containing a <code class="o_code docutils literal notranslate"><span class="pre">Coconut-scented</span> <span class="pre">candle</span></code> is confirmed on July 11th. The
+product has a customer lead time of 14 days, and the business uses a sales security lead time of
+1 day. Based on the lead time inputs, Odoo suggests a delivery date in 15 days, on July 26th.</p>
+<img alt="Set *Delivery Date* in a sales order. Enables delivery lead times feature." class="align-center" src="../../../../../_images/scheduled-date.png" />
+</div>
+<p>The following sections demonstrate how to automatically compute expected delivery dates.</p>
+</section><section id="customer-lead-time">
+<h3>Customer lead time<a class="headerlink" href="#customer-lead-time" title="Permalink to this headline">¶</a></h3>
+<p>Set the customer lead time on each product form, by navigating to the products page. To do so, go to
+<span class="menuselection">Sales app ‣ Products ‣ Products</span>. From there, select the desired product, and
+switch to the <span class="guilabel">Inventory</span> tab. Then, under the <span class="guilabel">Customer Lead Time</span> field, fill
+in the number of calendar days required to fulfill the delivery order from start to finish.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Set a 14-day customer lead time for the <code class="o_code docutils literal notranslate"><span class="pre">Coconut-scented</span> <span class="pre">candle</span></code> by navigating to its product
+form. Then, in the <span class="guilabel">Inventory</span> tab, type <code class="o_code docutils literal notranslate"><span class="pre">14.00</span></code> days into the <span class="guilabel">Customer Lead
+Time</span> field.</p>
+<img alt="Set *Customer Lead Time* on the product form." class="align-center" src="../../../../../_images/customer.png" />
+</div>
+</section><section id="sales-security-lead-time">
+<span id="inventory-management-sales-security-lt"></span><h3>Sales security lead time<a class="headerlink" href="#sales-security-lead-time" title="Permalink to this headline">¶</a></h3>
+<p><em>Sales security lead time</em> is set globally for the business in <span class="menuselection">Inventory app ‣
+Configuration ‣ Settings</span>.</p>
+<p>On the configuration page, under the <span class="guilabel">Advanced Scheduling</span> heading, locate the box for
+<span class="guilabel">Security Lead Time for Sales</span>, and click the checkbox to enable the feature.</p>
+<p>Next, enter the desired number of calendar days. This security lead time is a buffer notifying the
+team to prepare for outgoing shipments earlier than the scheduled date.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Setting the <span class="guilabel">Security Lead Time for Sales</span> to <code class="o_code docutils literal notranslate"><span class="pre">1.00</span></code> day, pushes the
+<span class="guilabel">Scheduled Date</span> of a delivery order (DO) forward by one day. In that case, if a
+product is initially scheduled for delivery on April 6th, but with a one-day security lead time,
+the new scheduled date for the delivery order would be April 5th.</p>
+<img alt="View of the security lead time for sales configuration from the sales settings." class="align-center" src="../../../../../_images/sales-security.png" />
+</div>
+</section><section id="deliver-several-products">
+<h3>Deliver several products<a class="headerlink" href="#deliver-several-products" title="Permalink to this headline">¶</a></h3>
+<p>For orders that include multiple products with different lead times, the lead times can be
+configured directly from the quotation itself. On a quotation, click the <span class="guilabel">Other Info</span> tab,
+and set the <span class="guilabel">Shipping Policy</span> to:</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">As soon as possible</span> to deliver products as soon as they are ready. The
+<span class="guilabel">Scheduled Date</span> of the <abbr title="Delivery Order">DO</abbr> is determined by adding today’s
+date to the shortest lead time among the products in the order.</p></li>
+<li><p><span class="guilabel">When all products are ready</span> to wait to fulfill the entire order at once. The
+<span class="guilabel">Scheduled Date</span> of the <abbr title="Delivery Order">DO</abbr> is determined by adding today’s
+date to the longest lead time among the products in the order.</p></li>
+</ol>
+<img alt="Show *Shipping Policy* field in the *Other Info* tab of a quotation." class="align-center" src="../../../../../_images/shipping-policy.png" />
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>In a quotation containing 2 products, <code class="o_code docutils literal notranslate"><span class="pre">Yoga</span> <span class="pre">mat</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">Resistance</span> <span class="pre">band,</span></code> the products have a lead
+time of 8 days and 5 days, respectively. Today’s date is April 2nd.</p>
+<p>When the <span class="guilabel">Shipping Policy</span> is set to <span class="guilabel">As soon as possible</span>, the scheduled
+delivery date is 5 days from today: April 7th. On the other hand, selecting <span class="guilabel">When all
+products are ready</span> configures the scheduled date to be 8 days from today: April 10th.</p>
+</div>
+</section><section id="purchase-lead-times">
+<span id="inventory-management-purchase-lt"></span><h2>Purchase lead times<a class="headerlink" href="#purchase-lead-times" title="Permalink to this headline">¶</a></h2>
+<p>Automatically determining the dates on which to place orders from suppliers can help simplify the
+procurement process.</p>
+<p>Odoo calculates the supplier shipment <em>receipt date</em>, and <abbr title="Purchase Order">PO</abbr> deadline,
+based on the required date the product is needed in the warehouse. By working backwards from the
+receipt date, vendor lead times and purchase security lead times are taken into account, in order to
+determine the <abbr title="Purchase Order">PO</abbr> deadline.</p>
+<p>This deadline is the date by which the order should be confirmed, in order to ensure timely arrival
+by the expected receipt date.</p>
+<img alt="Visualization of PO deadline and receipt date used with vendor lead times." class="align-center" src="../../../../../_images/vendor-lead-times.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../product_management/product_replenishment/reordering_rules.html#inventory-management-reordering-rules"><span class="std std-ref">PO scheduling with reordering rules</span></a></p>
+</div>
+</section><section id="vendor-lead-time">
+<h3>Vendor lead time<a class="headerlink" href="#vendor-lead-time" title="Permalink to this headline">¶</a></h3>
+<p>To set a vendor lead time for orders arriving in the warehouse from a vendor location, begin by
+navigating to a product form through <span class="menuselection">Purchase app ‣ Products ‣ Products</span>.</p>
+<p>Next, select the desired product, and switch to the <span class="guilabel">Purchase</span> tab. In the editable vendor
+pricelist, click the <span class="guilabel">Add a line</span> button to add vendor details, such as the
+<span class="guilabel">Vendor</span> name, <span class="guilabel">Price</span> offered for the product, and lastly, the
+<span class="guilabel">Delivery Lead Time</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Multiple vendors and lead times can be added to the vendor pricelist. The default vendor and lead
+time selected will be the entry at the top of the list.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>On the vendor pricelist of the product form, the <span class="guilabel">Delivery Lead Time</span> for the selected
+vendor is set to <code class="o_code docutils literal notranslate"><span class="pre">10</span> <span class="pre">days.</span></code></p>
+<img alt="Add delivery lead times to vendor pricelist on a product." class="align-center" src="../../../../../_images/set-vendor.png" />
+</div>
+<p>By setting the vendor lead time, the expected arrival date of the item is automatically determined
+as the date of the <abbr title="Purchase Order">PO</abbr> confirmation, plus the vendor lead time. This ensures
+that warehouse employees are notified, if the products do <strong>not</strong> arrive within the expected
+timeframe.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>On a <abbr title="Purchase Order">PO</abbr> confirmed on July 11th, for a product configured with a 10-day
+vendor lead time, Odoo automatically sets the <span class="guilabel">Receipt Date</span> to July 21st. The receipt
+date also appears as the <span class="guilabel">Scheduled Date</span> on the warehouse receipt form, accessible
+from the <span class="guilabel">Receipt</span> smart button, located on the <span class="guilabel">PO (Purchase Order)</span>.</p>
+<img alt="Show expected *Receipt Date* of the product from the vendor." class="align-center" src="../../../../../_images/receipt-date.png" />
+<img alt="Show expected *Scheduled Date* of arrival of the product from the vendor." class="align-center" src="../../../../../_images/scheduled-date-receipt.png" />
+</div>
+</section><section id="purchase-security-lead-time">
+<span id="inventory-management-purchase-security-lt"></span><h3>Purchase security lead time<a class="headerlink" href="#purchase-security-lead-time" title="Permalink to this headline">¶</a></h3>
+<p><em>Purchase security lead time</em> is set globally for the business in <span class="menuselection">Inventory app ‣
+Configuration ‣ Settings</span>.</p>
+<p>On the configuration page, under the <span class="guilabel">Advanced Scheduling</span> heading, locate the box for
+<span class="guilabel">Security Lead Time for Purchase</span>, and click the checkbox to enable the feature.</p>
+<p>Next, enter the desired number of calendar days. By configuring the security lead time, a buffer is
+set to account for potential delays in supplier deliveries.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Setting the <span class="guilabel">Security Lead Time for Purchase</span> to <code class="o_code docutils literal notranslate"><span class="pre">2.00</span></code> days, pushes the
+<span class="guilabel">Scheduled Date</span> of receipt back by one day. In that case, if a product is initially
+scheduled to arrive on April 6th, with a two-day security lead time, the new scheduled date for
+the receipt would be April 8th.</p>
+<img alt="Set security lead time for purchase from the Inventory &gt; Configuration &gt; Settings." class="align-center" src="../../../../../_images/vendor-security.png" />
+</div>
+</section><section id="manufacturing-lead-times">
+<span id="inventory-management-manuf-lt"></span><h2>Manufacturing lead times<a class="headerlink" href="#manufacturing-lead-times" title="Permalink to this headline">¶</a></h2>
+<p>Lead times can help simplify the procurement process for consumable materials and components used in
+manufactured products with bills of materials.</p>
+<p>The <abbr title="Manufacturing Order">MO</abbr> deadline, which is the deadline to begin the manufacturing
+process to complete the product by the scheduled delivery date, can be determined by configuring the
+manufacturing lead times and manufacturing security lead times.</p>
+<img alt="Visualization of the determination of planned MO date manufacturing lead times." class="align-center" src="../../../../../_images/manuf-lead-times.png" />
+</section><section id="manufacturing-lead-time">
+<h3>Manufacturing lead time<a class="headerlink" href="#manufacturing-lead-time" title="Permalink to this headline">¶</a></h3>
+<p>Configure the manufacturing lead time directly on the product form, by navigating to
+<span class="menuselection">Manufacturing app ‣ Products ‣ Products</span>, and select the desired product.</p>
+<p>In the <span class="guilabel">Inventory</span> tab of the product, specify the calendar days needed to the manufacture
+the product in the <span class="guilabel">Manufacturing Lead Time</span> field.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Specify a 14-day <span class="guilabel">Manufacturing Lead Time</span> for a product directly in the
+<span class="guilabel">Inventory</span> tab of the product.</p>
+<img alt="View of the manufacturing lead time configuration from the product form." class="align-center" src="../../../../../_images/set-manufacturing.png" />
+</div>
+<p>Establish a <abbr title="Manufacturing Order">MO</abbr> deadline, based on the <em>expected delivery date</em>,
+indicated in the <span class="guilabel">Scheduled Date</span> field of the <abbr title="Delivery Order">DO</abbr>.</p>
+<p>The <abbr title="Manufacturing Order">MO</abbr> deadline, which is the <span class="guilabel">Scheduled Date</span> field on the
+<abbr title="Manufacturing Order">MO</abbr>, is calculated as the <em>expected delivery date</em> subtracted by the
+manufacturing lead time.</p>
+<p>This ensures the manufacturing process begins on time, in order to meet the delivery date.</p>
+<p>However, it’s important to note that lead times are based on calendar days. Lead times do <strong>not</strong>
+consider weekends, holidays, or <em>work center capacity</em> (<span class="dfn"><span>the number of operations that can be
+performed at the work center simultaneously</span></span>).</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../manufacturing/management/use_mps.html#manufacturing-management-use-mps"><span class="std std-ref">Manufacturing planning</span></a></p></li>
+<li><p><a class="reference internal" href="../../product_management/product_replenishment/reordering_rules.html#inventory-management-reordering-rules"><span class="std std-ref">Configure automatic MO scheduling with reordering rules</span></a></p></li>
+</ul>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A product’s scheduled shipment date on the <abbr title="Delivery Order">DO</abbr> is August 15th. The
+product requires 14 days to manufacture. So, the latest date to start the <abbr title="Manufacturing Order">MO</abbr> to meet the commitment date is August 1st.</p>
+</div>
+</section><section id="manufacturing-security-lead-time">
+<span id="inventory-management-manuf-security-lt"></span><h3>Manufacturing security lead time<a class="headerlink" href="#manufacturing-security-lead-time" title="Permalink to this headline">¶</a></h3>
+<p><em>Manufacturing security lead time</em> is set globally for the business in <span class="menuselection">Manufacturing
+app ‣ Configuration ‣ Settings</span>. Under the <span class="guilabel">Planning</span> heading, locate the box for
+<span class="guilabel">Security Lead Time</span>, and click the checkbox to enable the feature.</p>
+<p>Next, enter the desired number of calendar days. By configuring the security lead time, a buffer is
+set to account for potential delays in the manufacturing process.</p>
+<img alt="View of the security lead time for manufacturing from the manufacturing app settings." class="align-center" src="../../../../../_images/manuf-security.png" />
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A product has a scheduled shipment date on the <abbr title="Delivery Order">DO</abbr> set for August 15th.
+The manufacturing lead time is 7 days, and manufacturing security lead time is 3 days. So, the
+<span class="guilabel">Scheduled Date</span> on the <abbr title="Manufacturing Order">MO</abbr> reflects the latest date to
+begin the manufacturing order. In this example, the planned date on the <abbr title="Manufacturing Order">MO</abbr> is August 5th.</p>
+</div>
+</section><section id="global-example">
+<h2>Global example<a class="headerlink" href="#global-example" title="Permalink to this headline">¶</a></h2>
+<p>See the following example to understand how all the lead times work together to ensure timely order
+fulfillment:</p>
+<ul class="simple">
+<li><p><strong>Sales security lead time</strong>: 1 day</p></li>
+<li><p><strong>Manufacturing security lead time</strong>: 2 days</p></li>
+<li><p><strong>Manufacturing lead time</strong>: 3 days</p></li>
+<li><p><strong>Purchase security lead time</strong>: 1 day</p></li>
+<li><p><strong>Vendor lead time</strong>: 4 days</p></li>
+</ul>
+<p>The customer places an order for a manufactured product on September 1st, and the scheduled delivery
+date from the warehouse is on September 20th. Odoo uses lead times and automated reordering rules to
+schedule the necessary operations, based on the outgoing shipment delivery date, September 20th:</p>
+<img alt="Show timeline of how lead times work together to schedule warehouse operations." class="align-center" src="../../../../../_images/global-example.png" />
+<ul class="simple">
+<li><p><strong>September 1st</strong>: Sales order created, confirmed by salesperson.</p></li>
+<li><p><strong>September 9th</strong>: Deadline to order components to ensure they arrive in time when manufacturing
+begins (4-day supplier lead time).</p></li>
+<li><p><strong>September 13th</strong>: Scheduled date of receipt for components. Initially, it was set to 9/14, but
+the 1-day purchase security lead time pushed the date earlier by 1 day.</p></li>
+<li><p><strong>September 14th</strong>: Deadline to begin manufacturing. Calculated by subtracting the manufacturing
+lead time of 3 days, and the manufacturing security lead time of 2 days, from the expected
+delivery date of September 19th.</p></li>
+<li><p><strong>September 19th</strong>: <span class="guilabel">Scheduled Date</span> on the delivery order form indicates the updated
+expected delivery date, which was originally set as September 20th. But the sales security lead
+time pushed the date forward by a day.</p></li>
+</ul>
+<p>Odoo’s replenishment planning maps a business’ order fulfillment process, setting pre-determined
+deadlines and raw material order dates, including buffer days for potential delays. This ensures
+products are delivered on time.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Scheduled delivery dates</a><ul>
+<li><a class="reference internal" href="#lead-time-types">Lead time types</a></li>
+<li><a class="reference internal" href="#sales-lead-times">Sales lead times</a><ul>
+<li><a class="reference internal" href="#customer-lead-time">Customer lead time</a></li>
+<li><a class="reference internal" href="#sales-security-lead-time">Sales security lead time</a></li>
+<li><a class="reference internal" href="#deliver-several-products">Deliver several products</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#purchase-lead-times">Purchase lead times</a><ul>
+<li><a class="reference internal" href="#vendor-lead-time">Vendor lead time</a></li>
+<li><a class="reference internal" href="#purchase-security-lead-time">Purchase security lead time</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manufacturing-lead-times">Manufacturing lead times</a><ul>
+<li><a class="reference internal" href="#manufacturing-lead-time">Manufacturing lead time</a></li>
+<li><a class="reference internal" href="#manufacturing-security-lead-time">Manufacturing security lead time</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#global-example">Global example</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Scheduled delivery dates</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

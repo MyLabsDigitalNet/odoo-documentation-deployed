@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Customer ratings &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/services/helpdesk/overview/ratings.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/services/helpdesk/overview/ratings.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Customer ratings</a><ul>
+<li><a class="reference internal" href="#enable-customer-ratings-on-a-helpdesk-team">Enable customer ratings on a Helpdesk team</a></li>
+<li><a class="reference internal" href="#set-a-ratings-request-email-template-on-a-stage">Set a ratings request email template on a stage</a></li>
+<li><a class="reference internal" href="#publish-ratings-on-the-customer-portal">Publish ratings on the customer portal</a><ul>
+<li><a class="reference internal" href="#manually-hide-individual-ratings">Manually hide individual ratings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/services/helpdesk/overview/ratings.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Customer ratings</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="customer-ratings">
+<h1>Customer ratings<a class="headerlink" href="#customer-ratings" title="Permalink to this headline">¶</a></h1>
+<p>Asking customers to rate the support they received from a <em>Helpdesk</em> team provides an opportunity to
+gauge team performance and track customer satisfaction. Ratings can be published to the portal,
+providing customers with a general overview of the team’s performance.</p>
+</section><section id="enable-customer-ratings-on-a-helpdesk-team">
+<h2>Enable customer ratings on a Helpdesk team<a class="headerlink" href="#enable-customer-ratings-on-a-helpdesk-team" title="Permalink to this headline">¶</a></h2>
+<p>To enable <em>customer ratings</em> on a helpdesk team by going to <span class="menuselection">Helpdesk ‣
+Configuration ‣ Teams</span>. Select a team from the list and navigate to the settings page. Scroll to
+the <span class="guilabel">Performance</span> section, and check the box for <span class="guilabel">Customer Ratings</span>.</p>
+<img alt="Overview of the settings page of a helpdesk team emphasizing the rating on ticket feature in Odoo Helpdesk." class="align-center" src="../../../../_images/ratings-enable.png" />
+</section><section id="set-a-ratings-request-email-template-on-a-stage">
+<h2>Set a ratings request email template on a stage<a class="headerlink" href="#set-a-ratings-request-email-template-on-a-stage" title="Permalink to this headline">¶</a></h2>
+<p>To automatically request ratings from customers once their tickets have closed, an email template
+should be added to the appropriate stage.</p>
+<p>Once the <span class="guilabel">Customer Ratings</span> setting has been enabled on the team’s settings page, (see
+above) click the <span class="guilabel">Set an Email Template on Stages</span> link. Select a stage from the list, or
+click <span class="guilabel">New</span> to create a new stage.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Customers should only be asked to rate tickets once an issue has been resolved and their ticket
+is closed. Therefore, a <em>ratings request</em> email should only be added to a stage that is
+<strong>folded</strong> in the kanban, as tickets in a <em>folded stage</em> are considered closed.</p>
+</div>
+<p>On the stage’s settings page, select <code class="o_code docutils literal notranslate"><span class="pre">Helpdesk:</span> <span class="pre">Ticket</span> <span class="pre">Rating</span> <span class="pre">Request</span></code> in the <span class="guilabel">Email
+Template</span> field. This template has been pre-configured with ratings customers can use to provide
+feedback. To view the template, click the arrow button to the right of the field.</p>
+<p>Once the template has been added to the stage, it will automatically send a message when a ticket is
+moved to that stage. Customers will be asked to rate the support they received with colored icons.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Green smiling face</em> - Satisfied</p></li>
+<li><p><em>Yellow neutral face</em> - Okay</p></li>
+<li><p><em>Red frowning face</em> - Dissatisfied</p></li>
+</ul>
+</div></blockquote>
+<img alt="View of a standard helpdesk customer review email template for Odoo Helpdesk." class="align-center" src="../../../../_images/ratings-customer-email.png" />
+<p>After selecting a rating, customers are taken to a webpage where they can provide specific written
+feedback to support their rating. Once a rating is submitted, it is added to the chatter on the
+ticket.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Customer ratings can also be viewed through the <span class="guilabel">Customer Ratings</span> report. To view
+this report, go to <span class="menuselection">Helpdesk ‣ Reporting ‣ Customer Ratings</span>.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../../general/companies/email_template.html"><span class="doc">Email templates</span></a></p>
+</div>
+</section><section id="publish-ratings-on-the-customer-portal">
+<h2>Publish ratings on the customer portal<a class="headerlink" href="#publish-ratings-on-the-customer-portal" title="Permalink to this headline">¶</a></h2>
+<p>After enabling the <span class="guilabel">Customer Ratings</span> setting, an option to publish ratings on the team’s
+website appears. Enabling this setting provides portal users with an overview of the ratings the
+team has received over the last thirty days. Specific written feedback will not be included; only
+statistics of the team’s performance will be visible.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>In order to display ratings on the customer portal, a team has to have their visibility setting
+set to <span class="guilabel">Invited portal users and all internal users</span>. This setting is found on the
+team’s settings page under <span class="guilabel">Visibility</span>.</p>
+</div>
+<p>Next, to publish the ratings, go to <span class="menuselection">Helpdesk ‣ Configuration ‣ Teams</span> and
+select a team. Scroll to <span class="guilabel">Performance</span> and enable <span class="guilabel">Publish this team’s ratings
+on your website</span>.</p>
+<p>To view the ratings for a team, a customer will log into the portal and navigate to one of their
+tickets. After clicking on the team name in the <span class="guilabel">Managed By</span> field, they will be directed
+to a page with the team’s ratings over the past thirty days.</p>
+<img alt="View of the ratings performance overview from the customer portal." class="align-center" src="../../../../_images/ratings-portal-overview.png" />
+</section><section id="manually-hide-individual-ratings">
+<h3>Manually hide individual ratings<a class="headerlink" href="#manually-hide-individual-ratings" title="Permalink to this headline">¶</a></h3>
+<p>Individual ratings can be manually hidden from the portal. This allows for specific ratings to be
+kept out of the performance metrics that are shown to customers.</p>
+<p>To make a rating visible only to internal users, navigate to the page for a rating. This can be done
+in one of the following ways:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Go to <span class="menuselection">Helpdesk ‣ Reporting ‣ Customer Ratings</span> and click on one of the
+kanban cards for an individual rating.</p></li>
+<li><p>Navigate to <span class="menuselection">Helpdesk ‣ Tickets ‣ All Tickets</span> and remove the
+<span class="guilabel">Open</span> filter from the search bar. Then filter by <span class="guilabel">Satisfied</span>,
+<span class="guilabel">Okay</span> and/or <span class="guilabel">Dissatisfied</span>. Select a ticket from the results. Click the
+<span class="guilabel">Rating</span> smart button.</p></li>
+</ul>
+</div></blockquote>
+<p>Once on the rating details page, check the <span class="guilabel">Visible Internally Only</span> box.</p>
+<img alt="View of the ratings performance overview from the customer portal." class="align-center" src="../../../../_images/ratings-keep-internal.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../advanced/close_tickets.html"><span class="doc">Closing tickets</span></a></p></li>
+<li><p><a class="reference internal" href="reports.html"><span class="doc">Reporting</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Customer ratings</a><ul>
+<li><a class="reference internal" href="#enable-customer-ratings-on-a-helpdesk-team">Enable customer ratings on a Helpdesk team</a></li>
+<li><a class="reference internal" href="#set-a-ratings-request-email-template-on-a-stage">Set a ratings request email template on a stage</a></li>
+<li><a class="reference internal" href="#publish-ratings-on-the-customer-portal">Publish ratings on the customer portal</a><ul>
+<li><a class="reference internal" href="#manually-hide-individual-ratings">Manually hide individual ratings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Customer ratings</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reporting &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/reporting.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/reporting.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Reporting</a><ul>
+<li><a class="reference internal" href="#main-reports-available">Main reports available</a><ul>
+<li><a class="reference internal" href="#balance-sheet">Balance Sheet</a></li>
+<li><a class="reference internal" href="#profit-and-loss">Profit and Loss</a></li>
+<li><a class="reference internal" href="#executive-summary">Executive Summary</a></li>
+<li><a class="reference internal" href="#general-ledger">General Ledger</a></li>
+<li><a class="reference internal" href="#aged-payable">Aged Payable</a></li>
+<li><a class="reference internal" href="#aged-receivable">Aged Receivable</a></li>
+<li><a class="reference internal" href="#cash-flow-statement">Cash Flow Statement</a></li>
+<li><a class="reference internal" href="#tax-report">Tax Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/reporting.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Reporting</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_hide_toc">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="reporting">
+<h1>Reporting<a class="headerlink" href="#reporting" title="Permalink to this headline">¶</a></h1>
+</section><section id="main-reports-available">
+<h2>Main reports available<a class="headerlink" href="#main-reports-available" title="Permalink to this headline">¶</a></h2>
+<p>Odoo includes <strong>generic</strong> and <strong>dynamic</strong> reports available for all countries, regardless of the
+<a class="reference internal" href="../fiscal_localizations.html"><span class="doc">localization package</span></a> installed:</p>
+<ul class="simple">
+<li><p><strong>Balance Sheet</strong></p></li>
+<li><p><strong>Profit and Loss</strong></p></li>
+<li><p><strong>Executive Summary</strong></p></li>
+<li><p><strong>General Ledger</strong></p></li>
+<li><p><strong>Aged Payable</strong></p></li>
+<li><p><strong>Aged Receivable</strong></p></li>
+<li><p><strong>Cash Flow Statement</strong></p></li>
+<li><p><strong>Tax Report</strong></p></li>
+</ul>
+<p>Reports can be <strong>annotated, printed, and drilled down</strong> to see details (payments, invoices,
+journal items, etc.) by clicking the <strong>down</strong> arrow. Reports can also be exported to <strong>PDF</strong> or
+<strong>XLSX</strong> format by clicking <span class="guilabel">PDF</span> or <span class="guilabel">XLSX</span> at the top of the page.</p>
+<img alt="Annotate reports." src="../../../_images/reporting-annotate.png" />
+<p>You can compare values across periods by using the <span class="guilabel">Comparison</span> menu and selecting the
+periods you want to compare.</p>
+<img alt="Comparison menu to compare time periods." src="../../../_images/reporting-comparison.png" />
+</section><section id="balance-sheet">
+<span id="reporting-balance-sheet"></span><h3>Balance Sheet<a class="headerlink" href="#balance-sheet" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Balance Sheet</strong> shows a snapshot of your organization’s assets, liabilities, and equity at a
+particular date.</p>
+<img alt="Balance sheet report of Odoo." src="../../../_images/reporting-balance-sheet.png" />
+</section><section id="profit-and-loss">
+<span id="reporting-profit-and-loss"></span><h3>Profit and Loss<a class="headerlink" href="#profit-and-loss" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Profit and Loss</strong> report (or <strong>Income Statement</strong>) shows your company’s net income by
+deducting expenses from revenue for the reporting period.</p>
+<img alt="Profit and Loss report of Odoo" src="../../../_images/reporting-profit-and-loss.png" />
+</section><section id="executive-summary">
+<span id="reporting-executive-summary"></span><h3>Executive Summary<a class="headerlink" href="#executive-summary" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Executive Summary</strong> allows a quick look at all the important figures to run your company.</p>
+<p>In basic terms, this is what each item in the following section reports:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Performance:</strong></dt><dd><ul>
+<li><dl class="simple">
+<dt><strong>Gross profit margin:</strong></dt><dd><p>The contribution of all sales made by your business <strong>minus</strong> any direct costs needed to
+make those sales (labor, materials, etc.).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Net profit margin:</strong></dt><dd><p>The contribution of all sales made by your business <strong>minus</strong> any direct costs needed to
+make those sales <em>and</em> fixed overheads your company has (electricity, rent, taxes
+to be paid as a result of those sales, etc.).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Return on investment (per annum):</strong></dt><dd><p>The ratio of net profit made to the amount of assets the company used to make those profits.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Position:</strong></dt><dd><ul>
+<li><dl class="simple">
+<dt><strong>Average debtors days:</strong></dt><dd><p>The average number of days it takes your customers to (fully) pay you across all your
+customer invoices.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Average creditors days:</strong></dt><dd><p>The average number of days it takes you to (fully) pay your suppliers across all your bills.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Short-term cash forecast:</strong></dt><dd><p>How much cash is expected in or out of your business in the next month, i.e., the balance of
+your <strong>Sales account</strong> for the month <strong>minus</strong> the balance of your <strong>Purchases account</strong> for
+the month.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Current assets to liabilities:</strong></dt><dd><p>Also referred to as <strong>current ratio</strong>, this is the ratio of current assets (<span class="dfn"><span>assets
+that could be turned into cash within a year</span></span>) to the current liabilities (<span class="dfn"><span>liabilities
+that will be due in the next year</span></span>). It is typically used to measure a company’s ability to
+service its debt.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="Executive summary report in Odoo." src="../../../_images/reporting-executive-summary.png" />
+</section><section id="general-ledger">
+<span id="reporting-general-ledger"></span><h3>General Ledger<a class="headerlink" href="#general-ledger" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>General Ledger Report</strong> shows all transactions from all accounts for a chosen date range. The
+initial summary report shows each account’s totals; from here, you can view a detailed transaction
+report or any exceptions. This report helps check every transaction that occurred during a specific
+period.</p>
+<img alt="General Ledger report in Odoo." src="../../../_images/reporting-general-ledger.png" />
+</section><section id="aged-payable">
+<span id="reporting-aged-payable"></span><h3>Aged Payable<a class="headerlink" href="#aged-payable" title="Permalink to this headline">¶</a></h3>
+<p>Run the <strong>Aged Payable Details</strong> report to display information on individual bills, credit notes,
+and overpayments you owe and how long these have gone unpaid.</p>
+<img alt="Aged Payable report in Odoo." src="../../../_images/reporting-aged-payable.png" />
+</section><section id="aged-receivable">
+<span id="reporting-aged-receivable"></span><h3>Aged Receivable<a class="headerlink" href="#aged-receivable" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Aged Receivables</strong> report shows the sales invoices awaiting payment during a selected month
+and several months prior.</p>
+<img alt="Aged Receivable report in Odoo." src="../../../_images/reporting-aged-receivable.png" />
+</section><section id="cash-flow-statement">
+<span id="reporting-cash-flow-statement"></span><h3>Cash Flow Statement<a class="headerlink" href="#cash-flow-statement" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Cash Flow Statement</strong> shows how changes in balance sheet accounts and income affect cash and
+cash equivalents and breaks the analysis down to operating, investing, and financing activities.</p>
+<img alt="Cash Flow Statement report in Odoo." src="../../../_images/reporting-cash-flow-statement.png" />
+</section><section id="tax-report">
+<span id="reporting-tax-report"></span><h3>Tax Report<a class="headerlink" href="#tax-report" title="Permalink to this headline">¶</a></h3>
+<p>This report allows you to see the <strong>net</strong> and <strong>tax amounts</strong> for all the taxes grouped by type
+(sale/purchase).</p>
+<img alt="Tax report in Odoo." src="../../../_images/reporting-tax-report.png" />
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_tax_returns"><a class="reference internal" href="reporting/tax_returns.html">Tax return (VAT declaration)</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_tax_carryover"><a class="reference internal" href="reporting/tax_carryover.html">Tax carryover</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_analytic_accounting"><a class="reference internal" href="reporting/analytic_accounting.html">Analytic accounting</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_budget"><a class="reference internal" href="reporting/budget.html">Financial budget</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_intrastat"><a class="reference internal" href="reporting/intrastat.html">Intrastat</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_data_inalterability"><a class="reference internal" href="reporting/data_inalterability.html">Data inalterability check report</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_silverfin"><a class="reference internal" href="reporting/silverfin.html">Silverfin integration</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_customize"><a class="reference internal" href="reporting/customize.html">Custom reports</a></li>
+<li class="toctree-l1 o_menu_applications_finance_accounting_reporting_year_end"><a class="reference internal" href="reporting/year_end.html">Year-end closing</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Reporting</a><ul>
+<li><a class="reference internal" href="#main-reports-available">Main reports available</a><ul>
+<li><a class="reference internal" href="#balance-sheet">Balance Sheet</a></li>
+<li><a class="reference internal" href="#profit-and-loss">Profit and Loss</a></li>
+<li><a class="reference internal" href="#executive-summary">Executive Summary</a></li>
+<li><a class="reference internal" href="#general-ledger">General Ledger</a></li>
+<li><a class="reference internal" href="#aged-payable">Aged Payable</a></li>
+<li><a class="reference internal" href="#aged-receivable">Aged Receivable</a></li>
+<li><a class="reference internal" href="#cash-flow-statement">Cash Flow Statement</a></li>
+<li><a class="reference internal" href="#tax-report">Tax Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Reporting</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

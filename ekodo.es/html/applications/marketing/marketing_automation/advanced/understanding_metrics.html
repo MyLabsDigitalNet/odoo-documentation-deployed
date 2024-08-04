@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campaign metrics &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/marketing/marketing_automation/advanced/understanding_metrics.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/marketing/marketing_automation/advanced/understanding_metrics.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Campaign metrics</a><ul>
+<li><a class="reference internal" href="#activity-analytics">Activity analytics</a><ul>
+<li><a class="reference internal" href="#activity-graph-tab">Activity graph tab</a></li>
+<li><a class="reference internal" href="#activity-filter-tab">Activity filter tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#link-tracker">Link tracker</a></li>
+<li><a class="reference internal" href="#traces">Traces</a></li>
+<li><a class="reference internal" href="#participants">Participants</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/marketing/marketing_automation/advanced/understanding_metrics.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Campaign metrics</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="campaign-metrics">
+<h1>Campaign metrics<a class="headerlink" href="#campaign-metrics" title="Permalink to this headline">¶</a></h1>
+<p><em>Campaign metrics</em> are detailed statistics and analytics within a marketing campaign, measuring its
+success and effectiveness. Triggered marketing activities populate relevant activity blocks with
+real-time metrics, in the campaign detail form.</p>
+</section><section id="activity-analytics">
+<h2>Activity analytics<a class="headerlink" href="#activity-analytics" title="Permalink to this headline">¶</a></h2>
+<p>In the <span class="guilabel">Workflow</span> section of a campaign detail form in the <em>Marketing Automation</em> app,
+where the various campaign activities are located, a collection of useful data can be found on every
+individual activity block, like number of communications <span class="guilabel">Sent</span>, percentage of messages
+that have been <span class="guilabel">Clicked</span>, and more.</p>
+<img alt="An activity block in the workflow section with useful analytical data in Odoo." class="align-center" src="../../../../_images/activity-analytics-block-sample.png" />
+<p>To the left of the activity block, the configured <a class="reference internal" href="../getting_started/workflow_activities.html"><span class="doc">trigger time</span></a> is displayed as a duration (either <span class="guilabel">Hours</span>,
+<span class="guilabel">Days</span>, <span class="guilabel">Weeks</span>, or <span class="guilabel">Months</span>) if it corresponds to period after the
+workflow begins.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If the trigger time is dependent on another activity or triggering action (e.g. <span class="guilabel">Mail:
+Replied</span>, etc.) the time is displayed, along with the necessary action for that activity to be
+activated (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Replied</span> <span class="pre">after</span> <span class="pre">2</span> <span class="pre">Hours</span></code>).</p>
+<img alt="Time trigger display when dependent on another activity in Odoo Marketing Automation." class="align-center" src="../../../../_images/replied-after-activity-time-trigger.png" />
+</div>
+<p>In the activity block, an icon represents each activity type. An <span class="guilabel">✉️ (envelope)</span> icon
+means the activity is an email. Three tiny, interlocking <span class="guilabel">⚙️ (gear)</span> icons means the
+activity is an internal action. And, a small, basic <span class="guilabel">📱 (mobile)</span> icon means the activity
+is an SMS.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The activity type name is also displayed in smaller font below the activity title.</p>
+</div>
+<p>Beside the activity icon, at the top of the activity block, is the title of the activity. To the
+right of the activity title, there are <span class="guilabel">Edit</span> and <span class="guilabel">Delete</span> buttons.</p>
+<p>Click <span class="guilabel">Edit</span> to open the <span class="guilabel">Open: Activities</span> pop-up form for that specific
+activity, in which that activity can be modified. Click the <span class="guilabel">Delete</span> button to completely
+delete that specific activity from the workflow.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../getting_started/workflow_activities.html"><span class="doc">Campaign workflow activities</span></a></p>
+</div>
+</section><section id="activity-graph-tab">
+<h3>Activity graph tab<a class="headerlink" href="#activity-graph-tab" title="Permalink to this headline">¶</a></h3>
+<p>In every activity block, the <span class="guilabel">Graph (pie chart icon)</span> tab is open by default, displaying
+related metrics as a simple line graph. The success metrics are represented in <code class="o_code docutils literal notranslate"><span class="pre">green</span></code> and the
+rejected metrics are represented in <code class="o_code docutils literal notranslate"><span class="pre">red</span></code>.</p>
+<p>Numerical representations of both <span class="guilabel">Success</span> and <span class="guilabel">Rejected</span> activities are shown
+to the right of the line graph.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Hovering over any point in the line graph of the activity block reveals a notated breakdown of
+data for that specific date.</p>
+<img alt="Hovering over any point in line graph reveals notated breakdown of data in Odoo." class="align-center" src="../../../../_images/graph-breakdown-data.png" />
+</div>
+<p>Beneath the graph in the activity block, for <em>Email</em> or <em>SMS</em> activity types, a line of accessible
+data figures provide a bird’s eye view of the campaign activity, including: <span class="guilabel">Sent</span>
+(numerical), <span class="guilabel">Clicked</span> (percentage), <span class="guilabel">Replied</span> (percentage), and
+<span class="guilabel">Bounced</span> (percentage).</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Clicking any of those stats on the <span class="guilabel">DETAILS</span> line, beneath the line graph, reveals a
+separate page containing every specific record for that particular data point.</p>
+</div>
+</section><section id="activity-filter-tab">
+<h3>Activity filter tab<a class="headerlink" href="#activity-filter-tab" title="Permalink to this headline">¶</a></h3>
+<p>Next to the <span class="guilabel">Graph</span> tab on the activity block, there’s the option to open a
+<span class="guilabel">Filter</span> tab (represented by a <span class="guilabel">filter/funnel</span> icon).</p>
+<img alt="What a campaign activity filter tab looks like in Odoo Marketing Automation." class="align-center" src="../../../../_images/activity-filter-tab.png" />
+<p>Clicking the <span class="guilabel">Filter</span> tab on an activity block, reveals what the specific filters are for
+that particular campaign activity, and how many records in the database match that specific
+criteria.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Clicking the <span class="guilabel">records</span> link beneath the displayed filter reveals a separate pop-up
+window containing a list of all the records that match that specific campaign activity rule(s).</p>
+</div>
+</section><section id="link-tracker">
+<h2>Link tracker<a class="headerlink" href="#link-tracker" title="Permalink to this headline">¶</a></h2>
+<p>Odoo tracks all URLs used in marketing campaigns. To access and analyze those URLs, navigate to
+<span class="menuselection">Marketing Automation app ‣ Reporting ‣ Link Tracker</span>. Doing so reveals a
+<span class="guilabel">Link Statistics</span> page, wherein all campaign-related URLs can be analyzed.</p>
+<img alt="What a campaign activity filter tab looks like in Odoo Marketing Automation." class="align-center" src="../../../../_images/campaign-link-tracker.png" />
+<p>The default view on the <span class="guilabel">Link Statistics</span> page is the <span class="guilabel">Bar Chart</span> view, but
+there are different view options available in the upper-left corner. There is the option to view the
+statistics as a <span class="guilabel">Line Chart</span> or <span class="guilabel">Pie Chart</span>.</p>
+<p>Beside that, there is also the option to view the statistics as <span class="guilabel">Stacked</span>, and the data
+can be put into <span class="guilabel">Descending</span> or <span class="guilabel">Ascending</span> order.</p>
+<p>To the far-left of the view options, there is the <span class="guilabel">Measures</span> drop-down menu. When clicked,
+the options to view the <span class="guilabel">Number of Clicks</span> or total <span class="guilabel">Count</span> are available. And,
+to the right of the <span class="guilabel">Measures</span> drop-down menu, there’s the ability to add any data to a
+spreadsheet by clicking the <span class="guilabel">Insert in Spreadsheet</span> button.</p>
+<p>Also, in the upper-right corner of the <span class="guilabel">Link Statistics</span> page, to the far-right of the
+search bar, there are additional view options to choose from: the default <span class="guilabel">Graph</span> view,
+the <span class="guilabel">Pivot</span> table view, and the <span class="guilabel">List</span> view.</p>
+</section><section id="traces">
+<h2>Traces<a class="headerlink" href="#traces" title="Permalink to this headline">¶</a></h2>
+<p>Odoo tracks all activities used in every marketing campaign. The data related to these activities
+can be accessed and analyzed in the <span class="guilabel">Traces</span> page, which can be found by navigating to
+<span class="menuselection">Marketing Automation app ‣ Reporting ‣ Traces</span>.</p>
+<img alt="The Traces page in the Odoo Marketing Automation application." class="align-center" src="../../../../_images/traces-page-marketing-automation.png" />
+<p>The default view on the <span class="guilabel">Traces</span> page is the <span class="guilabel">Bar Chart</span> view, but there are
+different view options available in the upper-left corner. There is the option to view the
+statistics as a <span class="guilabel">Line Chart</span> or <span class="guilabel">Pie Chart</span>.</p>
+<p>At the top of the graph, there’s a color key, informing the user which activities have been
+<span class="guilabel">Processed</span>, <span class="guilabel">Scheduled</span>, and <span class="guilabel">Rejected</span>. There’s also an outline
+indicator to inform users of the <span class="guilabel">Sum</span> of certain activities, as well.</p>
+<p>Beside the various view option in the upper-left corner of the <span class="guilabel">Traces</span> page, there is
+also the option to view the statistics as <span class="guilabel">Stacked</span>, and the data can be put into
+<span class="guilabel">Descending</span> or <span class="guilabel">Ascending</span> order.</p>
+<p>To the far-left of the view options, there is the <span class="guilabel">Measures</span> drop-down menu. When clicked,
+the options to view the <span class="guilabel">Document ID</span> or total <span class="guilabel">Count</span> are available. And, to
+the right of the <span class="guilabel">Measures</span> drop-down menu, there’s the ability to add any data to a
+spreadsheet by clicking the <span class="guilabel">Insert in Spreadsheet</span> button.</p>
+<p>Also, in the upper-right corner of the <span class="guilabel">Link Statistics</span> page, to the far-right of the
+search bar, there are additional view options to choose from: the default <span class="guilabel">Graph</span> view,
+the <span class="guilabel">Pivot</span> table view, and the <span class="guilabel">List</span> view.</p>
+</section><section id="participants">
+<h2>Participants<a class="headerlink" href="#participants" title="Permalink to this headline">¶</a></h2>
+<p>Odoo tracks all participants related to every marketing campaign. The data related to these
+participants can be accessed and analyzed in the <span class="guilabel">Participants</span> page, which can be found
+by navigating to <span class="menuselection">Marketing Automation app ‣ Reporting ‣ Participants</span>.</p>
+<img alt="The Participants page in the Odoo Marketing Automation application." class="align-center" src="../../../../_images/participants-page-marketing-automation.png" />
+<p>The default view on the <span class="guilabel">Participants</span> page is the <span class="guilabel">Pie Chart</span> view, but there
+are different view options available in the upper-left corner. There is the option to view the
+statistics as a <span class="guilabel">Line Chart</span> or <span class="guilabel">Bar Chart</span>.</p>
+<p>At the top of the graph, there’s a color key that describes the type of participants found in the
+graph.</p>
+<p>To the far-left of the view options, there is the <span class="guilabel">Measures</span> drop-down menu. When clicked,
+the options to view the <span class="guilabel">Record ID</span> or total <span class="guilabel">Count</span> are available. And, to the
+right of the <span class="guilabel">Measures</span> drop-down menu, there’s the ability to add any data to a
+spreadsheet by clicking the <span class="guilabel">Insert in Spreadsheet</span> button.</p>
+<p>Also, in the upper-right corner of the <span class="guilabel">Link Statistics</span> page, to the far-right of the
+search bar, there are additional view options to choose from: the default <span class="guilabel">Graph</span> view,
+the <span class="guilabel">Pivot</span> table view, and the <span class="guilabel">List</span> view.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Campaign metrics</a><ul>
+<li><a class="reference internal" href="#activity-analytics">Activity analytics</a><ul>
+<li><a class="reference internal" href="#activity-graph-tab">Activity graph tab</a></li>
+<li><a class="reference internal" href="#activity-filter-tab">Activity filter tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#link-tracker">Link tracker</a></li>
+<li><a class="reference internal" href="#traces">Traces</a></li>
+<li><a class="reference internal" href="#participants">Participants</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Campaign metrics</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

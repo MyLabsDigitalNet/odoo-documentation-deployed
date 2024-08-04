@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Internal transfers &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/payments/internal_transfers.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/payments/internal_transfers.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Internal transfers</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#register-an-internal-transfer-from-one-bank-to-another">Register an internal transfer from one bank to another</a><ul>
+<li><a class="reference internal" href="#log-an-internal-transfer">Log an internal transfer</a><ul>
+<li><a class="reference internal" href="#bank-journal-bank-a">Bank journal (Bank A)</a></li>
+<li><a class="reference internal" href="#automated-booking-bank-journal-bank-b">Automated booking - Bank journal (BANK B)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manage-and-reconcile-bank-statements">Manage and reconcile bank statements</a><ul>
+<li><a class="reference internal" href="#bank-journal-entry">Bank journal entry</a></li>
+<li><a class="reference internal" href="#id1">Bank journal entry</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/payments/internal_transfers.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Internal transfers</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="internal-transfers">
+<h1>Internal transfers<a class="headerlink" href="#internal-transfers" title="Permalink to this headline">¶</a></h1>
+<p>In Odoo, internal money transfers can be made in a few clicks. You need at least either two bank
+accounts, two cash journals, or one bank account and one cash journal.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>An internal transfer account is automatically created on your database based on your company’s
+localization and depending on your country’s legislation. If needed, the default <span class="guilabel">Internal
+transfer account</span> can be modified by going to <span class="menuselection">Accounting app ‣ Configuration ‣
+Settings</span> and then under the <span class="guilabel">Default Accounts</span> section.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>At least two bank accounts are needed to make internal transfers. Refer to
+<a class="reference internal" href="../bank.html"><span class="doc">Bank and cash accounts section</span></a> to see how to add an additional bank
+account to your database.</p>
+</div>
+</section><section id="register-an-internal-transfer-from-one-bank-to-another">
+<h2>Register an internal transfer from one bank to another<a class="headerlink" href="#register-an-internal-transfer-from-one-bank-to-another" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say you have two bank accounts registered on your database and you want to transfer 1,000 USD
+from Bank A to Bank B.</p>
+</section><section id="log-an-internal-transfer">
+<h3>Log an internal transfer<a class="headerlink" href="#log-an-internal-transfer" title="Permalink to this headline">¶</a></h3>
+<p>From the Accounting Dashboard, click on the drop-down selection button (<span class="guilabel">⋮</span>) on one of
+your banks. In the <span class="guilabel">New</span> column click on <span class="guilabel">Internal Transfer</span> and enter the
+information related to the transfer.</p>
+<img alt="Fill in the information related to your internal transfer" class="align-center" src="../../../../_images/internal_transfer.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Fill in the <span class="guilabel">Memo</span> field for automatic reconciliation.</p>
+</div>
+<p><span class="guilabel">Save</span> and <span class="guilabel">Confirm</span> to register your internal transfer. The money is now booked
+in the transfer account and another payment is <strong>automatically</strong> created in the destination journal
+(Bank B).</p>
+</section><section id="bank-journal-bank-a">
+<h4>Bank journal (Bank A)<a class="headerlink" href="#bank-journal-bank-a" title="Permalink to this headline">¶</a></h4>
+<table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p><strong>Account</strong></p></th>
+<th class="head"><p><strong>Debit</strong></p></th>
+<th class="head"><p><strong>Credit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Outstanding Payments account</p></th>
+<td></td>
+<td><p>$1,000</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Internal transfer account</strong></p></th>
+<td><p><strong>$1,000</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section><section id="automated-booking-bank-journal-bank-b">
+<h4>Automated booking - Bank journal (BANK B)<a class="headerlink" href="#automated-booking-bank-journal-bank-b" title="Permalink to this headline">¶</a></h4>
+<table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p><strong>Account</strong></p></th>
+<th class="head"><p><strong>Debit</strong></p></th>
+<th class="head"><p><strong>Credit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Outstanding Receipts account</p></th>
+<td><p>$1,000</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Internal transfer account</strong></p></th>
+<td></td>
+<td><p><strong>$1,000</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>There are one outstanding payment and one outstanding receipt pending in your two bank account
+journals, because the bank statement confirming the sending and receiving of the money has not
+been booked yet.</p>
+</div>
+<img alt="Outstanding Payments/Receipts pending bank statement booking" class="align-center" src="../../../../_images/outstanding-payments-receipts.png" />
+</section><section id="manage-and-reconcile-bank-statements">
+<span id="interbank-import-and-reconcile"></span><h3>Manage and reconcile bank statements<a class="headerlink" href="#manage-and-reconcile-bank-statements" title="Permalink to this headline">¶</a></h3>
+<p>The next step is to book the bank statements to finalize the transaction by creating,
+<a class="reference internal" href="../bank/transactions.html"><span class="doc">importing</span></a>, or <a class="reference internal" href="../bank/bank_synchronization.html"><span class="doc">synchronizing</span></a> your
+<span class="guilabel">Transactions lines</span>. Fill in the <span class="guilabel">Ending balance</span> and click on the
+<span class="guilabel">Reconcile</span> button.</p>
+<img alt="Transaction lines to be filled in prior to reconciliation" class="align-center" src="../../../../_images/transactions-line.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../bank/reconciliation.html"><span class="doc">Bank reconciliation</span></a></p>
+</div>
+<p>In the next window, choose counterparts for the payment - in this example, the outstanding payment
+account - then click <span class="guilabel">Validate</span>.</p>
+<img alt="Reconcile your payment" class="align-center" src="../../../../_images/bank-reconciliation.png" />
+</section><section id="bank-journal-entry">
+<h4>Bank journal entry<a class="headerlink" href="#bank-journal-entry" title="Permalink to this headline">¶</a></h4>
+<table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p><strong>Account</strong></p></th>
+<th class="head"><p><strong>Debit</strong></p></th>
+<th class="head"><p><strong>Credit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Outstanding Payment</p></th>
+<td><p>$1,000</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Bank Account (BANK A)</p></th>
+<td></td>
+<td><p><strong>$1,000</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>The same steps must be repeated once you receive the bank statement related to Bank B. Book and
+reconcile your bank statement lines.</p>
+</section><section id="id1">
+<h4>Bank journal entry<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<table class="table docutils">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p><strong>Account</strong></p></th>
+<th class="head"><p><strong>Debit</strong></p></th>
+<th class="head"><p><strong>Credit</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Outstanding Receipt</p></th>
+<td></td>
+<td><p>$1,000</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Bank Account (BANK B)</p></th>
+<td><p><strong>$1,000</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Internal transfers</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#register-an-internal-transfer-from-one-bank-to-another">Register an internal transfer from one bank to another</a><ul>
+<li><a class="reference internal" href="#log-an-internal-transfer">Log an internal transfer</a><ul>
+<li><a class="reference internal" href="#bank-journal-bank-a">Bank journal (Bank A)</a></li>
+<li><a class="reference internal" href="#automated-booking-bank-journal-bank-b">Automated booking - Bank journal (BANK B)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manage-and-reconcile-bank-statements">Manage and reconcile bank statements</a><ul>
+<li><a class="reference internal" href="#bank-journal-entry">Bank journal entry</a></li>
+<li><a class="reference internal" href="#id1">Bank journal entry</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Internal transfers</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

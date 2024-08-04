@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VAT units &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/vat_units.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/get_started/vat_units.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">VAT units</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#fiscal-position">Fiscal position</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tax-report">Tax report</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/vat_units.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">VAT units</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="vat-units">
+<h1>VAT units<a class="headerlink" href="#vat-units" title="Permalink to this headline">¶</a></h1>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>This is only applicable to multi-company environments.</p>
+</div>
+<p>A <strong>VAT unit</strong> is a group of VAT-taxable enterprises that are legally independent of each other but
+are closely linked financially, organizationally, and economically and therefore considered the same
+VAT-taxable enterprise. <strong>VAT units</strong> are not mandatory, but if created, constituent companies of
+the unit must belong to the same <strong>country</strong>, use the same <strong>currency</strong>, and one company must be
+designated as the <strong>representative</strong> company of the <strong>VAT unit</strong>. <strong>VAT units</strong> receive a specific
+<strong>tax ID</strong> intended only for <strong>tax returns</strong>. <strong>Constituent</strong> companies keep their <strong>tax ID</strong> used
+for <strong>commercial purposes</strong>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Enterprise <strong>A</strong> owes €300.000,00 of VAT taxes and enterprise <strong>B</strong> can recover €280.000,00 of
+VAT taxes. They form up as a <strong>VAT unit</strong> so that the two amounts balance out and must conjointly
+only pay €20.000,00 of VAT taxes.</p>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To configure a <strong>VAT unit</strong>, go to <span class="menuselection">Settings ‣ General Settings</span>, scroll down to
+the <span class="guilabel">Companies</span> section, and click <span class="guilabel">Manage Companies</span>. Select the company to
+serve the <strong>representative</strong> role, and in the <span class="guilabel">General Information</span> tab, fill in the
+mandatory fields for the .XML export when exporting the <strong>tax report</strong>: <span class="guilabel">Company Name</span>,
+<span class="guilabel">Address</span>, <span class="guilabel">VAT</span>, <span class="guilabel">Currency</span>, <span class="guilabel">Phone</span>, and
+<span class="guilabel">Email</span>.</p>
+<img alt="Formulario de información de empresa" class="align-center" src="../../../../_images/ajustes_empresa.png" />
+<p>Then, click on the <span class="guilabel">VAT Units</span> tab, <span class="guilabel">Add a line</span>, and either select an existing
+<strong>VAT unit</strong>, or create a new one. Enter a <strong>name</strong> for the unit, <span class="guilabel">Country</span> of the
+constituent companies and tax report, the <span class="guilabel">Companies</span>, the <span class="guilabel">Main Company</span> that
+serves the <strong>representative</strong> role, and the <span class="guilabel">Tax ID</span> of the <strong>VAT unit</strong>.</p>
+<img alt="VAT units tab" class="align-center" src="../../../../_images/vat-unit.png" />
+</section><section id="fiscal-position">
+<h3>Fiscal position<a class="headerlink" href="#fiscal-position" title="Permalink to this headline">¶</a></h3>
+<p>As transactions between constituents of the same <strong>VAT unit</strong> are not subject to VAT, it is possible
+to create a <a class="reference internal" href="../taxes/fiscal_positions.html"><span class="doc">tax mapping (fiscal position)</span></a> to avoid the
+application of VAT on inter-constituent transactions.</p>
+<p>Be sure a constituent company has been selected before, then go to <span class="menuselection">Accounting ‣
+Configuration ‣ Fiscal Positions</span>, and <span class="guilabel">Create</span> a new <strong>fiscal position</strong>. Click the
+<span class="guilabel">Tax Mapping</span> tab, select the <span class="guilabel">Tax on Product</span> usually applied for
+<strong>non-constituent</strong> transactions, and in <span class="guilabel">Tax to Apply</span>, select the 0% tax to apply for
+<strong>constituent</strong> transactions.</p>
+<p>Do the same for the <span class="guilabel">Account Mapping</span> tab if required, and repeat this process for
+<strong>each</strong> constituent company on your database.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Depending on your <a class="reference internal" href="../../fiscal_localizations.html"><span class="doc">localization package</span></a>, taxes
+may vary from the screenshot displayed.</p>
+<img alt="Tax mapping of fiscal position for VAT unit" class="align-center" src="../../../../_images/fiscal-positions.png" />
+</div>
+<p>Then, assign the fiscal position by opening the <strong>Contacts</strong> app. Search for a <strong>constituent</strong>
+company, and open the contact’s <strong>card</strong>. Click the <span class="guilabel">Sales &amp; Purchase</span> tab, and in the
+<span class="guilabel">Fiscal Position</span> field, input the <strong>fiscal position</strong> created for the <strong>VAT unit</strong>.
+Repeat the process for each <strong>constituent</strong> company card form, on each company database.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../taxes/fiscal_positions.html"><span class="doc">Fiscal positions (tax and account mapping)</span></a>.</p>
+</div>
+</section><section id="tax-report">
+<h2>Tax report<a class="headerlink" href="#tax-report" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>representative</strong> company can access the aggregated tax report of the <strong>VAT unit</strong> by going to
+<span class="menuselection">Accounting ‣ Reporting ‣ Tax Report</span>, and selecting the <strong>VAT unit</strong> in
+<span class="guilabel">Tax Unit</span>. This report contains the aggregated transactions of all <strong>constituents</strong> and
+the .XML export contains the name and VAT number of the <strong>main</strong> company.</p>
+<img alt="VAT unit tax report" class="align-center" src="../../../../_images/report.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">VAT units</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#fiscal-position">Fiscal position</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tax-report">Tax report</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">VAT units</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

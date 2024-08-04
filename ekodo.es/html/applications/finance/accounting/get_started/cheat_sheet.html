@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accounting cheat sheet &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" /> 
+            <link rel="stylesheet" href="../../../../_static/css/accounting.css" type="text/css"/> 
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.2/immutable.min.js"
+            integrity="sha512-myCdDiGJRYrvRb/VuJ67ljifYTJdc1jdEvL4c4ftX9o3N6EAnmD83c/7l2/91RCINZ7c8w21tiXDT7RDFjdc3g=="
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react-with-addons.min.js"
+            integrity="sha512-wsnDgOxfyn4lhblRMHPMuJh+9CnLcwcisda1zLRGNWKh6OiQynebYTyRZYgH+eWLEdNTKak0OD2GAd/S51UhTw=="
+            crossorigin="anonymous"></script>
+        <script src="../../../../_static/js/atom.js"></script>
+            <script src="../../../../_static/js/accounts.js"></script>
+            <script src="../../../../_static/js/chart-of-accounts.js"></script>
+            <script src="../../../../_static/js/entries.js"></script>
+            <script src="../../../../_static/js/misc.js"></script>
+            <script src="../../../../_static/js/reconciliation.js"></script>
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/cheat_sheet.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/get_started/cheat_sheet.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Accounting cheat sheet</a><ul>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#journal-entries">Journal entries</a></li>
+<li><a class="reference internal" href="#reconciliation">Reconciliation</a></li>
+<li><a class="reference internal" href="#bank-reconciliation">Bank Reconciliation</a></li>
+<li><a class="reference internal" href="#checks-handling">Checks Handling</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/get_started/cheat_sheet.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Accounting cheat sheet</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_has_code_column">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="accounting-cheat-sheet">
+<h1>Accounting cheat sheet<a class="headerlink" href="#accounting-cheat-sheet" title="Permalink to this headline">¶</a></h1>
+<div class="intro-list">
+<p class="intro-balance">The <strong>Balance Sheet</strong> is a snapshot of the company’s finances at a specific date (as opposed to
+the Profit and Loss, which is an analysis over a period).</p>
+<ul class="simple">
+<li><p class="intro-assets"><strong>Assets</strong> represent the company’s wealth and the goods it owns. Fixed assets include buildings
+and offices, while current assets include bank accounts and cash. The money owed by a client is
+an asset. An employee is not an asset.</p></li>
+<li><p class="intro-liabilities"><strong>Liabilities</strong> are obligations from past events that the company will have to pay in the
+future (utility bills, debts, unpaid suppliers). Liabilities could also be defined as a source
+of financing which is provided to the company, also called <em>leverage</em>.</p></li>
+<li><p class="intro-equity"><strong>Equity</strong> is the amount of the funds contributed by the owners of the company (founders or
+shareholders) plus previously retained earnings (or losses). Each year, net profits (or losses)
+may be reported as retained earnings or distributed to the shareholders (as a dividend).</p></li>
+</ul>
+</div>
+<p>What is owned (an asset) has been financed through debts to reimburse (liabilities) or equity
+(profits, capital).</p>
+<dl class="simple">
+<dt>A difference is made between <strong>assets</strong> and <strong>expenses</strong>:</dt><dd><ul class="simple">
+<li><p>An <strong>asset</strong> is a resource with economic value that an individual, corporation, or country owns
+or controls with the expectation that it will provide a future benefit. Assets are reported on
+a company’s balance sheet. They are bought or created to increase a firm’s value or benefit its
+operations.</p></li>
+<li><p>An <strong>expense</strong> is the costs of operations a company bears to generate revenues.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="intro-list">
+<p class="intro-p-l">The <strong>profit and loss</strong> (P&amp;L) report shows the company’s performance over a specific period of
+time, usually a quarter or a fiscal year.</p>
+<blockquote class="intro-p-l">
+<div><ul class="simple">
+<li><p class="intro-gross-profit">The <strong>revenue</strong> refers to the money earned by the company by selling goods and/or services.</p></li>
+<li><p class="intro-gross-profit">The <strong>cost of goods sold</strong> (COGS, or also known as “Cost of Sale”) refers to the sale of
+goods’ costs (e.g., the cost of the materials and labor used to create the goods).</p>
+<ul>
+<li><p class="intro-gross-profit">The <strong>Gross profit</strong> equals the revenues from sales minus the cost of goods sold.</p></li>
+<li><p class="intro-opex"><strong>Operating expenses</strong> (OPEX) include administration, sales and R&amp;D salaries, rent and
+utilities, miscellaneous costs, insurances, and anything beyond the costs of products sold
+or the cost of sale.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="doc-aside accounts-table">
+</div>
+<blockquote class="highlights doc-aside">
+<div><p>Assets = Liabilities + Equity</p>
+</div></blockquote>
+</section><section id="chart-of-accounts">
+<h2>Chart of accounts<a class="headerlink" href="#chart-of-accounts" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>chart of accounts</strong> lists all the company’s accounts: both Balance sheet accounts and P&amp;L
+accounts. Every transaction is recorded by debiting and crediting multiple accounts in a journal
+entry. In a way, a chart of accounts is like a company’s DNA!</p>
+<p>Every account listed in the chart of accounts belongs to a specific category. In Odoo, each account
+has a unique code and belongs to one of these categories:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Equity and subordinated debts</strong></dt><dd><ul>
+<li><p><strong>Equity</strong> is the amount of money invested by a company’s shareholders to finance the
+company’s activities.</p></li>
+<li><p><strong>Subordinated debts</strong> are the amount of money lent by a third party to a company to finance
+its activities. In the event of the dissolution of a company, these third parties are
+reimbursed before the shareholders.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Fixed assets</strong> are tangible (i.e., physical) items or properties that a company purchases and
+uses to produce its goods and services. Fixed assets are long-term assets. This means the assets
+have a useful life of more than one year. They also include properties, plants, and equipments
+(also known as “PP&amp;E”) and are recorded on the balance sheet with that classification.</p></li>
+<li><dl class="simple">
+<dt><strong>Current assets and liabilities</strong></dt><dd><ul>
+<li><p>The <strong>current assets</strong> account is a balance sheet line item listed under the Assets section,
+which accounts for all company-owned assets that can be converted to cash within one year.
+Current assets include cash, cash equivalents, accounts receivable, stock inventory,
+marketable securities, prepaid liabilities, and other liquid assets.</p></li>
+<li><p><strong>Current liabilities</strong> are a company’s short-term financial obligations due within one year.
+An example of a current liability is money owed to suppliers in the form of accounts payable.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Bank and cash accounts</strong></dt><dd><ul>
+<li><p>A <strong>bank account</strong> is a financial account maintained by a bank or other financial institution
+in which the financial transactions between the bank and a customer are recorded.</p></li>
+<li><p>A <strong>cash account</strong>, or cash book, may refer to a ledger in which all cash transactions are
+recorded. The cash account includes both the cash receipts and the cash payment journals.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Expenses and income</strong></dt><dd><ul>
+<li><p>An <strong>expense</strong> is the costs of operations a company bears to generate revenues. It is simply
+defined as the cost one is required to spend on obtaining something. Common expenses include
+supplier payments, employee wages, factory leases, and equipment depreciation.</p></li>
+<li><p>The term “<strong>income</strong>” generally refers to the amount of money, property, and other transfers
+of value received over a set period of time in exchange for services or products.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section><section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="example">
+<p>*: Customer Refund and Customer Payment boxes cannot be simultaneously selected as they are contradictory.</p>
+</div>
+<div class="doc-aside">
+<blockquote class="highlights">
+<div><p>Balance = Debit - Credit</p>
+</div></blockquote>
+<div class="chart-of-accounts">
+</div>
+</div>
+</section><section id="journal-entries">
+<span id="cheat-sheet-journals"></span><h2>Journal entries<a class="headerlink" href="#journal-entries" title="Permalink to this headline">¶</a></h2>
+<p>Every financial document of the company (e.g., an invoice, a bank statement, a pay slip, a capital
+increase contract) is recorded as a journal entry, impacting several accounts.</p>
+<p>For a journal entry to be balanced, the sum of all its debits must be equal to the sum of all its
+credits.</p>
+<div class="doc-aside journal-entries">
+<p>examples of accounting entries for various transactions. (see entries.js)</p>
+</div>
+</section><section id="reconciliation">
+<span id="accounting-reconciliation"></span><h2>Reconciliation<a class="headerlink" href="#reconciliation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../bank/reconciliation.html"><span class="doc">Reconciliation</span></a> is the process of linking
+journal items of a specific account and matching credits and debits.</p>
+<p>Its primary purpose is to link payments to their related invoices to mark them as paid. This is done
+by doing a reconciliation on the accounts receivable account and/or the accounts payable account.</p>
+<p>Reconciliation is performed automatically by the system when:</p>
+<ul class="simple">
+<li><p>the payment is registered directly on the invoice</p></li>
+<li><p>the links between the payments and the invoices are detected at the bank matching process</p></li>
+</ul>
+<div class="doc-aside reconciliation-example">
+<p class="rubric">Customer Statement Example</p>
+<table class="table-sm d-c-table table docutils">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 34%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Accounts Receivable</p></th>
+<th class="head"><p>Debit</p></th>
+<th class="head"><p>Credit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Invoice 1</p></td>
+<td><p>100</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Partial payment 1/2</p></td>
+<td></td>
+<td><p>70</p></td>
+</tr>
+<tr class="row-even"><td><p>Invoice 2</p></td>
+<td><p>65</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Partial payment 2/2</p></td>
+<td></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-even"><td><p>Payment 2</p></td>
+<td></td>
+<td><p>65</p></td>
+</tr>
+<tr class="row-odd"><td><p>Invoice 3</p></td>
+<td><p>50</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Total to pay</p></td>
+<td><p>50</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section><section id="bank-reconciliation">
+<h2>Bank Reconciliation<a class="headerlink" href="#bank-reconciliation" title="Permalink to this headline">¶</a></h2>
+<p>Bank reconciliation is the matching of bank statement lines (provided by your bank) with
+transactions recorded internally (payments to suppliers or from customers). For each line in a bank
+statement, it can be:</p>
+<ul class="simple">
+<li><p><strong>matched with a previously recorded payment</strong>: a payment is registered when a check is received
+from a customer, then matched when checking the bank statement.</p></li>
+<li><p><strong>recorded as a new payment</strong>: the payment’s journal entry is created and reconciled with the
+related invoice when processing the bank statement.</p></li>
+<li><p><strong>recorded as another transaction</strong>: bank transfer, direct charge, etc.</p></li>
+</ul>
+<p>Odoo should automatically reconcile most transactions; only a few should need manual review. When
+the bank reconciliation process is finished, the balance on the bank account in Odoo should match
+the bank statement’s balance.</p>
+</section><section class="checks-handling" id="checks-handling">
+<h2>Checks Handling<a class="headerlink" href="#checks-handling" title="Permalink to this headline">¶</a></h2>
+<p>There are two approaches to managing checks and internal wire transfers:</p>
+<ul class="simple">
+<li><p>Two journal entries and a reconciliation</p></li>
+<li><p>One journal entry and a bank reconciliation</p></li>
+</ul>
+<div class="doc-aside">
+<p>The first journal entry is created by registering the payment on the
+invoice. The second one is created when registering the bank statement.</p>
+<table class="table-sm d-c-table table docutils">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 21%" />
+<col style="width: 18%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Account</p></th>
+<th class="head"><p>Debit</p></th>
+<th class="head"><p>Credit</p></th>
+<th class="head"><p>Reconciliation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Account Receivable</p></td>
+<td></td>
+<td><p>100</p></td>
+<td><p>Invoice ABC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Undeposited funds</p></td>
+<td><p>100</p></td>
+<td></td>
+<td><p>Check 0123</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table-sm d-c-table table docutils">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 21%" />
+<col style="width: 18%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Account</p></th>
+<th class="head"><p>Debit</p></th>
+<th class="head"><p>Credit</p></th>
+<th class="head"><p>Reconciliation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Undeposited funds</p></td>
+<td></td>
+<td><p>100</p></td>
+<td><p>Check 0123</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank</p></td>
+<td><p>100</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="doc-aside">
+<p>A journal entry is created by registering the payment on the invoice. When
+reconciling the bank statement, the statement line is linked to the
+existing journal entry.</p>
+<table class="table-sm d-c-table table docutils">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Account</p></th>
+<th class="head"><p>Debit</p></th>
+<th class="head"><p>Credit</p></th>
+<th class="head"><p>Reconciliation</p></th>
+<th class="head"><p>Bank Statement</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Account Receivable</p></td>
+<td></td>
+<td><p>100</p></td>
+<td><p>Invoice ABC</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Bank</p></td>
+<td><p>100</p></td>
+<td></td>
+<td></td>
+<td><p>Statement XYZ</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Accounting cheat sheet</a><ul>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#journal-entries">Journal entries</a></li>
+<li><a class="reference internal" href="#reconciliation">Reconciliation</a></li>
+<li><a class="reference internal" href="#bank-reconciliation">Bank Reconciliation</a></li>
+<li><a class="reference internal" href="#checks-handling">Checks Handling</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Accounting cheat sheet</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

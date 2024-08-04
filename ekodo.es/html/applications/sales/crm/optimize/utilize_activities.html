@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Utilize activities for sales teams &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script>
+    <script src="../../../../_static/tabs.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/crm/optimize/utilize_activities.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/crm/optimize/utilize_activities.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Utilize activities for sales teams</a><ul>
+<li><a class="reference internal" href="#activity-types">Activity types</a><ul>
+<li><a class="reference internal" href="#create-a-new-activity-type">Create a new activity type</a><ul>
+<li><a class="reference internal" href="#activity-settings">Activity settings</a><ul>
+<li><a class="reference internal" href="#action">Action</a></li>
+<li><a class="reference internal" href="#default-user">Default user</a></li>
+<li><a class="reference internal" href="#default-summary">Default summary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#next-activity">Next activity</a><ul>
+<li><a class="reference internal" href="#suggest-next-activity">Suggest next activity</a></li>
+<li><a class="reference internal" href="#trigger-next-activity">Trigger next activity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#activity-tracking">Activity tracking</a></li>
+<li><a class="reference internal" href="#activity-plans">Activity plans</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/crm/optimize/utilize_activities.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Utilize activities for sales teams</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="utilize-activities-for-sales-teams">
+<h1>Utilize activities for sales teams<a class="headerlink" href="#utilize-activities-for-sales-teams" title="Permalink to this headline">¶</a></h1>
+<p><em>Activities</em> are follow-up tasks tied to a record in an <em>Odoo</em> database. Activities can be scheduled
+on any page of the database that contains a chatter thread, Kanban view, list view, or activities
+view of an application.</p>
+<div class="figure align-center" id="id1">
+<img alt="Sumario de acividades sobre leads en la base de opciones_dashboard_ventas" src="../../../../_images/mis_actividades.png" />
+<p class="caption"><span class="caption-text">Planned Activities for Leads and Opportunities.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</section><section id="activity-types">
+<h2>Activity types<a class="headerlink" href="#activity-types" title="Permalink to this headline">¶</a></h2>
+<p>A set of preconfigured activity types is available in the <em>CRM</em> app. To view the list of available
+activity types, navigate to the <span class="menuselection">CRM app ‣ Configuration ‣ Activity Types</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Additional activity types are available within the database, and can be utilized through
+different applications. To access the complete list of activity types, go to the
+<span class="menuselection">Settings app</span>, then scroll to the <span class="guilabel">Discuss</span> section, and click
+<span class="guilabel">Activity Types</span>.</p>
+</div>
+<p>The preconfigured activity types for the <em>CRM</em> app are as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="guilabel">Email</span>: adds a reminder to the chatter that prompts the salesperson to send an email.</p></li>
+<li><p><span class="guilabel">Call</span>: opens a calendar link where the salesperson can schedule time to call the
+contact.</p></li>
+<li><p><span class="guilabel">Meeting</span>: opens a calendar link where the salesperson can schedule time to have a
+meeting with the contact.</p></li>
+<li><p><span class="guilabel">To Do</span>: adds a general reminder task to the chatter.</p></li>
+<li><p><span class="guilabel">Upload Document</span>: adds a link on the activity where an external document can be
+uploaded. Note that the <em>Documents</em> app is <strong>not</strong> required to utilize this activity type.</p></li>
+</ul>
+</div></blockquote>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If other applications are installed, such as <em>Sales</em> or <em>Accounting</em>, other activity types are
+made available in the <em>CRM</em> app.</p>
+</div>
+</section><section id="create-a-new-activity-type">
+<h3>Create a new activity type<a class="headerlink" href="#create-a-new-activity-type" title="Permalink to this headline">¶</a></h3>
+<p>To create a new activity type, click <span class="guilabel">New</span> at the top-left of the page to open a blank
+form.</p>
+<p>At the top of the form, start by choosing a <span class="guilabel">Name</span> for the new activity type.</p>
+</section><section id="activity-settings">
+<h4>Activity settings<a class="headerlink" href="#activity-settings" title="Permalink to this headline">¶</a></h4>
+</section><section id="action">
+<h5>Action<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h5>
+<p>The <em>Action</em> field specifies the intent of the activity. Some actions trigger specific behaviors
+after an activity is scheduled.</p>
+<ul class="simple">
+<li><p>If <span class="guilabel">Upload Document</span> is selected, a link to upload a document is added directly to the
+planned activity in the chatter.</p></li>
+<li><p>If either <span class="guilabel">Phonecall</span> or <span class="guilabel">Meeting</span> are selected, users have the option to open
+their calendar to schedule a time for this activity.</p></li>
+<li><p>If <span class="guilabel">Request Signature</span> is selected, a link is added to the planned activity in the
+chatter that opens a signature request pop-up window.</p></li>
+</ul>
+<img alt="Ajustes de actividad en un nuevo tipo de actividad." class="align-center" src="../../../../_images/accion_actividad.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The actions available to select on an activity type vary, depending on the applications currently
+installed in the database.</p>
+</div>
+</section><section id="default-user">
+<h5>Default user<a class="headerlink" href="#default-user" title="Permalink to this headline">¶</a></h5>
+<p>To automatically assign this activity to a specific user when this activity type is scheduled,
+choose a name from the <span class="guilabel">Default User</span> drop-down menu. If this field is left blank, the
+activity is assigned to the user who creates the activity.</p>
+</section><section id="default-summary">
+<h5>Default summary<a class="headerlink" href="#default-summary" title="Permalink to this headline">¶</a></h5>
+<p>To include notes whenever this activity type is created, enter them into the <span class="guilabel">Default
+Summary</span> field.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The information in the <span class="guilabel">Default User</span> and <span class="guilabel">Default Summary</span> fields are
+included when an activity is created. However, they can be altered before the activity is
+scheduled or saved.</p>
+</div>
+</section><section id="next-activity">
+<h4>Next activity<a class="headerlink" href="#next-activity" title="Permalink to this headline">¶</a></h4>
+<p>To automatically suggest, or trigger, a new activity after an activity has been marked complete, the
+<span class="guilabel">Chaining Type</span> must be set.</p>
+</section><section id="suggest-next-activity">
+<h5>Suggest next activity<a class="headerlink" href="#suggest-next-activity" title="Permalink to this headline">¶</a></h5>
+<p>In the <span class="guilabel">Chaining Type</span> field, select <span class="guilabel">Suggest Next Activity</span>. Upon doing so, the
+field underneath changes to: <span class="guilabel">Suggest</span>. Click the <span class="guilabel">Suggest</span> field drop-down menu
+to select any activities to recommend as follow-up tasks to this activity type.</p>
+<img alt="La sección de siguiente actividad en un nuevo formulario de tipo de actividad." class="align-center" src="../../../../_images/actividad_siguiente.png" />
+<p>In the <span class="guilabel">Schedule</span> field, choose a default deadline for these activities. To do so,
+configure a desired number of <span class="guilabel">Days</span>, <span class="guilabel">Weeks</span>, or <span class="guilabel">Months</span>. Then,
+decide if it should occur <span class="guilabel">after completion date</span> or <span class="guilabel">after previous activity
+deadline</span>.</p>
+<p>This <span class="guilabel">Schedule</span> field information can be altered before the activity is scheduled.</p>
+<p>When all configurations are complete, click <span class="guilabel">Save</span>.</p>
+</section><section id="trigger-next-activity">
+<h5>Trigger next activity<a class="headerlink" href="#trigger-next-activity" title="Permalink to this headline">¶</a></h5>
+<p>Setting the <span class="guilabel">Chaining Type</span> to <span class="guilabel">Trigger Next Activity</span> immediately launches the
+next activity once the previous one is completed.</p>
+<p>If <span class="guilabel">Trigger Next Activity</span> is selected in the <span class="guilabel">Chaining Type</span> field, the field
+beneath changes to: <span class="guilabel">Trigger</span>. From the <span class="guilabel">Trigger</span> field drop-down menu, select
+the activity that should be launched once this activity is completed.</p>
+<p>In the <span class="guilabel">Schedule</span> field, choose a default deadline for these activities. To do so,
+configure a desired number of <span class="guilabel">Days</span>, <span class="guilabel">Weeks</span>, or <span class="guilabel">Months</span>. Then,
+decide if it should occur <span class="guilabel">after completion date</span> or <span class="guilabel">after previous activity
+deadline</span>.</p>
+<p>This <span class="guilabel">Schedule</span> field information can be altered before the activity is scheduled.</p>
+<p>When all configurations are complete, click <span class="guilabel">Save</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When an activity has the <span class="guilabel">Chaining Type</span> set to <span class="guilabel">Trigger Next Activity</span>,
+marking the activity as <em>Done</em> immediately launches the next activity listed in the
+<span class="guilabel">Trigger</span> field.</p>
+</div>
+</section><section id="activity-tracking">
+<h2>Activity tracking<a class="headerlink" href="#activity-tracking" title="Permalink to this headline">¶</a></h2>
+<p>To keep the pipeline up to date with the most accurate view of the status of activities, as soon as
+a lead is interacted with, the associated activity should be marked as <em>Done</em>. This ensures the next
+activity can be scheduled as needed. It also prevents the pipeline from becoming cluttered with
+past due activities.</p>
+<p>The pipeline is most effective when it is kept up-to-date and accurate to the interactions it is
+tracking.</p>
+</section><section id="activity-plans">
+<h2>Activity plans<a class="headerlink" href="#activity-plans" title="Permalink to this headline">¶</a></h2>
+<p>Activity types with the <em>Chaining Type</em> set to <em>Trigger New Activity</em> provide the opportunity to
+preplan a sequence of customized activities. Once an activity is marked as <em>Done</em>, the next activity
+is automatically scheduled.</p>
+<p>The <em>Chaining Type</em> setting on an activity type provides the opportunity to preplan a sequence of
+events, that can aide in the sales process.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A salesperson adds a new lead to their pipeline, and schedules an <em>Email</em> activity for the
+following day. The email activity type is configured with the following settings:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Chaining Type</span>: <code class="o_code docutils literal notranslate"><span class="pre">Suggest</span> <span class="pre">Next</span> <span class="pre">Activity</span></code></p></li>
+<li><p><span class="guilabel">Suggest</span>: <code class="o_code docutils literal notranslate"><span class="pre">Call</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Meeting</span></code></p></li>
+<li><p><span class="guilabel">Schedule</span>: <code class="o_code docutils literal notranslate"><span class="pre">2</span> <span class="pre">days</span> <span class="pre">after</span> <span class="pre">previous</span> <span class="pre">activity</span> <span class="pre">deadline</span></code></p></li>
+</ul>
+<p>After sending an email to the lead, the salesperson clicks <span class="guilabel">DONE &amp; SCHEDULE NEXT</span> on
+the <span class="guilabel">Schedule Activity</span> pop-up window. This opens a new pop-up window, where the
+suggested next activities are listed as recommendations for next steps.</p>
+<img alt="Schedule an activity pop-up window with recommended activities." class="align-center" src="../../../../_images/recommended-activities.png" />
+</div>
+<p>The <em>suggested</em> or <em>triggered</em> activities may vary, depending on a variety of factors. See below
+for some suggested sequences:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Sample #1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Sample #2</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Sample #3</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>A salesperson adds a lead to the pipeline and schedules an <em>email</em> activity.</p></li>
+<li><p>The <em>email</em> activity suggests scheduling a <em>call</em> or a <em>meeting</em> within two days of the
+previous deadline.</p></li>
+<li><p>Both the <em>call</em> and the <em>meeting</em> activities trigger a <em>create quote</em> activity.</p></li>
+<li><p>After the quote is sent, a <em>follow-up on quote</em> activity is scheduled within five days.</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>A lead is <a class="reference internal" href="../acquire_leads/generate_leads.html"><span class="doc">added to the pipeline</span></a> through the
+website’s contact form. The salesmanager assigns a salesperson and schedules an activity
+for a <em>call</em>.</p></li>
+<li><p>The <em>call</em> activity triggers an <em>upload document</em> activity, so the salesperson can send over
+a proposal after a successful phone call.</p></li>
+<li><p>The <em>upload document</em> activity suggests scheduling a <em>request signature</em> activity or a
+<em>meeting</em>. The salesperson chooses to schedule a meeting.</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>A salesmanager notices several of their salespeople are neglecting to follow-up on their
+leads in a timely manner. As a result, high-value targets are not receiving adequate
+attention.</p></li>
+<li><p>The salesmanager creates a new activity type, titled <em>follow-up</em>, which is configured with
+the <span class="guilabel">Action</span> set to <span class="guilabel">Reminder</span>.</p></li>
+<li><p>The salesmanager adds <em>follow-up</em> as the next activity triggered or suggested to all of
+their teams activities.</p></li>
+<li><p>After a salesperson schedules an <em>email</em> activity, a <em>follow-up</em> activity is scheduled for
+the next day. After they schedule a <em>meeting</em> activity, a <em>follow-up</em> activity is scheduled
+two days later.</p></li>
+</ul>
+</div></div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../essentials/activities.html"><span class="doc">Activities</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Utilize activities for sales teams</a><ul>
+<li><a class="reference internal" href="#activity-types">Activity types</a><ul>
+<li><a class="reference internal" href="#create-a-new-activity-type">Create a new activity type</a><ul>
+<li><a class="reference internal" href="#activity-settings">Activity settings</a><ul>
+<li><a class="reference internal" href="#action">Action</a></li>
+<li><a class="reference internal" href="#default-user">Default user</a></li>
+<li><a class="reference internal" href="#default-summary">Default summary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#next-activity">Next activity</a><ul>
+<li><a class="reference internal" href="#suggest-next-activity">Suggest next activity</a></li>
+<li><a class="reference internal" href="#trigger-next-activity">Trigger next activity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#activity-tracking">Activity tracking</a></li>
+<li><a class="reference internal" href="#activity-plans">Activity plans</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Utilize activities for sales teams</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

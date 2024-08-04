@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI-powered document digitization &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/vendor_bills/invoice_digitization.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/vendor_bills/invoice_digitization.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">AI-powered document digitization</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#invoice-upload">Invoice upload</a><ul>
+<li><a class="reference internal" href="#upload-invoices-manually">Upload invoices manually</a></li>
+<li><a class="reference internal" href="#upload-invoices-using-an-email-alias">Upload invoices using an email alias</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invoice-digitization">Invoice digitization</a></li>
+<li><a class="reference internal" href="#data-recognition-with-ai">Data recognition with AI</a></li>
+<li><a class="reference internal" href="#pricing">Pricing</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/vendor_bills/invoice_digitization.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AI-powered document digitization</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="ai-powered-document-digitization">
+<h1>AI-powered document digitization<a class="headerlink" href="#ai-powered-document-digitization" title="Permalink to this headline">¶</a></h1>
+<p><strong>Invoice digitization</strong> is the process of converting paper documents into vendor bill and customer
+invoice forms in your accounting.</p>
+<p>Odoo uses <abbr title="optical character recognition">OCR</abbr> and artificial intelligence technologies to
+recognize the content of the documents. Vendor bill and customer invoice forms are automatically
+created and populated based on the scanned invoices.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.odoo.com/app/invoice-automation">Test Odoo’s invoice digitization</a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/digitize-bills-with-ocr-1712">Odoo Tutorials: Invoice Digitization with OCR</a></p></li>
+</ul>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>In <span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Digitization</span>, check the box
+<span class="guilabel">Document Digitization</span> and choose whether <span class="guilabel">Vendor Bills</span> and
+<span class="guilabel">Customer Invoices</span> (this includes customer credit notes) should be processed
+automatically or on demand.</p>
+<p>If you enable the <span class="guilabel">Single Invoice Line Per Tax</span> option, only one line is created per tax
+in the new bill, regardless of the number of lines on the invoice.</p>
+</section><section id="invoice-upload">
+<h2>Invoice upload<a class="headerlink" href="#invoice-upload" title="Permalink to this headline">¶</a></h2>
+</section><section id="upload-invoices-manually">
+<h3>Upload invoices manually<a class="headerlink" href="#upload-invoices-manually" title="Permalink to this headline">¶</a></h3>
+<p>From the <span class="guilabel">Accounting Dashboard</span>, click on the <span class="guilabel">Upload</span> button of your vendor
+bills journal.
+Alternatively, go to <span class="menuselection">Accounting ‣ Customers ‣ Invoices</span> or
+<span class="menuselection">Accounting ‣ Vendors ‣ Bills</span> and select <span class="guilabel">Upload</span>.</p>
+</section><section id="upload-invoices-using-an-email-alias">
+<span id="invoice-digitization-email-alias"></span><h3>Upload invoices using an email alias<a class="headerlink" href="#upload-invoices-using-an-email-alias" title="Permalink to this headline">¶</a></h3>
+<p>You can configure your connected scanner to send scanned documents to an email alias. Emails sent to
+these aliases are converted into new draft customer invoices or vendor bills.</p>
+<p>You can modify the email alias of a journal. To do so, go to the <span class="guilabel">Settings</span> app. Under
+<span class="guilabel">General Settings: Discuss</span>, enable <span class="guilabel">Custom Email Servers</span>, add an
+<span class="guilabel">Alias Domain</span>, and <span class="guilabel">Save</span>.</p>
+<p>The email alias is now available in the <span class="guilabel">Advanced Settings</span> tab of the journal. Emails
+sent to this address will be converted automatically into new invoices or bills.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If you use the <a class="reference internal" href="../../../productivity/documents.html"><span class="doc">Documents</span></a> app, you can automatically
+send your scanned invoices to the <span class="guilabel">Finance</span> workspace (e.g.,
+<code class="o_code docutils literal notranslate"><span class="pre">inbox-financial@example.odoo.com</span></code>).</p>
+</div>
+<p>The default email aliases <code class="o_code docutils literal notranslate"><span class="pre">vendor-bills@</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">customer-invoices@</span></code> followed by the
+<span class="guilabel">Alias Domain</span> you set are automatically created for the <span class="guilabel">Vendor Bills</span> and
+<span class="guilabel">Customer Invoices</span> journals, respectively. Emails sent to these addresses are converted
+automatically into new invoices or bills.</p>
+<p>To change a default email alias, go to
+<span class="menuselection">Accounting ‣ Configuration ‣ Accounting: Journals</span>. Select the journal you want
+to edit, click on the <span class="guilabel">Advanced Settings</span> tab, and edit the <code class="o_code docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Alias</span></code>.</p>
+</section><section id="invoice-digitization">
+<h2>Invoice digitization<a class="headerlink" href="#invoice-digitization" title="Permalink to this headline">¶</a></h2>
+<p>According to your settings, the document is either processed automatically, or you need to click on
+<span class="guilabel">Send for digitization</span> to do it manually.</p>
+<p>Once the data is extracted from the PDF, you can correct it if necessary by clicking on the
+respective tags (available in <span class="guilabel">Edit</span> mode) and selecting the proper information instead.</p>
+</section><section id="data-recognition-with-ai">
+<h2>Data recognition with AI<a class="headerlink" href="#data-recognition-with-ai" title="Permalink to this headline">¶</a></h2>
+<p>It is essential to review and correct (if needed) the information uploaded during digitization.
+Then, you have to post the document by clicking on <span class="guilabel">Confirm</span>. In this manner, the AI
+learns, and the system identifies the correct data for future digitizations.</p>
+</section><section id="pricing">
+<h2>Pricing<a class="headerlink" href="#pricing" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>invoice digitization</strong> is an In-App Purchase (IAP) service that requires prepaid credits to
+work. Digitizing one document consumes one credit.</p>
+<p>To buy credits, go to <span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Digitization</span>
+and click on <span class="guilabel">Buy credits</span>, or go to <span class="menuselection">Settings ‣ Odoo IAP</span> and click on
+<span class="guilabel">View My Services</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If you are on Odoo Online and have the Enterprise version, you benefit from free trial credits to
+test the feature.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://iap.odoo.com/privacy#header_6">Our Privacy Policy</a></p></li>
+<li><p><a class="reference internal" href="../../../essentials/in_app_purchase.html"><span class="doc">In-app purchases (IAP)</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">AI-powered document digitization</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#invoice-upload">Invoice upload</a><ul>
+<li><a class="reference internal" href="#upload-invoices-manually">Upload invoices manually</a></li>
+<li><a class="reference internal" href="#upload-invoices-using-an-email-alias">Upload invoices using an email alias</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invoice-digitization">Invoice digitization</a></li>
+<li><a class="reference internal" href="#data-recognition-with-ai">Data recognition with AI</a></li>
+<li><a class="reference internal" href="#pricing">Pricing</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AI-powered document digitization</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

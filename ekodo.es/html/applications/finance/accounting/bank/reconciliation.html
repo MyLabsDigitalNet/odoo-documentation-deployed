@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bank reconciliation &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/bank/reconciliation.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/bank/reconciliation.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Bank reconciliation</a><ul>
+<li><a class="reference internal" href="#bank-reconciliation-view">Bank reconciliation view</a></li>
+<li><a class="reference internal" href="#reconcile-transactions">Reconcile transactions</a><ul>
+<li><a class="reference internal" href="#match-existing-entries">Match existing entries</a></li>
+<li><a class="reference internal" href="#batch-payments">Batch payments</a></li>
+<li><a class="reference internal" href="#manual-operations">Manual operations</a></li>
+<li><a class="reference internal" href="#reconciliation-model-buttons">Reconciliation model buttons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/bank/reconciliation.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Bank reconciliation</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="bank-reconciliation">
+<h1>Bank reconciliation<a class="headerlink" href="#bank-reconciliation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Bank reconciliation</strong> is the process of matching your <a class="reference internal" href="transactions.html"><span class="doc">bank transactions</span></a> with
+your business records, such as <a class="reference internal" href="../customer_invoices.html"><span class="doc">customer invoices</span></a>, <a class="reference internal" href="../vendor_bills.html"><span class="doc">vendor bills</span></a>, and <a class="reference internal" href="../payments.html"><span class="doc">payments</span></a>. Not only is this compulsory for most
+businesses, but it also offers several benefits, such as reduced risk of errors in financial
+reports, detection of fraudulent activities, and improved cash flow management.</p>
+<p>Thanks to the bank <a class="reference internal" href="reconciliation_models.html"><span class="doc">reconciliation models</span></a>, Odoo pre-selects the
+matching entries automatically.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/bank-reconciliation-2724">Odoo Tutorials: Bank reconciliation</a></p></li>
+<li><p><a class="reference internal" href="bank_synchronization.html"><span class="doc">Bank synchronization</span></a></p></li>
+<li><p><a class="reference internal" href="transactions.html"><span class="doc">Transactions</span></a></p></li>
+</ul>
+</div>
+</section><section id="bank-reconciliation-view">
+<h2>Bank reconciliation view<a class="headerlink" href="#bank-reconciliation-view" title="Permalink to this headline">¶</a></h2>
+<p>To access a bank journal’s <strong>reconciliation view</strong>, go to your <span class="guilabel">Accounting Dashboard</span> and
+either:</p>
+<ul class="simple">
+<li><p>click the journal name (e.g., <span class="guilabel">Bank</span>) to display all transactions, including those
+previously reconciled or</p></li>
+<li><p>click the <span class="guilabel">Reconcile items</span> button to display all transactions Odoo pre-selected for
+reconciliation. You can remove the <span class="guilabel">Not Matched</span> filter from the search bar to include
+previously reconciled transactions.</p></li>
+</ul>
+<img alt="Reaching the bank reconciliation tool from your accounting dashboard" src="../../../../_images/bank-card.png" />
+<p>The bank reconciliation view is structured into three distinct sections: transactions, counterpart
+entries, and resulting entry.</p>
+<img alt="The user interface of the reconciliation view of a bank journal." src="../../../../_images/user-interface.png" />
+<dl class="simple">
+<dt>Transactions</dt><dd><p>The transactions section on the left shows all bank transactions, with the newest displayed
+first. Click a transaction to select it.</p>
+</dd>
+<dt>Counterpart entries</dt><dd><p>The counterpart entries section on the bottom right displays the options to match the selected
+bank transaction. Multiple tabs are available, including
+<a class="reference internal" href="#reconciliation-existing-entries"><span class="std std-ref">Match existing entries</span></a>, <a class="reference internal" href="#reconciliation-batch-payments"><span class="std std-ref">Batch payments</span></a>,
+<a class="reference internal" href="#reconciliation-manual-operations"><span class="std std-ref">Manual operations</span></a>, and <span class="guilabel">Discuss</span>, which contains the chatter for
+the selected bank transaction.</p>
+</dd>
+<dt>Resulting entry</dt><dd><p>The resulting entry section on the top right displays the selected bank transaction matched with
+the counterpart entries and includes any remaining debits or credits. In this section, you can
+validate the reconciliation or mark it as <span class="guilabel">To Check</span>. Any <a class="reference internal" href="#reconciliation-button"><span class="std std-ref">reconciliation model
+buttons</span></a> are also available in the resulting entry section.</p>
+</dd>
+</dl>
+</section><section id="reconcile-transactions">
+<h2>Reconcile transactions<a class="headerlink" href="#reconcile-transactions" title="Permalink to this headline">¶</a></h2>
+<p>Transactions can be matched automatically with the use of <a class="reference internal" href="reconciliation_models.html"><span class="doc">reconciliation models</span></a>, or they can be matched with <a class="reference internal" href="#reconciliation-existing-entries"><span class="std std-ref">existing entries</span></a>, <a class="reference internal" href="#reconciliation-batch-payments"><span class="std std-ref">batch payments</span></a>,
+<a class="reference internal" href="#reconciliation-manual-operations"><span class="std std-ref">manual operations</span></a>, and <a class="reference internal" href="#reconciliation-button"><span class="std std-ref">reconciliation model buttons</span></a>.</p>
+<ol class="arabic simple">
+<li><p>Select a transaction among unmatched bank transactions.</p></li>
+<li><p>Define the counterpart. There are several options for defining a counterpart, including
+<a class="reference internal" href="#reconciliation-existing-entries"><span class="std std-ref">matching existing entries</span></a>, <a class="reference internal" href="#reconciliation-manual-operations"><span class="std std-ref">manual operations</span></a>, <a class="reference internal" href="#reconciliation-batch-payments"><span class="std std-ref">batch payments</span></a>, and
+<a class="reference internal" href="#reconciliation-button"><span class="std std-ref">reconciliation model buttons</span></a>.</p></li>
+<li><p>If the resulting entry isn’t fully balanced, balance it by adding another existing counterpart
+entry or writing it off with a <a class="reference internal" href="#reconciliation-manual-operations"><span class="std std-ref">manual operation</span></a>.</p></li>
+<li><p>Click the <span class="guilabel">Validate</span> button to confirm the reconciliation and move to the next
+transaction.</p></li>
+</ol>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If you aren’t sure how to reconcile a particular transaction and would like to deal with it
+later, use the <span class="guilabel">To Check</span> button instead. All transactions marked as <span class="guilabel">To
+Check</span> can be displayed using the <span class="guilabel">To Check</span> filter.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Bank transactions are posted on the <strong>journal’s suspense account</strong> until reconciliation. At this
+point, reconciliation modifies the transaction journal entry by replacing the bank suspense
+account with the corresponding receivable, payable, or outstanding account.</p>
+</div>
+</section><section id="match-existing-entries">
+<span id="reconciliation-existing-entries"></span><h3>Match existing entries<a class="headerlink" href="#match-existing-entries" title="Permalink to this headline">¶</a></h3>
+<p>This tab contains matching entries Odoo automatically pre-selects according to the reconciliation
+models. The entry order is based on <a class="reference internal" href="reconciliation_models.html"><span class="doc">reconciliation models</span></a>, with
+suggested entries appearing first.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The search bar within the <span class="guilabel">Match Existing Entries</span> tab allows you to search for
+specific journal items.</p>
+</div>
+</section><section id="batch-payments">
+<span id="reconciliation-batch-payments"></span><h3>Batch payments<a class="headerlink" href="#batch-payments" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="payments/batch-payments">Batch payments</a> allow you to group different payments to ease
+reconciliation. Use the <span class="guilabel">Batch Payments</span> tab to find batch payments for customers and
+vendors. Similarly to the <span class="guilabel">Match Existing Entries</span> tab, the <span class="guilabel">Batch Payments</span> tab
+has a search bar that allows you to search for specific batch payments.</p>
+</section><section id="manual-operations">
+<span id="reconciliation-manual-operations"></span><h3>Manual operations<a class="headerlink" href="#manual-operations" title="Permalink to this headline">¶</a></h3>
+<p>If there isn’t an existing entry to match the selected transaction, you may instead wish to
+reconcile the transaction manually by choosing the correct account and amount. Then, complete any
+of the relevant optional fields.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can use the <span class="guilabel">fully paid</span> option to reconcile a payment, even in cases where only a
+partial payment is received. A new line appears in the resulting entry section to reflect the
+open balance registered on the Account Receivable by default. You can choose another
+account by clicking on the new line in the resulting entry section and selecting the
+<span class="guilabel">Account</span> to record the open balance.</p>
+<img alt="Click on fully paid to manually set an invoice as entirely paid." src="../../../../_images/fully-paid.png" />
+</div>
+</section><section id="reconciliation-model-buttons">
+<span id="reconciliation-button"></span><h3>Reconciliation model buttons<a class="headerlink" href="#reconciliation-model-buttons" title="Permalink to this headline">¶</a></h3>
+<p>Use a <a class="reference internal" href="reconciliation_models.html"><span class="doc">reconciliation model</span></a> button for manual operations that are
+frequently used. These custom buttons allow you to quickly reconcile bank transactions manually and
+can also be used in combination with existing entries.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Bank reconciliation</a><ul>
+<li><a class="reference internal" href="#bank-reconciliation-view">Bank reconciliation view</a></li>
+<li><a class="reference internal" href="#reconcile-transactions">Reconcile transactions</a><ul>
+<li><a class="reference internal" href="#match-existing-entries">Match existing entries</a></li>
+<li><a class="reference internal" href="#batch-payments">Batch payments</a></li>
+<li><a class="reference internal" href="#manual-operations">Manual operations</a></li>
+<li><a class="reference internal" href="#reconciliation-model-buttons">Reconciliation model buttons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Bank reconciliation</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

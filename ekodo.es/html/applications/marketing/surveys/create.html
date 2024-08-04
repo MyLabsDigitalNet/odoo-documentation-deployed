@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Survey essentials &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/marketing/surveys/create.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/marketing/surveys/create.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Survey essentials</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#questions-tab">Questions tab</a><ul>
+<li><a class="reference internal" href="#create-questions">Create questions</a><ul>
+<li><a class="reference internal" href="#create-sections-and-questions">Create sections and questions</a><ul>
+<li><a class="reference internal" href="#conditional-display">Conditional Display</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#options-tab">Options tab</a><ul>
+<li><a class="reference internal" href="#questions">Questions</a></li>
+<li><a class="reference internal" href="#scoring">Scoring</a></li>
+<li><a class="reference internal" href="#candidates">Candidates</a></li>
+<li><a class="reference internal" href="#live-session">Live Session</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#description-tab">Description tab</a></li>
+<li><a class="reference internal" href="#test-and-share-the-survey">Test and share the survey</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/marketing/surveys/create.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Survey essentials</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="survey-essentials">
+<h1>Survey essentials<a class="headerlink" href="#survey-essentials" title="Permalink to this headline">¶</a></h1>
+<p>Companies often use surveys to collect valuable information from their customers and employees,
+which in turn, allows them to make more informed business decisions.</p>
+<p>In Odoo, surveys are used to collect customer feedback, evaluate the success of a recent event,
+measure the satisfaction of customers (or employees), and gain more insight into shifting market
+sentiments.</p>
+</section><section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>To begin, open the <span class="guilabel">Surveys</span> application and click <span class="guilabel">Create</span>. Odoo then
+redirects the page to a blank survey template form.</p>
+<p>On the survey form, add a <span class="guilabel">Survey Title</span> and then add a cover image to the survey by
+hovering over the photo icon and clicking on the <span class="guilabel">Edit (pencil)</span> icon. When the file
+explorer window opens, choose an image from the local files.</p>
+<p>Below the <span class="guilabel">Survey Title</span> are various tabs in which the survey questions and format can be
+created and customized. These tabs are labeled as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Questions</span>: the list of questions to be asked in the survey</p></li>
+<li><p><span class="guilabel">Description</span>: contextual information to aid in understanding the survey</p></li>
+<li><p><span class="guilabel">Options</span>: choices for survey respondents to answer the questions</p></li>
+</ul>
+<img alt="Various tabs that can be found on the survey template page." class="align-center" src="../../../_images/questions-description-options.png" />
+</section><section id="questions-tab">
+<h2>Questions tab<a class="headerlink" href="#questions-tab" title="Permalink to this headline">¶</a></h2>
+<p>Add questions and sections to the survey in the <span class="guilabel">Questions</span> tab. A section divides the
+survey into parts in order to visually group similar questions together. To make a section, click
+<span class="guilabel">Add a section</span> and type in a section name. Then, add questions or drag and drop
+questions into the divided sections.</p>
+<p>Clicking <span class="guilabel">Add a question</span> opens the <span class="guilabel">Create Sections and Questions</span> pop-up to
+create and customize the survey question.</p>
+<img alt="The survey question pop-up window." class="align-center" src="../../../_images/survey-question-pop-up.png" />
+</section><section id="create-questions">
+<h3>Create questions<a class="headerlink" href="#create-questions" title="Permalink to this headline">¶</a></h3>
+<p>In the <span class="guilabel">Create Sections and Questions</span> pop-up, type the question in the
+<span class="guilabel">Question</span> field. Then, choose the <span class="guilabel">Question Type</span>. A preview of how the
+question type looks is shown in the preview window.</p>
+<p>Choose from the following <span class="guilabel">Question Types</span>:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Multiple Lines Text Box</span></p></li>
+<li><p><span class="guilabel">Single Line Text Box</span></p></li>
+<li><p><span class="guilabel">Numerical Value</span></p></li>
+<li><p><span class="guilabel">Date</span></p></li>
+<li><p><span class="guilabel">Datetime</span></p></li>
+<li><p><span class="guilabel">Multiple choice: only one answer</span></p></li>
+<li><p><span class="guilabel">Multiple choice: multiple answers allowed</span></p></li>
+<li><p><span class="guilabel">Matrix</span></p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Different features appear in the <span class="guilabel">Answers</span> and <span class="guilabel">Options</span> tabs, depending on
+the <span class="guilabel">Question Type</span> chosen. However, the <span class="guilabel">Description</span> tab always remains
+the same, regardless of what question is chosen.</p>
+</div>
+</section><section id="create-sections-and-questions">
+<h4>Create sections and questions<a class="headerlink" href="#create-sections-and-questions" title="Permalink to this headline">¶</a></h4>
+<p>Once a <span class="guilabel">Question Type</span> has been selected, there are three possible tabs where information
+can be customized for the question. These include the <span class="guilabel">Answers</span> (if applicable),
+<span class="guilabel">Description</span>, and <span class="guilabel">Options</span> tabs.</p>
+<p>Each tab offers a variety of different features depending on what <span class="guilabel">Question Type</span> was
+chosen.</p>
+<p>For example, in the <span class="guilabel">Options</span> tab, the following options may appear:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Mandatory Answer</span>: the question must be answered.</p></li>
+<li><p><span class="guilabel">Matrix Type</span>: for matrix-type questions, select if one choice or multiple choices can
+be selected per row.</p></li>
+<li><p><span class="guilabel">Number of columns</span>: select how many columns are displayed.</p></li>
+<li><p><span class="guilabel">Images on answers</span>: allow images on the answer options.</p></li>
+<li><p><span class="guilabel">Conditional Display</span>: determine if the question is displayed based on the
+participant’s answer to a previous question.</p></li>
+<li><p><span class="guilabel">Show Comments Field</span>: allow the participant to type a comment in a text box.</p></li>
+<li><p><span class="guilabel">Question Time Limit</span>: for live session surveys, set a time limit for the question.</p></li>
+</ul>
+</section><section id="conditional-display">
+<h5>Conditional Display<a class="headerlink" href="#conditional-display" title="Permalink to this headline">¶</a></h5>
+<p><span class="guilabel">Conditional Display</span> means the question is only displayed if the specified conditional
+answer has been selected in a previous question.</p>
+<p>When the box next to <span class="guilabel">Conditional Display</span> is selected, the <span class="guilabel">Triggering
+Question</span> field appears. Select a question from the survey.</p>
+<p>Then, a <span class="guilabel">Triggering Answer</span> field appears. Here, select which answer will trigger this
+<span class="guilabel">Conditional Display</span> question.</p>
+</section><section id="options-tab">
+<h2>Options tab<a class="headerlink" href="#options-tab" title="Permalink to this headline">¶</a></h2>
+<p>Back on the main survey template form, under the <span class="guilabel">Options</span> tab, there are different
+sections of settings that can be modified.</p>
+<p>The sections include:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Questions</span>: focuses on the overall presentation of the survey</p></li>
+<li><p><span class="guilabel">Scoring</span>: decides how the survey is scored</p></li>
+<li><p><span class="guilabel">Candidates</span>: manages access to the survey</p></li>
+<li><p><span class="guilabel">Live Session</span>: enables the survey into a real-time group activity.</p></li>
+</ul>
+</section><section id="questions">
+<h3>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h3>
+<p>First, select the <span class="guilabel">Layout</span> of the survey. The following options can be chosen:</p>
+<ul class="simple">
+<li><p><span class="guilabel">One page with all the questions</span></p></li>
+<li><p><span class="guilabel">One page per section</span></p></li>
+<li><p><span class="guilabel">One page per question</span></p></li>
+</ul>
+<p>If either the <span class="guilabel">One page per section</span> or <span class="guilabel">One page per question</span> options are
+chosen, then the <span class="guilabel">Back Button</span> option appears. If selected, the <span class="guilabel">Back Button</span>
+option allows the participant to go back to a question during the survey.</p>
+<p>Under the <span class="guilabel">Layout</span> options is the <span class="guilabel">Progression Mode</span> setting, which indicates
+how the participant’s progress during the survey is displayed. It is shown as either a
+<span class="guilabel">Percentage</span> or a <span class="guilabel">Number</span>.</p>
+<p>Next, there is an option available to add a <span class="guilabel">Survey Time Limit</span>. To implement this
+option, simply check the box, and enter the amount of time (in minutes) participants have to
+complete the survey.</p>
+<p>After the <span class="guilabel">Survey Time Limit</span> option is a section labeled <span class="guilabel">Selection</span>. Here,
+questions can be <span class="guilabel">Randomized per section</span>, in other words, the number of random questions
+can be configured by section. This mode is ignored in a live session.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="time_random.html"><span class="doc">Timed and randomized questions</span></a></p>
+</div>
+</section><section id="scoring">
+<h3>Scoring<a class="headerlink" href="#scoring" title="Permalink to this headline">¶</a></h3>
+<p>The following options are available when deciding how a <span class="guilabel">Scoring</span> method:</p>
+<ul class="simple">
+<li><p><span class="guilabel">No scoring</span></p></li>
+<li><p><span class="guilabel">Scoring with answers at the end</span></p></li>
+<li><p><span class="guilabel">Scoring without answers at the end</span></p></li>
+</ul>
+<p>If either the <span class="guilabel">Scoring with answers at the end</span> or <span class="guilabel">Scoring without answers at
+the end</span> options are selected, a <span class="guilabel">Success %</span> field appears. Set the percentage of correct
+answers needed to pass the survey.</p>
+<p>Next, there is the option to make the survey a certification. To do so, check the box next to the
+option labeled <span class="guilabel">Is a Certification</span>, and two additional fields appear. Select a color
+theme in the <span class="guilabel">Certification Template</span> field and then choose an <span class="guilabel">Email
+Template</span>. When a participant passes the certification with the required score, an email from Odoo
+will automatically be sent to that person using the selected email template.</p>
+<p>If the <span class="guilabel">Give Badge</span> feature is enabled and the <span class="guilabel">Certification Badge</span> is set,
+the survey participant also receives a badge upon passing the certification.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="scoring.html"><span class="doc">Scoring surveys</span></a></p>
+</div>
+</section><section id="candidates">
+<h3>Candidates<a class="headerlink" href="#candidates" title="Permalink to this headline">¶</a></h3>
+<p>To determine access to the survey, the <span class="guilabel">Access Mode</span> has two options to choose between:
+<span class="guilabel">Anyone with the link</span> and <span class="guilabel">Invited people only</span>.</p>
+<p>Below the <span class="guilabel">Appraisal Managers Only</span> checkbox is the <span class="guilabel">Login Required</span> option to
+require a login to participate in the survey. If this option is activated, an <span class="guilabel">Attempts
+Limit</span> field also populates, in which the number of survey attempts is defined for the participant.</p>
+</section><section id="live-session">
+<h3>Live Session<a class="headerlink" href="#live-session" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Live Session</span> section is dedicated to users who are conducting surveys in real-time,
+wherein they directly engage with and collect answers from a live audience.</p>
+<p>Customize the <span class="guilabel">Session Code</span> here; this code is needed for participants to access the
+live session survey. Reward participants for quick answers by selecting the checkbox labeled
+<span class="guilabel">Reward quick answers</span>. By checking it, attendees will get more points if they answer
+quickly.</p>
+</section><section id="description-tab">
+<h2>Description tab<a class="headerlink" href="#description-tab" title="Permalink to this headline">¶</a></h2>
+<p>Back on the main survey template page is the <span class="guilabel">Description</span> tab, where a custom
+description of the survey can be added. This is displayed beneath the title on the survey’s
+homepage, which is on the front end of the website made through the Odoo <span class="guilabel">Website</span> app.</p>
+</section><section id="test-and-share-the-survey">
+<h2>Test and share the survey<a class="headerlink" href="#test-and-share-the-survey" title="Permalink to this headline">¶</a></h2>
+<p>Once the survey is created and saved, run a test to check for possible errors before finally
+sending it out to the participants by clicking <span class="guilabel">Test</span> in the upper left corner of the
+survey template page.</p>
+<p>When activated, Odoo redirects the page to a test version of the survey on the front end of the
+website. This page displays how the survey will look to participants. Proceed to run through the
+survey, like a normal participant, to check for errors.</p>
+<p>To return to the survey template form in the backend, simply click the <span class="guilabel">This is a test
+survey. Edit Survey</span> link in the blue banner along the top of the page. Once Odoo redirects the
+page to the survey template in the backend, make any further changes, as needed, before officially
+sending the survey out to participants.</p>
+<p>When the survey is ready to be shared with the audience, click the <span class="guilabel">Start Survey</span> button
+in the upper-left corner of the survey template form. Then, click <span class="guilabel">Share</span>.</p>
+<p>In the pop-up window, add the survey recipients in the <span class="guilabel">Recipients</span> field (for existing
+contacts in the Odoo database) or the <span class="guilabel">Additional emails</span> field (for contacts that do not
+want to be listed in the Odoo database). Finally, click <span class="guilabel">Send</span>.</p>
+<p>As answers are received, check them by clicking the <span class="guilabel">Answers</span> smart button on the survey
+template form, or the <span class="guilabel">See Results</span> button in the upper left corner. To end the survey,
+click the <span class="guilabel">Close</span> button on the survey template form.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Survey essentials</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#questions-tab">Questions tab</a><ul>
+<li><a class="reference internal" href="#create-questions">Create questions</a><ul>
+<li><a class="reference internal" href="#create-sections-and-questions">Create sections and questions</a><ul>
+<li><a class="reference internal" href="#conditional-display">Conditional Display</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#options-tab">Options tab</a><ul>
+<li><a class="reference internal" href="#questions">Questions</a></li>
+<li><a class="reference internal" href="#scoring">Scoring</a></li>
+<li><a class="reference internal" href="#candidates">Candidates</a></li>
+<li><a class="reference internal" href="#live-session">Live Session</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#description-tab">Description tab</a></li>
+<li><a class="reference internal" href="#test-and-share-the-survey">Test and share the survey</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Survey essentials</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

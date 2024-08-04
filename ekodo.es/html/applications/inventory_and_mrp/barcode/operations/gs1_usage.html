@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GS1 barcode usage &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/barcode/operations/gs1_usage.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/barcode/operations/gs1_usage.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">GS1 barcode usage</a><ul>
+<li><a class="reference internal" href="#configure-barcodes-for-product-quantity-and-lots">Configure barcodes for product, quantity, and lots</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#scan-barcode-on-receipt">Scan barcode on receipt</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-barcode-for-product-and-non-unit-quantity">Configure barcode for product and non-unit quantity</a><ul>
+<li><a class="reference internal" href="#id1">Scan barcode on receipt</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verify-product-moves">Verify product moves</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/barcode/operations/gs1_usage.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GS1 barcode usage</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="gs1-barcode-usage">
+<h1>GS1 barcode usage<a class="headerlink" href="#gs1-barcode-usage" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="barcode-operations-gs1-usage"></span><p>GS1 barcodes provide a standardized format that barcode scanners can interpret. They encode
+information in a <a class="reference internal" href="gs1_nomenclature.html#barcode-operations-gs1"><span class="std std-ref">specific structure recognized globally</span></a>, allowing
+scanners to understand and process supply chain data consistently.</p>
+<p>Odoo <em>Barcode</em> interprets and prints GS1 barcodes, automating product identification and tracking
+in warehouse operations such as receiving, picking, and shipping.</p>
+<p>The following sections contain examples of how Odoo uses GS1 barcodes provided by the business to
+identify common warehouse items and automate certain warehouse workflows.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Odoo <strong>does not</strong> create GS1 barcodes. Businesses must purchase a unique Global Trade Item Number
+(GTIN) from GS1. Then, they can combine their existing GS1 barcodes with product and supply chain
+information (also provided by GS1) to create barcodes in Odoo.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.gs1.org/standards/get-barcodes">Purchase GTINs</a></p></li>
+<li><p><a class="reference internal" href="gs1_nomenclature.html#barcode-operations-gs1"><span class="std std-ref">GS1 nomenclature</span></a></p></li>
+</ul>
+</div>
+</section><section id="configure-barcodes-for-product-quantity-and-lots">
+<span id="barcode-operations-gs1-lots"></span><h2>Configure barcodes for product, quantity, and lots<a class="headerlink" href="#configure-barcodes-for-product-quantity-and-lots" title="Permalink to this headline">¶</a></h2>
+<p>To build a GS1 barcode that contains information about a product, its quantities, and the lot
+number, the following barcode patterns and Application Identifiers (A.I.) are used:</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 22%" />
+<col style="width: 5%" />
+<col style="width: 28%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Rule Name</p></th>
+<th class="head"><p>A.I.</p></th>
+<th class="head"><p>Barcode Pattern</p></th>
+<th class="head"><p>Field in Odoo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Product</p></td>
+<td><p>Global Trade Item Number
+(GTIN)</p></td>
+<td><p>01</p></td>
+<td><p>(01)(\d{14})</p></td>
+<td><p><span class="guilabel">Barcode</span> field on product form</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quantity</p></td>
+<td><p>Variable count of items</p></td>
+<td><p>30</p></td>
+<td><p>(30)(\d{0,8})</p></td>
+<td><p><span class="guilabel">Units</span> field on transfer form</p></td>
+</tr>
+<tr class="row-even"><td><p>Lot Number</p></td>
+<td><p>Batch or lot number</p></td>
+<td><p>10</p></td>
+<td><p>(10)([!”%-/0-9:-?A-Z_a-z]{0,20})</p></td>
+<td><p><span class="guilabel">Lot</span> on Detailed Operations
+pop-up</p></td>
+</tr>
+</tbody>
+</table>
+</section><section id="configuration">
+<span id="barcode-operations-lot-setup"></span><h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>First, <a class="reference internal" href="../../inventory/product_management/product_tracking/lots.html#inventory-management-track-products-by-lots"><span class="std std-ref">enable product tracking using lots</span></a> by
+navigating to <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>, and checking the box
+for <span class="guilabel">Lots &amp; Serial Numbers</span> under the <span class="guilabel">Traceability</span> heading.</p>
+<p>Then, set up the product barcode by navigating to the intended product form in
+<span class="menuselection">Inventory app ‣ Products ‣ Products</span> and selecting the product. On the product
+form, click <span class="guilabel">Edit</span>. Then, in the <span class="guilabel">General Information</span> tab, fill in the
+<span class="guilabel">Barcode</span> field with the unique 14-digit <a class="reference external" href="https://www.gs1.org/standards/get-barcodes">Global Trade Item Number (GTIN)</a>, which is a universally recognized identifying number
+that is provided by GS1.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>On the product form, omit the <abbr title="Application Identifier">A.I.</abbr> <code class="o_code docutils literal notranslate"><span class="pre">01</span></code> for <abbr title="Global Trade Item Number">GTIN</abbr> product barcode pattern, as it is only used to
+encode multiple barcodes into a single barcode that contains detailed information about the
+package contents.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>To record the GS1 barcode for the product, <code class="o_code docutils literal notranslate"><span class="pre">Fuji</span> <span class="pre">Apple</span></code>, enter the 14-digit <abbr title="Global Trade Item Number">GTIN</abbr>
+<code class="o_code docutils literal notranslate"><span class="pre">20611628936004</span></code> in the <span class="guilabel">Barcode</span> field on the product form.</p>
+<img alt="Enter 14-digit GTIN into the Barcode field on product form." class="align-center" src="../../../../_images/barcode-field.png" />
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To view a list of <em>all</em> products and their corresponding barcodes in the Odoo database, navigate
+to <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>. Under the <span class="guilabel">Barcode</span>
+heading, click on the <span class="guilabel">Configure Product Barcodes</span> button under the <span class="guilabel">Barcode
+Scanner</span> section. Enter the 14-digit <abbr title="Global Trade Item Number">GTIN</abbr> into the <span class="guilabel">Barcode</span> column, then click
+<span class="guilabel">Save</span>.</p>
+<img alt="View the Product Barcodes page from inventory settings." class="align-center" src="../../../../_images/product-barcodes-page.png" />
+</div>
+<p id="barcode-operations-lot-setup-on-product">After activating tracking by lots and serial numbers from the settings page, specify that this
+feature is to be applied on each product by navigating to the <span class="guilabel">Inventory</span> tab on the
+product form. Under <span class="guilabel">Tracking</span>, choose the <span class="guilabel">By Lots</span> radio button.</p>
+<img alt="Enable product tracking by lots in the &quot;Inventory&quot; tab of the product form." class="align-center" src="../../../../_images/track-by-lots.png" />
+</section><section id="scan-barcode-on-receipt">
+<h3>Scan barcode on receipt<a class="headerlink" href="#scan-barcode-on-receipt" title="Permalink to this headline">¶</a></h3>
+<p>To ensure accurate lot interpretation in Odoo on product barcodes scanned during a receipt
+operation, navigate to the <span class="menuselection">Barcode</span> app to manage the <a class="reference internal" href="receipts_deliveries.html#barcode-operations-scan-received-products"><span class="std std-ref">receipt picking process</span></a>.</p>
+<p>From the <span class="guilabel">Barcode Scanning</span> dashboard, click the <span class="guilabel">Operations</span> button, then the
+<span class="guilabel">Receipts</span> button to view the list of vendor receipts to process. Receipts generated from
+<abbr title="Purchase Orders">POs</abbr> are listed, but new receipt operations can also be created directly
+through the <span class="menuselection">Barcode</span> app using the <span class="guilabel">Create</span> button.</p>
+<p>On the list of receipts, click on the warehouse operation (<code class="o_code docutils literal notranslate"><span class="pre">WH/IN</span></code>) and scan product barcodes and
+lot numbers with a barcode scanner. The scanned product then appears on the list. Use the
+<span class="guilabel">✏️ (pencil)</span> button to open a window and manually enter quantities for specific lot
+numbers.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>After placing a <abbr title="Purchase Order">PO</abbr> for fifty apples, navigate to the associated receipt
+in the <em>Barcode</em> app.</p>
+<p>Scan the barcode containing the <abbr title="Global Trade Item Number">GTIN</abbr>, quantity, and lot number. For testing with a barcode
+scanner, below is an example barcode for the fifty Fuji apples in Lot 2.</p>
+<table class="colwidths-given table docutils">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>50 Fuji apples in Lot0002</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>2D Matrix</p></th>
+<td><img alt="2D matrix of GS1 barcode of 50 fuji apples with an assigned lot number." src="../../../../_images/fuji-apples-barcode.png" />
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><abbr title="Application Identifier">A.I.</abbr> (product)</p></th>
+<td><p>01</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>GS1 Barcode (product)</p></th>
+<td><p>20611628936004</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><abbr title="Application Identifier">A.I.</abbr> (quantity)</p></th>
+<td><p>30</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>GS1 Barcode (quantity)</p></th>
+<td><p>00000050</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><abbr title="Application Identifier">A.I.</abbr> (lot)</p></th>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>GS1 Barcode (lot #)</p></th>
+<td><p>LOT0002</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Full GS1 barcode</p></th>
+<td><p>0120611628936004 3000000050 10LOT0002</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="gs1_nomenclature.html#barcode-operations-troubleshooting"><span class="std std-ref">If the configuration is correct</span></a>, <code class="o_code docutils literal notranslate"><span class="pre">50/50</span></code>
+<span class="guilabel">Units</span> processed will be displayed and the <span class="guilabel">Validate</span> button turns green.
+Click the <span class="guilabel">Validate</span> button to complete the reception.</p>
+<img alt="Scan the barcode for a product on the reception picking page in the *Barcode* app." class="align-center" src="../../../../_images/receive-50-apples.png" />
+</div>
+</section><section id="configure-barcode-for-product-and-non-unit-quantity">
+<span id="barcode-operations-quantity-ex"></span><h2>Configure barcode for product and non-unit quantity<a class="headerlink" href="#configure-barcode-for-product-and-non-unit-quantity" title="Permalink to this headline">¶</a></h2>
+<p>To build a GS1 barcode that contains products measured in a non-unit quantity, like kilograms, for
+example, the following barcode patterns are used:</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 27%" />
+<col style="width: 10%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Rule Name</p></th>
+<th class="head"><p>A.I.</p></th>
+<th class="head"><p>Barcode Pattern</p></th>
+<th class="head"><p>Field in Odoo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Product</p></td>
+<td><p>Global Trade Item Number
+(GTIN)</p></td>
+<td><p>01</p></td>
+<td><p>(01)(\d{14})</p></td>
+<td><p><span class="guilabel">Barcode</span> field
+on product form</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quantity in
+kilograms</p></td>
+<td><p>Variable count of items</p></td>
+<td><p>310[0-5]</p></td>
+<td><p>(310[0-5])(\d{6})</p></td>
+<td><p><span class="guilabel">Units</span> field on
+transfer form</p></td>
+</tr>
+</tbody>
+</table>
+</section><section id="id1">
+<h3>Scan barcode on receipt<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To confirm that quantities are correctly interpreted in Odoo, place an order in the <em>Purchase</em> app
+using the appropriate unit of measure (<span class="guilabel">UoM</span>) for the quantity of products to be
+purchased.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../inventory/product_management/product_replenishment/uom.html#inventory-product-replenishment-unit-conversion"><span class="std std-ref">Simplify vendor unit conversions with UoMs</span></a></p>
+</div>
+<p>After the order is placed, navigate to the <span class="menuselection">Barcode</span> app to <a class="reference internal" href="receipts_deliveries.html#barcode-operations-scan-received-products"><span class="std std-ref">receive the vendor
+shipment</span></a>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>On the receipt in the <em>Barcode</em> app, receive an order for <code class="o_code docutils literal notranslate"><span class="pre">52.1</span> <span class="pre">kg</span></code> of peaches by scanning the
+barcode containing the <abbr title="Global Trade Item Number">GTIN</abbr> and quantity of peaches in kilograms.</p>
+<table class="colwidths-given table docutils">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>52.1 kg of Peaches</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>2D Matrix</p></th>
+<td><img alt="2D matrix of GS1 barcode of 52.1 kg of peaches." src="../../../../_images/peaches-barcode.png" />
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><abbr title="Application Identifier">A.I.</abbr> (product)</p></th>
+<td><p>01</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>GS1 Barcode (product)</p></th>
+<td><p>00614141000012</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><abbr title="Application Identifier">A.I.</abbr> (kg, 1 decimal point)</p></th>
+<td><p>3101</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>GS1 Barcode (quantity)</p></th>
+<td><p>000521</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Full GS1 barcode</p></th>
+<td><p>0100614141000012 3101000521</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="gs1_nomenclature.html#barcode-operations-troubleshooting"><span class="std std-ref">If the configuration is correct</span></a>, <code class="o_code docutils literal notranslate"><span class="pre">52.1</span> <span class="pre">/</span> <span class="pre">52.1</span></code>
+<span class="guilabel">kg</span> will be displayed and the <span class="guilabel">Validate</span> button turns green. Finally, press
+<span class="guilabel">Validate</span> to complete the validation.</p>
+<img alt="Scan barcode screen for a reception operation in the Barcode app." class="align-center" src="../../../../_images/scan-barcode-peaches.png" />
+</div>
+</section><section id="verify-product-moves">
+<h2>Verify product moves<a class="headerlink" href="#verify-product-moves" title="Permalink to this headline">¶</a></h2>
+<p>For additional verification, the quantities of received products are also recorded on the
+<span class="guilabel">Product Moves</span> report, accessible by navigating to <span class="menuselection">Inventory app ‣
+Reporting ‣ Product Moves</span>.</p>
+<p>The items on the <span class="guilabel">Product Moves</span> report are grouped by product by default. To confirm the
+received quantities, click on a product line to open its collapsible drop-down menu, which displays
+a list of <em>stock move lines</em> for the product. The latest stock move matches the warehouse reception
+reference number (e.g. <code class="o_code docutils literal notranslate"><span class="pre">WH/IN/00013</span></code>) and quantity processed in the barcode scan, demonstrating that
+the records processed in the <em>Barcode</em> app were properly stored in <em>Inventory</em>.</p>
+<img alt="Reception stock move record for 52.1 kg of peaches." class="align-center" src="../../../../_images/stock-moves-peach.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">GS1 barcode usage</a><ul>
+<li><a class="reference internal" href="#configure-barcodes-for-product-quantity-and-lots">Configure barcodes for product, quantity, and lots</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#scan-barcode-on-receipt">Scan barcode on receipt</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-barcode-for-product-and-non-unit-quantity">Configure barcode for product and non-unit quantity</a><ul>
+<li><a class="reference internal" href="#id1">Scan barcode on receipt</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verify-product-moves">Verify product moves</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GS1 barcode usage</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

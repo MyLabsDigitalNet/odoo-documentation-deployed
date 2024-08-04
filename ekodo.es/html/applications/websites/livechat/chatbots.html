@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chatbots &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/livechat/chatbots.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/livechat/chatbots.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Chatbots</a><ul>
+<li><a class="reference internal" href="#build-a-chatbot">Build a chatbot</a><ul>
+<li><a class="reference internal" href="#chatbot-scripts">Chatbot scripts</a><ul>
+<li><a class="reference internal" href="#step-types">Step types</a><ul>
+<li><a class="reference internal" href="#text">Text</a></li>
+<li><a class="reference internal" href="#question">Question</a></li>
+<li><a class="reference internal" href="#email">Email</a></li>
+<li><a class="reference internal" href="#phone">Phone</a></li>
+<li><a class="reference internal" href="#forward-to-operator">Forward to Operator</a></li>
+<li><a class="reference internal" href="#free-input-multi-line">Free Input/Multi-Line</a></li>
+<li><a class="reference internal" href="#create-lead">Create Lead</a></li>
+<li><a class="reference internal" href="#create-ticket">Create Ticket</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#only-if">Only if</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#script-testing">Script testing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-chatbot-to-a-channel">Add chatbot to a channel</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/livechat/chatbots.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Chatbots</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="chatbots">
+<h1>Chatbots<a class="headerlink" href="#chatbots" title="Permalink to this headline">¶</a></h1>
+<p>A <em>Chatbot</em> is a program designed to mimic a conversation with a live human. Chatbots are assigned a
+script of pre-written steps to follow. The scripts are designed to anticipate a visitor’s potential
+response, and lead them through a series of questions and answers the same way a live team member
+would.</p>
+<p>Chatbots can be customized to fill various roles, from customer support, to creating leads, to
+collecting contact information. The goal of the chatbot depends on the page of the website they are
+assigned, and the messages included in the script, among other criteria.</p>
+<img alt="View of the chat window with a helpdesk ticket created in Odoo Live Chat." class="align-center" src="../../../_images/chatbot-visitor-view.png" />
+</section><section id="build-a-chatbot">
+<h2>Build a chatbot<a class="headerlink" href="#build-a-chatbot" title="Permalink to this headline">¶</a></h2>
+<p>Before creating a new chatbot, the <em>Live Chat</em> application must first be installed on the database.
+This can be done directly from the <span class="menuselection">Apps</span> menu by searching for <code class="o_code docutils literal notranslate"><span class="pre">Live</span> <span class="pre">Chat</span></code> in the
+<span class="guilabel">search bar</span> and clicking <span class="guilabel">Install</span>.</p>
+<p>Alternatively, <em>Live Chat</em> can be installed and enabled by navigating to the <span class="menuselection">Website
+application ‣ Configuration ‣ Settings</span>, and checking the box labeled <span class="guilabel">Livechat</span>. Once
+enabled, the database will refresh, and the <em>Live Chat</em> application is accessible.</p>
+<p>Once the <em>Live Chat</em> application has been installed on the database, open it, and go to
+<span class="menuselection">Configuration ‣ Chatbots</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When the <em>Live Chat</em> app is installed, a sample chatbot is created, named <em>Welcome Bot</em>. This
+chatbot has a pre-configured script that walks through a few basic steps, including asking for a
+visitor’s email address, and forwarding the conversation to an operator.</p>
+<p><em>Welcome Bot</em> can be used as a starting point. The existing steps can be edited or removed, and
+new steps can be added to customize the script, as needed.</p>
+<p><em>Welcome Bot</em> can be deleted (or archived).</p>
+<img alt="View of the Welcome Bot script in Odoo Live Chat." class="align-center" src="../../../_images/chatbot-welcome-bot.png" />
+</div>
+<p>To create a new chatbot, navigate to the <span class="guilabel">Chatbot</span> page (<span class="menuselection">Live Chat app ‣
+Configuration ‣ Chatbots</span>) and click <span class="guilabel">New</span>. This opens a blank chatbot details page.</p>
+<p>On the blank chatbot details page, enter a name in the <span class="guilabel">Chatbot Name</span> field and click on
+the <span class="guilabel">Edit Image</span> icon in the upper right corner of the form to add a photo.</p>
+</section><section id="chatbot-scripts">
+<h3>Chatbot scripts<a class="headerlink" href="#chatbot-scripts" title="Permalink to this headline">¶</a></h3>
+<p>Once the new chatbot has been created and named, the next step is to create a script. Chatbot
+conversations follow an accompanying script. These scripts are comprised of lines of dialogue, each
+designed to either deliver or capture information.</p>
+<p>To create a chatbot script, navigate to the <span class="guilabel">Script</span> tab of the chatbot details page, and
+click <span class="guilabel">Add a Line</span> to open the <span class="guilabel">Create Script Steps</span> pop-up form.</p>
+<p>This form must be filled out for each line of text (dialogue) that the chatbot could potentially
+deliver during the conversation.</p>
+<p>First, enter the content of the message in the <span class="guilabel">Message</span> field. Then, select an option
+from the <span class="guilabel">Step Types</span> drop-down menu.</p>
+</section><section id="step-types">
+<h4>Step types<a class="headerlink" href="#step-types" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">Step Type</span> selected depends on the intended purpose of the message. The available
+options in the <span class="guilabel">Step Type</span> drop-down are listed below, as well as their use, and any
+additional information:</p>
+</section><section id="text">
+<h5>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h5>
+<p>This step is used for messages where no answer is expected (or necessary). Text steps can be used
+for greetings and/or to deliver information.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Text step types are only intended to deliver information, and do not allow for any visitor input.
+As such, they need to be followed by additional steps to continue the conversation.</p>
+</div>
+</section><section id="question">
+<h5>Question<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h5>
+<p>This step asks a question and provides a set of answers. The visitor clicks on one answer, which
+either leads to a new step in the conversation, or can lead to an optional link to a new webpage.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>It is helpful to add a catchall answer to question steps (ex: “Something else”). This helps
+visitors continue the conversation, even if their needs don’t exactly fit with any of the other
+answers.</p>
+</div>
+</section><section id="email">
+<h5>Email<a class="headerlink" href="#email" title="Permalink to this headline">¶</a></h5>
+<p>This step prompts visitors to provide their email address, which is stored and can be used by team
+members later to follow up with additional information.</p>
+<p>The only accepted inputs for this step type are email addresses that are in a valid format. If a
+visitor attempts to enter anything other than a valid email address, the chatbot responds with a
+message stating it does not recognize the information submitted.</p>
+<img alt="View of a chatbot responding to an invalid email." class="align-center" src="../../../_images/chatbot-invalid-email.png" />
+</section><section id="phone">
+<h5>Phone<a class="headerlink" href="#phone" title="Permalink to this headline">¶</a></h5>
+<p>Similar to email, this step type prompts the visitor to enter their phone number, which can be used
+at a later time to follow up with additional information, or to schedule demos, and more.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Due to the vast number of formats used for phone numbers worldwide, responses to this step type
+are <strong>not</strong> validated for formatting.</p>
+</div>
+</section><section id="forward-to-operator">
+<h5>Forward to Operator<a class="headerlink" href="#forward-to-operator" title="Permalink to this headline">¶</a></h5>
+<p>This step forwards the conversation to an active live chat operator, so that they can continue
+assisting the visitor. As the conversation transcript is passed on to the operator they are able to
+pick up where the chatbot left off. This not only saves time for all parties involved, it can also
+help qualify conversations before they reach live human operators.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If no active operator is available on the channel, the chatbot continues the conversation with
+the visitor. Therefore, additional steps should be added after this one to ensure that there is
+no abrupt end to the conversation.</p>
+<img alt="View of a chatbot follow up messages when no live chat operator is available." class="align-center" src="../../../_images/chatbot-no-operator.png" />
+</div>
+</section><section id="free-input-multi-line">
+<h5>Free Input/Multi-Line<a class="headerlink" href="#free-input-multi-line" title="Permalink to this headline">¶</a></h5>
+<p>The free input step allows visitors to respond to questions without providing pre-written responses.
+Information provided in these responses is stored in the chat transcripts.</p>
+<p>Choose between <span class="guilabel">Free Input</span> and <span class="guilabel">Free Input (Multi-Line)</span> depending on the type
+and amount of information being requested from the visitor.</p>
+</section><section id="create-lead">
+<h5>Create Lead<a class="headerlink" href="#create-lead" title="Permalink to this headline">¶</a></h5>
+<p>This step creates a lead in the <em>CRM</em> application. Select an option from the <span class="guilabel">Sales Team</span>
+drop-down to assign the created lead to a specific team.</p>
+</section><section id="create-ticket">
+<h5>Create Ticket<a class="headerlink" href="#create-ticket" title="Permalink to this headline">¶</a></h5>
+<p>This step creates a <a class="reference internal" href="../../services/helpdesk/overview/receiving_tickets.html"><span class="doc">ticket</span></a> in
+the <em>Helpdesk</em> application. Select an option from the <span class="guilabel">Helpdesk Team</span> drop-down to assign
+the created ticket to a specific team.</p>
+</section><section id="only-if">
+<h4>Only if<a class="headerlink" href="#only-if" title="Permalink to this headline">¶</a></h4>
+<p>Chatbot scripts operate on an if/then basis, which means the next question presented to the visitor
+is determined by the answer they provide to the previous question.</p>
+<p>To continue the progression of the conversation, the form for a new step contains a field labeled
+<span class="guilabel">Only If</span>. This field is where the progression of questions is defined.</p>
+<p>If a step is intended to follow all of the previous messages, this field can be left empty. However,
+if a message should <strong>only</strong> be sent conditionally, based on a previous response (or several
+previous responses), those responses need to be added to this field.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If there are any selections made in the <span class="guilabel">Only If</span> field, the step will <strong>not</strong> be shown
+in a conversation unless <strong>all</strong> of the answers have been selected. Only include selections in
+this field if they are necessary for this step to be displayed.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>In the <em>Welcome Bot</em> script, a visitor can ask about pricing information. If the visitor selects
+this response, a step is included to forward the conversation to an operator. The chatbot first
+sends a message informing the visitor that it is checking to see if an operator is available to
+chat.</p>
+<p>However, this message should <strong>only</strong> be delivered if the visitor requests pricing information.
+In that situation, the conversation would proceed as below:</p>
+<ul class="simple">
+<li><p>Welcome Bot: “<em>What are you looking for?</em>”</p></li>
+<li><p>Visitor: “<strong>I have a pricing question.</strong>”</p></li>
+<li><p>Welcome Bot: “<em>Hmmm, let me check if I can find someone that could help you with that…</em>”</p></li>
+</ul>
+<p>In the details form for the <span class="guilabel">Text</span> step, the <em>I have a pricing question</em> response has
+been selected in the <span class="guilabel">Only If</span> field. As such, this step is <strong>only</strong> shown in
+conversations where that response has been selected.</p>
+<img alt="View of the new message form emphasizing the Only If field." class="align-center" src="../../../_images/chatbot-only-if.png" />
+</div>
+</section><section id="script-testing">
+<h3>Script testing<a class="headerlink" href="#script-testing" title="Permalink to this headline">¶</a></h3>
+<p>In order to ensure all visitors have a satisfactory experience with the chatbot, each message needs
+to lead to a natural conclusion. Chatbot scripts should be tested to confirm there are no dead-ends,
+and to get an understanding of what the visitor sees when they interact with the chatbot.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If there is an answer or input provided by the visitor that is <strong>not</strong> assigned a corresponding
+follow-up response, the conversation stops (<em>dead-end</em>). Since the visitor cannot re-engage the
+chatbot, they will have to re-start the conversation, by refreshing the chat window, or their
+browser.</p>
+</div>
+<p>To test the performance of a chatbot, first click on the <span class="guilabel">Test</span> button at the top-left of
+the chatbot script page. Then, upon being redirected to the testing screen, answer the chatbot
+prompts the same way a potential site visitor would.</p>
+<p>When the script has reached an end-point, the message <em>Conversation ended…Restart</em> appears at the
+bottom of the chat window. To begin the conversation at the beginning of the script, click on
+<span class="guilabel">Restart</span>. To return to the script page, click <span class="guilabel">Back to edit mode</span> at the top of
+the page.</p>
+</section><section id="add-chatbot-to-a-channel">
+<h2>Add chatbot to a channel<a class="headerlink" href="#add-chatbot-to-a-channel" title="Permalink to this headline">¶</a></h2>
+<p>After a chatbot has been created and tested, it needs to be added to a live chat channel.</p>
+<p>First, open the <span class="menuselection">Live Chat</span> application, and select the kanban card for a
+<span class="guilabel">Channel</span>, or create a <a class="reference internal" href="../livechat.html"><span class="doc">new one</span></a>. Click on the
+<span class="guilabel">Channel Rules</span> tab. Then, open an existing rule, or create a new one by clicking
+<span class="guilabel">Add a line</span>.</p>
+<p>On the <span class="guilabel">Create Rules</span> pop-up detail form, choose the appropriate chatbot in the
+<span class="guilabel">Chatbot</span> field.</p>
+<p>If the chatbot should <strong>only</strong> be active if there are no available live chat operators, check the
+box labeled <span class="guilabel">Enabled only if no operator</span>.</p>
+<img alt="View of the channel rules emphasizing the chatbot field." class="align-center" src="../../../_images/chatbot-add-to-channel.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../livechat.html"><span class="doc">Live chat channel rules</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Chatbots</a><ul>
+<li><a class="reference internal" href="#build-a-chatbot">Build a chatbot</a><ul>
+<li><a class="reference internal" href="#chatbot-scripts">Chatbot scripts</a><ul>
+<li><a class="reference internal" href="#step-types">Step types</a><ul>
+<li><a class="reference internal" href="#text">Text</a></li>
+<li><a class="reference internal" href="#question">Question</a></li>
+<li><a class="reference internal" href="#email">Email</a></li>
+<li><a class="reference internal" href="#phone">Phone</a></li>
+<li><a class="reference internal" href="#forward-to-operator">Forward to Operator</a></li>
+<li><a class="reference internal" href="#free-input-multi-line">Free Input/Multi-Line</a></li>
+<li><a class="reference internal" href="#create-lead">Create Lead</a></li>
+<li><a class="reference internal" href="#create-ticket">Create Ticket</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#only-if">Only if</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#script-testing">Script testing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-chatbot-to-a-channel">Add chatbot to a channel</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Chatbots</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

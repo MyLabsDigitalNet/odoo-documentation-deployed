@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ponto &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/bank/bank_synchronization/ponto.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/bank/bank_synchronization/ponto.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Ponto</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#link-your-bank-accounts-with-ponto">Link your bank accounts with Ponto</a></li>
+<li><a class="reference internal" href="#link-your-ponto-account-with-your-odoo-database">Link your Ponto account with your Odoo database</a></li>
+<li><a class="reference internal" href="#update-your-synchronization-credentials">Update your synchronization credentials</a></li>
+<li><a class="reference internal" href="#fetch-new-accounts">Fetch new accounts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#faq">FAQ</a><ul>
+<li><a class="reference internal" href="#after-my-synchronization-no-account-appears">After my synchronization, no account appears</a></li>
+<li><a class="reference internal" href="#i-have-an-error-about-that-my-authorization-has-expired">I have an error about that my authorization has expired</a></li>
+<li><a class="reference internal" href="#i-have-some-errors-with-my-beta-institution">I have some errors with my beta institution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/bank/bank_synchronization/ponto.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Ponto</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="ponto">
+<h1>Ponto<a class="headerlink" href="#ponto" title="Permalink to this headline">¶</a></h1>
+<p><strong>Ponto</strong> is a service that allows companies and professionals to aggregate their accounts in one
+place and directly see all their transactions within one app. It is a third-party solution that is
+continuously expanding the number of bank institutions that can be synchronized with Odoo.</p>
+<img alt="Logo of the Ponto brand" class="align-center" src="../../../../../_images/ponto-logo.png" />
+<p><strong>Odoo</strong> can synchronize directly with your bank to get all bank statements imported automatically
+into your database.</p>
+<p>Ponto is a paid third-party provider that can handle the synchronization between your bank accounts
+and Odoo. <a class="reference external" href="https://myponto.com/en#pricing">Its pricing is 4€/month per account/integration</a>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../bank_synchronization.html"><span class="doc">Bank synchronization</span></a></p></li>
+<li><p><a class="reference internal" href="../transactions.html"><span class="doc">Transactions</span></a></p></li>
+</ul>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="link-your-bank-accounts-with-ponto">
+<h3>Link your bank accounts with Ponto<a class="headerlink" href="#link-your-bank-accounts-with-ponto" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Go to <a class="reference external" href="https://myponto.com">Ponto’s website (https://myponto.com)</a>.</p></li>
+<li><p>Create an account if you don’t have one yet.</p></li>
+<li><p>Once you are logged in, create an <em>organization</em>.</p>
+<img alt="Fill out the form to add an organization in Ponto." class="align-center" src="../../../../../_images/ponto-organization.png" />
+</li>
+<li><div class="line-block">
+<div class="line">Go to <span class="menuselection">Accounts ‣ Live</span>, and click on <em>Add account</em>.</div>
+<div class="line">You might have to add your <strong>Billing Information</strong> first.</div>
+</div>
+</li>
+<li><p>Select your country, your bank institutions, give your consent to Ponto, and follow the steps
+on-screen to link your bank account with your Ponto account.</p>
+<img alt="Add bank accounts to your Ponto account." class="align-center" src="../../../../../_images/ponto-add-account.png" />
+</li>
+<li><p>Make sure to add all bank accounts you want to synchronize with your Odoo database before moving
+on to the next steps.</p></li>
+</ol>
+</section><section id="link-your-ponto-account-with-your-odoo-database">
+<h3>Link your Ponto account with your Odoo database<a class="headerlink" href="#link-your-ponto-account-with-your-odoo-database" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Go to <span class="menuselection">Accounting ‣ Configuration ‣ Add a Bank Account</span>.</p></li>
+<li><p>Search your institution, make sure to select the right institution. By selecting the institution,
+you can verify that the third party provider is Ponto.</p></li>
+<li><p>Click on <em>Connect</em> and follow the steps.</p></li>
+<li><p>At some point, you will have to authorize the accounts you want to access in Odoo. Please select
+<strong>all the accounts</strong> you want to synchronize. Even the ones coming from other banking
+institutions.</p>
+<img alt="Selection of the accounts you wish to synchronize with Odoo." class="align-center" src="../../../../../_images/ponto-select-accounts.png" />
+</li>
+<li><p>Finish the flow.</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>You have to authorize all the accounts you want to access in Odoo, but Odoo will filter the
+accounts based on the institution you selected in the second step.</p>
+</div>
+</section><section id="update-your-synchronization-credentials">
+<h3>Update your synchronization credentials<a class="headerlink" href="#update-your-synchronization-credentials" title="Permalink to this headline">¶</a></h3>
+<p>You might have to update your Ponto credentials or modify the synchronization settings.</p>
+<p>To do so, go to <span class="menuselection">Accounting ‣ Configuration ‣ Online Synchronization</span> and select
+the institution you want to fetch the other accounts. Click on <em>Fetch Accounts</em> button to start the
+flow.</p>
+<p>During the update, select <strong>all the accounts</strong> you want to synchronize, even the ones coming
+from other banking institutions.</p>
+</section><section id="fetch-new-accounts">
+<h3>Fetch new accounts<a class="headerlink" href="#fetch-new-accounts" title="Permalink to this headline">¶</a></h3>
+<p>You might want to add new online accounts to your connection.</p>
+<p>To do so, go to <span class="menuselection">Accounting ‣ Configuration ‣ Online Synchronization</span> and select
+the institution you want to fetch the other accounts. Click on <em>Fetch Accounts</em> button to start the
+flow.</p>
+<p>Don’t forget to keep authorization for existing accounts (for all institutions that you
+have synchronized with Ponto).</p>
+</section><section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+</section><section id="after-my-synchronization-no-account-appears">
+<h3>After my synchronization, no account appears<a class="headerlink" href="#after-my-synchronization-no-account-appears" title="Permalink to this headline">¶</a></h3>
+<p>You selected an institution from the list and did not authorize any accounts from this institution.</p>
+</section><section id="i-have-an-error-about-that-my-authorization-has-expired">
+<h3>I have an error about that my authorization has expired<a class="headerlink" href="#i-have-an-error-about-that-my-authorization-has-expired" title="Permalink to this headline">¶</a></h3>
+<p>Every <strong>3 months</strong> (90 days) you must re-authorize the connection between your bank account
+and Ponto. This must be done from the <a class="reference external" href="https://myponto.com">Ponto website</a>. If you do not
+do this, the synchronization will stop for these accounts.</p>
+</section><section id="i-have-some-errors-with-my-beta-institution">
+<h3>I have some errors with my beta institution<a class="headerlink" href="#i-have-some-errors-with-my-beta-institution" title="Permalink to this headline">¶</a></h3>
+<p>Ponto provides institutions in <em>beta</em>, these institutions are not directly supported by Odoo
+and we advise you to contact Ponto directly.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Using an institution in beta is beneficial for Ponto, it allows them to have real
+feedback on the connection with the institution.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Ponto</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#link-your-bank-accounts-with-ponto">Link your bank accounts with Ponto</a></li>
+<li><a class="reference internal" href="#link-your-ponto-account-with-your-odoo-database">Link your Ponto account with your Odoo database</a></li>
+<li><a class="reference internal" href="#update-your-synchronization-credentials">Update your synchronization credentials</a></li>
+<li><a class="reference internal" href="#fetch-new-accounts">Fetch new accounts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#faq">FAQ</a><ul>
+<li><a class="reference internal" href="#after-my-synchronization-no-account-appears">After my synchronization, no account appears</a></li>
+<li><a class="reference internal" href="#i-have-an-error-about-that-my-authorization-has-expired">I have an error about that my authorization has expired</a></li>
+<li><a class="reference internal" href="#i-have-some-errors-with-my-beta-institution">I have some errors with my beta institution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Ponto</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Import products &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/products_prices/products/import.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/products_prices/products/import.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Import products</a><ul>
+<li><a class="reference internal" href="#import-template">Import template</a></li>
+<li><a class="reference internal" href="#customize-product-import-template">Customize product import template</a></li>
+<li><a class="reference internal" href="#import-product-template-spreadsheet">Import product template spreadsheet</a></li>
+<li><a class="reference internal" href="#import-relation-fields-attributes-and-variants">Import relation fields, attributes, and variants</a><ul>
+<li><a class="reference internal" href="#relation-fields">Relation fields</a></li>
+<li><a class="reference internal" href="#attributes-and-values">Attributes and values</a></li>
+<li><a class="reference internal" href="#product-variants">Product variants</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/products_prices/products/import.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Import products</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="import-products">
+<h1>Import products<a class="headerlink" href="#import-products" title="Permalink to this headline">¶</a></h1>
+<p>Odoo <em>Sales</em> provides a template for importing products with categories and variants, which can be
+opened and edited with any spreadsheet software (Microsoft Excel, OpenOffice, Google Sheets, etc.).</p>
+<p>When this spreadsheet is filled out properly, it can be quickly uploaded to the Odoo database. When
+uploaded, those products are instantly added, accessible, and editable in the product catalog.</p>
+</section><section id="import-template">
+<h2>Import template<a class="headerlink" href="#import-template" title="Permalink to this headline">¶</a></h2>
+<p>In order to import products with categories and variants, the <em>Import Template for Products</em>
+<strong>must</strong> be downloaded. Once downloaded, the template can be adjusted and customized, and then
+uploaded back into the Odoo database.</p>
+<p>To download the necessary import template, navigate to <span class="menuselection">Sales app ‣ Products ‣
+Products</span>. On the <span class="guilabel">Products</span> page, click the “favorites” in the upper-left
+corner. Doing so reveals a drop-down menu.</p>
+<p>From this drop-down menu, select the <span class="guilabel">Import records</span> option.</p>
+<img alt="La opcion de importar productos desde el menu de productos" class="align-center" src="../../../../../_images/importar_productos.png" />
+<p>Selecting <span class="guilabel">Import records</span> reveals a separate page with a link to download the
+<span class="guilabel">Import Template for Products</span>. Click that link to download the template.</p>
+<img alt="Plantilla de importacion de productos" class="align-center" src="../../../../../_images/descargar_plantilla.png" />
+<p>Once the template download is complete, open the spreadsheet file to customize it.</p>
+</section><section id="customize-product-import-template">
+<h2>Customize product import template<a class="headerlink" href="#customize-product-import-template" title="Permalink to this headline">¶</a></h2>
+<p>When the import template has been downloaded and opened, it’s time to modify its contents. However,
+before any changes are made, there are a few elements to keep in mind during the process:</p>
+<ul>
+<li><p>Feel free to remove any columns that aren’t deemed necessary. But, it is <em>strongly</em> advised that
+the <span class="guilabel">Internal Reference</span> column remains.</p>
+<p>While it’s not mandatory, having a unique identifier (e.g. <code class="o_code docutils literal notranslate"><span class="pre">FURN_001</span></code>) in the <span class="guilabel">Internal
+Reference</span> column for each product can be helpful in many cases. This can even be from previous
+software spreadsheets to ease the transition into Odoo.</p>
+<p>For example, when updating imported products, the same file can be imported several times without
+creating duplicates, thus enhancing the efficiency and simplicity of imported product management.</p>
+</li>
+<li><p>Do <strong>not</strong> change the labels of columns that are meant to be imported. Otherwise, Odoo won’t
+recognize them, forcing the user to map them on the import screen manually.</p></li>
+<li><p>Feel free to add new columns to the template spreadsheet, if desired. However, to be added, those
+fields <strong>must</strong> exist in Odoo. If Odoo can’t match the column name with a field, it can be matched
+manually during the import process.</p>
+<p>During the import process of the completed template, Odoo reveals a page showcasing all the
+elements of the newly-configured product template spreadsheet, separated by <span class="guilabel">File
+Column</span>, <span class="guilabel">Odoo Field</span>, and <span class="guilabel">Comments</span>.</p>
+<p>To manually match a column name with a field in Odoo, click the <span class="guilabel">Odoo Field</span> drop-down
+menu next to the <span class="guilabel">File Column</span> that needs a manual adjustment, and select the
+appropriate field from that drop-down menu.</p>
+<img alt="Menu de personalizacion y adaptacoion de la importacion" class="align-center" src="../../../../../_images/personalizar_plantilla.png" />
+</li>
+</ul>
+</section><section id="import-product-template-spreadsheet">
+<h2>Import product template spreadsheet<a class="headerlink" href="#import-product-template-spreadsheet" title="Permalink to this headline">¶</a></h2>
+<p>After customizing the product template spreadsheet, return to the Odoo product import page, where
+the template download link is found, and click the <span class="guilabel">Upload File</span> button in the upper-left
+corner.</p>
+<p>Then, a pop-up window appears, in which the completed product template spreadsheet file should be
+selected and uploaded to Odoo.</p>
+<p>After that, Odoo reveals a page showcasing all the elements of the newly-configured product template
+spreadsheet, separated by <span class="guilabel">File Column</span>, <span class="guilabel">Odoo Field</span>, and <span class="guilabel">Comments</span>.</p>
+<img alt="La página de importación de archivos en Odoo Ventas" class="align-center" src="../../../../../_images/menu_importacion.png" />
+<p>From here, the <span class="guilabel">File Column</span> can be manually assigned to an <span class="guilabel">Odoo Field</span>, if
+necessary.</p>
+<p>To make sure everything is appropriate, and all the columns and fields are lined up accurately,
+click the <span class="guilabel">Test</span> button in the upper-left corner.</p>
+<p>If everything is lined up and applied correctly, Odoo reveals a blue banner at the top of the page,
+informing the user that <span class="guilabel">Everything seems valid</span>.</p>
+<img alt="Mensaje de todo parece correcto al probar el resultado de la importacion" class="align-center" src="../../../../../_images/test_importacion.png" />
+<p>If there are any errors, Odoo reveals a red banner at the top of the page, with instructions of
+where to locate the specific issues, and how to fix them.</p>
+<img alt="El mensaje de error que aparece cuando hay un fallo en la importacion" class="align-center" src="../../../../../_images/mensaje_error.png" />
+<p>Once those errors are fixed, click <span class="guilabel">Test</span> again to ensure all necessary issues have been
+remedied appropriately.</p>
+<p>If additional product template spreadsheets need to be uploaded, click the <span class="guilabel">Load File</span>
+button, select the desired product template spreadsheet, and repeat the process.</p>
+<p>When everything is ready, click the <span class="guilabel">Import</span> button.</p>
+<p>When clicked, Odoo instantly imports those products, and reveals the main <span class="guilabel">Products</span> page,
+with a pop-up message in the upper-right corner. This pop-up message informs the user how many
+products were successfully imported.</p>
+<img alt="El pop-up que aparece cuando realizas una importacion con exito" class="align-center" src="../../../../../_images/mensaje_importacion_exito.png" />
+<p>At this point, all the newly-imported products are accessible and editable via the
+<span class="guilabel">Products</span> page.</p>
+</section><section id="import-relation-fields-attributes-and-variants">
+<h2>Import relation fields, attributes, and variants<a class="headerlink" href="#import-relation-fields-attributes-and-variants" title="Permalink to this headline">¶</a></h2>
+<p>It’s important to note that an Odoo object is always related to many other objects. For example, a
+product is linked to product categories, attributes, vendors, and things of this nature. These
+links/connections are known as relations.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In order to import product relations, the records of the related object <strong>must</strong> be imported
+<em>first</em> from their own list menu.</p>
+</div>
+</section><section id="relation-fields">
+<h3>Relation fields<a class="headerlink" href="#relation-fields" title="Permalink to this headline">¶</a></h3>
+<p>On product forms in Odoo, there are a number of fields that can be modified and customized at any
+time. These fields are found under every tab on a product form. While these fields are easily
+editable directly on the product form, they can also be modified via a product import.</p>
+<p>As mentioned, relation fields of this nature can <strong>only</strong> be imported for products if they already
+exist in the database. For example, if a user attempts to import a product with a <em>Product Type</em>, it
+can only be one of the preconfigured product types existing in the database (e.g. <em>Storable
+Product</em>, <em>Consumable</em>, etc.).</p>
+<p>To import information for a relation field on a product import template spreadsheet, add the name of
+the field as a column name/title on the spreadsheet. Then, on the appropriate product line, add the
+desired relation field option.</p>
+<p>When all desired relation field information has been entered, save the spreadsheet, and import it
+to the database, per the process mentioned above (<span class="menuselection">Sales app ‣ Products ‣
+Products ‣ ⚙️ (gear) icon ‣ Import records ‣ Upload File</span>).</p>
+<p>Once the spreadsheet with the newly-configured relation field information has been uploaded, click
+<span class="guilabel">Import</span>, and Odoo returns to the <span class="guilabel">Products</span> page.</p>
+<p>When the newly-changed/modified products, complete with the new relation field information, has been
+imported and uploaded, that new information can be found on the <span class="guilabel">Products</span> page.</p>
+</section><section id="attributes-and-values">
+<h3>Attributes and values<a class="headerlink" href="#attributes-and-values" title="Permalink to this headline">¶</a></h3>
+<p>Odoo also allows users to import product attributes and values that can be used for products that
+already exist in the database, and/or with imported products.</p>
+<p>To import attributes and values, a separate spreadsheet or CSV file dedicated to attributes and
+values <strong>must</strong> be imported and uploaded before they can be used for other products.</p>
+<p>The column names/titles of the attributes and values spreadsheet should be as follows:
+<span class="guilabel">Attribute</span>, <span class="guilabel">Display Type</span>, <span class="guilabel">Variant Creation Mode</span>, and
+<span class="guilabel">Values / Value</span>.</p>
+<img alt="An attributes and values spreadsheet template for imports." class="align-center" src="../../../../../_images/attributes-and-values-spreadsheet.png" />
+<ul>
+<li><p><span class="guilabel">Attribute</span>: name of the attribute (e.g. <code class="o_code docutils literal notranslate"><span class="pre">Size</span></code>).</p></li>
+<li><p><span class="guilabel">Display Type</span>: display type used in the product configurator. There are three display
+type options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Radio</span>: values displayed as radio buttons</p></li>
+<li><p><span class="guilabel">Selection</span>: values displayed in a selection list</p></li>
+<li><p><span class="guilabel">Color</span>: values denoted as a color selection</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Variant Creation Mode</span>: how the variants are created when applied to a product. There
+are three variant creation mode options:</p>
+<ul>
+<li><p><span class="guilabel">Instantly</span>: all possible variants are created as soon as the attribute, and its
+values, are added to a product</p></li>
+<li><p><span class="guilabel">Dynamically</span>: each variant is created <strong>only</strong> when its corresponding attributes and
+values are added to a sales order</p></li>
+<li><p><span class="guilabel">Never</span>: variants are <strong>never</strong> created for the attribute</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Variants Creation Mode</span> <strong>cannot</strong> be changed once the attribute is used on at
+least one product.</p>
+</div>
+</li>
+</ul>
+</li>
+<li><p><span class="guilabel">Values/Value</span>: values pertaining to the corresponding attribute. If there are multiple
+values for the same attribute, the values need to be in individual lines on the spreadsheet.</p></li>
+</ul>
+<p>Once the desired attributes and values have been entered and saved in the spreadsheet, it’s time to
+import and upload it into Odoo. To do that, navigate to <span class="menuselection">Sales app ‣ Configuration
+‣ Attributes ‣ ⚙️ (gear) icon ‣ Import records ‣ Upload File</span>.</p>
+<p>Once the spreadsheet with the newly-configured attributes and values has been uploaded, click
+<span class="guilabel">Import</span>, and Odoo returns to the <span class="guilabel">Attributes</span> page. That’s where those
+newly-added attributes and values can be found and edited, if necessary.</p>
+<p>As mentioned previously, when attributes and values have been added to the Odoo database, they can
+be used for existing or imported products.</p>
+</section><section id="product-variants">
+<h3>Product variants<a class="headerlink" href="#product-variants" title="Permalink to this headline">¶</a></h3>
+<p>When product attributes and values are configured in the database, they can be used on product
+import spreadsheets to add more information and detail to products being imported.</p>
+<p>To import products with product attributes and values, the product import template spreadsheet must
+be configured with specific <span class="guilabel">Product Attributes / Attribute</span>, <span class="guilabel">Product
+Attributes / Values</span>, and <span class="guilabel">Name</span> columns.</p>
+<p>There can be other columns, as well, but these columns are <strong>required</strong> in order to properly import
+products with specific variants.</p>
+<img alt="Product variants spreadsheet with product attributes and variants for import purposes." class="align-center" src="../../../../../_images/product-attribute-spreadsheet-import.png" />
+<ul class="simple">
+<li><p><span class="guilabel">Name</span>: product name</p></li>
+<li><p><span class="guilabel">Product Attributes / Attribute</span>: name of attribute</p></li>
+<li><p><span class="guilabel">Product Attributes / Values</span>: values pertaining to the corresponding attribute</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To import multiple values, separate them by <em>just</em> a comma, <strong>not</strong> a comma followed by a space,
+in the product import template spreadsheet (e.g. <code class="o_code docutils literal notranslate"><span class="pre">furniture,couch,home</span></code>).</p>
+</div>
+<p>When the desired products and product variants have been entered and saved in the spreadsheet, it’s
+time to import and upload them into Odoo. To do that, navigate to <span class="menuselection">Sales app ‣
+Products ‣ Products ‣ ⚙️ (gear) icon ‣ Import records ‣ Upload File</span>.</p>
+<p>Once the spreadsheet with the newly-configured products and product variants has been uploaded,
+click <span class="guilabel">Import</span>, and Odoo returns to the <span class="guilabel">Products</span> page. That’s where the
+newly-added products can be found.</p>
+<p>To view and modify the attributes and variants on any products, select the desired product from the
+<span class="guilabel">Products</span> page, and click the <span class="guilabel">Attributes &amp; Variants</span> tab.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="variants.html"><span class="doc">Product variants</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Import products</a><ul>
+<li><a class="reference internal" href="#import-template">Import template</a></li>
+<li><a class="reference internal" href="#customize-product-import-template">Customize product import template</a></li>
+<li><a class="reference internal" href="#import-product-template-spreadsheet">Import product template spreadsheet</a></li>
+<li><a class="reference internal" href="#import-relation-fields-attributes-and-variants">Import relation fields, attributes, and variants</a><ul>
+<li><a class="reference internal" href="#relation-fields">Relation fields</a></li>
+<li><a class="reference internal" href="#attributes-and-values">Attributes and values</a></li>
+<li><a class="reference internal" href="#product-variants">Product variants</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Import products</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

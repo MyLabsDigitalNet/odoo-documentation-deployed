@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create and process transfers with barcodes &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/barcode/operations/transfers_scratch.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/barcode/operations/transfers_scratch.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Create and process transfers with barcodes</a><ul>
+<li><a class="reference internal" href="#enable-barcode-app">Enable Barcode app</a></li>
+<li><a class="reference internal" href="#scan-barcodes-for-internal-transfers">Scan barcodes for internal transfers</a><ul>
+<li><a class="reference internal" href="#create-an-internal-transfer">Create an internal transfer</a></li>
+<li><a class="reference internal" href="#scan-barcodes-for-internal-transfer">Scan barcodes for internal transfer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-a-transfer-from-scratch">Create a transfer from scratch</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/barcode/operations/transfers_scratch.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Create and process transfers with barcodes</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="create-and-process-transfers-with-barcodes">
+<h1>Create and process transfers with barcodes<a class="headerlink" href="#create-and-process-transfers-with-barcodes" title="Permalink to this headline">¶</a></h1>
+<p>The <em>Barcode</em> app can be used to process internal transfers for all types of products, including
+transfers for products tracked using lots or serial numbers. Transfers can be created from scratch
+in real time using an Odoo-compatible barcode scanner or the Odoo mobile app.</p>
+<p>For a list of Odoo-compatible barcode mobile scanners, and other hardware for the <em>Inventory</em> app,
+refer to the <a class="reference external" href="https://www.odoo.com/app/inventory-hardware">Odoo Inventory • Hardware page</a>.</p>
+</section><section id="enable-barcode-app">
+<h2>Enable Barcode app<a class="headerlink" href="#enable-barcode-app" title="Permalink to this headline">¶</a></h2>
+<p>To use the <em>Barcode</em> app to process transfers, it must be installed by enabling the feature from the
+settings of the <em>Inventory</em> app.</p>
+<p>To do so, go to the <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>. Then, scroll down
+to the <span class="guilabel">Barcode</span> section, and click the checkbox next to the <span class="guilabel">Barcode Scanner</span>
+feature.</p>
+<p>Once the checkbox is ticked, click <span class="guilabel">Save</span> at the top of the page to save changes.</p>
+<p>When the page has refreshed, new options are displayed under the <span class="guilabel">Barcode Scanner</span>
+feature: <span class="guilabel">Barcode Nomenclature</span> (with a corresponding drop-down menu), where either
+<span class="guilabel">Default Nomenclature</span> or <span class="guilabel">Default GS1 Nomenclature</span> can be selected. The
+nomenclature selected changes how scanners interpret barcodes in Odoo.</p>
+<p>There is also a <span class="guilabel">Configure Product Barcodes</span> internal link arrow, and a set of
+<span class="guilabel">Print</span> buttons for printing barcode commands and a barcode demo sheet.</p>
+<img alt="Enabled Barcode feature in Inventory app settings." class="align-center" src="../../../../_images/transfers-scratch-enabled-barcode-setting.png" />
+<p>For more on setting up and configuring the <span class="guilabel">Barcode</span> app, refer to the <a class="reference internal" href="../setup/hardware.html"><span class="doc">Set up your
+barcode scanner</span></a> and <a class="reference internal" href="../setup/software.html"><span class="doc">Activate the Barcodes in Odoo</span></a>
+documentation pages.</p>
+</section><section id="scan-barcodes-for-internal-transfers">
+<h2>Scan barcodes for internal transfers<a class="headerlink" href="#scan-barcodes-for-internal-transfers" title="Permalink to this headline">¶</a></h2>
+<p>To create and process internal transfers for products in a warehouse, the <span class="guilabel">Storage
+Locations</span> and <span class="guilabel">Multi-Step Routes</span> features <strong>must</strong> be enabled.</p>
+<p>To do so, go to the <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>. Then, scroll down
+to the <span class="guilabel">Warehouse</span> section, and click the checkboxes next to <span class="guilabel">Storage Locations</span>
+and <span class="guilabel">Multi-Step Routes</span>.</p>
+<p>Then, click <span class="guilabel">Save</span> at the top of the page to save changes.</p>
+</section><section id="create-an-internal-transfer">
+<h3>Create an internal transfer<a class="headerlink" href="#create-an-internal-transfer" title="Permalink to this headline">¶</a></h3>
+<p>To process existing internal transfers, there first needs to be an internal transfer created, and an
+operation to process.</p>
+<p>To create an internal transfer, navigate to the <span class="menuselection">Inventory app</span>. From the
+<span class="guilabel">Inventory Overview</span> dashboard, locate the <span class="guilabel">Internal Transfers</span> card, and click
+on the <span class="guilabel">0 To Process</span> button.</p>
+<p>Then, click <span class="guilabel">Create</span> in the top left of the resulting page. This navigates to a new
+<span class="guilabel">Internal Transfer</span> form.</p>
+<p>On this blank form, the <span class="guilabel">Operation Type</span> is automatically listed as <span class="guilabel">Internal
+Transfers</span>. Under that field, the <span class="guilabel">Source Location</span> and <span class="guilabel">Destination Location</span>
+are set as <span class="guilabel">WH/Stock</span> by default, but can be changed to whichever locations the products
+are being moved from, and moved to.</p>
+<img alt="Blank internal transfer form with source location and destination location." class="align-center" src="../../../../_images/transfers-scratch-internal-transfer-form.png" />
+<p>Once the desired locations have been selected, products can be added to the transfer. On the
+<span class="guilabel">Product</span> line under the <span class="guilabel">Products</span> tab, click <span class="guilabel">Add a product</span>, and
+select the desired product(s) to add to the transfer.</p>
+<p>Once ready, click <span class="guilabel">Save</span> at the top of the form to save the new internal transfer. Once
+saved, click the <span class="guilabel">Detailed Operations</span> icon (four lines, at the far right of the
+<span class="guilabel">Product</span> line) to open the <span class="guilabel">Detailed Operations</span> pop-up window.</p>
+<img alt="Internal transfer detailed operations pop-up window." class="align-center" src="../../../../_images/transfers-scratch-detailed-operations-popup.png" />
+<p>From the pop-up, click <span class="guilabel">Add a line</span>.</p>
+<p>Then, in the <span class="guilabel">To</span> column, change the location from <span class="guilabel">WH/Stock</span> to a different
+location, where the products should be moved.</p>
+<p>Next, in the <span class="guilabel">Done</span> column, change the quantity to the desired quantity to transfer. Once
+ready, click <span class="guilabel">Confirm</span> to close out the pop-up window.</p>
+</section><section id="scan-barcodes-for-internal-transfer">
+<h3>Scan barcodes for internal transfer<a class="headerlink" href="#scan-barcodes-for-internal-transfer" title="Permalink to this headline">¶</a></h3>
+<p>To process and scan barcodes for internal transfers, navigate to the <span class="menuselection">Barcode app</span>.</p>
+<p>Once inside the <span class="guilabel">Barcode app</span>, a <span class="guilabel">Barcode Scanning</span> screen displaying different
+options is presented.</p>
+<p>To process internal transfers, click on the <span class="guilabel">Operations</span> button at the bottom of the
+screen. This navigates to an <span class="menuselection">Operations</span> overview page.</p>
+<img alt="Barcode app start screen with scanner." class="align-center" src="../../../../_images/transfers-scratch-barcode-app.png" />
+<p>From this page, locate the <span class="guilabel">Internal Transfers</span> card, and click the <span class="guilabel"># To
+Process</span> button to view all outstanding internal transfers. Then, select the desired operation to
+process. This navigates to the barcode transfer screen.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When using the <em>Barcode</em> app without the <em>Inventory</em> app (<strong>only</strong> if using a barcode scanner or
+the Odoo mobile app), the barcodes for each transfer of a corresponding operation type can be
+scanned to be processed easily.</p>
+<p>Once scanned, the products that are part of an existing transfer can be scanned, and new products
+can be added to the transfer, as well. Once all products have been scanned, validate the transfer
+to proceed with the stock moves.</p>
+</div>
+<p>From this screen, an overview of all products to process within that specific internal transfer
+(<strong>WH/INT/000XX</strong>) is shown. At the bottom of the screen, there are options to <span class="guilabel">Add
+Product</span> or <span class="guilabel">Validate</span>, depending on if products need to be added to the operation, or if
+the whole operation should be validated at once.</p>
+<img alt="Overview of receipts in transfer to scan." class="align-center" src="../../../../_images/transfers-scratch-receipts-overview.png" />
+<p>Then, scan the barcode of the product to process the internal transfer.</p>
+<p>Or, to process and scan each product individually, choose a specific product line. The
+<span class="guilabel">+ 1</span> button can be clicked to add additional quantity of that product to the transfer, or
+the <span class="guilabel">pencil icon</span> can be clicked to open a new screen to edit that product line.</p>
+<p>In the product’s pop-up window, the product and the units to process is displayed with a number pad.
+Under the product name, the <span class="guilabel">Quantity</span> line can be edited. Change the number in the line
+to the quantity listed to be transferred on the internal transfer form.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>In the internal transfer operation <code class="o_code docutils literal notranslate"><span class="pre">WH/INT/000XX</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">50</span> <span class="pre">Units</span></code> of the <code class="o_code docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">Product</span></code> is
+moved from <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock</span></code> to <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Shelf</span> <span class="pre">1</span></code>. <code class="o_code docutils literal notranslate"><span class="pre">[TRANSFER_PROD]</span></code> is the <span class="guilabel">Internal
+Reference</span> set on the product form. Scan the barcode of the <code class="o_code docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">Product</span></code> to receive one
+unit. Afterwards, click the <span class="guilabel">pencil icon</span> to manually enter the transferred quantities.</p>
+<img alt="Product line editor for individual transfer in Barcode app." class="align-center" src="../../../../_images/transfers-scratch-product-line-editor.png" />
+</div>
+<p>Additionally, the <span class="guilabel">+1</span> and <span class="guilabel">-1</span> buttons can be clicked to add or subtract
+quantity of the product, and the number keys can be used to add quantity, as well.</p>
+<p>Below the number keys are the two <span class="guilabel">location</span> lines, which read whichever locations were
+previously specified on the internal transfer form, in this case <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Shelf</span> <span class="pre">1</span></code>.
+Click these lines to reveal a drop-down menu of additional locations to choose from.</p>
+<p>Once ready, click <span class="guilabel">Confirm</span> to confirm the changes made to the product line.</p>
+<p>Then, from the overview page with all products to process within that transfer (<strong>WH/INT/000XX</strong>),
+click <span class="guilabel">Validate</span>. The receipt has now been processed, and the <em>Barcode</em> app can be closed
+out.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The <em>Barcode</em> app can also be used to scan products in internal transfers containing unique lot
+numbers and serial numbers.</p>
+<p>From the barcode transfer screen, scan the barcode of a lot or serial number, and Odoo
+automatically increases the quantity of the product to the quantity recorded in the database. If
+the same lot or serial number is shared between different products, scan the product barcode
+first, then the barcode of the lot/serial number.</p>
+</div>
+</section><section id="create-a-transfer-from-scratch">
+<h2>Create a transfer from scratch<a class="headerlink" href="#create-a-transfer-from-scratch" title="Permalink to this headline">¶</a></h2>
+<p>In addition to processing and scanning barcodes for existing, previously-created internal transfers,
+the <em>Barcode</em> app can also be used to create transfers from scratch, simply by scanning a printed
+operation type barcode.</p>
+<div class="admonition-did-you-know alert">
+<p class="alert-title">
+Did you know?</p><p>Odoo’s <em>Barcode</em> application provides demo data with barcodes to explore the features of the app.
+These can be used for testing purposes, and can be printed from the home screen of the app. To
+access this demo data, navigate to the <span class="menuselection">Barcode app</span> and click <span class="guilabel">stock
+barcodes sheet</span> (bolded and highlighted in blue) in the information pop-up above the scanner.</p>
+<img alt="Demo data prompt pop-up on Barcode app main screen." class="align-center" src="../../../../_images/transfers-scratch-demo-data.png" />
+</div>
+<p>To do this, first navigate to the <span class="menuselection">Barcode app</span>. Once inside the <em>Barcode</em> app, a
+<span class="guilabel">Barcode Scanning</span> screen displaying different options is presented.</p>
+<p>From this screen, when using a USB or bluetooth barcode scanner, directly scan the product barcode.</p>
+<p>When using a smartphone as the barcode scanner, click the <span class="guilabel">Tap to Scan</span> button (next to
+the camera icon, at the center of the screen). This opens a <span class="guilabel">Barcode Scanner</span> pop-up
+screen that enables the camera of the device being used.</p>
+<p>Face the camera toward the printed operation type barcode to scan it. Doing so processes the
+barcode, and navigates to a barcode transfer screen.</p>
+<p>From this screen, an overview of all products to process within that specific internal transfer
+(<strong>WH/INT/000XX</strong>) is shown. Since this is a new transfer created from scratch, however, there
+should not be any products listed on the page.</p>
+<p>To add products, scan the product barcode. If the barcode is not available, manually enter the
+product into the system by clicking the <span class="guilabel">Add Product</span> button at the bottom of the screen,
+and add the products and product quantities that should be transferred.</p>
+<p>Once ready, click <span class="guilabel">Confirm</span> to confirm the changes made to the product line.</p>
+<img alt="Blank product editor in scratch internal transfer." class="align-center" src="../../../../_images/transfers-scratch-blank-product-editor.png" />
+<p>Then, from the overview page with all products to process within that transfer (<strong>WH/INT/000XX</strong>),
+click <span class="guilabel">Validate</span>. The internal transfer has now been processed, and the <em>Barcode</em> app can
+be closed out.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Create and process transfers with barcodes</a><ul>
+<li><a class="reference internal" href="#enable-barcode-app">Enable Barcode app</a></li>
+<li><a class="reference internal" href="#scan-barcodes-for-internal-transfers">Scan barcodes for internal transfers</a><ul>
+<li><a class="reference internal" href="#create-an-internal-transfer">Create an internal transfer</a></li>
+<li><a class="reference internal" href="#scan-barcodes-for-internal-transfer">Scan barcodes for internal transfer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-a-transfer-from-scratch">Create a transfer from scratch</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Create and process transfers with barcodes</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

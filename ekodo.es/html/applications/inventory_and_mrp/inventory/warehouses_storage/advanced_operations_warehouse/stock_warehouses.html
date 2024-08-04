@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sell stock from multiple warehouses using virtual locations &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/stock_warehouses.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/stock_warehouses.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Sell stock from multiple warehouses using virtual locations</a><ul>
+<li><a class="reference internal" href="#create-virtual-parent-location">Create virtual parent location</a></li>
+<li><a class="reference internal" href="#create-child-warehouses">Create child warehouses</a></li>
+<li><a class="reference internal" href="#link-child-warehouses-to-virtual-stock">Link child warehouses to virtual stock</a></li>
+<li><a class="reference internal" href="#set-virtual-stock-location-as-view">Set virtual stock location as ‘view’</a></li>
+<li><a class="reference internal" href="#example-sell-products-from-a-virtual-warehouse">Example: sell products from a virtual warehouse</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/stock_warehouses.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sell stock from multiple warehouses using virtual locations</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="sell-stock-from-multiple-warehouses-using-virtual-locations">
+<h1>Sell stock from multiple warehouses using virtual locations<a class="headerlink" href="#sell-stock-from-multiple-warehouses-using-virtual-locations" title="Permalink to this headline">¶</a></h1>
+<p>While keeping stock and selling inventory from one warehouse might work for smaller companies,
+bigger companies might need to keep stock in, or sell from, multiple warehouses in multiple
+locations.</p>
+<p>Sometimes products included in a single sales order might take stock from two (or more) warehouses;
+in Odoo, pulling products from multiple warehouses to satisfy sales demands can be done using
+<em>virtual locations</em>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The solution in this document, describing the use of a virtual warehouse to fulfill orders for
+multiple warehouses, has some limitations. Consider the following before proceeding:</p>
+<ol class="arabic simple">
+<li><p>When the <span class="guilabel">Warehouse</span> field is set to a virtual warehouse on a sales order, the
+virtual warehouse’s address is indicated on the picking, packing, and delivery forms, <strong>not</strong>
+the actual warehouse’s address.</p></li>
+<li><p>Each location has a <code class="o_code docutils literal notranslate"><span class="pre">warehouse_id</span></code> (hidden field). This means that the stock in the virtual
+warehouse will <strong>not</strong> be the sum of the stock of the real warehouses, but rather the sum of
+the stock in the locations whose warehouse ID is the virtual warehouse.</p></li>
+</ol>
+</div>
+<div class="alert alert-danger">
+<p class="alert-title">
+Danger</p><p>Potential limitation for those using <a class="reference internal" href="../../shipping_receiving/daily_operations/receipts_delivery_two_steps.html"><span class="doc">two</span></a> or <a class="reference internal" href="../../shipping_receiving/daily_operations/delivery_three_steps.html"><span class="doc">three-step
+delivery</span></a>:</p>
+<ol class="arabic simple">
+<li><p>The output or packing zone on the various forms is incorrectly listed as the virtual
+warehouse’s address.</p></li>
+<li><p>There is no workaround for two or three-step deliveries.</p></li>
+<li><p>Proceed <strong>only</strong> if setting a virtual warehouse’s address as the output or packing zone makes
+sense for the company’s workflow.</p></li>
+</ol>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In order to create virtual locations in warehouses, and proceed to the following steps, the
+<span class="guilabel">Storage Locations</span> and <span class="guilabel">Multi-Step Routes</span> features <strong>must</strong> be enabled.</p>
+<p>To do so, go to <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>, scroll down to the
+<span class="guilabel">Warehouse</span> section, and enable the <span class="guilabel">Storage Locations</span> and
+<span class="guilabel">Multi-Step Routes</span> options. Then, <span class="guilabel">Save</span> the changes to finish.</p>
+</div>
+</section><section id="create-virtual-parent-location">
+<span id="inventory-routes-virtual-wh"></span><h2>Create virtual parent location<a class="headerlink" href="#create-virtual-parent-location" title="Permalink to this headline">¶</a></h2>
+<p>Before creating any virtual stock locations, create a new warehouse that acts as a <em>virtual</em>
+warehouse — the <em>parent</em> location of other physical warehouses.</p>
+<div class="accordion accordion-flush o_spoiler alert"><div class="accordion-item"><span class="accordion-header" id="o_spoiler_header_0"><button aria-controls="o_spoiler_content_0" aria-expanded="false" class="accordion-button collapsed flex-row-reverse justify-content-end fw-bold p-0 border-bottom-0" data-bs-target="#o_spoiler_content_0" data-bs-toggle="collapse" type="button">Why a &quot;virtual&quot; warehouse?</button></span><div aria-labelledby="o_spoiler_header_0" class="accordion-collapse collapse border-bottom-0" id="o_spoiler_content_0"><div class="accordion-body"><p>Virtual warehouses are great for companies with multiple physical warehouses. This is because a
+situation might arise when one warehouse runs out of stock of a particular product, but another
+warehouse still has stock on-hand. In this case, stock from these two (or more) warehouses could
+be used to fulfill a single sales order.</p>
+<p>The “virtual” warehouse acts as a single aggregator of all the inventory stored in a company’s
+physical warehouses, and is used (for traceability purposes) to create a hierarchy of locations
+in Odoo.</p>
+</div></div></div></div><p>To create a new warehouse, go to <span class="menuselection">Inventory app ‣ Configuration ‣ Warehouses</span>,
+and click <span class="guilabel">Create</span>. From here, the warehouse <span class="guilabel">Name</span> and <span class="guilabel">Short Name</span>
+can be changed, and other warehouse details can be changed under the <span class="guilabel">Warehouse
+Configuration</span> tab.</p>
+<p>Lastly, click <span class="guilabel">Save</span> to finish creating a <em>regular</em> warehouse. Continue following the
+steps below to finish configuring the virtual parent warehouse.</p>
+<img alt="New warehouse form." class="align-center" src="../../../../../_images/stock-warehouses-create-warehouse.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../inventory_management/warehouses_locations.html"><span class="doc">Warehouse configurations</span></a></p></li>
+<li><p><a class="reference internal" href="../../shipping_receiving/daily_operations/receipts_delivery_one_step.html#inventory-receipts-delivery-one-step-wh"><span class="std std-ref">Incoming and outgoing shipments</span></a></p></li>
+<li><p><a class="reference internal" href="../inventory_management/resupply_warehouses.html"><span class="doc">Resupply from another warehouse</span></a></p></li>
+</ul>
+</div>
+</section><section id="create-child-warehouses">
+<span id="inventory-routes-child-wh"></span><h2>Create child warehouses<a class="headerlink" href="#create-child-warehouses" title="Permalink to this headline">¶</a></h2>
+<p>Create at least two <em>child</em> warehouses to link to the virtual warehouse.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>In order to take stock from multiple warehouses to fulfill a sales order, there needs to be at
+least <strong>two</strong> warehouses acting as child locations of the virtual parent location warehouse.</p>
+</div>
+<p>To do that, navigate to <span class="menuselection">Inventory app ‣ Configuration ‣ Warehouses</span>, click
+<span class="guilabel">Create</span>, and follow the <a class="reference internal" href="#inventory-routes-virtual-wh"><span class="std std-ref">preceding instructions</span></a> to
+configure the physical stock locations.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><div class="line-block">
+<div class="line"><strong>Parent Warehouse</strong></div>
+<div class="line"><span class="guilabel">Warehouse</span>: <code class="o_code docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Warehouse</span></code></div>
+<div class="line"><span class="guilabel">Location</span>: <code class="o_code docutils literal notranslate"><span class="pre">VWH/Stock</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Child Warehouses</strong></div>
+<div class="line"><span class="guilabel">Warehouses</span>: <code class="o_code docutils literal notranslate"><span class="pre">Warehouse</span> <span class="pre">A</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">Warehouse</span> <span class="pre">B</span></code></div>
+<div class="line"><span class="guilabel">Locations</span>: <code class="o_code docutils literal notranslate"><span class="pre">WHA</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">WHB</span></code></div>
+</div>
+<img alt="Graphic of child locations 'WHA' and 'WHB' tied to the parent location." class="align-center" src="../../../../../_images/parent-location.png" />
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>While the virtual stock location will be changed to ‘View’ later, the <span class="guilabel">Location Type</span>
+<strong>must</strong> be <span class="guilabel">Internal Location</span> at this point to <a class="reference internal" href="#inventory-routes-link-to-vwh"><span class="std std-ref">link the child warehouses</span></a> in the next section.</p>
+</div>
+</section><section id="link-child-warehouses-to-virtual-stock">
+<span id="inventory-routes-link-to-vwh"></span><h2>Link child warehouses to virtual stock<a class="headerlink" href="#link-child-warehouses-to-virtual-stock" title="Permalink to this headline">¶</a></h2>
+<p>To set physical warehouses as child locations of the virtual location configured in the
+<a class="reference internal" href="#inventory-routes-virtual-wh"><span class="std std-ref">previous step</span></a>, navigate to <span class="menuselection">Inventory app ‣
+Configuration ‣ Locations</span>.</p>
+<p>Remove any filters from the search bar. Then, click the physical warehouse <span class="guilabel">Location</span> that
+was previously created to be a child location (e.g. <code class="o_code docutils literal notranslate"><span class="pre">WHA</span></code>), and click <span class="guilabel">Edit</span>.</p>
+<p>Change the <span class="guilabel">Parent Location</span> field from <span class="guilabel">Physical Locations</span> to the virtual
+warehouse’s <strong>stock location</strong> (e.g. <code class="o_code docutils literal notranslate"><span class="pre">VWH/Stock</span></code>) from the drop-down menu, and click
+<span class="guilabel">Save</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>To select the virtual warehouse’s stock location in the <span class="guilabel">Parent Location</span> drop-down
+menu, the parent warehouse stock location (e.g. <code class="o_code docutils literal notranslate"><span class="pre">VWH/Stock</span></code>) <strong>must</strong>  have its
+<span class="guilabel">Location Type</span> set to <span class="guilabel">Internal Location</span>.</p>
+</div>
+<img alt="Set the child warehouse's *Parent Location* to the virtual warehouse." class="align-center" src="../../../../../_images/configure-physical-wh.png" />
+<p>Repeat the preceding steps to configure two or more child warehouses.</p>
+<p>Once complete, the virtual, parent warehouse (e.g. <code class="o_code docutils literal notranslate"><span class="pre">VWH/Stock</span></code>) fulfills orders using stock from
+child warehouses (e.g. <code class="o_code docutils literal notranslate"><span class="pre">WHA</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">WHB</span></code>), if there is insufficient stock in any one location.</p>
+</section><section id="set-virtual-stock-location-as-view">
+<h2>Set virtual stock location as ‘view’<a class="headerlink" href="#set-virtual-stock-location-as-view" title="Permalink to this headline">¶</a></h2>
+<p>Set the virtual stock location’s <span class="guilabel">Location Type</span> to <span class="guilabel">View</span>, as it is a
+non-existent location used to group various physical warehouses together.</p>
+<p>To do that, navigate to <span class="menuselection">Inventory app ‣ Configuration ‣ Locations</span>.</p>
+<p>Click the virtual warehouse’s stock location (e.g. <code class="o_code docutils literal notranslate"><span class="pre">VWH/Stock</span></code>) that was <a class="reference internal" href="#inventory-routes-virtual-wh"><span class="std std-ref">previously created</span></a>, from the <span class="guilabel">Locations</span> list.</p>
+<p>On the location form, under the <span class="guilabel">Additional Information</span> heading, set the
+<span class="guilabel">Location Type</span> to <span class="guilabel">View</span>. <span class="guilabel">Save</span> the changes.</p>
+<img alt="Warehouse location types in location creation screen." class="align-center" src="../../../../../_images/set-location-type-view.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To view the total quantity across <strong>all</strong> linked child warehouses, go to the product form and
+click the <span class="guilabel">On Hand</span> smart button.</p>
+<img alt="Display stock across all linked warehouses." class="align-center" src="../../../../../_images/on-hand.png" />
+</div>
+</section><section id="example-sell-products-from-a-virtual-warehouse">
+<h2>Example: sell products from a virtual warehouse<a class="headerlink" href="#example-sell-products-from-a-virtual-warehouse" title="Permalink to this headline">¶</a></h2>
+<p>To sell products from multiple warehouses using a virtual parent location, the database must have at
+least <strong>two</strong> warehouses configured — with at least <strong>one</strong> product, with quantity on-hand in each
+warehouse, respectively.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The following product, <code class="o_code docutils literal notranslate"><span class="pre">Toy</span> <span class="pre">soldier</span></code>, is available at each location with the quantities:</p>
+<ul class="simple">
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">WHA/Stock</span></code> : 1</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">WHB/Stock</span></code> : 2</p></li>
+<li><p>Warehouses <code class="o_code docutils literal notranslate"><span class="pre">WHA</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">WHB</span></code> are child warehouses of the virtual warehouse <code class="o_code docutils literal notranslate"><span class="pre">VWH</span></code>.</p></li>
+</ul>
+</div>
+<p>Create a quotation for the product by navigating to the <span class="menuselection">Sales</span> app and clicking
+<span class="guilabel">Create</span>. On the quote, add a <span class="guilabel">Customer</span>, and click <span class="guilabel">Add a product</span> to
+add the two products stored in the two warehouses.</p>
+<p>Then, click the <span class="guilabel">Other Info</span> tab on the sales order form. Under the <span class="guilabel">Delivery</span>
+section, change the <span class="guilabel">Warehouse</span> field value to the virtual warehouse that was
+<a class="reference internal" href="#inventory-routes-virtual-wh"><span class="std std-ref">previously created</span></a>. Next, <span class="guilabel">Confirm</span> the sales order.</p>
+<img alt="Set virtual warehouse as the *Warehouse* field in sales order's *Other Info* tab." class="align-center" src="../../../../../_images/set-virtual-wh.png" />
+<p>Then, click the <span class="guilabel">Delivery</span> smart button. From the warehouse delivery form, confirm that
+the <span class="guilabel">Source Location</span> value matches the <span class="guilabel">Warehouse</span> field value from the sales
+order. Both should list the virtual warehouse location.</p>
+<p>Finally, on the warehouse delivery form, under the <span class="guilabel">Detailed Operations</span> tab, confirm that
+the <span class="guilabel">Locations</span> in the <span class="guilabel">From</span> column for each product match the child locations
+that are tied to the virtual parent location.</p>
+<img alt="Delivery order with matching source and child locations." class="align-center" src="../../../../../_images/delivery-order1.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><blockquote>
+<div><p>The <span class="guilabel">Source Location</span> on the warehouse delivery form, and the <span class="guilabel">Warehouse</span>
+under the <span class="guilabel">Other Info</span> tab on the sales order, <strong>must</strong> match for products in the sales
+order to be pulled from different warehouses.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>If the virtual warehouse is not in the <span class="guilabel">Source Location</span> field on the warehouse
+delivery form, retry product reservation by:</p>
+<ul>
+<li><p>Running the scheduler: turn on <a class="reference internal" href="../../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, and then go to
+<span class="menuselection">Inventory app ‣ Operations ‣ Run Scheduler</span>.</p></li>
+<li><p>Clicking <span class="guilabel">Check Availability</span> on the delivery order.</p></li>
+</ul>
+</li>
+<li><p>If the virtual warehouse is <strong>not</strong> assigned to the <span class="guilabel">Warehouse</span> field on the sales
+order, then cancel it, and create a new sales order with the virtual warehouse set in the
+<span class="guilabel">Warehouse</span> field.</p></li>
+<li><p>If the <span class="guilabel">Warehouse</span> field is missing on the sales order form, then the multiple child
+warehouses may not have been set up correctly. Review the <a class="reference internal" href="#inventory-routes-child-wh"><span class="std std-ref">previous section</span></a> to ensure the correct settings.</p></li>
+</ul>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To use a virtual <em>parent</em> location as the default warehouse for sales orders, each salesperson
+should have the virtual warehouse assigned to them from the drop-down menu next to
+<span class="guilabel">Default Warehouse</span> on their employee form.</p>
+<img alt="Default warehouse location on employee form." class="align-center" src="../../../../../_images/stock-warehouses-employee-form.png" />
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Sell stock from multiple warehouses using virtual locations</a><ul>
+<li><a class="reference internal" href="#create-virtual-parent-location">Create virtual parent location</a></li>
+<li><a class="reference internal" href="#create-child-warehouses">Create child warehouses</a></li>
+<li><a class="reference internal" href="#link-child-warehouses-to-virtual-stock">Link child warehouses to virtual stock</a></li>
+<li><a class="reference internal" href="#set-virtual-stock-location-as-view">Set virtual stock location as ‘view’</a></li>
+<li><a class="reference internal" href="#example-sell-products-from-a-virtual-warehouse">Example: sell products from a virtual warehouse</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sell stock from multiple warehouses using virtual locations</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

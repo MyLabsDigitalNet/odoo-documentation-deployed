@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Point of Sale &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/point_of_sale.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/point_of_sale.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Point of Sale</a><ul>
+<li><a class="reference internal" href="#start-a-session">Start a session</a></li>
+<li><a class="reference internal" href="#sell-products">Sell products</a></li>
+<li><a class="reference internal" href="#set-customers">Set customers</a></li>
+<li><a class="reference internal" href="#customer-notes">Customer notes</a></li>
+<li><a class="reference internal" href="#return-and-refund-products">Return and refund products</a></li>
+<li><a class="reference internal" href="#close-the-pos-session">Close the POS session</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/point_of_sale.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Point of Sale</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="point-of-sale">
+<h1>Point of Sale<a class="headerlink" href="#point-of-sale" title="Permalink to this headline">¶</a></h1>
+<p>With <strong>Odoo Point of Sale</strong>, run your shops and restaurants easily. The app works on any device with
+a web browser, even if you are temporarily offline. Product moves are automatically registered in
+your stock, you get real-time statistics, and your data is consolidated across all shops.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.odoo.com/slides/point-of-sale-28">Odoo Tutorials: Point of Sale Tutorials</a></p></li>
+<li><p><a class="reference internal" href="../general/iot.html"><span class="doc">IoT Boxes Documentations</span></a></p></li>
+</ul>
+</div>
+</section><section id="start-a-session">
+<span id="pos-session-start"></span><h2>Start a session<a class="headerlink" href="#start-a-session" title="Permalink to this headline">¶</a></h2>
+<p>From the <strong>POS dashboard</strong>, click <span class="guilabel">New Session</span>, and at the <span class="guilabel">Opening Cash
+Control</span> screen, click <span class="guilabel">Open Session</span> to start a POS session, or click <span class="guilabel">Continue
+Selling</span> if the session is already opened.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p><a class="reference internal" href="point_of_sale/employee_login.html"><span class="doc">Multiple users</span></a> can be logged into the same session at the
+same time. However, the session can only be opened once on the same browser.</p>
+</div>
+</section><section id="sell-products">
+<span id="pos-sell"></span><h2>Sell products<a class="headerlink" href="#sell-products" title="Permalink to this headline">¶</a></h2>
+<p>Click on products to add them to the cart. To change the <strong>quantity</strong>, click <span class="guilabel">Qty</span> and
+enter the number of products using the keypad. To add a <strong>discount</strong> or modify the product
+<strong>price</strong>, click respectively <span class="guilabel">% Disc</span> or <span class="guilabel">Price</span> and enter the amounts.</p>
+<p>Once an order is completed, proceed to checkout by clicking <span class="guilabel">Payment</span>. Select the
+<strong>payment method</strong>, enter the received amount, and click <span class="guilabel">Validate</span>. Click
+<span class="guilabel">New Order</span> to move on to the next customer.</p>
+<img alt="POS session interface." src="../../_images/pos-interface.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><ul class="simple">
+<li><p>You can use both <code class="o_code docutils literal notranslate"><span class="pre">,</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">.</span></code> on your keyboard as decimal separators.</p></li>
+<li><p><strong>Cash</strong> is selected by default if you enter the amount without choosing a payment method.</p></li>
+</ul>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The system can only load a limited number of products for effective opening. Click
+<span class="guilabel">Search more</span> if the desired product is not loaded automatically.</p>
+</div>
+</section><section id="set-customers">
+<span id="pos-customers"></span><h2>Set customers<a class="headerlink" href="#set-customers" title="Permalink to this headline">¶</a></h2>
+<p>Registering your customer is necessary to <a class="reference internal" href="point_of_sale/pricing/loyalty.html"><span class="doc">collect their loyalty points and grant them rewards</span></a>, automatically apply the <a class="reference internal" href="point_of_sale/pricing/pricelists.html"><span class="doc">attributed pricelist</span></a>, or <a class="reference internal" href="point_of_sale/receipts_invoices.html#receipts-invoices-invoices"><span class="std std-ref">generate and print an invoice</span></a>.</p>
+<p>You can create customers from an <a class="reference internal" href="#pos-session-start"><span class="std std-ref">open POS session</span></a> by clicking
+<span class="menuselection">Customer ‣ Create</span>, and filling in the contact information. You can also create
+customers from the backend by going to <span class="menuselection">Point of Sale ‣ Orders ‣ Customers</span> and
+clicking <span class="guilabel">New</span>. Then, fill in the information and save.</p>
+<p>To set a customer during an order, access the list of customers by clicking <span class="guilabel">Customer</span> on
+the POS interface. You can also set a customer at the payment screen by clicking
+<span class="guilabel">Customer</span>.</p>
+</section><section id="customer-notes">
+<span id="pos-customer-notes"></span><h2>Customer notes<a class="headerlink" href="#customer-notes" title="Permalink to this headline">¶</a></h2>
+<p>You can add <strong>customer notes</strong> about specific products directly from an open <a class="reference internal" href="#pos-session-start"><span class="std std-ref">POS session</span></a>. For instance, to provide cleaning and maintenance tips. They can also be used
+to track a customer’s particular request, such as not wanting the product to be assembled for them.</p>
+<p>To do so, select a product and click <span class="guilabel">Customer Note</span> on the pad. Doing so opens a pop-up
+window in which you can add or modify content for the note.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Product notes from an <a class="reference internal" href="point_of_sale/shop/sales_order.html"><span class="doc">imported SO</span></a> are displayed
+identically in the cart.</p>
+</div>
+<img alt="Customer note button and notes (SO and POS session) on products in the cart" src="../../_images/customer-notes.png" />
+<p>Customer notes appear on customers’ receipts and invoices similarly to how they appear in the cart,
+under the related product.</p>
+<img alt="Customer receipt with notes from an SO and from the customer note feature" src="../../_images/notes-receipt.png" />
+</section><section id="return-and-refund-products">
+<span id="pos-refund"></span><h2>Return and refund products<a class="headerlink" href="#return-and-refund-products" title="Permalink to this headline">¶</a></h2>
+<p>To return and refund a product,</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#pos-session-start"><span class="std std-ref">start a session</span></a> from the <strong>POS dashboard</strong>;</p></li>
+<li><p>click <span class="guilabel">Refund</span> and select the corresponding order;</p></li>
+<li><p>select the product and the quantity to refund using the keypad;</p></li>
+<li><p>click <span class="guilabel">Refund</span> to go back to the previous screen;</p></li>
+<li><p>once the order is completed, click <span class="guilabel">Payment</span> to proceed to the refund;</p></li>
+<li><p>click <span class="guilabel">Validate</span> and <span class="guilabel">New Order</span> to move on to the next customer.</p></li>
+</ol>
+<img alt="refund view from a POS" src="../../_images/refund.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>You can filter the <strong>orders list</strong> by <span class="guilabel">Receipt Number</span>, <span class="guilabel">Date</span> or
+<span class="guilabel">Customer</span> using the search bar.</p></li>
+<li><p>You can also refund a product by selecting the returned product from an open session, and
+setting a negative quantity that equals the number of returned products. To do so, click
+<span class="guilabel">Qty</span> and <span class="guilabel">+/-</span>, followed by the quantity of returned products.</p></li>
+</ul>
+</div>
+</section><section id="close-the-pos-session">
+<span id="pos-session-close"></span><h2>Close the POS session<a class="headerlink" href="#close-the-pos-session" title="Permalink to this headline">¶</a></h2>
+<p>To close your session, click <span class="guilabel">Close</span> in the upper right corner of your screen; doing so
+opens the <span class="guilabel">Closing Control</span> pop-up screen. From this screen, you can retrieve various
+information:</p>
+<ul class="simple">
+<li><p>the number of orders made and the total amount made during the session;</p></li>
+<li><p>the expected amounts grouped by payment method.</p></li>
+</ul>
+<p>Before closing this window, count your cash using the calculator icon. Doing so opens a pop-up
+window that computes the total amount in the cash drawer depending on the coins and bills counted
+and added manually. Then, click <span class="guilabel">Confirm</span> or <span class="guilabel">Discard</span> to close the window. The
+computed amount is set in the <span class="guilabel">Counted</span> column, and the <span class="guilabel">Money Details</span> are
+specified in the <strong>Notes</strong> section.</p>
+<img alt="How to close a POS session." src="../../_images/closing-control.png" />
+<p>Once you are done controlling the amounts, click <span class="guilabel">Close Session</span> to close and go back to
+the <strong>POS dashboard</strong>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>You can let the session open by clicking <span class="guilabel">Backend</span> or abort and keep selling by
+clicking <span class="guilabel">Discard</span>.</p></li>
+<li><p>Depending on your setup, you might only be allowed to close a session if the expected cash
+revenue equals the counted cash. To close it anyway, click <span class="guilabel">Ok</span> on the
+<span class="guilabel">Payments Difference</span> screen.</p></li>
+</ul>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><ul class="simple">
+<li><p>It is strongly advised to close your POS session at the end of each day.</p></li>
+<li><p>To look at all your previous sessions, go to <span class="menuselection">Point of Sale ‣ Orders ‣
+Sessions</span>.</p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_sales_point_of_sale_employee_login"><a class="reference internal" href="point_of_sale/employee_login.html">Multi-employee management</a></li>
+<li class="toctree-l1 o_menu_applications_sales_point_of_sale_receipts_invoices"><a class="reference internal" href="point_of_sale/receipts_invoices.html">Receipts and invoices</a></li>
+<li class="toctree-l1 o_menu_applications_sales_point_of_sale_configuration"><a class="reference internal" href="point_of_sale/configuration.html">Configuration</a><ul>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_configuration_epos_printers"><a class="reference internal" href="point_of_sale/configuration/epos_printers.html">ePOS printers</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_configuration_https"><a class="reference internal" href="point_of_sale/configuration/https.html">Secure connection (HTTPS)</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_configuration_epos_ssc"><a class="reference internal" href="point_of_sale/configuration/epos_ssc.html">Self-signed certificate for ePOS printers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 o_menu_applications_sales_point_of_sale_shop"><a class="reference internal" href="#">Shop features</a><ul>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_shop_sales_order"><a class="reference internal" href="point_of_sale/shop/sales_order.html">Sales orders</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_shop_barcode"><a class="reference internal" href="point_of_sale/shop/barcode.html">Barcodes</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_shop_serial_numbers"><a class="reference internal" href="point_of_sale/shop/serial_numbers.html">Serial numbers and lots</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_shop_ship_later"><a class="reference internal" href="point_of_sale/shop/ship_later.html">Ship later</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_shop_customer_display"><a class="reference internal" href="point_of_sale/shop/customer_display.html">Customer display</a></li>
+</ul>
+</li>
+<li class="toctree-l1 o_menu_applications_sales_point_of_sale_restaurant"><a class="reference internal" href="point_of_sale/restaurant.html">Restaurant features</a><ul>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_restaurant_bill_printing"><a class="reference internal" href="point_of_sale/restaurant/bill_printing.html">Bills</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_restaurant_floors_tables"><a class="reference internal" href="point_of_sale/restaurant/floors_tables.html">Floors and tables management</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_restaurant_kitchen_printing"><a class="reference internal" href="point_of_sale/restaurant/kitchen_printing.html">Orders printing</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_restaurant_tips"><a class="reference internal" href="point_of_sale/restaurant/tips.html">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1 o_menu_applications_sales_point_of_sale_pricing"><a class="reference internal" href="#">Pricing features</a><ul>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_pricing_discounts"><a class="reference internal" href="point_of_sale/pricing/discounts.html">Discounts</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_pricing_discount_tags"><a class="reference internal" href="point_of_sale/pricing/discount_tags.html">Discount tags (barcode scanner)</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_pricing_loyalty"><a class="reference internal" href="point_of_sale/pricing/loyalty.html">Loyalty programs</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_pricing_pricelists"><a class="reference internal" href="point_of_sale/pricing/pricelists.html">Pricelists</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_pricing_fiscal_position"><a class="reference internal" href="point_of_sale/pricing/fiscal_position.html">Flexible taxes (fiscal positions)</a></li>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_pricing_cash_rounding"><a class="reference internal" href="point_of_sale/pricing/cash_rounding.html">Cash rounding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 o_menu_applications_sales_point_of_sale_payment_methods"><a class="reference internal" href="point_of_sale/payment_methods.html">Payment methods</a><ul>
+<li class="toctree-l2 o_menu_applications_sales_point_of_sale_payment_methods_terminals"><a class="reference internal" href="point_of_sale/payment_methods/terminals.html">Payment terminals</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale_payment_methods_terminals_adyen"><a class="reference internal" href="point_of_sale/payment_methods/terminals/adyen.html">Adyen</a></li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale_payment_methods_terminals_ingenico"><a class="reference internal" href="point_of_sale/payment_methods/terminals/ingenico.html">Ingenico</a></li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale_payment_methods_terminals_six"><a class="reference internal" href="point_of_sale/payment_methods/terminals/six.html">SIX</a></li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale_payment_methods_terminals_stripe"><a class="reference internal" href="point_of_sale/payment_methods/terminals/stripe.html">Stripe</a></li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale_payment_methods_terminals_vantiv"><a class="reference internal" href="point_of_sale/payment_methods/terminals/vantiv.html">Vantiv</a></li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale_payment_methods_terminals_worldline"><a class="reference internal" href="point_of_sale/payment_methods/terminals/worldline.html">Worldline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 o_menu_applications_sales_point_of_sale_reporting"><a class="reference internal" href="point_of_sale/reporting.html">Reporting</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Point of Sale</a><ul>
+<li><a class="reference internal" href="#start-a-session">Start a session</a></li>
+<li><a class="reference internal" href="#sell-products">Sell products</a></li>
+<li><a class="reference internal" href="#set-customers">Set customers</a></li>
+<li><a class="reference internal" href="#customer-notes">Customer notes</a></li>
+<li><a class="reference internal" href="#return-and-refund-products">Return and refund products</a></li>
+<li><a class="reference internal" href="#close-the-pos-session">Close the POS session</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Point of Sale</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

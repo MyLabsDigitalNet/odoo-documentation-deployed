@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quality control points &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/quality/quality_management/quality_control_points.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/quality/quality_management/quality_control_points.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Quality control points</a><ul>
+<li><a class="reference internal" href="#configure-quality-control-points">Configure quality control points</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/quality/quality_management/quality_control_points.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Quality control points</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="quality-control-points">
+<h1>Quality control points<a class="headerlink" href="#quality-control-points" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="quality-quality-management-quality-control-points"></span><p>In Odoo, <em>quality control points</em> (QCPs), are used to automatically create <a class="reference internal" href="quality_checks.html"><span class="doc">quality checks</span></a> at predetermined intervals. <abbr title="Quality Control Points">QCPs</abbr> can be configured to create quality checks for
+specific operations (manufacturing, delivery, etc.), as well as specific products within those
+operations.</p>
+<p>Using <abbr title="Quality Control Points">QCPs</abbr> allows quality teams to ensure products are being regularly inspected for defects and
+other issues.</p>
+</section><section id="configure-quality-control-points">
+<h2>Configure quality control points<a class="headerlink" href="#configure-quality-control-points" title="Permalink to this headline">¶</a></h2>
+<p>To create a new <abbr title="Quality Control Point">QCP</abbr>, navigate to <span class="menuselection">Quality ‣ Quality Control ‣ Control Points</span>,
+and then click <span class="guilabel">New</span>.</p>
+<p>Begin filling out the new <abbr title="Quality Control Point">QCP</abbr> by entering a unique <span class="guilabel">Title</span> that makes the <abbr title="Quality Control Point">QCP</abbr> easily
+identifiable.</p>
+<p>In the <span class="guilabel">Products</span> field, select one or more products the <abbr title="Quality Control Point">QCP</abbr> should apply to. If the
+<abbr title="Quality Control Point">QCP</abbr> should apply to an entire product category, select it in the <span class="guilabel">Product Categories</span>
+field.</p>
+<p>In the <span class="guilabel">Operations</span> field, select the operation(s) that should trigger the <abbr title="Quality Control Point">QCP</abbr>. For
+example, selecting the <span class="guilabel">Manufacturing</span> option in the <span class="guilabel">Operations</span> field causes a
+quality check to be created for new manufacturing orders (MOs).</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When creating a new <abbr title="Quality Control Point">QCP</abbr>, at least one operation must be listed in the <span class="guilabel">Operations</span>
+field. However, the <span class="guilabel">Products</span> and <span class="guilabel">Product Categories</span> fields can be left
+blank. If they are left blank, the <abbr title="Quality Control Point">QCP</abbr> generates quality checks for every instance of the
+specified operation(s).</p>
+</div>
+<p>If the <span class="guilabel">Manufacturing</span> operation is selected in the <span class="guilabel">Operations</span> field, a new
+field appears below it, titled <span class="guilabel">Work Order Operation</span>. From this field, select a specific
+work order to generate quality checks for that operation, rather than the manufacturing operation in
+general.</p>
+<p>For example, a <abbr title="Quality Control Point">QCP</abbr> could be configured to create quality checks for the <code class="o_code docutils literal notranslate"><span class="pre">Assembly</span></code> work order of
+the <code class="o_code docutils literal notranslate"><span class="pre">Coffee</span> <span class="pre">Table</span></code> product. Then, if a new <abbr title="Manufacturing Order">MO</abbr> is confirmed for a <code class="o_code docutils literal notranslate"><span class="pre">Coffee</span> <span class="pre">Table</span></code>, the <abbr title="Quality Control Point">QCP</abbr> creates
+a quality check specifically for the <code class="o_code docutils literal notranslate"><span class="pre">Assembly</span></code> operation.</p>
+<p>The <span class="guilabel">Control Per</span> field is set to one of three options that determine <em>when</em> a new quality
+check is created:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Operation</span>: one check is requested for the specified operation, as a whole.</p></li>
+<li><p><span class="guilabel">Product</span>: one check is requested for each <em>unique</em> product included in the specified
+operation. For example, a delivery operation for one table and four chairs would generate two
+checks, since two <em>unique</em> products are included in the operation.</p></li>
+<li><p><span class="guilabel">Quantity</span>: a check is requested for a certain percentage of items within the specified
+operation. This percentage is set by enabling the <span class="guilabel">Partial Transfer Test</span> checkbox, and
+then entering a numerical value in the <span class="guilabel">Percentage</span> field that appears below. If the
+checkbox is not enabled, one quality check is created for the full quantity.</p></li>
+</ul>
+<p>The <span class="guilabel">Control Frequency</span> field is set to one of three options that determine <em>how often</em> a
+new quality check is created:</p>
+<ul class="simple">
+<li><p><span class="guilabel">All</span>: a quality check is requested every time the conditions of the <abbr title="Quality Control Point">QCP</abbr> are met.</p></li>
+<li><p><span class="guilabel">Randomly</span>: a quality check is randomly requested for a certain percentage of
+operations, which can be specified in the <span class="guilabel">Every #% of Transfers</span> field that appears
+below.</p></li>
+<li><p><span class="guilabel">Periodically</span>: a quality check is requested once every set period of time, which is
+specified by entering a numerical value in the field below, and choosing either <span class="guilabel">Days</span>,
+<span class="guilabel">Weeks</span>, or <span class="guilabel">Months</span> as the desired time interval.</p></li>
+</ul>
+<p>In the <span class="guilabel">Type</span> field, specify the type of quality check that should be performed. The
+method for processing quality checks created by the <abbr title="Quality Control Point">QCP</abbr> depends upon the type of quality check
+selected:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Instructions</span> checks provide specific instructions for how to complete the quality
+check.</p></li>
+<li><p><span class="guilabel">Take a Picture</span> checks require a picture of the product be uploaded for later review by
+the assigned quality team.</p></li>
+<li><p><span class="guilabel">Register Production</span> checks prompt manufacturing employees to confirm the quantity of
+the product that was produced during the manufacturing operation.</p></li>
+<li><p><span class="guilabel">Pass - Fail</span> checks specify a criterion that products must meet for the check to pass.</p></li>
+<li><p><span class="guilabel">Measure</span> checks prompt employees to record a measurement of the product that must be
+within a tolerance of a norm value for the check to pass.</p></li>
+<li><p><span class="guilabel">Worksheet</span> checks provide an interactive worksheet that must be filled out by the
+employee processing the check.</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>An <em>Instructions</em> check is the same as a step on a work order for an MO.</p>
+<p>When a step is added to a work order, Odoo stores it in the Quality app as a <abbr title="Quality Control Point">QCP</abbr>. It is
+possible to manually create a <abbr title="Quality Control Point">QCP</abbr> with the <em>Instructions</em> check type, and even assign it to an
+operation other than manufacturing, like receipts.</p>
+<p>However, when creating a control point specifically for quality control purposes, using a
+different check type is probably more effective.</p>
+</div>
+<p>In the <span class="guilabel">Team</span> field, specify the quality team that is responsible for managing the <abbr title="Quality Control Point">QCP</abbr>,
+and the quality checks it creates. If a specific quality team member is responsible for the <abbr title="Quality Control Point">QCP</abbr>,
+select them in the <span class="guilabel">Responsible</span> field.</p>
+<p>The <span class="guilabel">Step Document</span> field has two options that specify the location of an instructional
+document detailing how to complete the quality checks created by the <abbr title="Quality Control Point">QCP</abbr>.</p>
+<p>Select <span class="guilabel">Specific Page of Operation Worksheet</span> if the document is included with the
+instructional worksheet for the work order, then enter the page number in the <span class="guilabel">Worksheet
+Page</span> field that appears below.</p>
+<p>Select <span class="guilabel">Custom</span> if the document should be included in the <span class="guilabel">Instructions</span> tab at
+the bottom of the <abbr title="Quality Control Point">QCP</abbr>.</p>
+<p>In the <span class="guilabel">Instructions</span> tab at the bottom of the form, enter instructions for how to
+complete the quality checks created by the <abbr title="Quality Control Point">QCP</abbr>.</p>
+<p>If the <span class="guilabel">Custom</span> option was selected in the <span class="guilabel">Step Document</span> field above, a
+document can be attached in this tab. To do so, either select the <span class="guilabel">Upload your file</span>
+button to open the device’s file manager, and then select a file, or add a link to a Google Slides
+document in the <span class="guilabel">Google Slide Link</span> field.</p>
+<p>In the <span class="guilabel">Message If Failure</span> tab, include instructions for what to do if the quality check
+fails. For example, instruct the employee processing the quality check to create a <a class="reference internal" href="quality_alerts.html"><span class="doc">quality
+alert</span></a>.</p>
+<p>The <span class="guilabel">Notes</span> tab is used to provide additional information about the <abbr title="Quality Control Point">QCP</abbr>, like the reason
+it was created. The information entered in this tab is <strong>not</strong> shown to employees processing the
+quality checks created by the <abbr title="Quality Control Point">QCP</abbr>.</p>
+<img alt="A QCP configured to create Pass - Fail checks for a work order operation." class="align-center" src="../../../../_images/qcp-form1.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Quality control points</a><ul>
+<li><a class="reference internal" href="#configure-quality-control-points">Configure quality control points</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Quality control points</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

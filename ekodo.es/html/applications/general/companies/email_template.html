@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Email templates &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/companies/email_template.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/companies/email_template.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Email templates</a><ul>
+<li><a class="reference internal" href="#editing-email-templates">Editing email templates</a><ul>
+<li><a class="reference internal" href="#powerbox">Powerbox</a></li>
+<li><a class="reference internal" href="#xml-html-code-editor">XML/HTML code editor</a></li>
+<li><a class="reference internal" href="#dynamic-placeholders">Dynamic placeholders</a></li>
+<li><a class="reference internal" href="#rich-text-editor">Rich text editor</a></li>
+<li><a class="reference internal" href="#resetting-email-templates">Resetting email templates</a></li>
+<li><a class="reference internal" href="#default-reply-on-email-templates">Default reply on email templates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#transactional-emails-and-corresponding-urls">Transactional emails and corresponding URLs</a><ul>
+<li><a class="reference internal" href="#updating-translations-within-email-templates">Updating translations within email templates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/companies/email_template.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Email templates</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="email-templates">
+<h1>Email templates<a class="headerlink" href="#email-templates" title="Permalink to this headline">¶</a></h1>
+<p>Email templates are saved emails that are used repeatedly to send emails from the database. They
+allow users to send quality communications, without having to compose the same text repeatedly.</p>
+<p>Creating different templates that are tailored to specific situations lets users choose the right
+message for the right audience. This increases the quality of the message and the overall
+engagement rate with the customer.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Email templates in Odoo use QWeb or XML, which allows for editing emails in their final
+rendering, making customizations more robust, without having to edit any code whatsoever. This
+means that Odoo can use a Graphical User Interface (GUI) to edit emails, which edits the backend
+code. When the received email is read by the end user’s program, different formatting and
+graphics will appear in the final form of it.</p>
+</div>
+<p>Access email templates in <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> by navigating to
+<span class="menuselection">Settings app ‣ Technical menu ‣ Email ‣ Email Templates</span>.</p>
+</section><section id="editing-email-templates">
+<h2>Editing email templates<a class="headerlink" href="#editing-email-templates" title="Permalink to this headline">¶</a></h2>
+<p>The <em>powerbox</em> feature can be used when working with email templates. This feature provides the
+ability to directly edit the formatting and text in an email template, as well as the ability to add
+links, buttons, appointment options, or images.</p>
+<p>Additionally, the XML/HTML code of the email template can be edited directly, via the
+<span class="guilabel">&lt;/&gt;</span> icon. Dynamic placeholders (referencing fields within Odoo) are also available for
+use in the email template.</p>
+</section><section id="powerbox">
+<h3>Powerbox<a class="headerlink" href="#powerbox" title="Permalink to this headline">¶</a></h3>
+<p>The <em>powerbox</em> feature is an enriched text editor with various formatting, layout, and text options.
+It can also be used to add XML/HTML features in an email template. The powerbox feature is activated
+by typing a forward slash <code class="o_code docutils literal notranslate"><span class="pre">/</span></code> in the body of the email template.</p>
+<p>When a forward slash <code class="o_code docutils literal notranslate"><span class="pre">/</span></code> is typed in the body of an email template, a drop-down menu appears with
+the following options:</p>
+<p><span class="guilabel">Structure</span></p>
+<ul class="simple">
+<li><p><span class="guilabel">Bulleted list</span>: Create a simple bulleted list.</p></li>
+<li><p><span class="guilabel">Numbered list</span>: Create a list with numbering.</p></li>
+<li><p><span class="guilabel">Checklist</span>: Track tasks with a checklist.</p></li>
+<li><p><span class="guilabel">Table</span>: Insert a table.</p></li>
+<li><p><span class="guilabel">Separator</span>: Insert a horizontal rule separator.</p></li>
+<li><p><span class="guilabel">Quote</span>: Add a blockquote section.</p></li>
+<li><p><span class="guilabel">Code</span>: Add a code section.</p></li>
+<li><p><span class="guilabel">2 columns</span>: Convert into two columns.</p></li>
+<li><p><span class="guilabel">3 columns</span>: Convert into three columns.</p></li>
+<li><p><span class="guilabel">4 columns</span>: Convert into four columns.</p></li>
+</ul>
+<p><span class="guilabel">Format</span></p>
+<ul class="simple">
+<li><p><span class="guilabel">Heading 1</span>: Big section heading.</p></li>
+<li><p><span class="guilabel">Heading 2</span>: Medium section heading.</p></li>
+<li><p><span class="guilabel">Heading 3</span>: Small section heading.</p></li>
+<li><p><span class="guilabel">Switch direction</span>: Switch the text’s direction.</p></li>
+<li><p><span class="guilabel">Text</span>: Paragraph block.</p></li>
+</ul>
+<p><span class="guilabel">Media</span></p>
+<ul class="simple">
+<li><p><span class="guilabel">Image</span>: Insert an image.</p></li>
+<li><p><span class="guilabel">Article</span>: Link an article.</p></li>
+</ul>
+<p><span class="guilabel">Navigation</span></p>
+<ul class="simple">
+<li><p><span class="guilabel">Link</span>: Add a link.</p></li>
+<li><p><span class="guilabel">Button</span>: Add a button.</p></li>
+<li><p><span class="guilabel">Appointment</span>: Add a specific appointment.</p></li>
+<li><p><span class="guilabel">Calendar</span>: Schedule an appointment.</p></li>
+</ul>
+<p><span class="guilabel">Widgets</span></p>
+<ul class="simple">
+<li><p><span class="guilabel">3 Stars</span>: Insert a rating over three stars.</p></li>
+<li><p><span class="guilabel">5 Stars</span>: Insert a rating over five stars.</p></li>
+</ul>
+<p><span class="guilabel">Basic Blocks</span></p>
+<ul class="simple">
+<li><p><span class="guilabel">Signature</span>: Insert your signature.</p></li>
+</ul>
+<p><span class="guilabel">Marketing Tools</span></p>
+<ul class="simple">
+<li><p><span class="guilabel">Dynamic Placeholders</span>: Insert personalized content.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To use any of these options, click on the desired feature from the powerbox drop-down menu. To
+format existing text with a text-related option (e.g. <span class="guilabel">Heading 1</span>, <span class="guilabel">Switch
+direction</span>, etc.), highlight the text, then type in the activator key (forward slash) <code class="o_code docutils literal notranslate"><span class="pre">/</span></code>, and
+select the desired option from the drop-down menu.</p>
+<img alt="Powerbox feature in the email template." class="align-center" src="../../../_images/powerbox-feature.png" />
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="#email-template-dynamic-placeholders"><span class="std std-ref">Using dynamic placeholders</span></a></p>
+</div>
+</section><section id="xml-html-code-editor">
+<h3>XML/HTML code editor<a class="headerlink" href="#xml-html-code-editor" title="Permalink to this headline">¶</a></h3>
+<p>To access the XML/HTML editor for an email template, first enter <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>. Then, click the <span class="guilabel">&lt;/&gt;</span> icon in the upper-right corner of the template,
+and proceed to edit the XML/HTML. To return to the standard text editor, click the <span class="guilabel">&lt;/&gt;</span>
+icon again.</p>
+<img alt="HTML editor in the email template." class="align-center" src="../../../_images/html-code-editor.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>The XML/HTML editor should be accessed with caution as this is the backend code of the template.
+Editing the code can cause the email template to break immediately or when upgrading the
+database.</p>
+</div>
+</section><section id="dynamic-placeholders">
+<span id="email-template-dynamic-placeholders"></span><h3>Dynamic placeholders<a class="headerlink" href="#dynamic-placeholders" title="Permalink to this headline">¶</a></h3>
+<p><em>Dynamic placeholders</em> reference certain fields within the Odoo database to produce unique data in
+the email template.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Many companies like to customize their emails with a personalized piece of customer information
+to grab attention. This can be accomplished in Odoo by referencing a field within a model by
+inserting a dynamic placeholder. For example, a customer’s name can be referenced in the email
+from the <span class="guilabel">Customer</span> field on the <span class="guilabel">Sales Order</span> model. The dynamic placeholder
+for this field is: <code class="o_code docutils literal notranslate"><span class="pre">{{</span> <span class="pre">object.partner_id</span> <span class="pre">}}</span></code>.</p>
+</div>
+<p>Dynamic placeholders are encoded to display fields from within the database. Dynamic placeholders
+can be used in the <span class="guilabel">Body</span> (<span class="guilabel">Content</span> Tab) of the email template. They can also
+be used in the fields present in the <span class="guilabel">Email Configuration</span> tab, the <span class="guilabel">Subject</span> of
+the email, and the <span class="guilabel">Language</span>.</p>
+<p>To use the dynamic placeholders in the <span class="guilabel">Body</span> of an email open the <strong>powerbox</strong> feature by
+typing in <code class="o_code docutils literal notranslate"><span class="pre">/</span></code> into the body of the email template under the <span class="guilabel">Content</span> tab. Scroll to the
+bottom of the options list, to <span class="guilabel">Marketing Tools</span>. Next, select <span class="guilabel">Dynamic
+Placeholder</span>. Then select the dynamic placeholder from a list of available options and follow the
+prompts to configure it with the desired corresponding Odoo field. Each dynamic placeholder will
+vary in configuration.</p>
+<img alt="Using dynamic placeholders in an email template." class="align-center" src="../../../_images/dynamic-placeholders.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Each unique combination of <span class="guilabel">Fields</span>, <span class="guilabel">Sub-models</span> and <span class="guilabel">Sub-fields</span>
+creates a different dynamic placeholder. Imagine it as a combination to the field that is being
+created.</p>
+<p>To search the available fields, simply type in the front-end name (on user-interface) of the
+field in the search. This will find a result from all of the available fields for the model that
+the email template is created for.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Customizing email templates are out of the scope of Odoo Support.</p>
+</div>
+</section><section id="rich-text-editor">
+<h3>Rich text editor<a class="headerlink" href="#rich-text-editor" title="Permalink to this headline">¶</a></h3>
+<p>A rich text editor toolbar can be accessed by highlighting text in the email template. This can be
+used to change the heading, font size/style, color, add a list type, or a link.</p>
+<img alt="Rich text editor in the email template." class="align-center" src="../../../_images/rich-text-editor.png" />
+</section><section id="resetting-email-templates">
+<h3>Resetting email templates<a class="headerlink" href="#resetting-email-templates" title="Permalink to this headline">¶</a></h3>
+<p>Should the email template not work because the code has been altered it can be reset to restore it
+back to the out-of-box default template. Simply click on the <span class="guilabel">Reset Template</span> button in
+the upper left-hand of the screen and the template will be reset.</p>
+<img alt="Resetting the email template." class="align-center" src="../../../_images/reset.png" />
+</section><section id="default-reply-on-email-templates">
+<h3>Default reply on email templates<a class="headerlink" href="#default-reply-on-email-templates" title="Permalink to this headline">¶</a></h3>
+<p>Under the <span class="guilabel">Email Configuration</span> tab on an email template, there is a <span class="guilabel">Reply To</span>
+field. In this field, add email addresses to which replies are redirected when sending emails en
+masse using this template.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Add multiple email addresses by adding a comma <code class="o_code docutils literal notranslate"><span class="pre">,</span></code> between the addresses or dynamic
+placeholders.</p>
+</div>
+<img alt="Reply-to field on template." class="align-center" src="../../../_images/reply-to-template-sales.png" />
+<p>The <span class="guilabel">Reply To</span> field is <strong>only</strong> used for mass mailing (sending emails in bulk). Bulk
+emails can be sent in almost every Odoo application that has a list view option.</p>
+<p>To send mass mails, while in <span class="guilabel">list</span> view, check the boxes next to the desired records
+where the emails are to be sent, click the <span class="guilabel">Action</span> button (represented by a <span class="guilabel">⚙️
+(gear)</span> icon), and select the desired email option from the <span class="guilabel">Action</span> drop-down menu. Email
+options can vary by the particular list view and application.</p>
+<p>If it is possible to send an email, a mail composer pop-up window appears, with values that can be
+defined and customized. This option will be available on the <span class="guilabel">Action</span> button on pages
+where emails can be sent in bulk—for example, on the <span class="guilabel">Customers</span> page of the CRM app.
+This action occurs throughout the Odoo database.</p>
+<img alt="Email composer in mass mailing mode with reply-to highlighted." class="align-center" src="../../../_images/composer-mass-mailing.png" />
+</section><section id="transactional-emails-and-corresponding-urls">
+<h2>Transactional emails and corresponding URLs<a class="headerlink" href="#transactional-emails-and-corresponding-urls" title="Permalink to this headline">¶</a></h2>
+<p>In Odoo, multiple events can trigger the sending of automated emails. These emails are known as
+<em>transactional emails</em>, and sometimes contain links redirecting to the Odoo database.</p>
+<p>By default, links generated by the database use the dynamic <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> key defined in the system
+parameters. For more information about this, see <a class="reference internal" href="../../websites/website/configuration/domain_names.html#domain-name-web-base-url"><span class="std std-ref">system parameters</span></a>.</p>
+<p>If the <em>Website</em> application is not installed, the <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> key will always be the default
+parameter used to generate all the links.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> key can only have a single value, meaning that, in a multi-website or
+multi-company database environment, even if there is a specific domain name for each website, the
+links generated to share a document (or the links within a transactional email) may remain the
+same, regardless of which website/company is related to the sending of the email/document.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If the <span class="guilabel">Value</span> of the <span class="guilabel">web.base.url</span> system parameter is equal to
+<code class="o_code docutils literal notranslate"><span class="pre">https://www.mycompany.com</span></code> and there are two separate companies in Odoo with different
+website URLs: <code class="o_code docutils literal notranslate"><span class="pre">https://www.mycompany2.com</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">https://www.mycompany1.com</span></code>, the links created
+by Odoo to share a document, or send a transactional email, come from the domain:
+<code class="o_code docutils literal notranslate"><span class="pre">https://www.mycompany.com</span></code>, regardless of which company sends the document or email.</p>
+</div>
+<p>This is not always the case, as some Odoo applications (<em>eCommerce</em>, for example) have a link
+established in the database with the <em>Website</em> application. In that case, if a specific domain is
+defined for the website, the URL generated in the email template uses the domain defined on the
+corresponding website of the company.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>When a customer makes a purchase on an Odoo <em>eCommerce</em> website, the order has an established
+link with that website. As a result, the links in the confirmation email sent to the customer
+use the domain name for that specific website.</p>
+</div>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>A document shared using the <em>Documents</em> application will <strong>always</strong> use the <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> key,
+as the document shared is not associated with any particular website. This means that the URL
+will always be the same (the <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> key value), no matter what company it’s shared from.
+This is a known limitation.</p>
+</div>
+<p>For more information about how to configure domains, check out the <a class="reference internal" href="../../websites/website/configuration/domain_names.html"><span class="doc">domain name documentation</span></a>.</p>
+</section><section id="updating-translations-within-email-templates">
+<h3>Updating translations within email templates<a class="headerlink" href="#updating-translations-within-email-templates" title="Permalink to this headline">¶</a></h3>
+<p>In Odoo, email templates are automatically translated for all users in the database for all of the
+languages installed. Changing the translations shouldn’t be necessary. However, if for a specific
+reason, some of the translations need to be changed, it can be done.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Like any modification in the code, if translation changes are not done correctly (for example,
+modifications leading to bad syntax), it can break the template, and as a result, the template
+will appear blank.</p>
+</div>
+<p>In order to edit translations, first enter <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>. Then, on the
+email template, click on the <span class="guilabel">Edit</span> button, and then click on the language button,
+represented by the initials of the language currently being used (e.g. <span class="guilabel">EN</span> for English).</p>
+<img alt="Edit the language of a template." class="align-center" src="../../../_images/edit-language-template.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If there aren’t multiple languages installed and activated in the database, or if the user does
+not have administration access rights, the language button will not appear.</p>
+</div>
+<p>A pop-up window with the different languages installed on the database appears. From this pop-up,
+editing of translations is possible. When the desired changes have been made, click the
+<span class="guilabel">Save</span> button to save the changes.</p>
+<img alt="Translation of the body of the Appointment Booked template." class="align-center" src="../../../_images/translation-body.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When editing the translations, the default language set in the database appears in <strong>bold</strong>.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Email templates</a><ul>
+<li><a class="reference internal" href="#editing-email-templates">Editing email templates</a><ul>
+<li><a class="reference internal" href="#powerbox">Powerbox</a></li>
+<li><a class="reference internal" href="#xml-html-code-editor">XML/HTML code editor</a></li>
+<li><a class="reference internal" href="#dynamic-placeholders">Dynamic placeholders</a></li>
+<li><a class="reference internal" href="#rich-text-editor">Rich text editor</a></li>
+<li><a class="reference internal" href="#resetting-email-templates">Resetting email templates</a></li>
+<li><a class="reference internal" href="#default-reply-on-email-templates">Default reply on email templates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#transactional-emails-and-corresponding-urls">Transactional emails and corresponding URLs</a><ul>
+<li><a class="reference internal" href="#updating-translations-within-email-templates">Updating translations within email templates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Email templates</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

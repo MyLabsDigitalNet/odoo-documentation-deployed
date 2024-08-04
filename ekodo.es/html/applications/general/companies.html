@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Companies &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/companies.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/companies.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Companies</a><ul>
+<li><a class="reference internal" href="#manage-companies-and-records">Manage companies and records</a></li>
+<li><a class="reference internal" href="#employees-access">Employees’ access</a></li>
+<li><a class="reference internal" href="#documents-format">Documents’ format</a></li>
+<li><a class="reference internal" href="#inter-company-transactions">Inter-Company Transactions</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/companies.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Companies</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_hide_toc">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="companies">
+<h1>Companies<a class="headerlink" href="#companies" title="Permalink to this headline">¶</a></h1>
+<p>A centralized management environment allows you to select multiple companies simultaneously and set
+their specific warehouses, customers, equipment, and contacts. It provides you the ability to
+generate reports of aggregated figures without switching interfaces, which facilitates daily tasks
+and the overall management process.</p>
+</section><section id="manage-companies-and-records">
+<span id="companies-manage"></span><h2>Manage companies and records<a class="headerlink" href="#manage-companies-and-records" title="Permalink to this headline">¶</a></h2>
+<p>Go to <span class="menuselection">Settings ‣ Manage Companies</span> and fill in the form with your company’s
+information. If a <em>Parent Company</em> is selected, records are shared between the two companies (as
+long as both environments are active).</p>
+<img alt="Overview of a new company's form in Odoo" class="align-center" src="../../_images/create_js_store_us.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Activate the <a class="reference internal" href="developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> to choose a <em>Favicon</em> for each of your
+companies, and easily identify them by the browser tabs. Set your favicons’ files size to 16x16
+or 32x32 pixels. JPG, PNG, GIF, and ICO are extensions accepted.</p>
+<img alt="View of a web browser and the favicon for a specific company chosen in Odoo" class="align-center" src="../../_images/favicon.png" style="height: 200px;" />
+</div>
+<p>Switch between or select multiple companies by enabling their selection boxes to activate them. The
+grayed company is the one which environment is in use. To switch environments, click on the
+company’s name. In the example below, the user has access to three companies, two are activated, and
+the environment in use is of <em>JS Store US</em>.</p>
+<img alt="View of the companies menu through the main dashboard in Odoo" class="align-center" src="../../_images/multi_companies_menu_dashboard.png" />
+<p>Data such as Products, Contacts, and Equipment can be shared or set to be shown for a specific
+company only. To do so, on their forms, choose between:</p>
+<ul class="simple">
+<li><p><em>A blank field</em>: the record is shared within all companies.</p></li>
+<li><p><em>Adding a company</em>: the record is visible to users logged in to that specific company.</p></li>
+</ul>
+<img alt="View of a product's form emphasizing the company field in Odoo Sales" class="align-center" src="../../_images/product_form_company.png" />
+</section><section id="employees-access">
+<h2>Employees’ access<a class="headerlink" href="#employees-access" title="Permalink to this headline">¶</a></h2>
+<p>Once companies are created, manage your employees’ <a class="reference internal" href="users/access_rights.html"><span class="doc">Access Rights</span></a>
+for <em>Multi Companies</em>.</p>
+<img alt="View of an user form emphasizing the multi companies field under the access rights tabs in Odoo" class="align-center" src="../../_images/access_rights_multi_companies.png" />
+<div class="line-block">
+<div class="line">If a user has multiple companies <em>activated</em> on his database, and he is <strong>editing</strong> a record,
+the editing happens on the record’s related company.</div>
+<div class="line">Example: if editing a sale order issued under JS Store US while working on the JS Store Belgium
+environment, the changes are applied under JS Store US (the company from which the sale order
+was issued).</div>
+<div class="line">When <strong>creating</strong> a record, the company taken into account is:</div>
+</div>
+<ul class="simple">
+<li><p>The current company (the one active) or,</p></li>
+<li><p>No company is set (on products and contacts’ forms for example) or,</p></li>
+<li><p>The company set is the one linked to the document (the same as if a record is being edited).</p></li>
+</ul>
+</section><section id="documents-format">
+<h2>Documents’ format<a class="headerlink" href="#documents-format" title="Permalink to this headline">¶</a></h2>
+<p>To set documents’ formats according to each company, <em>activate</em> and <em>select</em> the respective one and,
+under <em>Settings</em>, click on <em>Configure Document Layout</em>.</p>
+<img alt="View of the settings page emphasizing the document layout field in Odoo" class="align-center" src="../../_images/document_layout.png" />
+</section><section id="inter-company-transactions">
+<h2>Inter-Company Transactions<a class="headerlink" href="#inter-company-transactions" title="Permalink to this headline">¶</a></h2>
+<p>First, make sure each one of your companies is properly set in relation to:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../finance/accounting/get_started/chart_of_accounts.html"><span class="doc">Chart of Accounts</span></a></p></li>
+<li><p><a class="reference internal" href="../finance/accounting/taxes.html"><span class="doc">Taxes</span></a></p></li>
+<li><p><a class="reference internal" href="../finance/accounting/taxes/fiscal_positions.html"><span class="doc">Fiscal Positions</span></a></p></li>
+<li><p><a class="reference internal" href="../finance/accounting/bank.html"><span class="doc">Journals</span></a></p></li>
+<li><p><a class="reference internal" href="../finance/fiscal_localizations.html"><span class="doc">Fiscal Localizations</span></a></p></li>
+<li><p><a class="reference internal" href="../sales/sales/products_prices/prices/pricing.html"><span class="doc">Pricelists</span></a></p></li>
+</ul>
+<p>Now, activate the <em>Inter-Company Transactions</em> option under <em>Settings</em>. With the respective company
+<em>activated</em> and <em>selected</em>, choose if you would like operations between companies to be synchronized
+at an invoice/bills level or at a sales/purchase orders level.</p>
+<img alt="View of the settings page emphasizing the inter company transaction field in Odoo" class="align-center" src="../../_images/inter_company_transactions.png" />
+<ul>
+<li><p><strong>Synchronize invoice/bills</strong>: generates a bill/invoice when a company confirms a bill/invoice for
+the selected company.</p>
+<p><em>Example:</em> an invoice posted on JS Store Belgium, for JS Store US, automatically creates a vendor
+bill on the JS Store US, from the JS Store Belgium.</p>
+</li>
+</ul>
+<img alt="View of an invoice for JS Store US created on JS Store Belgium in Odoo" class="align-center" src="../../_images/invoice_inter_company.png" />
+<ul>
+<li><p><strong>Synchronize sales/purchase order</strong>: generates a drafted purchase/sales order using the selected
+company warehouse when a sales/purchase order is confirmed for the selected company. If instead of
+a drafted purchase/sales order you rather have it validated, enable <em>Automatic Validation</em>.</p>
+<p><em>Example:</em> when a sale order for JS Store US is confirmed on JS Store Belgium, a purchase order
+on JS Store Belgium is automatically created (and confirmed if the <em>Automatic Validation</em> feature
+was enabled).</p>
+</li>
+</ul>
+<img alt="View of the purchase created on JS Store US from JS Store Belgium in Odoo" class="align-center" src="../../_images/purchase_order_inter_company.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Products have to be configured as <em>Can be sold</em> and must be shared between the companies.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Remember to test all workflows as an user other than the administrator.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><span class="xref std std-doc">Multi-company Guidelines</span></p></li>
+<li><p><a class="reference internal" href="../finance/accounting/get_started/multi_currency.html"><span class="doc">Multi-currency system</span></a></p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_general_companies_digest_emails"><a class="reference internal" href="companies/digest_emails.html">Digest emails</a></li>
+<li class="toctree-l1 o_menu_applications_general_companies_email_template"><a class="reference internal" href="companies/email_template.html">Email templates</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Companies</a><ul>
+<li><a class="reference internal" href="#manage-companies-and-records">Manage companies and records</a></li>
+<li><a class="reference internal" href="#employees-access">Employees’ access</a></li>
+<li><a class="reference internal" href="#documents-format">Documents’ format</a></li>
+<li><a class="reference internal" href="#inter-company-transactions">Inter-Company Transactions</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Companies</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

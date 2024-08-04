@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TaxCloud integration &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/taxcloud.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/taxes/taxcloud.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">TaxCloud integration</a><ul>
+<li><a class="reference internal" href="#taxcloud-registration">TaxCloud registration</a></li>
+<li><a class="reference internal" href="#enable-taxcloud">Enable TaxCloud</a></li>
+<li><a class="reference internal" href="#set-taxcloud-categories-on-products">Set TaxCloud categories on products</a></li>
+<li><a class="reference internal" href="#automatically-post-taxes-in-the-correct-tax-payable-account">Automatically post taxes in the correct tax payable account</a></li>
+<li><a class="reference internal" href="#automatically-detect-the-fiscal-position">Automatically detect the fiscal position</a></li>
+<li><a class="reference internal" href="#interaction-with-coupons-and-promotions">Interaction with coupons and promotions</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/taxes/taxcloud.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">TaxCloud integration</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="taxcloud-integration">
+<h1>TaxCloud integration<a class="headerlink" href="#taxcloud-integration" title="Permalink to this headline">¶</a></h1>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>The Odoo TaxCloud integration has begun its decommissioning, starting in Odoo 17. New
+installations are prohibited in Odoo 17. In Odoo 18, the TaxCloud module(s) will <strong>not</strong> exist at
+all. Odoo recommends the use of the Avatax platform, instead.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="avatax.html"><span class="doc">AvaTax integration</span></a></p>
+</div>
+<p>TaxCloud calculates the sales tax rate in real time for every state, city, and special jurisdiction
+in the United States. It keeps track of which products are exempt from sales tax, and in which
+states each exemption applies.</p>
+</section><section id="taxcloud-registration">
+<h2>TaxCloud registration<a class="headerlink" href="#taxcloud-registration" title="Permalink to this headline">¶</a></h2>
+<p>Register an account on <a class="reference external" href="https://taxcloud.com/register">TaxCloud.com</a> and complete the setup.
+Once you go live, get the <span class="guilabel">TaxCloud API Keys</span> by clicking on <span class="guilabel">Stores</span>, then
+<span class="guilabel">Get Details</span>.</p>
+<img alt="Example of a store's TaxCloud API Keys" class="align-center" src="../../../../_images/taxcloud-api-keys.png" />
+</section><section id="enable-taxcloud">
+<h2>Enable TaxCloud<a class="headerlink" href="#enable-taxcloud" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Go to <span class="menuselection">Accounting Dashboard ‣ Configuration ‣ Settings</span> and in the
+<span class="guilabel">Taxes</span> section enable <span class="guilabel">TaxCloud</span>.</p></li>
+<li><p>Add the store’s <span class="guilabel">Login ID</span> under <span class="guilabel">API ID</span> and the store’s <span class="guilabel">Key</span>
+under <span class="guilabel">API KEY</span>. Click on <span class="guilabel">Save</span>.</p></li>
+<li><p>Click the <span class="guilabel">Refresh</span> button (<span class="guilabel">🗘</span>) next to <span class="guilabel">Default Category</span> to
+import the TIC <span class="dfn"><span>Taxability Information Codes</span></span> product categories from TaxCloud. Some
+categories may imply specific tax rates or exemptions.</p></li>
+<li><p>Select a <span class="guilabel">Default Category</span> and <span class="guilabel">Save</span>. The <span class="guilabel">Default Category</span> is
+applied when no <span class="guilabel">TaxCloud Category</span> is set on your products or product categories,
+or when no product is found on an order/invoice.</p>
+<img alt="Filling in TaxCloud API Keys in Odoo" class="align-center" src="../../../../_images/taxcloud-settings.png" />
+</li>
+</ol>
+</section><section id="set-taxcloud-categories-on-products">
+<h2>Set TaxCloud categories on products<a class="headerlink" href="#set-taxcloud-categories-on-products" title="Permalink to this headline">¶</a></h2>
+<p>If you need to use more than one TIC category (i.e., the <span class="guilabel">Default Category</span>), go to the
+product’s <span class="guilabel">General Information</span> tab and select a <span class="guilabel">TaxCloud Category</span>.</p>
+<p>If you want to configure multiple products simultaneously, ensure they share the same
+<span class="guilabel">Product Category</span> and click on the external link button (<span class="guilabel">🡕</span>) to set a
+<span class="guilabel">TaxCloud Category</span> on the <span class="guilabel">Product Category</span> instead.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If you set a <span class="guilabel">TaxCloud Category</span> on a product and another on its <span class="guilabel">Product
+Category</span>, Odoo only considers the <span class="guilabel">TaxCloud Category</span> found on the product itself.</p>
+<p>A <span class="guilabel">TaxCloud Category</span> set on a <strong>parent product category</strong> does not apply to its
+<strong>child product categories</strong>. For example, if you set <span class="guilabel">TaxCloud Category</span> on the <em>All</em>
+<span class="guilabel">Product Category</span>, it is not applied to the <em>All/Sales</em> <span class="guilabel">Product Category</span>.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Make sure your company address is complete, including the state and the ZIP code. Go to
+<span class="menuselection">Settings ‣ Companies: Update Info</span> to open and edit your company address.</p>
+</div>
+</section><section id="automatically-post-taxes-in-the-correct-tax-payable-account">
+<h2>Automatically post taxes in the correct tax payable account<a class="headerlink" href="#automatically-post-taxes-in-the-correct-tax-payable-account" title="Permalink to this headline">¶</a></h2>
+<p>To make sure the new taxes generated by the TaxCloud integration are created with the correct
+<strong>Tax Payable</strong> account, create a <strong>user-defined default</strong>. This process should be repeated for each
+one of your companies that uses TaxCloud.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>A user-defined default impacts all records at creation. It means that <strong>every</strong> new tax is
+set up to record income in the specified Tax Payable account unless the tax is manually edited to
+specify a different income account (or if another user-defined default takes precedence).</p>
+</div>
+<p>To do so, go to <span class="menuselection">Accounting Dashboard ‣ Configuration ‣ Accounting: Chart of
+Accounts</span>, find the company’s <span class="guilabel">Tax Payable</span> account, and click on <span class="guilabel">Setup</span>. Take
+note of the number after <code class="o_code docutils literal notranslate"><span class="pre">id=</span></code> in the URL string; it is the <strong>Tax Payable account ID</strong> and will
+be used later.</p>
+<img alt="Example of Tax Payable account id in the URL string" class="align-center" src="../../../../_images/tax-payable-id.png" />
+<p>Activate the <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, then go to <span class="menuselection">Settings ‣
+Technical ‣ Actions: User-defined Defaults</span> and click on <span class="guilabel">Create</span>.</p>
+<p>Click on <span class="guilabel">Field</span> drop-down menu and then on <span class="guilabel">Search More…</span>.</p>
+<img alt="User-defined Defaults Field search" class="align-center" src="../../../../_images/user-defaults-search-more.png" />
+<p>Use the search bar to filter for the <span class="guilabel">Tax Repartition Line</span> model, and use it a second
+time to filter for the <span class="guilabel">Account</span> field. Select the line with <span class="guilabel">Tax Repartition
+Line</span> under the <span class="guilabel">Model</span> column.</p>
+<img alt="Searching for the Tax Repartition Line model and Account field" class="align-center" src="../../../../_images/user-defaults-search-filters.png" />
+<p>Once you are back to the <span class="guilabel">User-defined Defaults</span> creation, enter the <strong>Tax Payable account
+ID</strong> you took note of earlier under the <span class="guilabel">Default Value (JSON format)</span> field.</p>
+<p>Select the company for which this configuration should apply under the <span class="guilabel">Company</span> field and
+click <span class="guilabel">Save</span>.</p>
+<img alt="Example of a User-defined Defaults configuration" class="align-center" src="../../../../_images/user-defaults-complete-configuration.png" />
+</section><section id="automatically-detect-the-fiscal-position">
+<h2>Automatically detect the fiscal position<a class="headerlink" href="#automatically-detect-the-fiscal-position" title="Permalink to this headline">¶</a></h2>
+<p>Sales taxes are calculated in Odoo based on <a class="reference internal" href="fiscal_positions.html"><span class="doc">fiscal positions</span></a>. A fiscal
+position for the United States is created when enabling TaxCloud.</p>
+<p>You can configure Odoo to automatically detect to which customers the fiscal position should be
+applied. To do so, go to <span class="menuselection">Accounting Dashboard ‣ Configuration ‣ Accounting:
+Fiscal Positions</span> and select <span class="guilabel">Automatic Tax Mapping (TaxCloud)</span>. Enable <span class="guilabel">Detect
+Automatically</span> and then <span class="guilabel">Save</span>.</p>
+<img alt="Detect Automatically setting on the TaxCloud fiscal position" class="align-center" src="../../../../_images/fiscal-position-detect.png" />
+<p>Now, this fiscal position is automatically set on any order or invoice if the customer country is
+<em>United States</em>. This triggers the automated tax computation.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>To get the sales taxes on a sales order, confirm it or click the <span class="guilabel">Update Taxes</span> button
+next to <span class="guilabel">Add Shipping</span>.</p>
+</div>
+</section><section id="interaction-with-coupons-and-promotions">
+<h2>Interaction with coupons and promotions<a class="headerlink" href="#interaction-with-coupons-and-promotions" title="Permalink to this headline">¶</a></h2>
+<p>If you use the <strong>Coupon</strong> or <strong>Promotion Programs</strong>, the integration with TaxCloud might behave
+unexpectedly. Indeed, as TaxCloud does not accept lines with negative amounts as part of the tax
+computation, the amount of the lines added by the promotion program must be deduced from the total
+of the lines it impacts.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>This means, amongst other complications, that orders using coupons or promotions with a TaxCloud
+fiscal position <strong>must</strong> be invoiced completely - you cannot create invoices for partial
+deliveries, etc.</p>
+</div>
+<p>Another unexpected behavior is possible. For example, you sell a product for which you have a
+promotion program that provides a 50% discount. If the product’s tax rate is 7%, the tax rate
+computed from the TaxCloud integration displays 3.5%. This happens because the discount is included
+in the price sent to TaxCloud. However, in Odoo, the discount is on another line entirely. Still,
+the tax computation is correct. Indeed, a 3.5% tax on the full price is the equivalent of a 7% tax
+on half the price, but this might be unexpected from a user point of view.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="fiscal_positions.html"><span class="doc">Fiscal positions (tax and account mapping)</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">TaxCloud integration</a><ul>
+<li><a class="reference internal" href="#taxcloud-registration">TaxCloud registration</a></li>
+<li><a class="reference internal" href="#enable-taxcloud">Enable TaxCloud</a></li>
+<li><a class="reference internal" href="#set-taxcloud-categories-on-products">Set TaxCloud categories on products</a></li>
+<li><a class="reference internal" href="#automatically-post-taxes-in-the-correct-tax-payable-account">Automatically post taxes in the correct tax payable account</a></li>
+<li><a class="reference internal" href="#automatically-detect-the-fiscal-position">Automatically detect the fiscal position</a></li>
+<li><a class="reference internal" href="#interaction-with-coupons-and-promotions">Interaction with coupons and promotions</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">TaxCloud integration</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

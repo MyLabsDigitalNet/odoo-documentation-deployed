@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reordering rules &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_replenishment/reordering_rules.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/product_management/product_replenishment/reordering_rules.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Reordering rules</a><ul>
+<li><a class="reference internal" href="#configure-products-for-reordering-rules">Configure products for reordering rules</a></li>
+<li><a class="reference internal" href="#create-new-reordering-rules">Create new reordering rules</a></li>
+<li><a class="reference internal" href="#trigger">Trigger</a><ul>
+<li><a class="reference internal" href="#auto">Auto</a></li>
+<li><a class="reference internal" href="#manual">Manual</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visibility-days">Visibility days</a></li>
+<li><a class="reference internal" href="#preferred-route">Preferred route</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_replenishment/reordering_rules.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Reordering rules</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="reordering-rules">
+<h1>Reordering rules<a class="headerlink" href="#reordering-rules" title="Permalink to this headline">¶</a></h1>
+<p id="inventory-management-reordering-rules">Reordering rules are used to keep forecasted stock levels above a certain threshold without
+exceeding a specified upper limit. This is accomplished by specifying a minimum quantity that stock
+should not fall below and a maximum quantity that stock should not exceed.</p>
+<p>Reordering rules can be configured for each product based on the route used to replenish it. If a
+product uses the <em>Buy</em> route, then a Request for Quotation (RFQ) is created when the reordering rule
+is triggered. If a product uses the <em>Manufacture</em> route, then a Manufacturing Order (MO) is created
+instead. This is the case regardless of the selected replenishment route.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=XEJZrCjoXaU">Odoo Tutorials: Automatic Reordering Rules</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=deIREJ1FFj4">Odoo Tutorials: Manual Reordering Rules</a></p></li>
+</ul>
+</div>
+</section><section id="configure-products-for-reordering-rules">
+<h2>Configure products for reordering rules<a class="headerlink" href="#configure-products-for-reordering-rules" title="Permalink to this headline">¶</a></h2>
+<p>In order to use reordering rules for a product, it must first be correctly configured. Begin by
+navigating to <span class="menuselection">Inventory app ‣ Products ‣ Products</span>, then select an existing
+product, or create a new one by clicking <span class="guilabel">New</span>.</p>
+<p>On the product form, under the <span class="guilabel">General Information</span> tab, make sure that the
+<span class="guilabel">Product Type</span> is set to <span class="guilabel">Storable Product</span>. This is necessary because Odoo only
+tracks stock quantities for storable products, and this number is used to trigger reordering rules.</p>
+<img alt="Set the Product Type as Storable." class="align-center" src="../../../../../_images/product-type.png" />
+<p>Next, click on the <span class="guilabel">Inventory</span> tab and select one or more routes from the
+<span class="guilabel">Routes</span> section. Doing so tells Odoo which route to use to replenish the product.</p>
+<img alt="Select one or more routes on the Inventory tab." class="align-center" src="../../../../../_images/select-routes1.png" />
+<p>If the product is reordered using the <span class="guilabel">Buy</span> route, confirm that the <span class="guilabel">Can be
+Purchased</span> checkbox is enabled under the product name. This makes the <span class="guilabel">Purchase</span> tab
+appear. Click on the <span class="guilabel">Purchase</span> tab, and specify at least one vendor, and the price that
+they sell the product for, so that Odoo knows which company the product should be purchased from.</p>
+<img alt="Specify a vendor and price on the Purchase tab." class="align-center" src="../../../../../_images/specify-vendor1.png" />
+<p>If the product is replenished using the <span class="guilabel">Manufacture</span> route, it needs to have at least one
+Bill of Materials (BoM) associated with it. This is necessary because Odoo only creates
+manufacturing orders for products with a <abbr title="Bill of Materials">BoM</abbr>.</p>
+<p>If a <abbr title="Bill of Materials">BoM</abbr> does not already exist for the product, select the
+<span class="guilabel">Bill of Materials</span> smart button at the top of the product form, then click
+<span class="guilabel">New</span> to configure a new <abbr title="Bill of Materials">BoM</abbr>.</p>
+<img alt="The Bill of Materials smart button on a product form." class="align-center" src="../../../../../_images/bom-smart-button.png" />
+</section><section id="create-new-reordering-rules">
+<h2>Create new reordering rules<a class="headerlink" href="#create-new-reordering-rules" title="Permalink to this headline">¶</a></h2>
+<p>To create a new reordering rule, navigate to <span class="menuselection">Inventory app ‣ Configuration ‣
+Reordering Rules</span>, then click <span class="guilabel">New</span>, and fill out the new line as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Product</span>: The product that is replenished by the rule.</p></li>
+<li><p><span class="guilabel">Location</span>: The location where the product is stored.</p></li>
+<li><p><span class="guilabel">Min Quantity</span>: The minimum quantity that can be forecasted without the rule being
+triggered. When forecasted stock falls below this number, a replenishment order for the product is
+created.</p></li>
+<li><p><span class="guilabel">Max Quantity</span>: The maximum quantity that stock is replenished up to.</p></li>
+<li><p><span class="guilabel">Multiple Quantity</span>: Specify if the product should be replenished in batches of a
+certain quantity (e.g., a product could be replenished in batches of 20).</p></li>
+<li><p><span class="guilabel">UoM</span>: The unit of measure used for reordering the product. This value can simply be
+<code class="o_code docutils literal notranslate"><span class="pre">Units</span></code> or a specific unit of measurement for weight, length, etc.</p></li>
+</ul>
+<img alt="The form for creating a new reordering rule." class="align-center" src="../../../../../_images/reordering-rule-form.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Reordering rules can also be created from each product form. To do so, navigate to
+<span class="menuselection">Inventory app ‣ Products ‣ Products</span>, then select a product. Click on
+<span class="menuselection">Reordering Rules smart button ‣ New</span>, then fill out the new line, as detailed
+above.</p>
+</div>
+<p>For advanced usage of reordering rules, learn about the following reordering rule fields:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#inventory-product-management-trigger"><span class="std std-ref">Trigger</span></a></p></li>
+<li><p><a class="reference internal" href="#inventory-product-management-visibility-days"><span class="std std-ref">Visibility days</span></a></p></li>
+<li><p><a class="reference internal" href="#inventory-product-management-route"><span class="std std-ref">Preferred route</span></a></p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The fields above are not available by default, and must be enabled by selecting the
+<span class="guilabel">(slider)</span> icon in the far-right corner, and selecting the desired column from the
+drop-down menu.</p>
+</div>
+</section><section id="trigger">
+<span id="inventory-product-management-trigger"></span><h2>Trigger<a class="headerlink" href="#trigger" title="Permalink to this headline">¶</a></h2>
+<p>When stock falls below the reordering rule’s minimum, set the reordering rule’s <em>trigger</em> to
+<em>automatic</em> to automatically create purchase or manufacturing orders to replenish stock.</p>
+<p>Alternatively, setting the reordering rule’s trigger to <em>manual</em> displays the product and forecasted
+stock on the <em>replenishment dashboard</em>, where the procurement manager can review the stock levels,
+lead times, and forecasted dates of arrival.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="strategies.html"><span class="doc">Selecting a replenishment strategy</span></a></p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The <span class="guilabel">Replenishment</span> dashboard is accessible by going to <span class="menuselection">Inventory app
+‣ Operations ‣ Replenishment</span>.</p>
+</div>
+<p>To enable the <span class="guilabel">Trigger</span> field, go to <span class="menuselection">Inventory app ‣ Configuration ‣
+Reordering Rules</span>. Then, click the <span class="guilabel">(slider)</span> icon, located to the far-right of the column
+titles, and enable the <span class="guilabel">Trigger</span> option from the additional options drop-down menu that
+appears.</p>
+<img alt="Enable the Trigger field by toggling it in the additional options menu." class="align-center" src="../../../../../_images/enable-trigger.png" />
+<p>In the <span class="guilabel">Trigger</span> column, select <span class="guilabel">Auto</span> or <span class="guilabel">Manual</span>. Refer to the
+sections below to learn about the different types of reordering rules.</p>
+</section><section id="auto">
+<h3>Auto<a class="headerlink" href="#auto" title="Permalink to this headline">¶</a></h3>
+<p>Automatic reordering rules, enabled by setting the reordering rule’s <span class="guilabel">Trigger</span> field to
+<span class="guilabel">Auto</span>, generate purchase or manufacturing orders when:</p>
+<ol class="arabic simple">
+<li><p>the scheduler runs, and the <em>On Hand</em> quantity is below the minimum</p></li>
+<li><p>a sales order is confirmed, and lowers the <em>Forecasted</em> quantity of the product below the minimum</p></li>
+</ol>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The scheduler is set to run once a day, by default.</p>
+<p>To manually trigger a reordering rule before the scheduler runs, ensure <a class="reference internal" href="../../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> is enabled, and then select <span class="menuselection">Inventory app ‣ Operations ‣
+Run Scheduler</span>. Then, select the green <span class="guilabel">Run Scheduler</span> button on the pop-up window that
+appears.</p>
+<p>Be aware that this also triggers <em>any other</em> scheduled actions.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The product, <code class="o_code docutils literal notranslate"><span class="pre">Office</span> <span class="pre">Lamp</span></code>, has an automatic reordering rule set to trigger when the forecasted
+quantity falls below the <span class="guilabel">Min Quantity</span> of <code class="o_code docutils literal notranslate"><span class="pre">5.00</span></code>. Since the current
+<span class="guilabel">Forecast</span> is <code class="o_code docutils literal notranslate"><span class="pre">55.00</span></code>, the reordering rule is <strong>not</strong> triggered.</p>
+<img alt="Show automatic reordering rule from the Reordering Rule page." class="align-center" src="../../../../../_images/auto.png" />
+</div>
+<p>If the <span class="guilabel">Buy</span> route is selected, then an <abbr title="Request for Quotation">RFQ</abbr> is generated.
+To view and manage <abbr title="Requests for Quotation">RFQs</abbr>, navigate to <span class="menuselection">Purchase app
+‣ Orders ‣ Requests for Quotation</span>.</p>
+<p>If the <span class="guilabel">Manufacture</span> route is selected, then an <abbr title="Manufacturing Order">MO</abbr> is
+generated. To view and manage <abbr title="Manufacturing Orders">MOs</abbr>, navigate to
+<span class="menuselection">Manufacturing app ‣ Operations ‣ Manufacturing Orders</span>.</p>
+<p>When no route is selected, Odoo selects the <span class="guilabel">Route</span> specified in the <span class="guilabel">Inventory</span>
+tab of the product form.</p>
+</section><section id="manual">
+<span id="inventory-product-management-manual-rr"></span><h3>Manual<a class="headerlink" href="#manual" title="Permalink to this headline">¶</a></h3>
+<p>Manual reordering rules, configured by setting the reordering rule’s <span class="guilabel">Trigger</span> field to
+<span class="guilabel">Manual</span>, list a product on the replenishment dashboard when the forecasted quantity
+falls below a specified minimum. Products on this dashboard are called <em>needs</em>, because they are
+needed to fulfill upcoming sales orders, for which the forecasted quantity is not enough.</p>
+<p>The replenishment dashboard, accessible by navigating to <span class="menuselection">Inventory app ‣
+Operations ‣ Replenishment</span>, considers sales order deadlines, forecasted stock levels, and vendor
+lead times. It displays needs <strong>only</strong> when it is time to reorder items.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If the one-day window for ordering products is too short, skip to the <a class="reference internal" href="#inventory-product-management-visibility-days"><span class="std std-ref">visibility days</span></a> section to make the need appear on the
+replenishment dashboard a specified number of days in advance.</p>
+</div>
+<img alt="Click the Order Once button on the replenishment dashboard to replenish stock." class="align-center" src="../../../../../_images/manual.png" />
+</section><section id="visibility-days">
+<span id="inventory-product-management-visibility-days"></span><h2>Visibility days<a class="headerlink" href="#visibility-days" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Ensure <a class="reference internal" href="../../shipping_receiving/advanced_operations_shipping/scheduled_dates.html"><span class="doc">lead times</span></a>
+are understood before proceeding with this section.</p>
+</div>
+<p>When <a class="reference internal" href="#inventory-product-management-manual-rr"><span class="std std-ref">manual reordering rules</span></a> are assigned to a
+product, <em>visibility days</em> make the product appear on the replenishment dashboard
+(<span class="menuselection">Inventory app ‣ Operations ‣ Replenishment</span>) a certain number of days in
+advance.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A product has a manual reordering rule set to trigger when the stock level falls below four
+units. The current on-hand quantity is ten units.</p>
+<p>The current date is February twentieth, and the <em>delivery date</em> on a sales order (in the
+<span class="guilabel">Other Info</span> tab) is March third — twelve days from the current date.</p>
+<p>The <a class="reference internal" href="../../shipping_receiving/advanced_operations_shipping/scheduled_dates.html#inventory-management-purchase-lt"><span class="std std-ref">vendor lead time</span></a> is four days, and the
+<a class="reference internal" href="../../shipping_receiving/advanced_operations_shipping/scheduled_dates.html#inventory-management-purchase-security-lt"><span class="std std-ref">purchase security lead time</span></a> is one day.</p>
+<p>When the <span class="guilabel">Visibility Days</span> field of the reordering rule is set to zero, the product
+appears on the replenishment dashboard five days before the delivery date, which, in this case,
+is February twenty-seventh.</p>
+<img alt="Graphic representing when the need appears on the replenishment dashboard: Feb 27." class="align-center" src="../../../../../_images/need-dates.png" />
+<p>To see the product on the replenishment dashboard for the current date, February twentieth, set
+the <span class="guilabel">Visibility Days</span> to <code class="o_code docutils literal notranslate"><span class="pre">7.00</span></code>.</p>
+</div>
+<p>To determine the number of visibility days needed to see a product on the replenishment dashboard,
+subtract <em>today’s date</em> from the <em>date the need appears</em> on the replenishment dashboard.</p>
+<div class="math notranslate nohighlight">
+\[Visibility~days = Need~appears~date - Today's~date\]</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Referring to the example above, today’s date is February twentieth, and the need for the product
+appears on February twenty-seventh.</p>
+<p>(February 27 - February 20 = 7 days)</p>
+<p>Incorrectly setting the <span class="guilabel">Visibility Days</span> fewer than seven days in this case results in
+the need <strong>not</strong> appearing on the replenishment dashboard.</p>
+<img alt="Show the replenishment dashboard with the correct and incorrect visibility days set." class="align-center" src="../../../../../_images/visibility-days.png" />
+</div>
+</section><section id="preferred-route">
+<span id="inventory-product-management-route"></span><h2>Preferred route<a class="headerlink" href="#preferred-route" title="Permalink to this headline">¶</a></h2>
+<p>Odoo allows for multiple routes to be selected under the <span class="guilabel">Inventory</span> tab on each product
+form. For instance, it is possible to select both <span class="guilabel">Buy</span> and <span class="guilabel">Manufacture</span>, thus
+enabling the functionality of both routes.</p>
+<p>Odoo also enables users to set a preferred route for a product’s reordering rule. This is the route
+that the rule defaults to if multiple are selected. To select a preferred route, begin by navigating
+to <span class="menuselection">Inventory app ‣ Configuration ‣ Reordering Rules</span> or
+<span class="menuselection">Inventory app ‣ Operations ‣ Replenishment</span>.</p>
+<p>Click inside of the column on the row of a reordering rule, and a drop-down menu shows all available
+routes for that rule. Select one to set it as the preferred route.</p>
+<img alt="Select a preferred route from the drop-down." class="align-center" src="../../../../../_images/select-preferred-route.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If multiple routes are enabled for a product but no preferred route is set for its reordering
+rule, the product is reordered using the selected route that is listed first on the
+<span class="guilabel">Inventory</span> tab of the product form.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Reordering rules</a><ul>
+<li><a class="reference internal" href="#configure-products-for-reordering-rules">Configure products for reordering rules</a></li>
+<li><a class="reference internal" href="#create-new-reordering-rules">Create new reordering rules</a></li>
+<li><a class="reference internal" href="#trigger">Trigger</a><ul>
+<li><a class="reference internal" href="#auto">Auto</a></li>
+<li><a class="reference internal" href="#manual">Manual</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visibility-days">Visibility days</a></li>
+<li><a class="reference internal" href="#preferred-route">Preferred route</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Reordering rules</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

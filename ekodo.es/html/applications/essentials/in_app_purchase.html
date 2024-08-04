@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>In-app purchases (IAP) &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/essentials/in_app_purchase.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/essentials/in_app_purchase.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Export and import data" href="export_import_data.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul class="current">
+<li class="toctree-l1 current o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul class="current">
+<li class="toctree-l2 current o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul class="current">
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 current o_menu_applications_essentials_"><a class="current reference internal" href="#">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">In-app purchases (IAP)</a><ul>
+<li><a class="reference internal" href="#iap-services">IAP services</a><ul>
+<li><a class="reference internal" href="#use-iap-services">Use IAP services</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iap-credits">IAP credits</a><ul>
+<li><a class="reference internal" href="#buy-credits">Buy credits</a><ul>
+<li><a class="reference internal" href="#manually-buy-credits">Manually buy credits</a></li>
+<li><a class="reference internal" href="#low-credit-notification">Low-credit notification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul class="current">
+<li class="toctree-l1 current o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul class="current">
+<li class="toctree-l2 current o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul class="current">
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 current o_menu_applications_essentials_"><a class="current reference internal" href="#">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/essentials/in_app_purchase.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="export_import_data.html" title="Export and import data"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../applications.html" >User Docs</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../essentials.html" accesskey="U">Odoo essentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">In-app purchases (IAP)</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="in-app-purchases-iap">
+<h1>In-app purchases (IAP)<a class="headerlink" href="#in-app-purchases-iap" title="Permalink to this headline">¶</a></h1>
+<p>In-app purchases (IAP) are optional services that enhance Odoo databases. Each service provides its
+own specific features and functionality. A full list of services is available on the <a class="reference external" href="https://iap.odoo.com/iap/all-in-app-services">Odoo IAP
+Catalog</a>.</p>
+<img alt="The IAP catalog with various services available on IAP.Odoo.com." class="align-center" src="../../_images/iap.png" />
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The <span class="guilabel">SMS</span> service sends text messages to contacts directly from the database, and the
+<span class="guilabel">Documents Digitization</span> service digitizes scanned or PDF vendor bills, expenses, and
+resumes with optical character recognition (OCR) and artificial intelligence (AI).</p>
+</div>
+<p><abbr title="In-app purchases">IAP</abbr> services do <strong>not</strong> need to be configured or set up before use. Odoo users can simply click on
+the service in the app to activate it. However, each service requires its own prepaid credits, and
+when they run out, users <strong>must</strong> <a class="reference internal" href="#iap-buying-credits"><span class="std std-ref">buy more</span></a> in order to keep using it.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Enterprise Odoo users with a valid subscription get free credits to test IAP features before
+deciding to purchase more credits for the database. This includes demo/training databases,
+educational databases, and one-app-free databases.</p>
+</div>
+</section><section id="iap-services">
+<span id="in-app-purchase-portal"></span><h2>IAP services<a class="headerlink" href="#iap-services" title="Permalink to this headline">¶</a></h2>
+<p><abbr title="In-app purchases">IAP</abbr> services are provided by Odoo, as well as third-parties, and have a wide range of uses.</p>
+<p>The following <abbr title="In-app purchases">IAP</abbr> services are offered by Odoo:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Documents Digitization</span>: digitizes scanned or PDF vendor bills, expenses, and resumes
+with OCR and AI.</p></li>
+<li><p><span class="guilabel">Partner Autocomplete</span>: automatically populates contact records with corporate data.</p></li>
+<li><p><span class="guilabel">SMS</span>: sends SMS text messages to contacts directly from the database.</p></li>
+<li><p><span class="guilabel">Lead Generation</span>: generates leads based on a set of criteria, and converts web visitors
+into quality leads and opportunities.</p></li>
+<li><p><span class="guilabel">Snailmail</span>: sends customer invoices and follow-up reports by post, worldwide.</p></li>
+<li><p><span class="guilabel">Signer identification with itsme®️</span>: ask document signatories in Odoo <em>Sign</em> to provide
+their identity using the <em>itsme®</em> identity platform, which is available in Belgium and the
+Netherlands.</p></li>
+</ul>
+<p>For more information on every service currently available (offered from developers other than Odoo),
+visit the <a class="reference external" href="https://iap.odoo.com/iap/all-in-app-services">Odoo IAP Catalog</a>.</p>
+</section><section id="use-iap-services">
+<h3>Use IAP services<a class="headerlink" href="#use-iap-services" title="Permalink to this headline">¶</a></h3>
+<p><abbr title="In-app purchases">IAP</abbr> services are automatically integrated with Odoo, and do <strong>not</strong> require users to configure any
+settings. To use a service, simply interact with it wherever it appears in the database.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The following flow focuses on the <em>SMS</em> <abbr title="In-app purchases">IAP</abbr> service being used from a contact’s record.</p>
+<p>This can be done by clicking the <span class="guilabel">📱 SMS</span> icon within the database.</p>
+<img alt="The SMS icon on a typical contact information form located within an Odoo database." class="align-center" src="../../_images/sms-icon.png" />
+<p>One way to utilize the <em>SMS</em> <abbr title="In-app purchases">IAP</abbr> service with Odoo is showcased in the following steps:</p>
+<p>First, navigate to the <span class="menuselection">Contacts application</span>, and click on a contact with a
+mobile phone number entered in either the <span class="guilabel">Phone</span> or <span class="guilabel">Mobile</span> field of the
+contact form.</p>
+<p>Next, find the <span class="guilabel">📱 SMS</span> icon that appears to the right of the <span class="guilabel">Phone</span> or
+<span class="guilabel">Mobile</span> fields. Click the <span class="guilabel">📱 SMS</span> icon, and a <span class="guilabel">Send SMS Text
+Message</span> pop-up window appears.</p>
+<p>Type a message in the <span class="guilabel">Message</span> field of the pop-up window. Then, click the
+<span class="guilabel">Send SMS</span> button. Odoo then sends the message, via SMS, to the contact, and logs what
+was sent in the <em>chatter</em> of the contact’s form.</p>
+<p>Upon sending the SMS message, the prepaid credits for the <em>SMS</em> <abbr title="In-app purchases">IAP</abbr> service are automatically
+deducted from the existing credits. If there are not enough credits to send the message, Odoo
+prompts the user to purchase more.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>For more information on how to use various <abbr title="In-app purchases">IAP</abbr> services, and for more in-depth instructions
+related to SMS functionality in Odoo, review the documentation below:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../sales/crm/acquire_leads/lead_mining.html"><span class="doc">Lead mining</span></a></p></li>
+<li><p><a class="reference internal" href="../sales/crm/optimize/partner_autocomplete.html"><span class="doc">Enrich your contacts base with Partner Autocomplete</span></a></p></li>
+<li><p><a class="reference internal" href="../marketing/sms_marketing/essentials/sms_essentials.html"><span class="doc">SMS essentials</span></a></p></li>
+</ul>
+</div>
+</section><section id="iap-credits">
+<span id="in-app-purchase-credits"></span><h2>IAP credits<a class="headerlink" href="#iap-credits" title="Permalink to this headline">¶</a></h2>
+<p>Every time an <abbr title="In-app purchases">IAP</abbr> service is used, the prepaid credits for that service are spent. Odoo prompts
+the purchase of more credits when there are not enough credits left to continue using a service.
+Email alerts can also be set up for when <a class="reference internal" href="#in-app-purchase-low-credits"><span class="std std-ref">credits are low</span></a>.</p>
+<p>Credits are purchased in <em>Packs</em> from the <a class="reference external" href="https://iap.odoo.com/iap/all-in-app-services">Odoo IAP Catalog</a>, and pricing is specific to each service.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The <a class="reference external" href="https://iap.odoo.com/iap/in-app-services/1">SMS service</a> has four packs available, in
+denominations of:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Starter Pack</span>: 10 credits</p></li>
+<li><p><span class="guilabel">Standard Pack</span>: 100 credits</p></li>
+<li><p><span class="guilabel">Advanced Pack</span>: 500 credits</p></li>
+<li><p><span class="guilabel">Expert Pack</span>: 1,000 credits</p></li>
+</ul>
+<img alt="Four different packs of credits for the SMS IAP service." class="align-center" src="../../_images/packs.png" />
+<p>The number of credits consumed depends on the length of the SMS and the country of destination.</p>
+<p>For more information, refer to the <a class="reference internal" href="../marketing/sms_marketing/pricing/pricing_and_faq.html"><span class="doc">SMS Pricing and FAQ</span></a> documentation.</p>
+</div>
+</section><section id="buy-credits">
+<span id="iap-buying-credits"></span><h3>Buy credits<a class="headerlink" href="#buy-credits" title="Permalink to this headline">¶</a></h3>
+<p>If there are not enough credits to perform a task, the database automatically prompts the purchase
+of more credits.</p>
+<p>Users can check the current balance of credits for each service, and manually purchase more credits,
+by navigating to the <span class="menuselection">Settings app ‣ Contacts section</span>, and beneath the
+<span class="guilabel">Odoo IAP</span> setting, click <span class="guilabel">View My Services</span>.</p>
+<p>Doing so reveals a <span class="guilabel">My Services</span> page, listing the various <abbr title="In-app purchases">IAP</abbr> services in the database.
+From here, click an <abbr title="In-app purchases">IAP</abbr> service to open its <span class="guilabel">Account Information</span> page, where additional
+credits can be purchased.</p>
+</section><section id="manually-buy-credits">
+<h4>Manually buy credits<a class="headerlink" href="#manually-buy-credits" title="Permalink to this headline">¶</a></h4>
+<p>To manually buy credits in Odoo, follow these steps:</p>
+<p>First, go to the <span class="menuselection">Settings application</span> and type <code class="o_code docutils literal notranslate"><span class="pre">IAP</span></code> in the <span class="guilabel">Search…</span>
+bar. Alternatively users can scroll down to the <span class="guilabel">Contacts</span> section. Under the
+<span class="guilabel">Contacts</span> section, where it says <span class="guilabel">Odoo IAP</span>, click <span class="guilabel">View My
+Services</span>.</p>
+<img alt="The Settings app showing the Odoo IAP heading and View My Services button." class="align-center" src="../../_images/view-services.png" />
+<p>Doing so reveals an <span class="guilabel">IAP Account</span> page, listing the various <abbr title="In-app purchases">IAP</abbr> services in the
+database. From here, click an <abbr title="In-app purchases">IAP</abbr> service to open details about it; additional credits can be
+purchased from here.</p>
+<p>On the following page, click the <span class="guilabel">Buy Credit</span> button. Doing so loads a <span class="guilabel">Buy
+Credits for (IAP Account)</span> page in a new tab. From here, click <span class="guilabel">Buy</span> on the desired pack
+of credits. Then, follow the prompts to enter payment details, and confirm the order.</p>
+<img alt="The SMS service page on IAP.Odoo.com with four packs of credits available for purchase." class="align-center" src="../../_images/buy-pack.png" />
+<p>Once the transaction is complete, the credits are available for use in the database.</p>
+</section><section id="low-credit-notification">
+<span id="in-app-purchase-low-credits"></span><h4>Low-credit notification<a class="headerlink" href="#low-credit-notification" title="Permalink to this headline">¶</a></h4>
+<p>It is possible to be notified when credits are low, in order to avoid running out of credits, while
+using an <abbr title="In-app purchases">IAP</abbr> service. To do that, follow this process:</p>
+<p>Go to the <span class="menuselection">Settings application</span>, and type <code class="o_code docutils literal notranslate"><span class="pre">IAP</span></code> in the <span class="guilabel">Search…</span> bar.
+Under the <span class="guilabel">Contacts</span> section, where it says <span class="guilabel">Odoo IAP</span>, click <span class="guilabel">View My
+Services</span>.</p>
+<p>The available <abbr title="In-app purchases">IAP</abbr> accounts appear in a list view on the <span class="guilabel">IAP Account</span> page. From here,
+click on the desired <abbr title="In-app purchases">IAP</abbr> account to view that service’s details.</p>
+<p>On the details page, tick the <span class="guilabel">Receive threshold warning</span> checkbox. Doing so reveals two
+fields on the form: <span class="guilabel">Warning Threshold</span> and <span class="guilabel">Contact Email</span>.</p>
+<p>In the <span class="guilabel">Warning Threshold</span> field, enter an amount of credits Odoo should use as the
+minimum threshold for this service. In the <span class="guilabel">Contact Email</span> field, enter the email address
+that receives the notification.</p>
+<p>Odoo sends a low-credit alert to the <span class="guilabel">Contact Email</span> when the balance of credits falls
+below the amount listed as the <span class="guilabel">Warning Threshold</span>.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">In-app purchases (IAP)</a><ul>
+<li><a class="reference internal" href="#iap-services">IAP services</a><ul>
+<li><a class="reference internal" href="#use-iap-services">Use IAP services</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iap-credits">IAP credits</a><ul>
+<li><a class="reference internal" href="#buy-credits">Buy credits</a><ul>
+<li><a class="reference internal" href="#manually-buy-credits">Manually buy credits</a></li>
+<li><a class="reference internal" href="#low-credit-notification">Low-credit notification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="export_import_data.html" title="Export and import data"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../applications.html" >User Docs</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../essentials.html" >Odoo essentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">In-app purchases (IAP)</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

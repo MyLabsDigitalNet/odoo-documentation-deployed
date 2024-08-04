@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Use serial numbers to track products &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_tracking/serial_numbers.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/product_management/product_tracking/serial_numbers.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Use serial numbers to track products</a><ul>
+<li><a class="reference internal" href="#enable-lots-serial-numbers">Enable lots &amp; serial numbers</a></li>
+<li><a class="reference internal" href="#configure-serial-number-tracking-on-products">Configure serial number tracking on products</a><ul>
+<li><a class="reference internal" href="#create-new-serial-numbers-for-products-already-in-stock">Create new serial numbers for products already in stock</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manage-serial-numbers-for-shipping-and-receiving">Manage serial numbers for shipping and receiving</a><ul>
+<li><a class="reference internal" href="#manage-serial-numbers-on-receipts">Manage serial numbers on receipts</a><ul>
+<li><a class="reference internal" href="#assign-serial-numbers-manually">Assign serial numbers manually</a></li>
+<li><a class="reference internal" href="#assign-serial-numbers-automatically">Assign serial numbers automatically</a></li>
+<li><a class="reference internal" href="#copy-paste-serial-numbers-from-a-spreadsheet">Copy/paste serial numbers from a spreadsheet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manage-serial-numbers-on-delivery-orders">Manage serial numbers on delivery orders</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manage-serial-numbers-for-different-operations-types">Manage serial numbers for different operations types</a></li>
+<li><a class="reference internal" href="#serial-number-traceability">Serial number traceability</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/product_management/product_tracking/serial_numbers.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Use serial numbers to track products</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="use-serial-numbers-to-track-products">
+<h1>Use serial numbers to track products<a class="headerlink" href="#use-serial-numbers-to-track-products" title="Permalink to this headline">¶</a></h1>
+<p><em>Serial numbers</em> are one of the two ways to identify and track products in Odoo. A serial number is
+a unique identifier assigned incrementally (or sequentially) to an item or product, used to
+distinguish it from other items and products.</p>
+<p>Serial numbers can consist of many different types of characters: they can be strictly numerical,
+they can contain letters and other typographical symbols, or they can be a mix of all of the above.</p>
+<p>The goal of assigning serial numbers to individual products is to make sure that every item’s
+history is identifiable when it travels through the supply chain. This can be especially useful for
+manufacturers that provide after-sales services to products that they sell and deliver.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="lots.html"><span class="doc">Lot numbers</span></a></p>
+</div>
+</section><section id="enable-lots-serial-numbers">
+<h2>Enable lots &amp; serial numbers<a class="headerlink" href="#enable-lots-serial-numbers" title="Permalink to this headline">¶</a></h2>
+<p>To track products using serial numbers, the <span class="guilabel">Lots &amp; Serial Numbers</span> feature must be
+enabled. To enable this, go to <span class="menuselection">Inventory app ‣ Configuration ‣ Settings</span>, scroll
+down to the <span class="guilabel">Traceability</span> section, and click the box next to <span class="guilabel">Lots &amp; Serial
+Numbers</span>. Remember to click the <span class="guilabel">Save</span> button to save changes.</p>
+<img alt="Enabled lots and serial numbers setting." class="align-center" src="../../../../../_images/serial-numbers-enabled-setting.png" />
+</section><section id="configure-serial-number-tracking-on-products">
+<span id="inventory-serial-numbers-configure"></span><h2>Configure serial number tracking on products<a class="headerlink" href="#configure-serial-number-tracking-on-products" title="Permalink to this headline">¶</a></h2>
+<p>Once the <span class="guilabel">Lots &amp; Serial Numbers</span> setting has been activated, individual products can now
+be tracked using serial numbers. To configure this, go to <span class="menuselection">Inventory app ‣ Products
+‣ Products</span>, and choose a desired product to track.</p>
+<p>Once on the product form, click <span class="guilabel">Edit</span>, and click the <span class="guilabel">Inventory</span> tab.</p>
+<p>Once on the product form, click <span class="guilabel">Edit</span>, navigate to the <span class="guilabel">Inventory</span> tab, and
+scroll to the <span class="guilabel">Traceability</span> section. Then, select the <span class="guilabel">By Unique Serial Number</span>
+option, and click <span class="guilabel">Save</span> to save the changes. Existing or new serial numbers can now be
+selected and assigned to newly-received or manufactured batches of this product.</p>
+<img alt="Enabled serial number tracking on product form." class="align-center" src="../../../../../_images/serial-numbers-product-tracking.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>If a product doesn’t have a serial number assigned to it, a user error pop-up window will appear.
+The error message states that the product(s) in stock have no lot/serial number. However, a
+lot/serial number can be assigned to the product by making an inventory adjustment.</p>
+</div>
+</section><section id="create-new-serial-numbers-for-products-already-in-stock">
+<h3>Create new serial numbers for products already in stock<a class="headerlink" href="#create-new-serial-numbers-for-products-already-in-stock" title="Permalink to this headline">¶</a></h3>
+<p>New serial numbers can be created for products already in stock with no assigned serial number. To
+do this, go to <span class="menuselection">Inventory ‣ Products ‣ Lots/Serial Numbers</span>, and click
+<span class="guilabel">Create</span>. Doing so reveals a blank lots/serial numbers form. On this form, a new
+<span class="guilabel">Lot/Serial Number</span> is generated automatically.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>While Odoo automatically generates a new lot/serial number to follow the most recent number, it
+can be edited and changed to any desired number, by clicking the line under the
+<span class="guilabel">Lot/Serial Number</span> field, and changing the generated number.</p>
+</div>
+<p>Once the <span class="guilabel">Lot/Serial Number</span> is generated, click the blank field next to
+<span class="guilabel">Product</span> to reveal a drop-down menu. From this menu, select the product to which this new
+number will be assigned.</p>
+<p>This form also provides the option to adjust the <span class="guilabel">Quantity</span>, to assign a unique
+<span class="guilabel">Internal Reference</span> number (for traceability purposes), and to assign this specific
+lot/serial number configuration to a specific website in the <span class="guilabel">Website</span> field (if working
+in a multi-website environment).</p>
+<p>A detailed description of this specific lot/serial number can also be added in the
+<span class="guilabel">Description</span> tab below.</p>
+<p>When all desired configurations are complete, click the <span class="guilabel">Save</span> button to save all changes.</p>
+<img alt="New serial number created for existing product stock." class="align-center" src="../../../../../_images/serial-numbers-new-serial-number.png" />
+<p>After a new serial number has been created, assigned to the desired product, and saved, navigate
+back to the product form, by going to <span class="menuselection">Products ‣ Products</span>, and selecting the
+product that this newly-created serial number was just assigned to.</p>
+<p>On that product’s detail form, click the <span class="guilabel">Lot/Serial Numbers</span> smart button to view the new
+serial number.</p>
+</section><section id="manage-serial-numbers-for-shipping-and-receiving">
+<h2>Manage serial numbers for shipping and receiving<a class="headerlink" href="#manage-serial-numbers-for-shipping-and-receiving" title="Permalink to this headline">¶</a></h2>
+<p>Serial numbers can be assigned for both <strong>incoming</strong> and <strong>outgoing</strong> goods. For incoming goods,
+serial numbers are assigned directly on the purchase order form. For outgoing goods, serial numbers
+are assigned directly on the sales order form.</p>
+</section><section id="manage-serial-numbers-on-receipts">
+<h3>Manage serial numbers on receipts<a class="headerlink" href="#manage-serial-numbers-on-receipts" title="Permalink to this headline">¶</a></h3>
+<p>Assigning serial numbers to <strong>incoming</strong> goods can be done directly from the purchase order (PO).</p>
+<p>To create a <abbr title="purchase order">PO</abbr>, go to the <span class="menuselection">Purchase app ‣ Create</span>. Doing
+so reveals a new, blank request for quotation (RFQ) form.</p>
+<p>On this <abbr title="request for quotation">RFQ</abbr> form, fill out the necessary information, by adding a
+<span class="guilabel">Vendor</span>, and by adding the desired products to the <span class="guilabel">Product</span> lines, by clicking
+<span class="guilabel">Add a product</span>, under the <span class="guilabel">Products</span> tab.</p>
+<p>Choose the desired quantity of the product to order, by changing the number in the
+<span class="guilabel">Quantity</span> column.</p>
+<p>When the necessary configurations are complete, click <span class="guilabel">Confirm Order</span>. This will convert
+the <abbr title="request for quotation">RFQ</abbr> to a purchase order.</p>
+<p>Then, click the <span class="guilabel">Receipt</span> smart button to be taken to the warehouse receipt form page for
+that specific <abbr title="purchase order">PO</abbr>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Clicking <span class="guilabel">Validate</span> before assigning a serial number to the ordered product quantities
+will cause a <span class="guilabel">User Error</span> pop-up to appear. The pop-up requires entry of a lot or
+serial number for the ordered products. The <abbr title="request for quotation">RFQ</abbr> <strong>cannot</strong> be
+validated without a serial number being assigned.</p>
+</div>
+<img alt="User error popup prompting serial number entry." class="align-center" src="../../../../../_images/serial-numbers-user-error-popup.png" />
+<p>From here, click the <span class="guilabel">Additional Options</span> menu, represented by a <code class="o_code docutils literal notranslate"><span class="pre">hamburger</span></code> icon (four
+horizontal lines, located to the right of the <span class="guilabel">Unit of Measure</span> column in the
+<span class="guilabel">Operations</span> tab). Clicking that icon reveals a <span class="guilabel">Detailed Operations</span> pop-up.</p>
+<p>In this pop-up, configure a number of different fields, including the assignation of a serial number
+(or serial numbers) under the <span class="guilabel">Lot/Serial Number Name</span> column, located at the bottom of
+the pop-up.</p>
+<p>There are three ways to do this: manually assigning serial numbers, automatically assigning serial
+numbers, and copy/pasting serial numbers from a spreadsheet.</p>
+</section><section id="assign-serial-numbers-manually">
+<h4>Assign serial numbers manually<a class="headerlink" href="#assign-serial-numbers-manually" title="Permalink to this headline">¶</a></h4>
+<p>To assign serial numbers manually, click <span class="guilabel">Add a line</span> from the <span class="guilabel">Detailed
+Operations</span> pop-up, and first choose the location where the product will be stored under the
+<span class="guilabel">To</span> column.</p>
+<p>Then, type a new <span class="guilabel">Serial Number Name</span>, and set the <span class="guilabel">Done</span> quantity in the
+appropriate columns.</p>
+<p>Repeat this process for the quantity of products shown in the <span class="guilabel">Demand</span> field, and until
+the <span class="guilabel">Quantity Done</span> field displays the correct (matching) number of products processed.</p>
+</section><section id="assign-serial-numbers-automatically">
+<h4>Assign serial numbers automatically<a class="headerlink" href="#assign-serial-numbers-automatically" title="Permalink to this headline">¶</a></h4>
+<p>If a large quantity of products need individual serial numbers assigned to them, Odoo can
+automatically generate and assign serial numbers to each of the individual products.</p>
+<p>To accomplish this, start with the <span class="guilabel">First SN</span> field in the <span class="guilabel">Detailed Operations</span>
+pop-up window, and type the first serial number in the desired order to be assigned.</p>
+<p>Then, in the <span class="guilabel">Number of SN</span> field, type the total number of items that need
+newly-generated unique serial numbers assigned to them.</p>
+<p>Finally, click <span class="guilabel">Assign Serial Numbers</span>, and a list will populate with new serial numbers
+matching the ordered quantity of products.</p>
+<img alt="Automatic serial number assignment in detailed operations popup." class="align-center" src="../../../../../_images/serial-numbers-auto-assign-sn.png" />
+</section><section id="copy-paste-serial-numbers-from-a-spreadsheet">
+<h4>Copy/paste serial numbers from a spreadsheet<a class="headerlink" href="#copy-paste-serial-numbers-from-a-spreadsheet" title="Permalink to this headline">¶</a></h4>
+<p>To copy and paste serial numbers from an existing spreadsheet, first populate a spreadsheet with all
+of the serial numbers received from the supplier (or manually chosen upon receipt). Then, copy and
+paste them in the <span class="guilabel">Lot/Serial Number Name</span> column. Odoo will automatically create the
+necessary number of lines based on the amount of numbers pasted in the column.</p>
+<p>From here, the <span class="guilabel">To</span> locations and <span class="guilabel">Done</span> quantities can be manually entered in
+each of the serial number lines.</p>
+<img alt="List of serial numbers copied in Excel spreadsheet." class="align-center" src="../../../../../_images/serial-numbers-excel-spreadsheet.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>For purchase orders that include large quantities of products to receive, the best method of
+serial number assignment is to automatically assign serial numbers using the <span class="guilabel">Assign
+Serial Numbers</span> button located on the <abbr title="purchase order">PO</abbr>. This prevents any serial
+numbers from being reused or duplicated, and improves traceability reporting.</p>
+</div>
+<p>Once all product quantities have been assigned a serial number, click the <span class="guilabel">Confirm</span> button
+to close the pop-up. Then, click <span class="guilabel">Validate</span>.</p>
+<p>A <span class="guilabel">Traceability</span> smart button appears upon validating the receipt. Click the
+<span class="guilabel">Traceability</span> smart button to see the updated <span class="guilabel">Traceability Report</span>, which
+includes: a <span class="guilabel">Reference</span> document, the <span class="guilabel">Product</span> being traced, the
+<span class="guilabel">Lot/Serial #</span>, and more.</p>
+<p>Once all product quantities have been assigned a serial number, click <span class="guilabel">Confirm</span> to close
+the popup, and click <span class="guilabel">Validate</span>. A <span class="guilabel">Traceability</span> smart button will appear upon
+validating the receipt. Click the <span class="guilabel">Traceability</span> smart button to see the updated
+<span class="guilabel">Traceability Report</span>, which includes: a <span class="guilabel">Reference</span> document, the
+<span class="guilabel">Product</span> being traced, the <span class="guilabel">Lot/Serial #</span>, and more.</p>
+</section><section id="manage-serial-numbers-on-delivery-orders">
+<h3>Manage serial numbers on delivery orders<a class="headerlink" href="#manage-serial-numbers-on-delivery-orders" title="Permalink to this headline">¶</a></h3>
+<p>Assigning serial numbers to <strong>outgoing</strong> goods can be done directly from the sales order (SO).</p>
+<p>To create an <abbr title="sales order">SO</abbr>, navigate to the <span class="menuselection">Sales</span> app, and click the
+<span class="guilabel">Create</span> button. Doing so reveals a new, blank quotation form. On this blank quotation
+form, fill out the necessary information, by adding a <span class="guilabel">Customer</span>, and adding products to
+the <span class="guilabel">Product</span> lines (in the <span class="guilabel">Order Lines</span> tab), by clicking <span class="guilabel">Add a
+product</span>.</p>
+<p>Then, choose the desired quantity to sell by changing the number in the <span class="guilabel">Quantity</span> column.</p>
+<p>Once the quotation has been filled out, click the <span class="guilabel">Confirm</span> button to confirm the
+quotation. When the quotation is confirmed, the quotation becomes an <abbr title="sales order">SO</abbr>, and a
+<span class="guilabel">Delivery</span> smart button appears.</p>
+<p>Click the <span class="guilabel">Delivery</span> smart button to view the warehouse receipt form for that specific
+<abbr title="sales order">SO</abbr>.</p>
+<p>From here, click the <span class="guilabel">Additional Options</span> menu, represented by a <code class="o_code docutils literal notranslate"><span class="pre">hamburger</span></code> icon (four
+horizontal lines, located to the right of the <span class="guilabel">Unit of Measure</span> column in the
+<span class="guilabel">Operations</span> tab). Clicking that icon reveals a <span class="guilabel">Detailed Operations</span> pop-up.</p>
+<p>In the pop-up, a <span class="guilabel">Lot/Serial Number</span> will be chosen by default, with each product of the
+total <span class="guilabel">Reserved</span> quantity listed with their unique serial numbers (most likely listed in
+sequential order).</p>
+<p>To manually change a product’s serial number, click the drop-down menu under <span class="guilabel">Lot/Serial
+Number</span>, and choose (or type) the desired serial number. Then, mark the <span class="guilabel">Done</span> quantities,
+and click <span class="guilabel">Confirm</span> to close the pop-up.</p>
+<p>Finally, click the <span class="guilabel">Validate</span> button to deliver the products.</p>
+<img alt="Serial numbers listed in detailed operations popup." class="align-center" src="../../../../../_images/serial-numbers-detailed-operations-popup.png" />
+<p>Upon validating the delivery order, a <span class="guilabel">Traceability</span> smart button appears. Click the
+<span class="guilabel">Traceability</span> smart button to see the updated <span class="guilabel">Traceability Report</span>, which
+includes: a <span class="guilabel">Reference</span> document, the <span class="guilabel">Product</span> being traced, the
+<span class="guilabel">Date</span>, and the <span class="guilabel">Lot/Serial #</span> assigned.</p>
+<p>The <span class="guilabel">Traceability Report</span> can also include a <span class="guilabel">Reference</span> receipt from the
+previous purchase order (PO), if any of the product quantities shared a serial number assigned
+during receipt of that specific <abbr title="purchase order">PO</abbr>.</p>
+</section><section id="manage-serial-numbers-for-different-operations-types">
+<h2>Manage serial numbers for different operations types<a class="headerlink" href="#manage-serial-numbers-for-different-operations-types" title="Permalink to this headline">¶</a></h2>
+<p>By default in Odoo, the creation of new serial numbers is only allowed upon <strong>receiving</strong> products
+from a purchase order. <strong>Existing</strong> serial numbers cannot be used. For sales orders, the opposite is
+true: new serial numbers cannot be created on the delivery order, only existing serial numbers can
+be used.</p>
+<p>To change the ability to use new (or existing) serial numbers on any operation type, go to
+<span class="menuselection">Inventory app ‣ Configuration ‣ Operations Types</span>, and select the desired
+<span class="guilabel">Operation Type</span>.</p>
+<p>For the <span class="guilabel">Receipts</span> operation type, found on the <span class="guilabel">Operations Types</span> page, the
+<span class="guilabel">Use Existing Lots/Serial Numbers</span> option can be enabled, by selecting
+<span class="guilabel">Receipts</span> from the <span class="guilabel">Operations Types</span> page, clicking <span class="guilabel">Edit</span>, and then
+clicking the checkbox beside the <span class="guilabel">Use Existing Lots/Serial Numbers</span> option (in the
+<span class="guilabel">Traceability</span> section). Lastly, click the <span class="guilabel">Save</span> button to save the changes.</p>
+<p>For the <span class="guilabel">Delivery Orders</span> operation type, located on the <span class="guilabel">Operations Types</span>
+page, the <span class="guilabel">Create New Lots/Serial Numbers</span> option can be enabled, by selecting
+<span class="guilabel">Delivery Orders</span> from the <span class="guilabel">Operations Types</span> page, clicking <span class="guilabel">Edit</span>,
+and clicking the checkbox beside the <span class="guilabel">Create New Lots/Serial Numbers</span> option (in the
+<span class="guilabel">Traceability</span> section). Be sure to click <span class="guilabel">Save</span> to save changes.</p>
+<img alt="Enabled traceability setting in operations type form." class="align-center" src="../../../../../_images/serial-numbers-operations-types.png" />
+</section><section id="serial-number-traceability">
+<h2>Serial number traceability<a class="headerlink" href="#serial-number-traceability" title="Permalink to this headline">¶</a></h2>
+<p>Manufacturers and companies can refer to the traceability reports to see the entire lifecycle of a
+product: where it came from (and when), where it was stored, and who it went to.</p>
+<p>To see the full traceability of a product, or group by serial numbers, go to
+<span class="menuselection">Inventory app ‣ Products ‣ Lots/Serial Numbers</span>. Doing so reveals the
+<span class="guilabel">Lots/Serial Numbers</span> dashboard.</p>
+<p>From here, products with serial numbers assigned to them will be listed by default, and can be
+expanded to show what serial numbers have been specifically assigned to them.</p>
+<p>To group by serial numbers (or lots), first remove any default filters from the search bar in the
+upper-right corner. Then, click <span class="guilabel">Group By</span>, and select <span class="guilabel">Add Custom Group</span>, which
+reveals a mini drop-down menu. From this mini drop-down menu, select <span class="guilabel">Lot/Serial Number</span>,
+and click <span class="guilabel">Apply</span>.</p>
+<p>Doing so reveals all existing serial numbers and lots, and can be expanded to show all quantities of
+products with that assigned number. For unique serial numbers that are not reused, there should be
+just one product per serial number.</p>
+<img alt="Serial numbers reporting page with drop-down lists." class="align-center" src="../../../../../_images/serial-numbers-reporting-page.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>For additional information regarding an individual serial number (or lot number), click the line
+item for the serial number to reveal that specific serial number’s <span class="guilabel">Serial Number</span>
+form. From this form, click the <span class="guilabel">Location</span> and <span class="guilabel">Traceability</span> smart buttons
+to see all stock on-hand using that serial number, and any operations made using that serial
+number.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="differences.html"><span class="doc">Difference between lots and serial numbers</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Use serial numbers to track products</a><ul>
+<li><a class="reference internal" href="#enable-lots-serial-numbers">Enable lots &amp; serial numbers</a></li>
+<li><a class="reference internal" href="#configure-serial-number-tracking-on-products">Configure serial number tracking on products</a><ul>
+<li><a class="reference internal" href="#create-new-serial-numbers-for-products-already-in-stock">Create new serial numbers for products already in stock</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manage-serial-numbers-for-shipping-and-receiving">Manage serial numbers for shipping and receiving</a><ul>
+<li><a class="reference internal" href="#manage-serial-numbers-on-receipts">Manage serial numbers on receipts</a><ul>
+<li><a class="reference internal" href="#assign-serial-numbers-manually">Assign serial numbers manually</a></li>
+<li><a class="reference internal" href="#assign-serial-numbers-automatically">Assign serial numbers automatically</a></li>
+<li><a class="reference internal" href="#copy-paste-serial-numbers-from-a-spreadsheet">Copy/paste serial numbers from a spreadsheet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manage-serial-numbers-on-delivery-orders">Manage serial numbers on delivery orders</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manage-serial-numbers-for-different-operations-types">Manage serial numbers for different operations types</a></li>
+<li><a class="reference internal" href="#serial-number-traceability">Serial number traceability</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Use serial numbers to track products</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

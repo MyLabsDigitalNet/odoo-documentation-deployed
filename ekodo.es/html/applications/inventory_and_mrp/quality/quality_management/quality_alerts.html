@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create quality alerts &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/quality/quality_management/quality_alerts.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/quality/quality_management/quality_alerts.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Create quality alerts</a><ul>
+<li><a class="reference internal" href="#find-and-fill-out-the-quality-alerts-form">Find and fill out the quality alerts form</a></li>
+<li><a class="reference internal" href="#add-quality-alerts-during-the-manufacturing-process">Add quality alerts during the manufacturing process</a></li>
+<li><a class="reference internal" href="#manage-existing-quality-alerts">Manage existing quality alerts</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/quality/quality_management/quality_alerts.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Create quality alerts</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="create-quality-alerts">
+<h1>Create quality alerts<a class="headerlink" href="#create-quality-alerts" title="Permalink to this headline">¶</a></h1>
+<p id="quality-quality-management-quality-alerts">Configuring quality control points is a great way to ensure that quality checks are performed at
+routine stages during specific operations. However, quality issues can often appear outside of these
+scheduled checks. Using Odoo <em>Quality</em>, users can create quality alerts for issues that are not
+detected by automated processes.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="quality_control_points.html"><span class="doc">Add quality control points</span></a></p>
+</div>
+</section><section id="find-and-fill-out-the-quality-alerts-form">
+<h2>Find and fill out the quality alerts form<a class="headerlink" href="#find-and-fill-out-the-quality-alerts-form" title="Permalink to this headline">¶</a></h2>
+<p>In some situations, it is necessary to manually create quality alerts within the <em>Quality</em> module.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A helpdesk user who is notified of a product defect by a customer ticket can create an alert that
+brings the issue to the attention of the relevant quality team.</p>
+</div>
+<p>To create a new quality alert, start from the <span class="menuselection">Quality</span> module and select
+<span class="menuselection">Quality Control ‣ Quality Alerts ‣ Create</span>. The quality alert form can then be
+filled out as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Title</span>: choose a concise, yet descriptive title for the quality alert</p></li>
+<li><p><span class="guilabel">Product</span>: the product about which the quality alert is being created</p></li>
+<li><p><span class="guilabel">Product Variant</span>: the specific variant of the product that has the quality issue, if
+applicable</p></li>
+<li><p><span class="guilabel">Lot</span>: the lot number assigned to the product</p></li>
+<li><p><span class="guilabel">Work Center</span>: the work center where the quality issue originated</p></li>
+<li><p><span class="guilabel">Picking</span>: the picking operation during which the quality issue originated</p></li>
+<li><p><span class="guilabel">Team</span>: the quality team that will be notified by the quality alert</p></li>
+<li><p><span class="guilabel">Responsible</span>: the individual responsible for managing the quality alert</p></li>
+<li><p><span class="guilabel">Tags</span>: classify the quality alert based on user-created tags</p></li>
+<li><p><span class="guilabel">Root Cause</span>: the cause of the quality issue, if known</p></li>
+<li><p><span class="guilabel">Priority</span>: assign a priority between one and three stars to ensure more
+urgent issues are prioritized</p></li>
+</ul>
+<p>The tabs at the bottom of the form can be used to provide additional information to quality teams:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Description</span>: provide additional details about the quality issue</p></li>
+<li><p><span class="guilabel">Corrective Actions</span>: the method for fixing affected products</p></li>
+<li><p><span class="guilabel">Preventive Actions</span>: procedures for preventing the issue from occurring in
+the future</p></li>
+<li><p><span class="guilabel">Miscellaneous</span>: the product vendor (if applicable), the company that produces
+the product, and the date assigned</p></li>
+</ul>
+<img alt="An example of a completed quality alert form." class="align-center" src="../../../../_images/quality-alert-form.png" />
+</section><section id="add-quality-alerts-during-the-manufacturing-process">
+<h2>Add quality alerts during the manufacturing process<a class="headerlink" href="#add-quality-alerts-during-the-manufacturing-process" title="Permalink to this headline">¶</a></h2>
+<p>Odoo enables manufacturing employees to create quality alerts within a work order without accessing
+the <em>Quality</em> module. From the work order tablet view, click the :guilabel:` ☰ ` hamburger menu
+icon in the top left corner and select <span class="guilabel">Quality Alert</span>.</p>
+<img alt="Access the work order menu." class="align-center" src="../../../../_images/work-order-tablet-view-menu-button.png" />
+<p>The quality alert form can then be filled out as detailed in the previous section. After saving the
+form, a new alert will appear on the <span class="guilabel">Quality Alerts</span> dashboard that can be found through
+the <span class="menuselection">Quality ‣ Quality Control</span> menu.</p>
+</section><section id="manage-existing-quality-alerts">
+<h2>Manage existing quality alerts<a class="headerlink" href="#manage-existing-quality-alerts" title="Permalink to this headline">¶</a></h2>
+<p>By default, quality alerts are organized in a kanban board view. The stages of the kanban board are
+fully configurable and alerts can be moved from one stage to the next by dragging and dropping or
+from within each alert. Additional options are available for viewing alerts, including graph,
+calendar, and pivot table views.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Filter alerts based on diverse criteria like date assigned or date closed. Alerts can also be
+grouped by quality team, root cause, or other parameters found under the <span class="guilabel">Filters</span>
+button menu.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Create quality alerts</a><ul>
+<li><a class="reference internal" href="#find-and-fill-out-the-quality-alerts-form">Find and fill out the quality alerts form</a></li>
+<li><a class="reference internal" href="#add-quality-alerts-during-the-manufacturing-process">Add quality alerts during the manufacturing process</a></li>
+<li><a class="reference internal" href="#manage-existing-quality-alerts">Manage existing quality alerts</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Create quality alerts</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

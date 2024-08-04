@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Follow-up on invoices &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/accounting/payments/follow_up.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/accounting/payments/follow_up.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Follow-up on invoices</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#follow-up-reports">Follow-up reports</a><ul>
+<li><a class="reference internal" href="#debtor-s-trust-level">Debtor’s trust level</a></li>
+<li><a class="reference internal" href="#send-reminders-in-batches">Send reminders in batches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/accounting/payments/follow_up.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Follow-up on invoices</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="follow-up-on-invoices">
+<h1>Follow-up on invoices<a class="headerlink" href="#follow-up-on-invoices" title="Permalink to this headline">¶</a></h1>
+<p>A follow-up message can be sent to customers when a payment is overdue. Odoo helps you identify late
+payments and allows you to schedule and send the appropriate reminders using <strong>follow-up actions</strong>
+that automatically trigger one or more actions according to the number of overdue days. You can send
+your follow-ups via different means, such as email, post, or SMS.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.odoo.com/slides/slide/payment-follow-up-1682">Odoo Tutorials: Payment Follow-up</a></p></li>
+</ul>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To configure a <span class="guilabel">Follow-Up Action</span>, go to <span class="menuselection">Accounting ‣ Configuration ‣
+Follow-up Levels</span>, and select or create (a) new follow-up level(s). Several follow-up actions are
+available by default under the <span class="guilabel">Notification</span> tab, and the <strong>name</strong> as well as the
+<strong>number of days</strong> can be changed. The follow-up <span class="guilabel">Actions</span> available are:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Send Email</span>;</p></li>
+<li><p><a class="reference internal" href="../customer_invoices/snailmail.html#customer-invoices-snailmail"><span class="std std-ref">Send a Letter</span></a>;</p></li>
+<li><p><a class="reference internal" href="../../../marketing/sms_marketing/pricing/pricing_and_faq.html#pricing-pricing-and-faq"><span class="std std-ref">Send an SMS message</span></a>.</p></li>
+</ul>
+<p>You can use a pre-filled template for your messages by selecting a <span class="guilabel">Content Template</span>. To
+change the template used, hover over the field and click the <span class="guilabel">–&gt;</span>. If enabled, SMS
+messages have a specific <span class="guilabel">Sms Template</span> field.</p>
+<p>It is possible to automatically send a reminder by enabling the <span class="guilabel">Automatic</span> option, and
+attaching the <em>open</em> invoice(s) by enabling <span class="guilabel">Attach Invoices</span>, within a specific follow-up
+action.</p>
+<p>By clicking on the <span class="guilabel">Activity</span> tab, scheduling activities (tasks) is possible. That way,
+an activity is automatically scheduled when the follow-up is triggered. To do so, enable
+<span class="guilabel">Schedule Activity</span>, and select a <span class="guilabel">Responsible</span> person for the task. Choose an
+<span class="guilabel">Activity Type</span>, and enter a <span class="guilabel">Summary</span> on how to handle the activity, if
+desired.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Set a negative number of days to send a reminder before the actual due date.</p>
+</div>
+</section><section id="follow-up-reports">
+<h2>Follow-up reports<a class="headerlink" href="#follow-up-reports" title="Permalink to this headline">¶</a></h2>
+<p>Overdue invoices you need to follow up on are available in <span class="menuselection">Accounting ‣ Customers
+‣ Follow-up Reports</span>. By default, Odoo filters by <span class="guilabel">Overdue Invoices</span>, but you can also
+filter by <span class="guilabel">In need of action</span> in the <span class="guilabel">Filters</span> menu.</p>
+<p>When selecting an invoice, you can see all of the customer’s unpaid invoices (overdue or not), with
+the due dates of late invoices appearing in red. You can exclude invoices from a reminder by
+clicking <span class="guilabel">Exclude from Follow-ups</span>. You can set either <span class="guilabel">Automatic</span> or
+<span class="guilabel">Manual</span> reminders as well as a <span class="guilabel">Responsible</span> person for that customer.</p>
+<p>To send reminders, click on <span class="guilabel">Follow up</span>, and select the action(s) you want to perform
+from:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Print</span>;</p></li>
+<li><p><span class="guilabel">Email</span>;</p></li>
+<li><p><span class="guilabel">Sms</span>;</p></li>
+<li><p><span class="guilabel">By post</span>.</p></li>
+</ul>
+<p>You can <span class="guilabel">Attach Invoices</span> and change the content templates from this view. When done,
+click <span class="guilabel">Send</span> or <span class="guilabel">Send &amp; Print</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>The contact information on the invoice or the contact form is used to send the reminder.</p></li>
+<li><p>When the reminder is sent, it is documented in the chatter of the invoice.</p></li>
+<li><p>If it is not the right time for a reminder, you can specify the <span class="guilabel">Next Reminder</span> date.
+You will get the next report according to the next reminder date set.</p></li>
+</ul>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Reconcile all bank statements right before launching the follow-up process to avoid sending a
+reminder to a customer that has already paid.</p>
+</div>
+</section><section id="debtor-s-trust-level">
+<h3>Debtor’s trust level<a class="headerlink" href="#debtor-s-trust-level" title="Permalink to this headline">¶</a></h3>
+<p>To know whether a customer usually pays late or not, you can set a trust level by marking them as
+<span class="guilabel">Good Debtor</span>, <span class="guilabel">Normal Debtor</span>, or <span class="guilabel">Bad Debtor</span> on their follow-up
+report. To do so, click on the bullet next to the customer’s name and select a trust level.</p>
+<img alt="Set debtor's trust level" src="../../../../_images/debtor-level.png" />
+</section><section id="send-reminders-in-batches">
+<h3>Send reminders in batches<a class="headerlink" href="#send-reminders-in-batches" title="Permalink to this headline">¶</a></h3>
+<p>You can send reminder emails in batches from the <span class="guilabel">Follow-up Reports</span> page. To do so,
+select all the reports you would like to process, click on the <span class="guilabel">Action</span> gear icon, and
+select <span class="guilabel">Process follow-ups</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../essentials/in_app_purchase.html"><span class="doc">In-app purchases (IAP)</span></a></p></li>
+<li><p><a class="reference internal" href="../../../marketing/sms_marketing/pricing/pricing_and_faq.html"><span class="doc">SMS Pricing and FAQ</span></a></p></li>
+<li><p><a class="reference internal" href="../customer_invoices/snailmail.html"><span class="doc">Snailmail</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Follow-up on invoices</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#follow-up-reports">Follow-up reports</a><ul>
+<li><a class="reference internal" href="#debtor-s-trust-level">Debtor’s trust level</a></li>
+<li><a class="reference internal" href="#send-reminders-in-batches">Send reminders in batches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Follow-up on invoices</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

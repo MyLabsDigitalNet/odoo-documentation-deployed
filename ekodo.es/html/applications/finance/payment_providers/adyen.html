@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adyen &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/payment_providers/adyen.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/payment_providers/adyen.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Adyen</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#credentials-tab">Credentials tab</a><ul>
+<li><a class="reference internal" href="#api-key-and-client-key">API Key and Client Key</a></li>
+<li><a class="reference internal" href="#hmac-key">HMAC key</a></li>
+<li><a class="reference internal" href="#api-urls">API URLs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adyen-account">Adyen Account</a><ul>
+<li><a class="reference internal" href="#allow-payments-from-a-specific-origin">Allow payments from a specific origin</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#place-a-hold-on-a-card">Place a hold on a card</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/payment_providers/adyen.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Adyen</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="adyen">
+<h1>Adyen<a class="headerlink" href="#adyen" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.adyen.com/">Adyen</a> is a Dutch company that offers several online payment
+possibilities.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../payment_providers.html#payment-providers-add-new"><span class="std std-ref">Enable a payment provider</span></a></p></li>
+<li><p><a class="reference internal" href="../payment_providers.html"><span class="doc">Online payments</span></a></p></li>
+</ul>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Adyen works only with customers processing <strong>more</strong> than <strong>10 million annually</strong> or invoicing a
+<strong>minimum</strong> of <strong>1.000</strong> transactions <strong>per month</strong>.</p>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../payment_providers.html#payment-providers-add-new"><span class="std std-ref">Enable a payment provider</span></a></p>
+</div>
+</section><section id="credentials-tab">
+<h3>Credentials tab<a class="headerlink" href="#credentials-tab" title="Permalink to this headline">¶</a></h3>
+<p>Odoo needs your <strong>API Credentials</strong> to connect with your Adyen account, which comprise:</p>
+<ul class="simple">
+<li><p><strong>Merchant Account</strong>: The code of the merchant account to use with Adyen.</p></li>
+<li><p><a class="reference internal" href="#adyen-api-and-client-keys"><span class="std std-ref">API Key</span></a>: The API key of the webservice user.</p></li>
+<li><p><a class="reference internal" href="#adyen-api-and-client-keys"><span class="std std-ref">Client Key</span></a>: The client key of the webservice user.</p></li>
+<li><p><a class="reference internal" href="#adyen-hmac-key"><span class="std std-ref">HMAC Key</span></a>: The HMAC key of the webhook.</p></li>
+<li><p><a class="reference internal" href="#adyen-urls"><span class="std std-ref">Checkout API URL</span></a>: The base URL for the Checkout API endpoints.</p></li>
+<li><p><a class="reference internal" href="#adyen-urls"><span class="std std-ref">Recurring API URL</span></a>: The base URL for the Recurring API endpoints.</p></li>
+</ul>
+<p>You can copy your credentials from your Adyen account, and paste them in the related fields under
+the <strong>Credentials</strong> tab.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If you are trying Adyen as a test, with an Adyen <em>test account</em>, head to
+<span class="menuselection">Accounting ‣ Configuration ‣ Payment Providers</span>. There, click on
+<span class="guilabel">Adyen</span>, enable <span class="guilabel">Test Mode</span> and enter your credentials in the
+<span class="guilabel">Credentials</span> tab.</p>
+</div>
+</section><section id="api-key-and-client-key">
+<span id="adyen-api-and-client-keys"></span><h4>API Key and Client Key<a class="headerlink" href="#api-key-and-client-key" title="Permalink to this headline">¶</a></h4>
+<p>In order to retrieve the API Key and the Client Key, log into your Adyen account, go to
+<span class="menuselection">Developers ‣ API Credentials</span>.</p>
+<ul class="simple">
+<li><p>If you already have an API user, open it.</p></li>
+<li><p>If you don’t have an API user yet, click on <strong>Create new credential</strong>.</p></li>
+</ul>
+<p>Go to <span class="menuselection">Server settings ‣ Authentification</span> and copy or generate your <strong>API Key</strong>.
+Be careful to copy your API key as you’ll not be allowed to get it later without generating a new
+one.</p>
+<p>Now, head to <span class="menuselection">Client settings ‣ Authentification</span> and cody or generate your
+<strong>Client Key</strong>. This is also the place where you can <a class="reference internal" href="#adyen-allowed-origins"><span class="std std-ref">allow payments to be made from your
+website</span></a>.</p>
+</section><section id="hmac-key">
+<span id="adyen-hmac-key"></span><h4>HMAC key<a class="headerlink" href="#hmac-key" title="Permalink to this headline">¶</a></h4>
+<p>In order to retrieve the HMAC Key, you’ll need to configure a <code class="o_code docutils literal notranslate"><span class="pre">Standard</span> <span class="pre">Notification</span></code> webhook. For
+this, log into your Adyen account then go to <span class="menuselection">Developers ‣ Webhooks ‣ Add webhook
+‣ Add Standard notification</span>.</p>
+<img alt="Configure a webhook." class="align-center" src="../../../_images/adyen-add-webhook.png" />
+<p>There, in <span class="menuselection">General ‣ Server configuration ‣ URL</span>, enter your server address
+followed by <code class="o_code docutils literal notranslate"><span class="pre">/payment/adyen/notification</span></code>.</p>
+<img alt="Enter the notification URL." class="align-center" src="../../../_images/adyen-webhook-url.png" />
+<p>Then enter <span class="menuselection">Security ‣ HMAC Key ‣ Generate</span>. Be careful to copy the key as you
+will not be allowed to do it later without generating a new one.</p>
+<img alt="Generate a HMAC key and save it." class="align-center" src="../../../_images/adyen-hmac-key.png" />
+<p>You have to save the webhook to finalize its creation.</p>
+</section><section id="api-urls">
+<span id="adyen-urls"></span><h4>API URLs<a class="headerlink" href="#api-urls" title="Permalink to this headline">¶</a></h4>
+<p>All Adyen API URLs include a customer area-specific prefix generated by Adyen. To configure the
+URLs, proceed as follows:</p>
+<ol class="arabic">
+<li><p>Log into your Adyen account, then go to <span class="menuselection">Developers ‣ API URLs</span>.</p></li>
+<li><p>Copy the <span class="guilabel">Prefix</span> for your live Customer area (i.e., <strong>data center</strong>) and save it for
+later.</p>
+<img alt="Copy the prefix for the Adyen APIs" src="../../../_images/adyen-api-urls.png" />
+</li>
+<li><p>In Odoo, <a class="reference internal" href="../payment_providers.html#payment-providers-add-new"><span class="std std-ref">navigate to the payment provider Adyen</span></a>.</p></li>
+<li><p>In the <span class="guilabel">Checkout API URL</span> field, enter the following URL and replace <code class="o_code docutils literal notranslate"><span class="pre">yourprefix</span></code> with
+the prefix you previously saved:
+<code class="o_code docutils literal notranslate"><span class="pre">https://yourprefix-checkout-live.adyenpayments.com/checkout</span></code></p></li>
+<li><p>In the <span class="guilabel">Recurring API URL</span> field, enter the following URL and replace <code class="o_code docutils literal notranslate"><span class="pre">yourprefix</span></code> with
+the prefix you previously saved:
+<code class="o_code docutils literal notranslate"><span class="pre">https://yourprefix-pal-live.adyenpayments.com/pal/servlet/Recurring</span></code>.</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If you are trying Adyen as a test, you can use the following URLs instead:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Checkout API URL</span>: <code class="o_code docutils literal notranslate"><span class="pre">https://checkout-test.adyen.com</span></code></p></li>
+<li><p><span class="guilabel">Recurring API URL</span>: <code class="o_code docutils literal notranslate"><span class="pre">https://pal-test.adyen.com/pal/servlet/Recurring</span></code></p></li>
+</ul>
+</div>
+</section><section id="adyen-account">
+<h3>Adyen Account<a class="headerlink" href="#adyen-account" title="Permalink to this headline">¶</a></h3>
+</section><section id="allow-payments-from-a-specific-origin">
+<span id="adyen-allowed-origins"></span><h4>Allow payments from a specific origin<a class="headerlink" href="#allow-payments-from-a-specific-origin" title="Permalink to this headline">¶</a></h4>
+<p>To allow payment originated from your website, follow the steps in <a class="reference internal" href="#adyen-api-and-client-keys"><span class="std std-ref">API Key and Client Key</span></a>
+to navigate to your API user and go to <span class="menuselection">Add allowed origins</span>, then add the URLs from
+where payments will be made (the URLs of the servers hosting your Odoo instances).</p>
+<img alt="Allows payments originated from a specific domain." class="align-center" src="../../../_images/adyen-allowed-origins.png" />
+</section><section id="place-a-hold-on-a-card">
+<h3>Place a hold on a card<a class="headerlink" href="#place-a-hold-on-a-card" title="Permalink to this headline">¶</a></h3>
+<p>Adyen allows you to capture an amount manually instead of having an immediate capture.</p>
+<p>To set it up, enable the <strong>Capture Amount Manually</strong> option on Odoo, as explained in the
+<a class="reference internal" href="../payment_providers.html#payment-providers-manual-capture"><span class="std std-ref">payment providers documentation</span></a>.</p>
+<p>Then, open your Adyen Merchant Account, go to <span class="menuselection">Account ‣ Settings</span>, and set the
+<strong>Capture Delay</strong> to <strong>manual</strong>.</p>
+<img alt="Capture Delay settings in Adyen" class="align-center" src="../../../_images/adyen_capture_delay.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Caution</p><ul class="simple">
+<li><p>If you configure Odoo to capture amounts manually, make sure to set the <strong>Capture Delay</strong> to
+<strong>manual</strong> on Adyen. Otherwise, the transaction will be blocked in the authorized state in
+Odoo.</p></li>
+<li><p>Odoo doesn’t support the partial capture yet. Be aware that if you make a partial capture from
+Adyen’s interface, Odoo will manage it as if it was a full capture.</p></li>
+</ul>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>After <strong>7 days</strong>, if the transaction hasn’t been captured yet, the customer has the right to
+<strong>revoke</strong> it.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../payment_providers.html"><span class="doc">Online payments</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Adyen</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#credentials-tab">Credentials tab</a><ul>
+<li><a class="reference internal" href="#api-key-and-client-key">API Key and Client Key</a></li>
+<li><a class="reference internal" href="#hmac-key">HMAC key</a></li>
+<li><a class="reference internal" href="#api-urls">API URLs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adyen-account">Adyen Account</a><ul>
+<li><a class="reference internal" href="#allow-payments-from-a-specific-origin">Allow payments from a specific origin</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#place-a-hold-on-a-card">Place a hold on a card</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Adyen</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

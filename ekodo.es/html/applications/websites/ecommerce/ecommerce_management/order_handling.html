@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order handling &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/ecommerce/ecommerce_management/order_handling.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/ecommerce/ecommerce_management/order_handling.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Order handling</a><ul>
+<li><a class="reference internal" href="#sales-orders">Sales orders</a><ul>
+<li><a class="reference internal" href="#order-and-payment-status">Order and payment status</a></li>
+<li><a class="reference internal" href="#abandoned-cart">Abandoned cart</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delivery-orders">Delivery orders</a><ul>
+<li><a class="reference internal" href="#delivery-flow">Delivery flow</a></li>
+<li><a class="reference internal" href="#returns-and-refunds">Returns and refunds</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invoice-and-legal-requirements">Invoice and legal requirements</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/ecommerce/ecommerce_management/order_handling.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Order handling</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="order-handling">
+<h1>Order handling<a class="headerlink" href="#order-handling" title="Permalink to this headline">¶</a></h1>
+<p>When a customer orders on your eCommerce, there are <strong>three</strong> record types required to be handle in
+Odoo:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#handling-sales"><span class="std std-ref">Sales orders</span></a>;</p></li>
+<li><p><a class="reference internal" href="#handling-delivery"><span class="std std-ref">Delivery orders</span></a>;</p></li>
+<li><p><a class="reference internal" href="#handling-legal"><span class="std std-ref">Invoices &amp; legal requirements</span></a>.</p></li>
+</ul>
+</section><section id="sales-orders">
+<span id="handling-sales"></span><h2>Sales orders<a class="headerlink" href="#sales-orders" title="Permalink to this headline">¶</a></h2>
+</section><section id="order-and-payment-status">
+<h3>Order and payment status<a class="headerlink" href="#order-and-payment-status" title="Permalink to this headline">¶</a></h3>
+<p>The first step when a customer adds a product to his cart is the creation of a quotation. Orders can
+be managed either from the <strong>Website</strong> or <a class="reference internal" href="../../../sales/sales.html"><span class="doc">Sales</span></a> app. eCommerce
+orders can automatically be assigned to a specific sales team by going to <span class="menuselection">Website
+‣ Configuration ‣ Settings</span>. In the <strong>Shop - Checkout Process</strong> section, select a
+<span class="guilabel">Sales Team</span> or <span class="guilabel">Salesperson</span> to handle eCommerce orders.</p>
+<img alt="Assignment of online orders to a sales team or salesperson" class="align-center" src="../../../../_images/handling-salesteam.png" />
+<p>Orders can be found under <span class="menuselection">Website ‣ eCommerce ‣ Orders/Unpaid Orders</span>. Each
+order goes through a different status:</p>
+<ul class="simple">
+<li><p><strong>Quotation</strong>: a new product is added to the cart, but the customer has <em>not</em> gone through the
+checkout process yet;</p></li>
+<li><p><strong>Quotation sent</strong>: the customer has gone through the checkout process and confirmed the order,
+but the payment is not yet confirmed;</p></li>
+<li><p><strong>Order</strong>: the customer has gone through the checkout process, confirmed the order, and the
+payment is received.</p></li>
+</ul>
+<img alt="Statuses of eCommerce orders" class="align-center" src="../../../../_images/handling-status.png" />
+</section><section id="abandoned-cart">
+<h3>Abandoned cart<a class="headerlink" href="#abandoned-cart" title="Permalink to this headline">¶</a></h3>
+<p>An <strong>abandoned cart</strong> represents an order for which the customer did <strong>not finish</strong> the checkout
+confirmation process. For these orders, it is possible to send an <strong>email reminder</strong> to the
+customer automatically. To enable that feature, go to <span class="menuselection">Website ‣ Configuration ‣
+Settings</span> and in the <span class="guilabel">Email &amp; Marketing</span> section, enable <span class="guilabel">Automatically send
+abandoned checkout emails</span>. Once enabled, you can set the <strong>time-lapse</strong> after which the email is
+sent and customize the <strong>email template</strong> used.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>For abandoned cart emails, the customer must either have entered their contact details during the
+checkout process; or be logged-in when they added the product to their cart.</p>
+</div>
+</section><section id="delivery-orders">
+<span id="handling-delivery"></span><h2>Delivery orders<a class="headerlink" href="#delivery-orders" title="Permalink to this headline">¶</a></h2>
+</section><section id="delivery-flow">
+<h3>Delivery flow<a class="headerlink" href="#delivery-flow" title="Permalink to this headline">¶</a></h3>
+<p>Once a quotation has been confirmed, a delivery order is automatically created. The next step is to
+process this delivery.</p>
+<p>Packing eCommerce orders usually requires picking the product, preparing the packaging, printing the
+shipping label(s) and shipping to the customer. Depending on the number of orders, strategy, or
+resources, those steps can be considered as one or multiple actions in Odoo.</p>
+<p>An automatic email can be sent to the customer when the transfer status in Odoo is “done”. To do so,
+enable the feature in the settings of the
+<a class="reference internal" href="../../../inventory_and_mrp/inventory.html"><span class="doc">Inventory</span></a> app.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If customers are allowed to pay when picking up their order in stores or by wire transfer, the
+quotation is <strong>not</strong> be confirmed and the stock is <strong>not</strong> be reserved. Orders must be confirmed
+manually to reserve products in stock.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/invoicing.html"><span class="doc">Shipping cost invoicing</span></a></p></li>
+<li><p><a class="reference internal" href="../../../inventory_and_mrp/inventory/shipping_receiving/setup_configuration/labels.html"><span class="doc">Print shipping labels</span></a></p></li>
+<li><p><a class="reference internal" href="../../../inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/multipack.html"><span class="doc">Multi-package shipments</span></a></p></li>
+</ul>
+</div>
+</section><section id="returns-and-refunds">
+<h3>Returns and refunds<a class="headerlink" href="#returns-and-refunds" title="Permalink to this headline">¶</a></h3>
+<p>Customers can only return an order through an online form. It may not be possible to return products
+depending on the return strategy or type of product.</p>
+<p>Full refunds can be directly sent to customers from within the order interface. A refund-compatible
+payment provider needs to be enabled first.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../sales/sales/products_prices/returns.html"><span class="doc">Returns and refunds</span></a></p></li>
+<li><p><a class="reference internal" href="../../../services/helpdesk/advanced/after_sales.html"><span class="doc">After-Sales services</span></a></p></li>
+<li><p><a class="reference internal" href="../../../finance/payment_providers.html"><span class="doc">Online payments</span></a></p></li>
+</ul>
+</div>
+</section><section id="invoice-and-legal-requirements">
+<span id="handling-legal"></span><h2>Invoice and legal requirements<a class="headerlink" href="#invoice-and-legal-requirements" title="Permalink to this headline">¶</a></h2>
+<p>The final step of an ecommerce order is to generate the invoice and send it to the customer.
+Depending on the type of business (B2B or B2C), an invoice can either be generated automatically
+(B2B) or on demand of the customer (B2C). This process can be automated if (and when) the online
+payment is <a class="reference internal" href="#handling-sales"><span class="std std-ref">confirmed</span></a>.</p>
+<p>To automate invoicing, go to <span class="menuselection">Website ‣ Configuration ‣ Settings</span> and in the
+<span class="guilabel">Invoicing</span> section, enable <span class="guilabel">Automatic Invoice</span>.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Order handling</a><ul>
+<li><a class="reference internal" href="#sales-orders">Sales orders</a><ul>
+<li><a class="reference internal" href="#order-and-payment-status">Order and payment status</a></li>
+<li><a class="reference internal" href="#abandoned-cart">Abandoned cart</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delivery-orders">Delivery orders</a><ul>
+<li><a class="reference internal" href="#delivery-flow">Delivery flow</a></li>
+<li><a class="reference internal" href="#returns-and-refunds">Returns and refunds</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invoice-and-legal-requirements">Invoice and legal requirements</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Order handling</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catalog &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/ecommerce/managing_products/catalog.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/ecommerce/managing_products/catalog.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Catalog</a><ul>
+<li><a class="reference internal" href="#categorize-the-product-catalog">Categorize the product catalog</a><ul>
+<li><a class="reference internal" href="#browsing">Browsing</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#sort-by-search">Sort-by search</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#page-design">Page design</a><ul>
+<li><a class="reference internal" href="#category-page">Category page</a></li>
+<li><a class="reference internal" href="#product-highlight">Product highlight</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-features">Additional features</a></li>
+<li><a class="reference internal" href="#add-content">Add content</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/ecommerce/managing_products/catalog.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Catalog</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="catalog">
+<h1>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline">¶</a></h1>
+<p>The eCommerce catalog is the equivalent of your physical store shelves: it allows customers to see
+what you have to offer. Clear categories, available options, sorting, and navigation threads help
+you structure it efficiently.</p>
+</section><section id="categorize-the-product-catalog">
+<h2>Categorize the product catalog<a class="headerlink" href="#categorize-the-product-catalog" title="Permalink to this headline">¶</a></h2>
+<p>In Odoo, there is a <strong>specific category model</strong> for your eCommerce. Using eCommerce categories for
+your products allows you to add a navigation menu on your eCommerce page. Visitors can then use it
+to view all products under the category they select.</p>
+<p>To do so, go to <span class="menuselection">Website ‣ eCommerce ‣ Products</span>, select the product you wish to
+modify, click on the <span class="guilabel">Sales</span> tab, and select the <span class="guilabel">Categories</span> you want under
+<span class="guilabel">eCommerce Shop</span>.</p>
+<img alt="eCommerce categories under the &quot;Sales&quot; tab" class="align-center" src="../../../../_images/catalog-categories.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>A single product can appear under multiple eCommerce categories.</p>
+</div>
+<p>When your product’s categories are configured, go to your <strong>main shop page</strong> and click on
+<span class="menuselection">Edit ‣ Customize tab</span>. In the <span class="guilabel">Categories</span> option, you can either enable
+a menu on the <span class="guilabel">Left</span>, on the <span class="guilabel">Top</span>, or both. If you select the <span class="guilabel">Left</span>
+category, the option <span class="guilabel">Collapsable Category Recursive</span> appears and allows to render the
+<span class="guilabel">Left</span> category menu collapsable.</p>
+<img alt="Categories options for your eCommerce website" class="align-center" src="../../../../_images/catalog-panel-categories.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="products.html"><span class="doc">Product management</span></a></p>
+</div>
+</section><section id="browsing">
+<span id="ecommerce-browsing"></span><h3>Browsing<a class="headerlink" href="#browsing" title="Permalink to this headline">¶</a></h3>
+<p>The eCommerce category is the first tool to organize and split your products. However, if you need
+an extra level of categorization in your catalog, you can activate various <strong>filters</strong> such as
+attributes or sort-by search.</p>
+</section><section id="attributes">
+<h4>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h4>
+<p>Attributes refer to <strong>characteristics</strong> of a product, such as <strong>color</strong> or <strong>material</strong>, whereas
+variants are the different combinations of attributes. <span class="guilabel">Attributes and Variants</span> can be
+found under <span class="menuselection">Website ‣ eCommerce ‣ Products</span>, select your product, and
+<span class="guilabel">Attributes &amp; Variants</span> tab.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../../sales/sales/products_prices/products/variants.html"><span class="doc">Product variants</span></a></p></li>
+</ul>
+</div>
+<img alt="Attributes and variants of your product" class="align-center" src="../../../../_images/catalog-attributes.png" />
+<p>To enable <strong>attribute filtering</strong>, go to your <strong>main shop page</strong>, click on <span class="menuselection">Edit ‣
+Customize tab</span> and select either <span class="guilabel">Left</span>, <span class="guilabel">Top</span>, or both. Additionally, you can
+also enable <span class="guilabel">Price Filtering</span> to enable price filters.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p><span class="guilabel">Price Filter</span> works independently from <strong>attributes</strong> and, therefore, can be enabled
+on its own if desired.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can use <strong>attribute filters</strong> even if you do not work with product variants. When adding
+attributes to your products, make sure only to specify <em>one</em> value per attribute. Odoo does not
+create variants if no combination is possible.</p>
+</div>
+</section><section id="sort-by-search">
+<h4>Sort-by search<a class="headerlink" href="#sort-by-search" title="Permalink to this headline">¶</a></h4>
+<p>It is possible to allow the user to manually <strong>sort the catalog</strong> using the search bar. From
+your <strong>main shop page</strong>, click on <span class="menuselection">Edit ‣ Customize tab</span>; you can enable or disable
+the <span class="guilabel">Sort-By</span> option as well as the <span class="guilabel">Layout</span> button. You can also select the
+<span class="guilabel">Default Sort</span> of the <span class="guilabel">Sort-By</span> button. The default sort applies to <em>all</em>
+categories.</p>
+<p>The <strong>sorting</strong> options are:</p>
+<ul class="simple">
+<li><p>Featured</p></li>
+<li><p>Newest Arrivals</p></li>
+<li><p>Name (A-Z)</p></li>
+<li><p>Price - Low to High</p></li>
+<li><p>Price - High to Low</p></li>
+</ul>
+<p>In addition, you can <strong>manually edit</strong> the catalog’s order of a product by going to <strong>the main shop
+page</strong> and clicking on the product. Under the <span class="guilabel">Product</span> section of the
+<span class="guilabel">Customize</span> section, you can rearrange the order by clicking on the arrows. <code class="o_code docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> <code class="o_code docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> move
+the product to the <strong>extreme</strong> right or left, and <code class="o_code docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="o_code docutils literal notranslate"><span class="pre">&gt;</span></code> move the product by <strong>one</strong> row to the
+right or left. It is also possible to change the catalog’s order of products in
+<span class="menuselection">Website ‣ eCommerce ‣ Products</span> and drag-and-dropping the products within the
+list.</p>
+<img alt="Product rearrangement in the catalog" class="align-center" src="../../../../_images/catalog-reorder.png" />
+</section><section id="page-design">
+<h2>Page design<a class="headerlink" href="#page-design" title="Permalink to this headline">¶</a></h2>
+</section><section id="category-page">
+<h3>Category page<a class="headerlink" href="#category-page" title="Permalink to this headline">¶</a></h3>
+<p>You can customize the layout of the category page using the website builder.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Editing the layout of the category page is global; editing one category layout affects <em>all</em>
+category pages.</p>
+</div>
+<p>To do so, go on to your <span class="menuselection">Category page ‣ Edit ‣ Customize</span>. Here, you can choose
+the layout, the number of columns to display the products, etc. The <span class="guilabel">Product Description</span>
+button makes the product description visible from the category page, underneath the product picture.</p>
+<img alt="Layout options of the category pages." class="align-center" src="../../../../_images/catalog-category-layout.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can choose the size of the grid, but be aware that displaying too many products may affect
+performance and page loading speed.</p>
+</div>
+</section><section id="product-highlight">
+<h3>Product highlight<a class="headerlink" href="#product-highlight" title="Permalink to this headline">¶</a></h3>
+<p>You can highlight products to make them more visible on the category or product page. On the page of
+your choice, go to <span class="menuselection">Edit ‣ Customize</span> and click on the product to highlight. In the
+<span class="guilabel">Product</span> section, you can choose the size of the product image by clicking on the grid,
+and you can also add a <strong>ribbon</strong> or <span class="guilabel">Badge</span>. This displays a banner across the product’s
+image, such as:</p>
+<ul class="simple">
+<li><p>Sale;</p></li>
+<li><p>Sold out;</p></li>
+<li><p>Out of stock;</p></li>
+<li><p>New.</p></li>
+</ul>
+<p>Alternatively, you can activate the <a class="reference internal" href="../../../general/developer_mode.html"><span class="doc">developer mode</span></a> on the
+<strong>product’s template</strong>, and under the <span class="guilabel">Sales</span> tab, change or create the ribbon from the
+<span class="guilabel">Ribbon</span> field.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <a class="reference internal" href="../../../general/developer_mode.html"><span class="doc">developer mode</span></a> is only intended for experienced
+users who wish to have access to advanced tools. Using the <strong>developer mode</strong> is <em>not</em>
+recommended for regular users.</p>
+</div>
+<img alt="Ribbon highlight" class="align-center" src="../../../../_images/catalog-product-highlight.png" />
+</section><section id="additional-features">
+<h2>Additional features<a class="headerlink" href="#additional-features" title="Permalink to this headline">¶</a></h2>
+<p>You can access and enable additional feature buttons such as <strong>add to cart</strong>, <strong>comparison list</strong>,
+or a <strong>wishlist</strong>. To do so, go to your <strong>main shop page</strong>, and at the end of the
+<span class="guilabel">Products Page</span> category, click on the feature buttons you wish to use. All three buttons
+appear when hovering the mouse over a product’s image.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Add to Cart</span>: adds a button to
+<a class="reference internal" href="../checkout_payment_shipping/cart.html"><span class="doc">add the product to the cart</span></a>;</p></li>
+<li><p><span class="guilabel">Comparison List</span>: adds a button to <strong>compare</strong> products based on their price, variant,
+etc.;</p></li>
+<li><p><span class="guilabel">Wishlist Button</span>: adds a button to <strong>wishlist</strong> the product.</p></li>
+</ul>
+<img alt="Feature buttons for add to cart, comparison list, and wishlist" class="align-center" src="../../../../_images/catalog-buttons.png" />
+<img alt="Appearance of buttons when hoovering over the mouse" class="align-center" src="../../../../_images/catalog-features.png" />
+</section><section id="add-content">
+<h2>Add content<a class="headerlink" href="#add-content" title="Permalink to this headline">¶</a></h2>
+<p>You can use <strong>building blocks</strong> to add content on the category page, with a variety of blocks
+ranging from <span class="guilabel">Structure</span> to <span class="guilabel">Dynamic Content</span>. Specific areas are defined to use
+blocks are defined and highlighted on the page when <strong>dragging-and-dropping</strong> a block.</p>
+<img alt="Building blocks areas" class="align-center" src="../../../../_images/catalog-content.png" />
+<ul class="simple">
+<li><p>If you drop a building block <strong>on top</strong> of the product list, it creates a new category header
+specific to <em>that</em> category.</p></li>
+<li><p>If you drop a building <strong>on the top</strong> or <strong>bottom</strong> of the page, it becomes visible on <em>all</em>
+category pages.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Adding content to an eCommerce category page is beneficial in terms of <strong>SEO</strong> strategy. Using
+<strong>keywords</strong> linked to the products or the eCommerce categories improves organic traffic.
+Additionally, each category has its own specific URL that can be pointed to and is indexed by
+search engines.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Catalog</a><ul>
+<li><a class="reference internal" href="#categorize-the-product-catalog">Categorize the product catalog</a><ul>
+<li><a class="reference internal" href="#browsing">Browsing</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#sort-by-search">Sort-by search</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#page-design">Page design</a><ul>
+<li><a class="reference internal" href="#category-page">Category page</a></li>
+<li><a class="reference internal" href="#product-highlight">Product highlight</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-features">Additional features</a></li>
+<li><a class="reference internal" href="#add-content">Add content</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Catalog</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

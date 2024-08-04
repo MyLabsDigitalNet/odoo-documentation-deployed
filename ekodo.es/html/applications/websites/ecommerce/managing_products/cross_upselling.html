@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cross-selling and upselling &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/ecommerce/managing_products/cross_upselling.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/ecommerce/managing_products/cross_upselling.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Cross-selling and upselling</a><ul>
+<li><a class="reference internal" href="#cross-selling">Cross-selling</a><ul>
+<li><a class="reference internal" href="#optional-products">Optional products</a></li>
+<li><a class="reference internal" href="#accessory-products">Accessory products</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#upselling">Upselling</a><ul>
+<li><a class="reference internal" href="#alternative-products">Alternative products</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/ecommerce/managing_products/cross_upselling.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Cross-selling and upselling</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="cross-selling-and-upselling">
+<h1>Cross-selling and upselling<a class="headerlink" href="#cross-selling-and-upselling" title="Permalink to this headline">¶</a></h1>
+<p>Any sales process is an opportunity to maximize revenues. <strong>Cross-selling and upselling</strong> are sales
+techniques consisting in selling customers additional or more expensive products and services than
+what they were originally shopping for. It is a great way to maximize the value of each one of your
+customers.</p>
+<p><strong>Cross-selling</strong> can be done via <strong>two</strong> features:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cross-upselling-optional"><span class="std std-ref">Optional products</span></a> upon <strong>adding to cart</strong>;</p></li>
+<li><p><a class="reference internal" href="#cross-upselling-accessory"><span class="std std-ref">Accessory products</span></a> on the <strong>checkout page</strong>.</p></li>
+</ul>
+<p><strong>Upselling</strong> is only done via <a class="reference internal" href="#cross-upselling-alternative"><span class="std std-ref">alternative products</span></a> on the
+<strong>product page</strong>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="catalog.html"><span class="doc">Catalog</span></a></p>
+</div>
+</section><section id="cross-selling">
+<h2>Cross-selling<a class="headerlink" href="#cross-selling" title="Permalink to this headline">¶</a></h2>
+</section><section id="optional-products">
+<span id="cross-upselling-optional"></span><h3>Optional products<a class="headerlink" href="#optional-products" title="Permalink to this headline">¶</a></h3>
+<p><strong>Optional products</strong> are suggested when customers click <span class="guilabel">Add to cart</span>, either from the
+<strong>product page</strong> or <strong>catalog page</strong>. Upon clicking, a pop-up window opens with the
+<strong>optional products</strong> displayed in the <span class="guilabel">Available Options</span> section.</p>
+<img alt="Optional products cross-selling" class="align-center" src="../../../../_images/cross_upselling-cart.png" />
+<p>To enable <strong>optional products</strong> go to <span class="menuselection">Website ‣ eCommerce ‣ Products</span>,
+select a product, go to the <span class="guilabel">Sales</span> tab, and enter the products you wish to feature in the
+<span class="guilabel">Optional Products</span> field. Optional products are <strong>linked</strong> to the product(s) they are set
+up with on the <strong>product template</strong>. They only appear when that product is added to the cart.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can also access the <span class="guilabel">Sales</span> tab of the <strong>product template</strong> by selecting a product
+on your <strong>main shop page</strong> and clicking <span class="guilabel">Product</span> in the top-right corner.</p>
+</div>
+</section><section id="accessory-products">
+<span id="cross-upselling-accessory"></span><h3>Accessory products<a class="headerlink" href="#accessory-products" title="Permalink to this headline">¶</a></h3>
+<p><strong>Accessory products</strong> are displayed in the <span class="guilabel">Suggested Accessories</span> section before
+processing to checkout at the <span class="guilabel">Review Order</span> step.</p>
+<img alt="Suggested accessories at checkout during cart review" class="align-center" src="../../../../_images/cross_upselling-checkout.png" />
+<p>To enable <strong>accessory products</strong>, go to <span class="menuselection">Website ‣ eCommerce ‣ Products</span>, select
+a product, go to the <span class="guilabel">Sales</span> tab, and enter the products you wish to feature in the
+<span class="guilabel">Accessory Products</span> field. Suggested accessory products are <strong>linked</strong> to the product(s)
+they are set up with on the <strong>product template</strong>. They only appear when that product is at the
+checkout process review.</p>
+</section><section id="upselling">
+<h2>Upselling<a class="headerlink" href="#upselling" title="Permalink to this headline">¶</a></h2>
+</section><section id="alternative-products">
+<span id="cross-upselling-alternative"></span><h3>Alternative products<a class="headerlink" href="#alternative-products" title="Permalink to this headline">¶</a></h3>
+<p><strong>Alternative products</strong> are suggested on the <strong>product page</strong> and usually incentivize customers to
+buy a more expensive variant or product than the one they were initially shopping for.</p>
+<img alt="Alternative products on the product page" class="align-center" src="../../../../_images/cross_upselling-alternative.png" />
+<p>To enable <strong>alternative products</strong>, go to <span class="menuselection">Website ‣ eCommerce ‣ Products</span>,
+select a product, go to the <span class="guilabel">Sales</span> tab, and enter the products you wish to feature in the
+<span class="guilabel">Alternative Products</span> field. Then, go to the related <strong>product page</strong> by clicking
+<span class="guilabel">Go To Website</span>, and click <span class="menuselection">Edit</span>. Stay on the <span class="guilabel">Blocks</span> tab, and
+scroll down to the <span class="guilabel">Dynamic Content</span> section. Then, drag and drop the <span class="guilabel">Products</span>
+building block anywhere on the <strong>product page</strong>.</p>
+<p>When placed, in <span class="guilabel">Edit</span> mode, click the <strong>block</strong> to access various settings for that
+<span class="guilabel">Products</span> building block. In the <span class="guilabel">Filter</span> field, select <span class="guilabel">Alternative
+Products</span>. You can configure several additional settings, such as how many elements are displayed
+(<span class="guilabel">Fetched Elements</span>), the <span class="guilabel">Template</span> used, etc.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Cross-selling and upselling</a><ul>
+<li><a class="reference internal" href="#cross-selling">Cross-selling</a><ul>
+<li><a class="reference internal" href="#optional-products">Optional products</a></li>
+<li><a class="reference internal" href="#accessory-products">Accessory products</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#upselling">Upselling</a><ul>
+<li><a class="reference internal" href="#alternative-products">Alternative products</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Cross-selling and upselling</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

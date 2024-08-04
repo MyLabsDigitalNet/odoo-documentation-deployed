@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brazil &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/brazil.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/fiscal_localizations/brazil.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Brazil</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#modules-installation">Modules installation</a></li>
+<li><a class="reference internal" href="#configure-your-company">Configure your company</a></li>
+<li><a class="reference internal" href="#configure-avatax-integration">Configure AvaTax integration</a><ul>
+<li><a class="reference internal" href="#credential-configuration">Credential configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-master-data">Configure master data</a><ul>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a></li>
+<li><a class="reference internal" href="#taxes">Taxes</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#contacts">Contacts</a></li>
+<li><a class="reference internal" href="#fiscal-positions">Fiscal positions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflows">Workflows</a><ul>
+<li><a class="reference internal" href="#tax-calculations-on-quotation-sales-orders">Tax calculations on quotation / sales orders</a></li>
+<li><a class="reference internal" href="#tax-calculations-on-invoices">Tax calculations on invoices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/brazil.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Brazil</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="brazil">
+<h1>Brazil<a class="headerlink" href="#brazil" title="Permalink to this headline">¶</a></h1>
+</section><section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>With the Brazilian localization you can automatically compute sales taxes for goods using AvaTax
+(Avalara) through API calls, also configure taxes for services.</p>
+<p>For the goods tax computation part, you need to configure the <a class="reference internal" href="#brazil-contacts"><span class="std std-ref">contacts</span></a>,
+<a class="reference internal" href="#brazil-company"><span class="std std-ref">company</span></a>, <a class="reference internal" href="#brazil-products"><span class="std std-ref">products</span></a>, and <a class="reference internal" href="#brazil-avatax-account"><span class="std std-ref">create an account in
+Avatax</span></a> from the Odoo general settings.</p>
+<p>For the services taxes, you can create and configure them from Odoo directly without computing them
+with AvaTax.</p>
+<p>The localization also includes taxes and a chart of accounts template that can be modified if
+needed.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="modules-installation">
+<h3>Modules installation<a class="headerlink" href="#modules-installation" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../../general/apps_modules.html#general-install"><span class="std std-ref">Install</span></a> the following modules to get all the features of the Brazilian
+localization:</p>
+<table class="colwidths-given table docutils">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Technical name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Brazilian - Accounting</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_br</span></code></p></td>
+<td><p>Default <a class="reference internal" href="../fiscal_localizations.html#fiscal-localizations-packages"><span class="std std-ref">fiscal localization package</span></a> - adds accounting
+characteristics for the Brazilian localization, which represent the minimum configuration
+required for a company to operate in Brazil. The module’s installation automatically loads:
+the chart of accounts, taxes, and required fields to properly configure the contact.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Brazil - Accounting Reports</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_br_reports</span></code></p></td>
+<td><p>Adds a simple tax report that helps check the tax amount per tax group in a given period of
+time. Also adds the P&amp;L and BS adapted for the Brazilian market.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Avatax Brazil</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_br_avatax</span></code></p></td>
+<td><p>Add Brazilian tax calculation via Avatax and all necessary fields needed to configure Odoo in
+order to properly use Avatax and send the needed fiscal information to retrieve the correct
+taxes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Avatax for SOs in Brazil</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_br_avatax_sale</span></code></p></td>
+<td><p>Same as the <code class="o_code docutils literal notranslate"><span class="pre">l10n_br_avatax</span></code> module with the extension to the sales order module.</p></td>
+</tr>
+</tbody>
+</table>
+</section><section id="configure-your-company">
+<span id="brazil-company"></span><h3>Configure your company<a class="headerlink" href="#configure-your-company" title="Permalink to this headline">¶</a></h3>
+<p>To configure your company information, go to the <span class="menuselection">Contacts</span> app and search the name
+given to your company.</p>
+<ol class="arabic">
+<li><p>Select the <span class="guilabel">Company</span> option at the top of the page. Then, configure the following
+fields:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Name</span></p></li>
+<li><p><span class="guilabel">Address</span> (add <span class="guilabel">City</span>, <span class="guilabel">State</span>, <span class="guilabel">Zip Code</span>,
+<span class="guilabel">Country</span>)</p></li>
+<li><p>Tax ID (<span class="guilabel">CNPJ</span>)</p></li>
+<li><p><span class="guilabel">IE</span> (State Registration)</p></li>
+<li><p><span class="guilabel">IM</span> (Municipal Registration)</p></li>
+<li><p><span class="guilabel">SUFRAMA code</span> (Superintendence of the Manaus Free Trade Zone - add if applicable)</p></li>
+<li><p><span class="guilabel">Phone</span></p></li>
+<li><p><span class="guilabel">Email</span></p></li>
+</ul>
+<img alt="Company configuration." src="../../../_images/company-configuration.png" />
+</li>
+<li><p>Configure the <span class="guilabel">Fiscal Information</span> within the <span class="guilabel">Sales and Purchase</span> tab:</p>
+<ul class="simple">
+<li><p>Add the <span class="guilabel">Fiscal Position</span> for <a class="reference internal" href="#brazil-fiscal-positions"><span class="std std-ref">Avatax Brazil</span></a>.</p></li>
+<li><p><span class="guilabel">Tax Regime</span> (Federal Tax Regime)</p></li>
+<li><p><span class="guilabel">ICMS Taxpayer Type</span> (indicates ICMS regime, Exempt status, or Non-Taxpayer.)</p></li>
+<li><p><span class="guilabel">Main Activity Sector</span></p></li>
+</ul>
+<img alt="Company fiscal configuration." src="../../../_images/contact-fiscal-configuration.png" />
+</li>
+<li><p>Finally, upload a company logo and save the contact.</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If you are a simplified regime, you need to configure the ICMS rate under
+<span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Taxes ‣ Avatax Brazil</span>.</p>
+</div>
+</section><section id="configure-avatax-integration">
+<span id="brazil-avatax-account"></span><h3>Configure AvaTax integration<a class="headerlink" href="#configure-avatax-integration" title="Permalink to this headline">¶</a></h3>
+<p>Avalara AvaTax is a tax calculation provider that can be integrated in Odoo to automatically compute
+taxes by taking into account the company, contact (customer), product, and transaction information
+to retrieve the correct tax to be used.</p>
+<p>Odoo is a certified partner of Avalara Brazil, which means that Avalara experts reviewed workflows
+covered within the scope of the integration.</p>
+<p>Using this integration requires <a class="reference internal" href="../../essentials/in_app_purchase.html"><span class="doc">In-App-Purchases (IAPs)</span></a> to compute taxes. Every time you compute taxes, an API
+call is made, using credits from your <abbr title="In-app-purchase">IAP</abbr> credits balance.</p>
+</section><section id="credential-configuration">
+<h4>Credential configuration<a class="headerlink" href="#credential-configuration" title="Permalink to this headline">¶</a></h4>
+<p>To activate AvaTax in Odoo, you need to create an account. To do so, go to
+<span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Taxes</span>, and, in the <span class="guilabel">AvaTax
+Brazil</span> section, add the email address you want to use to log in to the AvaTax portal, and click on
+<span class="guilabel">Create account</span>. This email is used as the administrator email address in AvaTax.</p>
+<p>After you create the account from Odoo, you need to go to the Avalara Portal to set up your
+password:</p>
+<ol class="arabic simple">
+<li><p>Access the <a class="reference external" href="https://portal.avalarabrasil.com.br/Login">Avalara portal</a></p></li>
+<li><p>Click on <span class="guilabel">Meu primeiro acesso</span></p></li>
+<li><p>Add the email address you used in Odoo to create the Avalara/Avatax account, and then click
+<span class="guilabel">Solicitar Senha</span></p></li>
+<li><p>You will receive an email with a token and a link to create your password. Click on this link and
+copy-paste the token to allocate your desired password.</p></li>
+</ol>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>If you intend first to try the integration on a testing or sandbox database, using an alternate
+email address is recommended, as you won’t be able to re-use the same email address on your
+production database.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can start using AvaTax in Odoo without creating a password and accessing the Avalara Portal;
+for Odoo, the only requirement to start using the Avalara Tax Computation Engine is to create an
+account from the settings page.</p>
+</div>
+<img alt="Avatax account configuration." src="../../../_images/avatax-account-configuration.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>You can transfer API credentials. Use this only when you have already created an account in
+another Odoo instance and wish to reuse it.</p>
+</div>
+</section><section id="configure-master-data">
+<h3>Configure master data<a class="headerlink" href="#configure-master-data" title="Permalink to this headline">¶</a></h3>
+</section><section id="chart-of-accounts">
+<h4>Chart of accounts<a class="headerlink" href="#chart-of-accounts" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference internal" href="../accounting/get_started/chart_of_accounts.html"><span class="doc">chart of accounts</span></a> is
+installed by default as part of the data set included in the localization module. The accounts are
+mapped automatically in their corresponding taxes, and the default account payable and account
+receivable fields.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The chart of accounts for Brazil is based on the SPED CoA, which gives a baseline of the accounts
+needed in Brazil.</p>
+<p>You can add or delete accounts according to the company’s needs.</p>
+</div>
+</section><section id="taxes">
+<h4>Taxes<a class="headerlink" href="#taxes" title="Permalink to this headline">¶</a></h4>
+<p>Taxes are automatically created when installing the Brazilian localization. Taxes are already
+configured, and some of them are used by Avalara when computing taxes on the sales order or invoice.</p>
+<p>Taxes can be edited, or more taxes can be added. For example, some taxes used for services need to
+be manually added and configured, as the rate may differ depending on the city where you are
+offering the service.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Taxes attached to services are not computed by AvaTax. Only goods taxes are computed.</p>
+</div>
+<p>When configuring a tax used for a service that is included in the final price (when the tax is not
+added or subtracted on top of the product price), set the <span class="guilabel">Tax Computation</span> to
+<span class="guilabel">Percentage of Price Tax Included</span>, and, on the <span class="guilabel">Advanced Options</span> tab, check
+the <span class="guilabel">Included in Price</span> option.</p>
+<p>For more information on configuring taxes to fit your needs better, please go to the <a class="reference internal" href="../accounting/taxes.html"><span class="doc">taxes
+functional documentation</span></a>.</p>
+<img alt="Tax configuration." src="../../../_images/tax-configuration.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Do not delete taxes, as they are used for the AvaTax tax computation. If deleted, Odoo creates
+them again when used in an <abbr title="Sales order">SO</abbr> or invoice and computing taxes with AvaTax, but the account used
+to register the tax needs to be re-configured in the tax’s <span class="guilabel">Definition</span> tab, under the
+<span class="guilabel">Distribution for invoices</span> and <span class="guilabel">Distribution for refunds</span> sections.</p>
+</div>
+</section><section id="products">
+<span id="brazil-products"></span><h4>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h4>
+<p>To use the AvaTax integration on sale orders and invoices, first specify the following information
+on the product:</p>
+<ul class="simple">
+<li><p><span class="guilabel">CEST Code</span> (Code for products subject to ICMS tax substitution)</p></li>
+<li><p><span class="guilabel">Mercosul NCM Code</span> (Mercosur Common Nomenclature Product Code)</p></li>
+<li><p><span class="guilabel">Source of Origin</span> (Indicates the origin of the product, which can be foreign or
+domestic, among other possible options depending on the specific use case)</p></li>
+<li><p><span class="guilabel">SPED Fiscal Product Type</span> (Fiscal product type according to SPED list table)</p></li>
+<li><p><span class="guilabel">Purpose of Use</span> (Specify the intended purpose of use for this product)</p></li>
+</ul>
+<img alt="Product configuration." src="../../../_images/product-configuration.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Odoo automatically creates three products to be used for transportation costs associated with
+sales. These are named <code class="o_code docutils literal notranslate"><span class="pre">Freight</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Insurance</span></code>, and <code class="o_code docutils literal notranslate"><span class="pre">Other</span> <span class="pre">Costs</span></code>. They are already configured, if
+more need to be created, duplicate and use the same configuration (configuration needed:
+<span class="guilabel">Product Type</span> <code class="o_code docutils literal notranslate"><span class="pre">Service</span></code>, <span class="guilabel">Transportation Cost Type</span> <code class="o_code docutils literal notranslate"><span class="pre">Insurance</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Freight</span></code>,
+or <code class="o_code docutils literal notranslate"><span class="pre">Other</span> <span class="pre">Costs</span></code>)</p>
+</div>
+</section><section id="contacts">
+<span id="brazil-contacts"></span><h4>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h4>
+<p>Before using the integration, specify the following information on the contact:</p>
+<ol class="arabic">
+<li><p>General information about the contact:</p>
+<ul class="simple">
+<li><p>Select the <span class="guilabel">Company</span> option for a contact with a tax ID (CNPJ), or check
+<span class="guilabel">Individual</span> for a contact with a CPF.</p></li>
+<li><p><span class="guilabel">Name</span></p></li>
+<li><p><span class="guilabel">Address</span>: <span class="guilabel">Zip Code</span> is a required field to compute taxes properly.</p></li>
+<li><p><span class="guilabel">Tax ID</span> or <span class="guilabel">CPF</span>: Use CPF for individuals and Tax ID (CNPJ) for companies</p></li>
+<li><p><span class="guilabel">IE</span>: state tax identification number</p></li>
+<li><p><span class="guilabel">IM</span>: municipa tax identification number</p></li>
+<li><p><span class="guilabel">SUFRAMA code</span>: SUFRAMA registration number</p></li>
+<li><p><span class="guilabel">Phone</span></p></li>
+<li><p><span class="guilabel">Email</span></p></li>
+</ul>
+<img alt="Contact configuration." src="../../../_images/contact-configuration.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">CPF</span>, <span class="guilabel">IE</span>, <span class="guilabel">IM</span>, and <span class="guilabel">SUFRAMA code</span> fields are
+are hidden until the <span class="guilabel">Country</span> is set to <code class="o_code docutils literal notranslate"><span class="pre">Brazil</span></code>.</p>
+</div>
+</li>
+<li><p>Fiscal information about the contact under the <span class="guilabel">Sales &amp; Purchase</span> tab:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Fiscal Position</span>: add the AvaTax fiscal position to automatically compute taxes on
+sale orders and invoices automatically.</p></li>
+<li><p><span class="guilabel">Tax Regime</span>: federal tax regime</p></li>
+<li><p><span class="guilabel">ICMS Taxpayer Type</span>: taxpayer type determines if the contact is within the ICMS
+regime, if it is exempt, or if it is a non-taxpayer.</p></li>
+<li><p><span class="guilabel">Main Activity Sector</span>: list of main activity sectors of the contact</p></li>
+</ul>
+<img alt="Contact fiscal configuration." src="../../../_images/contact-fiscal-configuration.png" />
+</li>
+</ol>
+</section><section id="fiscal-positions">
+<span id="brazil-fiscal-positions"></span><h4>Fiscal positions<a class="headerlink" href="#fiscal-positions" title="Permalink to this headline">¶</a></h4>
+<p>To compute taxes on sale orders and invoices, it is necessary to have a <span class="guilabel">Fiscal Position</span>
+with the <span class="guilabel">Detect Automatically</span> and the <span class="guilabel">Use AvaTax API</span> options enabled.</p>
+<p>The <span class="guilabel">Fiscal Position</span> can be configured on the contact or selected when creating a sales
+order or an invoice.</p>
+<img alt="Fiscal position configuration" src="../../../_images/fiscal-position-configuration.png" />
+</section><section id="workflows">
+<h2>Workflows<a class="headerlink" href="#workflows" title="Permalink to this headline">¶</a></h2>
+<p>This section provides an overview of the actions that trigger API calls for tax computation.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Please note that each API call incurs a cost. Be mindful of the actions that trigger these calls
+to manage costs effectively.</p>
+</div>
+</section><section id="tax-calculations-on-quotation-sales-orders">
+<h3>Tax calculations on quotation / sales orders<a class="headerlink" href="#tax-calculations-on-quotation-sales-orders" title="Permalink to this headline">¶</a></h3>
+<p>Trigger an API call to calculate taxes on a quotation or sales order automatically with AvaTax in
+any of the following ways:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Quotation confirmation</strong></dt><dd><p>Confirm a quotation into a sales order.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Manual trigger</strong></dt><dd><p>Click on <span class="guilabel">Compute Taxes Using Avatax</span>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Preview</strong></dt><dd><p>Click on the <span class="guilabel">Preview</span> button.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Email a quotation / sales order</strong></dt><dd><p>Send a quotation or sales order to a customer via email.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Online quotation access</strong></dt><dd><p>When a customer accesses the quotation online (via the portal view), the API call is triggered.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section><section id="tax-calculations-on-invoices">
+<h3>Tax calculations on invoices<a class="headerlink" href="#tax-calculations-on-invoices" title="Permalink to this headline">¶</a></h3>
+<p>Trigger an API call to calculate taxes on a customer invoice automatically with AvaTax any of the
+following ways:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Manual trigger</strong></dt><dd><p>Click on <span class="guilabel">Compute Taxes Using AvaTax</span>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Preview</strong></dt><dd><p>Click on the <span class="guilabel">Preview</span> button.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Online invoice access</strong></dt><dd><p>When a customer accesses the invoice online (via the portal view), the API call is triggered.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Fiscal Position</span> must be set to <code class="o_code docutils literal notranslate"><span class="pre">Automatic</span> <span class="pre">Tax</span> <span class="pre">Mapping</span> <span class="pre">(Avalara</span> <span class="pre">Brazil)</span></code> for any
+of these actions to compute taxes automatically.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../accounting/taxes/fiscal_positions.html"><span class="doc">Fiscal positions (tax and account mapping)</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Brazil</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#modules-installation">Modules installation</a></li>
+<li><a class="reference internal" href="#configure-your-company">Configure your company</a></li>
+<li><a class="reference internal" href="#configure-avatax-integration">Configure AvaTax integration</a><ul>
+<li><a class="reference internal" href="#credential-configuration">Credential configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-master-data">Configure master data</a><ul>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a></li>
+<li><a class="reference internal" href="#taxes">Taxes</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#contacts">Contacts</a></li>
+<li><a class="reference internal" href="#fiscal-positions">Fiscal positions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflows">Workflows</a><ul>
+<li><a class="reference internal" href="#tax-calculations-on-quotation-sales-orders">Tax calculations on quotation / sales orders</a></li>
+<li><a class="reference internal" href="#tax-calculations-on-invoices">Tax calculations on invoices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Brazil</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

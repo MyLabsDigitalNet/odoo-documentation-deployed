@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Updating (IoT) &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/iot/config/updating_iot.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/iot/config/updating_iot.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Updating (IoT)</a><ul>
+<li><a class="reference internal" href="#flashing-the-sd-card-on-iot-box">Flashing the SD card on IoT box</a></li>
+<li><a class="reference internal" href="#windows-iot-update">Windows IoT update</a><ul>
+<li><a class="reference internal" href="#uninstalling-windows-iot">Uninstalling Windows IoT</a></li>
+<li><a class="reference internal" href="#download-and-re-install">Download and re-install</a></li>
+<li><a class="reference internal" href="#set-the-destination-and-complete-the-installation">Set the destination and complete the installation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#update-from-the-iot-box-home-page">Update from the IoT box home page</a></li>
+<li><a class="reference internal" href="#handler-driver-update">Handler (driver) update</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/iot/config/updating_iot.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Updating (IoT)</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="updating-iot">
+<h1>Updating (IoT)<a class="headerlink" href="#updating-iot" title="Permalink to this headline">¶</a></h1>
+<p>Due to the complexity of the <abbr title="Internet of Things">IoT</abbr> box, and virtual Windows <abbr title="Internet of Things">IoT</abbr> box, the term ‘updating’ can mean several different things.</p>
+<p>The actual drivers can be updated, the core code on the <abbr title="Internet of Things">IoT</abbr> box can be
+updated, or a new image can be flashed (using a physical <abbr title="Internet of Things">IoT</abbr> box).</p>
+<p>This document explores the various ways to update <abbr title="Internet of Things">IoT</abbr> boxes to ensure
+smooth operation of <abbr title="Internet of Things">IoT</abbr> box processes and devices.</p>
+</section><section id="flashing-the-sd-card-on-iot-box">
+<span id="iot-config-flash"></span><h2>Flashing the SD card on IoT box<a class="headerlink" href="#flashing-the-sd-card-on-iot-box" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>This update does <strong>not</strong> apply to the Windows <abbr title="Internet of Things">IoT</abbr> box (Odoo 16 and
+higher).</p>
+<p>To update the Windows <abbr title="Internet of Things">IoT</abbr>, first, uninstall the previous version of
+the Odoo Windows program, and then reinstall it using the most up-to-date installation package.</p>
+<p>To begin the installation, navigate to the Odoo 16 (or higher) installation package for
+Enterprise or Community - Windows edition, at <a class="reference external" href="https://odoo.com/download">Odoo’s download page</a>.</p>
+</div>
+<p>In some circumstances, the <abbr title="Internet of Things">IoT</abbr> box’s micro SD Card may need to be
+re-flashed with <em>Etcher</em> software to benefit from Odoo’s latest <abbr title="Internet of Things">IoT</abbr>
+image update. This means the Odoo <abbr title="Internet of Things">IoT</abbr> box software may need to be
+updated in instances of a new <abbr title="Internet of Things">IoT</abbr> box, or when a handler’s update, or
+an update from the <abbr title="Internet of Things">IoT</abbr> box home page, does not resolve issues.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>It is often necessary to re-flash the <abbr title="Internet of Things">IoT</abbr> box’s image after
+upgrading the Odoo database to a new version.</p></li>
+<li><p>A computer with a micro SD card reader/adapter is <strong>required</strong> to re-flash the micro SD card.</p></li>
+</ul>
+</div>
+<p>First, begin by downloading <a class="reference external" href="https://www.balena.io/etcher#download-etcher">Etcher</a>. It is a free,
+open-source utility, used for burning image files onto drives. After the download completes, install
+and launch the program on the computer.</p>
+<p>Then, download the latest <abbr title="Internet of Things">IoT</abbr> image from <a class="reference external" href="http://nightly.odoo.com/master/iotbox">nightly</a>, which will be labeled as <code class="o_code docutils literal notranslate"><span class="pre">iotbox-latest.zip</span></code>. This
+particular image is compatible with <em>all</em> supported versions of Odoo.</p>
+<p>After this step is complete, insert the <abbr title="Internet of Things">IoT</abbr> box’s micro SD card into
+the computer or reader. Open <em>Etcher</em>, and select <span class="guilabel">Flash from file</span>, then find and select
+the <code class="o_code docutils literal notranslate"><span class="pre">iotbox-latest.zip</span></code> image and extract it. Next, select the drive the image should be burned to.</p>
+<p>Lastly, click <span class="guilabel">Flash</span>, and wait for the process to finish.</p>
+<img alt="Balena's Etcher software dashboard." class="align-center" src="../../../../_images/etcher-app.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Balena’s <em>Etcher</em> software also allows for the administrator to flash the <abbr title="Secure Digital">SD</abbr> card from a <abbr title="Uniform Resource Locator">URL</abbr>. To flash from a <abbr title="Uniform Resource Locator">URL</abbr>, simply click <span class="guilabel">Flash from URL</span>, instead of <span class="guilabel">Flash from
+file</span>.</p>
+<p>Then, enter the following: <code class="o_code docutils literal notranslate"><span class="pre">http://nightly.odoo.com/master/iotbox/iotbox-latest.zip</span></code>.</p>
+<img alt="A view of Balena's Etcher software, with the flash from URL option highlighted." class="align-center" src="../../../../_images/url-flash.png" />
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>An alternative software for flashing the micro SD card is <a class="reference external" href="https://www.raspberrypi.com/software/">Raspberry Pi Imager</a>.</p>
+</div>
+</section><section id="windows-iot-update">
+<h2>Windows IoT update<a class="headerlink" href="#windows-iot-update" title="Permalink to this headline">¶</a></h2>
+<p>Windows virtual <abbr title="Internet of Things">IoT</abbr> box may occasionally need an update to work
+properly.</p>
+<p>The following processes cover the <a class="reference internal" href="#iot-config-uninstall-windows-iot"><span class="std std-ref">uninstallation</span></a> and
+<a class="reference internal" href="#iot-config-re-install-windows-iot"><span class="std std-ref">re-installation</span></a> of the Windows virtual <abbr title="Internet of Things">IoT</abbr> box.</p>
+</section><section id="uninstalling-windows-iot">
+<span id="iot-config-uninstall-windows-iot"></span><h3>Uninstalling Windows IoT<a class="headerlink" href="#uninstalling-windows-iot" title="Permalink to this headline">¶</a></h3>
+<p>Prior to upgrading the Windows virtual <abbr title="Internet of Things">IoT</abbr> box, the previous version
+should be uninstalled first.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Before uninstalling a previous version of the Windows virtual <abbr title="Internet of Things">IoT</abbr>
+box, ensure that there is a newer version of Windows virtual <abbr title="Internet of Things">IoT</abbr> box
+available, compared to the version currently installed. To do so, navigate to the <a class="reference external" href="https://nightly.odoo.com/">Odoo Nightly
+builds</a> page.</p>
+<p>On the <span class="guilabel">Odoo Nightly builds</span> page, navigate to <span class="menuselection">Builds (stable version)
+‣ windows/</span> to view the date next to the <code class="file o_code docutils literal notranslate"><span class="pre">odoo_(version).latest.exe</span></code> file; where
+<em>(version)</em> is equal to the version of Odoo (e.g. 16.0, 17.0). The latest version of the Windows
+virtual <abbr title="Internet of Things">IoT</abbr> box can be downloaded by selecting this file, or it is
+always available at the <a class="reference external" href="https://odoo.com/download/">Odoo Download</a> page.</p>
+</div>
+<p>Uninstalling the Windows virtual <abbr title="Internet of Things">IoT</abbr> box is done through the Windows
+program manager.</p>
+<p>On any version of Windows, search for <code class="o_code docutils literal notranslate"><span class="pre">program</span></code> to open the <span class="menuselection">Programs ‣ Programs
+and Features</span> section of the <span class="guilabel">Control Panel</span>. Then, select <span class="guilabel">Uninstall or change
+a program</span>. Next, search for <code class="o_code docutils literal notranslate"><span class="pre">Odoo</span></code>, and click the <span class="guilabel">… (three dot)</span> menu on the
+<span class="guilabel">Odoo.exe</span> program to uninstall.</p>
+<p>Confirm the uninstallation, and follow the steps to uninstall through the Odoo uninstall wizard.</p>
+</section><section id="download-and-re-install">
+<span id="iot-config-re-install-windows-iot"></span><h3>Download and re-install<a class="headerlink" href="#download-and-re-install" title="Permalink to this headline">¶</a></h3>
+<p>The latest version of the Windows virtual <abbr title="Internet of Things">IoT</abbr> box can be downloaded
+from the <a class="reference external" href="https://nightly.odoo.com/">Odoo Nightly builds</a> page or it is always available at the
+<a class="reference external" href="https://odoo.com/download/">Odoo Download</a> page.</p>
+<p>To download from the <span class="guilabel">Odoo Nightly builds</span> page, navigate to <span class="menuselection">Builds
+(stable version) ‣ windows/</span> to and select the <code class="file o_code docutils literal notranslate"><span class="pre">odoo_(version).latest.exe</span></code> file; where
+<em>(version)</em> is equal to the version of Odoo (e.g. 16.0, 17.0).</p>
+<p>To download from the <span class="guilabel">Odoo Download</span> page, find the section for the version of Odoo (e.g.
+16.0, 17.0), and select the <span class="guilabel">Download</span> button for <span class="guilabel">Windows</span>.</p>
+<p>Next, install and setup the downloaded Odoo <code class="file o_code docutils literal notranslate"><span class="pre">.exe</span></code> file. After the instructions screen, click
+<span class="guilabel">Next</span> to start the installation, and agree to the <abbr title="Terms of Service">TOS</abbr>.</p>
+<p>During the next step of the re-installation, select <span class="guilabel">Odoo IoT</span> from the <span class="guilabel">Select
+the type of install</span> drop-down menu.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>For reference, the following should be installed:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Odoo server</span></p></li>
+<li><p><span class="guilabel">Odoo IoT</span></p></li>
+<li><p><span class="guilabel">Nginx WebServer</span></p></li>
+<li><p><span class="guilabel">Ghostscript interpreter</span></p></li>
+</ul>
+</div>
+<p>Ensure there is enough space on the computer for the installation, then click <span class="guilabel">Next</span>.</p>
+</section><section id="set-the-destination-and-complete-the-installation">
+<h3>Set the destination and complete the installation<a class="headerlink" href="#set-the-destination-and-complete-the-installation" title="Permalink to this headline">¶</a></h3>
+<p>To complete the re-installation, select the <span class="guilabel">Destination Folder</span>, and click
+<span class="guilabel">Install</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Choosing <code class="o_code docutils literal notranslate"><span class="pre">C:\odoo</span></code> as the install location allows for the <em>Nginx</em> server to start. Odoo’s
+Windows virtual <abbr title="Internet of Things">IoT</abbr> box software should <strong>not</strong> be installed inside
+any of the Windows user’s directories. Doing so does <strong>not</strong> allow for <em>Nginx</em> to initialize.</p>
+</div>
+<p>The installation may take a few minutes. When complete, click <span class="guilabel">Next</span> to continue.</p>
+<p>Then, ensure that the <span class="guilabel">Start Odoo</span> box is checked, and click <span class="guilabel">Finish</span>. After
+installation, the Odoo server runs, and automatically opens <code class="o_code docutils literal notranslate"><span class="pre">http://localhost:8069</span></code> on a web
+browser. The webpage should display the <abbr title="Internet of Things">IoT</abbr> box homepage.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>A <a class="reference internal" href="windows_iot.html#iot-restart-windows-iot"><span class="std std-ref">restart</span></a> of the Windows IoT program may be necessary if the web
+browser does not display anything.</p>
+</div>
+</section><section id="update-from-the-iot-box-home-page">
+<span id="iot-config-homepage-upgrade"></span><h2>Update from the IoT box home page<a class="headerlink" href="#update-from-the-iot-box-home-page" title="Permalink to this headline">¶</a></h2>
+<p>In the background, the <abbr title="Internet of Things">IoT</abbr> box uses a version of Odoo code to run and
+connect to the Odoo database. This code may need to be updated in order for the <abbr title="Internet of Things">IoT</abbr> box to operate effectively. This operation should be completed on a routine basis, to
+ensure the <abbr title="Internet of Things">IoT</abbr> system, and its processes, stay up-to-date.</p>
+<p>Go to the <abbr title="Internet of Things">IoT</abbr> box home page by navigating to <span class="menuselection">IoT app
+‣ IoT Boxes</span>, and clicking on the <span class="guilabel">IP address</span> of the <abbr title="Internet of Things">IoT</abbr>
+box. Then, click on <span class="guilabel">Update</span> (next to the version number).</p>
+<p>If a new version of the <abbr title="Internet of Things">IoT</abbr> box image is available, an
+<span class="guilabel">Upgrade to _xx.xx_</span> button appears at the bottom of the page. Click this button to
+upgrade the unit, at which point the <abbr title="Internet of Things">IoT</abbr> box flashes itself to the
+newer version. All of the previous configurations are then saved.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>This process can take more than 30 minutes. Do <strong>not</strong> turn off, or unplug, the <abbr title="Internet of Things">IoT</abbr> box, as it would leave it in an inconsistent state. This means the
+<abbr title="Internet of Things">IoT</abbr> box needs to be <a class="reference internal" href="#iot-config-flash"><span class="std std-ref">re-flashed</span></a> with a new
+image.</p>
+</div>
+<img alt="IoT box software upgrade in the IoT Box Home Page." class="align-center" src="../../../../_images/flash-upgrade.png" />
+</section><section id="handler-driver-update">
+<h2>Handler (driver) update<a class="headerlink" href="#handler-driver-update" title="Permalink to this headline">¶</a></h2>
+<p>There may be some instances where drivers or interfaces need to be updated for individual devices
+(e.g. scales, measurement tools, etc.). The IoT handler’s (drivers and interfaces) code can be
+modified by syncing them with the configured server handler’s code.</p>
+<p>This can be helpful in instances where <abbr title="Internet of Things">IoT</abbr> devices (e.g. scales,
+measurement tools, etc.) are not working properly with the <abbr title="Internet of Things">IoT</abbr> box.</p>
+<p>For both the Windows <abbr title="Internet of Things">IoT</abbr> (Odoo 16 and higher) and physical <abbr title="Internet of Things">IoT</abbr> box, this process can be performed manually from the <abbr title="Internet of Things">IoT</abbr> box home page. Go to the <abbr title="Internet of Things">IoT</abbr> box home page by navigating to
+<span class="menuselection">IoT app ‣ IoT Boxes</span>, and clicking on the <span class="guilabel">IP address</span> of the <abbr title="Internet of Things">IoT</abbr> box.</p>
+<p>Next, click <span class="guilabel">Handlers list</span>, and then select <span class="guilabel">Load Handlers</span> at the bottom of
+the page.</p>
+<img alt="Handlers list on an IoT box with the load handlers button highlighted." class="align-center" src="../../../../_images/load-handlers.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Handler’s code is fetched from the configured server, and it needs to be up-to-date to have the
+latest fixes and patches.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>A handler update is also performed automatically each time the <abbr title="Internet of Things">IoT</abbr>
+box is restarted. The only exception to this process is if the <em>Automatic drivers update</em> is
+unchecked in the form view of the <abbr title="Internet of Things">IoT</abbr> box on the Odoo server. This
+setting can be reached by going to <span class="menuselection">IoT App ‣ Select the IoT box ‣ Automatic
+drivers update</span>.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Updating (IoT)</a><ul>
+<li><a class="reference internal" href="#flashing-the-sd-card-on-iot-box">Flashing the SD card on IoT box</a></li>
+<li><a class="reference internal" href="#windows-iot-update">Windows IoT update</a><ul>
+<li><a class="reference internal" href="#uninstalling-windows-iot">Uninstalling Windows IoT</a></li>
+<li><a class="reference internal" href="#download-and-re-install">Download and re-install</a></li>
+<li><a class="reference internal" href="#set-the-destination-and-complete-the-installation">Set the destination and complete the installation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#update-from-the-iot-box-home-page">Update from the IoT box home page</a></li>
+<li><a class="reference internal" href="#handler-driver-update">Handler (driver) update</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Updating (IoT)</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

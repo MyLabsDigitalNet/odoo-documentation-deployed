@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outlook Calendar synchronization &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/productivity/calendar/outlook.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/productivity/calendar/outlook.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Outlook Calendar synchronization</a><ul>
+<li><a class="reference internal" href="#microsoft-azure-setup">Microsoft Azure setup</a><ul>
+<li><a class="reference internal" href="#register-application">Register application</a></li>
+<li><a class="reference internal" href="#create-client-secret">Create client secret</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration-in-odoo">Configuration in Odoo</a></li>
+<li><a class="reference internal" href="#sync-with-outlook">Sync with Outlook</a><ul>
+<li><a class="reference internal" href="#sync-odoo-calendar-and-outlook">Sync Odoo Calendar and Outlook</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshoot-sync">Troubleshoot sync</a><ul>
+<li><a class="reference internal" href="#reset-options">Reset options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/productivity/calendar/outlook.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Outlook Calendar synchronization</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="outlook-calendar-synchronization">
+<h1>Outlook Calendar synchronization<a class="headerlink" href="#outlook-calendar-synchronization" title="Permalink to this headline">¶</a></h1>
+<p>Synchronizing a user’s <em>Outlook Calendar</em> with Odoo is useful for keeping track of tasks and
+appointments across all related applications.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../general/users/azure.html"><span class="doc">Microsoft Azure sign-in authentication</span></a></p></li>
+<li><p><a class="reference internal" href="../../general/email_communication/azure_oauth.html"><span class="doc">Connect Microsoft Outlook 365 to Odoo using Azure OAuth</span></a></p></li>
+</ul>
+</div>
+</section><section id="microsoft-azure-setup">
+<h2>Microsoft Azure setup<a class="headerlink" href="#microsoft-azure-setup" title="Permalink to this headline">¶</a></h2>
+<p>To sync the <em>Outlook Calendar</em> with Odoo’s <em>Calendar</em>, a Microsoft <em>Azure</em> account is required.
+Creating an account is free for users who have never tried, or paid for, <em>Azure</em>. For more
+information, view the account options on the <a class="reference external" href="https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F">Azure website</a>.</p>
+<p>Refer to <a class="reference external" href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant">Microsoft’s documentation</a> on how to set up a Microsoft <em>Entra ID</em> (formally called
+Microsoft <em>Azure Active Directory (Azure AD)</em>). This is an API console to manage and register
+Microsoft applications.</p>
+<p>Existing Microsoft <em>Entra ID</em> users should log in at the <a class="reference external" href="https://portal.azure.com/#home">Microsoft Azure developer portal</a>. Next, select <span class="guilabel">View</span> under the section labeled
+<span class="guilabel">Manage Microsoft Entra ID</span>.</p>
+</section><section id="register-application">
+<h3>Register application<a class="headerlink" href="#register-application" title="Permalink to this headline">¶</a></h3>
+<p>After logging in with the Microsoft <em>Entra ID</em>, <a class="reference external" href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app">register an application</a>.</p>
+<p>To create an application, click <span class="guilabel">+ Add</span> in the top menu. From the resulting drop-down
+menu, select <span class="guilabel">App Registration</span>.</p>
+<img alt="Microsoft Azure management page with + Add and App Registration menu highlighted." class="align-center" src="../../../_images/app-register.png" />
+<p>Enter a unique <span class="guilabel">Name</span> for the connected application.</p>
+<p>Choosing the appropriate <span class="guilabel">Supported account type</span> is essential, or else the connected
+application will not work. Users who wish to connect their <em>Outlook Calendar</em> to Odoo should select
+the <span class="guilabel">Accounts in any organizational directory (Any Microsoft Entra ID directory -
+Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)</span> option for <span class="guilabel">Supported
+account types</span>.</p>
+<p>When configuring the <span class="guilabel">Redirect URI</span>, choose the <span class="guilabel">Web</span> option from the first
+drop-down menu. Then, enter the Odoo database URI (URL) followed by
+<code class="o_code docutils literal notranslate"><span class="pre">/microsoft_account/authentication</span></code>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Enter <code class="o_code docutils literal notranslate"><span class="pre">https://yourdbname.odoo.com/microsoft_account/authentication</span></code> for the <span class="guilabel">Redirect
+URI</span>. Replace <code class="o_code docutils literal notranslate"><span class="pre">yourdbname.odoo.com</span></code> with the <abbr title="Uniform Resource Locator">URL</abbr>.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Ensure the database’s <abbr title="Uniform Resource Locator">URL</abbr> (domain) used in the URI is the
+exact same domain as the one configured on the <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> system parameter.</p>
+<p>Access the <code class="o_code docutils literal notranslate"><span class="pre">web.base.url</span></code> by activating <a class="reference internal" href="../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, and navigating to
+<span class="menuselection">Settings app ‣ Technical header menu ‣ Parameters section ‣ System
+Parameters</span>. Then, select it from the <span class="guilabel">Key</span> list on the <span class="guilabel">System Parameters</span>
+page.</p>
+</div>
+<img alt="The &quot;Supported account type&quot; and &quot;Redirect URI&quot; settings in the Microsoft Entra ID portal." class="align-center" src="../../../_images/azure-register-application.png" />
+<p>For more information on the restrictions and limitations of URIs, check Microsoft’s <a class="reference external" href="https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url">Redirect URI
+(reply URL) restrictions and limitations</a> page.</p>
+<p>Finally, on the application registration page, click <span class="guilabel">Register</span> button to complete the
+application registration. The <span class="guilabel">Application (client) ID</span> is produced. Copy this value, as
+it is needed later, in the <a class="reference internal" href="#outlook-calendar-odoo-setup"><span class="std std-ref">Configuration in Odoo</span></a>.</p>
+<img alt="Application client ID highlighted in the essentials section of the newly created application." class="align-center" src="../../../_images/app-client-id.png" />
+</section><section id="create-client-secret">
+<h3>Create client secret<a class="headerlink" href="#create-client-secret" title="Permalink to this headline">¶</a></h3>
+<p>The second credential needed to complete the synchronization of the Microsoft <em>Outlook Calendar</em> is
+the <em>Client Secret</em>. The user <strong>must</strong> add a client secret, as this allows Odoo to authenticate
+itself, requiring no interaction from the user’s side. <em>Certificates</em> are optional.</p>
+<p>To add a client secret, click <span class="menuselection">Certificates &amp; secrets</span> in the left menu. Then click
+<span class="guilabel">+ New client secret</span> to create the client secret.</p>
+<img alt="New client secret page with certificates and secrets menu and new client secret option highlighted." class="align-center" src="../../../_images/client-secret.png" />
+<p>Next, type a <span class="guilabel">Description</span>, and select when the client secret <span class="guilabel">Expires</span>.
+Available options include: <span class="guilabel">90 days (3 months)</span>, <span class="guilabel">365 days (12 months)</span>,
+<span class="guilabel">545 days (18 months)</span>, <span class="guilabel">730 days (24 months)</span> or <span class="guilabel">Custom</span>. The
+<span class="guilabel">Custom</span> option allows the administrator to set a <span class="guilabel">Start</span> and <span class="guilabel">End</span>
+date.</p>
+<p>Finally, click <span class="guilabel">Add</span> to <span class="guilabel">Add a client secret</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Since resetting the synchronization can be tricky, Odoo recommends setting the maximum allowed
+expiration date for the client secret (24 months or custom), so there is no need to
+re-synchronize soon.</p>
+</div>
+<p>Copy the <span class="guilabel">Value</span> for use in the next section.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Client secret values cannot be viewed, except immediately after creation. Be sure to save the
+secret when created <em>before</em> leaving the page.</p>
+</div>
+</section><section id="configuration-in-odoo">
+<span id="outlook-calendar-odoo-setup"></span><h2>Configuration in Odoo<a class="headerlink" href="#configuration-in-odoo" title="Permalink to this headline">¶</a></h2>
+<p>In the Odoo database, go to <span class="menuselection">Settings app ‣ Integrations section</span>, and tick the
+checkbox beside the <span class="guilabel">Outlook Calendar</span> setting. Remember to click <span class="guilabel">Save</span> to
+implement the changes.</p>
+<img alt="The &quot;Outlook Calendar&quot; setting activated in Odoo." class="align-center" src="../../../_images/outlook-calendar-setting.png" />
+<p>From the Microsoft <em>Azure</em> portal, under the <span class="guilabel">Overview</span> section of the application, copy
+the <span class="guilabel">Application (Client) ID</span>, if it has not already been copied, and paste it into the
+<span class="guilabel">Client ID</span> field in Odoo.</p>
+<img alt="The &quot;Client ID&quot; in the Microsoft Azure portal." class="align-center" src="../../../_images/client-id1.png" />
+<p>Copy the previously-acquired <span class="guilabel">Value</span> (Client Secret Value), and paste it into the
+<span class="guilabel">Client Secret</span> field in Odoo.</p>
+<img alt="The &quot;Client Secret&quot; token to be copied from Microsoft to Odoo." class="align-center" src="../../../_images/client-secret-value.png" />
+<p>Finally, on the Odoo <span class="menuselection">Settings ‣ General Settings</span> page, click <span class="guilabel">Save</span>.</p>
+</section><section id="sync-with-outlook">
+<span id="outlook-sync"></span><h2>Sync with Outlook<a class="headerlink" href="#sync-with-outlook" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>Odoo highly recommends testing the Outlook calendar synchronization on a test database and a
+test email address (that is not used for any other purpose) before attempting to sync the
+desired Outlook Calendar with the user’s production database.</p>
+<p>If the user has any past, present, or future events on their Odoo calendar before syncing their
+Outlook calendar, Outlook will treat the events pulled from Odoo’s calendar during the sync as
+new events, causing an email notification to be sent from Outlook to all the event attendees.</p>
+<p>To avoid unwanted emails being sent to all past, present, and future event attendees, the user
+must add the events from the Odoo calendar to the Outlook calendar before the first ever sync,
+delete the events from Odoo, and then start the sync.</p>
+<p>Even after synchronizing the Odoo Calendar with the Outlook calendar, Outlook will still send a
+notification to all event participants every time an event is edited (created, deleted,
+unarchived, or event date/time changed), with no exceptions. This is a limitation that cannot be
+fixed from Odoo’s side.</p>
+<p>In summary, once a user synchronizes their Outlook calendar with the Odoo calendar:</p>
+<ul class="simple">
+<li><p>Creating an event in Odoo causes Outlook to send an invitation to all event attendees.</p></li>
+<li><p>Deleting an event in Odoo causes Outlook to send a cancellation to all event attendees.</p></li>
+<li><p>Unarchiving an event in Odoo causes Outlook to send an invitation to all event attendees.</p></li>
+<li><p>Archiving an event in Odoo causes Outlook to send a cancellation to all event attendees.</p></li>
+<li><p>Adding a contact to an event causes Outlook to send an invitation to all event attendees.</p></li>
+<li><p>Removing a contact from an event causes Outlook to send a cancellation to all event attendees.</p></li>
+</ul>
+</div>
+</section><section id="sync-odoo-calendar-and-outlook">
+<h3>Sync Odoo Calendar and Outlook<a class="headerlink" href="#sync-odoo-calendar-and-outlook" title="Permalink to this headline">¶</a></h3>
+<p>In the Odoo database, open to the <em>Calendar</em> module, and click the <span class="guilabel">Outlook</span> sync button
+on the right-side of the page, beneath the monthly calendar.</p>
+<img alt="The &quot;Outlook&quot; sync button in Odoo Calendar." class="align-center" src="../../../_images/outlook-sync-button.png" />
+<p>The synchronization is a two-way process, meaning that events are reconciled in both accounts
+(<em>Outlook</em> and Odoo). The page redirects to a Microsoft login page, and the user is asked to log in
+to their account, if they are not already. Finally, grant the required permissions by clicking
+<span class="guilabel">Accept</span>.</p>
+<img alt="Authentication process on Microsoft Outlook OAuth page." class="align-center" src="../../../_images/accept-terms.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>All users that want to use the synchronization simply need to <a class="reference internal" href="#outlook-sync"><span class="std std-ref">sync their calendar with
+Outlook</span></a>. The configuration of Microsoft’s <em>Azure</em> account is only done once, as
+Microsoft <em>Entra ID</em> tenants’ client IDs and client secrets are unique, and help the user manage
+a specific instance of Microsoft cloud services for internal and external users.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../general/integrations/mail_plugins/outlook.html"><span class="doc">Outlook Plugin</span></a></p></li>
+<li><p><a class="reference internal" href="google.html"><span class="doc">Synchronize Google calendar with Odoo</span></a></p></li>
+</ul>
+</div>
+</section><section id="troubleshoot-sync">
+<h2>Troubleshoot sync<a class="headerlink" href="#troubleshoot-sync" title="Permalink to this headline">¶</a></h2>
+<p>There may be times when the <em>Microsoft Outlook Calendar</em> account does not sync correctly with Odoo.
+Sync issues can be seen in the database logs.</p>
+<p>In these cases, the account needs troubleshooting. A reset can be performed using the
+<span class="guilabel">Reset Account</span> button, which can be accessed by navigating to <span class="menuselection">Settings
+app ‣ Manage Users</span>. Then, select the user to modify the calendar, and click on the
+<span class="guilabel">Calendar</span> tab.</p>
+<img alt="Reset buttons highlighted on the calendar tab of the user." class="align-center" src="../../../_images/outlook-reset.png" />
+<p>Next, click <span class="guilabel">Reset Account</span> under the correct calendar.</p>
+</section><section id="reset-options">
+<h3>Reset options<a class="headerlink" href="#reset-options" title="Permalink to this headline">¶</a></h3>
+<p>The following reset options are available for troubleshooting <em>Microsoft Outlook Calendar</em> sync with
+Odoo:</p>
+<img alt="Outlook calendar reset options in Odoo." class="align-center" src="../../../_images/reset-calendar1.png" />
+<p><span class="guilabel">User’s Existing Events</span>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="guilabel">Leave them untouched</span>: no changes to the events.</p></li>
+<li><p><span class="guilabel">Delete from the current Microsoft Calendar account</span>: delete the events from <em>Microsoft
+Outlook Calendar</em>.</p></li>
+<li><p><span class="guilabel">Delete from Odoo</span>: delete the events from the Odoo calendar.</p></li>
+<li><p><span class="guilabel">Delete from both</span>: delete the events from both <em>Microsoft Outlook Calendar</em> and Odoo
+calendar.</p></li>
+</ul>
+</div></blockquote>
+<p><span class="guilabel">Next Synchronization</span>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="guilabel">Synchronize only new events</span>: sync new events on <em>Microsoft Outlook Calendar</em> and/or
+Odoo calendar.</p></li>
+<li><p><span class="guilabel">Synchronize all existing events</span>: sync all events on <em>Microsoft Outlook Calendar</em>
+and/or Odoo calendar.</p></li>
+</ul>
+</div></blockquote>
+<p>Click <span class="guilabel">Confirm</span> after making the selection to modify the user’s events and the calendar
+synchronization.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Outlook Calendar synchronization</a><ul>
+<li><a class="reference internal" href="#microsoft-azure-setup">Microsoft Azure setup</a><ul>
+<li><a class="reference internal" href="#register-application">Register application</a></li>
+<li><a class="reference internal" href="#create-client-secret">Create client secret</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration-in-odoo">Configuration in Odoo</a></li>
+<li><a class="reference internal" href="#sync-with-outlook">Sync with Outlook</a><ul>
+<li><a class="reference internal" href="#sync-odoo-calendar-and-outlook">Sync Odoo Calendar and Outlook</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshoot-sync">Troubleshoot sync</a><ul>
+<li><a class="reference internal" href="#reset-options">Reset options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Outlook Calendar synchronization</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

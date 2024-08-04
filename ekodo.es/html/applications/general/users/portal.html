@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portal access &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/users/portal.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/users/portal.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Portal access</a><ul>
+<li><a class="reference internal" href="#provide-portal-access-to-customers">Provide portal access to customers</a></li>
+<li><a class="reference internal" href="#change-portal-username">Change portal username</a></li>
+<li><a class="reference internal" href="#customer-portal-changes">Customer portal changes</a><ul>
+<li><a class="reference internal" href="#change-customer-info">Change customer info</a></li>
+<li><a class="reference internal" href="#change-password">Change password</a></li>
+<li><a class="reference internal" href="#add-two-factor-authentication">Add two-factor authentication</a></li>
+<li><a class="reference internal" href="#change-payment-info">Change payment info</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/users/portal.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Portal access</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="portal-access">
+<h1>Portal access<a class="headerlink" href="#portal-access" title="Permalink to this headline">¶</a></h1>
+<p id="portal-main">Portal access is given to users who need the ability to view certain documents or information within
+an Odoo database.</p>
+<p>Some common use cases for providing portal access include allowing customers to read/view any or all
+of the following in Odoo:</p>
+<ul class="simple">
+<li><p>leads/opportunities</p></li>
+<li><p>quotations/sales orders</p></li>
+<li><p>purchase orders</p></li>
+<li><p>invoices &amp; bills</p></li>
+<li><p>projects</p></li>
+<li><p>tasks</p></li>
+<li><p>timesheets</p></li>
+<li><p>tickets</p></li>
+<li><p>signatures</p></li>
+<li><p>subscriptions</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Portal users only have read/view access, and will not be able to edit any documents in the
+database.</p>
+</div>
+</section><section id="provide-portal-access-to-customers">
+<h2>Provide portal access to customers<a class="headerlink" href="#provide-portal-access-to-customers" title="Permalink to this headline">¶</a></h2>
+<p>From the main Odoo dashboard, select the <span class="guilabel">Contacts</span> application. If the contact is not yet
+created in the database, click on the <span class="guilabel">Create</span> button, enter the details of the contact,
+and then click <span class="guilabel">Save</span>. Otherwise, choose an existing contact, and then click on the
+<span class="guilabel">Action</span> drop-down menu located at the top-center of the interface.</p>
+<img alt="Use the Contacts application to give portal access to users." class="align-center" src="../../../_images/grant-portal-access.png" />
+<p>Then select <span class="guilabel">Grant portal access</span>. A pop-up window appears, listing three fields:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Contact</span>: the recorded name of the contact in the Odoo database</p></li>
+<li><p><span class="guilabel">Email</span>: the contact’s email address that they will use to log into the portal</p></li>
+<li><p><span class="guilabel">In Portal</span>: whether or not the user has portal access</p></li>
+</ul>
+<p>To grant portal access, first enter the contact’s <span class="guilabel">Email</span> they will use to log into the
+portal. Then, check the box under the <span class="guilabel">In Portal</span> column. Optionally, add text to the
+invitation message the contact will receive. Then click <span class="guilabel">Apply</span> to finish.</p>
+<img alt="An email address and corresponding checkbox for the contact need to be filled in before sending a portal invitation." class="align-center" src="../../../_images/add-contact-to-portal.png" />
+<p>An email will be sent to the specified email address, indicating that the contact is now a portal
+user for that Odoo database.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To grant portal access to multiple users at once, navigate to a company contact, then click
+<span class="menuselection">Action ‣ Grant portal access</span> to view a list of all of the company’s related
+contacts. Check the box under the <span class="guilabel">In Portal</span> column for all the contacts that need
+portal access, then click <span class="guilabel">Apply</span>.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>At any time, portal access can be revoked by navigating to the contact, clicking
+<span class="menuselection">Action ‣ Grant portal access</span>, and then unselecting the checkbox under the
+<span class="guilabel">In Portal</span> column and clicking <span class="guilabel">Apply</span>.</p>
+</div>
+</section><section id="change-portal-username">
+<span id="portal-login"></span><h2>Change portal username<a class="headerlink" href="#change-portal-username" title="Permalink to this headline">¶</a></h2>
+<p>There may be times when a portal user wants to change their user login. This can be done by any user
+in the database with administrator access rights. The following process outlines the necessary steps
+to change the portal user login.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="access_rights.html"><span class="doc">See the documentation on setting access rights</span></a>.</p>
+</div>
+<p>First, navigate to <span class="menuselection">Settings app ‣ Users</span>. Then, under <span class="guilabel">Filters</span>, select
+<span class="guilabel">Portal Users</span>, or select <span class="guilabel">Add Custom Filter</span> and set the following
+configuration <span class="guilabel">Groups</span> &gt; <span class="guilabel">contains</span> &gt; <code class="o_code docutils literal notranslate"><span class="pre">portal</span></code>. After making this selection,
+search for (and open) the portal user that needs to be edited.</p>
+<p>Next, click <span class="guilabel">Edit</span> (if necessary), click into the <span class="guilabel">Email Address</span> field, and
+proceed to make any necessary changes to this field. The <span class="guilabel">Email Address</span> field is used to
+log into the Odoo portal.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Changing the <span class="guilabel">Email Address</span> (or login) only changes the <em>username</em> on the customer’s
+portal login.</p>
+<p>In order to change the contact email, this change needs to take place on the contact template in
+the <em>Contacts</em> app. Alternatively, the customer can change their email directly from the portal,
+but the login <strong>cannot</strong> be changed. <a class="reference internal" href="#portal-custinfo"><span class="std std-ref">See change customer info</span></a>.</p>
+</div>
+</section><section id="customer-portal-changes">
+<h2>Customer portal changes<a class="headerlink" href="#customer-portal-changes" title="Permalink to this headline">¶</a></h2>
+<p>There may be times when the customer would like to make changes to their contact information,
+password/security, or payment information attached to the portal account. This can be performed by
+the customer from their portal. The following process is how a customer can change their contact
+information.</p>
+</section><section id="change-customer-info">
+<span id="portal-custinfo"></span><h3>Change customer info<a class="headerlink" href="#change-customer-info" title="Permalink to this headline">¶</a></h3>
+<p>First enter the username and password (login) into the database login page to access the portal user
+account. A portal dashboard will appear upon successfully logging in. Portal documents from the
+various installed Odoo applications will appear with the number count of each.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="#portal-main"><span class="std std-ref">Portal access documentation</span></a>.</p>
+</div>
+<p>Next, navigate to the upper-right corner of the portal, and click the <span class="guilabel">Edit</span> button, next
+to the <span class="guilabel">Details</span> section. Then, change the pertinent information, and click
+<span class="guilabel">Confirm</span>.</p>
+</section><section id="change-password">
+<h3>Change password<a class="headerlink" href="#change-password" title="Permalink to this headline">¶</a></h3>
+<p>First enter the username and password (login) into the database login page to access the portal user
+account. A portal dashboard will appear upon successfully logging in.</p>
+<p>If the customer would like to change their password for portal access, click on the <span class="guilabel">Edit
+Security Settings</span> link, below the <span class="guilabel">Account Security</span> section. Then, make the necessary
+changes, by typing in the current <span class="guilabel">Password</span>, <span class="guilabel">New Password</span>, and verify the new
+password. Lastly, click on <span class="guilabel">Change Password</span> to complete the password change.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If a customer would like to change the login, as documented above, contact the Odoo database
+point-of-contact. <a class="reference internal" href="#portal-login"><span class="std std-ref">See above documentation on changing the portal username</span></a>.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Passwords for portal users and Odoo.com users remain separate, even if the same email address is
+used.</p>
+</div>
+</section><section id="add-two-factor-authentication">
+<h3>Add two-factor authentication<a class="headerlink" href="#add-two-factor-authentication" title="Permalink to this headline">¶</a></h3>
+<p>First enter the username and password (login) into the database login page to access the portal user
+account. A portal dashboard will appear upon successfully logging in.</p>
+<p>If the customer would like to turn on two-factor authentication (2FA) for portal access, click on
+the <span class="guilabel">Edit Security Settings</span> link, below the <span class="guilabel">Account Security</span> section.</p>
+<p>Click on <span class="guilabel">Enable two-factor authentication</span> to turn on <abbr title="two-factor authentication">2FA</abbr>. Confirm the current portal password in the <span class="guilabel">Password</span> field. Then, click
+on <span class="guilabel">Confirm Password</span>. Next, activate <abbr title="two-factor authentication">2FA</abbr> in a
+<abbr title="two-factor authentication">2FA</abbr> app (Google Authenticator, Authy, etc.), by scanning the
+<span class="guilabel">QR code</span> or entering a <span class="guilabel">Verification Code</span>.</p>
+<p>Finally, click <span class="guilabel">Enable two-factor authentication</span> to complete the setup.</p>
+</section><section id="change-payment-info">
+<h3>Change payment info<a class="headerlink" href="#change-payment-info" title="Permalink to this headline">¶</a></h3>
+<p>First enter the username and password (login) into the database login page to access the portal user
+account. A portal dashboard will appear upon successfully logging in.</p>
+<p>If the customer would like to manage payment options, navigate to the <span class="guilabel">Manage payment
+methods</span> in the menu on the right. Then, add the new payment information, and select <span class="guilabel">Add
+new card</span>.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Portal access</a><ul>
+<li><a class="reference internal" href="#provide-portal-access-to-customers">Provide portal access to customers</a></li>
+<li><a class="reference internal" href="#change-portal-username">Change portal username</a></li>
+<li><a class="reference internal" href="#customer-portal-changes">Customer portal changes</a><ul>
+<li><a class="reference internal" href="#change-customer-info">Change customer info</a></li>
+<li><a class="reference internal" href="#change-password">Change password</a></li>
+<li><a class="reference internal" href="#add-two-factor-authentication">Add two-factor authentication</a></li>
+<li><a class="reference internal" href="#change-payment-info">Change payment info</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Portal access</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

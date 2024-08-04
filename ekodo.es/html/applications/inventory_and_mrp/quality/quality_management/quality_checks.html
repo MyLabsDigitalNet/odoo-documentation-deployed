@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quality checks &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/quality/quality_management/quality_checks.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/quality/quality_management/quality_checks.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Quality checks</a><ul>
+<li><a class="reference internal" href="#manual-quality-check">Manual quality check</a></li>
+<li><a class="reference internal" href="#process-quality-check">Process quality check</a><ul>
+<li><a class="reference internal" href="#quality-check-page">Quality check page</a></li>
+<li><a class="reference internal" href="#quality-check-on-order">Quality check on order</a></li>
+<li><a class="reference internal" href="#quality-check-on-work-order">Quality check on work order</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/quality/quality_management/quality_checks.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Quality checks</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="quality-checks">
+<h1>Quality checks<a class="headerlink" href="#quality-checks" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="quality-quality-management-quality-checks"></span><p>Quality checks are manual inspections conducted by employees, and are used to ensure the quality of
+products. In Odoo, a quality check can be conducted for a single product, or multiple products
+within the same inventory operation or manufacturing order.</p>
+<p>Using a Quality Control Point (QCP), it is possible to create quality checks automatically at
+regular intervals. When quality checks are created by a <abbr title="Quality Control Point">QCP</abbr>, they appear on a manufacturing or
+inventory order, where the employee processing the order will be prompted to complete them. For a
+full explanation of how to create and configure a <abbr title="Quality Control Point">QCP</abbr>, see the documentation on <a class="reference internal" href="quality_control_points.html#quality-quality-management-quality-control-points"><span class="std std-ref">quality
+control points</span></a>.</p>
+<p>While quality checks are most commonly created automatically by a <abbr title="Quality Control Point">QCP</abbr>, it is also possible to
+manually create a single quality check. Creating a check manually is useful when an employee wants
+to schedule a quality check that will only occur once, or register a quality check that they conduct
+unprompted.</p>
+</section><section id="manual-quality-check">
+<h2>Manual quality check<a class="headerlink" href="#manual-quality-check" title="Permalink to this headline">¶</a></h2>
+<p>To manually create a single quality check, navigate to <span class="menuselection">Quality ‣ Quality Control
+‣ Quality Checks</span>, and click <span class="guilabel">New</span>. On the quality check form, begin by selecting an
+option from the <span class="guilabel">Control per</span> drop-down menu:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Operation</span> requests a check for an entire operation (ex. delivery order) and all
+products within it.</p></li>
+<li><p><span class="guilabel">Product</span> requests a check for every unit of a product that is part of an operation (ex.
+every unit of a product within a delivery order).</p></li>
+<li><p><span class="guilabel">Quantity</span> requests a check for every quantity of a product that is part of an operation
+(ex. one check for five units of a product within a delivery order). Selecting
+<span class="guilabel">Quantity</span> also causes a <span class="guilabel">Lot/Serial</span> drop-down field to appear, from which
+can be selected a specific lot or serial number that the quality check should be conducted for.</p></li>
+</ul>
+<p>Next, select an inventory operation from the <span class="guilabel">Picking</span> drop-down menu or a manufacturing
+order from the <span class="guilabel">Production Order</span> drop-down menu. This is necessary because Odoo needs to
+know for which operation the quality check is being conducted.</p>
+<p>If the quality check should be assigned to a specific <abbr title="Quality Control Point">QCP</abbr>, select it from the <span class="guilabel">Control
+Point</span> drop-down menu. This is useful if the quality check is being created manually, but should
+still be recognized as belonging to a specific <abbr title="Quality Control Point">QCP</abbr>.</p>
+<p>Select a quality check type from the <span class="guilabel">Type</span> drop-down field:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Instructions</span> provides specific instructions for how to conduct the quality check.</p></li>
+<li><p><span class="guilabel">Take a Picture</span> requires a picture to be attached to the check before the check can be
+completed.</p></li>
+<li><p><span class="guilabel">Pass - Fail</span> is used when the product being checked must meet a certain criteria to
+pass the check.</p></li>
+<li><p>Selecting <span class="guilabel">Measure</span> causes a <span class="guilabel">Measure</span> input field to appear, in which a
+measurement must be entered before the check can be completed.</p></li>
+<li><p>Selecting <span class="guilabel">Worksheet</span> causes a <span class="guilabel">Quality Template</span> drop-down field to appear.
+Use it to select a quality worksheet that must be filled out to complete the check.</p></li>
+</ul>
+<p>In the <span class="guilabel">Team</span> field, select the quality team that is responsible for the quality check. In
+the <span class="guilabel">Company</span> field, select the company that owns the product being inspected.</p>
+<p>On the <span class="guilabel">Notes</span> tab at the bottom of the form, enter any relevant instructions in the
+<span class="guilabel">Instructions</span> text entry box (ex. ‘Attach a picture of the product’). In the
+<span class="guilabel">Notes</span> text entry box, enter any relevant information about the quality check (who
+created it, why it was created, etc.).</p>
+<p>Finally, if the check is being processed immediately, click the <span class="guilabel">Pass</span> button at the top
+left of the screen if the check passes, or the <span class="guilabel">Fail</span> button if the check fails.</p>
+<img alt="A quality check form filled out for a Pass - Fail check." class="align-center" src="../../../../_images/quality-check-form1.png" />
+</section><section id="process-quality-check">
+<h2>Process quality check<a class="headerlink" href="#process-quality-check" title="Permalink to this headline">¶</a></h2>
+<p>Quality checks can be processed directly on the quality check’s page, or from a manufacturing or
+inventory order for which a check is required. Alternatively, if a quality check is created for a
+specific work order operation, the check is processed in the tablet view for the work order.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>It is not possible to manually create a single quality check that is assigned to a specific work
+order operation. Quality checks for work order operations can only be created by a <abbr title="Quality Control Point">QCP</abbr>. See the
+documentation on <a class="reference internal" href="quality_control_points.html#quality-quality-management-quality-control-points"><span class="std std-ref">Quality Control Points</span></a> for information about how to configure a
+<abbr title="Quality Control Point">QCP</abbr> that will create quality checks for a specific work order operation.</p>
+</div>
+</section><section id="quality-check-page">
+<h3>Quality check page<a class="headerlink" href="#quality-check-page" title="Permalink to this headline">¶</a></h3>
+<p>To process a quality check from the check’s page, begin by navigating to <span class="menuselection">Quality ‣
+Quality Control ‣ Quality Checks</span>, then select the check to process. Follow the instructions for
+how to complete the check, listed in the <span class="guilabel">Instructions</span> field of the <span class="guilabel">Notes</span> tab
+at the bottom of the page.</p>
+<p>If the quality check passes, click the <span class="guilabel">Pass</span> button at the top of the page. If the check
+fails, click the <span class="guilabel">Fail</span> button, instead.</p>
+</section><section id="quality-check-on-order">
+<h3>Quality check on order<a class="headerlink" href="#quality-check-on-order" title="Permalink to this headline">¶</a></h3>
+<p>To process a quality check on an order, select a manufacturing or inventory order (receipt,
+delivery, return, etc.), for which a check is required. Manufacturing orders can be selected by
+navigating to <span class="menuselection">Manufacturing ‣ Operations ‣ Manufacturing Orders</span>, and clicking
+on an order. Inventory orders can be selected by navigating to <span class="menuselection">Inventory</span>, clicking
+the <span class="guilabel"># To Process</span> button on an operation card, and selecting an order.</p>
+<p>On the selected inventory or manufacturing order, a purple <span class="guilabel">Quality Checks</span> button appears
+at the top of the order. Click the button to open the <span class="guilabel">Quality Check</span> pop-up window, which
+shows all of the quality checks required for that order.</p>
+<p>Follow the instructions that appear on the <span class="guilabel">Quality Check</span> pop-up window. If a Pass - Fail
+check is being processed, complete the check by clicking <span class="guilabel">Pass</span> or <span class="guilabel">Fail</span> at the
+bottom of the pop-up window. For all other quality check types, a <span class="guilabel">Validate</span> button
+appears instead. Click it to complete the check.</p>
+<img alt="The &quot;Quality Check&quot; pop-up window on a manufacturing order." class="align-center" src="../../../../_images/quality-check-pop-up1.png" />
+</section><section id="quality-check-on-work-order">
+<h3>Quality check on work order<a class="headerlink" href="#quality-check-on-work-order" title="Permalink to this headline">¶</a></h3>
+<p>To process a quality check for a work order, begin by navigating to <span class="menuselection">Manufacturing
+‣ Operations ‣ Manufacturing Orders</span>, then select a manufacturing order. Select the
+<span class="guilabel">Work Orders</span> tab, then click the <span class="guilabel">📱 (tablet)</span> tablet view button for the work
+order that requires the quality check.</p>
+<p>With tablet view open, complete the steps listed on the left side of the screen until the quality
+check step is reached, then follow the instructions at the top of the screen. If a Pass - Fail check
+is being processed, complete the check by clicking <span class="guilabel">Pass</span> or <span class="guilabel">Fail</span> at the top
+of the screen. For all other quality check types, a <span class="guilabel">Next</span> button appears instead. Click
+it to complete the check and move on to the next step of the work order.</p>
+<img alt="A quality check for a work order." class="align-center" src="../../../../_images/work-order-check.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Quality checks</a><ul>
+<li><a class="reference internal" href="#manual-quality-check">Manual quality check</a></li>
+<li><a class="reference internal" href="#process-quality-check">Process quality check</a><ul>
+<li><a class="reference internal" href="#quality-check-page">Quality check page</a></li>
+<li><a class="reference internal" href="#quality-check-on-order">Quality check on order</a></li>
+<li><a class="reference internal" href="#quality-check-on-work-order">Quality check on work order</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Quality checks</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Authorize.Net &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/payment_providers/authorize.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/payment_providers/authorize.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Authorize.Net</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#credentials-tab">Credentials tab</a></li>
+<li><a class="reference internal" href="#configuration-tab">Configuration tab</a><ul>
+<li><a class="reference internal" href="#place-a-hold-on-a-card">Place a hold on a card</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ach-payments-usa-only">ACH payments (USA only)</a><ul>
+<li><a class="reference internal" href="#id2">Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#import-an-authorize-net-statement">Import an Authorize.Net statement</a><ul>
+<li><a class="reference internal" href="#export-from-authorize-net">Export from Authorize.Net</a></li>
+<li><a class="reference internal" href="#import-into-odoo">Import into Odoo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/payment_providers/authorize.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Authorize.Net</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="authorize-net">
+<h1>Authorize.Net<a class="headerlink" href="#authorize-net" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.authorize.net">Authorize.Net</a> is a United States-based online payment solution
+provider, allowing businesses to accept <strong>credit cards</strong>.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../payment_providers.html#payment-providers-add-new"><span class="std std-ref">Enable a payment provider</span></a></p></li>
+</ul>
+</div>
+</section><section id="credentials-tab">
+<h3>Credentials tab<a class="headerlink" href="#credentials-tab" title="Permalink to this headline">¶</a></h3>
+<p>Odoo needs your <strong>API Credentials &amp; Keys</strong> to connect with your Authorize.Net account, which
+comprise:</p>
+<ul class="simple">
+<li><p><strong>API Login ID</strong>: The ID solely used to identify the account with Authorize.Net.</p></li>
+<li><p><strong>API Transaction Key</strong></p></li>
+<li><p><strong>API Signature Key</strong></p></li>
+<li><p><strong>API Client Key</strong></p></li>
+</ul>
+<p>To retrieve them, log into your Authorize.Net account, go to <span class="menuselection">Account ‣ Settings
+‣ Security Settings ‣ API Credentials &amp; Keys</span>, generate your <strong>Transaction Key</strong> and
+<strong>Signature Key</strong>, and paste them on the related fields in Odoo. Then, click on <strong>Generate Client
+Key</strong>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>To test Authorize.Net with a <em>sandbox</em> account, change the <span class="guilabel">State</span> to <span class="guilabel">Test
+Mode</span>. We recommend doing this on a test Odoo database, rather than on your main database.</p>
+<p>If you use the <span class="guilabel">Test Mode</span> with a regular account, it results in the following error:
+<em>The merchant login ID or password is invalid or the account is inactive</em>.</p>
+</div>
+</section><section id="configuration-tab">
+<h3>Configuration tab<a class="headerlink" href="#configuration-tab" title="Permalink to this headline">¶</a></h3>
+</section><section id="place-a-hold-on-a-card">
+<h4>Place a hold on a card<a class="headerlink" href="#place-a-hold-on-a-card" title="Permalink to this headline">¶</a></h4>
+<p>With Authorize.Net, you can enable the <a class="reference internal" href="../payment_providers.html#payment-providers-manual-capture"><span class="std std-ref">manual capture</span></a>. If enabled, the funds are reserved for 30 days on the
+customer’s card, but not charged yet.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>After <strong>30 days</strong>, the transaction is <strong>voided automatically</strong> by Authorize.Net.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../payment_providers.html"><span class="doc">Online payments</span></a></p></li>
+</ul>
+</div>
+</section><section id="ach-payments-usa-only">
+<h2>ACH payments (USA only)<a class="headerlink" href="#ach-payments-usa-only" title="Permalink to this headline">¶</a></h2>
+<p><abbr title="automated clearing house">ACH</abbr> is an electronic funds transfer system used between bank
+accounts in the United States.</p>
+</section><section id="id2">
+<h3>Configuration<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>To give customers the possibility to pay using ACH, <a class="reference external" href="https://www.authorize.net/payments/echeck.html">sign up for Authorize.Net eCheck’s service</a>. Once eCheck is activated, duplicate the
+previously configured Authorize.Net payment provider on Odoo by going to <span class="menuselection">Accounting
+‣ Configuration ‣ Payment Providers ‣ Authorize.net ‣ ⛭ Action ‣ Duplicate</span>. Then, change
+the provider’s name to differentiate both versions (e.g., <code class="o_code docutils literal notranslate"><span class="pre">Authorize.net</span> <span class="pre">-</span> <span class="pre">Banks</span></code>).</p>
+<p>Open the <span class="guilabel">Configuration</span> tab, set the <span class="guilabel">Allow Payments From</span> field to
+<span class="guilabel">Bank Account (USA only)</span>.</p>
+<p>When ready, change the provider’s <span class="guilabel">State</span> to <span class="guilabel">Enabled</span> for a regular account or
+<span class="guilabel">Test Mode</span> for a sandbox account.</p>
+</section><section id="import-an-authorize-net-statement">
+<h2>Import an Authorize.Net statement<a class="headerlink" href="#import-an-authorize-net-statement" title="Permalink to this headline">¶</a></h2>
+</section><section id="export-from-authorize-net">
+<h3>Export from Authorize.Net<a class="headerlink" href="#export-from-authorize-net" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-template alert" id="authorize-import-template">
+<p class="alert-title">
+Template</p><p><a class="reference external" href="https://docs.google.com/spreadsheets/d/1CMVtBWLLVIrUpYA92paw-cL7-WdKLbaa/edit?usp=share_link&amp;ouid=105295722917050444558&amp;rtpof=true&amp;sd=true">Download the Excel import template</a></p>
+</div>
+<p>To export a statement:</p>
+<ul class="simple">
+<li><p>Log in to Authorize.Net.</p></li>
+<li><p>Go to <span class="menuselection">Account ‣ Statements ‣ eCheck.Net Settlement Statement</span>.</p></li>
+<li><p>Define an export range using an <em>opening</em> and <em>closing</em> batch settlement. All transactions within
+the two batch settlements will be exported to Odoo.</p></li>
+<li><p>Select all transactions within the desired range, copy them, and paste them into the
+<span class="guilabel">Report 1 Download</span> sheet of the <a class="reference internal" href="#authorize-import-template"><span class="std std-ref">Excel import template</span></a>.</p></li>
+</ul>
+<img alt="Selecting Authorize.Net transactions to import" src="../../../_images/authorize-report1.png" />
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><img alt="Settlement batch of an Authorize.Net statement" class="align-center" src="../../../_images/authorize-settlement-batch.png" />
+<p>In this case, the first batch (01/01/2021) of the year belongs to the settlement of 12/31/2020,
+so the <strong>opening</strong> settlement is from 12/31/2020.</p>
+</div>
+<p>Once the data is in the <span class="guilabel">Report 1 Download</span> sheet:</p>
+<ul class="simple">
+<li><p>Go to the <span class="guilabel">Transaction Search</span> tab on Authorize.Net.</p></li>
+<li><p>Under the <span class="guilabel">Settlement Date</span> section, select the previously used range of batch
+settlement dates in the <span class="guilabel">From:</span> and <span class="guilabel">To:</span> fields and click <span class="guilabel">Search</span>.</p></li>
+<li><p>When the list has been generated, click <span class="guilabel">Download to File</span>.</p></li>
+<li><p>In the pop-up window, select <span class="guilabel">Expanded Fields with CAVV Response/Comma Separated</span>,
+enable <span class="guilabel">Include Column Headings</span>, and click <span class="guilabel">Submit</span>.</p></li>
+<li><p>Open the text file, select <span class="guilabel">All</span>, copy the data, and paste it into the <span class="guilabel">Report
+2 Download</span> sheet of the <a class="reference internal" href="#authorize-import-template"><span class="std std-ref">Excel import template</span></a>.</p></li>
+<li><p>Transit lines are automatically filled in and updated in the <span class="guilabel">transit for report 1</span> and
+<span class="guilabel">transit for report 2</span> sheets of the <a class="reference internal" href="#authorize-import-template"><span class="std std-ref">Excel import template</span></a>. Make sure all entries are present, and <strong>if not</strong>, copy the formula
+from previously filled-in lines of the <span class="guilabel">transit for report 1</span> or <span class="guilabel">2</span> sheets
+and paste it into the empty lines.</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>To get the correct closing balance, <strong>do not remove</strong> any line from the Excel sheets.</p>
+</div>
+</section><section id="import-into-odoo">
+<h3>Import into Odoo<a class="headerlink" href="#import-into-odoo" title="Permalink to this headline">¶</a></h3>
+<p>To import the data into Odoo:</p>
+<ul class="simple">
+<li><p>Open the <a class="reference internal" href="#authorize-import-template"><span class="std std-ref">Excel import template</span></a>.</p></li>
+<li><p>Copy the data from the <span class="guilabel">transit for report 2</span> sheet and use <em>paste special</em> to only
+paste the values in the <span class="guilabel">Odoo Import to CSV</span> sheet.</p></li>
+<li><p>Look for <em>blue</em> cells in the <span class="guilabel">Odoo Import to CSV</span> sheet. These are chargeback entries
+without any reference number. As they cannot be imported as such, go to
+<span class="menuselection">Authorize.Net ‣ Account ‣ Statements ‣ eCheck.Net Settlement Statement</span>.</p></li>
+<li><p>Look for <span class="guilabel">Charge Transaction/Chargeback</span>, and click it.</p></li>
+<li><p>Copy the invoice description, paste it into the <span class="guilabel">Label</span> cell of the <span class="guilabel">Odoo
+Import to CSV</span> sheet, and add <code class="o_code docutils literal notranslate"><span class="pre">Chargeback</span> <span class="pre">/</span></code> before the description.</p></li>
+<li><p>If there are multiple invoices, add a line into the <a class="reference internal" href="#authorize-import-template"><span class="std std-ref">Excel import template</span></a> for each invoice and copy/paste the description into each respective
+<span class="guilabel">Label</span> line.</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>For <strong>combined chargeback/returns</strong> in the payouts, create a new line in the <a class="reference internal" href="#authorize-import-template"><span class="std std-ref">Excel import
+template</span></a> for each invoice.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><img alt="Chargeback description" src="../../../_images/authorize-chargeback-desc.png" />
+</div>
+<ul class="simple">
+<li><p>Next, delete <em>zero transaction</em> and <em>void transaction</em> line items, and change the format
+of the <span class="guilabel">Amount</span> column in the <span class="guilabel">Odoo Import to CSV</span> sheet to <em>Number</em>.</p></li>
+<li><p>Go back to <span class="menuselection">eCheck.Net Settlement Statement ‣ Search for a Transaction</span> and
+search again for the previously used batch settlements dates.</p></li>
+<li><p>Verify that the batch settlement dates on eCheck.Net match the related payments’ dates found in
+the <span class="guilabel">Date</span> column of the <span class="guilabel">Odoo Import to CSV</span>.</p></li>
+<li><p>If it does not match, replace the date with the one from eCheck.Net. Sort the column by <em>date</em>,
+and make sure the format is <code class="o_code docutils literal notranslate"><span class="pre">MM/DD/YYYY</span></code>.</p></li>
+<li><p>Copy the data - column headings included - from the <span class="guilabel">Odoo Import to CSV</span> sheet, paste
+it into a new Excel file, and save it using the CSV format.</p></li>
+<li><p>Open the Accounting app, go to <span class="menuselection">Configuration ‣ Journals</span>, tick the
+<span class="guilabel">Authorize.Net</span> box, and click <span class="menuselection">Favorites ‣ Import records ‣ Load
+file</span>. Select the CSV file and upload it into Odoo.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>List of <a class="reference external" href="https://support.authorize.net/knowledgebase/Knowledgearticle/?code=000001293">eCheck.Net return codes</a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Authorize.Net</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#credentials-tab">Credentials tab</a></li>
+<li><a class="reference internal" href="#configuration-tab">Configuration tab</a><ul>
+<li><a class="reference internal" href="#place-a-hold-on-a-card">Place a hold on a card</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ach-payments-usa-only">ACH payments (USA only)</a><ul>
+<li><a class="reference internal" href="#id2">Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#import-an-authorize-net-statement">Import an Authorize.Net statement</a><ul>
+<li><a class="reference internal" href="#export-from-authorize-net">Export from Authorize.Net</a></li>
+<li><a class="reference internal" href="#import-into-odoo">Import into Odoo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Authorize.Net</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

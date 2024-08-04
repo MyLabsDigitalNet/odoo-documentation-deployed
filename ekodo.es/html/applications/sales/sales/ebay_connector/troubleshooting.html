@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Troubleshooting eBay connector &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/ebay_connector/troubleshooting.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/ebay_connector/troubleshooting.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Troubleshooting eBay connector</a><ul>
+<li><a class="reference internal" href="#accept-account-deletion-notifications">Accept account deletion notifications</a><ul>
+<li><a class="reference internal" href="#verify-the-installation-of-odoo-is-up-to-date">Verify the installation of Odoo is up to date</a><ul>
+<li><a class="reference internal" href="#update-odoo-to-the-latest-release">Update Odoo to the latest release</a></li>
+<li><a class="reference internal" href="#update-the-list-of-available-modules">Update the list of available modules</a></li>
+<li><a class="reference internal" href="#install-the-ebay-connector-account-deletion-update">Install the eBay Connector - Account Deletion update</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieve-endpoint-details-from-odoo">Retrieve endpoint details from Odoo</a></li>
+<li><a class="reference internal" href="#subscribe-to-account-deletion-notifications">Subscribe to account deletion notifications</a></li>
+<li><a class="reference internal" href="#verify-the-connectivity-with-the-endpoint">Verify the connectivity with the endpoint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/ebay_connector/troubleshooting.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Troubleshooting eBay connector</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="troubleshooting-ebay-connector">
+<h1>Troubleshooting eBay connector<a class="headerlink" href="#troubleshooting-ebay-connector" title="Permalink to this headline">¶</a></h1>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p>To learn more about the eBay connector visit these pages as well:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="setup.html"><span class="doc">eBay connector setup</span></a></p></li>
+<li><p><a class="reference internal" href="manage.html"><span class="doc">How to list a product?</span></a></p></li>
+<li><p><a class="reference internal" href="linking_listings.html"><span class="doc">Linking existing listings</span></a></p></li>
+</ul>
+</div>
+</section><section id="accept-account-deletion-notifications">
+<h2>Accept account deletion notifications<a class="headerlink" href="#accept-account-deletion-notifications" title="Permalink to this headline">¶</a></h2>
+<p>Since September 2021, <strong>eBay requires supporting customer account deletion/closure notifications</strong>.
+As such, when eBay receives an account request for deletion, all eBay partners must confirm the
+reception of the request and take further action if necessary.</p>
+<p>Odoo has a notification endpoint to receive those notifications, confirm the reception of the
+request, and handle the first set of actions to anonymize the account details in <em>Contacts</em> and
+remove the customer’s access to the portal.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Make sure to correctly <a class="reference internal" href="#ebay-subscribe-account-deletion-notifications"><span class="std std-ref">set up the subscription to the marketplace account deletion
+notifications</span></a> as eBay may temporarily disable
+the related eBay account until the subscription is completed.</p>
+</div>
+</section><section id="verify-the-installation-of-odoo-is-up-to-date">
+<h3>Verify the installation of Odoo is up to date<a class="headerlink" href="#verify-the-installation-of-odoo-is-up-to-date" title="Permalink to this headline">¶</a></h3>
+<p>In order to activate the endpoint, the module <em>eBay Connector - Account Deletion</em> must be installed.
+If the Odoo database was first created after September 2021, the module is installed automatically
+and the administrator can proceed to the <a class="reference internal" href="#ebay-retrieve-endpoint-details"><span class="std std-ref">next step</span></a>.</p>
+</section><section id="update-odoo-to-the-latest-release">
+<h4>Update Odoo to the latest release<a class="headerlink" href="#update-odoo-to-the-latest-release" title="Permalink to this headline">¶</a></h4>
+<p>The notification endpoint is made available through a new Odoo module; to be able to install it, the
+administrator must make sure that the Odoo source code is up-to-date.</p>
+<ul class="simple">
+<li><p>If the company uses Odoo on Odoo.com or Odoo.sh platform, the code is already up-to-date, so
+proceed to the next step.</p></li>
+<li><p>If the company uses Odoo with an on-premise setup or through a partner, then the administrator
+must update the installation as detailed in <span class="xref std std-doc">this documentation page</span> or by contacting an integrating partner.</p></li>
+</ul>
+</section><section id="update-the-list-of-available-modules">
+<h4>Update the list of available modules<a class="headerlink" href="#update-the-list-of-available-modules" title="Permalink to this headline">¶</a></h4>
+<p>New modules must be <em>discovered</em> by the Odoo instance to be available in the <span class="menuselection">Apps</span>
+menu.</p>
+<p>To do so, activate the <a class="reference internal" href="../../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, and go to <span class="menuselection">Apps -&gt;
+Update Apps List</span>. A wizard will ask for confirmation.</p>
+</section><section id="install-the-ebay-connector-account-deletion-update">
+<h4>Install the eBay Connector - Account Deletion update<a class="headerlink" href="#install-the-ebay-connector-account-deletion-update" title="Permalink to this headline">¶</a></h4>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p><strong>Never</strong> install new modules in the production database without testing them in a duplicate or
+staging environment. For Odoo.com customers, a duplicate database can be created from the
+database management page. For Odoo.sh users, the administrator should use a staging or duplicate
+database. For on-premise users, the administrator should use a staging environment - contact the
+integrating partner for more information regarding how to test a new module in a particular
+setup.</p>
+</div>
+<p>To install the module, go to the <span class="menuselection">Apps</span> menu, remove the <code class="o_code docutils literal notranslate"><span class="pre">Apps</span></code> search facet and
+search for <code class="o_code docutils literal notranslate"><span class="pre">eBay</span></code>. If the module <em>eBay Connector - Account Deletion</em> is present and marked as
+installed, the Odoo database is already up-to-date and the administrator can proceed with the next
+step. If it is not yet installed, install it now.</p>
+</section><section id="retrieve-endpoint-details-from-odoo">
+<span id="ebay-retrieve-endpoint-details"></span><h3>Retrieve endpoint details from Odoo<a class="headerlink" href="#retrieve-endpoint-details-from-odoo" title="Permalink to this headline">¶</a></h3>
+<p>The endpoint details can be found in <span class="menuselection">Sales ‣ Configuration ‣ Settings ‣ eBay</span>.
+First, input random text values for the <span class="guilabel">Production App Key</span> and for the
+<span class="guilabel">Production Cert Key</span>. Click on <span class="guilabel">Generate Token</span> to retrieve the
+<span class="guilabel">Verification Token</span>.</p>
+<img alt="Generate a verification token in Odoo." class="align-center" src="../../../../_images/generate-token1.png" />
+</section><section id="subscribe-to-account-deletion-notifications">
+<span id="ebay-subscribe-account-deletion-notifications"></span><h3>Subscribe to account deletion notifications<a class="headerlink" href="#subscribe-to-account-deletion-notifications" title="Permalink to this headline">¶</a></h3>
+<p>Navigate to the <a class="reference external" href="https://go.developer.ebay.com/">eBay developer portal</a>. Configure the account
+deletion/notification settings in eBay by navigating to the <code class="o_code docutils literal notranslate"><span class="pre">Hi</span> <span class="pre">[username]</span></code> at the top right of
+screen, then go to <span class="guilabel">Alerts &amp; Notifications</span>.</p>
+<img alt="Overview of the Alerts &amp; Notifications dashboard of eBay" class="align-center" src="../../../../_images/ebay-your-account.png" />
+<p>To subscribe to deletion/closure notifications, eBay needs a few details:</p>
+<ul class="simple">
+<li><p>An <em>email address</em> to send notifications to if the endpoint is unreachable.</p></li>
+<li><p>The <em>endpoint details</em>:</p>
+<ul>
+<li><p>The URL to Odoo’s account deletion notification endpoint</p></li>
+<li><p>A verification token</p></li>
+</ul>
+</li>
+</ul>
+<img alt="Dedicated fields to enter the endpoint details" class="align-center" src="../../../../_images/ebay-notification-endpoint.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The administrator can edit the last two fields once the email address field is filled out.</p>
+</div>
+</section><section id="verify-the-connectivity-with-the-endpoint">
+<h3>Verify the connectivity with the endpoint<a class="headerlink" href="#verify-the-connectivity-with-the-endpoint" title="Permalink to this headline">¶</a></h3>
+<p>After setting the retrieved endpoint details in eBay’s dashboard, consider testing the connectivity
+with the <span class="guilabel">Send Test Notification</span> button.</p>
+<blockquote>
+<div><p>The following confirmation message should be received: “A test notification was sent successfully!”</p>
+</div></blockquote>
+<img alt="Button to send test notification" class="align-center" src="../../../../_images/test-notification.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="manage.html"><span class="doc">How to list a product?</span></a></p></li>
+<li><p><a class="reference internal" href="linking_listings.html"><span class="doc">Linking existing listings</span></a></p></li>
+<li><p><a class="reference internal" href="setup.html"><span class="doc">eBay connector setup</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Troubleshooting eBay connector</a><ul>
+<li><a class="reference internal" href="#accept-account-deletion-notifications">Accept account deletion notifications</a><ul>
+<li><a class="reference internal" href="#verify-the-installation-of-odoo-is-up-to-date">Verify the installation of Odoo is up to date</a><ul>
+<li><a class="reference internal" href="#update-odoo-to-the-latest-release">Update Odoo to the latest release</a></li>
+<li><a class="reference internal" href="#update-the-list-of-available-modules">Update the list of available modules</a></li>
+<li><a class="reference internal" href="#install-the-ebay-connector-account-deletion-update">Install the eBay Connector - Account Deletion update</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieve-endpoint-details-from-odoo">Retrieve endpoint details from Odoo</a></li>
+<li><a class="reference internal" href="#subscribe-to-account-deletion-notifications">Subscribe to account deletion notifications</a></li>
+<li><a class="reference internal" href="#verify-the-connectivity-with-the-endpoint">Verify the connectivity with the endpoint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Troubleshooting eBay connector</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

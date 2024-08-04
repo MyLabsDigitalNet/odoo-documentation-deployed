@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online payments &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/payment_providers.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/payment_providers.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Online payments</a><ul>
+<li><a class="reference internal" href="#supported-payment-providers">Supported payment providers</a><ul>
+<li><a class="reference internal" href="#online-payment-providers">Online payment providers</a></li>
+<li><a class="reference internal" href="#bank-payments">Bank payments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enable-a-payment-provider">Enable a payment provider</a><ul>
+<li><a class="reference internal" href="#test-mode">Test mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#payment-form">Payment form</a></li>
+<li><a class="reference internal" href="#tokenization">Tokenization</a></li>
+<li><a class="reference internal" href="#manual-capture">Manual capture</a></li>
+<li><a class="reference internal" href="#refunds">Refunds</a></li>
+<li><a class="reference internal" href="#express-checkout">Express checkout</a></li>
+<li><a class="reference internal" href="#extra-fees">Extra Fees</a></li>
+<li><a class="reference internal" href="#availability">Availability</a><ul>
+<li><a class="reference internal" href="#currencies-and-countries">Currencies and countries</a></li>
+<li><a class="reference internal" href="#maximum-amount">Maximum amount</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#payment-journal">Payment journal</a><ul>
+<li><a class="reference internal" href="#accounting-perspective">Accounting perspective</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/payment_providers.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Online payments</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">  
+
+        <main class="container-fluid o_hide_toc">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="online-payments">
+<h1>Online payments<a class="headerlink" href="#online-payments" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_wire_transfer"><a class="reference internal" href="payment_providers/wire_transfer.html">Wire transfers</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_adyen"><a class="reference internal" href="payment_providers/adyen.html">Adyen</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_alipay"><a class="reference internal" href="payment_providers/alipay.html">Alipay</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_amazon_payment_services"><a class="reference internal" href="payment_providers/amazon_payment_services.html">Amazon Payment Services</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_asiapay"><a class="reference internal" href="payment_providers/asiapay.html">AsiaPay</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_authorize"><a class="reference internal" href="payment_providers/authorize.html">Authorize.Net</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_buckaroo"><a class="reference internal" href="payment_providers/buckaroo.html">Buckaroo</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_demo"><a class="reference internal" href="payment_providers/demo.html">Demo</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_flutterwave"><a class="reference internal" href="payment_providers/flutterwave.html">Flutterwave</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_mercado_pago"><a class="reference internal" href="payment_providers/mercado_pago.html">Mercado Pago</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_mollie"><a class="reference internal" href="payment_providers/mollie.html">Mollie</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_ogone"><a class="reference internal" href="payment_providers/ogone.html">Ogone</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_paypal"><a class="reference internal" href="payment_providers/paypal.html">PayPal</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_razorpay"><a class="reference internal" href="payment_providers/razorpay.html">Razorpay</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_sips"><a class="reference internal" href="payment_providers/sips.html">SIPS</a></li>
+<li class="toctree-l1 o_menu_applications_finance_payment_providers_stripe"><a class="reference internal" href="payment_providers/stripe.html">Stripe</a></li>
+</ul>
+</div>
+<p>Odoo embeds several <strong>payment providers</strong> that allow your customers to pay online, on their
+<em>customer portals</em>, or on your <em>eCommerce website</em>. They can pay sales orders, invoices, or
+subscriptions with recurring payments using their favorite payment methods, such as
+<strong>credit cards</strong>.</p>
+<img alt="Online payment form" src="../../_images/online-payment.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Odoo apps delegate the handling of sensitive information to the certified payment provider so
+that you don’t ever have to worry about PCI compliance. No sensitive information (such as credit
+card numbers) is stored on Odoo servers or Odoo databases hosted elsewhere. Instead, Odoo apps
+use a unique reference number for the data stored safely in the payment providers’ systems.</p>
+</div>
+</section><section id="supported-payment-providers">
+<span id="payment-providers-supported-providers"></span><h2>Supported payment providers<a class="headerlink" href="#supported-payment-providers" title="Permalink to this headline">¶</a></h2>
+<p>To access the supported payment providers, go to <span class="menuselection">Accounting ‣ Configuration ‣
+Payment Providers</span> or <span class="menuselection">Website ‣ Configuration ‣ Payment Providers</span>.</p>
+</section><section id="online-payment-providers">
+<span id="payment-providers-online-providers"></span><h3>Online payment providers<a class="headerlink" href="#online-payment-providers" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table docutils">
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>Payment flow from</p></th>
+<th class="head"><p><a class="reference internal" href="#payment-providers-tokenization"><span class="std std-ref">Tokenization</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="#payment-providers-manual-capture"><span class="std std-ref">Manual capture</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="#payment-providers-refunds"><span class="std std-ref">Refunds</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="#payment-providers-express-checkout"><span class="std std-ref">Express checkout</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="#payment-providers-extra-fees"><span class="std std-ref">Extra fees</span></a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="payment_providers/adyen.html"><span class="doc">Adyen</span></a></p></th>
+<td><p>Odoo</p></td>
+<td><p>✔</p></td>
+<td><p>Full only</p></td>
+<td><p>Full and partial</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="payment_providers/amazon_payment_services.html"><span class="doc">Amazon Payment Services</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="payment_providers/asiapay.html"><span class="doc">AsiaPay</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="payment_providers/authorize.html"><span class="doc">Authorize.Net</span></a></p></th>
+<td><p>Odoo</p></td>
+<td><p>✔</p></td>
+<td><p>Full only</p></td>
+<td><p>Full only</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="payment_providers/buckaroo.html"><span class="doc">Buckaroo</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="payment_providers/flutterwave.html"><span class="doc">Flutterwave</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="payment_providers/mercado_pago.html"><span class="doc">Mercado Pago</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="payment_providers/mollie.html"><span class="doc">Mollie</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="payment_providers/paypal.html"><span class="doc">PayPal</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="payment_providers/razorpay.html"><span class="doc">Razorpay</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td></td>
+<td><p>Full only</p></td>
+<td><p>Full and partial</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="payment_providers/sips.html"><span class="doc">SIPS</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="payment_providers/stripe.html"><span class="doc">Stripe</span></a></p></th>
+<td><p>The provider’s website</p></td>
+<td><p>✔</p></td>
+<td><p>Full only</p></td>
+<td><p>Full and partial</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Each provider has its own specific configuration flow, depending on which feature is
+available.</p></li>
+<li><p>Some of these online payment providers can also be added as <a class="reference internal" href="accounting/bank.html"><span class="doc">bank accounts</span></a>, but this is <strong>not</strong> the same process as adding them as payment
+providers. Payment providers allow customers to pay online, and bank accounts are added and
+configured in the Accounting app to do a <a class="reference internal" href="accounting/bank/reconciliation.html"><span class="doc">bank reconciliation</span></a>.</p></li>
+</ul>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>In addition to the regular payment providers that integrate with an API, such as Stripe, PayPal,
+or Adyen, Odoo bundles the <a class="reference internal" href="payment_providers/demo.html"><span class="doc">Demo payment provider</span></a>. This payment
+provider allows you to test business flows involving online payments. No credentials are required
+as the demo payments are dummy payments.</p>
+</div>
+</section><section id="bank-payments">
+<span id="payment-providers-bank-payments"></span><h3>Bank payments<a class="headerlink" href="#bank-payments" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><div class="line-block">
+<div class="line"><a class="reference internal" href="payment_providers/wire_transfer.html"><span class="doc">Wire Transfer</span></a></div>
+<div class="line">When selected, Odoo displays your payment information with a payment reference. You have to
+approve the payment manually once you have received it in your bank account.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><a class="reference internal" href="accounting/payments/batch_sdd.html"><span class="doc">SEPA Direct Debit</span></a></div>
+<div class="line">Your customers can make a bank transfer to register a SEPA Direct Debit mandate and get their
+bank account charged directly.</div>
+</div>
+</li>
+</ul>
+</section><section id="enable-a-payment-provider">
+<span id="payment-providers-add-new"></span><h2>Enable a payment provider<a class="headerlink" href="#enable-a-payment-provider" title="Permalink to this headline">¶</a></h2>
+<p>To add a new payment provider and make its related payment methods available to your customers,
+proceed as follows:</p>
+<ol class="arabic simple">
+<li><p>Go to the payment provider’s website, create an account, and make sure you have the API
+credentials requested for third-party use. These are necessary for Odoo to communicate with the
+payment provider.</p></li>
+<li><p>In Odoo, navigate to the <span class="guilabel">Payment providers</span> by going to <span class="menuselection">Accounting ‣
+Configuration ‣ Payment Providers</span> or <span class="menuselection">Website ‣ Configuration ‣ Payment
+Providers</span>.</p></li>
+<li><p>Select the provider and configure the <span class="guilabel">Credentials</span> tab.</p></li>
+<li><p>Set the <span class="guilabel">State</span> field to <span class="guilabel">Enabled</span>.</p></li>
+<li><p>Select a <a class="reference internal" href="#payment-providers-journal"><span class="std std-ref">payment journal</span></a>.</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>The fields available in the <span class="guilabel">Credentials</span> tab depend on the payment provider. Refer
+to the <a class="reference internal" href="#payment-providers-supported-providers"><span class="std std-ref">related documentation</span></a> for more
+information.</p></li>
+<li><p>Once you have enabled the payment provider, it is automatically published on your website.
+If you wish to unpublish it, click the <span class="guilabel">Published</span> button. Customers cannot make
+payments through an unpublished provider, but they can still manage
+<span class="dfn"><span>(delete and assign to a subscription)</span></span> their existing tokens linked to such a provider.</p></li>
+</ul>
+</div>
+</section><section id="test-mode">
+<span id="payment-providers-test-mode"></span><h3>Test mode<a class="headerlink" href="#test-mode" title="Permalink to this headline">¶</a></h3>
+<p>If you wish to try the payment provider as a test, set the <span class="guilabel">State</span> field in the payment
+provider form to <span class="guilabel">Test mode</span>, then enter your provider’s test/sandbox credentials in the
+<span class="guilabel">Credentials</span> tab.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>By default, the payment provider remains <strong>unpublished</strong> in test mode so that it’s not visible to
+visitors.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>We recommend using the test mode on a duplicate or a test database to avoid potential issues
+with your invoice numbering.</p>
+</div>
+</section><section id="payment-form">
+<span id="payment-providers-payment-methods"></span><h2>Payment form<a class="headerlink" href="#payment-form" title="Permalink to this headline">¶</a></h2>
+<p>You can change the payment provider’s appearance on your website in the <span class="guilabel">Configuration</span>
+tab of the selected payment provider. Modify its name in the <span class="guilabel">Displayed as</span> field and
+adapt the <span class="guilabel">Supported Payment Icons</span> if necessary.</p>
+</section><section id="tokenization">
+<span id="payment-providers-tokenization"></span><h2>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#payment-providers-online-providers"><span class="std std-ref">If the payment provider supports this feature</span></a>, customers
+can save their payment method details for later. To enable this feature, go to the
+<span class="guilabel">Configuration</span> tab of the selected payment provider and enable <span class="guilabel">Allow Saving
+Payment Methods</span>.</p>
+<p>In this case, a <strong>payment token</strong> is created in Odoo to be used as a payment method for subsequent
+payments without the customer having to enter their payment method details again. This is
+particularly useful for the eCommerce conversion rate and subscriptions that use recurring payments.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>You remain fully PCI-compliant when you enable this feature because Odoo does not store the card
+details directly. Instead, it creates a payment token that only references the card details
+stored on the payment provider’s server.</p>
+</div>
+</section><section id="manual-capture">
+<span id="payment-providers-manual-capture"></span><h2>Manual capture<a class="headerlink" href="#manual-capture" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#payment-providers-online-providers"><span class="std std-ref">If the payment provider supports this feature</span></a>, you can
+authorize and capture payments in two steps instead of one. To enable this feature, go to the
+<span class="guilabel">Configuration</span> tab of the selected payment provider and enable <span class="guilabel">Capture Amount
+Manually</span>.</p>
+<p>When you authorize a payment, the funds are reserved on the customer’s payment method but not
+immediately charged. They are charged when you manually capture the payment later on. You can also
+void the authorization to cancel it and release the reserved funds. Capturing payments manually is
+helpful in many situations:</p>
+<ul class="simple">
+<li><p>Receive the payment confirmation and wait until the order is shipped to capture the payment.</p></li>
+<li><p>Review and verify that orders are legitimate before the payment is completed and the fulfillment
+process starts.</p></li>
+<li><p>Avoid potentially high refund fees for refunded payments: payment providers will not charge you
+for voiding an authorization.</p></li>
+<li><p>Hold a security deposit to return later, minus any deductions (e.g., in case of damages).</p></li>
+</ul>
+<p>To capture the payment after it was authorized, go to the related sales order or invoice and click
+the <span class="guilabel">Capture Transaction</span> button. To release the funds, click the <span class="guilabel">Void
+Transaction</span> button.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Some payment providers support capturing only part of the authorized amount. The remaining
+amount can then be either captured or voided. These providers have the value <strong>Full and
+partial</strong> in the <a class="reference internal" href="#payment-providers-online-providers"><span class="std std-ref">table above</span></a>. The providers that
+only support capturing or voiding the total amount have the value <strong>Full only</strong>.</p></li>
+<li><p>The funds are likely not reserved forever. After a certain time, they may be automatically
+released back to the customer’s payment method. Refer to your payment provider’s documentation
+for the exact reservation duration.</p></li>
+<li><p>Odoo does not support this feature for all payment providers, but some allow the manual capture
+from their website interface.</p></li>
+</ul>
+</div>
+</section><section id="refunds">
+<span id="payment-providers-refunds"></span><h2>Refunds<a class="headerlink" href="#refunds" title="Permalink to this headline">¶</a></h2>
+<p>If your payment provider supports this feature, you can refund payments directly from Odoo. It does
+not need to be enabled first. To refund a customer payment, navigate to it and click the
+<span class="guilabel">Refund</span> button.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>Some payment providers support refunding only part of the amount. The remaining amount can then
+optionally be refunded, too. These providers have the value <strong>Full and partial</strong> in the
+<a class="reference internal" href="#payment-providers-online-providers"><span class="std std-ref">table above</span></a>. The providers that only support
+refunding the total amount have the value <strong>Full only</strong>.</p></li>
+<li><p>Odoo does not support this feature for all payment providers, but some allow to refund payments
+from their website interface.</p></li>
+</ul>
+</div>
+</section><section id="express-checkout">
+<span id="payment-providers-express-checkout"></span><h2>Express checkout<a class="headerlink" href="#express-checkout" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#payment-providers-online-providers"><span class="std std-ref">If the payment provider supports this feature</span></a>, you can
+allow customers to use the <span class="guilabel">Google Pay</span> and <span class="guilabel">Apple Pay</span> buttons and pay their
+eCommerce orders in one click. When they use one of these buttons, customers go straight from the
+cart to the confirmation page without filling out the contact form. They just have to validate the
+payment on Google’s or Apple’s payment form.</p>
+<p>To enable this feature, go to the <span class="guilabel">Configuration</span> tab of the selected payment provider and
+enable <span class="guilabel">Allow Express Checkout</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>All prices shown on the express checkout payment form always include taxes.</p>
+</div>
+</section><section id="extra-fees">
+<span id="payment-providers-extra-fees"></span><h2>Extra Fees<a class="headerlink" href="#extra-fees" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#payment-providers-online-providers"><span class="std std-ref">If the payment provider supports this feature</span></a>, you can
+add extra fees to online transactions. Fees can be configured either as <strong>fixed</strong> amounts and
+percentages, <strong>variable</strong> amounts and percentages, or both simultaneously. They can also differ
+based on whether the transaction is <strong>domestic</strong> or <strong>international</strong>.</p>
+<p>To enable this feature, go to the <span class="guilabel">Fees</span> tab of the selected payment provider, enable
+<span class="guilabel">Add Extra Fees</span>, and configure the settings to your liking.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Fees are calculated on the tax-included price.</p>
+</div>
+</section><section id="availability">
+<h2>Availability<a class="headerlink" href="#availability" title="Permalink to this headline">¶</a></h2>
+<p>You can adapt the payment provider’s availability by specifying the <span class="guilabel">Maximum Amount</span>
+allowed and modifying the <span class="guilabel">Currencies</span> and <span class="guilabel">Countries</span> in the
+<span class="guilabel">Configuration</span> tab.</p>
+</section><section id="currencies-and-countries">
+<span id="payment-providers-currencies-countries"></span><h3>Currencies and countries<a class="headerlink" href="#currencies-and-countries" title="Permalink to this headline">¶</a></h3>
+<p>All payment providers have a different list of available currencies and countries. They serve as a
+first filter during payment operations, i.e., the payment methods linked to the payment provider are
+not available for selection if the customer’s currency or country is not in the supported list. As
+there might be errors, updates, and unknowns in the lists of available currencies and countries,
+adding or removing a payment provider’s supported currencies or countries is possible.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p><a class="reference internal" href="#payment-providers-payment-methods"><span class="std std-ref">Payment methods</span></a> also have their own list of
+available currencies and countries that serves as another filter during payment operations.</p></li>
+<li><p>If the list of supported currencies or countries is empty, it means the list is too long to be
+displayed, or Odoo does not have information on that payment provider. The payment provider
+remains available, even though it is possible the payment will be refused at a later stage
+should the country or currency not be supported.</p></li>
+</ul>
+</div>
+</section><section id="maximum-amount">
+<h3>Maximum amount<a class="headerlink" href="#maximum-amount" title="Permalink to this headline">¶</a></h3>
+<p>You can restrict the <span class="guilabel">Maximum Amount</span> that can be paid with the selected provider. Leave
+the field to <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code> to make the payment provider available regardless of the payment amount.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>This feature is not intended to work on pages that allow the customer to update the payment
+amount, e.g., the <strong>Donation</strong> snippet and the <strong>Checkout</strong> page when paid <a class="reference internal" href="../websites/ecommerce/checkout_payment_shipping/shipping.html"><span class="doc">shipping methods</span></a> are enabled.</p>
+</div>
+</section><section id="payment-journal">
+<span id="payment-providers-journal"></span><h2>Payment journal<a class="headerlink" href="#payment-journal" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="accounting/bank.html"><span class="doc">payment journal</span></a> must be defined for the payment provider to record the
+payments on an <strong>outstanding account</strong>. To do so, go to the <span class="guilabel">Configuration</span> tab of the
+selected payment provider and select a <span class="guilabel">Payment Journal</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>The payment journal must be a <span class="guilabel">Bank</span> journal.</p></li>
+<li><p>The same journal can be used for several payment providers.</p></li>
+</ul>
+</div>
+</section><section id="accounting-perspective">
+<h3>Accounting perspective<a class="headerlink" href="#accounting-perspective" title="Permalink to this headline">¶</a></h3>
+<p>From an accounting perspective, there are two types of online payment workflows: the payments that
+are directly deposited into your bank account and follow the usual <a class="reference internal" href="accounting/bank/reconciliation.html"><span class="doc">reconciliation</span></a> workflow, and those coming from third-party <a class="reference internal" href="#payment-providers-online-providers"><span class="std std-ref">online payment
+providers</span></a> and require you to follow another accounting
+workflow. For these payments, you need to consider how you want to record your payments’ journal
+entries. We recommend you ask your accountant for advice.</p>
+<p>By default, the <span class="guilabel">Bank Account</span> defined for the <a class="reference internal" href="#payment-providers-journal"><span class="std std-ref">payment journal</span></a> is used, but you can also specify an <a class="reference internal" href="accounting/bank.html#bank-outstanding-accounts"><span class="std std-ref">outstanding account</span></a> for each payment provider to separate the provider’s payments from
+other payments.</p>
+<img alt="Define an outstanding account for a payment provider." src="../../_images/bank_journal.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="payment_providers/wire_transfer.html"><span class="doc">Wire transfers</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/adyen.html"><span class="doc">Adyen</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/alipay.html"><span class="doc">Alipay</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/authorize.html"><span class="doc">Authorize.Net</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/asiapay.html"><span class="doc">AsiaPay</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/buckaroo.html"><span class="doc">Buckaroo</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/demo.html"><span class="doc">Demo</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/mercado_pago.html"><span class="doc">Mercado Pago</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/mollie.html"><span class="doc">Mollie</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/ogone.html"><span class="doc">Ogone</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/paypal.html"><span class="doc">PayPal</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/razorpay.html"><span class="doc">Razorpay</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/sips.html"><span class="doc">SIPS</span></a></p></li>
+<li><p><a class="reference internal" href="payment_providers/stripe.html"><span class="doc">Stripe</span></a></p></li>
+<li><p><a class="reference internal" href="../websites/ecommerce/checkout_payment_shipping/payments.html"><span class="doc">Payment providers</span></a></p></li>
+<li><p><a class="reference internal" href="accounting/bank.html"><span class="doc">Bank and cash accounts</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Online payments</a><ul>
+<li><a class="reference internal" href="#supported-payment-providers">Supported payment providers</a><ul>
+<li><a class="reference internal" href="#online-payment-providers">Online payment providers</a></li>
+<li><a class="reference internal" href="#bank-payments">Bank payments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enable-a-payment-provider">Enable a payment provider</a><ul>
+<li><a class="reference internal" href="#test-mode">Test mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#payment-form">Payment form</a></li>
+<li><a class="reference internal" href="#tokenization">Tokenization</a></li>
+<li><a class="reference internal" href="#manual-capture">Manual capture</a></li>
+<li><a class="reference internal" href="#refunds">Refunds</a></li>
+<li><a class="reference internal" href="#express-checkout">Express checkout</a></li>
+<li><a class="reference internal" href="#extra-fees">Extra Fees</a></li>
+<li><a class="reference internal" href="#availability">Availability</a><ul>
+<li><a class="reference internal" href="#currencies-and-countries">Currencies and countries</a></li>
+<li><a class="reference internal" href="#maximum-amount">Maximum amount</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#payment-journal">Payment journal</a><ul>
+<li><a class="reference internal" href="#accounting-perspective">Accounting perspective</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Online payments</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

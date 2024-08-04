@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contracts &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/hr/payroll/contracts.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/hr/payroll/contracts.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Contracts</a><ul>
+<li><a class="reference internal" href="#create-a-new-contract">Create a new contract</a><ul>
+<li><a class="reference internal" href="#new-contract-form">New contract form</a></li>
+<li><a class="reference internal" href="#contract-details">Contract details</a><ul>
+<li><a class="reference internal" href="#modify-a-contract-template">Modify a contract template</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#salary-information">Salary information</a></li>
+<li><a class="reference internal" href="#personal-documents">Personal documents</a></li>
+<li><a class="reference internal" href="#save-and-send-the-contract">Save and send the contract</a></li>
+<li><a class="reference internal" href="#salary-attachments">Salary attachments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/hr/payroll/contracts.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Contracts</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="contracts">
+<h1>Contracts<a class="headerlink" href="#contracts" title="Permalink to this headline">¶</a></h1>
+<p>Every employee in Odoo is required to have a contract in order to be paid. A contract outlines the
+terms of an employee’s position, their compensation, working hours, and any other details about
+their position.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Contract documents (PDFs) are uploaded and organized using the <em>Documents</em> application, and are
+signed using the <em>Sign</em> application. Ensure these applications are installed in order to send and
+sign contracts. Please refer to the <a class="reference internal" href="../../productivity/documents.html"><span class="doc">Documents</span></a> and
+<a class="reference internal" href="../../productivity/sign.html"><span class="doc">Sign</span></a> documentation.</p>
+</div>
+<p>To view the employee contracts, go to the <span class="menuselection">Payroll app ‣ Contracts ‣ Contracts</span>
+from the top menu. All employee contracts, and their current contract status, are displayed in a
+Kanban view, by default. The Kanban view displays running contracts, contracts that require action,
+expired contracts, and cancelled contracts.</p>
+<img alt="Contracts dashboard view showing running contracts and contracts with issues." class="align-center" src="../../../_images/contracts-overview.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The list of contracts in the <em>Payroll</em> application matches the list of contracts in the
+<em>Employees</em> application.</p>
+</div>
+</section><section id="create-a-new-contract">
+<h2>Create a new contract<a class="headerlink" href="#create-a-new-contract" title="Permalink to this headline">¶</a></h2>
+<p>In order for an employee to be paid, an active contract is required. If a new contract is needed,
+click the <span class="guilabel">Create</span> button on the <span class="guilabel">Contracts</span> dashboard. A contract form appears
+where the information can be entered. Required fields are underlined in bold.</p>
+</section><section id="new-contract-form">
+<h3>New contract form<a class="headerlink" href="#new-contract-form" title="Permalink to this headline">¶</a></h3>
+<img alt="New contract form to be filled in when creating a new contract." class="align-center" src="../../../_images/required-fields.png" />
+<ul class="simple">
+<li><p><span class="guilabel">Contact Reference</span>: type in the name or title for the contract, such as <code class="o_code docutils literal notranslate"><span class="pre">John</span> <span class="pre">Smith</span>
+<span class="pre">Contract</span></code>. This field is <strong>required</strong>.</p></li>
+<li><p><span class="guilabel">Employee</span>: name of the employee the contract applies to.</p></li>
+<li><p><span class="guilabel">Contract Start Date</span>: the date the contract starts. Choose a date by clicking on the
+drop-down menu, navigating to the correct month and year by using the <i class="fa fa-chevron-left"></i>
+<i class="fa fa-chevron-right"></i> <span class="guilabel">(arrow)</span> icons, then clicking on the desired date. This field
+is <strong>required</strong>.</p></li>
+<li><p><span class="guilabel">Contract End Date</span>: the date the contract ends. Choose a date by clicking on the
+drop-down menu, navigating to the correct month and year by using the <i class="fa fa-chevron-left"></i>
+<i class="fa fa-chevron-right"></i> <span class="guilabel">(arrow)</span> icons, then clicking on the desired date. This field
+is <strong>required</strong>.</p></li>
+<li><p><span class="guilabel">Salary Structure Type</span>: select one of the salary structure types from the drop-down
+menu. The default salary structure types are <span class="guilabel">Employee</span> or <span class="guilabel">Worker</span>. A new
+salary structure type can be created by typing the name in the field. This field is <strong>required</strong>.</p></li>
+<li><p><span class="guilabel">Working Schedule</span>: select one of the working schedules from the drop-down menu. This
+field is <strong>required</strong>.</p></li>
+<li><p><span class="guilabel">Department</span>: the department the contract applies to.</p></li>
+<li><p><span class="guilabel">Job Position</span>: the specific job position the contract applies to.</p></li>
+<li><p><span class="guilabel">Wage on Payroll</span>: the amount to be paid to the employee each month.</p></li>
+<li><p><span class="guilabel">Contract Type</span>: choose from <span class="guilabel">CDI</span>, <span class="guilabel">CDD</span>, or <span class="guilabel">PFI</span> from
+the drop-down menu.</p>
+<ul>
+<li><p><span class="guilabel">CDI</span> is an open-ended contract with only a start date, but no end date.</p></li>
+<li><p><span class="guilabel">CDD</span> is a contract with both a start date and an end date.</p></li>
+<li><p><span class="guilabel">PFI</span> is a Belgian-specific contract used when hiring employees that need training,
+and covers the training period specifically.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">HR Responsible</span>: if there is a specific person in HR that is responsible for the
+contract, select the person from the drop-down menu. This field is required.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The <span class="guilabel">Working Schedule</span> drop-down menu displays all the working times for the selected
+<span class="guilabel">Company</span>. To modify or add to this list, go to <span class="menuselection">Payroll app ‣
+Configuration ‣ Working Times</span>, and either <span class="guilabel">Create</span> a new working time, or click on
+an existing working time, then edit it by clicking <span class="guilabel">Edit</span>.</p>
+</div>
+</section><section id="contract-details">
+<h3>Contract details<a class="headerlink" href="#contract-details" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Contract Details</span> tab allows for the addition and editing of a contract, along with
+specifying which template to use when a new contract is created. These fields <strong>must</strong> be populated
+in order to create a new contract.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>To access the various contract template fields in the <span class="guilabel">Contract Details</span> tab, the
+<em>Salary Configurator</em> (<code class="o_code docutils literal notranslate"><span class="pre">hr_contract_salary</span></code>) module <strong>must</strong> be <a class="reference internal" href="../../general/apps_modules.html#general-install"><span class="std std-ref">installed</span></a>.</p>
+<p>When the <em>Salary Configurator</em> module is installed, the <em>Salary Configurator - Holidays</em> and
+<em>Salary Configurator - Payroll</em> modules install, as well.</p>
+<p>Once the modules are installed, the database reverts to the main dashboard.</p>
+</div>
+<img alt="Contract details in optional tabs for a new contract." class="align-center" src="../../../_images/contract-details.png" />
+<ul class="simple">
+<li><p><span class="guilabel">Analytic Account</span>: this field allows a link between the contract and a specific
+analytic account for accounting purposes.</p></li>
+<li><p><span class="guilabel">Contract Template</span>: select a pre-existing contract template from the drop-down menu.
+Contract templates are typically created through the <em>Recruitment</em> application.</p></li>
+<li><p><span class="guilabel">New Contract Document Template</span>: select a contract from the drop-down menu to be
+modified for this new employee contract.</p></li>
+<li><p><span class="guilabel">Contract Update Document Template</span>: select a contract from the drop-down menu, if the
+employee has an existing contract that requires updating.</p></li>
+<li><p><span class="guilabel">Notes</span>: the notes field is a text field where any notes for the employee contract can
+be entered for future reference.</p></li>
+</ul>
+</section><section id="modify-a-contract-template">
+<h4>Modify a contract template<a class="headerlink" href="#modify-a-contract-template" title="Permalink to this headline">¶</a></h4>
+<p>Click the <i class="fa fa-external-link"></i> <span class="guilabel">(external Link)</span> icon at the end of either the
+<span class="guilabel">New Contract Document Template</span> or <span class="guilabel">Contract Update Document Template</span> to open
+the corresponding contract template, and proceed to make any desired changes.</p>
+<img alt="Contract details in optional tabs for a new contract." class="align-center" src="../../../_images/external-link.png" />
+<p>A pop-up window appears with all the contract details. Modify the fields for the contract as needed.</p>
+<img alt="Edit the details for the contract." class="align-center" src="../../../_images/modify-contract.png" />
+<ul class="simple">
+<li><p><span class="guilabel">Tags</span>: select any tags associated with the contract.</p></li>
+<li><p><span class="guilabel">Signed Document Workspace</span>: this is where the signatures are stored. Choose a
+pre-configured workspace, or create a new one. To create a new <span class="guilabel">Signed Document
+Workspace</span>, type in the name of the workspace, then click either <span class="guilabel">Create</span> to add the new
+workspace, or <span class="guilabel">Create and Edit</span> to add the workspace and modify the workspace details.</p></li>
+<li><p><span class="guilabel">Signed Document Tags</span>: select or create any tags that are only associated with the
+signed contract, as opposed to the original unsigned contract.</p></li>
+<li><p><span class="guilabel">Redirect Link</span>: enter a redirect link for the employee to access the contract. A
+redirect link takes the user from one URL to another. In this case, it takes them to the
+newly-updated contract specifically written for them.</p></li>
+<li><p><span class="guilabel">Who can Sign</span>: select either <span class="guilabel">All Users</span> or <span class="guilabel">On Invitation</span>.</p>
+<ul>
+<li><p><span class="guilabel">All Users</span>: any user in the organization can sign the contract.</p></li>
+<li><p><span class="guilabel">On Invitation</span>: only users selected in this field can sign the contract.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Invited Users</span>: select the person (or people) that can sign the document.</p></li>
+<li><p><span class="guilabel">Document</span>: the attached document can be replaced by clicking the <i class="fa fa-pencil"></i>
+<span class="guilabel">(pencil)</span> icon. A pop-up window appears, so another document can be selected for
+upload. The file <strong>must</strong> be a PDF. To remove the document, click the <i class="fa fa-trash-o"></i>
+<span class="guilabel">(trash can)</span> icon.</p></li>
+</ul>
+<p>Once the edits are complete, click the <span class="guilabel">Save</span> button. All the information for the selected
+contract template populates the fields in the <span class="guilabel">Salary Information</span> tab. Any additional
+tabs, such as <span class="guilabel">Personal Documents</span>, appears if applicable.</p>
+</section><section id="salary-information">
+<h3>Salary information<a class="headerlink" href="#salary-information" title="Permalink to this headline">¶</a></h3>
+<img alt="Optional tabs for a new contract." class="align-center" src="../../../_images/salary-info.png" />
+<p>This section is where the specific salary details are defined. This section is country-specific, so
+these fields vary, depending on where the company is located.</p>
+<p>Enter the amount in the various fields, or tick a checkbox to apply a benefit. Some options that can
+be entered here include <span class="guilabel">Group Insurance Sacrifice Rate</span> and <span class="guilabel">Canteen Cost</span>, for
+example.</p>
+<p>Some fields may be automatically filled in as other fields are entered. For example, the
+<span class="guilabel">Yearly Cost (Real)</span> and <span class="guilabel">Monthly Cost (Real)</span> updates once the <span class="guilabel">Wage</span>
+is populated.</p>
+</section><section id="personal-documents">
+<h3>Personal documents<a class="headerlink" href="#personal-documents" title="Permalink to this headline">¶</a></h3>
+<p>This tab <strong>only</strong> appears after an <span class="guilabel">Employee</span> is selected, and houses any documents that
+are linked to the employee on their employee record. Documents cannot be added to this tab, this tab
+<strong>only</strong> shows documents that are already uploaded and associated with the employee.</p>
+<p>The available documents in this tab can be downloaded. Click the <i class="fa fa-download"></i>
+<span class="guilabel">(download)</span> icon next to the document to download it.</p>
+</section><section id="save-and-send-the-contract">
+<h3>Save and send the contract<a class="headerlink" href="#save-and-send-the-contract" title="Permalink to this headline">¶</a></h3>
+<p>Once a contract has been created and/or modified, save the contract by clicking the <span class="guilabel">Save</span>
+button. Next, the contract must be sent to the employee to be signed.</p>
+<p>Click on one of the following buttons to send the contract to the employee:</p>
+<img alt="Send the contract to the employee via one of the buttons." class="align-center" src="../../../_images/send-contract.png" />
+<ul>
+<li><p><span class="guilabel">Generate Simulation Link</span>: this option is <strong>only</strong> for Belgian companies. Clicking this
+opens a pop-up window that contains the basic information from the contract, as well as a link for
+the contract when using the salary configurator. Click <span class="guilabel">Send</span> to send an email to the
+employee, so they can sign the contract.</p>
+<img alt="Sends a link to the employee for the contract." class="align-center" src="../../../_images/simulation.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In order to send a contract using the <span class="guilabel">Generate Simulation Link</span>, there <strong>must</strong> be a
+signature field in the contract PDF being sent to the employee, so they can sign it.</p>
+</div>
+</li>
+<li><p><span class="guilabel">Signature Request</span>: clicking this reveals a pop-up window, where an email can be typed
+to the employee. Select the document (such as a contract, NDA, or Homeworking Policy) from the
+drop-down menu, and fill out the email section. Click <span class="guilabel">Send</span> when the email is ready to
+be sent.</p>
+<img alt="Request a signature for the contract via email." class="align-center" src="../../../_images/sign-contract.png" />
+</li>
+</ul>
+</section><section id="salary-attachments">
+<h3>Salary attachments<a class="headerlink" href="#salary-attachments" title="Permalink to this headline">¶</a></h3>
+<p>Any automatic deductions or allocations for an employee, such as child support payments and wage
+garnishments, are referred to as a <em>salary attachment</em>. This section is where all of these
+deductions or allocations are set.</p>
+<p>To add a new deduction, first navigate to <span class="menuselection">Payroll app ‣ Contracts ‣ Salary
+Attachments</span>. Next, click <span class="guilabel">Create</span>, and a new salary attachment form loads.</p>
+<img alt="The salary attachment form with everything filled in for Ronnie Hart's child support." class="align-center" src="../../../_images/garnishment.png" />
+<p>Fill out the following fields on the form:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Employee</span>: using the drop-down menu, select the employee the salary attachment applies
+to.</p></li>
+<li><p><span class="guilabel">Description</span>: enter a short description for the salary attachment, such as <code class="o_code docutils literal notranslate"><span class="pre">Child</span>
+<span class="pre">Support</span></code> or <code class="o_code docutils literal notranslate"><span class="pre">529</span> <span class="pre">Contribution</span></code>.</p></li>
+<li><p><span class="guilabel">Type</span>: using the drop-down menu, select the type of salary attachment being created.
+Choose from:</p>
+<ul>
+<li><p><span class="guilabel">Attachment of Salary</span>: any payments taken out towards something that is <em>not</em> child
+support. Typically any garnishments, such as lawsuit payments, payments toward taxes owed, etc.</p></li>
+<li><p><span class="guilabel">Assignment of Salary</span>: any deduction that is not required, but voluntary, such as a
+pre-tax allocation to a college savings account.</p></li>
+<li><p><span class="guilabel">Child Support</span>: any payments taken out specifically for child support.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Start Date</span>: the date the salary attachment starts. Choose a date by clicking on the
+drop-down menu, navigating to the correct month and year by using the <i class="fa fa-chevron-left"></i>
+<i class="fa fa-chevron-right"></i> <span class="guilabel">(arrow)</span> icons, then clicking on the desired date. This field
+is <strong>required</strong>.</p></li>
+<li><p><span class="guilabel">Estimated End Date</span>: this field automatically populates after both the
+<span class="guilabel">Monthly Amount</span> and <span class="guilabel">Total Amount</span> fields are populated. This field is
+<strong>not</strong> modifiable.</p></li>
+<li><p><span class="guilabel">Document</span>: attach any documents relevant to the salary attachment. Click the
+<span class="guilabel">Upload Your File</span> button, navigate to the desired document in the file explorer, then
+click <span class="guilabel">Open</span> to select the document, and attach it to the form. To change the attached
+document, click the <i class="fa fa-pencil"></i> <span class="guilabel">(pencil)</span> icon, and select a different document.
+To remove a document, click the <i class="fa fa-trash-o"></i> <span class="guilabel">(trash can)</span> icon.</p></li>
+<li><p><span class="guilabel">Monthly Amount</span>: enter the amount to be taken out of the employee’s paycheck every
+month for this specific salary attachment.</p></li>
+<li><p><span class="guilabel">Total Amount</span>: enter the total amount that the employee pays for the salary attachment
+to be completed.</p></li>
+</ul>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Contracts</a><ul>
+<li><a class="reference internal" href="#create-a-new-contract">Create a new contract</a><ul>
+<li><a class="reference internal" href="#new-contract-form">New contract form</a></li>
+<li><a class="reference internal" href="#contract-details">Contract details</a><ul>
+<li><a class="reference internal" href="#modify-a-contract-template">Modify a contract template</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#salary-information">Salary information</a></li>
+<li><a class="reference internal" href="#personal-documents">Personal documents</a></li>
+<li><a class="reference internal" href="#save-and-send-the-contract">Save and send the contract</a></li>
+<li><a class="reference internal" href="#salary-attachments">Salary attachments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Contracts</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

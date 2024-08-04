@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cluster picking &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/cluster_picking.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/cluster_picking.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Cluster picking</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#packages-setup">Packages setup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-cluster-batch">Create cluster batch</a></li>
+<li><a class="reference internal" href="#process-batches">Process batches</a><ul>
+<li><a class="reference internal" href="#in-barcode">In Barcode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/cluster_picking.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Cluster picking</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="cluster-picking">
+<h1>Cluster picking<a class="headerlink" href="#cluster-picking" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="inventory-misc-cluster-picking"></span><p>Cluster picking is an advanced order fulfillment approach derived from <a class="reference internal" href="batch_transfers.html#inventory-misc-batch-picking"><span class="std std-ref">batch picking</span></a>.</p>
+<p>In this strategy, pickers load a cart with multiple packages, each designated for a specific <em>sales
+order</em> (SO). Then, the picker travels to each storage location, and places the products directly in
+the package of the associated order.</p>
+<p>This method is most efficient for medium-sized companies, with high order volumes, and relatively
+few unique products, since the method eliminates the need for sorting products into packages for
+customers after picking.</p>
+<p>However, cluster picking does have some disadvantages. For instance, urgent orders cannot be
+prioritized, and optimized batches must be manually created beforehand. As a result, the picking
+process can lead to bottlenecks.</p>
+<div class="alert alert-success" id="inventory-misc-cluster-picking-example">
+<p class="alert-title">
+Example</p><ol class="arabic simple">
+<li><p><abbr title="Sales Order">SO</abbr> 1 calls for one apple and orange</p></li>
+<li><p><abbr title="Sales Order">SO</abbr> 2 calls for one apple and banana</p></li>
+<li><p><abbr title="Sales Order">SO</abbr> 3 calls for one apple, orange, and banana</p></li>
+</ol>
+<p>Apples are stored in Shelf A, oranges in Shelf B, and bananas in Shelf C.</p>
+<p>To pick products for three orders at once, the cart is loaded with three empty packages.</p>
+<p>Starting at Shelf A, the picker places apples into each package. Next, the picker navigates to
+Shelf B, and places oranges in the packages designated for <abbr title="Sales Order">SO</abbr> 1 and <abbr title="Sales Order">SO</abbr> 3. Finally, the picker
+pushes the cart to Shelf C, and loads packages for <abbr title="Sales Order">SO</abbr> 2 and <abbr title="Sales Order">SO</abbr> 3 with a banana, each.</p>
+<p>With the packages for all three <abbr title="Sales Orders">SOs</abbr> packed, the picker pushes the cart to the output location,
+where the packages are sealed and prepared for shipment.</p>
+<img alt="Show example of fulfilling sales orders 2 and 3 at once." class="align-center" src="../../../../../_images/cluster-example.png" />
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To enable cluster picking, begin by navigating to <span class="menuselection">Inventory app ‣ Configuration
+‣ Settings</span>. Under the <span class="guilabel">Operations</span> heading, activate the <span class="guilabel">Packages</span> and
+<span class="guilabel">Batch Transfers</span> options.</p>
+<img alt="Activate *Packages* and *Batch Transfers* features in the settings." class="align-center" src="../../../../../_images/configs.png" />
+<p>Since batch picking is used to optimize the <em>pick</em> operation in Odoo, the <span class="guilabel">Storage
+Locations</span> and <span class="guilabel">Multi-Step Routes</span> options, under the <span class="guilabel">Warehouse</span> heading, must
+also be checked on this settings page.</p>
+<p><em>Storage locations</em> allow products to be stored in specific locations they can be picked from, while
+<em>multi-step routes</em> enable the picking operation itself.</p>
+<p>When finished, click <span class="guilabel">Save</span>.</p>
+<img alt="Enable *Storage Locations* and *Multi-Step Routes* Inventory &gt; Configuration &gt; Settings." class="align-center" src="../../../../../_images/locations-routes-checkbox1.png" />
+</section><section id="packages-setup">
+<span id="inventory-misc-create-package"></span><h3>Packages setup<a class="headerlink" href="#packages-setup" title="Permalink to this headline">¶</a></h3>
+<p>After the <span class="guilabel">Packages</span> feature is enabled, navigate to <span class="menuselection">Inventory app ‣
+Products ‣ Packages</span>, and click the <span class="guilabel">New</span> button to create a new package.</p>
+<p>On the new package form, the <span class="guilabel">Package Reference</span> is pre-filled with the next available
+<code class="o_code docutils literal notranslate"><span class="pre">PACK</span></code> number in the system. <span class="guilabel">Pack Date</span> is automatically set to the creation date of the
+form.</p>
+<p>Set the <span class="guilabel">Package Use</span> field to <span class="guilabel">Reusable Box</span>.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../../product_management/product_tracking/package.html"><span class="doc">Packages</span></a></p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>A package intended for cluster picking is named <code class="o_code docutils literal notranslate"><span class="pre">CLUSTER-PACK-3</span></code> for easy identification. For
+this workflow, the products are directly packed using their intended shipping boxes, so
+<span class="guilabel">Package Use</span> is set to <span class="guilabel">Disposable Box</span>.</p>
+<img alt="Create new package form." class="align-center" src="../../../../../_images/cluster-package.png" />
+</div>
+</section><section id="create-cluster-batch">
+<h2>Create cluster batch<a class="headerlink" href="#create-cluster-batch" title="Permalink to this headline">¶</a></h2>
+<p>To see how cluster picking works in Odoo, navigate to the <span class="menuselection">Sales</span> app, and create
+<abbr title="Sales Orders">SOs</abbr> that will be fulfilled together in the same batch. After confirming an <abbr title="Sales Order">SO</abbr>, the
+<span class="guilabel">Delivery</span> smart button becomes visible. Displayed inside the icon is a number
+representing the amount of steps in the outgoing shipment process.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Begin by creating three <abbr title="Sales Orders">SOs</abbr> for the apples, oranges, and bananas, as shown in the <a class="reference internal" href="#inventory-misc-cluster-picking-example"><span class="std std-ref">example
+above</span></a>.</p>
+<p>After confirming the <abbr title="Sales Order">SO</abbr>, the <span class="guilabel">Delivery</span> smart button displays the number <code class="o_code docutils literal notranslate"><span class="pre">2</span></code>,
+indicating there are two operations to complete: <code class="o_code docutils literal notranslate"><span class="pre">Pick</span></code> and <code class="o_code docutils literal notranslate"><span class="pre">Delivery</span></code>.</p>
+<img alt="Example sales order for an apple, orange, and banana." class="align-center" src="../../../../../_images/create-sales-order.png" />
+</div>
+<p>With the <abbr title="Sales Orders">SOs</abbr> created, orders now must be grouped into batches. To do so, navigate to the
+<em>Inventory</em> dashboard and select the operation type card, <span class="guilabel">Delivery Orders</span> or
+<span class="guilabel">Pick</span> (whichever is the first operation in the delivery flow).</p>
+<p>Doing so displays a filtered list of outgoing operations with the <span class="guilabel">Ready</span> status,
+indicating that all the products in the <abbr title="Sales Order">SO</abbr> are in stock.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Cluster pick batches can be created for outgoing shipments in one, two, or three steps.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../../shipping_receiving/daily_operations/receipts_delivery_one_step.html#inventory-receipts-delivery-one-step"><span class="std std-ref">Delivery in one step</span></a></p></li>
+<li><p><a class="reference internal" href="../../shipping_receiving/daily_operations/receipts_delivery_two_steps.html#inventory-receipts-delivery-two-steps"><span class="std std-ref">Delivery in two steps</span></a></p></li>
+<li><p><a class="reference internal" href="../../shipping_receiving/daily_operations/delivery_three_steps.html#inventory-delivery-three-steps"><span class="std std-ref">Delivery in three steps</span></a></p></li>
+</ul>
+</div>
+<p>Click the checkbox to the left of the corresponding outgoing operation to add them to the batch.
+With the desired pickings selected, click the <span class="guilabel">⚙️ Actions (gear)</span> button, and select the
+<span class="guilabel">Add to batch</span> option from the resulting drop-down menu.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>To create a cluster batch, as shown in the <a class="reference internal" href="#inventory-misc-cluster-picking-example"><span class="std std-ref">example above</span></a>, in a warehouse configured with two-step outgoing
+shipments, the following pick operations are selected:</p>
+<ul class="simple">
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">WH/PICK/00007</span></code>: linked to <abbr title="Sales Order">SO</abbr> 88 for one apple and orange.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">WH/PICK/00008</span></code>: linked to <abbr title="Sales Order">SO</abbr> 89 for one apple and banana.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">WH/PICK/00009</span></code>: linked to <abbr title="Sales Order">SO</abbr> 90 for one apple, orange, and banana.</p></li>
+</ul>
+<img alt="Use *Add to batch* button, from the *Action* button's list." class="align-center" src="../../../../../_images/select-picks.png" />
+</div>
+<p>Doing so opens an <span class="guilabel">Add to batch</span> pop-up window, wherein the employee
+<span class="guilabel">Responsible</span> for the picking can be assigned.</p>
+<p>Choose from the two options in the <span class="guilabel">Add to</span> field to either: add to <span class="guilabel">an existing
+batch transfer</span>, or create <span class="guilabel">a new batch transfer</span>.</p>
+<p>To create draft batch pickings to be confirmed at a later date, select the <span class="guilabel">Draft</span>
+checkbox.</p>
+<p>Conclude the process by clicking <span class="guilabel">Confirm</span>.</p>
+<img alt="Show *Add to batch* window to create a batch transfer." class="align-center" src="../../../../../_images/add-to-batch-window1.png" />
+</section><section id="process-batches">
+<h2>Process batches<a class="headerlink" href="#process-batches" title="Permalink to this headline">¶</a></h2>
+<p>To process batches, navigate to <span class="menuselection">Inventory app ‣ Operations ‣ Batch Transfers</span>.
+Click on a batch to select it.</p>
+<p>In the <span class="guilabel">Detailed Operations</span> tab, products that are to be picked are grouped by location.</p>
+<p>Under the <span class="guilabel">Source Package</span> or <span class="guilabel">Destination Package</span> field, enter the package
+used for the picking.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Use the <span class="guilabel">Source Package</span> field when the picking package is configured as <em>reusable</em> on
+the <a class="reference internal" href="#inventory-misc-create-package"><span class="std std-ref">package form</span></a>. This means the products are temporarily
+placed in a container during picking, before getting transferred to their final shipping box.</p>
+<p>Alternatively, use the <span class="guilabel">Destination Package</span> field when the product is directly placed
+in its <em>disposable</em> shipping box during picking.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Process the cluster batch for the three orders of apples, oranges, and bananas <a class="reference internal" href="#inventory-misc-cluster-picking-example"><span class="std std-ref">example</span></a> by assigning each picking to a dedicated package.</p>
+<p>At the storage location for apples, <code class="o_code docutils literal notranslate"><span class="pre">WH/Stock/Shelf</span> <span class="pre">A</span></code>, assign the apples in all three pickings
+to one of the three disposable packages, <code class="o_code docutils literal notranslate"><span class="pre">CLUSTER-PACK-1</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">CLUSTER-PACK-2</span></code>, or <code class="o_code docutils literal notranslate"><span class="pre">CLUSTER-PACK-3</span></code>.</p>
+<p>Record this in Odoo using the <span class="guilabel">Destination Package</span> field in the <span class="guilabel">Detailed
+Operations</span> tab.</p>
+<img alt="Example of processing cluster pickings in *Inventory*." class="align-center" src="../../../../../_images/cluster-batch-example.png" />
+</div>
+</section><section id="in-barcode">
+<h3>In Barcode<a class="headerlink" href="#in-barcode" title="Permalink to this headline">¶</a></h3>
+<p>To process cluster pickings directly from the <em>Barcode</em> app, select the <span class="guilabel">Batch Transfers</span>
+button from the <em>Barcode</em> dashboard. Then, select the desired batch.</p>
+<p>On the batch transfer screen, the products in the picking are grouped by location, and each line is
+color-coded to associate products in the same picking together.</p>
+<p>Then, follow the prompt to <span class="guilabel">Scan the source location</span> barcode for the storage location of
+the first product. Then, scan the barcode for the product and package to process the transfer.</p>
+<p>Repeat this for all products, and click the <span class="guilabel">Validate</span> button.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>To find the package barcode, navigate to <span class="menuselection">Inventory app ‣ Products ‣
+Packages</span>, select the desired package, click the <span class="guilabel">⚙️ (gear)</span> icon at the top of the
+package form, and select the <span class="guilabel">Print</span> option.</p>
+<p>Next, select one of the three print options to generate the package barcode from the
+<span class="guilabel">Package Reference</span> field.</p>
+<img alt="Display where the package barcode can be generated." class="align-center" src="../../../../../_images/find-package-barcode.png" />
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Begin processing the cluster picking by going to the first storage location, <code class="o_code docutils literal notranslate"><span class="pre">Shelf</span> <span class="pre">A</span></code>, and
+scanning the <a class="reference internal" href="../../../barcode/setup/software.html#barcode-setup-location"><span class="std std-ref">location barcode</span></a>. Doing so highlights all the
+pickings that need products from this particular location.</p>
+<p>Scan the barcode for the apple, which highlights the picking (labeled in red) for the product
+<code class="o_code docutils literal notranslate"><span class="pre">Apple</span></code>, for the picking, <code class="o_code docutils literal notranslate"><span class="pre">WH/PICK/00007</span></code>.</p>
+<p>Then, scan the <code class="o_code docutils literal notranslate"><span class="pre">CLUSTER-PACK-1</span></code> package barcode, and place the product in the designated package.</p>
+<img alt="Example of cluster batch from the *Barcode* app." class="align-center" src="../../../../../_images/batch-barcode.png" />
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>After creating a batch transfer and assigning a package to a picking, Odoo suggests the specified
+package by displaying the name <em>in italics</em> under the product name, ensuring pickers place
+products into the correct boxes.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Cluster picking</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#packages-setup">Packages setup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-cluster-batch">Create cluster batch</a></li>
+<li><a class="reference internal" href="#process-batches">Process batches</a><ul>
+<li><a class="reference internal" href="#in-barcode">In Barcode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Cluster picking</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

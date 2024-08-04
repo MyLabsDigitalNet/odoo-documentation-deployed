@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ecuador &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/ecuador.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/fiscal_localizations/ecuador.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Ecuador</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#glossary">Glossary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#modules-installation">Modules installation</a></li>
+<li><a class="reference internal" href="#configure-your-company">Configure your company</a></li>
+<li><a class="reference internal" href="#electronic-documents">Electronic documents</a></li>
+<li><a class="reference internal" href="#vat-withholding">VAT withholding</a></li>
+<li><a class="reference internal" href="#printer-points">Printer points</a></li>
+<li><a class="reference internal" href="#withholding">Withholding</a></li>
+<li><a class="reference internal" href="#purchase-liquidations">Purchase Liquidations</a></li>
+<li><a class="reference internal" href="#configure-master-data">Configure master data</a><ul>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#contacts">Contacts</a></li>
+<li><a class="reference internal" href="#review-your-taxes">Review your taxes</a></li>
+<li><a class="reference internal" href="#review-your-document-types">Review your Document Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflows">Workflows</a><ul>
+<li><a class="reference internal" href="#sales-documents">Sales documents</a><ul>
+<li><a class="reference internal" href="#customer-invoices">Customer invoices</a></li>
+<li><a class="reference internal" href="#customer-credit-note">Customer credit note</a></li>
+<li><a class="reference internal" href="#customer-debit-note">Customer debit note</a></li>
+<li><a class="reference internal" href="#customer-withholding">Customer withholding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#purchase-documents">Purchase Documents</a><ul>
+<li><a class="reference internal" href="#vendor-bill">Vendor bill</a></li>
+<li><a class="reference internal" href="#purchase-liquidation">Purchase liquidation</a></li>
+<li><a class="reference internal" href="#purchase-withholding">Purchase withholding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#financial-reports">Financial Reports</a><ul>
+<li><a class="reference internal" href="#report-103">Report 103</a></li>
+<li><a class="reference internal" href="#report-104">Report 104</a></li>
+<li><a class="reference internal" href="#ats-report">ATS report</a><ul>
+<li><a class="reference internal" href="#id1">Configuration</a><ul>
+<li><a class="reference internal" href="#vendor-bills">Vendor bills</a></li>
+<li><a class="reference internal" href="#credit-and-debit-notes">Credit and debit notes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xml-generation">XML generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/ecuador.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Ecuador</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="ecuador">
+<h1>Ecuador<a class="headerlink" href="#ecuador" title="Permalink to this headline">¶</a></h1>
+</section><section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>With the Ecuadorian localization you can generate electronic documents with its XML, Fiscal folio,
+with electronic signature and direct connection to tax authority SRI.</p>
+<p>The supported documents are Invoices, Credit Notes, Debit Notes, Purchase Liquidations and
+Withholds.</p>
+<p>The localization also Includes automations to easily predict the withholding tax to be applied to
+each purchase invoice.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=BQOXVSDeeK8">App Tour - Localización de Ecuador</a></p></li>
+<li><p><a class="reference external" href="https://www.odoo.com/slides/smart-tutorial-localizacion-de-ecuador-170">Smart Tutorial - Localización de Ecuador</a></p></li>
+</ul>
+</div>
+</section><section id="glossary">
+<h3>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<p>Here are some terms that are essential on the Ecuadorian localization:</p>
+<ul class="simple">
+<li><p><strong>SRI</strong>: meaning <em>Servicio de Rentas Internas</em>, the government organization that enforces pay of
+taxes in Ecuador.</p></li>
+<li><p><strong>EDI</strong>: stands for <em>Electronic Data Interchange</em>, which refers to the sending of Electronics
+Documents.</p></li>
+<li><p><strong>RIMPE</strong>: stands for <em>Regimen Simplificado para Emprendedores y Negocios</em>, the type of taxpayer
+qualified for SRI.</p></li>
+</ul>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="modules-installation">
+<h3>Modules installation<a class="headerlink" href="#modules-installation" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../../general/apps_modules.html#general-install"><span class="std std-ref">Install</span></a> the following modules to get all the features of the Ecuadorian
+localization:</p>
+<table class="colwidths-given table docutils">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Technical name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Ecuadorian - Accounting</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_ec</span></code></p></td>
+<td><p>The default <a class="reference internal" href="../fiscal_localizations.html"><span class="doc">fiscal localization package</span></a>, adds accounting
+characteristics for the Ecuadorian localization, which represent the minimum configuration
+required for a company to operate in Ecuador according to the guidelines set by the
+<abbr title="servicio de rentas internas">SRI</abbr>. The module’s installation automatically loads:
+Chart of Accounts, taxes, documents types, tax support types. Additionally, the generation of
+forms 103 and 104 are automatic.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Ecuadorian Accounting EDI</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_ec_edi</span></code></p></td>
+<td><p>Includes all the technical and functional requirements to generate and validate
+<a class="reference internal" href="../accounting/customer_invoices/electronic_invoicing.html"><span class="doc">Electronics Documents</span></a>, based on the Technical
+documentation published by the SRI. The authorized documents are: Invoices, Credit Notes,
+Debit Notes, Withholdings and Purchase liquidations.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When you install a database from scratch selecting <code class="o_code docutils literal notranslate"><span class="pre">Ecuador</span></code> as the country, Odoo automatically
+installs the base module <span class="guilabel">Ecuadorian - Accounting</span>.</p>
+</div>
+</section><section id="configure-your-company">
+<span id="l10n-ec-configure-your-company"></span><h3>Configure your company<a class="headerlink" href="#configure-your-company" title="Permalink to this headline">¶</a></h3>
+<p>To configure your company information, go to the <span class="guilabel">Contacts</span> app and search the name given
+to your company or activate <a class="reference internal" href="../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> and go to <span class="menuselection">Company
+‣ Contact</span> and then edit the contact to configure the following information:</p>
+<ol class="arabic simple">
+<li><p>Check the <span class="guilabel">Company</span> option on top</p>
+<ul class="simple">
+<li><p><span class="guilabel">Name</span></p></li>
+<li><p><span class="guilabel">Address</span></p></li>
+<li><p><span class="guilabel">Identification Number</span></p></li>
+<li><p><span class="guilabel">Taxpayer Type</span></p></li>
+<li><p><span class="guilabel">Phone</span></p></li>
+<li><p><span class="guilabel">Email</span></p></li>
+</ul>
+</li>
+<li><p>Upload company logo and save</p></li>
+</ol>
+<img alt="Populate company data for Ecuador in Odoo Contacts." class="align-center" src="../../../_images/ecuador-company.png" />
+</section><section id="electronic-documents">
+<h3>Electronic documents<a class="headerlink" href="#electronic-documents" title="Permalink to this headline">¶</a></h3>
+<p>To upload your information for electronic documents go to <span class="menuselection">Accounting ‣
+Configuration ‣ Settings</span> and search for <strong class="command o_code">Ecuadorian Localization</strong>.</p>
+<p>Configure the next information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Company legal name</span></p></li>
+<li><p><span class="guilabel">Use production servers</span>: check the checkbox if your company is going to do electronic
+documents in the production environment. If you want to use the testing environment for electronic
+documents then keep the checkbox unchecked.</p></li>
+<li><p><span class="guilabel">Regime</span>: select if your company is in General Regular or is qualified as RIMPE.</p></li>
+<li><p><span class="guilabel">Forced to keep accounting books</span>: check the checkbox if your company has this
+condition.</p></li>
+<li><p><span class="guilabel">Default taxes for withholdings</span></p></li>
+<li><p><span class="guilabel">Issue withholds</span>: check the checkbox if your company is going to do electronic
+withholds.</p></li>
+<li><p><span class="guilabel">Withhold consumibles</span>: put the code of the withholding for when you buy goods.</p></li>
+<li><p><span class="guilabel">Withhold services</span>: put the code of the withholding for when you buy services.</p></li>
+<li><p><span class="guilabel">Withhold credit card</span>: put the code of the withholding for when you buy with credit
+card</p></li>
+<li><p><span class="guilabel">Withhold agent number</span>: put the company withholding agent resolution number, if
+applicable for your company.</p></li>
+<li><p><span class="guilabel">Electronic Certificate File</span>: upload electronic certificate and password, then save it.</p></li>
+<li><p><span class="guilabel">Special tax contributor number</span>: if your company is qualified as a special taxpayer,
+fill out this field with it’s corresponding tax contributor number.</p></li>
+</ul>
+<img alt="Electronic signature for Ecuador." class="align-center" src="../../../_images/electronic-signature.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When configuring the withholdings in the configuration menu, these suggested withholdings are
+only for domestic suppliers when no withholdings are setup on their <em>Taxpayer Type</em>. Moreover,
+the Credit Card withholding set up is always used when a Credit or Debit Card SRI Payment Metho
+is used.</p>
+</div>
+</section><section id="vat-withholding">
+<h3>VAT withholding<a class="headerlink" href="#vat-withholding" title="Permalink to this headline">¶</a></h3>
+<p>This configuration only applies if you are qualified as a <em>Withholding Agent</em> by the SRI, otherwise
+skip this step. To configure your VAT withholding, go to <span class="menuselection">Accounting ‣ Accounting
+‣ Configuration ‣ Ecuadorian SRI: Taxpayer Type SRI</span>.</p>
+<p>You must configure the withholding percentage that applies for each type of taxpayer, specify the
+<span class="guilabel">Goods VAT Withholding</span> and the <span class="guilabel">Services VAT Withholding</span>.</p>
+<img alt="Taxpayer Type configuration for Ecuador." class="align-center" src="../../../_images/contributor-type.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>In the case that the <span class="guilabel">Taxpayer Type</span> is <code class="o_code docutils literal notranslate"><span class="pre">RIMPE</span></code>, also configure the <span class="guilabel">Profit
+Withholding</span> percentage.</p>
+</div>
+</section><section id="printer-points">
+<h3>Printer points<a class="headerlink" href="#printer-points" title="Permalink to this headline">¶</a></h3>
+<p>To configure your printer points, go to <span class="menuselection">Accounting ‣ Configuration ‣ Accounting:
+Journals</span>.</p>
+<p>Printer points need to be configured for each type of electronic document that you need. For
+example: Customer Invoice, Credit Notes, and Debit Notes</p>
+<p>For each printer point, you need to configure the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Journal Name</span>: in this format <code class="o_code docutils literal notranslate"><span class="pre">[Emission</span> <span class="pre">Entity]-[Emission</span> <span class="pre">Point]</span> <span class="pre">[Document</span> <span class="pre">Type]</span></code>, for
+example: <code class="o_code docutils literal notranslate"><span class="pre">001-001</span> <span class="pre">Sales</span> <span class="pre">Documents</span></code>.</p></li>
+<li><p><span class="guilabel">Type</span>: refers to the type of journal, select <code class="o_code docutils literal notranslate"><span class="pre">Sales</span></code>.</p></li>
+<li><p><span class="guilabel">Use Documents?</span>: this checkbox is automatically checked, leave it checked.</p></li>
+<li><p><span class="guilabel">Emission Entity</span>: configure the establishment number.</p></li>
+<li><p><span class="guilabel">Emission Point</span>: configure the printer point.</p></li>
+<li><p><span class="guilabel">Emission address</span>: configure the address of the establishment.</p></li>
+<li><p><span class="guilabel">Default income account</span>: configure the default income account.</p></li>
+<li><p><span class="guilabel">Dedicated Credit Note Sequence</span>: check the checkbox if <em>Credit Notes</em> are to be
+generated from this printer point - journal.</p></li>
+<li><p><span class="guilabel">Short Code</span>: This is the unique code for the sequence of accounting entries, enter a
+unique 5-digit code, for example: <code class="o_code docutils literal notranslate"><span class="pre">VT001</span></code></p></li>
+</ul>
+<p>Customer Invoice, Credit Notes and Debit Notes need to use the same journal as the
+<span class="guilabel">Emission Point</span>, and the <span class="guilabel">Entity Point</span> should be unique per journal.</p>
+<img alt="Configuring a printer point for Ecuador electronic document type of Customer Invoices." class="align-center" src="../../../_images/printer-point.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In the <span class="guilabel">Advanced Settings</span> tab, check the <span class="guilabel">Electronic Invoicing</span> checkbox to
+enable it for Ecuador.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../accounting/customer_invoices/electronic_invoicing.html"><span class="doc">Electronic invoicing (EDI)</span></a></p>
+</div>
+</section><section id="withholding">
+<h3>Withholding<a class="headerlink" href="#withholding" title="Permalink to this headline">¶</a></h3>
+<p>A Withholding Journal must be defined, go to go to <span class="menuselection">Accounting ‣ Configuration ‣
+Accounting:  Journals</span> where you need to configure the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Journal Name</span>: in this format <code class="o_code docutils literal notranslate"><span class="pre">[Emission</span> <span class="pre">Entity]-[Emission</span> <span class="pre">Point]</span> <span class="pre">[Document</span> <span class="pre">Type]</span></code>, for
+example: <code class="o_code docutils literal notranslate"><span class="pre">001-001</span> <span class="pre">Withholding</span></code>.</p></li>
+<li><p><span class="guilabel">Type</span>: refers to the type of journal, select <code class="o_code docutils literal notranslate"><span class="pre">Miscellaneous</span></code>.</p></li>
+<li><p><span class="guilabel">Withhold Type</span>: Configure Purchase Withholding.</p></li>
+<li><p><span class="guilabel">Use Documents?</span>: this checkbox is automatically checked, leave it checked.</p></li>
+<li><p><span class="guilabel">Emission Entity</span>: configure the establishment number.</p></li>
+<li><p><span class="guilabel">Emission Point</span>: configure the printer point.</p></li>
+<li><p><span class="guilabel">Emission address</span>: configure the address of the establishment.</p></li>
+<li><p><span class="guilabel">Default account</span>: configure the default income account.</p></li>
+<li><p><span class="guilabel">Short Code</span>: This is the unique code for the sequence of accounting entries, enter a
+unique 5-digit code, for example: <code class="o_code docutils literal notranslate"><span class="pre">RT001</span></code></p></li>
+</ul>
+<img alt="Configuring withholding for Ecuador electronic document type of Withholding." class="align-center" src="../../../_images/withhold.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In the <span class="guilabel">Advanced Settings</span> tab, check the <span class="guilabel">Electronic Invoicing</span> checkbox to
+enable the sending of electronic invoicing for the withholding.</p>
+</div>
+</section><section id="purchase-liquidations">
+<h3>Purchase Liquidations<a class="headerlink" href="#purchase-liquidations" title="Permalink to this headline">¶</a></h3>
+<p>When using Purchase Liquidations, a specific journal must be created, go to
+<span class="menuselection">Accounting ‣ Configuration ‣ Accounting:  Journals</span> and configure the following
+information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Journal Name</span>: in this format <code class="o_code docutils literal notranslate"><span class="pre">[Emission</span> <span class="pre">Entity]-[Emission</span> <span class="pre">Point]</span> <span class="pre">[Document</span> <span class="pre">Type]</span></code>, for
+example: <code class="o_code docutils literal notranslate"><span class="pre">001-001</span> <span class="pre">Withhold</span></code>.</p></li>
+<li><p><span class="guilabel">Type</span>: refers to the type of journal, select <code class="o_code docutils literal notranslate"><span class="pre">Miscellaneous</span></code>.</p></li>
+<li><p><span class="guilabel">Purchase Liquidations</span>: check the checkbox to enable purchase liquidations.</p></li>
+<li><p><span class="guilabel">Use Documents?</span>: this checkbox is automatically checked, leave it checked.</p></li>
+<li><p><span class="guilabel">Emission Entity</span>: configure the establishment number.</p></li>
+<li><p><span class="guilabel">Emission Point</span>: configure the printer point.</p></li>
+<li><p><span class="guilabel">Emission address</span>: configure the address of the establishment.</p></li>
+<li><p><span class="guilabel">Short Code</span>: This is the unique code for the sequence of accounting entries, enter a
+unique 5-digit code, for example: <code class="o_code docutils literal notranslate"><span class="pre">RT001</span></code></p></li>
+</ul>
+<img alt="Configuring purchase liquidations for Ecuador electronic document type of Withholding." class="align-center" src="../../../_images/purchase-liqudations.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In the <span class="guilabel">Advanced Settings</span> tab, check the <span class="guilabel">Electronic Invoicing</span> checkbox to
+enable the sending of electronic invoicing for the withholding.</p>
+</div>
+</section><section id="configure-master-data">
+<h3>Configure master data<a class="headerlink" href="#configure-master-data" title="Permalink to this headline">¶</a></h3>
+</section><section id="chart-of-accounts">
+<h4>Chart of accounts<a class="headerlink" href="#chart-of-accounts" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference internal" href="../accounting/get_started/chart_of_accounts.html"><span class="doc">chart of accounts</span></a>
+is installed by default as part of the set of data included in the localization module, the accounts
+are mapped automatically in Taxes, Default Account Payable, Default Account Receivable.</p>
+<p>The chart of accounts for Ecuador is based on the most updated version of Superintendency of
+Companies, which is grouped in several categories and is compatible with NIIF accounting.</p>
+<p>You can add or delete accounts according to the company’s needs.</p>
+</section><section id="products">
+<h4>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h4>
+<p>In addition to the basic information in your products, you must add the configuration of the
+withholding code (tax) that applies.</p>
+<p>Go to <span class="menuselection">Accounting ‣ Vendors:  Products</span> under the tab “Purchase”</p>
+<img alt="Product for Ecuador." class="align-center" src="../../../_images/products.png" />
+</section><section id="contacts">
+<h4>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h4>
+<p>Configure the next information when you create a contact:</p>
+<ul class="simple">
+<li><p>Check the <span class="guilabel">Company</span> option on top if it is a contact with RUC, or check
+<span class="guilabel">Individual</span> if it is a contact with cedula or passport.</p></li>
+<li><p><span class="guilabel">Name</span></p></li>
+<li><p><span class="guilabel">Address</span>: <span class="guilabel">Street</span> is a required field to confirm the Electronic Invoice.</p></li>
+<li><p><span class="guilabel">Identification Number</span>: select an identification type <code class="o_code docutils literal notranslate"><span class="pre">RUC</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">Cedula</span></code>, or <code class="o_code docutils literal notranslate"><span class="pre">Passport</span></code>.</p></li>
+<li><p><span class="guilabel">Taxpayer Type</span>: select the contact’s SRI Taxpayer Type.</p></li>
+<li><p><span class="guilabel">Phone</span></p></li>
+<li><p><span class="guilabel">Email</span></p></li>
+</ul>
+<img alt="Contacts for Ecuador." class="align-center" src="../../../_images/contacts.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">SRI Taxpayer Type</span> has inside the configuration of which VAT and Profit
+withholding will apply when you use this contact on Vendor Bill, and then create a withholding
+from there.</p>
+</div>
+</section><section id="review-your-taxes">
+<h4>Review your taxes<a class="headerlink" href="#review-your-taxes" title="Permalink to this headline">¶</a></h4>
+<p>As part of the localization module, taxes are automatically created with its configuration and
+related financial accounts.</p>
+<img alt="Taxes for Ecuador." class="align-center" src="../../../_images/taxes.png" />
+<p>The following options have been automatically configured:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Tax Support</span>: to be configured only in the IVA tax, this option is useful when you
+register purchase withholdings.</p></li>
+<li><p><span class="guilabel">Code ATS</span>: to be configured only for income tax withholding codes, it is important when
+you register the withholding.</p></li>
+<li><p><span class="guilabel">Tax Grids</span>: configure the codes of 104 form if it is a IVA tax and configure the codes
+of 103 form if it is a  income tax withholding code.</p></li>
+<li><p><span class="guilabel">Tax Name</span>:</p>
+<ul>
+<li><p>For IVA tax, format the name as: <code class="o_code docutils literal notranslate"><span class="pre">IVA</span> <span class="pre">[percent]</span> <span class="pre">(104,</span> <span class="pre">[form</span> <span class="pre">code]</span> <span class="pre">[tax</span> <span class="pre">support</span> <span class="pre">code]</span> <span class="pre">[tax</span> <span class="pre">support</span>
+<span class="pre">short</span> <span class="pre">name])</span></code></p></li>
+<li><p>For income tax withholding code, format the name as: <code class="o_code docutils literal notranslate"><span class="pre">Code</span> <span class="pre">ATS</span> <span class="pre">[Percent</span> <span class="pre">of</span> <span class="pre">withhold]</span> <span class="pre">[withhold</span>
+<span class="pre">name]</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>Once the Ecuador module is installed, the most common taxes are automatically configured. If you
+need to create an additional one, you can do so, for which you must base yourself on the
+configuration of the existing taxes.</p>
+<img alt="Taxes with tax support for Ecuador." class="align-center" src="../../../_images/taxes-with-tax-support.png" />
+</section><section id="review-your-document-types">
+<h4>Review your Document Types<a class="headerlink" href="#review-your-document-types" title="Permalink to this headline">¶</a></h4>
+<p>Some accounting transactions like <em>Customer Invoices</em> and <em>Vendor Bills</em> are classified by document
+types. These are defined by the government fiscal authorities, in this case by the SRI.</p>
+<p>Each document type can have a unique sequence per journal where it is assigned. As part of the
+localization, the document type includes the country on which the document is applicable; also the
+data is created automatically when the localization module is installed.</p>
+<p>The information required for the document types is included by default so the user does not need to
+fill anything there.</p>
+<img alt="Document types for Ecuador." class="align-center" src="../../../_images/document-types.png" />
+</section><section id="workflows">
+<h2>Workflows<a class="headerlink" href="#workflows" title="Permalink to this headline">¶</a></h2>
+<p>Once you have configured your database, you can register your documents.</p>
+</section><section id="sales-documents">
+<h3>Sales documents<a class="headerlink" href="#sales-documents" title="Permalink to this headline">¶</a></h3>
+</section><section id="customer-invoices">
+<h4>Customer invoices<a class="headerlink" href="#customer-invoices" title="Permalink to this headline">¶</a></h4>
+<p><span class="guilabel">Customer invoices</span> are electronic documents that, when validated, are sent to SRI. These
+documents can be created from your sales order or manually. They must contain the following data:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Customer</span>: type the customer’s information.</p></li>
+<li><p><span class="guilabel">Journal</span>: select the option that matches the printer point for the customer invoice.</p></li>
+<li><p><span class="guilabel">Document Type</span>: type document type in this format <code class="o_code docutils literal notranslate"><span class="pre">(01)</span> <span class="pre">Invoice</span></code>.</p></li>
+<li><p><span class="guilabel">Payment Method (SRI)</span>: select how the invoice is going to be paid.</p></li>
+<li><p><span class="guilabel">Products</span>: specify the product with the correct taxes.</p></li>
+</ul>
+<img alt="Customer invoice for Ecuador." class="align-center" src="../../../_images/customer-invoice.png" />
+</section><section id="customer-credit-note">
+<h4>Customer credit note<a class="headerlink" href="#customer-credit-note" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference internal" href="../accounting/customer_invoices/credit_notes.html"><span class="doc">Customer credit note</span></a> is an
+electronic document that, when validated, is sent to SRI. It is necessary to have a validated
+(posted) invoice in order to register a credit note. On the invoice there is a button named
+<span class="guilabel">Credit note</span>, click on this button to be directed to the <span class="guilabel">Create credit note</span>
+form, then complete the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Credit Method</span>: select the type of credit method.</p>
+<ul>
+<li><p><span class="guilabel">Partial Refund</span>: use this option when you need to type the first number of documents
+and if it is a partial credit note.</p></li>
+<li><p><span class="guilabel">Full Refund</span>: use this option if the credit note is for the total invoice and you
+need the credit note to be auto-validated and reconciled with the invoice.</p></li>
+<li><p><span class="guilabel">Full refund and new draft invoice</span>: use this option if the credit note is for the
+total invoice and you need the credit note to be auto-validated and reconciled with the invoice,
+and auto-create a new draft invoice.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Reason</span>: type the reason for the credit note.</p></li>
+<li><p><span class="guilabel">Rollback Date</span>: select the <span class="guilabel">specific</span> options.</p></li>
+<li><p><span class="guilabel">Reversal Date</span>: type the date.</p></li>
+<li><p><span class="guilabel">Use Specific Journal</span>: select the printer point for your credit note, or leave it empty
+if you want to use the same journal as the original invoice.</p></li>
+</ul>
+<p>Once reviewed, you can click on the <span class="guilabel">Reverse</span> button.</p>
+<img alt="Add Customer Credit Note for Ecuador." class="align-center" src="../../../_images/add-customer-credit-note.png" />
+<p>When the <span class="guilabel">Partial Refund</span> option is used, you can change the amount of the credit note and
+then validate it. Before validating the credit note, review the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Customer</span>: type the customer’s information.</p></li>
+<li><p><span class="guilabel">Journal</span>: select the printer point for the customer Credit Note.</p></li>
+<li><p><span class="guilabel">Document Type</span>: this is the document type <code class="o_code docutils literal notranslate"><span class="pre">(04)</span> <span class="pre">Credit</span> <span class="pre">Note</span></code>.</p></li>
+<li><p><span class="guilabel">Products</span>: It must specify the product with the correct taxes.</p></li>
+</ul>
+<img alt="Customer Credit Note for Ecuador." class="align-center" src="../../../_images/customer-credit-note.png" />
+</section><section id="customer-debit-note">
+<h4>Customer debit note<a class="headerlink" href="#customer-debit-note" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">Customer debit note</span> is an electronic document that, when validated, is sent to SRI.
+It is necessary to have a validated (posted) invoice in order to register a debit note. On the
+invoice there is a button named <span class="guilabel">Debit Note</span>, click on this button to be directed to the
+<span class="guilabel">Create debit note</span> form, then complete the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Reason</span>: type the reason for the debit note.</p></li>
+<li><p><span class="guilabel">Debit note date</span>: select the <span class="guilabel">specific</span> options.</p></li>
+<li><p><span class="guilabel">Copy lines</span>: select this option if you need to register a debit note with the same
+lines of invoice.</p></li>
+<li><p><span class="guilabel">Use Specific Journal</span>: select the printer point for your credit note, or leave it empty
+if you want to use the same journal as the original invoice.</p></li>
+</ul>
+<p>Once reviewed you can click on the <span class="guilabel">Create Debit Note</span> button.</p>
+<img alt="Add Customer Debit Note for Ecuador." class="align-center" src="../../../_images/add-customer-debit-note.png" />
+<p>You can change the debit note amount, and then validate it. Before validating the debit note, review
+the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Customer</span>: type the customer’s information.</p></li>
+<li><p><span class="guilabel">Journal</span>: select the printer point for the customer Credit Note.</p></li>
+<li><p><span class="guilabel">Document Type</span>: this is the document type <code class="o_code docutils literal notranslate"><span class="pre">(05)</span> <span class="pre">Debit</span> <span class="pre">Note</span></code>.</p></li>
+<li><p><span class="guilabel">Products</span>: It must specify the product with the correct taxes.</p></li>
+</ul>
+<img alt="Customer Debit Note for Ecuador." class="align-center" src="../../../_images/customer-debit-note.png" />
+</section><section id="customer-withholding">
+<h4>Customer withholding<a class="headerlink" href="#customer-withholding" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">Customer withholding</span> is a non-electronic document for your company, this document is
+issued by the client in order to apply a withholding to the sale.</p>
+<p>It is necessary to have a validated (posted) invoice in order to register a customer withholding. On
+the invoice there is a button named <span class="guilabel">Add Withhold</span>,  click on this button to be directed
+to the <span class="guilabel">Customer withholding</span> form, then complete the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Document Number</span>: type the withholding number.</p></li>
+<li><p><span class="guilabel">Withhold Lines</span>: select the taxes that the customer is withholding.</p></li>
+</ul>
+<p>Before validating the withholding, review that the amounts for each tax are the same as the original
+document.</p>
+<img alt="Customer withhold for Ecuador." class="align-center" src="../../../_images/customer-withhold.png" />
+</section><section id="purchase-documents">
+<h3>Purchase Documents<a class="headerlink" href="#purchase-documents" title="Permalink to this headline">¶</a></h3>
+</section><section id="vendor-bill">
+<h4>Vendor bill<a class="headerlink" href="#vendor-bill" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">Vendor bill</span> is a non-electronic document for your company, this document is issued
+by your vendor when your company generates a purchase.</p>
+<p>The bills can be created from the purchase order or manually, it must contain the following
+information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Vendor</span>: type the vendor’s information.</p></li>
+<li><p><span class="guilabel">Bill Date</span>: select the date of invoice.</p></li>
+<li><p><span class="guilabel">Journal</span>: it is the journal for vendor bills.</p></li>
+<li><p><span class="guilabel">Document Type</span>: this is the document type <code class="o_code docutils literal notranslate"><span class="pre">(01)</span> <span class="pre">Invoice</span></code></p></li>
+<li><p><span class="guilabel">Document number</span>: type the document number.</p></li>
+<li><p><span class="guilabel">Payment Method (SRI)</span>: select how the invoice is going to be paid.</p></li>
+<li><p><span class="guilabel">Products</span>: specify the product with the correct taxes.</p></li>
+</ul>
+<img alt="Purchases for Ecuador." class="align-center" src="../../../_images/purchase-invoice.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>When creating the purchase withholding, verify that the bases (base amounts) are correct. If you
+need to edit the amount of the tax in the <span class="guilabel">Vendor bill</span>, click the <span class="guilabel">Edit</span>
+button. Otherwise, from the <span class="guilabel">Journal Items</span> tab click the <span class="guilabel">Edit</span> button and
+set the adjustment to go where you want.</p>
+</div>
+</section><section id="purchase-liquidation">
+<h4>Purchase liquidation<a class="headerlink" href="#purchase-liquidation" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">Purchase liquidation</span> is an electronic document that, when validated, is sent to SRI.</p>
+<p>Companies issue this type of electronic document when they purchase, and the vendor does not issue
+an invoice due to one or more of the following cases:</p>
+<ul class="simple">
+<li><p>Services were provided by non-residents of Ecuador.</p></li>
+<li><p>Services provided by foreign companies without residency or establishment in Ecuador.</p></li>
+<li><p>Purchase of goods or services from natural persons not registered with a RUC, who due to their
+cultural level or hardiness are not able to issue sales receipts or customer invoices.</p></li>
+<li><p>Reimbursement for the purchase of goods or services to employees in a dependency relationship
+(full-time employee).</p></li>
+<li><p>Services provided by members of collegiate bodies for the exercise of their function.</p></li>
+</ul>
+<p>These types of electronic documents can be created from the <span class="guilabel">Purchase Order</span> or manually
+from the <span class="guilabel">Vendor Bills</span> form view. It must contain the following data:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Vendor</span>: type the vendor’s information.</p></li>
+<li><p><span class="guilabel">Journal</span>: select the journal for the <span class="guilabel">Purchase Liquidation</span> with the correct
+printer point.</p></li>
+<li><p><span class="guilabel">Document Type</span>: this is the document type <code class="o_code docutils literal notranslate"><span class="pre">(03)</span> <span class="pre">Purchase</span> <span class="pre">Liquidation</span></code></p></li>
+<li><p><span class="guilabel">Document number</span>: type the document number (sequence), you will only have to do this
+once, then the sequence will be automatically assigned for the next documents.</p></li>
+<li><p><span class="guilabel">Payment Method (SRI)</span>: select how the invoice is going to be paid.</p></li>
+<li><p><span class="guilabel">Products</span>: specify the product with the correct taxes.</p></li>
+</ul>
+<p>Once you review the information you can validate the <span class="guilabel">Purchase Liquidation</span>.</p>
+<img alt="Purchase liquidation for Ecuador." class="align-center" src="../../../_images/purchase-liquidation.png" />
+</section><section id="purchase-withholding">
+<h4>Purchase withholding<a class="headerlink" href="#purchase-withholding" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">Purchase withholding</span> is an electronic document that, when validated, is sent to SRI.</p>
+<p>It is necessary to have an invoice in a validated state in order to register a <span class="guilabel">Purchase
+withholding</span>. On the invoice, there is a button named <span class="guilabel">Add Withhold</span>, click on this button
+to be directed to the <span class="guilabel">Withholding</span> form, then complete the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Document number</span>: type the document number (sequence), you will only have to do this
+once, then the sequence will be automatically assigned for the next documents.</p></li>
+<li><p><span class="guilabel">Withhold lines</span>: The taxes appear automatically according to the configuration of
+products and vendors, you should review if the taxes and tax support are correct, and, if it is
+not correct, you can edit and select the correct taxes and tax support.</p></li>
+</ul>
+<p>Once you review the information you can validate the <span class="guilabel">Withholding</span>.</p>
+<img alt="Purchase withhold for Ecuador." class="align-center" src="../../../_images/purchase-withhold.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>You can’t change the tax support for one that was not included in the configuration of the taxes
+used on the <span class="guilabel">Vendor Bill</span>. To do so, go to the tax applied on the <span class="guilabel">Vendor
+Bill</span> and change the <span class="guilabel">Tax Support</span> there.</p>
+</div>
+<p>A withholding tax can be divided into two or more lines, this will depend on whether two or more
+withholdings percentages apply.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>The system suggests a VAT withholding of 30% with tax support 01, you can add your VAT
+withholding of 70% in a new line with the same tax support, the system will allow you as long as
+the total of the bases matches the total from the <span class="guilabel">Vendor Bill</span>.</p>
+</div>
+</section><section id="financial-reports">
+<h2>Financial Reports<a class="headerlink" href="#financial-reports" title="Permalink to this headline">¶</a></h2>
+<p>In Ecuador, there are fiscal reports that the company presents to SRI. In Odoo, we have two of the
+main financial reports used by companies. These are the reports 103 and 104.</p>
+<p>To get these reports go to the <span class="guilabel">Accounting</span> app and select <span class="menuselection">Reporting ‣
+Statements Reports ‣ Tax Report</span> and then filter by <code class="o_code docutils literal notranslate"><span class="pre">Tax</span> <span class="pre">Report</span> <span class="pre">103</span></code> or <code class="o_code docutils literal notranslate"><span class="pre">Tax</span> <span class="pre">Report</span> <span class="pre">104</span></code>.</p>
+</section><section id="report-103">
+<h3>Report 103<a class="headerlink" href="#report-103" title="Permalink to this headline">¶</a></h3>
+<p>This report contains information of income tax withholdings in a given period, this can be reported
+monthly or semi-annually.</p>
+<p>You can see the information needed to report, which includes base and tax amounts, which also
+includes the tax code within the parenthesis in order to report it to the SRI.</p>
+<img alt="Report 103 form for Ecuador." class="align-center" src="../../../_images/103-form.png" />
+</section><section id="report-104">
+<h3>Report 104<a class="headerlink" href="#report-104" title="Permalink to this headline">¶</a></h3>
+<p>This report contains information on VAT tax and VAT withholding for a given period, this can be
+monthly or semi-annually.</p>
+<p>You can see the information needed to report, which includes base and tax amounts, which also
+includes the tax code within the parenthesis in order to report it to the SRI.</p>
+<img alt="Report 104 form for Ecuador." class="align-center" src="../../../_images/104-form.png" />
+</section><section id="ats-report">
+<h3>ATS report<a class="headerlink" href="#ats-report" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../../general/apps_modules.html#general-install"><span class="std std-ref">Install</span></a> the <em>ATS Report</em> (<code class="o_code docutils literal notranslate"><span class="pre">l10n_ec_reports_ats</span></code>) module to enable
+downloading the ATS report in XML format.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The Ecuadorian <em>ATS Report</em> module is dependent on the previous installation of the <em>Accounting</em>
+app and the <em>Ecuadorian EDI module</em>.</p>
+</div>
+</section><section id="id1">
+<h4>Configuration<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>To issue electronic documents, ensure your company is configured as explained in the
+<a class="reference internal" href="#l10n-ec-configure-your-company"><span class="std std-ref">electronic invoice</span></a> section.</p>
+<p>In the <abbr title="Anexo Transaccional Simplificado">ATS</abbr>, every document generated in Odoo (invoices,
+vendor bills, sales and purchases withholdings, credit notes, and debit notes) will be included.</p>
+</section><section id="vendor-bills">
+<h5>Vendor bills<a class="headerlink" href="#vendor-bills" title="Permalink to this headline">¶</a></h5>
+<p>When generating a vendor bill, it is necessary to register the authorization number from the
+invoice that the vendor generated for the purchase. To do so, go to <span class="menuselection">Accounting
+‣ Vendors ‣ Bills</span> and select the bill. Then, enter the number from the vendor’s invoice in the
+<span class="guilabel">Authorization Number</span> field.</p>
+</section><section id="credit-and-debit-notes">
+<h5>Credit and debit notes<a class="headerlink" href="#credit-and-debit-notes" title="Permalink to this headline">¶</a></h5>
+<p>When generating a credit note or debit note manually or through importation, it is necessary to link
+this note to the sales invoice that is being modified by it.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Remember to add all required information to the documents before downloading the <abbr title="Anexo Transaccional Simplificado">ATS</abbr> file. For example, add the <em>Authorization Number</em> and the
+<em>SRI Payment Method</em> on documents, when needed.</p>
+</div>
+</section><section id="xml-generation">
+<h4>XML generation<a class="headerlink" href="#xml-generation" title="Permalink to this headline">¶</a></h4>
+<p>To generate the <abbr title="Anexo Transaccional Simplificado">ATS</abbr> report, go to
+<span class="menuselection">Accounting ‣ Reports ‣ Tax Report</span> and choose a time period for the desired
+<abbr title="Anexo Transaccional Simplificado">ATS</abbr> report, then click <span class="guilabel">ATS</span>.</p>
+<p>The downloaded XML file is ready to be uploaded to <em>DIMM Formularios</em>.</p>
+<img alt="ATS report download for Ecuador in Odoo Accounting." class="align-center" src="../../../_images/ats-report.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When downloading the <abbr title="Anexo Transaccional Simplificado">ATS</abbr> report, Odoo generates a
+warning pop-up alerting the user if a document(s) has missing or incorrect data. Nevertheless,
+the user can still download the XML file.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Ecuador</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#glossary">Glossary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#modules-installation">Modules installation</a></li>
+<li><a class="reference internal" href="#configure-your-company">Configure your company</a></li>
+<li><a class="reference internal" href="#electronic-documents">Electronic documents</a></li>
+<li><a class="reference internal" href="#vat-withholding">VAT withholding</a></li>
+<li><a class="reference internal" href="#printer-points">Printer points</a></li>
+<li><a class="reference internal" href="#withholding">Withholding</a></li>
+<li><a class="reference internal" href="#purchase-liquidations">Purchase Liquidations</a></li>
+<li><a class="reference internal" href="#configure-master-data">Configure master data</a><ul>
+<li><a class="reference internal" href="#chart-of-accounts">Chart of accounts</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#contacts">Contacts</a></li>
+<li><a class="reference internal" href="#review-your-taxes">Review your taxes</a></li>
+<li><a class="reference internal" href="#review-your-document-types">Review your Document Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflows">Workflows</a><ul>
+<li><a class="reference internal" href="#sales-documents">Sales documents</a><ul>
+<li><a class="reference internal" href="#customer-invoices">Customer invoices</a></li>
+<li><a class="reference internal" href="#customer-credit-note">Customer credit note</a></li>
+<li><a class="reference internal" href="#customer-debit-note">Customer debit note</a></li>
+<li><a class="reference internal" href="#customer-withholding">Customer withholding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#purchase-documents">Purchase Documents</a><ul>
+<li><a class="reference internal" href="#vendor-bill">Vendor bill</a></li>
+<li><a class="reference internal" href="#purchase-liquidation">Purchase liquidation</a></li>
+<li><a class="reference internal" href="#purchase-withholding">Purchase withholding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#financial-reports">Financial Reports</a><ul>
+<li><a class="reference internal" href="#report-103">Report 103</a></li>
+<li><a class="reference internal" href="#report-104">Report 104</a></li>
+<li><a class="reference internal" href="#ats-report">ATS report</a><ul>
+<li><a class="reference internal" href="#id1">Configuration</a><ul>
+<li><a class="reference internal" href="#vendor-bills">Vendor bills</a></li>
+<li><a class="reference internal" href="#credit-and-debit-notes">Credit and debit notes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xml-generation">XML generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Ecuador</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

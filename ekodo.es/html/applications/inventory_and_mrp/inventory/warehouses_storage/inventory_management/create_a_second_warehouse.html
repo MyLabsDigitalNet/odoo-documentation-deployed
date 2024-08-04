@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create a second warehouse &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/create_a_second_warehouse.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/create_a_second_warehouse.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Create a second warehouse</a><ul>
+<li><a class="reference internal" href="#add-inventory-to-a-new-warehouse">Add inventory to a new warehouse</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/create_a_second_warehouse.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Create a second warehouse</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="create-a-second-warehouse">
+<h1>Create a second warehouse<a class="headerlink" href="#create-a-second-warehouse" title="Permalink to this headline">¶</a></h1>
+<p>A <em>warehouse</em> is a physical building or space where items are stored. In Odoo, it is possible to set
+up multiple warehouses and transfer stored items between them.</p>
+<p>By default, the Odoo platform has one warehouse that is already configured, with the address set as
+the company’s address. To create a second warehouse, select <span class="menuselection">Configuration ‣
+Warehouses</span>, then click <span class="guilabel">Create</span> and configure the form as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Warehouse</span>: the full name of the warehouse</p></li>
+<li><p><span class="guilabel">Short Name</span>: the abbreviated code by which the warehouse is referred to; the short name
+for the default warehouse in Odoo is <strong>WH</strong></p></li>
+<li><p><span class="guilabel">Company</span>: the company that owns the warehouse; this can be set as the company that owns
+the Odoo database or the company of a customer or vendor</p></li>
+<li><p><span class="guilabel">Address</span>: the address where the warehouse is located</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>The options below will only appear if the <span class="guilabel">Multi-Step Routes</span> checkbox is enabled in
+<span class="menuselection">Configuration ‣ Settings</span> under the <span class="guilabel">Warehouse</span> heading. For more
+information about routes and how they work in Odoo, see <a class="reference internal" href="use_routes.html#use-routes"><span class="std std-ref">Using Routes and Pull/Push Rules</span></a>.</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">Incoming/Outgoing Shipments</span>: select the routes that incoming and outgoing shipments
+should follow</p></li>
+<li><p><span class="guilabel">Resupply Subcontractors</span>: allow subcontractors to be resupplied from this warehouse</p></li>
+<li><p><span class="guilabel">Manufacture to Resupply</span>: allow for items to be manufactured in this warehouse</p></li>
+<li><p><span class="guilabel">Manufacture</span>: select the route that should be followed when manufacturing goods inside
+the warehouse</p></li>
+<li><p><span class="guilabel">Buy to Resupply</span>: check the box to allow for purchased products to be delivered to the
+warehouse</p></li>
+<li><p><span class="guilabel">Resupply From</span>: select warehouses that can be used to resupply the warehouse being
+created</p></li>
+</ul>
+<img alt="A filled out form for creating a new warehouse." class="align-center" src="../../../../../_images/new-warehouse-configuration.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Creating a second warehouse will automatically enable the <em>Storage Locations</em> setting, which
+allows location tracking of products within a warehouse. To toggle this setting, navigate to
+<span class="menuselection">Configuration ‣ Settings</span> and click the checkbox under the
+<span class="guilabel">Warehouse</span> heading.</p>
+</div>
+<p>After filling out the form, click <span class="guilabel">Save</span> and the new warehouse will be created.</p>
+</section><section id="add-inventory-to-a-new-warehouse">
+<h2>Add inventory to a new warehouse<a class="headerlink" href="#add-inventory-to-a-new-warehouse" title="Permalink to this headline">¶</a></h2>
+<p>If a new warehouse is created that has existing inventory in it, the inventory counts should be
+added to Odoo so that the stock listed in the Odoo database reflects what is in the physical
+warehouse. To add inventory to a new warehouse, navigate to <span class="menuselection">Inventory ‣
+Operations ‣ Inventory Adjustments</span>, and then click <span class="guilabel">Create</span>. The inventory adjustment
+form can then be filled out as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Inventory Reference</span>: the name or code that the inventory adjustment can be referred to
+by</p></li>
+<li><p><span class="guilabel">Locations</span>: the location(s) where the inventory is stored; include the new warehouse
+and any locations within it that inventory will be added to</p></li>
+<li><p><span class="guilabel">Products</span>: include all products that will be added to inventory or leave blank to
+select any product during the next step</p></li>
+<li><p><span class="guilabel">Include Exhausted Products</span>: include products with a quantity of zero; does not affect
+inventory adjustments for new warehouses since they have no existing inventory</p></li>
+<li><p><span class="guilabel">Accounting Date</span>: the date used by accounting teams for bookkeeping related to the
+inventory</p></li>
+<li><p><span class="guilabel">Company</span>: the company that owns the inventory; can be set as the user’s company or as a
+customer or vendor</p></li>
+<li><p><span class="guilabel">Counted Quantities</span>: choose whether the counted quantities for products being added
+should default to stock on hand or zero; does not affect inventory adjustments for new warehouses
+since they have no existing inventory</p></li>
+</ul>
+<img alt="A filled out form for an inventory adjustment." class="align-center" src="../../../../../_images/inventory-adjustment-configuration.png" />
+<p>Once the form is properly configured, click on <span class="guilabel">Start Inventory</span> to be taken to the next
+page where products can be added to the inventory adjustment. Add a new product by clicking on
+<span class="guilabel">Create</span> and then fill out the product line as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Product</span>: the product being added to inventory</p></li>
+<li><p><span class="guilabel">Location</span>: the location where the product is currently stored in the new warehouse;
+this can be set as the overall warehouse or a location within the warehouse</p></li>
+<li><p><span class="guilabel">Lot/Serial Number</span>: the lot that the product belongs to or the serial number used to
+identify it</p></li>
+<li><p><span class="guilabel">On Hand</span>: the total quantity of the product stored in the location for which inventory
+is being adjusted; this should be zero for a new location or warehouse</p></li>
+<li><p><span class="guilabel">Counted</span>: the amount of the product that is being added to inventory</p></li>
+<li><p><span class="guilabel">Difference</span>: the difference between the <em>On Hand</em> and <em>Counted</em> values; this will
+automatically update to reflect the value entered in the <span class="guilabel">Counted</span> column</p></li>
+<li><p><span class="guilabel">UoM</span>: the unit of measure used for counting the product</p></li>
+</ul>
+<img alt="Include a line for each product being added to inventory." class="align-center" src="../../../../../_images/product-line-configuration.png" />
+<p>After adding all the products already stored in the new warehouse, click <span class="guilabel">Validate
+Inventory</span> to complete the inventory adjustment. The values in the <span class="guilabel">On Hand</span> column will
+update to reflect those in the <span class="guilabel">Counted</span> column and the products added will appear in the
+inventory of the new warehouse.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Create a second warehouse</a><ul>
+<li><a class="reference internal" href="#add-inventory-to-a-new-warehouse">Add inventory to a new warehouse</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Create a second warehouse</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

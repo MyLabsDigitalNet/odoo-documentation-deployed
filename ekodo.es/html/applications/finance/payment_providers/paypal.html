@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PayPal &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/payment_providers/paypal.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/payment_providers/paypal.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">PayPal</a><ul>
+<li><a class="reference internal" href="#settings-in-paypal">Settings in PayPal</a><ul>
+<li><a class="reference internal" href="#auto-return">Auto Return</a></li>
+<li><a class="reference internal" href="#payment-data-transfer-pdt">Payment Data Transfer (PDT)</a></li>
+<li><a class="reference internal" href="#instant-payment-notification-ipn">Instant Payment Notification (IPN)</a></li>
+<li><a class="reference internal" href="#paypal-account-optional">PayPal Account Optional</a></li>
+<li><a class="reference internal" href="#payment-messages-format">Payment Messages Format</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#settings-in-odoo">Settings in Odoo</a><ul>
+<li><a class="reference internal" href="#credentials">Credentials</a></li>
+<li><a class="reference internal" href="#extra-fees">Extra fees</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-environment">Test environment</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/payment_providers/paypal.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">PayPal</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="paypal">
+<h1>PayPal<a class="headerlink" href="#paypal" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.paypal.com/">Paypal</a> is an American online payment provider available worldwide, and
+one of the few that does not charge a subscription fee.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>While PayPal is available in <a class="reference external" href="https://www.paypal.com/webapps/mpp/country-worldwide">over 200 countries/regions</a>, only <a class="reference external" href="https://developer.paypal.com/docs/reports/reference/paypal-supported-currencies">a selection of currencies are
+supported</a>.</p>
+</div>
+</section><section id="settings-in-paypal">
+<h2>Settings in PayPal<a class="headerlink" href="#settings-in-paypal" title="Permalink to this headline">¶</a></h2>
+<p>To access your PayPal account settings, log into PayPal, open the <span class="guilabel">Account Settings</span>, and
+open the <span class="guilabel">Website payments</span> menu.</p>
+<img alt="PayPal account menu" class="align-center" src="../../../_images/paypal-account.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Note that for PayPal to work <strong>in Odoo</strong>, the options <a class="reference internal" href="#paypal-auto-return"><span class="std std-ref">Auto Return</span></a>,
+<a class="reference internal" href="#paypal-pdt"><span class="std std-ref">PDT</span></a>, and <a class="reference internal" href="#paypal-ipn"><span class="std std-ref">IPN</span></a> <strong>must</strong> all be enabled.</p>
+</div>
+</section><section id="auto-return">
+<span id="paypal-auto-return"></span><h3>Auto Return<a class="headerlink" href="#auto-return" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Auto Return</strong> feature automatically redirects customers to Odoo once the payment is processed.</p>
+<p>From <span class="guilabel">Website payments</span>, go to <span class="menuselection">Website preferences ‣ Update ‣ Auto
+return for website payments ‣ Auto return</span> and select <span class="guilabel">On</span>. Enter the address of your
+Odoo database (e.g., <code class="o_code docutils literal notranslate"><span class="pre">https://yourcompany.odoo.com</span></code>) in the <span class="guilabel">Return URL</span> field, and
+<span class="guilabel">Save</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Any URL does the job. Odoo only needs the setting to be enabled since it uses another URL.</p>
+</div>
+</section><section id="payment-data-transfer-pdt">
+<span id="paypal-pdt"></span><h3>Payment Data Transfer (PDT)<a class="headerlink" href="#payment-data-transfer-pdt" title="Permalink to this headline">¶</a></h3>
+<p><abbr title="Payment Data Transfer">PDT</abbr> allows to receive payment confirmations, displays the payment
+status to the customers, and verifies the authenticity of the payments. From <span class="menuselection">Website
+preferences ‣ Update</span>, scroll down to <span class="guilabel">Payment data transfer</span> and select <span class="guilabel">On</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>PayPal displays your <strong>PDT Identity Token</strong> as soon as <a class="reference internal" href="#paypal-auto-return"><span class="std std-ref">Auto return</span></a>
+and <a class="reference internal" href="#paypal-pdt"><span class="std std-ref">Payment Data Transfer (PDT)</span></a> are enabled. If you need the <strong>PDT Identity
+Token</strong>, disable and re-enable <span class="guilabel">Payment data transfer</span> to display the token again.</p>
+</div>
+</section><section id="instant-payment-notification-ipn">
+<span id="paypal-ipn"></span><h3>Instant Payment Notification (IPN)<a class="headerlink" href="#instant-payment-notification-ipn" title="Permalink to this headline">¶</a></h3>
+<p><abbr title="Instant Payment Notifications">IPN</abbr> is similar to <strong>PDT</strong>, but allows for more
+notifications, such as chargeback notifications. To enable <strong>IPN</strong>, go to <span class="menuselection">Website
+payments ‣ Instant payment notifications ‣ Update</span> and click <span class="guilabel">Choose IPN settings</span>.
+Enter a <span class="guilabel">Notification URL</span>, select <span class="guilabel">Receive IPN messages (Enabled)</span>, and
+<span class="guilabel">Save</span>.</p>
+</section><section id="paypal-account-optional">
+<h3>PayPal Account Optional<a class="headerlink" href="#paypal-account-optional" title="Permalink to this headline">¶</a></h3>
+<p>We advise not to prompt customers to log in with a PayPal account upon payment. It is better and
+more accessible for customers to pay with a debit/credit card. To disable that prompt, go to
+<span class="menuselection">Account Settings ‣ Website payments ‣ Update</span> and select <span class="guilabel">On</span> for
+<span class="guilabel">PayPal account optional</span>.</p>
+</section><section id="payment-messages-format">
+<h3>Payment Messages Format<a class="headerlink" href="#payment-messages-format" title="Permalink to this headline">¶</a></h3>
+<p>If you use accented characters (or anything other than primary Latin characters) for customer names
+or addresses, then you <strong>must</strong> configure the encoding format of the payment request sent by Odoo to
+PayPal. If you do not, some transactions fail without notice.</p>
+<p>To do so, go to <a class="reference external" href="https://www.paypal.com/cgi-bin/customerprofileweb?cmd=_profile-language-encoding">your production account</a>. Then, click <span class="guilabel">More Options</span> and set the two default
+encoding formats as <span class="guilabel">UTF-8</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><ul class="simple">
+<li><p>For Encrypted Website Payments &amp; EWP_SETTINGS error, please check the <a class="reference external" href="https://developer.paypal.com/docs/online/">Paypal documentation</a>.</p></li>
+<li><p>Configure your <a class="reference internal" href="#paypal-testing"><span class="std std-ref">Paypal Sandbox account</span></a>, then follow this
+<a class="reference external" href="https://sandbox.paypal.com/cgi-bin/customerprofileweb?cmd=_profile-language-encoding">link</a>
+to configure the encoding format in a test environment.</p></li>
+</ul>
+</div>
+</section><section id="settings-in-odoo">
+<h2>Settings in Odoo<a class="headerlink" href="#settings-in-odoo" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../payment_providers.html#payment-providers-add-new"><span class="std std-ref">Enable a payment provider</span></a></p>
+</div>
+</section><section id="credentials">
+<h3>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">¶</a></h3>
+<p>Odoo needs your <strong>API Credentials</strong> to connect with your PayPal account. To do so, go to
+<span class="menuselection">Accounting ‣ Configuration ‣ Payment Providers</span> and <span class="guilabel">Activate</span> PayPal.
+Then, enter your PayPal account credentials in the <span class="guilabel">Credentials</span> tab:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Email</span>: the login email address in Paypal;</p></li>
+<li><p><span class="guilabel">PDT Identity Token</span>: the key used to verify the authenticity of transactions;</p></li>
+<li><p><span class="guilabel">Use IPN</span>: enable for PayPal to work properly in Odoo.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Save the <span class="guilabel">PDT Identity Token</span> for later use.</p>
+</div>
+<p>To set the <span class="guilabel">PDT Identity Token</span>, switch to <a class="reference internal" href="../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a> and
+retrieve the token by following the configuration steps at <a class="reference internal" href="#paypal-pdt"><span class="std std-ref">Payment Data Transfer (PDT)</span></a>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The PayPal <strong>Merchant ID</strong> is not required in Odoo.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If you are trying PayPal as a test, using a <a class="reference internal" href="#paypal-testing"><span class="std std-ref">PayPal Sandbox account</span></a>,
+change the <span class="guilabel">State</span> to <span class="guilabel">Test Mode</span>. We recommend doing this on a test Odoo
+database rather than on your main database.</p>
+</div>
+</section><section id="extra-fees">
+<h3>Extra fees<a class="headerlink" href="#extra-fees" title="Permalink to this headline">¶</a></h3>
+<p>You can charge <a class="reference internal" href="../payment_providers.html#payment-providers-extra-fees"><span class="std std-ref">extra fees</span></a> to customers choosing to pay with
+PayPal in order to cover the transaction fees PayPal charges you.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><ul class="simple">
+<li><p>You can refer to <a class="reference external" href="https://www.paypal.com/webapps/mpp/paypal-fees">Paypal Fees</a> to set up
+fees.</p></li>
+<li><p><a class="reference external" href="https://europa.eu/youreurope/citizens/consumers/shopping/pricing-payments/index_en.htm">Traders in the EU</a>
+are not allowed to charge extra fees for paying with credit cards.</p></li>
+</ul>
+</div>
+</section><section id="test-environment">
+<span id="paypal-testing"></span><h2>Test environment<a class="headerlink" href="#test-environment" title="Permalink to this headline">¶</a></h2>
+</section><section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Thanks to PayPal sandbox accounts, you can test the entire payment flow in Odoo.</p>
+<p>Log into the <a class="reference external" href="https://developer.paypal.com/">Paypal Developer Site</a> using your PayPal credentials,
+which creates two sandbox accounts:</p>
+<ul class="simple">
+<li><p>A business account (to use as merchants, e.g.,
+<a class="reference external" href="mailto:pp&#46;merch01-facilitator&#37;&#52;&#48;example&#46;com">pp<span>&#46;</span>merch01-facilitator@example<span>&#46;</span>com</a>);</p></li>
+<li><p>A default personal account (to use as shoppers, e.g.,
+<a class="reference external" href="mailto:pp&#46;merch01-buyer&#37;&#52;&#48;example&#46;com">pp<span>&#46;</span>merch01-buyer@example<span>&#46;</span>com</a>).</p></li>
+</ul>
+<p>Log into PayPal sandbox using the merchant account and follow the same configuration instructions.
+Enter your sandbox credentials in Odoo (<span class="menuselection">Accounting ‣ Configuration ‣ Payment
+Providers ‣ PayPal</span> in the <span class="guilabel">Credentials</span> tab, and make sure the status is set on
+<span class="guilabel">Test Mode</span>. We recommend doing this on a test Odoo database rather than your main
+database.</p>
+<p>Run a test transaction from Odoo using the sandbox personal account.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../payment_providers.html"><span class="doc">Online payments</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">PayPal</a><ul>
+<li><a class="reference internal" href="#settings-in-paypal">Settings in PayPal</a><ul>
+<li><a class="reference internal" href="#auto-return">Auto Return</a></li>
+<li><a class="reference internal" href="#payment-data-transfer-pdt">Payment Data Transfer (PDT)</a></li>
+<li><a class="reference internal" href="#instant-payment-notification-ipn">Instant Payment Notification (IPN)</a></li>
+<li><a class="reference internal" href="#paypal-account-optional">PayPal Account Optional</a></li>
+<li><a class="reference internal" href="#payment-messages-format">Payment Messages Format</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#settings-in-odoo">Settings in Odoo</a><ul>
+<li><a class="reference internal" href="#credentials">Credentials</a></li>
+<li><a class="reference internal" href="#extra-fees">Extra fees</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-environment">Test environment</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">PayPal</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

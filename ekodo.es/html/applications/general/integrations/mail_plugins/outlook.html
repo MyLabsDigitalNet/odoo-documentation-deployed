@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outlook Plugin &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/integrations/mail_plugins/outlook.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/integrations/mail_plugins/outlook.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Outlook Plugin</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#enable-mail-plugin">Enable Mail Plugin</a></li>
+<li><a class="reference internal" href="#install-the-outlook-plugin">Install the Outlook Plugin</a></li>
+<li><a class="reference internal" href="#connect-the-database">Connect the database</a></li>
+<li><a class="reference internal" href="#add-a-shortcut-to-the-plugin">Add a shortcut to the plugin</a></li>
+<li><a class="reference internal" href="#using-the-plugin">Using the plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/integrations/mail_plugins/outlook.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Outlook Plugin</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="outlook-plugin">
+<h1>Outlook Plugin<a class="headerlink" href="#outlook-plugin" title="Permalink to this headline">¶</a></h1>
+<p>Outlook allows for third-party applications to connect in order to execute database actions from
+emails. Odoo has a plugin for Outlook that allows for the creation of an opportunity from the email
+panel.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>The Outlook <a class="reference internal" href="../mail_plugins.html"><span class="doc">Mail Plugin</span></a> needs to be configured both on Odoo and Outlook.</p>
+</section><section id="enable-mail-plugin">
+<span id="mail-plugin-outlook-enable-mail-plugin"></span><h3>Enable Mail Plugin<a class="headerlink" href="#enable-mail-plugin" title="Permalink to this headline">¶</a></h3>
+<p>First, enable the <em>Mail Plugin</em> feature in the database. Go to <span class="menuselection">Settings ‣ General
+Settings ‣ Integrations</span>, enable <span class="guilabel">Mail Plugin</span>, and <span class="guilabel">Save</span> the configuration.</p>
+</section><section id="install-the-outlook-plugin">
+<span id="mail-plugin-outlook-install-plugin"></span><h3>Install the Outlook Plugin<a class="headerlink" href="#install-the-outlook-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Download (<span class="menuselection">Save Page As ‣ Web Page XML only</span>) the following XML file to upload
+later: <a class="reference external" href="https://download.odoocdn.com/plugins/outlook/manifest.xml">https://download.odoocdn.com/plugins/outlook/manifest.xml</a>.</p>
+<p>Next, open the Outlook mailbox, and select any email. After completing this, click on the
+<span class="guilabel">More actions</span> button in the upper right-side and select <span class="guilabel">Get Add-ins</span>.</p>
+<img alt="More actions button in Outlook" class="align-center" src="../../../../_images/more-actions.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>For locally installed versions of Microsoft Outlook, access the <span class="guilabel">Get Add-ins</span> menu item
+while in preview mode (<strong>not</strong> with a message open). First, click on the <span class="guilabel">…
+(ellipsis)</span> icon in the upper right of the previewed message, then scroll down, and click on
+<span class="guilabel">Get Add-ins</span>.</p>
+</div>
+<p>Following this step, select the <span class="guilabel">My add-ins</span> tab on the left-side.</p>
+<img alt="My add-ins in Outlook" class="align-center" src="../../../../_images/my-add-ins.png" />
+<p>Under <span class="guilabel">Custom add-ins</span> towards the bottom, click on <span class="guilabel">+ Add a custom add-in</span>, and
+then on <span class="guilabel">Add from file…</span></p>
+<img alt="Custom add-ins in Outlook" class="align-center" src="../../../../_images/custom-add-ins.png" />
+<p>For the next step, attach the <code class="o_code docutils literal notranslate"><span class="pre">manifest.xml</span></code> file downloaded above, and press <span class="guilabel">OK</span>. Next,
+read the warning and click on <span class="guilabel">Install</span>.</p>
+<img alt="Custom add-in installation warning in Outlook" class="align-center" src="../../../../_images/add-in-warning.png" />
+</section><section id="connect-the-database">
+<span id="mail-plugin-outlook-connect-database"></span><h3>Connect the database<a class="headerlink" href="#connect-the-database" title="Permalink to this headline">¶</a></h3>
+<p>Now, Outlook will be connected to the Odoo database. First, open any email in the Outlook mailbox,
+click on the <span class="guilabel">More actions</span> button in the upper right-side, and select <span class="guilabel">Odoo for
+Outlook</span>.</p>
+<img alt="Odoo for Outlook add-in button" class="align-center" src="../../../../_images/odoo-for-outlook.png" />
+<p>The right-side panel can now display <strong>Company Insights</strong>. At the bottom, click on
+<span class="guilabel">Login</span>.</p>
+<img alt="Logging in the Odoo database" class="align-center" src="../../../../_images/panel-login.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Only a limited amount of <strong>Company Insights</strong> (<em>Lead Enrichment</em>) requests are available as a
+trial database. This feature requires <a class="reference internal" href="../mail_plugins.html#mail-plugins-pricing"><span class="std std-ref">prepaid credits</span></a>.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>If, after a short while, the panel is still empty, it is possible that the browser cookie
+settings prevented it from loading. Note that these settings also change if the browser is in
+“Incognito” mode.</p>
+<p>To fix this issue, configure the browser to always allow cookies on Odoo’s plugin page.</p>
+<p>For Google Chrome, change the browser cookie settings by following the guide at:
+<a class="reference external" href="https://support.google.com/chrome/answer/95647">https://support.google.com/chrome/answer/95647</a>
+and adding <code class="o_code docutils literal notranslate"><span class="pre">download.odoo.com</span></code> to the list of <span class="guilabel">Sites that can always use cookies</span>.</p>
+<p>Once this is complete, the Outlook panel needs to be opened again.</p>
+</div>
+<p>Now, enter the Odoo database URL and click on <span class="guilabel">Login</span>.</p>
+<img alt="Entering the Odoo database URL" class="align-center" src="../../../../_images/enter-database-url.png" />
+<p>Next, click on <span class="guilabel">Allow</span> to open the pop-up window.</p>
+<img alt="New window pop-up warning" class="align-center" src="../../../../_images/new-window-warning.png" />
+<p>If the user isn’t logged into the database, enter the credentials. Click on <span class="guilabel">Allow</span> to let
+the Outlook Plugin connect to the database.</p>
+<img alt="Allowing the Outlook Plugin to connect to a database" class="align-center" src="../../../../_images/odoo-permission.png" />
+</section><section id="add-a-shortcut-to-the-plugin">
+<span id="mail-plugin-outlook-add-shortcut"></span><h3>Add a shortcut to the plugin<a class="headerlink" href="#add-a-shortcut-to-the-plugin" title="Permalink to this headline">¶</a></h3>
+<p>By default, the Outlook Plugin can be opened from the <em>More actions</em> menu. However, to save time,
+it’s possible to add it next to the other default actions.</p>
+<p>In the Outlook mailbox, click on <span class="guilabel">Settings</span>, then on <span class="guilabel">View all Outlook
+settings</span>.</p>
+<img alt="Viewing all Outlook settings" class="align-center" src="../../../../_images/all-outlook-settings.png" />
+<p>Now, select <span class="guilabel">Customize actions</span> under <span class="guilabel">Mail</span>, click on <span class="guilabel">Odoo for
+Outlook</span>, and then <span class="guilabel">Save</span>.</p>
+<img alt="Odoo for Outlook customized action" class="align-center" src="../../../../_images/customize-actions.png" />
+<p>Following this step, open any email; the shortcut should be displayed.</p>
+<img alt="Odoo for Outlook customized action" class="align-center" src="../../../../_images/odoo-outlook-shortcut.png" />
+</section><section id="using-the-plugin">
+<h3>Using the plugin<a class="headerlink" href="#using-the-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Now that the plug-in is installed and operational, all that needs to be done to create a lead is to
+click on the <code class="o_code docutils literal notranslate"><span class="pre">O</span></code> [Odoo icon] or navigate to <span class="guilabel">More actions</span> and click on <span class="guilabel">Odoo
+for Outlook</span>. The side panel will appear on the right-side, and under <span class="guilabel">Opportunities</span>
+click on <span class="guilabel">New</span>. A new window with the created opportunity in the Odoo database will
+populate.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Outlook Plugin</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#enable-mail-plugin">Enable Mail Plugin</a></li>
+<li><a class="reference internal" href="#install-the-outlook-plugin">Install the Outlook Plugin</a></li>
+<li><a class="reference internal" href="#connect-the-database">Connect the database</a></li>
+<li><a class="reference internal" href="#add-a-shortcut-to-the-plugin">Add a shortcut to the plugin</a></li>
+<li><a class="reference internal" href="#using-the-plugin">Using the plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Outlook Plugin</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

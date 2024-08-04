@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventory adjustments &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/utils.js"></script>
+    <script src="../../../../../_static/js/layout.js"></script>
+    <script src="../../../../../_static/js/menu.js"></script>
+    <script src="../../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/count_products.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/count_products.html" />
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Inventory adjustments</a><ul>
+<li><a class="reference internal" href="#inventory-adjustments-page">Inventory Adjustments page</a><ul>
+<li><a class="reference internal" href="#create-an-inventory-adjustment">Create an inventory adjustment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#count-products">Count products</a></li>
+<li><a class="reference internal" href="#change-inventory-count-frequency">Change inventory count frequency</a><ul>
+<li><a class="reference internal" href="#plan-big-inventory-counts">Plan big inventory counts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../../index.html" class="o_logo">
+          <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/count_products.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Inventory adjustments</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="inventory-adjustments">
+<h1>Inventory adjustments<a class="headerlink" href="#inventory-adjustments" title="Permalink to this headline">¶</a></h1>
+<p>In any warehouse management system, the recorded inventory counts in the database might not always
+match the actual inventory counts in the warehouse. The discrepancy between the two counts can be
+due to damages, human errors, theft, or other factors. As such, inventory adjustments must be made
+to reconcile the differences, and ensure that the recorded counts in the database match the actual
+counts in the warehouse.</p>
+</section><section id="inventory-adjustments-page">
+<h2>Inventory Adjustments page<a class="headerlink" href="#inventory-adjustments-page" title="Permalink to this headline">¶</a></h2>
+<p>To view the <em>Inventory Adjustments</em> page, navigate to <span class="menuselection">Inventory app ‣ Operations
+‣ Inventory Adjustments</span>.</p>
+<img alt="In stock products listed on the Inventory adjustments page." class="align-center" src="../../../../../_images/inventory-adjustments-page.png" />
+<p>On the <span class="guilabel">Inventory Adjustments</span> page, all products that are currently in stock are listed,
+with each product line containing the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Location</span>: the specific location in the warehouse where a product is stored.</p></li>
+<li><p><span class="guilabel">Product</span>: the product whose quantity is listed on the inventory adjustment line.</p></li>
+<li><p><span class="guilabel">Lot/Serial Number</span>: the tracking identifier assigned to the specific product listed. It
+can contain letters, numbers, or a combination of both.</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If a specific product has a quantity of more than <code class="o_code docutils literal notranslate"><span class="pre">1.00</span></code> in stock, and more than one serial
+number (or lot number) assigned to it, each uniquely-identified product is displayed on its own
+product line with its own lot/serial number, displayed under the <span class="guilabel">Lot/Serial Number</span>
+column.</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">On Hand Quantity</span>: the quantity of the product currently recorded in the database.</p></li>
+<li><p><span class="guilabel">UoM</span>: the <em>unit of measure</em> in which the product is measured. Unless otherwise
+specified (i.e., in <span class="guilabel">Pounds</span> or <span class="guilabel">Ounces</span>), the default <abbr title="Unit of Measure">UoM</abbr> is <span class="guilabel">Units</span>.</p></li>
+<li><p><span class="guilabel">Counted Quantity</span>: the real quantity counted during an inventory count. This field is
+left blank by default, but can be changed, depending on if it matches the <span class="guilabel">On Hand
+Quantity</span> or not.</p></li>
+<li><p><span class="guilabel">Difference</span>: the difference between the <span class="guilabel">On Hand Quantity</span> and
+<span class="guilabel">Counted Quantity</span>, once an inventory adjustment is made. The difference is
+automatically calculated after every inventory adjustment.</p></li>
+<li><p><span class="guilabel">Scheduled Date</span>: the date at which a count should be made. If not otherwise specified,
+this date will default to the 31st of December of the current year.</p></li>
+<li><p><span class="guilabel">User</span>: the person assigned to the count in the database. This can either be the person
+physically counting the inventory, or applying the count in the database.</p></li>
+<li><p><span class="guilabel">Product Category</span>: the category assigned internally to a specific product. Unless
+otherwise specified (i.e., as <span class="guilabel">Consumable</span> or <span class="guilabel">Rental</span>), the default <em>Product
+Category</em> is set to <span class="guilabel">All</span>.</p></li>
+<li><p><span class="guilabel">Available Quantity</span>: the quantity of a specific product that is currently available,
+based on any outstanding/uncompleted sales orders, purchase orders, or manufacturing orders that
+might change the available quantity once fulfilled.</p></li>
+<li><p><span class="guilabel">Accounting Date</span>: the date on which the adjustments will be accounted in the Odoo
+<em>Accounting</em> app.</p></li>
+<li><p><span class="guilabel">Company</span>: the company whose database these inventory adjustments are being made on. The
+company is listed in the top right corner of the database, next to the user currently logged in.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Some columns are hidden by default. To reveal these columns, click the <span class="guilabel">additional
+options</span> button (three dots icon) to the far right of the form’s top row, and select any desired
+column to reveal by clicking the checkbox next to that option.</p>
+</div>
+</section><section id="create-an-inventory-adjustment">
+<h3>Create an inventory adjustment<a class="headerlink" href="#create-an-inventory-adjustment" title="Permalink to this headline">¶</a></h3>
+<p>To create a new inventory adjustment from the <span class="menuselection">Inventory Adjustments</span> page, click
+<span class="guilabel">Create</span>. Doing so creates a new, blank inventory adjustment line at the bottom of the
+page.</p>
+<p>On this blank inventory adjustment line, click the drop-down menu under the <span class="guilabel">Product</span>
+column, and select a product. If the selected product is tracked using either lots or serial
+numbers, the desired lot or serial number can also be chosen from the drop-down menu under the
+<span class="guilabel">Lot/Serial Number</span> column.</p>
+<p>Next, set the value in the <span class="guilabel">Counted Quantity</span> column to the quantity counted for that
+product during the inventory adjustment process.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Counted Quantity</span> for new inventory adjustments is set to <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code> by default. An
+inventory move with <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code> <span class="guilabel">Quantity Done</span> is recorded in the product’s inventory
+adjustment history, so it should be set to reflect the actual quantity counted.</p>
+</div>
+<p>To the right of the <span class="guilabel">Counted Quantity</span> column, the <span class="guilabel">Scheduled Date</span> and
+<span class="guilabel">User</span> can also be changed via their respective drop-down menus. Changing the
+<span class="guilabel">Scheduled Date</span> changes the date that the inventory adjustment should be processed on,
+and selecting a responsible <span class="guilabel">User</span> assigns a user to the specific inventory adjustment
+(for traceability purposes).</p>
+<p>Once all changes have been made to the new inventory adjustment line, click away from the line.
+Doing so saves the adjustment, and moves the line to the top of the page.</p>
+<p>If the <span class="guilabel">Counted Quantity</span> is greater than the <span class="guilabel">On Hand Quantity</span>, the value in
+the <span class="guilabel">Difference</span> column is <strong>green</strong>. If the <span class="guilabel">Counted Quantity</span> is less than the
+<span class="guilabel">On Hand Quantity</span>, the value in the <span class="guilabel">Difference</span> column is <strong>red</strong>. If the
+quantities match, and haven’t been changed at all, no value appears in the <span class="guilabel">Difference</span>
+column.</p>
+<img alt="Difference column on inventory adjustments page." class="align-center" src="../../../../../_images/difference-column.png" />
+<p>At this stage, the count (<span class="dfn"><span>inventory adjustment</span></span>) is recorded, but not yet applied. This means
+that the quantity on hand before the adjustment has not yet been updated to match the new, real
+counted quantity.</p>
+<p>There are two ways to apply the new inventory adjustment. The first way is to click the
+<span class="guilabel">Apply</span> button on the line at the far right of the page. The second way is to click the
+checkbox on the far left of the line. Doing so reveals new button options at the top of the page,
+one of which is an <span class="guilabel">Apply</span> button. Clicking this button instead causes an
+<span class="guilabel">Inventory Adjustment Reference / Reason</span> pop-up window to appear.</p>
+<p>From this pop-up menu, a reference or reason can be assigned to the inventory adjustment. By
+default, the <span class="guilabel">Inventory Reference / Reason</span> field is pre-populated with the date the
+adjustment is being made on, but can be changed to reflect whatever reference or reason is desired.</p>
+<p>Once ready, click <span class="guilabel">Apply</span> to apply the inventory adjustment.</p>
+<img alt="Apply all option applies the inventory adjustment once a reason is specified." class="align-center" src="../../../../../_images/apply-inventory-adjustment.png" />
+</section><section id="count-products">
+<h2>Count products<a class="headerlink" href="#count-products" title="Permalink to this headline">¶</a></h2>
+<p>Counting products is a recurring activity in a warehouse. Once a count is complete, go to
+<span class="menuselection">Inventory app ‣ Operations ‣ Inventory Adjustments</span> to update the
+<span class="guilabel">Counted Quantity</span> column for each product line.</p>
+<p>On each product line, identify whether the value in the <span class="guilabel">On Hand Quantity</span> column recorded
+in the database matches the newly-counted value. If the recorded value and the counted value do
+match, click the <span class="guilabel">Set</span> button (target icon) at the far right of the product line.</p>
+<p>Doing so copies the value from the <span class="guilabel">On Hand Quantity</span> column over to the
+<span class="guilabel">Counted Quantity</span> column, and sets the value of the <span class="guilabel">Difference</span> column to
+<code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code>. Subsequently, once applied, an inventory move with <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code> <span class="guilabel">Quantity Done</span> is
+recorded in the product’s inventory adjustment history.</p>
+<img alt="Zero count inventory adjustment move." class="align-center" src="../../../../../_images/zero-move.png" />
+<p>If the newly-counted value for a given product does <strong>not</strong> match the value in the <span class="guilabel">On
+Hand Quantity</span> recorded in the database, instead of clicking the <span class="guilabel">Set</span> button, record the
+real value in the field in the <span class="guilabel">Counted Quantity</span> column.</p>
+<p>To do so, click the field in the <span class="guilabel">Counted Quantity</span> column on the specific inventory
+adjustment line for the product whose count is being changed. This automatically assigns a
+<span class="guilabel">Counted Quantity</span> of <code class="o_code docutils literal notranslate"><span class="pre">0.00</span></code>.</p>
+<p>To change this value, type in a new value that matches the real, newly-counted value. Then, click
+away from the line. Doing so saves the adjustment, and automatically adjusts the value in the
+<span class="guilabel">Difference</span> column.</p>
+<p>If the <span class="guilabel">Counted Quantity</span> is greater than the <span class="guilabel">On Hand Quantity</span>, the value in
+the <span class="guilabel">Difference</span> column is <strong>green</strong>. If the <span class="guilabel">Counted Quantity</span> is less than the
+<span class="guilabel">On Hand Quantity</span>, the value in the <span class="guilabel">Difference</span> column is <strong>red</strong>. If the
+quantities match, and haven’t been changed at all, no value appears in the <span class="guilabel">Difference</span>
+column.</p>
+<p>Subsequently, once applied, a move with the difference between the <span class="guilabel">On Hand Quantity</span> and
+the <span class="guilabel">Counted Quantity</span> is recorded in the product’s inventory adjustment history.</p>
+<img alt="Inventory Adjustments History dashboard detailing a list of prior product moves." class="align-center" src="../../../../../_images/history-inventory-adjustments.png" />
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Sometimes a count occurs, but cannot be applied in the database right away. In the time between
+the actual count and applying the inventory adjustment, product moves can occur. In that case,
+the on-hand quantity in the database can change and no longer be consistent with the counted
+quantity. As an extra precaution, Odoo asks for confirmation before applying the inventory
+adjustment.</p>
+</div>
+</section><section id="change-inventory-count-frequency">
+<h2>Change inventory count frequency<a class="headerlink" href="#change-inventory-count-frequency" title="Permalink to this headline">¶</a></h2>
+<p>By default, the <em>scheduled date</em> for inventory adjustments are always scheduled for the 31st of
+December of the current year. However, for some companies, it is crucial that they have an accurate
+inventory count at all times. In such cases, the default scheduled date can be modified.</p>
+<p>To modify the default scheduled date, go to <span class="menuselection">Inventory app ‣ Configuration ‣
+Settings</span>. Then, in the <span class="guilabel">Operations</span> section, locate the <span class="guilabel">Annual Inventory Day
+and Month</span> setting, which includes a drop-down menu that is set to <code class="o_code docutils literal notranslate"><span class="pre">31</span> <span class="pre">December</span></code> by default.</p>
+<img alt="Adjust the next inventory count date with the Annual Inventory Day and Month setting." class="align-center" src="../../../../../_images/annual-inventory.png" />
+<p>To change the day, click the <span class="guilabel">31</span>, and change it to a day within the range <code class="o_code docutils literal notranslate"><span class="pre">1-31</span></code>,
+depending on the desired month of the year.</p>
+<p>Then, to change the month, click <span class="guilabel">December</span> to reveal the drop-down menu, and select the
+desired month.</p>
+<p>Once all desired changes have been made, click <span class="guilabel">Save</span> to save all changes.</p>
+</section><section id="plan-big-inventory-counts">
+<h3>Plan big inventory counts<a class="headerlink" href="#plan-big-inventory-counts" title="Permalink to this headline">¶</a></h3>
+<p>To plan big inventory counts, such as a full count of everything currently in stock, first navigate
+to <span class="menuselection">Inventory app ‣ Operations ‣ Inventory Adjustments</span>.</p>
+<p>Then, select the desired products to be counted by clicking the checkbox on the far left of each
+product line.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To request a count of <strong>all</strong> products currently in stock, click the checkbox at the very top of
+the table, in the header row next to the <span class="guilabel">Location</span> label. This selects <strong>all</strong> product
+lines.</p>
+</div>
+<img alt="Request a count popup on inventory adjustments page." class="align-center" src="../../../../../_images/count-popup.png" />
+<p>Once all desired products have been selected, click the <span class="guilabel">Request a Count</span> button at the
+top of the page. This causes a <span class="guilabel">Request a Count</span> pop-up window to appear. From this
+pop-up, fill in the following information:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Inventory Date</span>: the planned date of the count.</p></li>
+<li><p><span class="guilabel">User</span>: the user responsible for the count.</p></li>
+<li><p><span class="guilabel">Accounting Date</span>: the date at which the inventory adjustment will be accounted.</p></li>
+<li><p><span class="guilabel">Count</span>: to leave the on-hand quantity of each product line blank, select
+<span class="guilabel">Leave Empty</span>. To pre-fill the on-hand quantity of each product line with the current
+value recorded in the database, select <span class="guilabel">Set Current Value</span>.</p></li>
+</ul>
+<p>Finally, once ready, click <span class="guilabel">Confirm</span> to request the count.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>In the Odoo <em>Barcode</em> app, users can only view inventory counts that are assigned to <strong>them</strong>,
+and are scheduled for <strong>today</strong> or <strong>earlier</strong>.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="cycle_counts.html"><span class="doc">Cycle counts</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Inventory adjustments</a><ul>
+<li><a class="reference internal" href="#inventory-adjustments-page">Inventory Adjustments page</a><ul>
+<li><a class="reference internal" href="#create-an-inventory-adjustment">Create an inventory adjustment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#count-products">Count products</a></li>
+<li><a class="reference internal" href="#change-inventory-count-frequency">Change inventory count frequency</a><ul>
+<li><a class="reference internal" href="#plan-big-inventory-counts">Plan big inventory counts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Inventory adjustments</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

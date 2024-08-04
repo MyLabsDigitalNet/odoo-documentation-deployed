@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Convert leads into opportunities &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/crm/acquire_leads/convert.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/crm/acquire_leads/convert.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Convert leads into opportunities</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#convert-a-lead-into-an-opportunity">Convert a lead into an opportunity</a></li>
+<li><a class="reference internal" href="#merge-leads-and-opportunities">Merge leads and opportunities</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/crm/acquire_leads/convert.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Convert leads into opportunities</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="convert-leads-into-opportunities">
+<h1>Convert leads into opportunities<a class="headerlink" href="#convert-leads-into-opportunities" title="Permalink to this headline">¶</a></h1>
+<p>¿What is a lead? A <em>lead</em> is a potential customer who has shown interest in your product or service.
+<em>Leads</em> act as qualifying steps before an opportunity is created. This provides additional time
+before a potential opportunity is assigned to a sales person.</p>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To activate the <em>Leads</em> setting, navigate to <span class="menuselection">CRM app ‣ Configuration ‣ Settings</span>
+and check the box labeled, <span class="guilabel">Leads</span>. Then, click <span class="guilabel">Save</span>.</p>
+<img alt="Leads setting on CRM configuration page." class="align-center" src="../../../../_images/crm_leads_action.png" />
+<p>Activating this feature adds a new menu, <span class="guilabel">Leads</span>, to the header menu bar at the top of the
+screen.</p>
+<img alt="Leads menu on CRM application." class="align-center" src="applications/sales/crm/acquire_leads/convertmenu_leads.png" />
+<p>Once the <em>Leads</em> setting has been activated, it applies to all sales teams by default. To turn off
+leads for a specific team, navigate to <span class="menuselection">CRM app ‣ Configuration ‣ Sales Teams</span>.
+Then, select a team from the list to open the record, and uncheck the <span class="guilabel">Leads</span> box. Once
+done, click <span class="guilabel">Save</span>.</p>
+<img alt="Leads menu on CRM application." class="align-center" src="../../../../_images/convertir_leads_boton_leads.png" />
+</section><section id="convert-a-lead-into-an-opportunity">
+<h2>Convert a lead into an opportunity<a class="headerlink" href="#convert-a-lead-into-an-opportunity" title="Permalink to this headline">¶</a></h2>
+<p>To convert a lead into an <em>opportunity</em>, navigate to <span class="menuselection">CRM ‣ Leads</span>, and click on a
+<span class="guilabel">Lead</span> from the list to open it.</p>
+<p>In the upper-left corner of the screen, click the <span class="guilabel">Convert to Opportunity</span> button, which
+opens a <span class="guilabel">Convert to opportunity</span> pop-up window.</p>
+<img alt="Create opportunity button on a lead record." class="align-center" src="../../../../_images/convertir_leads_boton_leads.png" />
+<p>On the <span class="guilabel">Convert to opportunity</span> pop-up window, in the <span class="guilabel">Conversion action</span> field,
+select the <span class="guilabel">Convert to opportunity</span> option.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If a lead, or an opportunity, already exists in the database for this customer, Odoo
+automatically suggests merging both leads/opportunities. For more information on merging leads
+and opportunities, see the section on how to <a class="reference internal" href="#sales-crm-acquire-leads-merge-leads"><span class="std std-ref">merge leads</span></a> below.</p>
+</div>
+<p>Then, select a <span class="guilabel">Salesperson</span> and a <span class="guilabel">Sales Team</span> to which the opportunity should
+be assigned.</p>
+<p>If the lead has already been assigned to a salesperson or a team, these fields automatically
+populate with that information.</p>
+<img alt="Create opportunity pop-up." class="align-center" src="../../../../_images/pop_up_convert_lead.png" />
+<p>Under the <span class="guilabel">Customer</span> heading, choose from the following options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Create a new customer</span>: Choose this option to use the information in the lead to create
+a new customer.</p></li>
+<li><p><span class="guilabel">Link to an existing customer</span>: Choose this option, then select a customer from the
+resulting drop-down menu, to link this opportunity to the existing customer record.</p></li>
+<li><p><span class="guilabel">Do not link to a customer</span>: Choose this option to convert the lead, but not link it to
+a new or existing customer.</p></li>
+</ul>
+<p>Lastly, when all configurations are complete, click <span class="guilabel">Create Opportunity</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Don’t worry, if you want to create a customer record from this lead later, you can do it. This is useful
+to avoid filling up the database with potential customers who have been lost along the way.</p>
+</div>
+</section><section id="merge-leads-and-opportunities">
+<span id="sales-crm-acquire-leads-merge-leads"></span><h2>Merge leads and opportunities<a class="headerlink" href="#merge-leads-and-opportunities" title="Permalink to this headline">¶</a></h2>
+<p>Odoo automatically detects similar leads and opportunities by comparing the email addresses of the
+associated contacts. If a similar lead/opportunity is found, a <span class="guilabel">Similar Lead</span> smart button
+appears at the top of the lead/opportunity record.</p>
+<img alt="Similar leads smart button." class="align-center" src="../../../../_images/similar_leads.png" />
+<p>To compare the details of the similar leads/opportunities, click the <span class="guilabel">Similar Leads</span>
+button. This opens a kanban view with only the similar leads/opportunities. Click into each card to
+view the details for each lead/opportunity.
+To merge the two opportunities, switch to the list view, <strong>select both</strong> opportunities and click the action button.
+In the dropdown menu, you will see the <strong>merge</strong> button.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>When merging, Odoo gives priority to whichever lead/opportunity was created in the system first,
+merging the information into the first created lead/opportunity. However, if a lead and an
+opportunity are being merged, the resulting record is referred to as an opportunity, regardless
+of which record was created first.</p>
+</div>
+<p>After confirming that the leads/opportunities should be merged, return to the kanban view using
+breadcrumbs, or by clicking the <span class="guilabel">Similar Lead</span> smart button. Click the <span class="guilabel">☰
+(three vertical lines)</span> icon to change to list view.</p>
+<p>Check the box on the left of the page for the leads/opportunities to be merged. Then, click the
+<span class="guilabel">Action ⚙️ (gear)</span> icon at the top of the page, to reveal a drop-down menu. From that
+drop-down menu, select the <span class="guilabel">Merge</span> option to merge the selected opportunities (or leads).</p>
+<p>When <span class="guilabel">Merge</span> is selected from the <span class="guilabel">Action ⚙️ (gear)</span> drop-down menu, a
+<span class="guilabel">Merge</span> pop-up window appears. In that pop-up window, decide to <span class="guilabel">Assign
+opportunities to</span> a <span class="guilabel">Salesperson</span> and/or <span class="guilabel">Sales Team</span>.</p>
+<p>Below those fields, the leads/opportunities to merge are listed, along with their related
+information. To merge those selected leads/opportunities, click <span class="guilabel">Merge</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When merging opportunities, no information is lost. Data from the other opportunity is logged in
+the chatter, and the information fields, for reference.</p>
+</div>
+<img alt="Merge option from action menu in list view." class="align-center" src="../../../../_images/merge_leads.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Convert leads into opportunities</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#convert-a-lead-into-an-opportunity">Convert a lead into an opportunity</a></li>
+<li><a class="reference internal" href="#merge-leads-and-opportunities">Merge leads and opportunities</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Convert leads into opportunities</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

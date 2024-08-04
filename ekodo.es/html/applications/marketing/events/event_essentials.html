@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event essentials &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/marketing/events/event_essentials.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/marketing/events/event_essentials.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Event essentials</a><ul>
+<li><a class="reference internal" href="#kanban-concepts-and-organization">Kanban concepts and organization</a></li>
+<li><a class="reference internal" href="#create-a-new-event">Create a new event</a><ul>
+<li><a class="reference internal" href="#add-and-sell-event-tickets">Add and sell event tickets</a></li>
+<li><a class="reference internal" href="#send-automated-emails-text-and-social-posts-to-event-attendees">Send automated emails, text, and social posts to event attendees</a></li>
+<li><a class="reference internal" href="#attach-a-questionnaire-to-event-registrations">Attach a questionnaire to event registrations</a></li>
+<li><a class="reference internal" href="#log-internal-notes-or-add-ticket-instructions">Log internal notes or add ticket instructions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invite-attendees-to-the-event">Invite attendees to the event</a><ul>
+<li><a class="reference internal" href="#select-invitees-and-configure-recipient-filters">Select invitees and configure recipient filters</a></li>
+<li><a class="reference internal" href="#build-a-custom-event-invite">Build a custom event invite</a></li>
+<li><a class="reference internal" href="#modify-event-invite-settings">Modify event invite settings</a></li>
+<li><a class="reference internal" href="#send-event-invitations-to-recipients">Send event invitations to recipients</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#publish-events">Publish events</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/marketing/events/event_essentials.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Event essentials</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="event-essentials">
+<h1>Event essentials<a class="headerlink" href="#event-essentials" title="Permalink to this headline">¶</a></h1>
+<p>Odoo Events provides event coordinators with an arsenal of planning, communications, and reporting
+tools to create immersive and engaging experiences for customers. Namely, staff can create and
+publish events on their website, sell tickets online, scan tickets with Odoo barcode, send out
+automated emails, and generate rich reporting data once the event accepts registrations.</p>
+</section><section id="kanban-concepts-and-organization">
+<h2>Kanban concepts and organization<a class="headerlink" href="#kanban-concepts-and-organization" title="Permalink to this headline">¶</a></h2>
+<p>To get started, click on the <span class="guilabel">Events</span> application on the home dashboard, which then leads
+to the kanban view populated with a variety of pipeline stages. Key information is listed on each
+event card, such as the date/time of the event, along with the number of expected (and confirmed)
+attendees.</p>
+<p>To create a new stage, click <span class="guilabel">Add a Column</span> and provide a befitting title to reflect the
+purpose of that stage.</p>
+<p>To reorganize the stages, just drag-and-drop them until they are in the correct order. Stages can
+also be “folded” in the kanban for a cleaner presentation, via the <span class="guilabel">Settings</span> menu to the
+right of each stage’s title, which is represented by a gear icon.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The gear icon, by default, is hidden and will appear next to the  <span class="guilabel">+</span> icon when moused
+over.</p>
+</div>
+<p>When clicked, a drop-down menu of settings will appear.</p>
+<img alt="Overview of events setting with the kanban view in Odoo Events." class="align-center" src="../../../_images/events-dashboard.png" />
+</section><section id="create-a-new-event">
+<h2>Create a new event<a class="headerlink" href="#create-a-new-event" title="Permalink to this headline">¶</a></h2>
+<p>To create an event, click <span class="guilabel">Create</span> from the Events dashboard. Odoo will then direct the
+page to a blank event template form.</p>
+<p>From the event form, fill out the necessary fields, either by choosing from existing data in the
+Odoo database or by creating and editing new field data. Key information to enter for the event
+includes:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Event Name</span>: give the event a title.</p></li>
+<li><p><span class="guilabel">Date</span>: includes the start and end dates/times for the event.</p></li>
+<li><p><span class="guilabel">Timezone</span>: covers the timezone for when the event is taking place.</p></li>
+<li><p><span class="guilabel">Template</span>: choose from a pre-built event template or build a custom one and connect it
+here.</p></li>
+<li><p><span class="guilabel">Tags</span>: add tags to indicate briefly what the event is for (e.g. <code class="o_code docutils literal notranslate"><span class="pre">tradeshow</span></code>). Tags
+help better organize event cards in the kanban and are useful when using search filters during
+reporting periods.</p></li>
+<li><p><span class="guilabel">Organizer</span>: detail the organizer(s) for the event. This field is usually the company
+that owns the Odoo database, or a vendor.</p></li>
+<li><p><span class="guilabel">Responsible</span>: name the point person who is responsible for organizing the event.</p></li>
+<li><p><span class="guilabel">Website</span>: indicate which Odoo website(s) the event event should be published to.</p></li>
+<li><p><span class="guilabel">Venue</span>: list the venue details here if it’s a new record, or choose from an existing
+location.</p></li>
+<li><p><span class="guilabel">Limit Registrations</span>: when enabled, this setting caps the attendee registrations to a
+specified amount</p></li>
+<li><p><span class="guilabel">Autoconfirmation</span>: when enabled, this setting skips the confirmation request that gets
+sent by email to event registrants, and automatically confirms their registration.</p></li>
+</ul>
+<p>Once the fields in the event form are set, move on to the <span class="guilabel">Tickets</span> and
+<span class="guilabel">Communication</span> tabs, and optionally the <span class="guilabel">Questions</span> tab if registrations
+should require additional information.</p>
+</section><section id="add-and-sell-event-tickets">
+<h3>Add and sell event tickets<a class="headerlink" href="#add-and-sell-event-tickets" title="Permalink to this headline">¶</a></h3>
+<p>Under the <span class="guilabel">Tickets</span> tab, add line items for each type of ticket the event plans to offer.
+Here, determine the ticket price, start/end dates for registrations, as well as the maximum number
+of tickets that can be sold.</p>
+<p>If selling tickets isn’t necessary for the event, a simple <span class="guilabel">Registration</span> button will be
+displayed on the event’s page by default.</p>
+<img alt="View of the ticket tab in Odoo Events." class="align-center" src="../../../_images/events-tickets-tab.png" />
+</section><section id="send-automated-emails-text-and-social-posts-to-event-attendees">
+<h3>Send automated emails, text, and social posts to event attendees<a class="headerlink" href="#send-automated-emails-text-and-social-posts-to-event-attendees" title="Permalink to this headline">¶</a></h3>
+<p>Under the <span class="guilabel">Communication</span> tab, configure personalized email, SMS, or social post messages
+to keep in touch with event attendees. For each communication, click <span class="guilabel">Add a line</span> in the
+<span class="guilabel">Communication</span> tab form, and then choose (or create) a communications template using
+the drop-down menu under the <span class="guilabel">Template</span> column.</p>
+<p>Next, define the <span class="guilabel">Interval</span> and <span class="guilabel">Unit</span> of time for how often the communication
+should be sent; use these time fields to specify the frequency of <span class="guilabel">Hours</span>,
+<span class="guilabel">Days</span>, <span class="guilabel">Weeks</span>, or <span class="guilabel">Months</span> communications should be sent. There is
+also the option to send communications <code class="o_code docutils literal notranslate"><span class="pre">Immediately</span></code> after a specified <span class="guilabel">Trigger</span> is
+activated.</p>
+<p>In the last column, determine the <span class="guilabel">Trigger</span> which controls how and when the communication
+is sent. For this action, choose between: <span class="guilabel">Before the event</span>, <span class="guilabel">After each
+registration</span>, or <span class="guilabel">After the event</span>.</p>
+<img alt="View of the communication tab in Odoo Events." class="align-center" src="../../../_images/events-communication-tab.png" />
+</section><section id="attach-a-questionnaire-to-event-registrations">
+<h3>Attach a questionnaire to event registrations<a class="headerlink" href="#attach-a-questionnaire-to-event-registrations" title="Permalink to this headline">¶</a></h3>
+<p>Implementing a questionnaire during event sign up is an effective way to gauge the wants, needs,
+and interests of the event’s attendees ahead of time. Questionnaires also act as informative
+analytics tools for reporting periods before (or after) events take place.</p>
+<p>To create a questionnaire, from the <span class="guilabel">Events</span> application, navigate to
+<span class="menuselection">Configuration ‣ Settings</span> and then enable the <span class="guilabel">Questions</span> setting.</p>
+<p>With the setting enabled, questions and answers can now be added (and recorded) under the the
+<span class="guilabel">Questions</span> tab back on the event form. For each question, specify if it should only
+be asked once with the <span class="guilabel">Ask once per order</span> checkbox, or if the question requires a
+<span class="guilabel">Mandatory Answer</span>, which will make the question required for registration.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>If the <span class="guilabel">Once per order</span> checkbox is enabled, then a single registration for 3 event
+attendees will show the questionnaire only once.</p>
+</div>
+<p>There are two <span class="guilabel">Question Types</span> to choose from: <span class="guilabel">Selection</span> and <span class="guilabel">Text
+Input</span>. The <span class="guilabel">Selection</span> type, allows attendees to select an answer from pre-configured
+options, which are entered in the <span class="guilabel">Answers</span> tab below. The <span class="guilabel">Text Input</span> type
+allows attendees to write in their own answer to the question in a text box.</p>
+<img alt="View of an event form, open the questions tab, and add a question." class="align-center" src="../../../_images/events-questions-tab.png" />
+</section><section id="log-internal-notes-or-add-ticket-instructions">
+<h3>Log internal notes or add ticket instructions<a class="headerlink" href="#log-internal-notes-or-add-ticket-instructions" title="Permalink to this headline">¶</a></h3>
+<p>In the <span class="guilabel">Notes</span> tab, there is the option to add a <span class="guilabel">Note</span> and/or <span class="guilabel">Ticket
+instructions</span>.</p>
+<p>Under <span class="guilabel">Note</span>, internal notes can be left (such as: to-do lists, contact information,
+etc.) for event staff to reference. In the <span class="guilabel">Ticket instructions</span> field, helpful
+information for staff and attendees can be shared (like, directions to the venue, opening/closing
+times, etc.)</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Type <code class="o_code docutils literal notranslate"><span class="pre">/</span></code> in either text field (<span class="guilabel">Note</span> or <span class="guilabel">Ticket instructions</span>) to reveal a
+sub-menu of <span class="guilabel">Structure</span> options. These options provide various formatting options to
+ensure vital internal information is organized for event staff to review.</p>
+</div>
+<img alt="View of the Notes tab in Odoo Events." class="align-center" src="../../../_images/events-notes-tab.png" />
+</section><section id="invite-attendees-to-the-event">
+<h2>Invite attendees to the event<a class="headerlink" href="#invite-attendees-to-the-event" title="Permalink to this headline">¶</a></h2>
+<p>To invite people to an event, click the <span class="guilabel">Invite</span> button located in the top left corner of
+the event form.</p>
+<p>Inside the invite template form, are options to sent email or SMS invites. Each message can be fully
+customized, and recipients can be added.</p>
+<p>Adding a <span class="guilabel">Subject</span> line for the invite message is required, but the <span class="guilabel">Preview
+Text</span> field is optional. The <span class="guilabel">Preview Text</span> is a catchy preview sentence meant to
+encourage recipients to open the email.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In most cases, the <span class="guilabel">Preview Text</span> is displayed next to the subject. Keep this field
+empty to ensure the first characters of the email content appear, instead.</p>
+</div>
+</section><section id="select-invitees-and-configure-recipient-filters">
+<h3>Select invitees and configure recipient filters<a class="headerlink" href="#select-invitees-and-configure-recipient-filters" title="Permalink to this headline">¶</a></h3>
+<p>In the middle of the invitation form, find and click the <span class="guilabel">Recipients</span> field, to reveal a
+drop-down menu of recipient options. These choices represent where Odoo will find the desired
+recipients’ information.</p>
+<p>Once an option from this menu is selected (e.g. <span class="guilabel">Applicant</span>, <span class="guilabel">Contact</span>,
+<span class="guilabel">Event Registration</span>, <span class="guilabel">Lead/Opportunity</span>, etc.), Odoo will send the invitation
+to all recipients who match that initial rule. Additional rules can be added to narrow down the
+target recipients, by clicking <span class="guilabel">Add Filter</span>.</p>
+<img alt="View of the add filter button beneath the recipients field in Odoo Events." class="align-center" src="../../../_images/add-filter-button1.png" />
+<p>Clicking <span class="guilabel">Add Filter</span> reveals three fields, formatted like an equation. To reveal the
+sub-menu options, click each field, and make the desired selections, until the preferred
+configuration has been acheived. The number of <span class="guilabel">Records</span> that match the rule(s) are
+indicated to the right of the <span class="guilabel">Recipients</span> field, in green.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Some sub-menu options in the first rule field allow for a second choice to provide even more
+specificity.</p>
+</div>
+<p>To the right of each rule, are <span class="guilabel">x</span>, <span class="guilabel">+</span>, and <span class="guilabel">…</span> icons. The
+<span class="guilabel">x</span> icon deletes a specific node (line) of the rule. The <span class="guilabel">+</span> icon adds a node
+(line) to the rule. And, the <span class="guilabel">…</span> icon adds a branch to the node. A branch means two
+additional, indented sub-nodes are added to the rule, providing even more specificity to the line
+above it.</p>
+</section><section id="build-a-custom-event-invite">
+<h3>Build a custom event invite<a class="headerlink" href="#build-a-custom-event-invite" title="Permalink to this headline">¶</a></h3>
+<p>In the <span class="guilabel">Mail Body</span> tab, there are a number of pre-configured message templates to choose
+from. Select the desired template, and modify every element of its design details with Odoo’s
+drag-and-drop web builder, located on the right sidebar.</p>
+<img alt="View of the drag and drop building blocks used to customize event invite emails." class="align-center" src="../../../_images/event-email-builder-block.gif" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To build an email event invite from scratch, select the <span class="guilabel">Plain Text</span> template, and
+Odoo will provide a blank email canvas, which can be customized either by using the frontend
+rich text editor that accepts slash (<code class="o_code docutils literal notranslate"><span class="pre">/</span></code>) commands, or the XML code editor when <a class="reference internal" href="../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer
+mode</span></a> is engaged and the <span class="guilabel">&lt;/&gt;</span> icon is pressed.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Mail Body</span> tab (and template options), are only available if the event invite
+<span class="guilabel">Mailing Type</span> is designated as an <span class="guilabel">Email</span>. If <span class="guilabel">SMS</span> is the
+<span class="guilabel">Mailing Type</span>, a <span class="guilabel">SMS Content</span> tab (consisting of a blank text space), is
+available, instead.</p>
+</div>
+</section><section id="modify-event-invite-settings">
+<h3>Modify event invite settings<a class="headerlink" href="#modify-event-invite-settings" title="Permalink to this headline">¶</a></h3>
+<p>The options under the <span class="guilabel">Settings</span> tab are different, depending on the specified
+<span class="guilabel">Mailing Type</span>.</p>
+<p>If the <span class="guilabel">Email</span> option is selected as the <span class="guilabel">Mailing Type</span>, an employee can be
+designated as the <span class="guilabel">Responsible</span>, meaning that person is the one responsible for this
+particular invite message. <span class="guilabel">Send From</span> and <span class="guilabel">Reply To</span> email aliases can be
+designated here, as well.</p>
+<p>Also, if any specific documents are required (or helpful) for this event invite, they can be sent
+along with this email, by clicking <span class="guilabel">ATTACH A FILE</span>, and adding the appropriate
+document(s).</p>
+<p>If the <span class="guilabel">SMS</span> option is selected as the <span class="guilabel">Mailing Type</span>, a <span class="guilabel">Responsible</span>
+can be designated, and the option to <span class="guilabel">Include an opt-out link</span> is available.</p>
+</section><section id="send-event-invitations-to-recipients">
+<h3>Send event invitations to recipients<a class="headerlink" href="#send-event-invitations-to-recipients" title="Permalink to this headline">¶</a></h3>
+<p>If the selected <span class="guilabel">Mailing Type</span> is <span class="guilabel">Email</span>, there are three options to send the
+invite: <span class="guilabel">Send</span>, <span class="guilabel">Schedule</span>, and <span class="guilabel">Test</span>.</p>
+<p>The <span class="guilabel">Send</span> option sends the invite right away. The <span class="guilabel">Schedule</span> option reveals a
+pop-up, in which a scheduled date/time can be selected for the email to be sent. The
+<span class="guilabel">Test</span> option reveals a <span class="guilabel">Test Mailing</span> pop-up, where specific recipient email
+addresses can be entered for Odoo to send them the current version of the mailing for review before
+officially sending it out to prospective event attendees.</p>
+<p>If the selected <span class="guilabel">Mailing Type</span> is <span class="guilabel">SMS</span>, there are four options to send the
+invite: <span class="guilabel">Put in Queue</span>, <span class="guilabel">Send Now</span>, <span class="guilabel">Schedule</span>, and <span class="guilabel">Test</span>.</p>
+<p>The <span class="guilabel">Put in Queue</span> option schedules an SMS message to all recipients (that match the
+designated rules, if any) in the near future. Clicking <span class="guilabel">Put in Queue</span> reveals a pop-up,
+requiring confirmation. When confirmed, a blue banner appears on the event invite template form,
+indicating that the SMS will be sent later that day.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Send Now</span>, <span class="guilabel">Schedule</span>, and <span class="guilabel">Test</span> options all function the
+same way for both <span class="guilabel">Mailing Type</span> options.</p>
+</div>
+</section><section id="publish-events">
+<h2>Publish events<a class="headerlink" href="#publish-events" title="Permalink to this headline">¶</a></h2>
+<p>Until an event is published, it will remain hidden from public view on the website and registering
+for it will not be possible. To publish an event, navigate to it either from the backend of Odoo
+through the <span class="guilabel">Events</span> application, or access the hidden event page through the frontend
+as either a priveliged user or administrator.</p>
+<p>If navigating from the backend, go to the event form, and click the <span class="guilabel">Go to Website</span>
+smart button to reach the event page on the website (on the frontend). If starting from the frontend
+, simply navigate to the event page that needs to be published.</p>
+<p>No matter the route, an event page can only be published from the frontend. In the upper right
+corner of the event page on the website, toggle the switch from the red <span class="guilabel">Unpublished</span>
+status to the green <span class="guilabel">Published</span> status. Doing so instantly makes the event page
+accessible to the public on the website.</p>
+<img alt="View of a website page and the option to publish the event in Odoo Events." class="align-center" src="../../../_images/events-frontend-publish.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Event essentials</a><ul>
+<li><a class="reference internal" href="#kanban-concepts-and-organization">Kanban concepts and organization</a></li>
+<li><a class="reference internal" href="#create-a-new-event">Create a new event</a><ul>
+<li><a class="reference internal" href="#add-and-sell-event-tickets">Add and sell event tickets</a></li>
+<li><a class="reference internal" href="#send-automated-emails-text-and-social-posts-to-event-attendees">Send automated emails, text, and social posts to event attendees</a></li>
+<li><a class="reference internal" href="#attach-a-questionnaire-to-event-registrations">Attach a questionnaire to event registrations</a></li>
+<li><a class="reference internal" href="#log-internal-notes-or-add-ticket-instructions">Log internal notes or add ticket instructions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invite-attendees-to-the-event">Invite attendees to the event</a><ul>
+<li><a class="reference internal" href="#select-invitees-and-configure-recipient-filters">Select invitees and configure recipient filters</a></li>
+<li><a class="reference internal" href="#build-a-custom-event-invite">Build a custom event invite</a></li>
+<li><a class="reference internal" href="#modify-event-invite-settings">Modify event invite settings</a></li>
+<li><a class="reference internal" href="#send-event-invitations-to-recipients">Send event invitations to recipients</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#publish-events">Publish events</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Event essentials</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

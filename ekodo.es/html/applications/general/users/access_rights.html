@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Access rights &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/general/users/access_rights.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/users/access_rights.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Access rights</a><ul>
+<li><a class="reference internal" href="#users">Users</a></li>
+<li><a class="reference internal" href="#create-and-modify-groups">Create and modify groups</a></li>
+<li><a class="reference internal" href="#superuser-mode">Superuser mode</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/general/users/access_rights.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Access rights</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="access-rights">
+<h1>Access rights<a class="headerlink" href="#access-rights" title="Permalink to this headline">¶</a></h1>
+<p><em>Access rights</em> are permissions that determine the content and applications users can access and
+edit. In Odoo, these permissions can be set for individual users or for groups of users. Limiting
+permissions to only those who need them ensures that users do not modify or delete anything they
+should not have access to.</p>
+<p><strong>Only</strong> an <em>administrator</em> can change access rights.</p>
+<div class="alert alert-danger">
+<p class="alert-title">
+Danger</p><p>Making changes to access rights can have a detrimental impact on the database. This includes
+<em>impotent admin</em>, which means that no user in the database can make changes to the access rights.
+For this reason, Odoo recommends contacting an Odoo Business Analyst, or our Support Team, before
+making changes.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>A user <strong>must</strong> have the specific <em>Administration</em> access rights set on their user profile, in
+order to make changes on another user’s settings for access rights.</p>
+<p>To access this setting, navigate to <span class="menuselection">Settings app ‣ Manage users ‣ select a
+user ‣ Access Rights tab ‣ Administration section ‣ Administration field</span>.</p>
+<p>Once at the setting, an already existing administrator <strong>must</strong> change the setting in the
+<span class="guilabel">Administration</span> field to <span class="guilabel">Access Rights</span>.</p>
+<p>Once complete, click <span class="guilabel">Save</span> to save the changes, and implement the user as an
+administrator.</p>
+</div>
+</section><section id="users">
+<h2>Users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h2>
+<p>The access rights for <a class="reference internal" href="../users.html#users-add-individual"><span class="std std-ref">individual users</span></a> are set when the user is added
+to the database, but they can be adjusted at any point in the user’s profile.</p>
+<p>To make changes to a user’s rights, click on the desired user to edit their profile.</p>
+<img alt="Users menu in the Users &amp; Companies section of the Settings app of Odoo." class="align-center" src="../../../_images/navigate-to-users-menu.png" />
+<p>On the user’s profile page, in the <span class="guilabel">Access Rights</span> tab, scroll down to view the current
+permissions.</p>
+<p>For each app, use the drop-down menu to select what level of permission this user should have. The
+options vary for each section, yet the most common are: <span class="guilabel">Blank/None</span>, <span class="guilabel">User: Own
+Documents</span>, <span class="guilabel">User: All Documents</span>, or <span class="guilabel">Administrator</span>.</p>
+<p>The <span class="guilabel">Administration</span> field in the <span class="guilabel">Access Rights</span> tab has the following options:
+<span class="guilabel">Settings</span> or <span class="guilabel">Access Rights</span>.</p>
+<img alt="The Sales apps drop-down menu to set the user's level of permissions." class="align-center" src="../../../_images/user-permissions-dropdown-menu.png" />
+</section><section id="create-and-modify-groups">
+<span id="access-rights-groups"></span><h2>Create and modify groups<a class="headerlink" href="#create-and-modify-groups" title="Permalink to this headline">¶</a></h2>
+<p><em>Groups</em> are app-specific sets of permissions that are used to manage common access rights for a
+large amount of users. Administrators can modify the existing groups in Odoo, or create new ones to
+define rules for models within an application.</p>
+<p>To access groups, first activate Odoo’s <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, then go to
+<span class="menuselection">Settings app ‣ Users &amp; Companies ‣ Groups</span>.</p>
+<img alt="Groups menu in the Users &amp; Companies section of the Settings app of Odoo." class="align-center" src="../../../_images/click-users-and-companies.png" />
+<p>To create a new group from the <span class="guilabel">Groups</span> page, click <span class="guilabel">Create</span>. Then, from the
+blank group form, select an <span class="guilabel">Application</span>, and complete the group form (detailed below).</p>
+<p>To modify existing groups, click on an existing group from the list displayed on the
+<span class="guilabel">Groups</span> page, and edit the contents of the form.</p>
+<p>Enter a <span class="guilabel">Name</span> for the group and tick the checkbox next to <span class="guilabel">Share Group</span>, if
+this group was created to set access rights for sharing data with some users.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Always test the settings being changed to ensure they are being applied to the correct users.</p>
+</div>
+<p>The group form contains multiple tabs for managing all elements of the group. In each tab, click
+<span class="guilabel">Add a line</span> to add a new row for users or rules, and click the <span class="guilabel">❌ (remove)</span>
+icon to remove a row.</p>
+<img alt="Tabs in the Groups form to modify the settings of the group." class="align-center" src="../../../_images/groups-form.png" />
+<ul>
+<li><p><span class="guilabel">Users</span> tab: lists the current users in the group. Users listed in black have
+administrative rights. Users without administrative access appear in blue. Click <span class="guilabel">Add a
+line</span> to add users to this group.</p></li>
+<li><p><span class="guilabel">Inherited</span> tab: inherited means that users added to this group are automatically added
+to the groups listed on this tab. Click <span class="guilabel">Add a line</span> to add inherited groups.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>For example, if the group <em>Sales/Administrator</em> lists the group <em>Website/Restricted Editor</em> in
+its <span class="guilabel">Inherited</span> tab, then any users added to the <em>Sales/Administrator</em> group
+automatically receive access to the <em>Website/Restricted Editor</em> group, as well.</p>
+</div>
+</li>
+<li><p><span class="guilabel">Menus</span> tab: defines which menus/models the group can have access to. Click
+<span class="guilabel">Add a line</span> to add a specific menu.</p></li>
+<li><p><span class="guilabel">Views</span> tab: lists which views in Odoo the group has access to. Click <span class="guilabel">Add a
+line</span> to add a view to the group.</p></li>
+<li><p><span class="guilabel">Access Rights</span> tab: lists the first level of rights (models) that this group has access
+rights to. Click <span class="guilabel">Add a line</span> to link access rights to this group. In this tab, the
+<span class="guilabel">Model</span> column represents the common name of the menu/model, and the <span class="guilabel">Name</span>
+column represents the technical name given to the model. For each model, enable the following
+options as appropriate:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Read</span>: users can see the object’s existing values.</p></li>
+<li><p><span class="guilabel">Write</span>: users can edit the object’s existing values.</p></li>
+<li><p><span class="guilabel">Create</span>: users can create new values for the object.</p></li>
+<li><p><span class="guilabel">Delete</span>: users can delete values for the object.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>First try searching for the common name of the model in the drop-down menu of the
+<span class="guilabel">Model</span> column. The <span class="guilabel">Model</span> technical name can be found by expanding the
+model common name, which can be done by clicking the <span class="guilabel">(external link)</span> icon.</p>
+<p>The model technical name can also be accessed in <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>.</p>
+<p>On a form, navigate to any field, and hover over the field name. A box of backend information
+reveals itself with the specific Odoo <span class="guilabel">Object</span> name in the backend. This is the
+technical name of the model that should be added.</p>
+<img alt="Technical information shown on a field of a model, with object highlighted." class="align-center" src="../../../_images/technical-info.png" />
+</div>
+</li>
+<li><p><span class="guilabel">Record Rules</span>: lists the second layer of editing and visibility rights.
+<span class="guilabel">Record Rules</span> overwrite, or refine, the group’s access rights. Click <span class="guilabel">Add a
+line</span> to add a record rule to this group. For each rule, choose values for the following options:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Apply for Read</span>.</p></li>
+<li><p><span class="guilabel">Apply for Write</span>.</p></li>
+<li><p><span class="guilabel">Apply for Create</span>.</p></li>
+<li><p><span class="guilabel">Apply for Delete</span>.</p></li>
+</ul>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Record rules are written using a <em>domain</em>, or conditions that filter data. A domain expression
+is a list of such conditions. For example:</p>
+<p><code class="o_code docutils literal notranslate"><span class="pre">[('mrp_production_ids',</span> <span class="pre">'in',</span> <span class="pre">user.partner_id.commercial_partner_id.production_ids.ids)]</span></code></p>
+<p>This record rule is to enable MRP consumption warnings for subcontractors.</p>
+<p>Odoo has a library of preconfigured record rules for ease of use. Users without knowledge of
+domains (and domain expressions) should consult an Odoo Business Analyst, or the Odoo Support
+Team, before making changes.</p>
+</div>
+</li>
+</ul>
+</section><section id="superuser-mode">
+<span id="access-rights-superuser"></span><h2>Superuser mode<a class="headerlink" href="#superuser-mode" title="Permalink to this headline">¶</a></h2>
+<p><em>Superuser mode</em> allows the user to bypass record rules and access rights. To activate <em>Superuser
+mode</em>, first, activate <a class="reference internal" href="../developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>. Then, navigate to the <em>debug</em> menu,
+represented by a <span class="guilabel">🪲 (bug)</span> icon, located in the top banner.</p>
+<p>Finally, towards the bottom of the menu, click <span class="guilabel">Become Superuser</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>Only users with <em>Settings</em> access for the <em>Administration</em> section of the <em>Access Rights</em> (in
+their user profile) are allowed to log in to <em>Superuser mode</em>.</p>
+</div>
+<div class="alert alert-danger">
+<p class="alert-title">
+Danger</p><p><em>Superuser mode</em> allows for circumvention of record rules and access rights, and therefore,
+should be exercised with extreme caution.</p>
+<p>Upon exiting <em>Superuser mode</em>, users may be locked out of the database, due to changes that were
+made. This can cause <em>impotent admin</em>, or an administrator without the ability to change access
+rights/settings.</p>
+<p>In this case contact Odoo Support here: <a class="reference external" href="https://www.odoo.com/help">new help ticket</a>. The
+support team is able to restore access using a support login.</p>
+</div>
+<p>To leave <em>Superuser mode</em>, log out of the account, by navigating to the upper-right corner, and
+clicking on the <span class="guilabel">OdooBot</span> username. Then, select the <span class="guilabel">Log out</span> option.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>An alternative way to activate <em>Superuser mode</em> is to login as a superuser. To do that, navigate
+to the login screen, and enter the appropriate <span class="guilabel">Email</span> and <span class="guilabel">Password</span>.</p>
+<p>Instead of clicking <span class="guilabel">Login</span>, click <span class="guilabel">Log in as superuser</span>.</p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Access rights</a><ul>
+<li><a class="reference internal" href="#users">Users</a></li>
+<li><a class="reference internal" href="#create-and-modify-groups">Create and modify groups</a></li>
+<li><a class="reference internal" href="#superuser-mode">Superuser mode</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Access rights</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

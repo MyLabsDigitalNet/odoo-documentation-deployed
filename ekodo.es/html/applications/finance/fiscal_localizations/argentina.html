@@ -1,0 +1,1062 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Argentina &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/argentina.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/finance/fiscal_localizations/argentina.html" />
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Argentina</a><ul>
+<li><a class="reference internal" href="#webinars">Webinars</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#modules-installation">Modules installation</a></li>
+<li><a class="reference internal" href="#configure-your-company">Configure your company</a></li>
+<li><a class="reference internal" href="#chart-of-account">Chart of account</a></li>
+<li><a class="reference internal" href="#configure-master-data">Configure master data</a><ul>
+<li><a class="reference internal" href="#electronic-invoice-credentials">Electronic Invoice Credentials</a><ul>
+<li><a class="reference internal" href="#environment">Environment</a></li>
+<li><a class="reference internal" href="#afip-certificates">AFIP certificates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partner">Partner</a><ul>
+<li><a class="reference internal" href="#identification-type-and-vat">Identification type and VAT</a></li>
+<li><a class="reference internal" href="#afip-responsibility-type">AFIP responsibility type</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#taxes">Taxes</a><ul>
+<li><a class="reference internal" href="#taxes-types">Taxes types</a></li>
+<li><a class="reference internal" href="#special-taxes">Special taxes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-types">Document types</a><ul>
+<li><a class="reference internal" href="#letters">Letters</a></li>
+<li><a class="reference internal" href="#use-on-invoices">Use on invoices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#journals">Journals</a><ul>
+<li><a class="reference internal" href="#afip-information-also-known-as-afip-point-of-sale">AFIP information (also known as AFIP Point of Sale)</a><ul>
+<li><a class="reference internal" href="#web-services">Web services</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sequences">Sequences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage-and-testing">Usage and testing</a><ul>
+<li><a class="reference internal" href="#invoice">Invoice</a><ul>
+<li><a class="reference internal" href="#document-type-assignation">Document type assignation</a></li>
+<li><a class="reference internal" href="#electronic-invoice-elements">Electronic invoice elements</a></li>
+<li><a class="reference internal" href="#invoice-taxes">Invoice taxes</a></li>
+<li><a class="reference internal" href="#special-use-cases">Special use cases</a><ul>
+<li><a class="reference internal" href="#invoices-for-services">Invoices for services</a></li>
+<li><a class="reference internal" href="#exportation-invoices">Exportation invoices</a></li>
+<li><a class="reference internal" href="#fiscal-bond">Fiscal bond</a></li>
+<li><a class="reference internal" href="#electronic-credit-invoice-mipyme-fce">Electronic credit invoice MiPyme (FCE)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invoice-printed-report">Invoice printed report</a></li>
+<li><a class="reference internal" href="#troubleshooting-and-auditing">Troubleshooting and auditing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vendor-bills">Vendor bills</a><ul>
+<li><a class="reference internal" href="#validate-vendor-bill-number-in-afip">Validate vendor bill number in AFIP</a><ul>
+<li><a class="reference internal" href="#validate-vendor-bills-in-odoo">Validate vendor bills in Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">Special use cases</a><ul>
+<li><a class="reference internal" href="#untaxed-concepts">Untaxed concepts</a></li>
+<li><a class="reference internal" href="#perception-taxes">Perception taxes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#check-management">Check management</a><ul>
+<li><a class="reference internal" href="#own-checks">Own checks</a><ul>
+<li><a class="reference internal" href="#management-of-own-checks">Management of own checks</a></li>
+<li><a class="reference internal" href="#cancel-an-own-check">Cancel an own check</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#third-party-checks">Third party checks</a><ul>
+<li><a class="reference internal" href="#new-third-party-checks">New third party checks</a></li>
+<li><a class="reference internal" href="#existing-third-party-checks">Existing third party checks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reports">Reports</a><ul>
+<li><a class="reference internal" href="#vat-reports">VAT reports</a><ul>
+<li><a class="reference internal" href="#sales-vat-book">Sales VAT book</a></li>
+<li><a class="reference internal" href="#purchases-vat-book">Purchases VAT book</a></li>
+<li><a class="reference internal" href="#vat-summary">VAT summary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iibb-reports">IIBB - Reports</a><ul>
+<li><a class="reference internal" href="#iibb-sales-by-jurisdiction">IIBB - Sales by jurisdiction</a></li>
+<li><a class="reference internal" href="#iibb-purchases-by-jurisdiction">IIBB - Purchases by jurisdiction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../index.html" class="o_logo">
+          <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/finance/fiscal_localizations/argentina.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Argentina</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="argentina">
+<h1>Argentina<a class="headerlink" href="#argentina" title="Permalink to this headline">¶</a></h1>
+</section><section id="webinars">
+<h2>Webinars<a class="headerlink" href="#webinars" title="Permalink to this headline">¶</a></h2>
+<p>Below you can find videos with a general description of the localization, and how to configure it.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=_H1HbU-wKVg">Webinar - Localización de Argentina</a>.</p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=5gUi2WWfRuI">eCommerce - Localización de Argentina</a>.</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference external" href="https://www.odoo.com/slides/smart-tutorial-localizacion-de-argentina-130">Smart Tutorial - Localización de Argentina</a></p>
+</div>
+</section><section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+</section><section id="modules-installation">
+<h3>Modules installation<a class="headerlink" href="#modules-installation" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../../general/apps_modules.html#general-install"><span class="std std-ref">Install</span></a> the following modules to get all the features of the Argentinean
+localization:</p>
+<table class="colwidths-given table docutils">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Technical name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Argentina - Accounting</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_ar</span></code></p></td>
+<td><p>Default <a class="reference internal" href="../fiscal_localizations.html#fiscal-localizations-packages"><span class="std std-ref">fiscal localization package</span></a>, which represents
+the minimal configuration to operate in Argentina under the <abbr title="Administración Federal de Ingresos Públicos">AFIP</abbr> regulations and guidelines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Argentinean Accounting Reports</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_ar_reports</span></code></p></td>
+<td><p>VAT Book report and VAT summary report.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Argentinean Electronic Invoicing</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_ar_edi</span></code></p></td>
+<td><p>Includes all technical and functional requirements to generate electronic invoices via web
+service, based on the AFIP regulations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Argentinean eCommerce</span></p></td>
+<td><p><code class="o_code docutils literal notranslate"><span class="pre">l10n_ar_website_sale</span></code></p></td>
+<td><p>(optional) Allows the user to see Identification Type and AFIP Responsibility in the
+eCommerce checkout form in order to create electronic invoices.</p></td>
+</tr>
+</tbody>
+</table>
+</section><section id="configure-your-company">
+<h3>Configure your company<a class="headerlink" href="#configure-your-company" title="Permalink to this headline">¶</a></h3>
+<p>Once the localization modules are installed, the first step is to set up the company’s data. In
+addition to the basic information, a key field to fill in is the <span class="guilabel">AFIP Responsibility
+Type</span>, which represents the fiscal obligation and structure of the company.</p>
+<img alt="Select AFIP Responsibility Type." class="align-center" src="../../../_images/select-responsibility-type.png" />
+</section><section id="chart-of-account">
+<h3>Chart of account<a class="headerlink" href="#chart-of-account" title="Permalink to this headline">¶</a></h3>
+<p>In Accounting, there are three different <span class="guilabel">Chart of Accounts</span> packages to choose from.
+They are based on a company’s AFIP responsibility type, and consider the difference between
+companies that do not require as many accounts as the companies that have more complex fiscal
+requirements:</p>
+<ul class="simple">
+<li><p>Monotributista (227 accounts);</p></li>
+<li><p>IVA Exento (290 accounts);</p></li>
+<li><p>Responsable Inscripto (298 Accounts).</p></li>
+</ul>
+<img alt="Select Fiscal Localization Package." class="align-center" src="../../../_images/select-fiscal-package.png" />
+</section><section id="configure-master-data">
+<h3>Configure master data<a class="headerlink" href="#configure-master-data" title="Permalink to this headline">¶</a></h3>
+</section><section id="electronic-invoice-credentials">
+<h4>Electronic Invoice Credentials<a class="headerlink" href="#electronic-invoice-credentials" title="Permalink to this headline">¶</a></h4>
+</section><section id="environment">
+<h5>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h5>
+<p>The AFIP infrastructure is replicated in two separate environments, <strong>testing</strong> and <strong>production</strong>.</p>
+<p>Testing is provided so that the companies can test their databases until they are ready to move
+into the <strong>Production</strong> environment. As these two environments are completely isolated from each
+other, the digital certificates of one instance are not valid in the other one.</p>
+<p>To select a database environment, go to <span class="menuselection">Accounting ‣ Settings ‣ Argentinean
+Localization</span> and choose either <span class="guilabel">Prueba (Testing)</span> or <span class="guilabel">Produccion (Production)</span>.</p>
+<img alt="Select AFIP database environment: Testing or Production." class="align-center" src="../../../_images/select-environment.png" />
+</section><section id="afip-certificates">
+<h5>AFIP certificates<a class="headerlink" href="#afip-certificates" title="Permalink to this headline">¶</a></h5>
+<p>The electronic invoice and other AFIP services work with <span class="guilabel">Web Services (WS)</span> provided by
+the AFIP.</p>
+<p>In order to enable communication with the AFIP, the first step is to request a <span class="guilabel">Digital
+Certificate</span> if you do not have one already.</p>
+<ol class="arabic">
+<li><p><span class="guilabel">Generate Certificate Sign Request (Odoo)</span>. When this option is selected, a file with
+extension <code class="o_code docutils literal notranslate"><span class="pre">.csr</span></code> (certificate signing request) is generated to be used in the AFIP portal to
+request the certificate.</p>
+<img alt="Request a certificate." src="../../../_images/request-certificate.png" />
+</li>
+<li><p><span class="guilabel">Generate Certificate (AFIP)</span>. Access the AFIP portal and follow the instructions
+described in <a class="reference external" href="https://drive.google.com/file/d/17OKX2lNWd1bjUt3NxfqcCKBkBh-Xlpo-/view">this document</a> to get a certificate.</p></li>
+<li><p><span class="guilabel">Upload Certificate and Private Key (Odoo)</span>. Once the certificate is generated, upload
+it to Odoo using the <span class="guilabel">Pencil</span> icon next to the field <span class="guilabel">Certificado</span> and select
+the corresponding file.</p>
+<img alt="Upload Certificate and Private Key." src="../../../_images/upload-certificate-private-key.png" />
+</li>
+</ol>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>In case you need to configure the Homologation Certificate, please refer to the AFIP official
+documentation: <a class="reference external" href="http://www.afip.gob.ar/ws/documentacion/certificados.asp">Homologation Certificate</a>. Furthermore, Odoo allows the user
+to test electronic invoicing locally without a Homologation Certificate. The following message
+will be in the chatter when testing locally:</p>
+<img alt="Invoice validated locally because it is in a testing environment without testing certificate/keys." class="align-center" src="../../../_images/local-testing.png" />
+</div>
+</section><section id="partner">
+<h4>Partner<a class="headerlink" href="#partner" title="Permalink to this headline">¶</a></h4>
+</section><section id="identification-type-and-vat">
+<h5>Identification type and VAT<a class="headerlink" href="#identification-type-and-vat" title="Permalink to this headline">¶</a></h5>
+<p>As part of the Argentinean localization, document types defined by the AFIP are now available in the
+<strong>Partner form</strong>. Information is essential for most transactions. There are six
+<span class="guilabel">Identification Types</span> available by default, as well as 32 inactive types.</p>
+<img alt="A list of AR Localization document types in Odoo, as defined by AFIP." class="align-center" src="../../../_images/identification-types.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The complete list of <span class="guilabel">Identification Types</span> defined by the AFIP is included in Odoo,
+but only the common ones are active.</p>
+</div>
+</section><section id="afip-responsibility-type">
+<h5>AFIP responsibility type<a class="headerlink" href="#afip-responsibility-type" title="Permalink to this headline">¶</a></h5>
+<p>In Argentina, the document type and corresponding transactions associated with customers and
+vendors is defined by the AFIP Responsibility type. This field should be defined in the <strong>Partner
+form</strong>.</p>
+<img alt="Select AFIP Responsibility Type." class="align-center" src="../../../_images/select-afip-responsibility-type.png" />
+</section><section id="taxes">
+<h4>Taxes<a class="headerlink" href="#taxes" title="Permalink to this headline">¶</a></h4>
+<p>As part of the localization module, the taxes are created automatically with their related
+financial account and configuration, e.g., 73 taxes for <span class="guilabel">Responsable Inscripto</span>.</p>
+<img alt="A list of AR Localization taxes with financial amount and configuration in Odoo." class="align-center" src="../../../_images/automatic-tax-configuration.png" />
+</section><section id="taxes-types">
+<h5>Taxes types<a class="headerlink" href="#taxes-types" title="Permalink to this headline">¶</a></h5>
+<p>Argentina has several tax types, the most common ones are:</p>
+<ul class="simple">
+<li><p><span class="guilabel">VAT</span>: this is the regular VAT and can have various percentages;</p></li>
+<li><p><span class="guilabel">Perception</span>: advance payment of a tax that is applied on invoices;</p></li>
+<li><p><span class="guilabel">Retention</span>: advance payment of a tax that is applied on payments.</p></li>
+</ul>
+</section><section id="special-taxes">
+<h5>Special taxes<a class="headerlink" href="#special-taxes" title="Permalink to this headline">¶</a></h5>
+<p>Some Argentinean taxes are not commonly used for all companies, and those less common options are
+labeled as inactive in Odoo by default. Before creating a new tax, be sure to check if that tax is
+not already included as inactive.</p>
+<img alt="A list showing less common Argentinean tax options, which are labeled as inactive in Odoo by default." class="align-center" src="../../../_images/special-inactive-taxes.png" />
+</section><section id="document-types">
+<span id="id1"></span><h4>Document types<a class="headerlink" href="#document-types" title="Permalink to this headline">¶</a></h4>
+<p>In some Latin American countries, like Argentina, some accounting transactions such as invoices and
+vendor bills are classified by document types defined by the governmental fiscal authorities. In
+Argentina, the <a class="reference external" href="https://www.afip.gob.ar/">AFIP</a> is the governmental fiscal authority that
+defines such transactions.</p>
+<p>The document type is an essential piece of information that needs to be clearly displayed in
+printed reports, invoices, and journal entries that list account moves.</p>
+<p>Each document type can have a unique sequence per journal where it is assigned. As part of the
+localization, the document type includes the country in which the document is applicable (this data
+is created automatically when the localization module is installed).</p>
+<p>The information required for the <span class="guilabel">Document Types</span> is included by default so the user does
+not need to fill anything on this view:</p>
+<img alt="A list of document types in Odoo." class="align-center" src="../../../_images/default-document-type-info.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>There are several <span class="guilabel">Document Types</span> types that are inactive by default, but can be
+activated as needed.</p>
+</div>
+</section><section id="letters">
+<h5>Letters<a class="headerlink" href="#letters" title="Permalink to this headline">¶</a></h5>
+<p>For Argentina, the <span class="guilabel">Document Types</span> include a letter that helps indicate the type of
+transaction or operation. For example, when an invoice is related to a(n):</p>
+<ul class="simple">
+<li><p><span class="guilabel">B2B transaction</span>, a document type <span class="guilabel">A</span> must be used;</p></li>
+<li><p><span class="guilabel">B2C transaction</span>, a document type <span class="guilabel">B</span> must be used;</p></li>
+<li><p><span class="guilabel">Exportation Transaction</span>, a document type <span class="guilabel">E</span> must be used.</p></li>
+</ul>
+<p>The documents included in the localization already have the proper letter associated with each
+<span class="guilabel">Document Type</span>, so there is no further configuration necessary.</p>
+<img alt="document types grouped by letters." class="align-center" src="../../../_images/document-types-grouped-by-letters.png" />
+</section><section id="use-on-invoices">
+<h5>Use on invoices<a class="headerlink" href="#use-on-invoices" title="Permalink to this headline">¶</a></h5>
+<p>The <span class="guilabel">Document Type</span> on each transaction will be determined by:</p>
+<ul class="simple">
+<li><p>The journal entry related to the invoice (if the journal uses documents);</p></li>
+<li><p>The onditions applied based on the type of issuer and receiver (e.g., the type of fiscal regime of
+the buyer and the type of fiscal regime of the vendor).</p></li>
+</ul>
+</section><section id="journals">
+<h3>Journals<a class="headerlink" href="#journals" title="Permalink to this headline">¶</a></h3>
+<p>In the Argentinean localization, the journal can have a different approach depending on its usage
+and internal type. To configure journals, go to <span class="menuselection">Accounting ‣ Configuration ‣
+Journals</span>.</p>
+<p>For sales and purchase journals, it’s possible to activate the option <span class="guilabel">Use Documents</span>,
+which enables a list of <span class="guilabel">Document Types</span> that can be related to the invoices and vendor
+bills. For more detail on invoices, please refer to the section <a class="reference internal" href="#document-types"><span class="std std-ref">2.3 document types</span></a>.</p>
+<p>If the sales or purchase journals do not have the <span class="guilabel">Use Documents</span> option activated, they
+will not be able to generate fiscal invoices, meaning, their use case will be mostly limited to
+monitoring account moves related to internal control processes.</p>
+</section><section id="afip-information-also-known-as-afip-point-of-sale">
+<h4>AFIP information (also known as AFIP Point of Sale)<a class="headerlink" href="#afip-information-also-known-as-afip-point-of-sale" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">AFIP POS System</span> is a field only visible for the <strong>Sales</strong> journals and defines the
+type of AFIP POS that will be used to manage the transactions for which the journal is created.</p>
+<p>The AFIP POS defines the following:</p>
+<ol class="arabic simple">
+<li><p>the sequences of document types related to the web service;</p></li>
+<li><p>the structure and data of the electronic invoice file.</p></li>
+</ol>
+<img alt="A AFIP POS System field which is available on Sales journals in Odoo." class="align-center" src="../../../_images/sales-journal.png" />
+</section><section id="web-services">
+<h5>Web services<a class="headerlink" href="#web-services" title="Permalink to this headline">¶</a></h5>
+<p><strong>Web services</strong> help generate invoices for different purposes. Below are a few options to choose
+from:</p>
+<ul class="simple">
+<li><p><span class="guilabel">wsfev1: Electronic Invoice</span>: is the most common service, which is used to generate
+invoices for document types A, B, C, M  with no detail per item;</p></li>
+<li><p><span class="guilabel">wsbfev1: Electronic Fiscal Bond</span>: is for those who invoice capital goods and wish to
+access the benefit of the Electronic Tax Bonds granted by the Ministry of Economy. For more
+details go to: <a class="reference external" href="https://www.argentina.gob.ar/acceder-un-bono-por-fabricar-bienes-de-capital">Fiscal Bond</a>;</p></li>
+<li><p><span class="guilabel">wsfexv1: Electronic Exportation Invoice</span>: is used to generate invoices for
+international customers and transactions that involve exportation processes, the document type
+related is type “E”.</p></li>
+</ul>
+<img alt="Web Services." class="align-center" src="../../../_images/web-services.png" />
+<p>Here are some useful fields to know when working with web services:</p>
+<ul class="simple">
+<li><p><span class="guilabel">AFIP POS Number</span>: is the number configured in the AFIP to identify the operations
+related to this AFIP POS;</p></li>
+<li><p><span class="guilabel">AFIP POS Address</span>: is the field related to the commercial address registered for the
+POS, which is usually the same address as the company. For example, if a company has multiple
+stores (fiscal locations) then the AFIP will require the company to have one AFIP POS per
+location. This location will be printed in the invoice report;</p></li>
+<li><p><span class="guilabel">Unified Book</span>: when the AFIP POS System is Preimpresa, then the document types
+(applicable to the journal) with the same letter will share the same sequence. For example:</p>
+<ul>
+<li><p>Invoice: FA-A 0001-00000002;</p></li>
+<li><p>Credit Note: NC-A 0001-00000003;</p></li>
+<li><p>Debit Note: ND-A 0001-00000004.</p></li>
+</ul>
+</li>
+</ul>
+</section><section id="sequences">
+<h4>Sequences<a class="headerlink" href="#sequences" title="Permalink to this headline">¶</a></h4>
+<p>For the first invoice, Odoo synchronizes with the AFIP automatically and displays the last sequence
+used.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When creating <span class="guilabel">Purchase Journals</span>, it’s possible to define whether they are related to
+document types or not. In the case where the option to use documents is selected, there would be
+no need to manually associate the document type sequences, since the document number is provided
+by the vendor.</p>
+</div>
+</section><section id="usage-and-testing">
+<h2>Usage and testing<a class="headerlink" href="#usage-and-testing" title="Permalink to this headline">¶</a></h2>
+</section><section id="invoice">
+<h3>Invoice<a class="headerlink" href="#invoice" title="Permalink to this headline">¶</a></h3>
+<p>The information below applies to invoice creation once the partners and journals are created and
+properly configured.</p>
+</section><section id="document-type-assignation">
+<h4>Document type assignation<a class="headerlink" href="#document-type-assignation" title="Permalink to this headline">¶</a></h4>
+<p>When the partner is selected, the <span class="guilabel">Document Type</span> field will be filled in automatically
+based on the AFIP document type:</p>
+<ul>
+<li><p><strong>Invoice for a customer IVA Responsable Inscripto, prefix A</strong> is the type of document that shows
+all the taxes in detail along with the customer’s information.</p>
+<img alt="Invoice for a customer IVA Responsable Inscripto, prefix A." src="../../../_images/prefix-a-invoice-for-customer.png" />
+</li>
+<li><p><strong>Invoice for an end customer, prefix B</strong> is the type of document that does not detail the taxes,
+since the taxes are included in the total amount.</p>
+<img alt="Invoice for an end customer, prefix B." src="../../../_images/prefix-b-invoice-for-end-customer.png" />
+</li>
+<li><p><strong>Exportation Invoice, prefix E</strong> is the type of document used when exporting goods that shows
+the incoterm.</p>
+<img alt="Exportation Invoice, prefix E" src="../../../_images/prefix-e-exporation-invoice.png" />
+</li>
+</ul>
+<p>Even though some invoices use the same journal, the prefix and sequence are given by the
+<span class="guilabel">Document Type</span> field.</p>
+<p>The most common <span class="guilabel">Document Type</span> will be defined automatically for the different
+combinations of AFIP responsibility type but it can be updated manually by the user before
+confirming the invoice.</p>
+</section><section id="electronic-invoice-elements">
+<h4>Electronic invoice elements<a class="headerlink" href="#electronic-invoice-elements" title="Permalink to this headline">¶</a></h4>
+<p>When using electronic invoices, if all the information is correct then the invoice is posted in the
+standard way unless there is an error that needs to be addressed. When error messages pop up, they
+indicate both the issue that needs attention along with a proposed solution. If an error persists,
+the invoice remains in draft until the issue is resolved.</p>
+<p>Once the invoice is posted, the information related to the AFIP validation and status is displayed
+in the AFIP tab, including:</p>
+<ul class="simple">
+<li><p><span class="guilabel">AFIP Autorisation</span>: CAE number;</p></li>
+<li><p><span class="guilabel">Expiration Date</span>: deadline to deliver the invoice to the customers (normally 10 days
+after the CAE is generated);</p></li>
+<li><p><span class="guilabel">Result:</span> indicates if the invoice has been <span class="guilabel">Aceptado en AFIP</span> and/or
+<span class="guilabel">Aceptado con Observaciones</span>.</p></li>
+</ul>
+<img alt="AFIP Status." class="align-center" src="../../../_images/afip-status.png" />
+</section><section id="invoice-taxes">
+<h4>Invoice taxes<a class="headerlink" href="#invoice-taxes" title="Permalink to this headline">¶</a></h4>
+<p>Based on the <span class="guilabel">AFIP Responsibility type</span>, the VAT tax can apply differently on the PDF
+report:</p>
+<ul>
+<li><p><span class="guilabel">A. Tax excluded</span>: in this case the taxed amount needs to be clearly identified in the
+report. This condition applies when the customer has the following AFIP Responsibility type of
+<strong>Responsable Inscripto</strong>;</p>
+<img alt="Tax excluded." src="../../../_images/tax-amount-excluded.png" />
+</li>
+<li><p><span class="guilabel">B. Tax amount included</span>: this means that the taxed amount is included as part of the
+product price, subtotal, and totals. This condition applies when the customer has the following
+AFIP Responsibility types:</p>
+<ul class="simple">
+<li><p>IVA Sujeto Exento;</p></li>
+<li><p>Consumidor Final;</p></li>
+<li><p>Responsable Monotributo;</p></li>
+<li><p>IVA liberado.</p></li>
+</ul>
+<img alt="Tax amount included." class="align-center" src="../../../_images/tax-amount-included.png" />
+</li>
+</ul>
+</section><section id="special-use-cases">
+<h4>Special use cases<a class="headerlink" href="#special-use-cases" title="Permalink to this headline">¶</a></h4>
+</section><section id="invoices-for-services">
+<h5>Invoices for services<a class="headerlink" href="#invoices-for-services" title="Permalink to this headline">¶</a></h5>
+<p>For electronic invoices that include <span class="guilabel">Services</span>, the AFIP requires to report the service
+starting and ending date, this information can be filled in the tab <span class="guilabel">Other Info</span>.</p>
+<img alt="Invoices for Services." class="align-center" src="../../../_images/invoices-for-services.png" />
+<p>If the dates are not selected manually before the invoice is validated, the values will be filled
+automatically with the first and last day of the invoice’s month.</p>
+<img alt="Service Dates." class="align-center" src="../../../_images/service-dates.png" />
+</section><section id="exportation-invoices">
+<h5>Exportation invoices<a class="headerlink" href="#exportation-invoices" title="Permalink to this headline">¶</a></h5>
+<p>Invoices related to <span class="guilabel">Exportation Transactions</span> require that a journal uses the AFIP POS
+System <strong>Expo Voucher - Web Service</strong> so that the proper document type(s) can be associated.</p>
+<img alt="Exporation journal." class="align-center" src="../../../_images/exporation-journal.png" />
+<p>When the customer selected in the invoice is configured with an AFIP responsibility type
+<span class="guilabel">Cliente / Proveedor del Exterior</span> - <span class="guilabel">Ley N° 19.640</span>, Odoo automatically
+assigns the:</p>
+<ul class="simple">
+<li><p>Journal related to the exportation Web Service;</p></li>
+<li><p>Exportation document type;</p></li>
+<li><p>Fiscal position: Compras/Ventas al exterior;</p></li>
+<li><p>Concepto AFIP: Products / Definitive export of goods;</p></li>
+<li><p>Exempt Taxes.</p></li>
+</ul>
+<img alt="Export invoice fields autofilled in Odoo." class="align-center" src="../../../_images/export-invoice.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The Exportation Documents require Incoterms to be enabled and configured, which can be found in
+<span class="menuselection">Other Info ‣ Accounting</span>.</p>
+</div>
+<img alt="Export invoice - Incoterm." class="align-center" src="../../../_images/export-invoice-incoterm.png" />
+</section><section id="fiscal-bond">
+<h5>Fiscal bond<a class="headerlink" href="#fiscal-bond" title="Permalink to this headline">¶</a></h5>
+<p>The <span class="guilabel">Electronic Fiscal Bond</span> is used for those who invoice capital goods and wish to
+access the benefit of the Electronic Tax Bonds granted by the Ministry of Economy.</p>
+<p>For these transactions, it is important to consider the following requirements:</p>
+<ul class="simple">
+<li><p>Currency (according to the parameter table) and invoice quotation;</p></li>
+<li><p>Taxes;</p></li>
+<li><p>Zone;</p></li>
+<li><p>Detail each item;</p>
+<ul>
+<li><p>Code according to the Common Nomenclator of Mercosur (NCM);</p></li>
+<li><p>Complete description;</p></li>
+<li><p>Unit Net Price;</p></li>
+<li><p>Quantity;</p></li>
+<li><p>Unit of measurement;</p></li>
+<li><p>Bonus;</p></li>
+<li><p>VAT rate.</p></li>
+</ul>
+</li>
+</ul>
+</section><section id="electronic-credit-invoice-mipyme-fce">
+<h5>Electronic credit invoice MiPyme (FCE)<a class="headerlink" href="#electronic-credit-invoice-mipyme-fce" title="Permalink to this headline">¶</a></h5>
+<p>For SME invoices, there are several document types that are classified as <strong>MiPyME</strong>, which are
+also known as <strong>Electronic Credit Invoice</strong> (or <strong>FCE</strong> in Spanish). This classification develops a
+mechanism that improves the financing conditions for small and medium-sized businesses, and allows
+them to increase their productivity, through the early collection of credits and receivables issued
+to their clients and/or vendors.</p>
+<p>For these transactions it’s important to consider the following requirements:</p>
+<ul class="simple">
+<li><p>specific document types (201, 202, 206, etc);</p></li>
+<li><p>the emitter should be eligible by the AFIP to MiPyME transactions;</p></li>
+<li><p>the amount should be bigger than 100,000 ARS;</p></li>
+<li><p>A bank account type CBU must be related to the emisor, otherwise the invoice cannot be validated,
+having an error message such as the following.</p></li>
+</ul>
+<img alt="Bank account relation error." class="align-center" src="../../../_images/bank-account-relation-error.png" />
+<p>To set up the <span class="guilabel">Transmission Mode</span>, go to settings and select either <span class="guilabel">SDC</span> or
+<span class="guilabel">ADC</span>.</p>
+<img alt="Transmission Mode." class="align-center" src="../../../_images/transmission-mode.png" />
+<p>To change the <span class="guilabel">Transmission Mode</span> for a specific invoice, go to the <span class="guilabel">Other Info</span>
+tab and change it before confirming.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Changing the <span class="guilabel">Transmission Mode</span> will not change the mode selected in
+<span class="guilabel">Settings</span>.</p>
+</div>
+<img alt="Transmission Mode on Invoice." class="align-center" src="../../../_images/transmission-mode-on-invoice.png" />
+<p>When creating a <span class="guilabel">Credit/Debit</span> note related to a FCE document:</p>
+<ul class="simple">
+<li><p>use the <span class="guilabel">Credit and Debit Note</span> buttons, so all the information from the invoice is
+transferred to the new <span class="guilabel">Credit and Debit Note</span>;</p></li>
+<li><p>the document letter should be the same as than the originator document (either A or B);</p></li>
+<li><p>the same currency as the source document must be used. When using a secondary currency there is
+an exchange difference if the currency rate is different between the emission day and the payment
+date. It is possible to create a credit/debit note to decrease/increase the amount to pay in ARS.</p></li>
+</ul>
+<img alt="Credit &amp; debit notes buttons." class="align-center" src="../../../_images/credit-debit-notes-button.png" />
+<p>When creating a <span class="guilabel">Credit Note</span> we can have two scenarios:</p>
+<ol class="arabic simple">
+<li><p>the FCE is rejected so the <span class="guilabel">Credit Note</span> should have the field <span class="guilabel">FCE, is
+Cancellation?</span> as <em>True</em>; or;</p></li>
+<li><p>the <span class="guilabel">Credit Note</span>, is created to annulate the FCE document, in this case the field
+<span class="guilabel">FCE, is Cancellation?</span> must be <em>empty</em> (false).</p></li>
+</ol>
+<img alt="FCE: Es Cancelación?" class="align-center" src="../../../_images/fce-es-cancelation.png" />
+</section><section id="invoice-printed-report">
+<h4>Invoice printed report<a class="headerlink" href="#invoice-printed-report" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">PDF Report</span> related to electronic invoices that have been validated by the AFIP
+includes a barcode at the bottom of the format which represents the CAE number. The expiration date
+is also displayed as it is a legal requirement.</p>
+<img alt="Invoice printed report." class="align-center" src="../../../_images/invoice-printed-report.png" />
+</section><section id="troubleshooting-and-auditing">
+<h4>Troubleshooting and auditing<a class="headerlink" href="#troubleshooting-and-auditing" title="Permalink to this headline">¶</a></h4>
+<p>For auditing and troubleshooting purposes, it is possible to obtain detailed information of an
+invoice number that has been previously sent to the AFIP. To retrieve this information, activate the
+<a class="reference internal" href="../../general/developer_mode.html#developer-mode"><span class="std std-ref">developer mode</span></a>, then go to the <span class="menuselection">Accounting</span> menu and click on
+the button <span class="guilabel">Consult Invoice</span> button in AFIP.</p>
+<img alt="Consult invoice in AFIP." class="align-center" src="../../../_images/consult-invoice-in-afip.png" />
+<img alt="Details of invoice consulted in AFIP." class="align-center" src="../../../_images/consult-invoice-in-afip-details.png" />
+<p>It is also possible to retrieve the last number used in AFIP for a specific document type and POS
+Number as a reference for any possible issues on the sequence synchronization between Odoo and
+AFIP.</p>
+<img alt="Consult the last invoice number." class="align-center" src="../../../_images/consult-last-invoice-number.png" />
+</section><section id="vendor-bills">
+<h3>Vendor bills<a class="headerlink" href="#vendor-bills" title="Permalink to this headline">¶</a></h3>
+<p>Based on the purchase journal selected for the vendor bill, the <span class="guilabel">Document Type</span> is now a
+required field. This value is auto-populated based on the AFIP Responsibility type of Issuer and
+Customer, but the value can be changed if necessary.</p>
+<img alt="Changing journal and document type." class="align-center" src="../../../_images/changing-journal-document-type.png" />
+<p>The <span class="guilabel">Document Number</span> field needs to be registered manually and the format will be
+validated automatically. However, in case the format is invalid, a user error will be displayed
+indicating the correct format that is expected.</p>
+<img alt="Vendor bill document number." class="align-center" src="../../../_images/vendor-bill-document-number.png" />
+<p>The vendor bill number is structured in the same way as the customer invoices, excepted that the
+document sequence is entered by the user using the following format: <em>Document Prefix - Letter -
+Document Number</em>.</p>
+</section><section id="validate-vendor-bill-number-in-afip">
+<h4>Validate vendor bill number in AFIP<a class="headerlink" href="#validate-vendor-bill-number-in-afip" title="Permalink to this headline">¶</a></h4>
+<p>As most companies have internal controls to verify that the vendor bill is related to an AFIP valid
+document, an automatic validation can be set in <span class="menuselection">Accounting ‣ Settings ‣
+Argentinean Localization ‣ Validate document in the AFIP</span>, considering the following levels:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Not available:</span> the verification is not done (this is the default value);</p></li>
+<li><p><span class="guilabel">Available:</span> the verification is done. In case the number is not valid it, only displays
+a warning but still allows the vendor bill to be posted;</p></li>
+<li><p><span class="guilabel">Required:</span> the verification is done and it does not allow the user to post the vendor
+bill if the document number is not valid.</p></li>
+</ul>
+<img alt="Verify Vendor Bills validity in AFIP." class="align-center" src="../../../_images/verify-vendor-bills.png" />
+</section><section id="validate-vendor-bills-in-odoo">
+<h5>Validate vendor bills in Odoo<a class="headerlink" href="#validate-vendor-bills-in-odoo" title="Permalink to this headline">¶</a></h5>
+<p>With the vendor validation settings enabled, a new button shows up on the vendor bills inside of
+Odoo, labeled <span class="guilabel">Verify on AFIP</span>, which is located next to the <span class="guilabel">AFIP
+Authorization code</span> field.</p>
+<img alt="Verify on AFIP." class="align-center" src="../../../_images/verify-on-afip.png" />
+<p>In case the vendor bill cannot be validated in AFIP, a value of <span class="guilabel">Rejected</span> will be
+displayed on the dashboard and the details of the invalidation will be added to the chatter.</p>
+<img alt="AFIP authorization Rejected." class="align-center" src="../../../_images/afip-auth-rejected.png" />
+</section><section id="id2">
+<h4>Special use cases<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+</section><section id="untaxed-concepts">
+<h5>Untaxed concepts<a class="headerlink" href="#untaxed-concepts" title="Permalink to this headline">¶</a></h5>
+<p>There are some transactions that include items that are not a part of the VAT base amount, such as
+fuel and gasoline invoices.</p>
+<p>The vendor bill will be registered using one item for each product that is part of the VAT base
+amount, and an additional item to register the amount of the exempt concept.</p>
+<img alt="VAT exempt." class="align-center" src="../../../_images/vat-exempt.png" />
+</section><section id="perception-taxes">
+<h5>Perception taxes<a class="headerlink" href="#perception-taxes" title="Permalink to this headline">¶</a></h5>
+<p>The vendor bill will be registered using one item for each product that is part of the VAT base
+amount, and the perception tax can be added in any of the product lines. As a result, there will be
+one tax group for the VAT and another for the perception. The perception default value is always
+<span class="guilabel">0.10</span>.</p>
+<p>To edit the VAT perception and set the correct amount, you should use the <span class="guilabel">Pencil</span> icon
+that is the next to the <span class="guilabel">Perception</span> amount. After the VAT perception amount has been set,
+the invoice can then be validated.</p>
+<img alt="Enter the perception amount." class="align-center" src="../../../_images/enter-perception-amount.png" />
+</section><section id="check-management">
+<h3>Check management<a class="headerlink" href="#check-management" title="Permalink to this headline">¶</a></h3>
+<p>To install the <em>Third Party and Deferred/Electronic Checks Management</em> module, go to
+<span class="menuselection">Apps</span> and search for the module by its technical name <code class="o_code docutils literal notranslate"><span class="pre">l10n_latam_check</span></code> and click
+the <span class="guilabel">Activate</span> button.</p>
+<img alt="l10n_latam_check module." class="align-center" src="../../../_images/l10n-latam-check-module.png" />
+<p>This module enables the required configuration for journals and payments to:</p>
+<ul class="simple">
+<li><p>Create, manage, and control your different types of checks</p></li>
+<li><p>Optimize the management of <em>own checks</em> and <em>third party checks</em></p></li>
+<li><p>Have an easy and effective way to manage expiration dates from your own and third party checks</p></li>
+</ul>
+<p>Once all the configurations are made for the Argentinian electronic invoice flow, it is also needed
+to complete certain configurations for the own checks and the third party checks flows.</p>
+</section><section id="own-checks">
+<h4>Own checks<a class="headerlink" href="#own-checks" title="Permalink to this headline">¶</a></h4>
+<p>Configure the bank journal used to create your own checks by going to <span class="menuselection">Accounting ‣
+Configuration ‣ Journals</span>, selecting the bank journal, and opening the <span class="guilabel">Outgoing
+Payments</span> tab.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Checks</span> should be available as a <span class="guilabel">Payment Method</span>. If not, click
+<span class="guilabel">Add a line</span> and type <code class="o_code docutils literal notranslate"><span class="pre">Checks</span></code> under <span class="guilabel">Payment Method</span> to add them</p></li>
+<li><p>Enable the <span class="guilabel">Use electronic and deferred checks</span> setting.</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>This last configuration <strong>disables</strong> the printing ability but enables to:</p>
+<ul class="simple">
+<li><p>Enter check numbers manually</p></li>
+<li><p>Adds a field to allocate the payment date of the check</p></li>
+</ul>
+</div>
+<img alt="Bank journal configurations." class="align-center" src="../../../_images/bank-journal-conf.png" />
+</section><section id="management-of-own-checks">
+<h5>Management of own checks<a class="headerlink" href="#management-of-own-checks" title="Permalink to this headline">¶</a></h5>
+<p>Own checks can be created directly from the vendor bill. For this process, click on the
+<span class="guilabel">Register Payment</span> button.</p>
+<p>On the payment registration modal, select the bank journal from which the payment is to be made and
+set the <span class="guilabel">Check Cash-In Date</span>, and the <span class="guilabel">Amount</span>.</p>
+<img alt="Payment pop-up window with own check options enabled." class="align-center" src="../../../_images/payment-popup-vendorbill.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>To manage current checks, the <span class="guilabel">Check Cash-In Date</span> field must be left blank or filled
+in with the current date. To manage deferred checks, the <span class="guilabel">Check Cash-In Date</span> must be
+set in the future.</p>
+</div>
+<p>To manage your existing own checks, navigate to <span class="menuselection">Accounting ‣ Vendors ‣ Own
+Checks</span>. This window shows critical information such as the dates when checks need to be paid, the
+total quantity of checks, and the total amount paid in checks.</p>
+<img alt="Own checks menu location." class="align-center" src="../../../_images/checks-menu-vendorbill.png" />
+<p>It is important to note that the list is pre-filtered by checks that are still <em>not reconciled</em> with
+a bank statement - that were not yet debited from the bank - which can be verified with the
+<span class="guilabel">Is Matched with a Bank Statement</span> field. If you want to see all of your own checks,
+delete the <span class="guilabel">No Bank Matching</span> filter by clicking on the <span class="guilabel">X</span> symbol.</p>
+<img alt="Own checks menu organization and filtering." class="align-center" src="../../../_images/check-menu-list-vendorbill.png" />
+</section><section id="cancel-an-own-check">
+<h5>Cancel an own check<a class="headerlink" href="#cancel-an-own-check" title="Permalink to this headline">¶</a></h5>
+<p>To cancel an own check created in Odoo, navigate to <span class="menuselection">Accounting ‣ Vendors ‣ Own
+Checks</span> and select the check to be canceled, then click on the <span class="guilabel">Void Check</span> button. This
+will break the reconciliation with the vendor bills and the bank statements and leave the check in a
+<strong>canceled</strong> state.</p>
+<img alt="Empty Check button to cancel Own Checks" class="align-center" src="../../../_images/empty-check-button.png" />
+</section><section id="third-party-checks">
+<h4>Third party checks<a class="headerlink" href="#third-party-checks" title="Permalink to this headline">¶</a></h4>
+<p>In order to register payments using third party checks, two specific journals need to be configured.
+To do so, navigate to <span class="menuselection">Accounting ‣ Configuration ‣ Journals</span> and create two new
+journals:</p>
+<ul class="simple">
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">Third</span> <span class="pre">Party</span> <span class="pre">Checks</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">Rejected</span> <span class="pre">Third</span> <span class="pre">Party</span> <span class="pre">Checks</span></code></p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>You can manually create more journals if you have multiple points of sale and need journals for
+those.</p>
+</div>
+<p>To create the <em>Third Party Checks</em> journal, click the <span class="guilabel">New</span> button and configure the
+following:</p>
+<ul class="simple">
+<li><p>Type <code class="o_code docutils literal notranslate"><span class="pre">Third</span> <span class="pre">Party</span> <span class="pre">Checks</span></code> as the <span class="guilabel">Journal Name</span></p></li>
+<li><p>Select <span class="guilabel">Cash</span> as <span class="guilabel">Type</span></p></li>
+<li><p>In the <span class="guilabel">Journal Entries</span> tab, set <span class="guilabel">Cash Account</span>: to <code class="o_code docutils literal notranslate"><span class="pre">1.1.1.02.010</span> <span class="pre">Cheques</span> <span class="pre">de</span>
+<span class="pre">Terceros</span></code>, input a <span class="guilabel">Short Code</span> of your choice, and select a <span class="guilabel">Currency</span></p></li>
+</ul>
+<img alt="Automatically created cash account." class="align-center" src="../../../_images/auto-cash-account.png" />
+<p>The available payment methods are listed in the <em>payments</em> tabs:</p>
+<ul class="simple">
+<li><p>For new incoming third party checks, go to <span class="menuselection">Incoming Payments tab ‣ Add a line</span>
+and select <span class="guilabel">New Third Party Checks</span>. This method is used to create <em>new</em> third party
+checks.</p></li>
+<li><p>For incoming and outgoing existing third party checks, go to <span class="menuselection">Incoming Payments tab
+‣ Add a line</span> and select <span class="guilabel">Existing Third Party Checks</span>. Repeat the same step for the
+<span class="guilabel">Outgoing Payments</span> tab. This method is used to receive and/or pay vendor bills using
+already <em>existing</em> checks, as well as for internal transfers.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>You can delete pre-existing payment methods appearing by default when configuring the third
+party checks journals.</p>
+</div>
+<img alt="Payment methods automatically created." class="align-center" src="../../../_images/auto-payment-methods.png" />
+<p>The <em>Rejected Third Party Checks</em> journal also needs to be created and/or configured. This journal
+is used to manage rejected third party checks and can be utilized to send checks rejected at the
+moment of collection or when coming from vendors when rejected.</p>
+<p>To create the <em>Rejected Third Party Checks</em> journal, click the <span class="guilabel">New</span> button and configure
+the following:</p>
+<ul class="simple">
+<li><p>Type <code class="o_code docutils literal notranslate"><span class="pre">Rejected</span> <span class="pre">Third</span> <span class="pre">Party</span> <span class="pre">Checks</span></code> as the <span class="guilabel">Journal Name</span></p></li>
+<li><p>Select <span class="guilabel">Cash</span> as <span class="guilabel">Type</span></p></li>
+<li><p>In the <span class="guilabel">Journal Entries</span> tab, set <span class="guilabel">Cash Account</span>: to <code class="o_code docutils literal notranslate"><span class="pre">1.1.1.01.002</span> <span class="pre">Rejected</span>
+<span class="pre">Third</span> <span class="pre">Party</span> <span class="pre">Checks</span></code>, input a <span class="guilabel">Short Code</span> of your choice, and select a
+<span class="guilabel">Currency</span></p></li>
+</ul>
+<p>Use the same payment methods as the <em>Third Party Checks</em> journal.</p>
+</section><section id="new-third-party-checks">
+<h5>New third party checks<a class="headerlink" href="#new-third-party-checks" title="Permalink to this headline">¶</a></h5>
+<p>To register a <em>new</em> third party check for a customer invoice, click the <span class="guilabel">Register Payment</span>
+button. In the pop-up window, you must select <span class="guilabel">Third Party Checks</span> as journal for the
+payment registration.</p>
+<p>Select <span class="guilabel">New Third Party Checks</span> as <span class="guilabel">Payment Method</span>, and fill in the
+<span class="guilabel">Check Number</span>, <span class="guilabel">Payment Date</span>, and <span class="guilabel">Check Bank</span>. Optionally, you can
+manually add the <span class="guilabel">Check Issuer Vat</span>, but this is automatically filled by the customer’s
+VAT number related to the invoice.</p>
+<img alt="Payment pop-up window with New Third Party Check options enabled." class="align-center" src="../../../_images/third-party-payment-popup.png" />
+</section><section id="existing-third-party-checks">
+<h5>Existing third party checks<a class="headerlink" href="#existing-third-party-checks" title="Permalink to this headline">¶</a></h5>
+<p>To pay a vendor bill with an <em>existing</em> check, click the <span class="guilabel">Register Payment</span> button. In the
+pop-up window, you must select <span class="guilabel">Third Party Checks</span> as journal for the payment
+registration.</p>
+<p>Select <span class="guilabel">Existing Third Party Checks</span> as <span class="guilabel">Payment Method</span>, and select a check
+from the <span class="guilabel">Check</span> field. The field shows all <strong>available existing checks</strong> to be used as
+payment for vendor bills.</p>
+<img alt="Payment pop-up window with Existing Third Party Check options enabled." class="align-center" src="../../../_images/existing-third-party-popup.png" />
+<p>When an <strong>existing third party check</strong> is used, you can review the operations related to it. For
+example, you can see if a third party check made to pay a customer invoice was later used as an
+existing third party check to pay a vendor bill.</p>
+<p>To do so, either go to <span class="menuselection">Accounting ‣ Customers ‣ Third Party Checks</span> or
+<span class="menuselection">Accounting ‣ Vendors ‣ Own Checks</span> depending on the case, and click on a check.
+In the <span class="guilabel">Check Current Journal</span> field, click on <span class="guilabel">=&gt; Check Operations</span> to bring up
+the check’s history and movements.</p>
+<img alt="Check Operations menu." class="align-center" src="../../../_images/check-operations-menulist.png" />
+<p>The menu also displays critical information related to these operations, such as:</p>
+<ul class="simple">
+<li><p>The <span class="guilabel">Payment Type</span>, allowing to classify whether it is a payment <em>sent</em> to a vendor or a
+payment <em>received</em> from a customer</p></li>
+<li><p>The <span class="guilabel">Journal</span> in which the check is currently registered</p></li>
+<li><p>The <strong>partner</strong> associated with the operation (either customer or vendor).</p></li>
+</ul>
+</section><section id="reports">
+<h2>Reports<a class="headerlink" href="#reports" title="Permalink to this headline">¶</a></h2>
+<p>As part of the localization installation, financial reporting for Argentina was added to the
+<span class="guilabel">Accounting</span> dashboard. Access these reports by navigating to <span class="menuselection">Accounting
+‣ Reporting ‣ Argentinean Reports</span></p>
+<img alt="Argentinean reports." class="align-center" src="../../../_images/argentinian-reports.png" />
+</section><section id="vat-reports">
+<h3>VAT reports<a class="headerlink" href="#vat-reports" title="Permalink to this headline">¶</a></h3>
+</section><section id="sales-vat-book">
+<h4>Sales VAT book<a class="headerlink" href="#sales-vat-book" title="Permalink to this headline">¶</a></h4>
+<p>In this report, all the sales are recorded, which are taken as the basis for the accounting records
+to determine the VAT (Tax Debit).</p>
+<p>The <span class="guilabel">Sales VAT</span> book report can be exported in a <code class="o_code docutils literal notranslate"><span class="pre">.zip</span></code> file <span class="guilabel">VAT BOOK (ZIP)</span>
+button in the top left, which contains <code class="o_code docutils literal notranslate"><span class="pre">.txt</span></code> files to upload in the AFIP portal.</p>
+<img alt="Sales VAT book." class="align-center" src="../../../_images/sales-vat-book.png" />
+</section><section id="purchases-vat-book">
+<h4>Purchases VAT book<a class="headerlink" href="#purchases-vat-book" title="Permalink to this headline">¶</a></h4>
+<p>The <span class="guilabel">Purchases VAT</span> book report can be exported in a <code class="o_code docutils literal notranslate"><span class="pre">.zip</span></code> file <span class="guilabel">VAT BOOK
+(ZIP)</span> button in the top left, which contains <code class="o_code docutils literal notranslate"><span class="pre">.txt</span></code> files to upload in the AFIP portal.</p>
+<img alt="Purchases VAT book." class="align-center" src="../../../_images/purchases-vat-book.png" />
+</section><section id="vat-summary">
+<h4>VAT summary<a class="headerlink" href="#vat-summary" title="Permalink to this headline">¶</a></h4>
+<p>Pivot table designed to check the monthly VAT totals. This report is for internal usage, it is not
+sent to the AFIP.</p>
+<img alt="VAT Summary." class="align-center" src="../../../_images/vat-summary.png" />
+</section><section id="iibb-reports">
+<h3>IIBB - Reports<a class="headerlink" href="#iibb-reports" title="Permalink to this headline">¶</a></h3>
+</section><section id="iibb-sales-by-jurisdiction">
+<h4>IIBB - Sales by jurisdiction<a class="headerlink" href="#iibb-sales-by-jurisdiction" title="Permalink to this headline">¶</a></h4>
+<p>Pivot table where you can validate the gross income in each jurisdiction. Affidavit for the
+corresponding taxes to pay, therefore it is not sent to the AFIP.</p>
+<img alt="IIBB Sales by jurisdiction." class="align-center" src="../../../_images/iibb-sales-jurisdiction.png" />
+</section><section id="iibb-purchases-by-jurisdiction">
+<h4>IIBB - Purchases by jurisdiction<a class="headerlink" href="#iibb-purchases-by-jurisdiction" title="Permalink to this headline">¶</a></h4>
+<p>Pivot table where you can validate the gross purchases in each jurisdiction. Affidavit for the
+corresponding taxes to pay, therefore it is not sent to the AFIP.</p>
+<img alt="IIBB Purchases by jurisdiction." class="align-center" src="../../../_images/iibb-purchases-jurisdiction.png" />
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Argentina</a><ul>
+<li><a class="reference internal" href="#webinars">Webinars</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#modules-installation">Modules installation</a></li>
+<li><a class="reference internal" href="#configure-your-company">Configure your company</a></li>
+<li><a class="reference internal" href="#chart-of-account">Chart of account</a></li>
+<li><a class="reference internal" href="#configure-master-data">Configure master data</a><ul>
+<li><a class="reference internal" href="#electronic-invoice-credentials">Electronic Invoice Credentials</a><ul>
+<li><a class="reference internal" href="#environment">Environment</a></li>
+<li><a class="reference internal" href="#afip-certificates">AFIP certificates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partner">Partner</a><ul>
+<li><a class="reference internal" href="#identification-type-and-vat">Identification type and VAT</a></li>
+<li><a class="reference internal" href="#afip-responsibility-type">AFIP responsibility type</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#taxes">Taxes</a><ul>
+<li><a class="reference internal" href="#taxes-types">Taxes types</a></li>
+<li><a class="reference internal" href="#special-taxes">Special taxes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-types">Document types</a><ul>
+<li><a class="reference internal" href="#letters">Letters</a></li>
+<li><a class="reference internal" href="#use-on-invoices">Use on invoices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#journals">Journals</a><ul>
+<li><a class="reference internal" href="#afip-information-also-known-as-afip-point-of-sale">AFIP information (also known as AFIP Point of Sale)</a><ul>
+<li><a class="reference internal" href="#web-services">Web services</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sequences">Sequences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage-and-testing">Usage and testing</a><ul>
+<li><a class="reference internal" href="#invoice">Invoice</a><ul>
+<li><a class="reference internal" href="#document-type-assignation">Document type assignation</a></li>
+<li><a class="reference internal" href="#electronic-invoice-elements">Electronic invoice elements</a></li>
+<li><a class="reference internal" href="#invoice-taxes">Invoice taxes</a></li>
+<li><a class="reference internal" href="#special-use-cases">Special use cases</a><ul>
+<li><a class="reference internal" href="#invoices-for-services">Invoices for services</a></li>
+<li><a class="reference internal" href="#exportation-invoices">Exportation invoices</a></li>
+<li><a class="reference internal" href="#fiscal-bond">Fiscal bond</a></li>
+<li><a class="reference internal" href="#electronic-credit-invoice-mipyme-fce">Electronic credit invoice MiPyme (FCE)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invoice-printed-report">Invoice printed report</a></li>
+<li><a class="reference internal" href="#troubleshooting-and-auditing">Troubleshooting and auditing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vendor-bills">Vendor bills</a><ul>
+<li><a class="reference internal" href="#validate-vendor-bill-number-in-afip">Validate vendor bill number in AFIP</a><ul>
+<li><a class="reference internal" href="#validate-vendor-bills-in-odoo">Validate vendor bills in Odoo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">Special use cases</a><ul>
+<li><a class="reference internal" href="#untaxed-concepts">Untaxed concepts</a></li>
+<li><a class="reference internal" href="#perception-taxes">Perception taxes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#check-management">Check management</a><ul>
+<li><a class="reference internal" href="#own-checks">Own checks</a><ul>
+<li><a class="reference internal" href="#management-of-own-checks">Management of own checks</a></li>
+<li><a class="reference internal" href="#cancel-an-own-check">Cancel an own check</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#third-party-checks">Third party checks</a><ul>
+<li><a class="reference internal" href="#new-third-party-checks">New third party checks</a></li>
+<li><a class="reference internal" href="#existing-third-party-checks">Existing third party checks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reports">Reports</a><ul>
+<li><a class="reference internal" href="#vat-reports">VAT reports</a><ul>
+<li><a class="reference internal" href="#sales-vat-book">Sales VAT book</a></li>
+<li><a class="reference internal" href="#purchases-vat-book">Purchases VAT book</a></li>
+<li><a class="reference internal" href="#vat-summary">VAT summary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iibb-reports">IIBB - Reports</a><ul>
+<li><a class="reference internal" href="#iibb-sales-by-jurisdiction">IIBB - Sales by jurisdiction</a></li>
+<li><a class="reference internal" href="#iibb-purchases-by-jurisdiction">IIBB - Purchases by jurisdiction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Argentina</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

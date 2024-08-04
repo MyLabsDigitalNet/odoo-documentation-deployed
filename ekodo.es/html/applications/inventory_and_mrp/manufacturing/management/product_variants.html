@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Managing BoMs for product variants &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/manufacturing/management/product_variants.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/manufacturing/management/product_variants.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Managing BoMs for product variants</a><ul>
+<li><a class="reference internal" href="#activate-product-variants">Activate product variants</a></li>
+<li><a class="reference internal" href="#create-custom-product-attributes">Create custom product attributes</a></li>
+<li><a class="reference internal" href="#add-product-variants-on-the-product-form">Add product variants on the product form</a></li>
+<li><a class="reference internal" href="#apply-bom-components-to-product-variants">Apply BoM components to product variants</a></li>
+<li><a class="reference internal" href="#sell-and-manufacture-variants-of-bom-products">Sell and manufacture variants of BoM products</a><ul>
+<li><a class="reference internal" href="#sell-variant-of-bom-product">Sell variant of BoM product</a></li>
+<li><a class="reference internal" href="#manufacture-variant-of-bom-product">Manufacture variant of BoM product</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/inventory_and_mrp/manufacturing/management/product_variants.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Managing BoMs for product variants</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="managing-boms-for-product-variants">
+<h1>Managing BoMs for product variants<a class="headerlink" href="#managing-boms-for-product-variants" title="Permalink to this headline">¶</a></h1>
+<p>Odoo allows one bill of materials (BoM) to be used for multiple variants of the same product. Having
+a consolidated <abbr title="bill of materials">BoM</abbr> for a product with variants saves time by preventing
+the need to manage multiple <abbr title="bills of materials">BoMs</abbr>.</p>
+</section><section id="activate-product-variants">
+<h2>Activate product variants<a class="headerlink" href="#activate-product-variants" title="Permalink to this headline">¶</a></h2>
+<p>To activate the product variants feature, navigate to <span class="menuselection">Inventory app ‣
+Configuration ‣ Settings</span>, and scroll down to the <span class="guilabel">Products</span> section. Then, click the
+checkbox to enable the <span class="guilabel">Variants</span> option. After that, click <span class="guilabel">Save</span> to apply the
+setting.</p>
+<p>For more information on configuring product variants, refer to the <a class="reference internal" href="../../../sales/sales/products_prices/products/variants.html"><span class="doc">product variants</span></a> documentation.</p>
+<img alt="Selecting &quot;Variants&quot; from Inventory app settings." class="align-center" src="../../../../_images/product-variants-variants-settings.png" />
+</section><section id="create-custom-product-attributes">
+<h2>Create custom product attributes<a class="headerlink" href="#create-custom-product-attributes" title="Permalink to this headline">¶</a></h2>
+<p>Once the product variants feature is activated, create and edit product attributes on the
+<span class="guilabel">Attributes</span> page.</p>
+<p>The <span class="guilabel">Attributes</span> page is accessible either from <span class="menuselection">Inventory app ‣
+Configuration ‣ Settings</span> by clicking the <span class="guilabel">Attributes</span> button, or by clicking
+<span class="menuselection">Inventory app ‣ Configuration ‣ Attributes</span>.</p>
+<p>Once on the <span class="guilabel">Attributes</span> page, either click into an existing attribute, or click
+<span class="guilabel">Create</span> to create a new one. Clicking <span class="guilabel">Create</span> reveals a new, blank form for
+customizing an attribute. For an existing attribute, click <span class="guilabel">Edit</span> on its form to make
+changes.</p>
+<p>Assign an <span class="guilabel">Attribute Name</span>, and choose a category from the <span class="guilabel">Category</span> field’s
+drop-down menu. Then, select the desired options next to the <span class="guilabel">Display Type</span> and
+<span class="guilabel">Variants Creation Mode</span> fields. Once the desired options are selected, click
+<span class="guilabel">Add a line</span> under the <span class="guilabel">Attribute Values</span> tab to add a new value.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Included on the <span class="guilabel">Value</span> row is a <span class="guilabel">Is custom value</span> checkbox. If selected,
+this value will be recognized as a custom value, which allows customers to type special
+customization requests upon ordering a custom variant of a product.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><img alt="Product variant attribute configuration screen." class="align-center" src="../../../../_images/product-variants-attribute.png" />
+</div>
+<p>Once all desired <span class="guilabel">Values</span> have been added, click <span class="guilabel">Save</span> to save the new
+attribute.</p>
+</section><section id="add-product-variants-on-the-product-form">
+<h2>Add product variants on the product form<a class="headerlink" href="#add-product-variants-on-the-product-form" title="Permalink to this headline">¶</a></h2>
+<p>Created attributes can be applied on specific variants for particular products. To add product
+variants to a product, navigate to the product form by going to <span class="menuselection">Inventory app ‣
+Products ‣ Products</span>. To make changes to the product, click <span class="guilabel">Edit</span>. Then, click the
+<span class="guilabel">Variants</span> tab.</p>
+<p>Under the <span class="guilabel">Attribute</span> header, click <span class="guilabel">Add a line</span> to add a new attribute, and
+select one to add from the drop-down menu.</p>
+<p>Then, under the <span class="guilabel">Values</span> header, click the drop-down menu to choose from the list of
+existing values. Click on each desired value to add them, and repeat this process for any additional
+attributes that should be added to the product.</p>
+<p>Once finished, click <span class="guilabel">Save</span> to save changes.</p>
+<img alt="Product form variants tab with values and attributes." class="align-center" src="../../../../_images/product-variants-product-form.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p><abbr title="bill of materials">BoM</abbr> products with multiple variants that are manufactured in-house
+should either have a <strong>0,0 reordering rule</strong> set up, or have their replenishment routes set to
+<em>Replenish on Order (MTO)</em>.</p>
+</div>
+</section><section id="apply-bom-components-to-product-variants">
+<h2>Apply BoM components to product variants<a class="headerlink" href="#apply-bom-components-to-product-variants" title="Permalink to this headline">¶</a></h2>
+<p>Next, create a new <abbr title="bill of materials">BoM</abbr>. Or, edit an existing one, by going to
+<span class="menuselection">Manufacturing app ‣ Products ‣ Bills of Materials</span>. Then, click
+<span class="guilabel">Create</span> to open a new <span class="guilabel">Bills of Materials</span> form to configure from scratch.</p>
+<p>Add a product to the <abbr title="bill of materials">BoM</abbr> by clicking the drop-down menu in the
+<span class="guilabel">Product</span> field and selecting the desired product.</p>
+<p>Then, add components by clicking <span class="guilabel">Add a line</span> under the <span class="guilabel">Component</span> section of
+the <span class="guilabel">Components</span> tab, and choosing the desired components from the drop-down menu.</p>
+<p>Choose the desired values in the <span class="guilabel">Quantity</span> and <span class="guilabel">Product Unit of Measure</span>
+columns. Then, choose the desired values in the <span class="guilabel">Apply on Variants</span> column.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Apply on Variants</span> option to assign components to specific product variants on the
+<abbr title="bill of materials">BoM</abbr> is available once the <span class="guilabel">Variants</span> setting is activated
+from the <span class="menuselection">Inventory</span> application. If the <span class="guilabel">Apply on Variants</span> field is
+not immediately visible, activate it from the additional options menu (three-dots icon, to the
+right of the header row).</p>
+</div>
+<img alt="&quot;Apply on Variants&quot; option on the additional options menu." class="align-center" src="../../../../_images/product-variants-apply-on-variants.png" />
+<p>Each component can be assigned to multiple variants. Components with no variants specified are used
+in every variant of the product. The same principle applies when configuring operations and
+by-products.</p>
+<p>When defining variant <abbr title="bills of material">BoMs</abbr> by component assignment, the
+<span class="guilabel">Product Variant</span> field in the main section of the <abbr title="bill of materials">BoM</abbr> should
+be left blank. This field is <em>only</em> used when creating a <abbr title="bill of materials">BoM</abbr>
+specifically for one product variant.</p>
+<p>When all desired configurations have been made to the <abbr title="bill of materials">BoM</abbr>, click
+<span class="guilabel">Save</span> at the top of the form to save changes.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>For components that only apply for specific variants, choose which operations the components
+should be consumed in. If the <span class="guilabel">Consumed in Operation</span> column is <em>not</em> immediately
+visible, activate it from the additional options menu (three-dots icon, to the right of the
+header row).</p>
+</div>
+</section><section id="sell-and-manufacture-variants-of-bom-products">
+<h2>Sell and manufacture variants of BoM products<a class="headerlink" href="#sell-and-manufacture-variants-of-bom-products" title="Permalink to this headline">¶</a></h2>
+<p>To sell and manufacture variants of <abbr title="bill of materials">BoM</abbr> products to order, navigate to
+<span class="menuselection">Sales app ‣ Create</span> to create a new quotation.</p>
+</section><section id="sell-variant-of-bom-product">
+<h3>Sell variant of BoM product<a class="headerlink" href="#sell-variant-of-bom-product" title="Permalink to this headline">¶</a></h3>
+<p>Once on the blank <span class="guilabel">Quotation</span> form, click the drop-down next to the <span class="guilabel">Customer</span>
+field to add a customer.</p>
+<p>Then, under the <span class="guilabel">Order Lines</span> tab, click <span class="guilabel">Add a product</span>, and select the
+previously-created <abbr title="bill of materials">BoM</abbr> product with variants from the drop-down menu.
+Doing so reveals a <span class="guilabel">Configure a product</span> pop-up.</p>
+<p>From the pop-up window, click the desired attribute options to configure the correct variant of the
+product to manufacture. Then, click the green <span class="guilabel">+</span> or <span class="guilabel">-</span> icons next to the <code class="o_code docutils literal notranslate"><span class="pre">1</span></code>
+to change the quantity to sell and manufacture, if desired.</p>
+<img alt="Configure a product pop-up for choosing variant attributes." class="align-center" src="../../../../_images/product-variants-variant-popup.png" />
+<p>Once all the specifications have been chosen, click <span class="guilabel">Add</span>. This will change the pop-up to
+a second <span class="guilabel">Configure</span> pop-up, where available optional products will appear, if they have
+been created previously.</p>
+<p>Once ready, click <span class="guilabel">Confirm</span> to close the pop-up.</p>
+<p>Then, click <span class="guilabel">Save</span> to save all changes, and click <span class="guilabel">Confirm</span> at the top of the
+<span class="guilabel">Quotation</span> form to create and confirm a new sales order (SO).</p>
+</section><section id="manufacture-variant-of-bom-product">
+<h3>Manufacture variant of BoM product<a class="headerlink" href="#manufacture-variant-of-bom-product" title="Permalink to this headline">¶</a></h3>
+<p>Once the <abbr title="sales order">SO</abbr> is confirmed, a <span class="guilabel">Manufacturing</span> smart button appears at
+the top of the <abbr title="sales order">SO</abbr> form. Click the <span class="guilabel">Manufacturing</span> smart button to
+open the <span class="guilabel">Manufacturing Order</span> form.</p>
+<p>On this form, under the <span class="guilabel">Components</span> tab, the appropriate components for the chosen
+variant are listed. And, depending on the variant, different components will be listed. To see any
+mandatory or optional <span class="guilabel">Operation</span> steps, click the <span class="guilabel">Work Orders</span> tab.</p>
+<p>To enter the tablet view work order screen, click the <span class="guilabel">tablet icon</span> to the right of the
+row for the desired operation to be completed.</p>
+<p>From the tablet view, click <span class="guilabel">Mark as Done</span> as the operation progresses to complete the
+operation steps.</p>
+<p>Alternatively, click the <span class="guilabel">Mark as Done</span> button at the top of the manufacturing order form
+to complete the order.</p>
+<img alt="Manufacturing order for variant of BoM product." class="align-center" src="../../../../_images/product-variants-manufacturing-order.png" />
+<p>Then, navigate back to the <abbr title="sales order">SO</abbr> via the breadcrumbs at the top of the page.</p>
+<p>Now that the product has been manufactured, click the <span class="guilabel">Delivery</span> smart button to deliver
+the product to the customer. From the <span class="guilabel">Delivery Order</span> form, click <span class="guilabel">Validate</span>,
+then click <span class="guilabel">Apply</span> to deliver the product.</p>
+<p>To finish the sale, click back to the <abbr title="sales order">SO</abbr> via the <span class="guilabel">breadcrumbs</span> at
+the top of the page again. Then, click <span class="guilabel">Create Invoice</span> followed by <span class="guilabel">Create
+Invoice</span> again to invoice the customer for the order.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Managing BoMs for product variants</a><ul>
+<li><a class="reference internal" href="#activate-product-variants">Activate product variants</a></li>
+<li><a class="reference internal" href="#create-custom-product-attributes">Create custom product attributes</a></li>
+<li><a class="reference internal" href="#add-product-variants-on-the-product-form">Add product variants on the product form</a></li>
+<li><a class="reference internal" href="#apply-bom-components-to-product-variants">Apply BoM components to product variants</a></li>
+<li><a class="reference internal" href="#sell-and-manufacture-variants-of-bom-products">Sell and manufacture variants of BoM products</a><ul>
+<li><a class="reference internal" href="#sell-variant-of-bom-product">Sell variant of BoM product</a></li>
+<li><a class="reference internal" href="#manufacture-variant-of-bom-product">Manufacture variant of BoM product</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Managing BoMs for product variants</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

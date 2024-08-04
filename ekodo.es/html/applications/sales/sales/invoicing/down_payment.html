@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Down payments &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/sales/sales/invoicing/down_payment.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/sales/sales/invoicing/down_payment.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Down payments</a><ul>
+<li><a class="reference internal" href="#create-invoices">Create invoices</a></li>
+<li><a class="reference internal" href="#initial-down-payment-request">Initial down payment request</a></li>
+<li><a class="reference internal" href="#example-request-50-down-payment">Example: request 50% down payment</a></li>
+<li><a class="reference internal" href="#customer-taxes-modification-on-down-payments">Customer taxes modification on down payments</a></li>
+<li><a class="reference internal" href="#income-account-modification-on-down-payments">Income account modification on down payments</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/sales/sales/invoicing/down_payment.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Down payments</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="down-payments">
+<h1>Down payments<a class="headerlink" href="#down-payments" title="Permalink to this headline">¶</a></h1>
+<p>A down payment is a partial payment made by the buyer when a sales contract is concluded. This
+implies both parties’ (seller and buyer) full commitment to honor the contract.</p>
+<p>With a down payment, the buyer pays a portion of the total amount owed while agreeing to pay the
+remaining amount at a later date. In turn, the seller provides goods or services to the buyer after
+accepting the down payment, trusting that the remaining amount will be paid later on.</p>
+</section><section id="create-invoices">
+<h2>Create invoices<a class="headerlink" href="#create-invoices" title="Permalink to this headline">¶</a></h2>
+<p>When a sales order is confirmed, the option to create an invoice becomes available, via the
+<span class="guilabel">Create Invoice</span> button, located in the upper-left corner of the sales order form. When
+clicked, a <span class="guilabel">Create invoices</span> pop-up appears.</p>
+<img alt="Pop up que aparece al crear facturas en Odoo" class="align-center" src="../../../../_images/crear_Anticipo.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Invoices are automatically created as drafts, so they can be reviewed before validation.</p>
+</div>
+<p>On the <span class="guilabel">Create invoices</span> pop-up, there are 3 options to choose from in the
+<span class="guilabel">Create Invoice</span> field:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Regular invoice</span></p></li>
+<li><p><span class="guilabel">Down payment (percentage)</span></p></li>
+<li><p><span class="guilabel">Down payment (fixed amount)</span></p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>If <span class="guilabel">Regular Invoice</span> is selected, the other fields disappear, as they only pertain to
+down payment configurations.</p>
+</div>
+</section><section id="initial-down-payment-request">
+<h2>Initial down payment request<a class="headerlink" href="#initial-down-payment-request" title="Permalink to this headline">¶</a></h2>
+<p>On the <span class="guilabel">Create invoices</span> pop-up form, the down payment options are:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Down payment (percentage)</span></p></li>
+<li><p><span class="guilabel">Down payment (fixed amount)</span></p></li>
+</ul>
+<p>Once the desired down payment option is selected in the <span class="guilabel">Create Invoice</span> field on the
+pop-up form, designate the desired amount, either as a percentage or a fixed amount, in the
+<span class="guilabel">Down Payment Amount</span> field.</p>
+<p>Then, select the appropriate income account for the invoice in the <span class="guilabel">Income Account</span> field.
+Next, select a tax amount, if necessary, in the <span class="guilabel">Customer Taxes</span> drop-down field.</p>
+<img alt="Un formulario emergente de creación de facturas con los campos de pago inicial llenos de información." class="align-center" src="../../../../_images/porcentaje_facturas.png" />
+<p>Once all fields are filled in with the desired information, click the <span class="guilabel">Create Draft
+Invoice</span> button. Upon clicking this button, Odoo reveals the <span class="guilabel">Customer Invoice Draft</span>.</p>
+<p>In the <span class="guilabel">Invoice Lines</span> tab of the <span class="guilabel">Customer Invoice Draft</span>, the down payment
+that was just configured in the <span class="guilabel">Create invoices</span> pop-up form appears as a
+<span class="guilabel">Product</span>.</p>
+<img alt="Pago inicial como producto en la pestaña de líneas de factura de un borrador de factura" class="align-center" src="../../../../_images/borrador_anticipo.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>When the <span class="guilabel">Down payment</span> product in the <span class="guilabel">Invoice Lines</span> tab is clicked, Odoo
+reveals the product form for the down payment.</p>
+<p>By default, the <span class="guilabel">Product Type</span> of down payment products generated for invoices are set
+as <span class="guilabel">Service</span>, with the <span class="guilabel">Invoicing Policy</span> set to <span class="guilabel">Prepaid/Fixed
+Price</span>.</p>
+<img alt="Ficha de producto de anticipo" class="align-center" src="../../../../_images/ficha_anticipo.png" />
+<p>This product can be edited/modified at any time.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Warning</p><p>If <span class="guilabel">Based on Delivered Quantity (Manual)</span> is chosen as the <span class="guilabel">Invoicing
+Policy</span>, an invoice will <strong>not</strong> be able to be created.</p>
+</div>
+</section><section id="example-request-50-down-payment">
+<h2>Example: request 50% down payment<a class="headerlink" href="#example-request-50-down-payment" title="Permalink to this headline">¶</a></h2>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The following example involves a 50% amount down payment on a product (<span class="guilabel">Cabinet with
+Doors</span>) with <span class="guilabel">Ordered quantities</span> as the <span class="guilabel">Invoicing Policy</span>.</p>
+<img alt="Formulario de producto que muestra varios detalles y campos" class="align-center" src="../../../../_images/politica_cantidades.png" />
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="invoicing_policy.html"><span class="doc">Invoice based on delivered or ordered quantities</span></a></p>
+</div>
+<p>First, navigate to <span class="menuselection">Sales app ‣ New</span>, and add a <span class="guilabel">Customer</span> to the
+quotation.</p>
+<p>Then, click <span class="guilabel">Add a product</span> in the <span class="guilabel">Order Lines</span> tab, and select the
+<span class="guilabel">Cabinet with Doors</span> product.</p>
+<p>When the order is confirmed (via the <span class="guilabel">Confirm</span> button), the quotation turns into a sales
+order. Once this occurs, create and view the invoice by clicking <span class="guilabel">Create Invoice</span>.</p>
+<img alt="Orden de venta de un gabinete con puertas que ha sido confirmada en Odoo" class="align-center" src="../../../../_images/flujo_factura.png" />
+<p>Next, on the <span class="guilabel">Create invoices</span> pop-up window that appears, select <span class="guilabel">Down payment
+(percentage)</span>, and type <code class="o_code docutils literal notranslate"><span class="pre">50</span></code> in the <span class="guilabel">Down Payment Amount</span> field.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Income Account</span> and <span class="guilabel">Customer Taxes</span> fields are <em>not</em> required fields,
+and they will <em>not</em> appear if they’ve already been preconfigured in previous down payment
+requests.</p>
+<p>For more information, check out the documentation on <a class="reference internal" href="#sales-invoicing-customer-tax-modification-down-payments"><span class="std std-ref">customer taxes modification on down
+payments</span></a> and <a class="reference internal" href="#sales-invoicing-income-account-modification"><span class="std std-ref">income account
+modification on down payments</span></a>.</p>
+</div>
+<p>Lastly, click <span class="guilabel">Create Draft Invoice</span> to create and view the invoice draft.</p>
+<p>Clicking <span class="guilabel">Create Draft Invoice</span> reveals the draft invoice, which includes the down
+payment as a <span class="guilabel">Product</span> in the <span class="guilabel">Invoice Lines</span> tab.</p>
+<p>From there, the invoice can be confirmed and posted by clicking <span class="guilabel">Confirm</span>. Confirming the
+invoice changes the status from <span class="guilabel">Draft</span> to <span class="guilabel">Posted</span>. It also reveals a new
+series of buttons at the top of the page.</p>
+<img alt="Un ejemplo de borrador de factura con el pago inicial mencionado en Odoo" class="align-center" src="../../../../_images/anticipo_ejemplo.png" />
+<p>From those buttons, the payment can be registered by clicking <span class="guilabel">Register Payment</span>.</p>
+<img alt="Demostración del botón Registrar Pago en una factura de cliente confirmada." class="align-center" src="../../../../_images/registrar_pago.png" />
+<p>Doing so reveals a <span class="guilabel">Register Payment</span> pop-up form, which is auto-populated with the
+necessary information. Confirm the information provided is correct and make any necessary
+adjustments. When ready, click the <span class="guilabel">Create Payment</span> button.</p>
+<img alt="Demostración de la ventana emergente Registrar Pago con el botón Crear Pago" class="align-center" src="../../../../_images/crear_pago.png" />
+<p>After clicking <span class="guilabel">Create Payment</span>, Odoo reveals the customer invoice, now with a green
+<span class="guilabel">In Payment</span> banner in the upper-right corner.</p>
+<img alt="Banner verde con el texto &quot;pagado&quot;" class="align-center" src="../../../../_images/presupuesto_pagado.png" />
+<p>Now, when the customer wants to pay the remaining amount of the order, another invoice must be
+created. To do that, return to the sales order, via the breadcrumb links.</p>
+<p>Back on the sales order, a new <span class="guilabel">Down Payments</span> section is present in the <span class="guilabel">Order
+Lines</span> tab, along with the down payment that was just invoiced and posted.</p>
+<img alt="Seccion anticipo en la linea del pedido" class="align-center" src="../../../../_images/anticipo_resto.png" />
+<p>Next, click the <span class="guilabel">Create Invoice</span> button.</p>
+<p>On the <span class="guilabel">Create invoices</span> pop-up window that appears, there is a new field:
+<span class="guilabel">Deducir anticipo</span></p>
+<img alt="La opción de deducir el pago inicial en la ventana emergente de crear facturas en Odoo Sales." class="align-center" src="../../../../_images/deducir_anticipo.png" />
+<p>If the remaining amount is ready to be paid, select the <span class="guilabel">Regular Invoice</span> option. Odoo
+will create an invoice for the exact amount needed to complete the total payment, as indicated in
+the <span class="guilabel">Amount to invoice</span> field.</p>
+<p>Once ready, click <span class="guilabel">Create Draft Invoice</span>.</p>
+<p>Doing so reveals another <span class="guilabel">Customer Invoice Draft</span> page, listing <em>all</em> the invoices for
+that specific sales order in the <span class="guilabel">Invoice Lines</span> tab. Each invoice line item displays all
+the necessary information related to each invoice.</p>
+<p>To complete the flow, click <span class="guilabel">Confirm</span>, which changes the status of the invoice from
+<span class="guilabel">Draft</span> to <span class="guilabel">Posted</span>. Then, click <span class="guilabel">Register Payment</span>.</p>
+<p>Once again, the <span class="guilabel">Register Payment</span> appears, with all fields auto-populated with the
+necessary information, including the remaining amount left to be paid on the order.</p>
+<img alt="El segundo formulario emergente de registrar pago en Odoo" class="align-center" src="../../../../_images/crear_pago.png" />
+<p>After confirming that information, click <span class="guilabel">Create Payment</span>. Doing so reveals the final
+<span class="guilabel">Customer Invoice</span> with a green <span class="guilabel">In Payment</span> banner in the upper-right corner.
+Also, both down payments are present in the <span class="guilabel">Invoice Lines</span> tab.</p>
+<img alt="Banner de pagado en el segundo anticipo" class="align-center" src="../../../../_images/segundo_anticipo_pago.png" />
+<p>At this point, the flow is now complete.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>This flow is also possible with the <span class="guilabel">Fixed amount</span> down payment option.</p>
+</div>
+<div class="alert alert-warning">
+<p class="alert-title">
+Important</p><p>If a down payment is used with a product that has a <span class="guilabel">Delivered quantities</span> invoicing
+policy, the down payments will <strong>not</strong> be able to be deducted when it comes time to invoice the
+customer.</p>
+<p>This is because, due to the invoicing policy, the product(s) would have to be delivered <em>before</em>
+creating the final invoice.</p>
+<p>If nothing has been delivered, a <span class="guilabel">Credit Note</span> is created, which cancels the draft
+invoice that was created after the down payment.</p>
+<p>To utilize the <span class="guilabel">Credit Note</span> option, the <em>Inventory</em> application must be installed, in
+order to confirm the delivery. Otherwise, the delivered quantity can be entered manually directly
+on the sales order.</p>
+</div>
+</section><section id="customer-taxes-modification-on-down-payments">
+<span id="sales-invoicing-customer-tax-modification-down-payments"></span><h2>Customer taxes modification on down payments<a class="headerlink" href="#customer-taxes-modification-on-down-payments" title="Permalink to this headline">¶</a></h2>
+<p>To adjust the income account and customer taxes attached to a down payment, navigate to the
+<span class="guilabel">Products</span> page (<span class="menuselection">Sales app ‣ Products ‣ Products</span>), search for the
+<code class="o_code docutils literal notranslate"><span class="pre">Down</span> <span class="pre">Payment</span></code> product in the search bar, and select it to reveal the product detail page.</p>
+<p>On the <span class="guilabel">Down Payment</span> product page, in the <span class="guilabel">General Information</span> tab, the
+customer taxes can be modified in the <span class="guilabel">Customer Taxes</span> field.</p>
+<img alt="Cómo modificar el enlace de la cuenta de ingresos para los pagos iniciales" class="align-center" src="../../../../_images/modificacion_impuestos.png" />
+</section><section id="income-account-modification-on-down-payments">
+<span id="sales-invoicing-income-account-modification"></span><h2>Income account modification on down payments<a class="headerlink" href="#income-account-modification-on-down-payments" title="Permalink to this headline">¶</a></h2>
+<p>To change or adjust the income account attached to the <span class="guilabel">Down Payment</span> product page, the
+<em>Accounting</em> app <strong>must</strong> be installed.</p>
+<p>With the <em>Accounting</em> app installed, the <span class="guilabel">Accounting</span> tab becomes available on the product
+page. That tab will <strong>not</strong> be accessible without the <em>Accounting</em> app installed.</p>
+<p>In the <span class="guilabel">Accounting</span> tab, the income account can be changed in the <span class="guilabel">Income
+Account</span> field, located in the <span class="guilabel">Receivables</span> section.</p>
+<img alt="Como modificar la cuenta de ingresos en la ficha de contabilidad" class="align-center" src="../../../../_images/modificacion_anticipo.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="invoicing_policy.html"><span class="doc">Invoice based on delivered or ordered quantities</span></a></p>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Down payments</a><ul>
+<li><a class="reference internal" href="#create-invoices">Create invoices</a></li>
+<li><a class="reference internal" href="#initial-down-payment-request">Initial down payment request</a></li>
+<li><a class="reference internal" href="#example-request-50-down-payment">Example: request 50% down payment</a></li>
+<li><a class="reference internal" href="#customer-taxes-modification-on-down-payments">Customer taxes modification on down payments</a></li>
+<li><a class="reference internal" href="#income-account-modification-on-down-payments">Income account modification on down payments</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Down payments</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

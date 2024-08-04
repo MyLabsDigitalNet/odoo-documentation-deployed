@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Checkout &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/websites/ecommerce/checkout_payment_shipping/checkout.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/websites/ecommerce/checkout_payment_shipping/checkout.html" />
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Checkout</a><ul>
+<li><a class="reference internal" href="#checkout-steps">Checkout steps</a><ul>
+<li><a class="reference internal" href="#review-order-promo-code-and-subtotal">Review order: promo code (and subtotal)</a></li>
+<li><a class="reference internal" href="#address-b2b-fields">Address: B2B fields</a></li>
+<li><a class="reference internal" href="#request-extra-info-additional-step">Request extra info (additional step)</a></li>
+<li><a class="reference internal" href="#confirm-order-terms-and-conditions">Confirm order: terms and conditions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#express-checkout">Express checkout</a></li>
+<li><a class="reference internal" href="#guest-and-signed-in-checkout">Guest and signed-in checkout</a><ul>
+<li><a class="reference internal" href="#b2b-access-restriction">B2B access restriction</a></li>
+<li><a class="reference internal" href="#shared-customer-accounts">Shared customer accounts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/websites/ecommerce/checkout_payment_shipping/checkout.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Checkout</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="checkout">
+<h1>Checkout<a class="headerlink" href="#checkout" title="Permalink to this headline">¶</a></h1>
+<p>You can customize the <strong>checkout steps</strong>, add more content using the <strong>website builder</strong>, and enable
+additional features such as <strong>express checkout</strong> and <strong>sign in/up at checkout</strong>.</p>
+<p>You can use <strong>building blocks</strong> to add content at any step of the checkout process. To do so, from
+any <strong>checkout page</strong>, go to <span class="menuselection">Edit ‣ Blocks</span>, and drag and drop <strong>building blocks</strong>
+to the page.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Note that content added through building blocks is <strong>specific</strong> to each step.</p>
+</div>
+</section><section id="checkout-steps">
+<h2>Checkout steps<a class="headerlink" href="#checkout-steps" title="Permalink to this headline">¶</a></h2>
+</section><section id="review-order-promo-code-and-subtotal">
+<h3>Review order: promo code (and subtotal)<a class="headerlink" href="#review-order-promo-code-and-subtotal" title="Permalink to this headline">¶</a></h3>
+<p>If you have enabled <span class="guilabel">Discounts, Loyalty, &amp; Gift Card</span> in the settings
+(<span class="menuselection">Website ‣ Configuration ‣ Settings ‣ Shop - Products</span>), you can enable the
+<span class="guilabel">Promo Code</span> field (<span class="menuselection">Edit ‣ Customize</span>) from any checkout page. Customers
+can then redeem gift cards and promotional codes at the <span class="guilabel">Review Order</span> step.</p>
+<p>Furthermore, you can display the subtotal with discounts applied by enabling <span class="guilabel">Show
+Discount in Subtotal</span>.</p>
+<img alt="Subtotal discount" class="align-center" src="../../../../_images/checkout-subtotal.png" />
+</section><section id="address-b2b-fields">
+<h3>Address: B2B fields<a class="headerlink" href="#address-b2b-fields" title="Permalink to this headline">¶</a></h3>
+<p>Optional <span class="guilabel">TIN/VAT</span> and <span class="guilabel">Company Name</span> fields can be added to the
+<span class="guilabel">Billing Address</span> form for B2B customers, at the <span class="guilabel">Address</span> step. To add the
+fields, go to <span class="menuselection">Edit ‣ Customize</span> from any checkout page, and enable
+<span class="guilabel">Show B2B fields</span>.</p>
+</section><section id="request-extra-info-additional-step">
+<h3>Request extra info (additional step)<a class="headerlink" href="#request-extra-info-additional-step" title="Permalink to this headline">¶</a></h3>
+<p>You can request <span class="guilabel">Extra Info</span> from the customer by adding an <span class="guilabel">Extra Info</span> step
+between the <span class="guilabel">Address</span> and <span class="guilabel">Confirm Order</span> steps. To do so, go to
+<span class="menuselection">Edit ‣ Customize</span> from any checkout page, and enable <span class="guilabel">Extra Step
+Option</span>.</p>
+<img alt="Checkout steps" class="align-center" src="../../../../_images/checkout-steps.png" />
+<p>The <span class="guilabel">Extra Info</span> step is an online form linked to the quotation or sales order of the
+customer. The information added during that step can be found on the quotation or sales order of the
+customer from the back end, in the <strong>Sales</strong> app.</p>
+<p>When enabled, you can remove, add, and modify fields of the form by clicking on <span class="guilabel">Edit</span> in
+the top-right corner, and then clicking on any of the form’s fields. All customization options, as
+well as the <span class="guilabel">+ Field</span> button to add new fields, are available at the bottom of the
+<span class="guilabel">Customize</span> menu under the <span class="guilabel">Field</span> section.</p>
+<img alt="Online form customization" class="align-center" src="../../../../_images/checkout-form.png" />
+</section><section id="confirm-order-terms-and-conditions">
+<h3>Confirm order: terms and conditions<a class="headerlink" href="#confirm-order-terms-and-conditions" title="Permalink to this headline">¶</a></h3>
+<p>You can ask customers to agree to the <span class="guilabel">Terms &amp; Conditions</span> in order to confirm their order
+by enabling <span class="guilabel">Accept Terms &amp; Conditions</span> under <span class="menuselection">Edit ‣ Customize</span> on any
+checkout page.</p>
+<img alt="Terms and conditions" class="align-center" src="../../../../_images/checkout-terms.png" />
+</section><section id="express-checkout">
+<h2>Express checkout<a class="headerlink" href="#express-checkout" title="Permalink to this headline">¶</a></h2>
+<p>You can enable a <span class="guilabel">Buy Now</span> button on products’ pages which instantly takes the customer to
+the <span class="guilabel">Confirm Order</span> checkout page, instead of adding the product to the cart. To do so, go
+to <span class="menuselection">Website ‣ Configuration ‣ Settings ‣ Shop - Checkout Process section</span> and
+tick <span class="guilabel">Buy Now</span>. Alternatively, the <span class="guilabel">Buy Now</span> button can also be enabled from any
+product’s page by going <span class="menuselection">Edit ‣ Customize</span>, in the <span class="guilabel">Cart</span> section.</p>
+<p>The button can be found next to the <span class="guilabel">Add to Cart</span> button on the product’s page.</p>
+<img alt="Buy now (express checkout) button" class="align-center" src="../../../../_images/checkout-express.png" />
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="../managing_products/products.html#ecommerce-functions"><span class="std std-ref">Product page design: additional functions</span></a></p>
+</div>
+</section><section id="guest-and-signed-in-checkout">
+<span id="checkout-sign"></span><h2>Guest and signed-in checkout<a class="headerlink" href="#guest-and-signed-in-checkout" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to introduce a <strong>checkout policy</strong> under which customers can either checkout as
+<strong>guests</strong> or <strong>signed-in users only</strong>. Customers can also checkout as guest, and <strong>optionally sign
+up later</strong> in order to track their order, if enabled.</p>
+<p>To select a policy, go to <span class="menuselection">Website ‣ Configuration ‣ Settings ‣ Shop - Checkout
+Process</span>. You can choose between:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Optional</span>: allows guests to checkout and later register from the <strong>order confirmation</strong>
+email to track their order;</p></li>
+<li><p><span class="guilabel">Disabled (buy as guest)</span>: customers can only checkout as guests;</p></li>
+<li><p><span class="guilabel">Mandatory (no guest checkout)</span>: customers can only checkout if they have signed-in.</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="../ecommerce_management/customer_accounts.html"><span class="doc">Customer accounts</span></a></p></li>
+<li><p><a class="reference internal" href="../../../general/users/portal.html"><span class="doc">Portal access</span></a></p></li>
+</ul>
+</div>
+</section><section id="b2b-access-restriction">
+<h3>B2B access restriction<a class="headerlink" href="#b2b-access-restriction" title="Permalink to this headline">¶</a></h3>
+<p>If you wish to restrict checkout only to <strong>selected B2B customers</strong>, enable <span class="guilabel">Mandatory (no
+guest checkout)</span> and go to <span class="menuselection">Website ‣ eCommerce ‣ Customers</span>. Select the customer
+you wish to <strong>grant access to</strong>, click <span class="menuselection">Action ‣ Grant portal access</span>, and click
+<span class="guilabel">Grant Access</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Settings are <strong>website-specific</strong>, which means you can set up a B2C website allowing <strong>guest</strong>
+checkout, and another for B2B customers with <strong>mandatory sign-in</strong>.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Users can only have one portal access per <strong>email</strong>. They <em>cannot</em> be granted access to two
+different portals with the same <strong>email address</strong>.</p>
+</div>
+</section><section id="shared-customer-accounts">
+<h3>Shared customer accounts<a class="headerlink" href="#shared-customer-accounts" title="Permalink to this headline">¶</a></h3>
+<p>If you enable <span class="guilabel">Shared Customer Accounts</span> under <span class="menuselection">Website ‣ Configuration
+‣ Settings ‣ Privacy section</span>, you can allow or disallow access to <em>all</em> websites for one same
+account.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Checkout</a><ul>
+<li><a class="reference internal" href="#checkout-steps">Checkout steps</a><ul>
+<li><a class="reference internal" href="#review-order-promo-code-and-subtotal">Review order: promo code (and subtotal)</a></li>
+<li><a class="reference internal" href="#address-b2b-fields">Address: B2B fields</a></li>
+<li><a class="reference internal" href="#request-extra-info-additional-step">Request extra info (additional step)</a></li>
+<li><a class="reference internal" href="#confirm-order-terms-and-conditions">Confirm order: terms and conditions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#express-checkout">Express checkout</a></li>
+<li><a class="reference internal" href="#guest-and-signed-in-checkout">Guest and signed-in checkout</a><ul>
+<li><a class="reference internal" href="#b2b-access-restriction">B2B access restriction</a></li>
+<li><a class="reference internal" href="#shared-customer-accounts">Shared customer accounts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Checkout</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

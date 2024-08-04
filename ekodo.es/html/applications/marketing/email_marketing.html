@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+
+<html lang="EN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Email marketing &#8212; Odoo 16.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script>
+    <script src="../../_static/tabs.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="es" href="https://ekodo.es/doc/es/applications/marketing/email_marketing.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/marketing/email_marketing.html" />
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Email marketing</a><ul>
+<li><a class="reference internal" href="#email-marketing-dashboard">Email marketing dashboard</a><ul>
+<li><a class="reference internal" href="#default-kanban-view-and-stages">Default kanban view and stages</a></li>
+<li><a class="reference internal" href="#list-view">List view</a></li>
+<li><a class="reference internal" href="#graph-view">Graph view</a></li>
+<li><a class="reference internal" href="#filters-group-by-and-favorites-search-options">Filters, Group By, and Favorites search options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#create-an-email">Create an email</a><ul>
+<li><a class="reference internal" href="#recipients">Recipients</a></li>
+<li><a class="reference internal" href="#add-a-recipient-filter">Add a recipient filter</a></li>
+<li><a class="reference internal" href="#mail-body-tab">Mail body tab</a></li>
+<li><a class="reference internal" href="#settings-tab">Settings tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mailing-campaigns">Mailing campaigns</a><ul>
+<li><a class="reference internal" href="#create-new-mailing-campaign-from-settings-tab">Create new mailing campaign (from Settings tab)</a></li>
+<li><a class="reference internal" href="#create-new-mailing-campaign-from-campaigns-page">Create new mailing campaign (from Campaigns page)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-b-testing">A/B testing</a></li>
+<li><a class="reference internal" href="#send-schedule-or-test">Send, schedule, or test</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../applications.html">User Docs</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Odoo essentials</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../essentials/activities.html">Activities</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../essentials/reporting.html">Reporting</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../essentials/search.html">Search and filter records</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../essentials/export_import_data.html">Export and import data</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../essentials/in_app_purchase.html">In-app purchases (IAP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Try Odoo for FREE</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                EN 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/es/applications/marketing/email_marketing.html">ES</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Email marketing</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="email-marketing">
+<h1>Email marketing<a class="headerlink" href="#email-marketing" title="Permalink to this headline">¶</a></h1>
+<p>Emails are an effective, fully-customizable form of communication that are able to reach any target
+audience - large or small. The success of an email is easily measurable, especially when a creative
+call-to-action is involved.</p>
+<p>Odoo <em>Email Marketing</em> provides professional-grade email design tools, templates, and features,
+designed to simplify the otherwise complex process required to create engaging emails, build
+successful campaigns, and track their overall effectiveness in a single application.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><ul class="simple">
+<li><p><a class="reference internal" href="email_marketing/mailing_lists.html"><span class="doc">Mailing lists</span></a></p></li>
+<li><p><a class="reference internal" href="email_marketing/unsubscriptions.html"><span class="doc">Manage unsubscriptions (Blacklist)</span></a></p></li>
+</ul>
+</div>
+</section><section id="email-marketing-dashboard">
+<h2>Email marketing dashboard<a class="headerlink" href="#email-marketing-dashboard" title="Permalink to this headline">¶</a></h2>
+<p>To get started, click on the <span class="menuselection">Email Marketing</span> app icon, located on the main Odoo
+dashboard, which leads to the main <span class="guilabel">Email Marketing</span> dashboard (in the default kanban
+view).</p>
+<p>To see all the mailings in the database, remove the default <span class="guilabel">My Mailings</span> filter from the
+search bar.</p>
+<img alt="View of the main dashboard of the Odoo Email Marketing application." class="align-center" src="../../_images/dashboard1.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>In the search bar, by default, the filter: <span class="guilabel">My Mailings</span> is present. That means the
+only information being seen (at that time) on the <span class="guilabel">Email Marketing</span> dashboard are
+emails that the current user has created, sent, or is responsible for.</p>
+<p>This filter can be removed by clicking the <span class="guilabel">X</span> next to <span class="guilabel">My Mailings</span> in the
+search bar. Doing so, reveals all the information for every email in the database.</p>
+</div>
+</section><section id="default-kanban-view-and-stages">
+<h3>Default kanban view and stages<a class="headerlink" href="#default-kanban-view-and-stages" title="Permalink to this headline">¶</a></h3>
+<p>The four kanban columns each represent the various stages of emails that have been built or sent
+within the <em>Email Marketing</em> application.</p>
+<p>The stages are: <span class="guilabel">Draft</span>, <span class="guilabel">In Queue</span>, <span class="guilabel">Sending</span>, <span class="guilabel">Sent</span>.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Draft</span>: means the email is still being written/created.</p></li>
+<li><p><span class="guilabel">In Queue</span>: means the email is scheduled, and sent at a later date.</p></li>
+<li><p><span class="guilabel">Sending</span>: means the email is currently being sent to its recipients.</p></li>
+<li><p><span class="guilabel">Sent</span>: means the email has already been sent to its recipients.</p></li>
+</ul>
+<p>In each stage, there are drag-and-drop cards representing the email campaigns that have been
+created, and the stage they are in represents the current status of that mailing.</p>
+<p>Each mailing block on the <span class="guilabel">Email Marketing</span> dashboard provides key information related to
+that specific email.</p>
+<p>When the cursor hovers over the upper-right corner of an email campaign card, three vertical dots
+(<span class="guilabel">⋮</span>) appear. When clicked, a mini drop-down menu reveals the option to color-code the
+email <span class="guilabel">Delete</span> the email altogether, or <span class="guilabel">Archive</span> the message for potential
+future use.</p>
+<img alt="View of the three-dot drop-down menu on the Odoo Email Marketing dashboard." class="align-center" src="../../_images/three-dot-dropdown.png" />
+<p>In the upper-right corner of the main <span class="guilabel">Email Marketing</span> dashboard, there are other view
+options to choose from: <span class="guilabel">List</span> and <span class="guilabel">Graph</span>.</p>
+</section><section id="list-view">
+<h3>List view<a class="headerlink" href="#list-view" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">List</span> view (represented by the <span class="guilabel">☰ (three vertical lines)</span> icon) provides
+the same key information, but in a classic list format.</p>
+<img alt="How the List view appears in the Odoo Email Marketing application." class="align-center" src="../../_images/list-view1.png" />
+</section><section id="graph-view">
+<h3>Graph view<a class="headerlink" href="#graph-view" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">Graph</span> view (represented by the <span class="guilabel">📊 (bar graph)</span> icon) provides the same
+key information, but in a variety of customizable graph (and chart) layouts.</p>
+<img alt="How the Graph view appears in the Odoo Email Marketing application." class="align-center" src="../../_images/graph-view.png" />
+<p>In the upper-left corner, there is a <span class="guilabel">Measures</span>  menu, providing even more filter options
+to further customize the graph views.</p>
+<p>Those <span class="guilabel">Measures</span> options are: <span class="guilabel">A/B Testing percentage</span>, <span class="guilabel">Color Index</span>,
+and <span class="guilabel">Count</span> (which is selected, by default).</p>
+</section><section id="filters-group-by-and-favorites-search-options">
+<h3>Filters, Group By, and Favorites search options<a class="headerlink" href="#filters-group-by-and-favorites-search-options" title="Permalink to this headline">¶</a></h3>
+<p>Regardless of the view chosen for the <span class="guilabel">Email Marketing</span> dashboard, the
+<span class="guilabel">Filters</span>, <span class="guilabel">Group by</span>, and <span class="guilabel">Favorites</span> options are always available.</p>
+<p>These options provide various ways to specify and organize the information seen on the
+<span class="guilabel">Email Marketing</span> dashboard.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Filters</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Group By</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Favorites</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>This drop-down menu provides different ways to filter email campaigns on the dashboard. The
+options are: <span class="guilabel">My Mailings</span>, <span class="guilabel">Sent Date</span>, <span class="guilabel">Archived</span>, and
+<span class="guilabel">Add Custom Filter</span>. If <span class="guilabel">Add Custom Filter</span> is selected, Odoo reveals an
+additional drop-down menu, with three customizable fields to fill in, in order to retrieve
+results that fit more specific criteria.</p>
+<img alt="View of filters drop-down menu options on the Odoo Email Marketing dashboard." src="../../_images/filters-dropdown.png" />
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>This drop-down menu provides additional ways to organize the data on the dashboard by grouping
+them in specific ways. Using this drop-down menu, the data can be grouped by the messages’
+<span class="guilabel">Status</span>, or who it was <span class="guilabel">Sent By</span>.</p>
+<p>There is also the option to group the data by <span class="guilabel">Sent Period</span>, which has its own
+sub-menu of options to choose from. The <span class="guilabel">Sent Period</span> options are <span class="guilabel">Year</span>,
+<span class="guilabel">Quarter</span>, <span class="guilabel">Month</span>, <span class="guilabel">Week</span>, and <span class="guilabel">Day</span>.</p>
+<p>If none of the above <span class="guilabel">Group By</span> options deliver the desired results, click
+<span class="guilabel">Add Custom Group</span> at the bottom of the drop-down menu. Doing so reveals a new
+field, wherein custom criteria can be selected and applied, thus delivering any grouping of
+data that may be desired.</p>
+<img alt="View of the Group By drop-down menu on the Odoo Email Marketing application." src="../../_images/group-by-dropdown.png" />
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>This drop-down menu provides different ways to incorporate past search filters and other
+record-related options to customize the dashboard. The options are: <span class="guilabel">Save current
+search</span>, <span class="guilabel">Import records</span>, <span class="guilabel">Add to my dashboard</span>, and <span class="guilabel">Add to
+Google Spreadsheet</span>.</p>
+<img alt="View of the Favorites drop-down menu on the Odoo Email Marketing application." src="../../_images/favorites-dropdown.png" />
+</div></div>
+</section><section id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>To view (and modify) the <em>Email Marketing</em> settings, navigate to <span class="menuselection">Email Marketing
+application ‣ Configuration ‣ Settings</span>.</p>
+<img alt="View of the Settings page in the Odoo Email Marketing application." class="align-center" src="../../_images/settings-page.png" />
+<p>On this <span class="guilabel">Settings</span> page, there are three features available. The features are:
+<span class="guilabel">Mailing Campaigns</span>, <span class="guilabel">Blacklist Option when Unsubscribing</span>, and
+<span class="guilabel">Dedicated Server</span>.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Mailing Campaigns</span>: enables the option to manage mass mailing campaigns.</p></li>
+<li><p><span class="guilabel">Blacklist Option when Unsubscribing</span>: allows recipients to blacklist themselves from
+future mailings during the unsubscribing process.</p></li>
+<li><p><span class="guilabel">Dedicated Server</span>: provides the option to utilize a separate, dedicated server for
+mailings. When enabled, Odoo reveals a new field (and link), in which the specific server
+configurations must be entered, in order for it to connect properly to Odoo.</p></li>
+</ul>
+</section><section id="create-an-email">
+<h2>Create an email<a class="headerlink" href="#create-an-email" title="Permalink to this headline">¶</a></h2>
+<p>To create an email, open the <span class="menuselection">Email Marketing</span> application, and click the
+<span class="guilabel">Create</span> button in the upper-left corner.</p>
+<p>Clicking <span class="guilabel">Create</span> reveals a blank email detail form.</p>
+<img alt="View of a blank email detail form in Odoo Email Marketing application." class="align-center" src="../../_images/blank-email-detail-form.png" />
+<p>First, enter a <span class="guilabel">Subject</span> to the email. The <span class="guilabel">Subject</span> is visible in the
+recipients’ inbox, allowing them to get quickly see what the message is about.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The <span class="guilabel">Subject</span> field is mandatory. An email can not be sent without a
+<span class="guilabel">Subject</span>.</p>
+</div>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>The <span class="guilabel">☺ (smiley face)</span> icon at the end of the <span class="guilabel">Subject</span> field (and
+<span class="guilabel">Preview Text</span> field) represents emojis. Click that <span class="guilabel">☺ (smiley face)</span> icon to
+reveal a menu of emojis that can be used in either field.</p>
+</div>
+<p>Next, there is the option to enter some <span class="guilabel">Preview Text</span>. This text is a catchy preview
+sentence that encourages recipients to open the message. In most inboxes, this is displayed next to
+the subject.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>Keep the <span class="guilabel">Preview Text</span> empty to show the first characters of the email content,
+instead.</p>
+</div>
+</section><section id="recipients">
+<h3>Recipients<a class="headerlink" href="#recipients" title="Permalink to this headline">¶</a></h3>
+<p>After that, it’s time to choose the recipients of this email, which can be completed in the
+<span class="guilabel">Recipients</span> field.</p>
+<img alt="View of recipients drop-down menu in the Odoo Email Marketing application." class="align-center" src="../../_images/recipients-dropdown.png" />
+<p>The default option is <span class="guilabel">Mailing List</span>. If <span class="guilabel">Mailing List</span> option is selected, a
+specific <span class="guilabel">Mailing List</span> needs to be chosen from the adjacent <span class="guilabel">Select mailing
+lists</span> field drop-down menu.</p>
+<p>Then, Odoo will only send this email to contacts on that specific mailing list.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+See also</p><p><a class="reference internal" href="email_marketing/mailing_lists.html"><span class="doc">Mailing lists</span></a></p>
+</div>
+<p>When the <span class="guilabel">Recipients</span> field is clicked, a drop-down menu of other options is revealed.
+Each option provides different ways Odoo can create a target audience for the email.</p>
+<p>Those options (excluding the default <span class="guilabel">Mailing List</span>) provide the option to create a more
+specified recipient filter, in an equation-like format.</p>
+<p>The <span class="guilabel">Recipients</span> field options are as follows:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Applicant</span>: filter focuses on specific job applicants in the database.</p></li>
+<li><p><span class="guilabel">Contact</span>: filter focuses on specific contacts in the database.</p></li>
+<li><p><span class="guilabel">Event Registration</span>: filter focuses on people in the database who purchased event
+registrations.</p></li>
+<li><p><span class="guilabel">Event Track</span>: filter focuses on people in the database who hosted a specific talk
+(track) at an event.</p></li>
+<li><p><span class="guilabel">Lead/Opportunity</span>: filter focuses on leads or opportunities in the database.</p></li>
+<li><p><span class="guilabel">Mailing Contact</span>: filter focuses on specific mailing contacts in the database.</p></li>
+<li><p><span class="guilabel">Sales Order</span>: filter focuses on a specific sales orders in the database.</p></li>
+</ul>
+<p>If the specified recipient fields don’t automatically reveal themselves, simply click the
+<span class="guilabel">Add Filter</span> button beneath the <span class="guilabel">Recipients</span> field, and Odoo reveals the
+necessary equation fields to further drill down the target recipients for this mailing.</p>
+</section><section id="add-a-recipient-filter">
+<h3>Add a recipient filter<a class="headerlink" href="#add-a-recipient-filter" title="Permalink to this headline">¶</a></h3>
+<p>To add a more specified recipient filter, select any recipient option (other than <span class="guilabel">Mailing
+List</span>), and clicking <span class="guilabel">Add Filter</span>, if needed, to reveal three fields, formatted like an
+equation.</p>
+<p>To reveal the sub-menu options, click each field, and make the desired selections, until the
+preferred configuration has been achieved. The number of <span class="guilabel">Records</span> that match the rule(s)
+are indicated to the right of the <span class="guilabel">Recipients</span> field, in green.</p>
+<img alt="View of how recipient filters can be customized in Odoo Email Marketing." class="align-center" src="../../_images/add-filter-button.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>Some sub-menu options in the first rule field allow for a second choice to provide even more
+specificity.</p>
+</div>
+<p>To the right of each rule, are <span class="guilabel">× (Delete node)</span>, <span class="guilabel">＋ (Add node)</span>, and
+<span class="guilabel">⋯ (Add branch)</span> icons.</p>
+<p>The <span class="guilabel">× (Delete node)</span> icon deletes a specific node (line) of the rule. The <span class="guilabel">＋
+(Add node)</span> icon adds a node (line) to the rule. And, the <span class="guilabel">⋯ (Add branch)</span> icon adds a
+branch to the node. A branch means two additional, indented sub-nodes are added to the rule,
+providing even more specificity to the line above it.</p>
+</section><section id="mail-body-tab">
+<h3>Mail body tab<a class="headerlink" href="#mail-body-tab" title="Permalink to this headline">¶</a></h3>
+<p>At the bottom of the email form are two tabs: <span class="guilabel">Mail Body</span> and <span class="guilabel">Settings</span>. Let’s
+focus on <span class="guilabel">Mail Body</span> tab first.</p>
+<p>In the <span class="guilabel">Mail Body</span> tab, there are a number of pre-configured message templates to choose
+from. Select the desired template, and modify every element of its design details with Odoo’s
+drag-and-drop building blocks, located on the right sidebar. Each building block provides unique
+features and professional design elements.</p>
+<img alt="View of the building blocks used to create mailings in Odoo Email Marketing application." class="align-center" src="../../_images/mail-blocks.png" />
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>To build an email from scratch, select the <span class="guilabel">Plain Text</span> template, and Odoo provides a
+blank email canvas, which can be customized in a number of ways - either by using the front-end
+rich text editor that accepts slash (<span class="guilabel">/</span>) commands, or with the XML code editor when
+<a class="reference internal" href="../general/developer_mode.html#developer-mode"><span class="std std-ref">Developer Mode (debug mode)</span></a> is engaged, and the <span class="guilabel">&lt;/&gt;</span> icon is
+clicked.</p>
+</div>
+</section><section id="settings-tab">
+<h3>Settings tab<a class="headerlink" href="#settings-tab" title="Permalink to this headline">¶</a></h3>
+<p>To the right of the <span class="guilabel">Mail Body</span> tab is the <span class="guilabel">Settings</span> tab.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>The options available in the <span class="guilabel">Settings</span> tab will be different, depending on if the
+<span class="guilabel">Mailing Campaigns</span> feature is activated in the <span class="guilabel">Settings</span> page of the
+<span class="menuselection">Email Marketing</span> application (<span class="menuselection">Email Marketing ‣ Configuration
+‣ Settings</span>).</p>
+</div>
+<p>Without the <span class="guilabel">Mailing Campaigns</span> feature activated, the <span class="guilabel">Settings</span> tab on the
+email detail form looks like this:</p>
+<img alt="View of settings tab in Odoo Email Marketing app, without settings activated." class="align-center" src="../../_images/settings-without-features.png" />
+<ul class="simple">
+<li><p><span class="guilabel">Responsible</span>: choose an employee (in the database) to be responsible for this
+particular email.</p></li>
+<li><p><span class="guilabel">Send From</span>: designate an email alias that’ll display as the sender of this particular
+email.</p></li>
+<li><p><span class="guilabel">Reply To</span>: designate an email alias to whom all the replies to this particular email
+will be sent.</p></li>
+<li><p><span class="guilabel">Attachments</span>: if any specific documents are required (or helpful) for this event
+invite, they can be sent along with this email, by clicking <span class="guilabel">ATTACH A FILE</span>, and adding
+the appropriate document(s).</p></li>
+</ul>
+<p>When the <span class="guilabel">Mailing Campaigns</span> feature <em>is</em> activated, additional <span class="guilabel">Marketing</span>
+options appear in the <span class="guilabel">Settings</span> tab, which look like this:</p>
+<img alt="View of settings tab in Odoo Email Marketing when settings are activated." class="align-center" src="../../_images/settings-tab-with-settings.png" />
+<p>The additional features are: <span class="guilabel">Mailing Campaign</span>, <span class="guilabel">Allow A/B Testing</span>, and
+<span class="guilabel">A/B Testing percentage</span>.</p>
+</section><section id="mailing-campaigns">
+<h2>Mailing campaigns<a class="headerlink" href="#mailing-campaigns" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="guilabel">Mailing Campaign</span> field provides the option to add this particular email to a
+previously-made email campaign in the database. Click the empty field to reveal a drop-down menu
+containing all previously-made mailing campaigns in the database.</p>
+<img alt="View of a mailing campaign drop-down menu in Odoo Email Marketing application." class="align-center" src="../../_images/mailing-campaign-dropdown.png" />
+<p>If the desired campaign isn’t available in the initial drop-down menu, select <span class="guilabel">Search
+More</span> to reveal a complete list of all mailing campaigns in the database. Or, type the name of the
+desired mailing campaign in the <span class="guilabel">Mailing Campaign</span> field, until Odoo reveals the desired
+campaign in the drop-down menu. Then, select the desired campaign.</p>
+</section><section id="create-new-mailing-campaign-from-settings-tab">
+<h3>Create new mailing campaign (from Settings tab)<a class="headerlink" href="#create-new-mailing-campaign-from-settings-tab" title="Permalink to this headline">¶</a></h3>
+<p>To create a new campaign from this <span class="guilabel">Mailing Campaign</span> field, start typing the name of this
+new campaign, and select <span class="guilabel">Create [Campaign Name]</span> or <span class="guilabel">Create and Edit…</span>.</p>
+<p>Click <span class="guilabel">Create</span> to add this new mailing campaign to the database, and modify its settings
+in the future. And click <span class="guilabel">Create and Edit…</span> to add this new mailing campaign to the
+database, and Odoo reveals a pop-up window.</p>
+<img alt="View of the email mailing campaign pop-up window in Odoo Email Marketing application." class="align-center" src="../../_images/mailing-campaign-popup.png" />
+<p>Here, the new mailing campaign can be further customized. Adjust the <span class="guilabel">Campaign Name</span>,
+assign a <span class="guilabel">Responsible</span>, and add <span class="guilabel">Tags</span>.</p>
+<p>The top row of the <span class="guilabel">Create: Mailing Campaign</span> pop-up window is filled with analytical
+smart buttons. Each of which displays various metrics related to the campaign. When clicked, Odoo
+reveals a separate, more detailed page with even more in-depth statistics.</p>
+<p>The option to instantly a new communication from this pop-up window is available in the upper-left
+corner. The adjustable status bar is located in the upper-right.</p>
+<p>When all modifications are ready to be finalized, click <span class="guilabel">Save</span>. To delete the entire
+campaign, click <span class="guilabel">Discard</span>.</p>
+</section><section id="create-new-mailing-campaign-from-campaigns-page">
+<h3>Create new mailing campaign (from Campaigns page)<a class="headerlink" href="#create-new-mailing-campaign-from-campaigns-page" title="Permalink to this headline">¶</a></h3>
+<p>When the <span class="guilabel">Mailing Campaigns</span> feature is activated, a new <span class="guilabel">Campaigns</span> option
+appears in the header of the <em>Email Marketing</em> application. Campaigns can also be created on this
+<span class="guilabel">Campaigns</span> page in the <em>Email Marketing</em> app.</p>
+<p>To do that, navigate to <span class="menuselection">Email Marketing app ‣ Campaigns ‣ Create</span>. When that’s
+clicked, a pop-up window appears, in which the <span class="guilabel">Campaign Name</span>, <span class="guilabel">Responsible</span>,
+and <span class="guilabel">Tags</span> can be added directly on the <span class="guilabel">Campaigns</span> dashboard.</p>
+<img alt="View of the campaign pop-up window in Odoo Email Marketing." class="align-center" src="../../_images/campaigns-page-popup.png" />
+<p>Click <span class="guilabel">Add</span> to add the campaign to the database, and freely edit it later on. Or, click
+<span class="guilabel">Edit</span> and Odoo reveals the campaign template form on a separate page, providing the
+opportunity to further edit the campaign, send communications related to the campaign, and analyze
+various metrics related to the campaign, via the smart buttons at the top of the form.</p>
+</section><section id="a-b-testing">
+<h2>A/B testing<a class="headerlink" href="#a-b-testing" title="Permalink to this headline">¶</a></h2>
+<p>Back in the <span class="guilabel">Settings</span> tab of the mailing, if the <span class="guilabel">Allow A/B Testing</span> box is
+checked, recipients are only be mailed to once. This allows different mailings to be sent to
+randomly selected recipients. This tests the overall effectiveness of the mailing, and eliminates
+the need for duplicate messages.</p>
+<p>The <span class="guilabel">A/B Testing percentage</span> field represents the percentage of contacts in the database
+that this message will be mailed to, as a part of the <span class="guilabel">A/B Testing</span>. Enter a number
+between <code class="o_code docutils literal notranslate"><span class="pre">1-100</span></code>. The recipients are randomly chosen.</p>
+</section><section id="send-schedule-or-test">
+<h2>Send, schedule, or test<a class="headerlink" href="#send-schedule-or-test" title="Permalink to this headline">¶</a></h2>
+<p>After finalizing the mailing, Odoo provides the following options in the upper-left corner of the
+email template page. Those options are: <span class="guilabel">Send</span>, <span class="guilabel">Schedule</span>, and
+<span class="guilabel">Test</span>.</p>
+<p>While in <span class="guilabel">Edit</span> mode, there are also buttons to <span class="guilabel">Save</span> or <span class="guilabel">Discard</span>
+the mailing, as well.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Send</span> - Click to have Odoo send the email to the desired recipients. When Odoo has sent
+the mailing, the status changes to <em>Sent</em>.</p></li>
+<li><p><span class="guilabel">Schedule</span> - Click to reveal a pop-up window, in which a future date-time is chosen.
+Odoo sends the mailing to the desired recipients at that specified date-time. When a date-time is
+chosen, the status of the mailing changes to <em>In Queue</em>.</p></li>
+<li><p><span class="guilabel">Test</span> - Click to reveal a pop-up window, in which Odoo allows a sample email to be sent
+for testing purposes. Enter the desired recipient’s email address in the <span class="guilabel">Recipients</span>
+field, and click <span class="guilabel">Send Sample Mail</span>.</p></li>
+<li><p><span class="guilabel">Save</span> - Click to save the mailing as a draft, which can be edited (and sent) at a later
+date. When clicked, the status of the mailing stays as <span class="guilabel">Draft</span>.</p></li>
+<li><p><span class="guilabel">Discard</span> - Click to discard any changes that have been made since the last save.</p></li>
+</ul>
+<div class="alert alert-tip">
+<p class="alert-title">
+Tip</p><p>When <span class="guilabel">Save</span> or <span class="guilabel">Discard</span> is selected (while in <span class="guilabel">Edit</span> mode), those
+options are replaced with an <span class="guilabel">Edit</span> button and a <span class="guilabel">Create</span> button. Click
+<span class="guilabel">Edit</span> to re-enter <span class="guilabel">Edit</span> mode. Click <span class="guilabel">Create</span> to start creating a
+new mailing.</p>
+</div>
+<div class="alert alert-primary">
+<p class="alert-title">
+Note</p><p>By default, there’s a daily limit applied for <strong>all emails</strong> sent throughout <em>all</em> applications.
+So, if there are remaining emails to be sent after a limit has been reached, those mailings <em>will
+not</em> be sent automatically the next day. The sending needs to be forced, by opening the email and
+clicking <span class="guilabel">Retry</span>.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1 o_menu_applications_marketing_email_marketing_mailing_lists"><a class="reference internal" href="email_marketing/mailing_lists.html">Mailing lists</a></li>
+<li class="toctree-l1 o_menu_applications_marketing_email_marketing_unsubscriptions"><a class="reference internal" href="email_marketing/unsubscriptions.html">Manage unsubscriptions (Blacklist)</a></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>On this page</h5>
+    <ul>
+<li><a class="reference internal" href="#">Email marketing</a><ul>
+<li><a class="reference internal" href="#email-marketing-dashboard">Email marketing dashboard</a><ul>
+<li><a class="reference internal" href="#default-kanban-view-and-stages">Default kanban view and stages</a></li>
+<li><a class="reference internal" href="#list-view">List view</a></li>
+<li><a class="reference internal" href="#graph-view">Graph view</a></li>
+<li><a class="reference internal" href="#filters-group-by-and-favorites-search-options">Filters, Group By, and Favorites search options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#create-an-email">Create an email</a><ul>
+<li><a class="reference internal" href="#recipients">Recipients</a></li>
+<li><a class="reference internal" href="#add-a-recipient-filter">Add a recipient filter</a></li>
+<li><a class="reference internal" href="#mail-body-tab">Mail body tab</a></li>
+<li><a class="reference internal" href="#settings-tab">Settings tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mailing-campaigns">Mailing campaigns</a><ul>
+<li><a class="reference internal" href="#create-new-mailing-campaign-from-settings-tab">Create new mailing campaign (from Settings tab)</a></li>
+<li><a class="reference internal" href="#create-new-mailing-campaign-from-campaigns-page">Create new mailing campaign (from Campaigns page)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-b-testing">A/B testing</a></li>
+<li><a class="reference internal" href="#send-schedule-or-test">Send, schedule, or test</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Get Help</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contact Support</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Ask the Odoo Community</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Odoo 16.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Email marketing</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>
