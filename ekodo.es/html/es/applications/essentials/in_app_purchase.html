@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+
+<html lang="ES">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compras dentro de la aplicación (IAP) &#8212; documentación de Odoo - 16.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/utils.js"></script>
+    <script src="../../_static/js/layout.js"></script>
+    <script src="../../_static/js/menu.js"></script>
+    <script src="../../_static/js/page_toc.js"></script>
+    <script src="../../_static/js/switchers.js"></script>
+    <script src="../../_static/translations.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="x-default" href="https://ekodo.es/doc/applications/essentials/in_app_purchase.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/essentials/in_app_purchase.html" />
+    
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Ventas" href="../sales.html" />
+    <link rel="prev" title="Exportar e importar datos" href="export_import_data.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul class="current">
+<li class="toctree-l1 current o_menu_applications"><a class="reference internal" href="../../applications.html">Documentos para el usuario</a><ul class="current">
+<li class="toctree-l2 current o_menu_applications_essentials"><a class="reference internal" href="#">Fundamentos de Odoo</a><ul class="current">
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="activities.html">Actividades</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="reporting.html">Reportes</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="search.html">Buscar y filtrar registros</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="export_import_data.html">Exportar e importar datos</a></li>
+<li class="toctree-l3 current o_menu_applications_essentials_"><a class="current reference internal" href="#">Compras dentro de la aplicación (IAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_sales"><a class="reference internal" href="#">Ventas</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_crm"><a class="reference internal" href="../sales/crm.html">CRM</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_crm_pipeline"><a class="reference internal" href="#">Organizar un flujo</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_lost_opportunities"><a class="reference internal" href="../sales/crm/pipeline/lost_opportunities.html">Gestión de oportunidades perdidas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_multi_sales_team"><a class="reference internal" href="../sales/crm/pipeline/multi_sales_team.html">Varios equipos de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_acquire_leads"><a class="reference internal" href="#">Obtener leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_convert"><a class="reference internal" href="../sales/crm/acquire_leads/convert.html">Convertir leads en oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_generate_leads"><a class="reference internal" href="../sales/crm/acquire_leads/generate_leads.html">Generar leads y oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_send_quotes"><a class="reference internal" href="../sales/crm/acquire_leads/send_quotes.html">Envíe presupuestos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_lead_mining"><a class="reference internal" href="../sales/crm/acquire_leads/lead_mining.html">Minado de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_track_leads"><a class="reference internal" href="#">Asignar y rastrear leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_track_leads_lead_scoring"><a class="reference internal" href="../sales/crm/track_leads/lead_scoring.html">Asignación de leads con la puntuación predictiva de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_performance"><a class="reference internal" href="#">Analizar el rendimiento</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_performance_win_loss"><a class="reference internal" href="../sales/crm/performance/win_loss.html">Revise la relación ganancia/pérdida</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_optimize"><a class="reference internal" href="#">Mejoras para su trabajo diario</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_partner_autocomplete"><a class="reference internal" href="../sales/crm/optimize/partner_autocomplete.html">Enriquecer contactos con la función Autocompletar contacto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_gamification"><a class="reference internal" href="../sales/crm/optimize/gamification.html">¿Cómo motivar y recompensar a mis vendedores?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_utilize_activities"><a class="reference internal" href="../sales/crm/optimize/utilize_activities.html">Utilizar actividades para los equipos de ventas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_lead_enrichment"><a class="reference internal" href="../sales/crm/optimize/lead_enrichment.html">Enriquecimiento de leads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_sales"><a class="reference internal" href="../sales/sales.html">Ventas</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_sales_send_quotations"><a class="reference internal" href="#">Enviar cotizaciones</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_quote_template"><a class="reference internal" href="../sales/sales/send_quotations/quote_template.html">Plantillas de cotización</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_optional_products"><a class="reference internal" href="../sales/sales/send_quotations/optional_products.html">Productos opcionales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_signature_to_validate"><a class="reference internal" href="../sales/sales/send_quotations/get_signature_to_validate.html">Firmas electrónicas para la confirmación de órdenes.</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_paid_to_validate"><a class="reference internal" href="../sales/sales/send_quotations/get_paid_to_validate.html">Confirmación de orden de pago en línea</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_deadline"><a class="reference internal" href="../sales/sales/send_quotations/deadline.html">Fecha límite de cotizaciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_different_addresses"><a class="reference internal" href="../sales/sales/send_quotations/different_addresses.html">Entregas y facturas en diferentes direcciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_orders_and_variants"><a class="reference internal" href="../sales/sales/send_quotations/orders_and_variants.html">Variantes de producto en cotizaciones y órdenes de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_invoicing"><a class="reference internal" href="#">Método de facturación</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_invoicing_policy"><a class="reference internal" href="../sales/sales/invoicing/invoicing_policy.html">Facturar por cantidades entregadas u ordenadas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_down_payment"><a class="reference internal" href="../sales/sales/invoicing/down_payment.html">Anticipos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_proforma"><a class="reference internal" href="../sales/sales/invoicing/proforma.html">Facturas proforma</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_time_materials"><a class="reference internal" href="../sales/sales/invoicing/time_materials.html">Facturación por tiempo y materiales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_milestone"><a class="reference internal" href="../sales/sales/invoicing/milestone.html">Facturar objetivos de proyecto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_expense"><a class="reference internal" href="../sales/sales/invoicing/expense.html">Volver a facturar gastos a los clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_products_prices"><a class="reference internal" href="#">Productos y precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_products"><a class="reference internal" href="#">Gestionar productos</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_import"><a class="reference internal" href="../sales/sales/products_prices/products/import.html">Importar productos</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_variants"><a class="reference internal" href="../sales/sales/products_prices/products/variants.html">Variantes de producto</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_product_images"><a class="reference internal" href="../sales/sales/products_prices/products/product_images.html">Imágenes para productos con Google Imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_prices"><a class="reference internal" href="#">Gestionar precios</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_pricing"><a class="reference internal" href="../sales/sales/products_prices/prices/pricing.html">Listas de precios, descuentos y fórmulas</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_currencies"><a class="reference internal" href="../sales/sales/products_prices/prices/currencies.html">Divisas extranjeras</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_returns"><a class="reference internal" href="../sales/sales/products_prices/returns.html">Devoluciones y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_ewallets_giftcards"><a class="reference internal" href="../sales/sales/products_prices/ewallets_giftcards.html">Usar monederos electrónicos y tarjetas de regalo</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_loyalty_discount"><a class="reference internal" href="../sales/sales/products_prices/loyalty_discount.html">Programas de descuento y lealtad</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_amazon_connector"><a class="reference internal" href="#">Conector de Amazon</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_features"><a class="reference internal" href="../sales/sales/amazon_connector/features.html">Funciones del Conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_setup"><a class="reference internal" href="../sales/sales/amazon_connector/setup.html">Configuración del conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_manage"><a class="reference internal" href="../sales/sales/amazon_connector/manage.html">Gestión de órdenes de Amazon</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_ebay_connector"><a class="reference internal" href="#">Conector de eBay</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_setup"><a class="reference internal" href="../sales/sales/ebay_connector/setup.html">Configuración del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_manage"><a class="reference internal" href="../sales/sales/ebay_connector/manage.html">¿Cómo anunciar un producto?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_troubleshooting"><a class="reference internal" href="../sales/sales/ebay_connector/troubleshooting.html">Solución de problemas del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_linking_listings"><a class="reference internal" href="../sales/sales/ebay_connector/linking_listings.html">Vincular anuncios existentes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale"><a class="reference internal" href="../sales/point_of_sale.html">Punto de venta</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_employee_login"><a class="reference internal" href="../sales/point_of_sale/employee_login.html">Gestión de varios empleados</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_receipts_invoices"><a class="reference internal" href="../sales/point_of_sale/receipts_invoices.html">Recibos y facturas</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_configuration"><a class="reference internal" href="../sales/point_of_sale/configuration.html">Configuración</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_printers"><a class="reference internal" href="../sales/point_of_sale/configuration/epos_printers.html">Impresoras ePOS</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_https"><a class="reference internal" href="../sales/point_of_sale/configuration/https.html">Conexión segura (HTTPS)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_ssc"><a class="reference internal" href="../sales/point_of_sale/configuration/epos_ssc.html">Certificado autofirmado para impresoras electrónicas del PdV</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_shop"><a class="reference internal" href="#">Funciones de tienda</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_sales_order"><a class="reference internal" href="../sales/point_of_sale/shop/sales_order.html">Orden de venta</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_barcode"><a class="reference internal" href="../sales/point_of_sale/shop/barcode.html">Códigos de barras</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_serial_numbers"><a class="reference internal" href="../sales/point_of_sale/shop/serial_numbers.html">Números de serie y lotes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_ship_later"><a class="reference internal" href="../sales/point_of_sale/shop/ship_later.html">Enviar después</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_customer_display"><a class="reference internal" href="../sales/point_of_sale/shop/customer_display.html">Pantalla del cliente</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_restaurant"><a class="reference internal" href="../sales/point_of_sale/restaurant.html">Funciones para restaurantes</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_bill_printing"><a class="reference internal" href="../sales/point_of_sale/restaurant/bill_printing.html">Cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_floors_tables"><a class="reference internal" href="../sales/point_of_sale/restaurant/floors_tables.html">Gestión de pisos y mesas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_kitchen_printing"><a class="reference internal" href="../sales/point_of_sale/restaurant/kitchen_printing.html">Impresión de órdenes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_tips"><a class="reference internal" href="../sales/point_of_sale/restaurant/tips.html">Propinas</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_pricing"><a class="reference internal" href="#">Funciones de precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discounts"><a class="reference internal" href="../sales/point_of_sale/pricing/discounts.html">Descuentos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discount_tags"><a class="reference internal" href="../sales/point_of_sale/pricing/discount_tags.html">Etiquetas de descuento (lector de código de barras)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_loyalty"><a class="reference internal" href="../sales/point_of_sale/pricing/loyalty.html">Programas de lealtad</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_pricelists"><a class="reference internal" href="../sales/point_of_sale/pricing/pricelists.html">Listas de precios</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_fiscal_position"><a class="reference internal" href="../sales/point_of_sale/pricing/fiscal_position.html">Impuestos flexibles (posiciones fiscales)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_cash_rounding"><a class="reference internal" href="../sales/point_of_sale/pricing/cash_rounding.html">Redondeo de efectivo</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_payment_methods"><a class="reference internal" href="../sales/point_of_sale/payment_methods.html">Métodos de pago</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_payment_methods_terminals"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals.html">Terminales de pago</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_adyen"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/adyen.html">Adyen</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_ingenico"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/ingenico.html">Ingenico</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_six"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/six.html">SIX</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_stripe"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/stripe.html">Stripe</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_vantiv"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/vantiv.html">Vantiv</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_worldline"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/worldline.html">Worldline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_reporting"><a class="reference internal" href="../sales/point_of_sale/reporting.html">Reportes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_services"><a class="reference internal" href="#">Servicios</a><ul>
+<li class="toctree-l3 o_menu_applications_services_project"><a class="reference internal" href="../services/project.html">Proyecto</a><ul>
+<li class="toctree-l4 o_menu_applications_services_project_tasks"><a class="reference internal" href="#">Tareas</a><ul>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_email_alias"><a class="reference internal" href="../services/project/tasks/email_alias.html">Crear tareas del proyecto a partir de un seudónimo de correo electrónico</a></li>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_recurring_tasks"><a class="reference internal" href="../services/project/tasks/recurring_tasks.html">Tareas recurrentes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_project_project_management"><a class="reference internal" href="../services/project/project_management.html">Gestión de proyectos</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_timesheets"><a class="reference internal" href="../services/timesheets.html">Hojas de horas</a><ul>
+<li class="toctree-l4 o_menu_applications_services_timesheets_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_timesheets_overview_time_off"><a class="reference internal" href="../services/timesheets/overview/time_off.html">Crear hojas de horas después de la validación del tiempo personal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_field_service"><a class="reference internal" href="../services/field_service.html">Servicio externo</a><ul>
+<li class="toctree-l4 o_menu_applications_services_field_service_onsite_interventions"><a class="reference internal" href="../services/field_service/onsite_interventions.html">Planificación de intervenciones in situ</a></li>
+<li class="toctree-l4 o_menu_applications_services_field_service_default_warehouse"><a class="reference internal" href="../services/field_service/default_warehouse.html">Almacén predeterminado del usuario</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_helpdesk"><a class="reference internal" href="../services/helpdesk.html">Servicio de asistencia</a><ul>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_getting_started"><a class="reference internal" href="../services/helpdesk/overview/getting_started.html">Primeros pasos con Servicio de asistencia</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_sla"><a class="reference internal" href="../services/helpdesk/overview/sla.html">Acuerdos de nivel de servicio (SLA)</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_receiving_tickets"><a class="reference internal" href="../services/helpdesk/overview/receiving_tickets.html">Empezar a recibir tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_reports"><a class="reference internal" href="../services/helpdesk/overview/reports.html">Reportes</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_help_center"><a class="reference internal" href="../services/helpdesk/overview/help_center.html">Centro de ayuda</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_ratings"><a class="reference internal" href="../services/helpdesk/overview/ratings.html">Calificación de clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_advanced"><a class="reference internal" href="#">Avanzado</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_after_sales"><a class="reference internal" href="../services/helpdesk/advanced/after_sales.html">Servicios posventa</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_close_tickets"><a class="reference internal" href="../services/helpdesk/advanced/close_tickets.html">Cerrar tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_track_and_bill"><a class="reference internal" href="../services/helpdesk/advanced/track_and_bill.html">Seguimiento y facturación del tiempo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_finance"><a class="reference internal" href="#">Finanzas</a><ul>
+<li class="toctree-l3 o_menu_applications_finance_accounting"><a class="reference internal" href="../finance/accounting.html">Contabilidad y facturación</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_accounting_get_started"><a class="reference internal" href="../finance/accounting/get_started.html">Información básica</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_cheat_sheet"><a class="reference internal" href="../finance/accounting/get_started/cheat_sheet.html">Hoja de referencia de Contabilidad</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_chart_of_accounts"><a class="reference internal" href="../finance/accounting/get_started/chart_of_accounts.html">Plan de cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_multi_currency"><a class="reference internal" href="../finance/accounting/get_started/multi_currency.html">Sistema multidivisa</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_avg_price_valuation"><a class="reference internal" href="../finance/accounting/get_started/avg_price_valuation.html">Costo promedio en bienes devueltos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_vat_units"><a class="reference internal" href="../finance/accounting/get_started/vat_units.html">Unidades de IVA</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_taxes"><a class="reference internal" href="../finance/accounting/taxes.html">Impuestos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_cash_basis"><a class="reference internal" href="../finance/accounting/taxes/cash_basis.html">Impuestos de base de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_retention"><a class="reference internal" href="../finance/accounting/taxes/retention.html">Retención fiscal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_vat_verification"><a class="reference internal" href="../finance/accounting/taxes/vat_verification.html">Comprobar un número de IVA (sistema VIES)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_fiscal_positions"><a class="reference internal" href="../finance/accounting/taxes/fiscal_positions.html">Posiciones fiscales (mapeo de impuestos y cuentas)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_avatax"><a class="reference internal" href="../finance/accounting/taxes/avatax.html">Integración con AvaTax</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avatax_use"><a class="reference internal" href="../finance/accounting/taxes/avatax/avatax_use.html">Uso de AvaTax</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avalara_portal"><a class="reference internal" href="../finance/accounting/taxes/avatax/avalara_portal.html">Portal de Avalara (AvaTax)</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_taxcloud"><a class="reference internal" href="../finance/accounting/taxes/taxcloud.html">Integración con TaxCloud</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_eu_distance_selling"><a class="reference internal" href="../finance/accounting/taxes/eu_distance_selling.html">Ventas a distancia intracomunitarias en la UE</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_B2B_B2C"><a class="reference internal" href="../finance/accounting/taxes/B2B_B2C.html">Precios B2B (impuestos no incluidos) y B2C (impuestos incluidos)</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_customer_invoices"><a class="reference internal" href="../finance/accounting/customer_invoices.html">Facturas de cliente</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="../finance/accounting/customer_invoices/overview.html">Procesos de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="../finance/accounting/customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_payment_terms"><a class="reference internal" href="../finance/accounting/customer_invoices/payment_terms.html">Términos de pago y planes de pago a plazos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="../finance/accounting/customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_discounts"><a class="reference internal" href="../finance/accounting/customer_invoices/cash_discounts.html">Descuentos por pronto pago y reducción de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="../finance/accounting/customer_invoices/credit_notes.html">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_rounding"><a class="reference internal" href="../finance/accounting/customer_invoices/cash_rounding.html">Redondeo de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_deferred_revenues"><a class="reference internal" href="../finance/accounting/customer_invoices/deferred_revenues.html">Ingresos diferidos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_electronic_invoicing"><a class="reference internal" href="../finance/accounting/customer_invoices/electronic_invoicing.html">Facturación electrónica (<abbr title="intercambio electrónico de datos">EDI</abbr>)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_snailmail"><a class="reference internal" href="../finance/accounting/customer_invoices/snailmail.html">Correo postal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_epc_qr_code"><a class="reference internal" href="../finance/accounting/customer_invoices/epc_qr_code.html">Códigos EPC QR</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_incoterms"><a class="reference internal" href="../finance/accounting/customer_invoices/incoterms.html">Incoterms</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../finance/accounting/vendor_bills.html">Facturas de proveedor</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_invoice_digitization"><a class="reference internal" href="../finance/accounting/vendor_bills/invoice_digitization.html">Digitalización de documentos con IA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="../finance/accounting/vendor_bills/assets.html">Activos no circulantes y fijos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="../finance/accounting/vendor_bills/deferred_expenses.html">Gastos diferidos y prepagos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_payments"><a class="reference internal" href="../finance/accounting/payments.html">Pagos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="../finance/accounting/payments/online.html">Pagos en línea</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="../finance/accounting/payments/checks.html">Cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch"><a class="reference internal" href="../finance/accounting/payments/batch.html">Pagos por lote para depósitos bancarios</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch_sdd"><a class="reference internal" href="../finance/accounting/payments/batch_sdd.html">Pagos por lotes: domiciliación bancaria SEPA (SDD)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_follow_up"><a class="reference internal" href="../finance/accounting/payments/follow_up.html">Seguimiento en las facturas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="../finance/accounting/payments/internal_transfers.html">Transferencias internas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="../finance/accounting/payments/pay_sepa.html">Pagos con SEPA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="../finance/accounting/payments/pay_checks.html">Pagar con cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="../finance/accounting/payments/forecast.html">Pronóstico de futuras facturas por pagar</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../finance/accounting/bank.html">Cuentas bancarias y de efectivo</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="../finance/accounting/bank/bank_synchronization.html">Sincronización bancaria</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="../finance/accounting/bank/bank_synchronization/saltedge.html">Salt Edge</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="../finance/accounting/bank/bank_synchronization/ponto.html">Ponto</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="../finance/accounting/bank/bank_synchronization/enablebanking.html">Enable Banking</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="../finance/accounting/bank/transactions.html">Transacciones</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="../finance/accounting/bank/reconciliation.html">Conciliación bancaria</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="../finance/accounting/bank/reconciliation_models.html">Modelos de conciliación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_foreign_currency"><a class="reference internal" href="../finance/accounting/bank/foreign_currency.html">Gestione una cuenta bancaria en una moneda extranjera</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_cash_register"><a class="reference internal" href="../finance/accounting/bank/cash_register.html">Caja registradora</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_reporting"><a class="reference internal" href="../finance/accounting/reporting.html">Reportes</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_returns"><a class="reference internal" href="../finance/accounting/reporting/tax_returns.html">Declaración de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_carryover"><a class="reference internal" href="../finance/accounting/reporting/tax_carryover.html">Traspaso de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_analytic_accounting"><a class="reference internal" href="../finance/accounting/reporting/analytic_accounting.html">Contabilidad analítica</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_budget"><a class="reference internal" href="../finance/accounting/reporting/budget.html">Presupuesto financiero</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_intrastat"><a class="reference internal" href="../finance/accounting/reporting/intrastat.html">Intrastat</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_data_inalterability"><a class="reference internal" href="../finance/accounting/reporting/data_inalterability.html">Reporte de comprobación de inalterabilidad de datos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_silverfin"><a class="reference internal" href="../finance/accounting/reporting/silverfin.html">Integración con Silverfin</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_customize"><a class="reference internal" href="../finance/accounting/reporting/customize.html">Reportes personalizados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_year_end"><a class="reference internal" href="../finance/accounting/reporting/year_end.html">Cierre del ejercicio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_expenses"><a class="reference internal" href="../finance/expenses.html">Gastos</a></li>
+<li class="toctree-l3 o_menu_applications_finance_payment_providers"><a class="reference internal" href="../finance/payment_providers.html">Pagos en línea</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_wire_transfer"><a class="reference internal" href="../finance/payment_providers/wire_transfer.html">Transferencias bancarias</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_adyen"><a class="reference internal" href="../finance/payment_providers/adyen.html">Adyen</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_alipay"><a class="reference internal" href="../finance/payment_providers/alipay.html">Alipay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_amazon_payment_services"><a class="reference internal" href="../finance/payment_providers/amazon_payment_services.html">Servicios de pago de Amazon</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_asiapay"><a class="reference internal" href="../finance/payment_providers/asiapay.html">AsiaPay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_authorize"><a class="reference internal" href="../finance/payment_providers/authorize.html">Authorize.Net</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_buckaroo"><a class="reference internal" href="../finance/payment_providers/buckaroo.html">Buckaroo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_demo"><a class="reference internal" href="../finance/payment_providers/demo.html">Demostración</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_flutterwave"><a class="reference internal" href="../finance/payment_providers/flutterwave.html">Flutterwave</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mercado_pago"><a class="reference internal" href="../finance/payment_providers/mercado_pago.html">Mercado Pago</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mollie"><a class="reference internal" href="../finance/payment_providers/mollie.html">Mollie</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_ogone"><a class="reference internal" href="../finance/payment_providers/ogone.html">Ogone</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_paypal"><a class="reference internal" href="../finance/payment_providers/paypal.html">PayPal</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_razorpay"><a class="reference internal" href="../finance/payment_providers/razorpay.html">Razorpay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_sips"><a class="reference internal" href="../finance/payment_providers/sips.html">SIPS</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_stripe"><a class="reference internal" href="../finance/payment_providers/stripe.html">Stripe</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_fiscal_localizations"><a class="reference internal" href="../finance/fiscal_localizations.html">Localizaciones fiscales</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_argentina"><a class="reference internal" href="../finance/fiscal_localizations/argentina.html">Argentina</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_australia"><a class="reference internal" href="../finance/fiscal_localizations/australia.html">Australia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_belgium"><a class="reference internal" href="../finance/fiscal_localizations/belgium.html">Bélgica</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_brazil"><a class="reference internal" href="../finance/fiscal_localizations/brazil.html">Brasil</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_chile"><a class="reference internal" href="../finance/fiscal_localizations/chile.html">Chile</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_colombia"><a class="reference internal" href="../finance/fiscal_localizations/colombia.html">Colombia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_ecuador"><a class="reference internal" href="../finance/fiscal_localizations/ecuador.html">Ecuador</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_egypt"><a class="reference internal" href="../finance/fiscal_localizations/egypt.html">Egipto</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_france"><a class="reference internal" href="../finance/fiscal_localizations/france.html">Francia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_germany"><a class="reference internal" href="../finance/fiscal_localizations/germany.html">Alemania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_india"><a class="reference internal" href="../finance/fiscal_localizations/india.html">India</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_indonesia"><a class="reference internal" href="../finance/fiscal_localizations/indonesia.html">Indonesia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_italy"><a class="reference internal" href="../finance/fiscal_localizations/italy.html">Italia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_kenya"><a class="reference internal" href="../finance/fiscal_localizations/kenya.html">Kenia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_luxembourg"><a class="reference internal" href="../finance/fiscal_localizations/luxembourg.html">Luxemburgo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_mexico"><a class="reference internal" href="../finance/fiscal_localizations/mexico.html">México</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_netherlands"><a class="reference internal" href="../finance/fiscal_localizations/netherlands.html">Países Bajos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_romania"><a class="reference internal" href="../finance/fiscal_localizations/romania.html">Rumania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_peru"><a class="reference internal" href="../finance/fiscal_localizations/peru.html">Perú</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_philippines"><a class="reference internal" href="../finance/fiscal_localizations/philippines.html">Filipinas</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_saudi_arabia"><a class="reference internal" href="../finance/fiscal_localizations/saudi_arabia.html">Arabia Saudita</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_spain"><a class="reference internal" href="../finance/fiscal_localizations/spain.html">España</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_switzerland"><a class="reference internal" href="../finance/fiscal_localizations/switzerland.html">Suiza</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_thailand"><a class="reference internal" href="../finance/fiscal_localizations/thailand.html">Tailandia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_arab_emirates"><a class="reference internal" href="../finance/fiscal_localizations/united_arab_emirates.html">Emiratos Árabes Unidos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_kingdom"><a class="reference internal" href="../finance/fiscal_localizations/united_kingdom.html">Reino Unido</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>En esta página</h5>
+    <ul>
+<li><a class="reference internal" href="#">Compras dentro de la aplicación (IAP)</a><ul>
+<li><a class="reference internal" href="#iap-services">Servicios de compras dentro de la aplicación</a><ul>
+<li><a class="reference internal" href="#use-iap-services">Uso de los servicios de compras dentro de la aplicación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iap-credits">Créditos de compras dentro de la aplicación</a><ul>
+<li><a class="reference internal" href="#buy-credits">Comprar créditos</a><ul>
+<li><a class="reference internal" href="#manually-buy-credits">Comprar créditos de forma manual</a></li>
+<li><a class="reference internal" href="#low-credit-notification">Notificación sobre pocos créditos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul class="current">
+<li class="toctree-l1 current o_menu_applications"><a class="reference internal" href="../../applications.html">Documentos para el usuario</a><ul class="current">
+<li class="toctree-l2 current o_menu_applications_essentials"><a class="reference internal" href="#">Fundamentos de Odoo</a><ul class="current">
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="activities.html">Actividades</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="reporting.html">Reportes</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="search.html">Buscar y filtrar registros</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="export_import_data.html">Exportar e importar datos</a></li>
+<li class="toctree-l3 current o_menu_applications_essentials_"><a class="current reference internal" href="#">Compras dentro de la aplicación (IAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_sales"><a class="reference internal" href="#">Ventas</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_crm"><a class="reference internal" href="../sales/crm.html">CRM</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_crm_pipeline"><a class="reference internal" href="#">Organizar un flujo</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_lost_opportunities"><a class="reference internal" href="../sales/crm/pipeline/lost_opportunities.html">Gestión de oportunidades perdidas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_multi_sales_team"><a class="reference internal" href="../sales/crm/pipeline/multi_sales_team.html">Varios equipos de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_acquire_leads"><a class="reference internal" href="#">Obtener leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_convert"><a class="reference internal" href="../sales/crm/acquire_leads/convert.html">Convertir leads en oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_generate_leads"><a class="reference internal" href="../sales/crm/acquire_leads/generate_leads.html">Generar leads y oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_send_quotes"><a class="reference internal" href="../sales/crm/acquire_leads/send_quotes.html">Envíe presupuestos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_lead_mining"><a class="reference internal" href="../sales/crm/acquire_leads/lead_mining.html">Minado de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_track_leads"><a class="reference internal" href="#">Asignar y rastrear leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_track_leads_lead_scoring"><a class="reference internal" href="../sales/crm/track_leads/lead_scoring.html">Asignación de leads con la puntuación predictiva de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_performance"><a class="reference internal" href="#">Analizar el rendimiento</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_performance_win_loss"><a class="reference internal" href="../sales/crm/performance/win_loss.html">Revise la relación ganancia/pérdida</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_optimize"><a class="reference internal" href="#">Mejoras para su trabajo diario</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_partner_autocomplete"><a class="reference internal" href="../sales/crm/optimize/partner_autocomplete.html">Enriquecer contactos con la función Autocompletar contacto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_gamification"><a class="reference internal" href="../sales/crm/optimize/gamification.html">¿Cómo motivar y recompensar a mis vendedores?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_utilize_activities"><a class="reference internal" href="../sales/crm/optimize/utilize_activities.html">Utilizar actividades para los equipos de ventas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_lead_enrichment"><a class="reference internal" href="../sales/crm/optimize/lead_enrichment.html">Enriquecimiento de leads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_sales"><a class="reference internal" href="../sales/sales.html">Ventas</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_sales_send_quotations"><a class="reference internal" href="#">Enviar cotizaciones</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_quote_template"><a class="reference internal" href="../sales/sales/send_quotations/quote_template.html">Plantillas de cotización</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_optional_products"><a class="reference internal" href="../sales/sales/send_quotations/optional_products.html">Productos opcionales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_signature_to_validate"><a class="reference internal" href="../sales/sales/send_quotations/get_signature_to_validate.html">Firmas electrónicas para la confirmación de órdenes.</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_paid_to_validate"><a class="reference internal" href="../sales/sales/send_quotations/get_paid_to_validate.html">Confirmación de orden de pago en línea</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_deadline"><a class="reference internal" href="../sales/sales/send_quotations/deadline.html">Fecha límite de cotizaciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_different_addresses"><a class="reference internal" href="../sales/sales/send_quotations/different_addresses.html">Entregas y facturas en diferentes direcciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_orders_and_variants"><a class="reference internal" href="../sales/sales/send_quotations/orders_and_variants.html">Variantes de producto en cotizaciones y órdenes de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_invoicing"><a class="reference internal" href="#">Método de facturación</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_invoicing_policy"><a class="reference internal" href="../sales/sales/invoicing/invoicing_policy.html">Facturar por cantidades entregadas u ordenadas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_down_payment"><a class="reference internal" href="../sales/sales/invoicing/down_payment.html">Anticipos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_proforma"><a class="reference internal" href="../sales/sales/invoicing/proforma.html">Facturas proforma</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_time_materials"><a class="reference internal" href="../sales/sales/invoicing/time_materials.html">Facturación por tiempo y materiales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_milestone"><a class="reference internal" href="../sales/sales/invoicing/milestone.html">Facturar objetivos de proyecto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_expense"><a class="reference internal" href="../sales/sales/invoicing/expense.html">Volver a facturar gastos a los clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_products_prices"><a class="reference internal" href="#">Productos y precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_products"><a class="reference internal" href="#">Gestionar productos</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_import"><a class="reference internal" href="../sales/sales/products_prices/products/import.html">Importar productos</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_variants"><a class="reference internal" href="../sales/sales/products_prices/products/variants.html">Variantes de producto</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_product_images"><a class="reference internal" href="../sales/sales/products_prices/products/product_images.html">Imágenes para productos con Google Imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_prices"><a class="reference internal" href="#">Gestionar precios</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_pricing"><a class="reference internal" href="../sales/sales/products_prices/prices/pricing.html">Listas de precios, descuentos y fórmulas</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_currencies"><a class="reference internal" href="../sales/sales/products_prices/prices/currencies.html">Divisas extranjeras</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_returns"><a class="reference internal" href="../sales/sales/products_prices/returns.html">Devoluciones y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_ewallets_giftcards"><a class="reference internal" href="../sales/sales/products_prices/ewallets_giftcards.html">Usar monederos electrónicos y tarjetas de regalo</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_loyalty_discount"><a class="reference internal" href="../sales/sales/products_prices/loyalty_discount.html">Programas de descuento y lealtad</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_amazon_connector"><a class="reference internal" href="#">Conector de Amazon</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_features"><a class="reference internal" href="../sales/sales/amazon_connector/features.html">Funciones del Conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_setup"><a class="reference internal" href="../sales/sales/amazon_connector/setup.html">Configuración del conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_manage"><a class="reference internal" href="../sales/sales/amazon_connector/manage.html">Gestión de órdenes de Amazon</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_ebay_connector"><a class="reference internal" href="#">Conector de eBay</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_setup"><a class="reference internal" href="../sales/sales/ebay_connector/setup.html">Configuración del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_manage"><a class="reference internal" href="../sales/sales/ebay_connector/manage.html">¿Cómo anunciar un producto?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_troubleshooting"><a class="reference internal" href="../sales/sales/ebay_connector/troubleshooting.html">Solución de problemas del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_linking_listings"><a class="reference internal" href="../sales/sales/ebay_connector/linking_listings.html">Vincular anuncios existentes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale"><a class="reference internal" href="../sales/point_of_sale.html">Punto de venta</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_employee_login"><a class="reference internal" href="../sales/point_of_sale/employee_login.html">Gestión de varios empleados</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_receipts_invoices"><a class="reference internal" href="../sales/point_of_sale/receipts_invoices.html">Recibos y facturas</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_configuration"><a class="reference internal" href="../sales/point_of_sale/configuration.html">Configuración</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_printers"><a class="reference internal" href="../sales/point_of_sale/configuration/epos_printers.html">Impresoras ePOS</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_https"><a class="reference internal" href="../sales/point_of_sale/configuration/https.html">Conexión segura (HTTPS)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_ssc"><a class="reference internal" href="../sales/point_of_sale/configuration/epos_ssc.html">Certificado autofirmado para impresoras electrónicas del PdV</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_shop"><a class="reference internal" href="#">Funciones de tienda</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_sales_order"><a class="reference internal" href="../sales/point_of_sale/shop/sales_order.html">Orden de venta</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_barcode"><a class="reference internal" href="../sales/point_of_sale/shop/barcode.html">Códigos de barras</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_serial_numbers"><a class="reference internal" href="../sales/point_of_sale/shop/serial_numbers.html">Números de serie y lotes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_ship_later"><a class="reference internal" href="../sales/point_of_sale/shop/ship_later.html">Enviar después</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_customer_display"><a class="reference internal" href="../sales/point_of_sale/shop/customer_display.html">Pantalla del cliente</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_restaurant"><a class="reference internal" href="../sales/point_of_sale/restaurant.html">Funciones para restaurantes</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_bill_printing"><a class="reference internal" href="../sales/point_of_sale/restaurant/bill_printing.html">Cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_floors_tables"><a class="reference internal" href="../sales/point_of_sale/restaurant/floors_tables.html">Gestión de pisos y mesas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_kitchen_printing"><a class="reference internal" href="../sales/point_of_sale/restaurant/kitchen_printing.html">Impresión de órdenes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_tips"><a class="reference internal" href="../sales/point_of_sale/restaurant/tips.html">Propinas</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_pricing"><a class="reference internal" href="#">Funciones de precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discounts"><a class="reference internal" href="../sales/point_of_sale/pricing/discounts.html">Descuentos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discount_tags"><a class="reference internal" href="../sales/point_of_sale/pricing/discount_tags.html">Etiquetas de descuento (lector de código de barras)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_loyalty"><a class="reference internal" href="../sales/point_of_sale/pricing/loyalty.html">Programas de lealtad</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_pricelists"><a class="reference internal" href="../sales/point_of_sale/pricing/pricelists.html">Listas de precios</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_fiscal_position"><a class="reference internal" href="../sales/point_of_sale/pricing/fiscal_position.html">Impuestos flexibles (posiciones fiscales)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_cash_rounding"><a class="reference internal" href="../sales/point_of_sale/pricing/cash_rounding.html">Redondeo de efectivo</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_payment_methods"><a class="reference internal" href="../sales/point_of_sale/payment_methods.html">Métodos de pago</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_payment_methods_terminals"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals.html">Terminales de pago</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_adyen"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/adyen.html">Adyen</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_ingenico"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/ingenico.html">Ingenico</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_six"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/six.html">SIX</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_stripe"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/stripe.html">Stripe</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_vantiv"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/vantiv.html">Vantiv</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_worldline"><a class="reference internal" href="../sales/point_of_sale/payment_methods/terminals/worldline.html">Worldline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_reporting"><a class="reference internal" href="../sales/point_of_sale/reporting.html">Reportes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_services"><a class="reference internal" href="#">Servicios</a><ul>
+<li class="toctree-l3 o_menu_applications_services_project"><a class="reference internal" href="../services/project.html">Proyecto</a><ul>
+<li class="toctree-l4 o_menu_applications_services_project_tasks"><a class="reference internal" href="#">Tareas</a><ul>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_email_alias"><a class="reference internal" href="../services/project/tasks/email_alias.html">Crear tareas del proyecto a partir de un seudónimo de correo electrónico</a></li>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_recurring_tasks"><a class="reference internal" href="../services/project/tasks/recurring_tasks.html">Tareas recurrentes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_project_project_management"><a class="reference internal" href="../services/project/project_management.html">Gestión de proyectos</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_timesheets"><a class="reference internal" href="../services/timesheets.html">Hojas de horas</a><ul>
+<li class="toctree-l4 o_menu_applications_services_timesheets_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_timesheets_overview_time_off"><a class="reference internal" href="../services/timesheets/overview/time_off.html">Crear hojas de horas después de la validación del tiempo personal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_field_service"><a class="reference internal" href="../services/field_service.html">Servicio externo</a><ul>
+<li class="toctree-l4 o_menu_applications_services_field_service_onsite_interventions"><a class="reference internal" href="../services/field_service/onsite_interventions.html">Planificación de intervenciones in situ</a></li>
+<li class="toctree-l4 o_menu_applications_services_field_service_default_warehouse"><a class="reference internal" href="../services/field_service/default_warehouse.html">Almacén predeterminado del usuario</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_helpdesk"><a class="reference internal" href="../services/helpdesk.html">Servicio de asistencia</a><ul>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_getting_started"><a class="reference internal" href="../services/helpdesk/overview/getting_started.html">Primeros pasos con Servicio de asistencia</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_sla"><a class="reference internal" href="../services/helpdesk/overview/sla.html">Acuerdos de nivel de servicio (SLA)</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_receiving_tickets"><a class="reference internal" href="../services/helpdesk/overview/receiving_tickets.html">Empezar a recibir tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_reports"><a class="reference internal" href="../services/helpdesk/overview/reports.html">Reportes</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_help_center"><a class="reference internal" href="../services/helpdesk/overview/help_center.html">Centro de ayuda</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_ratings"><a class="reference internal" href="../services/helpdesk/overview/ratings.html">Calificación de clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_advanced"><a class="reference internal" href="#">Avanzado</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_after_sales"><a class="reference internal" href="../services/helpdesk/advanced/after_sales.html">Servicios posventa</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_close_tickets"><a class="reference internal" href="../services/helpdesk/advanced/close_tickets.html">Cerrar tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_track_and_bill"><a class="reference internal" href="../services/helpdesk/advanced/track_and_bill.html">Seguimiento y facturación del tiempo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_finance"><a class="reference internal" href="#">Finanzas</a><ul>
+<li class="toctree-l3 o_menu_applications_finance_accounting"><a class="reference internal" href="../finance/accounting.html">Contabilidad y facturación</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_accounting_get_started"><a class="reference internal" href="../finance/accounting/get_started.html">Información básica</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_cheat_sheet"><a class="reference internal" href="../finance/accounting/get_started/cheat_sheet.html">Hoja de referencia de Contabilidad</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_chart_of_accounts"><a class="reference internal" href="../finance/accounting/get_started/chart_of_accounts.html">Plan de cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_multi_currency"><a class="reference internal" href="../finance/accounting/get_started/multi_currency.html">Sistema multidivisa</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_avg_price_valuation"><a class="reference internal" href="../finance/accounting/get_started/avg_price_valuation.html">Costo promedio en bienes devueltos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_vat_units"><a class="reference internal" href="../finance/accounting/get_started/vat_units.html">Unidades de IVA</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_taxes"><a class="reference internal" href="../finance/accounting/taxes.html">Impuestos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_cash_basis"><a class="reference internal" href="../finance/accounting/taxes/cash_basis.html">Impuestos de base de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_retention"><a class="reference internal" href="../finance/accounting/taxes/retention.html">Retención fiscal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_vat_verification"><a class="reference internal" href="../finance/accounting/taxes/vat_verification.html">Comprobar un número de IVA (sistema VIES)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_fiscal_positions"><a class="reference internal" href="../finance/accounting/taxes/fiscal_positions.html">Posiciones fiscales (mapeo de impuestos y cuentas)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_avatax"><a class="reference internal" href="../finance/accounting/taxes/avatax.html">Integración con AvaTax</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avatax_use"><a class="reference internal" href="../finance/accounting/taxes/avatax/avatax_use.html">Uso de AvaTax</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avalara_portal"><a class="reference internal" href="../finance/accounting/taxes/avatax/avalara_portal.html">Portal de Avalara (AvaTax)</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_taxcloud"><a class="reference internal" href="../finance/accounting/taxes/taxcloud.html">Integración con TaxCloud</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_eu_distance_selling"><a class="reference internal" href="../finance/accounting/taxes/eu_distance_selling.html">Ventas a distancia intracomunitarias en la UE</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_B2B_B2C"><a class="reference internal" href="../finance/accounting/taxes/B2B_B2C.html">Precios B2B (impuestos no incluidos) y B2C (impuestos incluidos)</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_customer_invoices"><a class="reference internal" href="../finance/accounting/customer_invoices.html">Facturas de cliente</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="../finance/accounting/customer_invoices/overview.html">Procesos de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="../finance/accounting/customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_payment_terms"><a class="reference internal" href="../finance/accounting/customer_invoices/payment_terms.html">Términos de pago y planes de pago a plazos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="../finance/accounting/customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_discounts"><a class="reference internal" href="../finance/accounting/customer_invoices/cash_discounts.html">Descuentos por pronto pago y reducción de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="../finance/accounting/customer_invoices/credit_notes.html">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_rounding"><a class="reference internal" href="../finance/accounting/customer_invoices/cash_rounding.html">Redondeo de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_deferred_revenues"><a class="reference internal" href="../finance/accounting/customer_invoices/deferred_revenues.html">Ingresos diferidos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_electronic_invoicing"><a class="reference internal" href="../finance/accounting/customer_invoices/electronic_invoicing.html">Facturación electrónica (<abbr title="intercambio electrónico de datos">EDI</abbr>)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_snailmail"><a class="reference internal" href="../finance/accounting/customer_invoices/snailmail.html">Correo postal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_epc_qr_code"><a class="reference internal" href="../finance/accounting/customer_invoices/epc_qr_code.html">Códigos EPC QR</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_incoterms"><a class="reference internal" href="../finance/accounting/customer_invoices/incoterms.html">Incoterms</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../finance/accounting/vendor_bills.html">Facturas de proveedor</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_invoice_digitization"><a class="reference internal" href="../finance/accounting/vendor_bills/invoice_digitization.html">Digitalización de documentos con IA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="../finance/accounting/vendor_bills/assets.html">Activos no circulantes y fijos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="../finance/accounting/vendor_bills/deferred_expenses.html">Gastos diferidos y prepagos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_payments"><a class="reference internal" href="../finance/accounting/payments.html">Pagos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="../finance/accounting/payments/online.html">Pagos en línea</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="../finance/accounting/payments/checks.html">Cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch"><a class="reference internal" href="../finance/accounting/payments/batch.html">Pagos por lote para depósitos bancarios</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch_sdd"><a class="reference internal" href="../finance/accounting/payments/batch_sdd.html">Pagos por lotes: domiciliación bancaria SEPA (SDD)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_follow_up"><a class="reference internal" href="../finance/accounting/payments/follow_up.html">Seguimiento en las facturas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="../finance/accounting/payments/internal_transfers.html">Transferencias internas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="../finance/accounting/payments/pay_sepa.html">Pagos con SEPA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="../finance/accounting/payments/pay_checks.html">Pagar con cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="../finance/accounting/payments/forecast.html">Pronóstico de futuras facturas por pagar</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../finance/accounting/bank.html">Cuentas bancarias y de efectivo</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="../finance/accounting/bank/bank_synchronization.html">Sincronización bancaria</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="../finance/accounting/bank/bank_synchronization/saltedge.html">Salt Edge</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="../finance/accounting/bank/bank_synchronization/ponto.html">Ponto</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="../finance/accounting/bank/bank_synchronization/enablebanking.html">Enable Banking</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="../finance/accounting/bank/transactions.html">Transacciones</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="../finance/accounting/bank/reconciliation.html">Conciliación bancaria</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="../finance/accounting/bank/reconciliation_models.html">Modelos de conciliación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_foreign_currency"><a class="reference internal" href="../finance/accounting/bank/foreign_currency.html">Gestione una cuenta bancaria en una moneda extranjera</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_cash_register"><a class="reference internal" href="../finance/accounting/bank/cash_register.html">Caja registradora</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_reporting"><a class="reference internal" href="../finance/accounting/reporting.html">Reportes</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_returns"><a class="reference internal" href="../finance/accounting/reporting/tax_returns.html">Declaración de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_carryover"><a class="reference internal" href="../finance/accounting/reporting/tax_carryover.html">Traspaso de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_analytic_accounting"><a class="reference internal" href="../finance/accounting/reporting/analytic_accounting.html">Contabilidad analítica</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_budget"><a class="reference internal" href="../finance/accounting/reporting/budget.html">Presupuesto financiero</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_intrastat"><a class="reference internal" href="../finance/accounting/reporting/intrastat.html">Intrastat</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_data_inalterability"><a class="reference internal" href="../finance/accounting/reporting/data_inalterability.html">Reporte de comprobación de inalterabilidad de datos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_silverfin"><a class="reference internal" href="../finance/accounting/reporting/silverfin.html">Integración con Silverfin</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_customize"><a class="reference internal" href="../finance/accounting/reporting/customize.html">Reportes personalizados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_year_end"><a class="reference internal" href="../finance/accounting/reporting/year_end.html">Cierre del ejercicio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_expenses"><a class="reference internal" href="../finance/expenses.html">Gastos</a></li>
+<li class="toctree-l3 o_menu_applications_finance_payment_providers"><a class="reference internal" href="../finance/payment_providers.html">Pagos en línea</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_wire_transfer"><a class="reference internal" href="../finance/payment_providers/wire_transfer.html">Transferencias bancarias</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_adyen"><a class="reference internal" href="../finance/payment_providers/adyen.html">Adyen</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_alipay"><a class="reference internal" href="../finance/payment_providers/alipay.html">Alipay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_amazon_payment_services"><a class="reference internal" href="../finance/payment_providers/amazon_payment_services.html">Servicios de pago de Amazon</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_asiapay"><a class="reference internal" href="../finance/payment_providers/asiapay.html">AsiaPay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_authorize"><a class="reference internal" href="../finance/payment_providers/authorize.html">Authorize.Net</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_buckaroo"><a class="reference internal" href="../finance/payment_providers/buckaroo.html">Buckaroo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_demo"><a class="reference internal" href="../finance/payment_providers/demo.html">Demostración</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_flutterwave"><a class="reference internal" href="../finance/payment_providers/flutterwave.html">Flutterwave</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mercado_pago"><a class="reference internal" href="../finance/payment_providers/mercado_pago.html">Mercado Pago</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mollie"><a class="reference internal" href="../finance/payment_providers/mollie.html">Mollie</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_ogone"><a class="reference internal" href="../finance/payment_providers/ogone.html">Ogone</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_paypal"><a class="reference internal" href="../finance/payment_providers/paypal.html">PayPal</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_razorpay"><a class="reference internal" href="../finance/payment_providers/razorpay.html">Razorpay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_sips"><a class="reference internal" href="../finance/payment_providers/sips.html">SIPS</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_stripe"><a class="reference internal" href="../finance/payment_providers/stripe.html">Stripe</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_fiscal_localizations"><a class="reference internal" href="../finance/fiscal_localizations.html">Localizaciones fiscales</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_argentina"><a class="reference internal" href="../finance/fiscal_localizations/argentina.html">Argentina</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_australia"><a class="reference internal" href="../finance/fiscal_localizations/australia.html">Australia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_belgium"><a class="reference internal" href="../finance/fiscal_localizations/belgium.html">Bélgica</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_brazil"><a class="reference internal" href="../finance/fiscal_localizations/brazil.html">Brasil</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_chile"><a class="reference internal" href="../finance/fiscal_localizations/chile.html">Chile</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_colombia"><a class="reference internal" href="../finance/fiscal_localizations/colombia.html">Colombia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_ecuador"><a class="reference internal" href="../finance/fiscal_localizations/ecuador.html">Ecuador</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_egypt"><a class="reference internal" href="../finance/fiscal_localizations/egypt.html">Egipto</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_france"><a class="reference internal" href="../finance/fiscal_localizations/france.html">Francia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_germany"><a class="reference internal" href="../finance/fiscal_localizations/germany.html">Alemania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_india"><a class="reference internal" href="../finance/fiscal_localizations/india.html">India</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_indonesia"><a class="reference internal" href="../finance/fiscal_localizations/indonesia.html">Indonesia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_italy"><a class="reference internal" href="../finance/fiscal_localizations/italy.html">Italia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_kenya"><a class="reference internal" href="../finance/fiscal_localizations/kenya.html">Kenia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_luxembourg"><a class="reference internal" href="../finance/fiscal_localizations/luxembourg.html">Luxemburgo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_mexico"><a class="reference internal" href="../finance/fiscal_localizations/mexico.html">México</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_netherlands"><a class="reference internal" href="../finance/fiscal_localizations/netherlands.html">Países Bajos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_romania"><a class="reference internal" href="../finance/fiscal_localizations/romania.html">Rumania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_peru"><a class="reference internal" href="../finance/fiscal_localizations/peru.html">Perú</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_philippines"><a class="reference internal" href="../finance/fiscal_localizations/philippines.html">Filipinas</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_saudi_arabia"><a class="reference internal" href="../finance/fiscal_localizations/saudi_arabia.html">Arabia Saudita</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_spain"><a class="reference internal" href="../finance/fiscal_localizations/spain.html">España</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_switzerland"><a class="reference internal" href="../finance/fiscal_localizations/switzerland.html">Suiza</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_thailand"><a class="reference internal" href="../finance/fiscal_localizations/thailand.html">Tailandia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_arab_emirates"><a class="reference internal" href="../finance/fiscal_localizations/united_arab_emirates.html">Emiratos Árabes Unidos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_kingdom"><a class="reference internal" href="../finance/fiscal_localizations/united_kingdom.html">Reino Unido</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../index.html" class="o_logo">
+          <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Pruebe Odoo GRATIS</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                ES 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/applications/essentials/in_app_purchase.html">EN</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../sales.html" title="Ventas"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="export_import_data.html" title="Exportar e importar datos"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../applications.html" >Documentos para el usuario</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../essentials.html" accesskey="U">Fundamentos de Odoo</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Compras dentro de la aplicación (IAP)</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="in-app-purchases-iap">
+<h1>Compras dentro de la aplicación (IAP)<a class="headerlink" href="#in-app-purchases-iap" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Las compras dentro de la aplicación (conocidas como IAP) son servicios opcionales que mejoran las bases de datos de Odoo y cada uno de ellos proporciona sus propias funciones. Consulte la lista completa de servicios en el <a class="reference external" href="https://iap.odoo.com/iap/all-in-app-services">catálogo de IAP de Odoo</a>.</p>
+<img alt="El catálogo de compras dentro de la aplicación con varios servicios disponibles en iap.odoo.com." class="align-center" src="../../_images/iap.png" />
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>El servicio de <span class="guilabel">SMS</span> envía mensajes de texto a sus contactos directo desde la base de datos. El servicio de <span class="guilabel">digitalización de documentos</span> digitaliza facturas de proveedores, gastos y currículums escaneados o en formato PDF con reconocimiento óptico de caracteres (OCR) e inteligencia artificial (IA).</p>
+</div>
+<p><strong>No</strong> es necesario que configure los servicios de <abbr title="In-app purchases">IAP</abbr> antes de usarlos. Los usuarios de Odoo pueden hacer clic en el servicio en la aplicación para activarlo. Sin embargo, cada servicio necesita de sus propios créditos prepagados, y cuando se agotan, los usuarios <strong>deben</strong> <a class="reference internal" href="#iap-buying-credits"><span class="std std-ref">comprar más</span></a> para seguir utilizándolos.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>Los usuarios de Odoo Enterprise con una suscripción válida obtendrán créditos gratuitos para probar las funciones de compras dentro de la aplicación antes de que decidan comprar más créditos para la base de datos. Esto incluye bases de datos de demostración y capacitación, bases de datos educativas y bases de datos gratuitas de una sola aplicación.</p>
+</div>
+</section><section id="iap-services">
+<span id="in-app-purchase-portal"></span><h2>Servicios de compras dentro de la aplicación<a class="headerlink" href="#iap-services" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Tanto Odoo como externos proporcionan los servicios de <abbr title="In-app purchases">IAP</abbr>, y tienen una amplia variedad de usos.</p>
+<p>Odoo ofrece los siguientes servicios de <abbr title="In-app purchases">IAP</abbr>:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Digitalización de documentos</span>: digitaliza facturas de proveedores, gastos y currículums escaneados o en formato PDF con reconocimiento óptico de caracteres e inteligencia artificial.</p></li>
+<li><p><span class="guilabel">Autocompletado de contactos</span>: completa los registros de contacto de forma automática con datos empresariales.</p></li>
+<li><p><span class="guilabel">SMS</span>: envía mensajes de texto SMS a sus contactos directo desde la base de datos.</p></li>
+<li><p><span class="guilabel">Generación de leads</span>: genera leads según un conjunto de criterios y convierte a los visitantes del sitio web en leads y oportunidades de calidad.</p></li>
+<li><p><span class="guilabel">Correo postal</span>: envía facturas de clientes y reportes de seguimiento por correo postal por todo el mundo.</p></li>
+<li><p><span class="guilabel">Identifíquese con itsme®️ para firmar sus documentos</span>: solicítele a los signatarios de <em>Firma electrónica</em> de Odoo que proporcionen su identidad a través de la plataforma de identidad <em>itsme‍®</em>. Solo está disponible en Bélgica y los Países Bajos.</p></li>
+</ul>
+<p>Visite el <a class="reference external" href="https://iap.odoo.com/iap/all-in-app-services">catálogo de IAP de Odoo</a> para obtener más información sobre los servicios disponibles por el momento (los ofrecen desarrolladores externos a Odoo).</p>
+</section><section id="use-iap-services">
+<h3>Uso de los servicios de compras dentro de la aplicación<a class="headerlink" href="#use-iap-services" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los servicios de <abbr title="In-app purchases">IAP</abbr> están integrados con Odoo  de forma automática y <strong>no</strong> es necesario que los usuarios configuren ningún ajuste. Para utilizar un servicio solo deberá interactuar con el desde cualquier lugar de la base de datos.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>El siguiente flujo está relacionado con el servicio de <em>SMS</em> de <abbr title="In-app purchases">IAP</abbr> que se utiliza desde el registro de un contacto.</p>
+<p>Puede hacer esto si hace clic en el icono <span class="guilabel">📱 SMS</span> dentro de la base de datos.</p>
+<img alt="El icono de SMS en un formulario de información de contacto típico ubicado dentro de una base de datos de Odoo." class="align-center" src="../../_images/sms-icon.png" />
+<p>Los siguientes pasos describen una de las maneras de utilizar el servicio <em>SMS</em> de <abbr title="In-app purchases">IAP</abbr> con Odoo:</p>
+<p>Vaya a la aplicación <span class="menuselection">Contactos</span> y haga clic en un contacto con un número telefónico disponible en el campo <span class="guilabel">Teléfono</span> o <span class="guilabel">Celular</span> del formulario de contacto.</p>
+<p>Busque el icono <span class="guilabel">📱 SMS</span> que aparecen de lado derecho de los campos <span class="guilabel">Teléfono</span> o <span class="guilabel">Celular</span>. Al hacer clic en el icono <span class="guilabel">📱 SMS</span> aparece la ventana emergente <span class="guilabel">Enviar mensaje de texto SMS</span>.</p>
+<p>Escriba un mensaje en el campo <span class="guilabel">Mensaje</span> de la ventana emergente, haga clic en el botón <span class="guilabel">Enviar SMS</span>. Odoo enviará el mensaje, vía SMS, al contacto y registrará lo que envió en el <em>chatter</em> del formulario del contacto.</p>
+<p>Los créditos prepagados para el servicio <em>SMS</em> de <abbr title="In-app purchases">IAP</abbr> se restan en automático de los créditos existentes una vez que se envió el mensaje SMS. Odoo le solicitará al usuario que compre más créditos en caso de que no haya suficientes para enviar el mensaje.</p>
+</div>
+<div class="alert alert-secondary">
+<p class="alert-title">
+Ver también</p><p>Consulte la siguiente documentación para obtener más información sobre cómo utilizar varios servicios de <abbr title="In-app purchases">IAP</abbr> e instrucciones más detalladas relacionadas con la funcionalidad de SMS en Odoo:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../sales/crm/acquire_leads/lead_mining.html"><span class="doc">Minado de leads</span></a></p></li>
+<li><p><a class="reference internal" href="../sales/crm/optimize/partner_autocomplete.html"><span class="doc">Enriquecer la base de contactos con la función Autocompletar contacto</span></a></p></li>
+<li><p><a class="reference internal" href="../marketing/sms_marketing/essentials/sms_essentials.html"><span class="doc">Fundamentos de SMS</span></a></p></li>
+</ul>
+</div>
+</section><section id="iap-credits">
+<span id="in-app-purchase-credits"></span><h2>Créditos de compras dentro de la aplicación<a class="headerlink" href="#iap-credits" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Cada que utiliza un servicio de <abbr title="In-app purchases">IAP</abbr> gasta los créditos prepagados para ese servicio. Odoo le solicitará comprar más créditos cuando no cuenta con suficientes para seguir utilizando un servicio. También pueden configurar alertas por correo electrónico para cuando le <a class="reference internal" href="#in-app-purchase-low-credits"><span class="std std-ref">queden pocos créditos</span></a>.</p>
+<p>Los créditos se compran en <em>paquetes</em> con el <a class="reference external" href="https://iap.odoo.com/iap/all-in-app-services">catálogo de IAP de Odoo</a> y los precios son específicos para cada servicio.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>El <a class="reference external" href="https://iap.odoo.com/iap/in-app-services/1">servicio de SMS</a> cuenta con cuatro paquetes disponibles en las siguientes denominaciones:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Paquete inicial</span>: 10 créditos.</p></li>
+<li><p><span class="guilabel">Paquete estándar</span>: 100 créditos.</p></li>
+<li><p><span class="guilabel">Paquete avanzado</span>: 500 créditos.</p></li>
+<li><p><span class="guilabel">Paquete experto</span>: 1000 créditos.</p></li>
+</ul>
+<img alt="Cuatro paquetes de créditos distintos para el servicio SMS de IAP." class="align-center" src="../../_images/packs.png" />
+<p>El número de créditos consumidos depende de la longitud del SMS y el país de destino.</p>
+<p>Consulte la documentación sobre <a class="reference internal" href="../marketing/sms_marketing/pricing/pricing_and_faq.html"><span class="doc">Precios de SMS y preguntas frecuentes</span></a> para obtener más información.</p>
+</div>
+</section><section id="buy-credits">
+<span id="iap-buying-credits"></span><h3>Comprar créditos<a class="headerlink" href="#buy-credits" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>De forma automática, la base de datos le solicitará comprar más créditos si no cuenta con suficientes para realizar una tarea.</p>
+<p>Los usuarios pueden acceder a <span class="menuselection">Ajustes ‣ sección Contactos</span> para consultar el saldo actual de créditos para cada servicio y comprar más de forma manual. Una vez allí, vaya a <span class="guilabel">Compras dentro de la aplicación de Odoo</span> y haga clic en <span class="guilabel">Ver mis servicios</span>.</p>
+<p>Esta acción abrirá la página <span class="guilabel">Mis servicios</span> en donde aparecen varios servicios de <abbr title="In-app purchases">IAP</abbr> de la base de datos. Una vez allí, haga clic en un servicio de <abbr title="In-app purchases">IAP</abbr> para abrir la página de <span class="guilabel">Información de la cuenta</span>, ahí podrá comprar créditos adicionales.</p>
+</section><section id="manually-buy-credits">
+<h4>Comprar créditos de forma manual<a class="headerlink" href="#manually-buy-credits" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Siga estos pasos para comprar créditos de forma manual en Odoo:</p>
+<p>Vaya a la aplicación <span class="menuselection">Ajustes</span> y escriba <code class="o_code docutils literal notranslate"><span class="pre">Compras</span> <span class="pre">dentro</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">aplicación</span></code> en la <span class="guilabel">barra de búsqueda</span> o diríjase a la sección <span class="guilabel">Contactos</span>. Si va a la sección <span class="guilabel">Contactos</span> section, busque <span class="guilabel">Compras dentro de la aplicación de Odoo</span> y haga clic en <span class="guilabel">Ver mis servicios</span>.</p>
+<img alt="La aplicación Ajustes muestra el encabezado de Compras dentro de la aplicación de Odoo y el botón Ver mis servicios." class="align-center" src="../../_images/view-services.png" />
+<p>Esta acción abrirá la página de <span class="guilabel">Cuenta para compras dentro de la aplicación</span> en donde aparecen varios servicios de <abbr title="In-app purchases">IAP</abbr> de la base de datos. Una vez allí, haga clic en un servicio de <abbr title="In-app purchases">IAP</abbr> para abrir sus respectivos detalles, también podrá comprar créditos adicionales.</p>
+<p>Haga clic en el botón <span class="guilabel">Comprar créditos</span> de esa página. La acción anterior abrirá la página <span class="guilabel">Comprar créditos para (Cuenta de compras dentro de la aplicación)</span> en una nueva pestaña. Busque el paquete de créditos que desea adquirir y haga clic en <span class="guilabel">Comprar</span>. Siga las indicaciones para proporcionar los detalles de pago y confirmar su orden.</p>
+<img alt="La página del servicio de SMS en iap.odoo.com muestra cuatro paquetes de créditos disponibles para comprar." class="align-center" src="../../_images/buy-pack.png" />
+<p>Una vez que la transacción haya terminado podrá usar los créditos en la base de datos.</p>
+</section><section id="low-credit-notification">
+<span id="in-app-purchase-low-credits"></span><h4>Notificación sobre pocos créditos<a class="headerlink" href="#low-credit-notification" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Reciba notificaciones cuando tenga pocos créditos para que no se quede sin ellos al usar un servicio de <abbr title="In-app purchases">IAP</abbr>. Siga las instrucciones a continuación:</p>
+<p>Vaya a la aplicación <span class="menuselection">Ajustes</span> y escriba <code class="o_code docutils literal notranslate"><span class="pre">Compras</span> <span class="pre">dentro</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">aplicación</span></code> en la <span class="guilabel">barra de búsqueda</span>. En la sección <span class="guilabel">Contactos</span> section, busque <span class="guilabel">Compras dentro de la aplicación de Odoo</span> y haga clic en <span class="guilabel">Ver mis servicios</span>.</p>
+<p>Las cuentas de <abbr title="In-app purchases">IAP</abbr> disponibles aparecen en una vista de lista en la página <span class="guilabel">Cuenta para compras dentro de la aplicación</span>. Allí haga clic en la cuenta <abbr title="In-app purchases">IAP</abbr> deseada para ver los detalles de ese servicio.</p>
+<p>En la página de detallles seleccione la casilla <span class="guilabel">Recibir advertencia de límite</span>. Esta acción abrirá dos campos en el formulario: <span class="guilabel">Límite de advertencia</span> y <span class="guilabel">Correo de contacto</span>.</p>
+<p>En el campo <span class="guilabel">Límite de advertencia</span> escriba el número de créditos que Odoo usará como límite mínimo para este servicio y en el campo <span class="guilabel">Correo de contacto</span> escriba el correo electrónico en el que desea recibir la notificación.</p>
+<p>Odoo enviará una alerta de créditos bajos al <span class="guilabel">correo electrónico de contacto</span> cuando el saldo o balance de créditos caiga por debajo de la cantidad especificada en el <span class="guilabel">límite de advertencia</span>.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>En esta página</h5>
+    <ul>
+<li><a class="reference internal" href="#">Compras dentro de la aplicación (IAP)</a><ul>
+<li><a class="reference internal" href="#iap-services">Servicios de compras dentro de la aplicación</a><ul>
+<li><a class="reference internal" href="#use-iap-services">Uso de los servicios de compras dentro de la aplicación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iap-credits">Créditos de compras dentro de la aplicación</a><ul>
+<li><a class="reference internal" href="#buy-credits">Comprar créditos</a><ul>
+<li><a class="reference internal" href="#manually-buy-credits">Comprar créditos de forma manual</a></li>
+<li><a class="reference internal" href="#low-credit-notification">Notificación sobre pocos créditos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Obtenga ayuda</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contactar a soporte</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Pregúntele a la comunidad de Odoo</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../sales.html" title="Ventas"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="export_import_data.html" title="Exportar e importar datos"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../applications.html" >Documentos para el usuario</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../essentials.html" >Fundamentos de Odoo</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Compras dentro de la aplicación (IAP)</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

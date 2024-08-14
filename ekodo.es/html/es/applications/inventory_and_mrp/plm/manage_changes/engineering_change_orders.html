@@ -1,0 +1,1043 @@
+
+<!DOCTYPE html>
+
+<html lang="ES">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Órdenes de cambio de ingeniería &#8212; documentación de Odoo - 16.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script>
+    <script src="../../../../_static/translations.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="x-default" href="https://ekodo.es/doc/applications/inventory_and_mrp/plm/manage_changes/engineering_change_orders.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/inventory_and_mrp/plm/manage_changes/engineering_change_orders.html" />
+    
+    <link rel="index" title="Índice" href="../../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">Documentos para el usuario</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Fundamentos de Odoo</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Actividades</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reportes</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Buscar y filtrar registros</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Exportar e importar datos</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">Compras dentro de la aplicación (IAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_sales"><a class="reference internal" href="#">Ventas</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_crm"><a class="reference internal" href="../../../sales/crm.html">CRM</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_crm_pipeline"><a class="reference internal" href="#">Organizar un flujo</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_lost_opportunities"><a class="reference internal" href="../../../sales/crm/pipeline/lost_opportunities.html">Gestión de oportunidades perdidas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_multi_sales_team"><a class="reference internal" href="../../../sales/crm/pipeline/multi_sales_team.html">Varios equipos de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_acquire_leads"><a class="reference internal" href="#">Obtener leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_convert"><a class="reference internal" href="../../../sales/crm/acquire_leads/convert.html">Convertir leads en oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_generate_leads"><a class="reference internal" href="../../../sales/crm/acquire_leads/generate_leads.html">Generar leads y oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_send_quotes"><a class="reference internal" href="../../../sales/crm/acquire_leads/send_quotes.html">Envíe presupuestos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_lead_mining"><a class="reference internal" href="../../../sales/crm/acquire_leads/lead_mining.html">Minado de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_track_leads"><a class="reference internal" href="#">Asignar y rastrear leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_track_leads_lead_scoring"><a class="reference internal" href="../../../sales/crm/track_leads/lead_scoring.html">Asignación de leads con la puntuación predictiva de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_performance"><a class="reference internal" href="#">Analizar el rendimiento</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_performance_win_loss"><a class="reference internal" href="../../../sales/crm/performance/win_loss.html">Revise la relación ganancia/pérdida</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_optimize"><a class="reference internal" href="#">Mejoras para su trabajo diario</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_partner_autocomplete"><a class="reference internal" href="../../../sales/crm/optimize/partner_autocomplete.html">Enriquecer contactos con la función Autocompletar contacto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_gamification"><a class="reference internal" href="../../../sales/crm/optimize/gamification.html">¿Cómo motivar y recompensar a mis vendedores?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_utilize_activities"><a class="reference internal" href="../../../sales/crm/optimize/utilize_activities.html">Utilizar actividades para los equipos de ventas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_lead_enrichment"><a class="reference internal" href="../../../sales/crm/optimize/lead_enrichment.html">Enriquecimiento de leads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_sales"><a class="reference internal" href="../../../sales/sales.html">Ventas</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_sales_send_quotations"><a class="reference internal" href="#">Enviar cotizaciones</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_quote_template"><a class="reference internal" href="../../../sales/sales/send_quotations/quote_template.html">Plantillas de cotización</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_optional_products"><a class="reference internal" href="../../../sales/sales/send_quotations/optional_products.html">Productos opcionales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_signature_to_validate"><a class="reference internal" href="../../../sales/sales/send_quotations/get_signature_to_validate.html">Firmas electrónicas para la confirmación de órdenes.</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_paid_to_validate"><a class="reference internal" href="../../../sales/sales/send_quotations/get_paid_to_validate.html">Confirmación de orden de pago en línea</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_deadline"><a class="reference internal" href="../../../sales/sales/send_quotations/deadline.html">Fecha límite de cotizaciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_different_addresses"><a class="reference internal" href="../../../sales/sales/send_quotations/different_addresses.html">Entregas y facturas en diferentes direcciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_orders_and_variants"><a class="reference internal" href="../../../sales/sales/send_quotations/orders_and_variants.html">Variantes de producto en cotizaciones y órdenes de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_invoicing"><a class="reference internal" href="#">Método de facturación</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_invoicing_policy"><a class="reference internal" href="../../../sales/sales/invoicing/invoicing_policy.html">Facturar por cantidades entregadas u ordenadas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_down_payment"><a class="reference internal" href="../../../sales/sales/invoicing/down_payment.html">Anticipos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_proforma"><a class="reference internal" href="../../../sales/sales/invoicing/proforma.html">Facturas proforma</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_time_materials"><a class="reference internal" href="../../../sales/sales/invoicing/time_materials.html">Facturación por tiempo y materiales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_milestone"><a class="reference internal" href="../../../sales/sales/invoicing/milestone.html">Facturar objetivos de proyecto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_expense"><a class="reference internal" href="../../../sales/sales/invoicing/expense.html">Volver a facturar gastos a los clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_products_prices"><a class="reference internal" href="#">Productos y precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_products"><a class="reference internal" href="#">Gestionar productos</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_import"><a class="reference internal" href="../../../sales/sales/products_prices/products/import.html">Importar productos</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_variants"><a class="reference internal" href="../../../sales/sales/products_prices/products/variants.html">Variantes de producto</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_product_images"><a class="reference internal" href="../../../sales/sales/products_prices/products/product_images.html">Imágenes para productos con Google Imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_prices"><a class="reference internal" href="#">Gestionar precios</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_pricing"><a class="reference internal" href="../../../sales/sales/products_prices/prices/pricing.html">Listas de precios, descuentos y fórmulas</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_currencies"><a class="reference internal" href="../../../sales/sales/products_prices/prices/currencies.html">Divisas extranjeras</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_returns"><a class="reference internal" href="../../../sales/sales/products_prices/returns.html">Devoluciones y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_ewallets_giftcards"><a class="reference internal" href="../../../sales/sales/products_prices/ewallets_giftcards.html">Usar monederos electrónicos y tarjetas de regalo</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_loyalty_discount"><a class="reference internal" href="../../../sales/sales/products_prices/loyalty_discount.html">Programas de descuento y lealtad</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_amazon_connector"><a class="reference internal" href="#">Conector de Amazon</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_features"><a class="reference internal" href="../../../sales/sales/amazon_connector/features.html">Funciones del Conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_setup"><a class="reference internal" href="../../../sales/sales/amazon_connector/setup.html">Configuración del conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_manage"><a class="reference internal" href="../../../sales/sales/amazon_connector/manage.html">Gestión de órdenes de Amazon</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_ebay_connector"><a class="reference internal" href="#">Conector de eBay</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_setup"><a class="reference internal" href="../../../sales/sales/ebay_connector/setup.html">Configuración del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_manage"><a class="reference internal" href="../../../sales/sales/ebay_connector/manage.html">¿Cómo anunciar un producto?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_troubleshooting"><a class="reference internal" href="../../../sales/sales/ebay_connector/troubleshooting.html">Solución de problemas del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_linking_listings"><a class="reference internal" href="../../../sales/sales/ebay_connector/linking_listings.html">Vincular anuncios existentes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale"><a class="reference internal" href="../../../sales/point_of_sale.html">Punto de venta</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_employee_login"><a class="reference internal" href="../../../sales/point_of_sale/employee_login.html">Gestión de varios empleados</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_receipts_invoices"><a class="reference internal" href="../../../sales/point_of_sale/receipts_invoices.html">Recibos y facturas</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_configuration"><a class="reference internal" href="../../../sales/point_of_sale/configuration.html">Configuración</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_printers"><a class="reference internal" href="../../../sales/point_of_sale/configuration/epos_printers.html">Impresoras ePOS</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_https"><a class="reference internal" href="../../../sales/point_of_sale/configuration/https.html">Conexión segura (HTTPS)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_ssc"><a class="reference internal" href="../../../sales/point_of_sale/configuration/epos_ssc.html">Certificado autofirmado para impresoras electrónicas del PdV</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_shop"><a class="reference internal" href="#">Funciones de tienda</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_sales_order"><a class="reference internal" href="../../../sales/point_of_sale/shop/sales_order.html">Orden de venta</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_barcode"><a class="reference internal" href="../../../sales/point_of_sale/shop/barcode.html">Códigos de barras</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_serial_numbers"><a class="reference internal" href="../../../sales/point_of_sale/shop/serial_numbers.html">Números de serie y lotes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_ship_later"><a class="reference internal" href="../../../sales/point_of_sale/shop/ship_later.html">Enviar después</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_customer_display"><a class="reference internal" href="../../../sales/point_of_sale/shop/customer_display.html">Pantalla del cliente</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_restaurant"><a class="reference internal" href="../../../sales/point_of_sale/restaurant.html">Funciones para restaurantes</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_bill_printing"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/bill_printing.html">Cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_floors_tables"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/floors_tables.html">Gestión de pisos y mesas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_kitchen_printing"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/kitchen_printing.html">Impresión de órdenes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_tips"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/tips.html">Propinas</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_pricing"><a class="reference internal" href="#">Funciones de precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discounts"><a class="reference internal" href="../../../sales/point_of_sale/pricing/discounts.html">Descuentos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discount_tags"><a class="reference internal" href="../../../sales/point_of_sale/pricing/discount_tags.html">Etiquetas de descuento (lector de código de barras)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_loyalty"><a class="reference internal" href="../../../sales/point_of_sale/pricing/loyalty.html">Programas de lealtad</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_pricelists"><a class="reference internal" href="../../../sales/point_of_sale/pricing/pricelists.html">Listas de precios</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_fiscal_position"><a class="reference internal" href="../../../sales/point_of_sale/pricing/fiscal_position.html">Impuestos flexibles (posiciones fiscales)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_cash_rounding"><a class="reference internal" href="../../../sales/point_of_sale/pricing/cash_rounding.html">Redondeo de efectivo</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_payment_methods"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods.html">Métodos de pago</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_payment_methods_terminals"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals.html">Terminales de pago</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_adyen"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/adyen.html">Adyen</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_ingenico"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/ingenico.html">Ingenico</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_six"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/six.html">SIX</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_stripe"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/stripe.html">Stripe</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_vantiv"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/vantiv.html">Vantiv</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_worldline"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/worldline.html">Worldline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_reporting"><a class="reference internal" href="../../../sales/point_of_sale/reporting.html">Reportes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_services"><a class="reference internal" href="#">Servicios</a><ul>
+<li class="toctree-l3 o_menu_applications_services_project"><a class="reference internal" href="../../../services/project.html">Proyecto</a><ul>
+<li class="toctree-l4 o_menu_applications_services_project_tasks"><a class="reference internal" href="#">Tareas</a><ul>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_email_alias"><a class="reference internal" href="../../../services/project/tasks/email_alias.html">Crear tareas del proyecto a partir de un seudónimo de correo electrónico</a></li>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_recurring_tasks"><a class="reference internal" href="../../../services/project/tasks/recurring_tasks.html">Tareas recurrentes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_project_project_management"><a class="reference internal" href="../../../services/project/project_management.html">Gestión de proyectos</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_timesheets"><a class="reference internal" href="../../../services/timesheets.html">Hojas de horas</a><ul>
+<li class="toctree-l4 o_menu_applications_services_timesheets_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_timesheets_overview_time_off"><a class="reference internal" href="../../../services/timesheets/overview/time_off.html">Crear hojas de horas después de la validación del tiempo personal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_field_service"><a class="reference internal" href="../../../services/field_service.html">Servicio externo</a><ul>
+<li class="toctree-l4 o_menu_applications_services_field_service_onsite_interventions"><a class="reference internal" href="../../../services/field_service/onsite_interventions.html">Planificación de intervenciones in situ</a></li>
+<li class="toctree-l4 o_menu_applications_services_field_service_default_warehouse"><a class="reference internal" href="../../../services/field_service/default_warehouse.html">Almacén predeterminado del usuario</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_helpdesk"><a class="reference internal" href="../../../services/helpdesk.html">Servicio de asistencia</a><ul>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_getting_started"><a class="reference internal" href="../../../services/helpdesk/overview/getting_started.html">Primeros pasos con Servicio de asistencia</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_sla"><a class="reference internal" href="../../../services/helpdesk/overview/sla.html">Acuerdos de nivel de servicio (SLA)</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_receiving_tickets"><a class="reference internal" href="../../../services/helpdesk/overview/receiving_tickets.html">Empezar a recibir tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_reports"><a class="reference internal" href="../../../services/helpdesk/overview/reports.html">Reportes</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_help_center"><a class="reference internal" href="../../../services/helpdesk/overview/help_center.html">Centro de ayuda</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_ratings"><a class="reference internal" href="../../../services/helpdesk/overview/ratings.html">Calificación de clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_advanced"><a class="reference internal" href="#">Avanzado</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_after_sales"><a class="reference internal" href="../../../services/helpdesk/advanced/after_sales.html">Servicios posventa</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_close_tickets"><a class="reference internal" href="../../../services/helpdesk/advanced/close_tickets.html">Cerrar tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_track_and_bill"><a class="reference internal" href="../../../services/helpdesk/advanced/track_and_bill.html">Seguimiento y facturación del tiempo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_finance"><a class="reference internal" href="#">Finanzas</a><ul>
+<li class="toctree-l3 o_menu_applications_finance_accounting"><a class="reference internal" href="../../../finance/accounting.html">Contabilidad y facturación</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_accounting_get_started"><a class="reference internal" href="../../../finance/accounting/get_started.html">Información básica</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_cheat_sheet"><a class="reference internal" href="../../../finance/accounting/get_started/cheat_sheet.html">Hoja de referencia de Contabilidad</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_chart_of_accounts"><a class="reference internal" href="../../../finance/accounting/get_started/chart_of_accounts.html">Plan de cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_multi_currency"><a class="reference internal" href="../../../finance/accounting/get_started/multi_currency.html">Sistema multidivisa</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_avg_price_valuation"><a class="reference internal" href="../../../finance/accounting/get_started/avg_price_valuation.html">Costo promedio en bienes devueltos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_vat_units"><a class="reference internal" href="../../../finance/accounting/get_started/vat_units.html">Unidades de IVA</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_taxes"><a class="reference internal" href="../../../finance/accounting/taxes.html">Impuestos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_cash_basis"><a class="reference internal" href="../../../finance/accounting/taxes/cash_basis.html">Impuestos de base de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_retention"><a class="reference internal" href="../../../finance/accounting/taxes/retention.html">Retención fiscal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_vat_verification"><a class="reference internal" href="../../../finance/accounting/taxes/vat_verification.html">Comprobar un número de IVA (sistema VIES)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_fiscal_positions"><a class="reference internal" href="../../../finance/accounting/taxes/fiscal_positions.html">Posiciones fiscales (mapeo de impuestos y cuentas)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_avatax"><a class="reference internal" href="../../../finance/accounting/taxes/avatax.html">Integración con AvaTax</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avatax_use"><a class="reference internal" href="../../../finance/accounting/taxes/avatax/avatax_use.html">Uso de AvaTax</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avalara_portal"><a class="reference internal" href="../../../finance/accounting/taxes/avatax/avalara_portal.html">Portal de Avalara (AvaTax)</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_taxcloud"><a class="reference internal" href="../../../finance/accounting/taxes/taxcloud.html">Integración con TaxCloud</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_eu_distance_selling"><a class="reference internal" href="../../../finance/accounting/taxes/eu_distance_selling.html">Ventas a distancia intracomunitarias en la UE</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_B2B_B2C"><a class="reference internal" href="../../../finance/accounting/taxes/B2B_B2C.html">Precios B2B (impuestos no incluidos) y B2C (impuestos incluidos)</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_customer_invoices"><a class="reference internal" href="../../../finance/accounting/customer_invoices.html">Facturas de cliente</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="../../../finance/accounting/customer_invoices/overview.html">Procesos de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="../../../finance/accounting/customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_payment_terms"><a class="reference internal" href="../../../finance/accounting/customer_invoices/payment_terms.html">Términos de pago y planes de pago a plazos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="../../../finance/accounting/customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_discounts"><a class="reference internal" href="../../../finance/accounting/customer_invoices/cash_discounts.html">Descuentos por pronto pago y reducción de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="../../../finance/accounting/customer_invoices/credit_notes.html">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_rounding"><a class="reference internal" href="../../../finance/accounting/customer_invoices/cash_rounding.html">Redondeo de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_deferred_revenues"><a class="reference internal" href="../../../finance/accounting/customer_invoices/deferred_revenues.html">Ingresos diferidos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_electronic_invoicing"><a class="reference internal" href="../../../finance/accounting/customer_invoices/electronic_invoicing.html">Facturación electrónica (<abbr title="intercambio electrónico de datos">EDI</abbr>)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_snailmail"><a class="reference internal" href="../../../finance/accounting/customer_invoices/snailmail.html">Correo postal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_epc_qr_code"><a class="reference internal" href="../../../finance/accounting/customer_invoices/epc_qr_code.html">Códigos EPC QR</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_incoterms"><a class="reference internal" href="../../../finance/accounting/customer_invoices/incoterms.html">Incoterms</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../../../finance/accounting/vendor_bills.html">Facturas de proveedor</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_invoice_digitization"><a class="reference internal" href="../../../finance/accounting/vendor_bills/invoice_digitization.html">Digitalización de documentos con IA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="../../../finance/accounting/vendor_bills/assets.html">Activos no circulantes y fijos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="../../../finance/accounting/vendor_bills/deferred_expenses.html">Gastos diferidos y prepagos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_payments"><a class="reference internal" href="../../../finance/accounting/payments.html">Pagos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="../../../finance/accounting/payments/online.html">Pagos en línea</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="../../../finance/accounting/payments/checks.html">Cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch"><a class="reference internal" href="../../../finance/accounting/payments/batch.html">Pagos por lote para depósitos bancarios</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch_sdd"><a class="reference internal" href="../../../finance/accounting/payments/batch_sdd.html">Pagos por lotes: domiciliación bancaria SEPA (SDD)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_follow_up"><a class="reference internal" href="../../../finance/accounting/payments/follow_up.html">Seguimiento en las facturas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="../../../finance/accounting/payments/internal_transfers.html">Transferencias internas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="../../../finance/accounting/payments/pay_sepa.html">Pagos con SEPA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="../../../finance/accounting/payments/pay_checks.html">Pagar con cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="../../../finance/accounting/payments/forecast.html">Pronóstico de futuras facturas por pagar</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../../../finance/accounting/bank.html">Cuentas bancarias y de efectivo</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization.html">Sincronización bancaria</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/saltedge.html">Salt Edge</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/ponto.html">Ponto</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/enablebanking.html">Enable Banking</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="../../../finance/accounting/bank/transactions.html">Transacciones</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="../../../finance/accounting/bank/reconciliation.html">Conciliación bancaria</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="../../../finance/accounting/bank/reconciliation_models.html">Modelos de conciliación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_foreign_currency"><a class="reference internal" href="../../../finance/accounting/bank/foreign_currency.html">Gestione una cuenta bancaria en una moneda extranjera</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_cash_register"><a class="reference internal" href="../../../finance/accounting/bank/cash_register.html">Caja registradora</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_reporting"><a class="reference internal" href="../../../finance/accounting/reporting.html">Reportes</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_returns"><a class="reference internal" href="../../../finance/accounting/reporting/tax_returns.html">Declaración de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_carryover"><a class="reference internal" href="../../../finance/accounting/reporting/tax_carryover.html">Traspaso de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_analytic_accounting"><a class="reference internal" href="../../../finance/accounting/reporting/analytic_accounting.html">Contabilidad analítica</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_budget"><a class="reference internal" href="../../../finance/accounting/reporting/budget.html">Presupuesto financiero</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_intrastat"><a class="reference internal" href="../../../finance/accounting/reporting/intrastat.html">Intrastat</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_data_inalterability"><a class="reference internal" href="../../../finance/accounting/reporting/data_inalterability.html">Reporte de comprobación de inalterabilidad de datos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_silverfin"><a class="reference internal" href="../../../finance/accounting/reporting/silverfin.html">Integración con Silverfin</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_customize"><a class="reference internal" href="../../../finance/accounting/reporting/customize.html">Reportes personalizados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_year_end"><a class="reference internal" href="../../../finance/accounting/reporting/year_end.html">Cierre del ejercicio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_expenses"><a class="reference internal" href="../../../finance/expenses.html">Gastos</a></li>
+<li class="toctree-l3 o_menu_applications_finance_payment_providers"><a class="reference internal" href="../../../finance/payment_providers.html">Pagos en línea</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_wire_transfer"><a class="reference internal" href="../../../finance/payment_providers/wire_transfer.html">Transferencias bancarias</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_adyen"><a class="reference internal" href="../../../finance/payment_providers/adyen.html">Adyen</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_alipay"><a class="reference internal" href="../../../finance/payment_providers/alipay.html">Alipay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_amazon_payment_services"><a class="reference internal" href="../../../finance/payment_providers/amazon_payment_services.html">Servicios de pago de Amazon</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_asiapay"><a class="reference internal" href="../../../finance/payment_providers/asiapay.html">AsiaPay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_authorize"><a class="reference internal" href="../../../finance/payment_providers/authorize.html">Authorize.Net</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_buckaroo"><a class="reference internal" href="../../../finance/payment_providers/buckaroo.html">Buckaroo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_demo"><a class="reference internal" href="../../../finance/payment_providers/demo.html">Demostración</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_flutterwave"><a class="reference internal" href="../../../finance/payment_providers/flutterwave.html">Flutterwave</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mercado_pago"><a class="reference internal" href="../../../finance/payment_providers/mercado_pago.html">Mercado Pago</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mollie"><a class="reference internal" href="../../../finance/payment_providers/mollie.html">Mollie</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_ogone"><a class="reference internal" href="../../../finance/payment_providers/ogone.html">Ogone</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_paypal"><a class="reference internal" href="../../../finance/payment_providers/paypal.html">PayPal</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_razorpay"><a class="reference internal" href="../../../finance/payment_providers/razorpay.html">Razorpay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_sips"><a class="reference internal" href="../../../finance/payment_providers/sips.html">SIPS</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_stripe"><a class="reference internal" href="../../../finance/payment_providers/stripe.html">Stripe</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_fiscal_localizations"><a class="reference internal" href="../../../finance/fiscal_localizations.html">Localizaciones fiscales</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_argentina"><a class="reference internal" href="../../../finance/fiscal_localizations/argentina.html">Argentina</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_australia"><a class="reference internal" href="../../../finance/fiscal_localizations/australia.html">Australia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_belgium"><a class="reference internal" href="../../../finance/fiscal_localizations/belgium.html">Bélgica</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_brazil"><a class="reference internal" href="../../../finance/fiscal_localizations/brazil.html">Brasil</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_chile"><a class="reference internal" href="../../../finance/fiscal_localizations/chile.html">Chile</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_colombia"><a class="reference internal" href="../../../finance/fiscal_localizations/colombia.html">Colombia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_ecuador"><a class="reference internal" href="../../../finance/fiscal_localizations/ecuador.html">Ecuador</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_egypt"><a class="reference internal" href="../../../finance/fiscal_localizations/egypt.html">Egipto</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_france"><a class="reference internal" href="../../../finance/fiscal_localizations/france.html">Francia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_germany"><a class="reference internal" href="../../../finance/fiscal_localizations/germany.html">Alemania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_india"><a class="reference internal" href="../../../finance/fiscal_localizations/india.html">India</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_indonesia"><a class="reference internal" href="../../../finance/fiscal_localizations/indonesia.html">Indonesia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_italy"><a class="reference internal" href="../../../finance/fiscal_localizations/italy.html">Italia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_kenya"><a class="reference internal" href="../../../finance/fiscal_localizations/kenya.html">Kenia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_luxembourg"><a class="reference internal" href="../../../finance/fiscal_localizations/luxembourg.html">Luxemburgo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_mexico"><a class="reference internal" href="../../../finance/fiscal_localizations/mexico.html">México</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_netherlands"><a class="reference internal" href="../../../finance/fiscal_localizations/netherlands.html">Países Bajos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_romania"><a class="reference internal" href="../../../finance/fiscal_localizations/romania.html">Rumania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_peru"><a class="reference internal" href="../../../finance/fiscal_localizations/peru.html">Perú</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_philippines"><a class="reference internal" href="../../../finance/fiscal_localizations/philippines.html">Filipinas</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_saudi_arabia"><a class="reference internal" href="../../../finance/fiscal_localizations/saudi_arabia.html">Arabia Saudita</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_spain"><a class="reference internal" href="../../../finance/fiscal_localizations/spain.html">España</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_switzerland"><a class="reference internal" href="../../../finance/fiscal_localizations/switzerland.html">Suiza</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_thailand"><a class="reference internal" href="../../../finance/fiscal_localizations/thailand.html">Tailandia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_arab_emirates"><a class="reference internal" href="../../../finance/fiscal_localizations/united_arab_emirates.html">Emiratos Árabes Unidos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_kingdom"><a class="reference internal" href="../../../finance/fiscal_localizations/united_kingdom.html">Reino Unido</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>En esta página</h5>
+    <ul>
+<li><a class="reference internal" href="#">Órdenes de cambio de ingeniería</a><ul>
+<li><a class="reference internal" href="#create-eco">Crear una ECO</a></li>
+<li><a class="reference internal" href="#change-components">Cambio de componentes</a><ul>
+<li><a class="reference internal" href="#compare-changes">Comparar cambios</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-operations">Cambio de operaciones</a><ul>
+<li><a class="reference internal" href="#id1">Comparar cambios</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apply-changes">Aplicar cambios</a><ul>
+<li><a class="reference internal" href="#verify-changes">Verificar cambios</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-eco-from-tablet-view">Crear una orden de cambio de ingeniería desde la vista de tableta</a><ul>
+<li><a class="reference internal" href="#view-eco">Ver orden para cambio de ingeniería</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">Documentos para el usuario</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Fundamentos de Odoo</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Actividades</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reportes</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Buscar y filtrar registros</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Exportar e importar datos</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">Compras dentro de la aplicación (IAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_sales"><a class="reference internal" href="#">Ventas</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_crm"><a class="reference internal" href="../../../sales/crm.html">CRM</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_crm_pipeline"><a class="reference internal" href="#">Organizar un flujo</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_lost_opportunities"><a class="reference internal" href="../../../sales/crm/pipeline/lost_opportunities.html">Gestión de oportunidades perdidas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_multi_sales_team"><a class="reference internal" href="../../../sales/crm/pipeline/multi_sales_team.html">Varios equipos de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_acquire_leads"><a class="reference internal" href="#">Obtener leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_convert"><a class="reference internal" href="../../../sales/crm/acquire_leads/convert.html">Convertir leads en oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_generate_leads"><a class="reference internal" href="../../../sales/crm/acquire_leads/generate_leads.html">Generar leads y oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_send_quotes"><a class="reference internal" href="../../../sales/crm/acquire_leads/send_quotes.html">Envíe presupuestos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_lead_mining"><a class="reference internal" href="../../../sales/crm/acquire_leads/lead_mining.html">Minado de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_track_leads"><a class="reference internal" href="#">Asignar y rastrear leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_track_leads_lead_scoring"><a class="reference internal" href="../../../sales/crm/track_leads/lead_scoring.html">Asignación de leads con la puntuación predictiva de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_performance"><a class="reference internal" href="#">Analizar el rendimiento</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_performance_win_loss"><a class="reference internal" href="../../../sales/crm/performance/win_loss.html">Revise la relación ganancia/pérdida</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_optimize"><a class="reference internal" href="#">Mejoras para su trabajo diario</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_partner_autocomplete"><a class="reference internal" href="../../../sales/crm/optimize/partner_autocomplete.html">Enriquecer contactos con la función Autocompletar contacto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_gamification"><a class="reference internal" href="../../../sales/crm/optimize/gamification.html">¿Cómo motivar y recompensar a mis vendedores?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_utilize_activities"><a class="reference internal" href="../../../sales/crm/optimize/utilize_activities.html">Utilizar actividades para los equipos de ventas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_lead_enrichment"><a class="reference internal" href="../../../sales/crm/optimize/lead_enrichment.html">Enriquecimiento de leads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_sales"><a class="reference internal" href="../../../sales/sales.html">Ventas</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_sales_send_quotations"><a class="reference internal" href="#">Enviar cotizaciones</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_quote_template"><a class="reference internal" href="../../../sales/sales/send_quotations/quote_template.html">Plantillas de cotización</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_optional_products"><a class="reference internal" href="../../../sales/sales/send_quotations/optional_products.html">Productos opcionales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_signature_to_validate"><a class="reference internal" href="../../../sales/sales/send_quotations/get_signature_to_validate.html">Firmas electrónicas para la confirmación de órdenes.</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_paid_to_validate"><a class="reference internal" href="../../../sales/sales/send_quotations/get_paid_to_validate.html">Confirmación de orden de pago en línea</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_deadline"><a class="reference internal" href="../../../sales/sales/send_quotations/deadline.html">Fecha límite de cotizaciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_different_addresses"><a class="reference internal" href="../../../sales/sales/send_quotations/different_addresses.html">Entregas y facturas en diferentes direcciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_orders_and_variants"><a class="reference internal" href="../../../sales/sales/send_quotations/orders_and_variants.html">Variantes de producto en cotizaciones y órdenes de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_invoicing"><a class="reference internal" href="#">Método de facturación</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_invoicing_policy"><a class="reference internal" href="../../../sales/sales/invoicing/invoicing_policy.html">Facturar por cantidades entregadas u ordenadas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_down_payment"><a class="reference internal" href="../../../sales/sales/invoicing/down_payment.html">Anticipos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_proforma"><a class="reference internal" href="../../../sales/sales/invoicing/proforma.html">Facturas proforma</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_time_materials"><a class="reference internal" href="../../../sales/sales/invoicing/time_materials.html">Facturación por tiempo y materiales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_milestone"><a class="reference internal" href="../../../sales/sales/invoicing/milestone.html">Facturar objetivos de proyecto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_expense"><a class="reference internal" href="../../../sales/sales/invoicing/expense.html">Volver a facturar gastos a los clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_products_prices"><a class="reference internal" href="#">Productos y precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_products"><a class="reference internal" href="#">Gestionar productos</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_import"><a class="reference internal" href="../../../sales/sales/products_prices/products/import.html">Importar productos</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_variants"><a class="reference internal" href="../../../sales/sales/products_prices/products/variants.html">Variantes de producto</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_product_images"><a class="reference internal" href="../../../sales/sales/products_prices/products/product_images.html">Imágenes para productos con Google Imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_prices"><a class="reference internal" href="#">Gestionar precios</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_pricing"><a class="reference internal" href="../../../sales/sales/products_prices/prices/pricing.html">Listas de precios, descuentos y fórmulas</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_currencies"><a class="reference internal" href="../../../sales/sales/products_prices/prices/currencies.html">Divisas extranjeras</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_returns"><a class="reference internal" href="../../../sales/sales/products_prices/returns.html">Devoluciones y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_ewallets_giftcards"><a class="reference internal" href="../../../sales/sales/products_prices/ewallets_giftcards.html">Usar monederos electrónicos y tarjetas de regalo</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_loyalty_discount"><a class="reference internal" href="../../../sales/sales/products_prices/loyalty_discount.html">Programas de descuento y lealtad</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_amazon_connector"><a class="reference internal" href="#">Conector de Amazon</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_features"><a class="reference internal" href="../../../sales/sales/amazon_connector/features.html">Funciones del Conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_setup"><a class="reference internal" href="../../../sales/sales/amazon_connector/setup.html">Configuración del conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_manage"><a class="reference internal" href="../../../sales/sales/amazon_connector/manage.html">Gestión de órdenes de Amazon</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_ebay_connector"><a class="reference internal" href="#">Conector de eBay</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_setup"><a class="reference internal" href="../../../sales/sales/ebay_connector/setup.html">Configuración del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_manage"><a class="reference internal" href="../../../sales/sales/ebay_connector/manage.html">¿Cómo anunciar un producto?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_troubleshooting"><a class="reference internal" href="../../../sales/sales/ebay_connector/troubleshooting.html">Solución de problemas del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_linking_listings"><a class="reference internal" href="../../../sales/sales/ebay_connector/linking_listings.html">Vincular anuncios existentes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale"><a class="reference internal" href="../../../sales/point_of_sale.html">Punto de venta</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_employee_login"><a class="reference internal" href="../../../sales/point_of_sale/employee_login.html">Gestión de varios empleados</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_receipts_invoices"><a class="reference internal" href="../../../sales/point_of_sale/receipts_invoices.html">Recibos y facturas</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_configuration"><a class="reference internal" href="../../../sales/point_of_sale/configuration.html">Configuración</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_printers"><a class="reference internal" href="../../../sales/point_of_sale/configuration/epos_printers.html">Impresoras ePOS</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_https"><a class="reference internal" href="../../../sales/point_of_sale/configuration/https.html">Conexión segura (HTTPS)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_ssc"><a class="reference internal" href="../../../sales/point_of_sale/configuration/epos_ssc.html">Certificado autofirmado para impresoras electrónicas del PdV</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_shop"><a class="reference internal" href="#">Funciones de tienda</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_sales_order"><a class="reference internal" href="../../../sales/point_of_sale/shop/sales_order.html">Orden de venta</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_barcode"><a class="reference internal" href="../../../sales/point_of_sale/shop/barcode.html">Códigos de barras</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_serial_numbers"><a class="reference internal" href="../../../sales/point_of_sale/shop/serial_numbers.html">Números de serie y lotes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_ship_later"><a class="reference internal" href="../../../sales/point_of_sale/shop/ship_later.html">Enviar después</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_customer_display"><a class="reference internal" href="../../../sales/point_of_sale/shop/customer_display.html">Pantalla del cliente</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_restaurant"><a class="reference internal" href="../../../sales/point_of_sale/restaurant.html">Funciones para restaurantes</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_bill_printing"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/bill_printing.html">Cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_floors_tables"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/floors_tables.html">Gestión de pisos y mesas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_kitchen_printing"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/kitchen_printing.html">Impresión de órdenes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_tips"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/tips.html">Propinas</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_pricing"><a class="reference internal" href="#">Funciones de precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discounts"><a class="reference internal" href="../../../sales/point_of_sale/pricing/discounts.html">Descuentos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discount_tags"><a class="reference internal" href="../../../sales/point_of_sale/pricing/discount_tags.html">Etiquetas de descuento (lector de código de barras)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_loyalty"><a class="reference internal" href="../../../sales/point_of_sale/pricing/loyalty.html">Programas de lealtad</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_pricelists"><a class="reference internal" href="../../../sales/point_of_sale/pricing/pricelists.html">Listas de precios</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_fiscal_position"><a class="reference internal" href="../../../sales/point_of_sale/pricing/fiscal_position.html">Impuestos flexibles (posiciones fiscales)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_cash_rounding"><a class="reference internal" href="../../../sales/point_of_sale/pricing/cash_rounding.html">Redondeo de efectivo</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_payment_methods"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods.html">Métodos de pago</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_payment_methods_terminals"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals.html">Terminales de pago</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_adyen"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/adyen.html">Adyen</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_ingenico"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/ingenico.html">Ingenico</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_six"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/six.html">SIX</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_stripe"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/stripe.html">Stripe</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_vantiv"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/vantiv.html">Vantiv</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_worldline"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/worldline.html">Worldline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_reporting"><a class="reference internal" href="../../../sales/point_of_sale/reporting.html">Reportes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_services"><a class="reference internal" href="#">Servicios</a><ul>
+<li class="toctree-l3 o_menu_applications_services_project"><a class="reference internal" href="../../../services/project.html">Proyecto</a><ul>
+<li class="toctree-l4 o_menu_applications_services_project_tasks"><a class="reference internal" href="#">Tareas</a><ul>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_email_alias"><a class="reference internal" href="../../../services/project/tasks/email_alias.html">Crear tareas del proyecto a partir de un seudónimo de correo electrónico</a></li>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_recurring_tasks"><a class="reference internal" href="../../../services/project/tasks/recurring_tasks.html">Tareas recurrentes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_project_project_management"><a class="reference internal" href="../../../services/project/project_management.html">Gestión de proyectos</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_timesheets"><a class="reference internal" href="../../../services/timesheets.html">Hojas de horas</a><ul>
+<li class="toctree-l4 o_menu_applications_services_timesheets_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_timesheets_overview_time_off"><a class="reference internal" href="../../../services/timesheets/overview/time_off.html">Crear hojas de horas después de la validación del tiempo personal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_field_service"><a class="reference internal" href="../../../services/field_service.html">Servicio externo</a><ul>
+<li class="toctree-l4 o_menu_applications_services_field_service_onsite_interventions"><a class="reference internal" href="../../../services/field_service/onsite_interventions.html">Planificación de intervenciones in situ</a></li>
+<li class="toctree-l4 o_menu_applications_services_field_service_default_warehouse"><a class="reference internal" href="../../../services/field_service/default_warehouse.html">Almacén predeterminado del usuario</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_helpdesk"><a class="reference internal" href="../../../services/helpdesk.html">Servicio de asistencia</a><ul>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_getting_started"><a class="reference internal" href="../../../services/helpdesk/overview/getting_started.html">Primeros pasos con Servicio de asistencia</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_sla"><a class="reference internal" href="../../../services/helpdesk/overview/sla.html">Acuerdos de nivel de servicio (SLA)</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_receiving_tickets"><a class="reference internal" href="../../../services/helpdesk/overview/receiving_tickets.html">Empezar a recibir tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_reports"><a class="reference internal" href="../../../services/helpdesk/overview/reports.html">Reportes</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_help_center"><a class="reference internal" href="../../../services/helpdesk/overview/help_center.html">Centro de ayuda</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_ratings"><a class="reference internal" href="../../../services/helpdesk/overview/ratings.html">Calificación de clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_advanced"><a class="reference internal" href="#">Avanzado</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_after_sales"><a class="reference internal" href="../../../services/helpdesk/advanced/after_sales.html">Servicios posventa</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_close_tickets"><a class="reference internal" href="../../../services/helpdesk/advanced/close_tickets.html">Cerrar tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_track_and_bill"><a class="reference internal" href="../../../services/helpdesk/advanced/track_and_bill.html">Seguimiento y facturación del tiempo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_finance"><a class="reference internal" href="#">Finanzas</a><ul>
+<li class="toctree-l3 o_menu_applications_finance_accounting"><a class="reference internal" href="../../../finance/accounting.html">Contabilidad y facturación</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_accounting_get_started"><a class="reference internal" href="../../../finance/accounting/get_started.html">Información básica</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_cheat_sheet"><a class="reference internal" href="../../../finance/accounting/get_started/cheat_sheet.html">Hoja de referencia de Contabilidad</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_chart_of_accounts"><a class="reference internal" href="../../../finance/accounting/get_started/chart_of_accounts.html">Plan de cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_multi_currency"><a class="reference internal" href="../../../finance/accounting/get_started/multi_currency.html">Sistema multidivisa</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_avg_price_valuation"><a class="reference internal" href="../../../finance/accounting/get_started/avg_price_valuation.html">Costo promedio en bienes devueltos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_vat_units"><a class="reference internal" href="../../../finance/accounting/get_started/vat_units.html">Unidades de IVA</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_taxes"><a class="reference internal" href="../../../finance/accounting/taxes.html">Impuestos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_cash_basis"><a class="reference internal" href="../../../finance/accounting/taxes/cash_basis.html">Impuestos de base de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_retention"><a class="reference internal" href="../../../finance/accounting/taxes/retention.html">Retención fiscal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_vat_verification"><a class="reference internal" href="../../../finance/accounting/taxes/vat_verification.html">Comprobar un número de IVA (sistema VIES)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_fiscal_positions"><a class="reference internal" href="../../../finance/accounting/taxes/fiscal_positions.html">Posiciones fiscales (mapeo de impuestos y cuentas)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_avatax"><a class="reference internal" href="../../../finance/accounting/taxes/avatax.html">Integración con AvaTax</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avatax_use"><a class="reference internal" href="../../../finance/accounting/taxes/avatax/avatax_use.html">Uso de AvaTax</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avalara_portal"><a class="reference internal" href="../../../finance/accounting/taxes/avatax/avalara_portal.html">Portal de Avalara (AvaTax)</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_taxcloud"><a class="reference internal" href="../../../finance/accounting/taxes/taxcloud.html">Integración con TaxCloud</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_eu_distance_selling"><a class="reference internal" href="../../../finance/accounting/taxes/eu_distance_selling.html">Ventas a distancia intracomunitarias en la UE</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_B2B_B2C"><a class="reference internal" href="../../../finance/accounting/taxes/B2B_B2C.html">Precios B2B (impuestos no incluidos) y B2C (impuestos incluidos)</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_customer_invoices"><a class="reference internal" href="../../../finance/accounting/customer_invoices.html">Facturas de cliente</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="../../../finance/accounting/customer_invoices/overview.html">Procesos de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="../../../finance/accounting/customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_payment_terms"><a class="reference internal" href="../../../finance/accounting/customer_invoices/payment_terms.html">Términos de pago y planes de pago a plazos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="../../../finance/accounting/customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_discounts"><a class="reference internal" href="../../../finance/accounting/customer_invoices/cash_discounts.html">Descuentos por pronto pago y reducción de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="../../../finance/accounting/customer_invoices/credit_notes.html">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_rounding"><a class="reference internal" href="../../../finance/accounting/customer_invoices/cash_rounding.html">Redondeo de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_deferred_revenues"><a class="reference internal" href="../../../finance/accounting/customer_invoices/deferred_revenues.html">Ingresos diferidos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_electronic_invoicing"><a class="reference internal" href="../../../finance/accounting/customer_invoices/electronic_invoicing.html">Facturación electrónica (<abbr title="intercambio electrónico de datos">EDI</abbr>)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_snailmail"><a class="reference internal" href="../../../finance/accounting/customer_invoices/snailmail.html">Correo postal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_epc_qr_code"><a class="reference internal" href="../../../finance/accounting/customer_invoices/epc_qr_code.html">Códigos EPC QR</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_incoterms"><a class="reference internal" href="../../../finance/accounting/customer_invoices/incoterms.html">Incoterms</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../../../finance/accounting/vendor_bills.html">Facturas de proveedor</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_invoice_digitization"><a class="reference internal" href="../../../finance/accounting/vendor_bills/invoice_digitization.html">Digitalización de documentos con IA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="../../../finance/accounting/vendor_bills/assets.html">Activos no circulantes y fijos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="../../../finance/accounting/vendor_bills/deferred_expenses.html">Gastos diferidos y prepagos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_payments"><a class="reference internal" href="../../../finance/accounting/payments.html">Pagos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="../../../finance/accounting/payments/online.html">Pagos en línea</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="../../../finance/accounting/payments/checks.html">Cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch"><a class="reference internal" href="../../../finance/accounting/payments/batch.html">Pagos por lote para depósitos bancarios</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch_sdd"><a class="reference internal" href="../../../finance/accounting/payments/batch_sdd.html">Pagos por lotes: domiciliación bancaria SEPA (SDD)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_follow_up"><a class="reference internal" href="../../../finance/accounting/payments/follow_up.html">Seguimiento en las facturas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="../../../finance/accounting/payments/internal_transfers.html">Transferencias internas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="../../../finance/accounting/payments/pay_sepa.html">Pagos con SEPA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="../../../finance/accounting/payments/pay_checks.html">Pagar con cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="../../../finance/accounting/payments/forecast.html">Pronóstico de futuras facturas por pagar</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../../../finance/accounting/bank.html">Cuentas bancarias y de efectivo</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization.html">Sincronización bancaria</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/saltedge.html">Salt Edge</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/ponto.html">Ponto</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/enablebanking.html">Enable Banking</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="../../../finance/accounting/bank/transactions.html">Transacciones</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="../../../finance/accounting/bank/reconciliation.html">Conciliación bancaria</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="../../../finance/accounting/bank/reconciliation_models.html">Modelos de conciliación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_foreign_currency"><a class="reference internal" href="../../../finance/accounting/bank/foreign_currency.html">Gestione una cuenta bancaria en una moneda extranjera</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_cash_register"><a class="reference internal" href="../../../finance/accounting/bank/cash_register.html">Caja registradora</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_reporting"><a class="reference internal" href="../../../finance/accounting/reporting.html">Reportes</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_returns"><a class="reference internal" href="../../../finance/accounting/reporting/tax_returns.html">Declaración de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_carryover"><a class="reference internal" href="../../../finance/accounting/reporting/tax_carryover.html">Traspaso de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_analytic_accounting"><a class="reference internal" href="../../../finance/accounting/reporting/analytic_accounting.html">Contabilidad analítica</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_budget"><a class="reference internal" href="../../../finance/accounting/reporting/budget.html">Presupuesto financiero</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_intrastat"><a class="reference internal" href="../../../finance/accounting/reporting/intrastat.html">Intrastat</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_data_inalterability"><a class="reference internal" href="../../../finance/accounting/reporting/data_inalterability.html">Reporte de comprobación de inalterabilidad de datos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_silverfin"><a class="reference internal" href="../../../finance/accounting/reporting/silverfin.html">Integración con Silverfin</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_customize"><a class="reference internal" href="../../../finance/accounting/reporting/customize.html">Reportes personalizados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_year_end"><a class="reference internal" href="../../../finance/accounting/reporting/year_end.html">Cierre del ejercicio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_expenses"><a class="reference internal" href="../../../finance/expenses.html">Gastos</a></li>
+<li class="toctree-l3 o_menu_applications_finance_payment_providers"><a class="reference internal" href="../../../finance/payment_providers.html">Pagos en línea</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_wire_transfer"><a class="reference internal" href="../../../finance/payment_providers/wire_transfer.html">Transferencias bancarias</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_adyen"><a class="reference internal" href="../../../finance/payment_providers/adyen.html">Adyen</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_alipay"><a class="reference internal" href="../../../finance/payment_providers/alipay.html">Alipay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_amazon_payment_services"><a class="reference internal" href="../../../finance/payment_providers/amazon_payment_services.html">Servicios de pago de Amazon</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_asiapay"><a class="reference internal" href="../../../finance/payment_providers/asiapay.html">AsiaPay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_authorize"><a class="reference internal" href="../../../finance/payment_providers/authorize.html">Authorize.Net</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_buckaroo"><a class="reference internal" href="../../../finance/payment_providers/buckaroo.html">Buckaroo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_demo"><a class="reference internal" href="../../../finance/payment_providers/demo.html">Demostración</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_flutterwave"><a class="reference internal" href="../../../finance/payment_providers/flutterwave.html">Flutterwave</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mercado_pago"><a class="reference internal" href="../../../finance/payment_providers/mercado_pago.html">Mercado Pago</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mollie"><a class="reference internal" href="../../../finance/payment_providers/mollie.html">Mollie</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_ogone"><a class="reference internal" href="../../../finance/payment_providers/ogone.html">Ogone</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_paypal"><a class="reference internal" href="../../../finance/payment_providers/paypal.html">PayPal</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_razorpay"><a class="reference internal" href="../../../finance/payment_providers/razorpay.html">Razorpay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_sips"><a class="reference internal" href="../../../finance/payment_providers/sips.html">SIPS</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_stripe"><a class="reference internal" href="../../../finance/payment_providers/stripe.html">Stripe</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_fiscal_localizations"><a class="reference internal" href="../../../finance/fiscal_localizations.html">Localizaciones fiscales</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_argentina"><a class="reference internal" href="../../../finance/fiscal_localizations/argentina.html">Argentina</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_australia"><a class="reference internal" href="../../../finance/fiscal_localizations/australia.html">Australia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_belgium"><a class="reference internal" href="../../../finance/fiscal_localizations/belgium.html">Bélgica</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_brazil"><a class="reference internal" href="../../../finance/fiscal_localizations/brazil.html">Brasil</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_chile"><a class="reference internal" href="../../../finance/fiscal_localizations/chile.html">Chile</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_colombia"><a class="reference internal" href="../../../finance/fiscal_localizations/colombia.html">Colombia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_ecuador"><a class="reference internal" href="../../../finance/fiscal_localizations/ecuador.html">Ecuador</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_egypt"><a class="reference internal" href="../../../finance/fiscal_localizations/egypt.html">Egipto</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_france"><a class="reference internal" href="../../../finance/fiscal_localizations/france.html">Francia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_germany"><a class="reference internal" href="../../../finance/fiscal_localizations/germany.html">Alemania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_india"><a class="reference internal" href="../../../finance/fiscal_localizations/india.html">India</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_indonesia"><a class="reference internal" href="../../../finance/fiscal_localizations/indonesia.html">Indonesia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_italy"><a class="reference internal" href="../../../finance/fiscal_localizations/italy.html">Italia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_kenya"><a class="reference internal" href="../../../finance/fiscal_localizations/kenya.html">Kenia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_luxembourg"><a class="reference internal" href="../../../finance/fiscal_localizations/luxembourg.html">Luxemburgo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_mexico"><a class="reference internal" href="../../../finance/fiscal_localizations/mexico.html">México</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_netherlands"><a class="reference internal" href="../../../finance/fiscal_localizations/netherlands.html">Países Bajos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_romania"><a class="reference internal" href="../../../finance/fiscal_localizations/romania.html">Rumania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_peru"><a class="reference internal" href="../../../finance/fiscal_localizations/peru.html">Perú</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_philippines"><a class="reference internal" href="../../../finance/fiscal_localizations/philippines.html">Filipinas</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_saudi_arabia"><a class="reference internal" href="../../../finance/fiscal_localizations/saudi_arabia.html">Arabia Saudita</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_spain"><a class="reference internal" href="../../../finance/fiscal_localizations/spain.html">España</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_switzerland"><a class="reference internal" href="../../../finance/fiscal_localizations/switzerland.html">Suiza</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_thailand"><a class="reference internal" href="../../../finance/fiscal_localizations/thailand.html">Tailandia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_arab_emirates"><a class="reference internal" href="../../../finance/fiscal_localizations/united_arab_emirates.html">Emiratos Árabes Unidos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_kingdom"><a class="reference internal" href="../../../finance/fiscal_localizations/united_kingdom.html">Reino Unido</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Pruebe Odoo GRATIS</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                ES 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/applications/inventory_and_mrp/plm/manage_changes/engineering_change_orders.html">EN</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Órdenes de cambio de ingeniería</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="engineering-change-orders">
+<h1>Órdenes de cambio de ingeniería<a class="headerlink" href="#engineering-change-orders" title="Enlazar permanentemente con este título">¶</a></h1>
+<p id="plm-eco">Utilice las <em>órdenes de cambio de ingeniería</em> (<em>ECO)</em> para monitorear, implementar y quitar los cambios realizados a productos y <a class="reference internal" href="../../manufacturing/management/bill_configuration.html#manufacturing-management-bill-configuration"><span class="std std-ref">listas de materiales</span></a>.</p>
+<p>Estas son tres formas en las que puede crear órdenes de cambio de ingeniería:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#plm-eco-create-eco"><span class="std std-ref">directamente en el tipo de ECO</span></a>.</p></li>
+<li><p>si es un operador y desde la <a class="reference internal" href="#plm-eco-tablet-view"><span class="std std-ref">vista de tableta</span></a> de una operación.</p></li>
+<li><p>automáticamente desde retroalimentación que haya enviado al <a class="reference internal" href="eco_type.html#plm-eco-eco-type"><span class="std std-ref">alias de correo electrónico del tipo de ECO</span></a>.</p></li>
+</ol>
+</section><section id="create-eco">
+<span id="plm-eco-create-eco"></span><h2>Crear una ECO<a class="headerlink" href="#create-eco" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para crear una <a href="#id2"><span class="problematic" id="id3">|orden de cambio de ingeniería (ECO, por sus siglas en inglés)|</span></a> lo primero que tiene que hacer es ir a la aplicación <em>PLM</em>. Después, seleccione la tarjeta de tipo de <abbr title="Engineering Change Order">ECO</abbr> que se usará para monitorear el progreso de cambio. En la página <span class="guilabel">Órdenes de cambio de ingeniería</span>, haga clic en el botón <span class="guilabel">Nuevo</span> que se encuentra en la esquina superior izquierda.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>Aprenda a crear nuevos <a class="reference internal" href="eco_type.html#plm-eco-eco-type"><span class="std std-ref">tipos de ECO</span></a> para categorizar y organizar órdenes de cambio. De esta manera, los empleados solo verán las <abbr title="Engineering Change Order">ECO</abbr> que se relacionan a sus responsabilidades, no importa si se trata de la introducción de un nuevo producto, actualizaciones específicas de las líneas de productos, o sobre el cumplimiento de la normativa.</p>
+</div>
+<p>En el formulario de <abbr title="Engineering Change Order">ECO</abbr>, llene los siguientes campos como se indica:</p>
+<ul>
+<li><p><span class="guilabel">Descripción</span> es un resumen de la mejora.</p></li>
+<li><p><span class="guilabel">Tipo</span>: especifica el tipo de proyecto <abbr title="Engineering Change Order">ECO</abbr> para organizar las <abbr title="Engineering Change Order">ECO</abbr>.</p></li>
+<li><p><span class="guilabel">Aplicar en</span> determina si la <abbr title="Engineering Change Order">ECO</abbr> cambia la <span class="guilabel">Lista de materiales</span> o <span class="guilabel">Solo producto</span>.</p></li>
+<li><p><span class="guilabel">Producto</span> indica el producto que se mejorará.</p></li>
+<li><p><span class="guilabel">Lista de meteriales</span> indica la <a href="#id4"><span class="problematic" id="id5">|LdM|</span></a> que se cambió. Si el producto indicado en el campo <span class="guilabel">Producto</span> tiene una <a href="#id6"><span class="problematic" id="id7">|LdM|</span></a> existente, este campo se llenará automáticamente. Si existen varias <a href="#id8"><span class="problematic" id="id9">|listas de materiales|</span></a> seleccione las opciones que quiera en el menú desplegable.</p></li>
+<li><p><span class="guilabel">Empresa</span> este campo se usa en bases de datos multiempresa. Especifique si el cambio se aplica a productos de una empresa en específico, o déjelo en blanco si el cambio se aplica a todas las empresas.</p></li>
+<li><p><span class="guilabel">Responsable</span> es la persona a cargo de la <abbr title="Engineering Change Order">ECO</abbr>. (Opcional)</p></li>
+<li><p><span class="guilabel">Válida desde</span> este campo especifica cuándo empieza a ser válida la <a href="#id10"><span class="problematic" id="id11">|orden de cambio de ingeniería|</span></a>. Si se elige <span class="guilabel">Lo antes posible</span> significa que la <a href="#id12"><span class="problematic" id="id13">|orden de cambio de ingeniería|</span></a> se aplicará a la <a href="#id14"><span class="problematic" id="id15">|lista de materiales|</span></a> en producción tan pronto como un usuario autorizado  <a class="reference internal" href="#plm-eco-apply-changes"><span class="std std-ref">aplique los cambios</span></a>.</p>
+<p>Por otro lado, si selecciona <span class="guilabel">En fecha</span> y especifica una fecha, tendrá una fecha con la que será más fácil monitorear el historial de versiones de la <a href="#id16"><span class="problematic" id="id17">|lista de materiales|</span></a>, y la fecha específica de la <a href="#id18"><span class="problematic" id="id19">|lista de materiales|</span></a>, que se usan para producción.</p>
+</li>
+<li><p>Asignamos <a href="#id20"><span class="problematic" id="id21">|etiquetas|</span></a> a <abbr title="Engineering Change Order">ECO</abbr> para denotar la prioridad y organizarlas. Para crear una etiqueta nueva, escriba el nombre en el campo y seleccione <span class="guilabel">Crear</span> desde el menú desplegable. Esto es opcional.</p></li>
+</ul>
+<p>Después de completar el formulario de la orden de cambio de ingeniería, haga clic en el botón <span class="guilabel">Iniciar revisión</span> para comenzar a implementar los cambios.</p>
+<p>Al hacer clic en <span class="guilabel">Iniciar revisión</span>, ocurrirán tres acciones:</p>
+<ol class="arabic simple">
+<li><p>Aparecerá el botón inteligente <span class="guilabel">Documentos</span>, allí se almacenarán los archivos importantes de la lista de materiales.</p></li>
+<li><p>Se almacena una copia de la <a href="#id22"><span class="problematic" id="id23">|lista de materiales|</span></a> de producción en el nuevo botón inteligente <span class="guilabel">Revision</span> de la <a href="#id24"><span class="problematic" id="id25">|orden de cambio de ingeniería|</span></a>. También se asigna el siguiente número de versión disponible (por ejemplo, <code class="o_code docutils literal notranslate"><span class="pre">V2</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">V3</span></code>, …) para realizar un seguimiento de todas las versiones de la <a href="#id26"><span class="problematic" id="id27">|lista de materiales|</span></a>.</p></li>
+<li><p>Las etapas de la <a href="#id28"><span class="problematic" id="id29">|orden de cambio de ingeniería|</span></a> <span class="guilabel">tipo</span> se muestran en la esquina superior derecha de la <a href="#id30"><span class="problematic" id="id31">|orden de cambio de ingeniería|</span></a>.</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>El botón inteligente <span class="guilabel">Revisión</span> estará disponible <strong>solo</strong> si selecciona la opción <span class="guilabel">lista de materiales</span> en el campo <span class="guilabel">aplicar en</span>, y se ha hecho clic en el botón <span class="guilabel">Comenzar revisión</span>.</p>
+</div>
+<img alt="La orden de cambio de ingeniería con la vista general de las etapas en la esquina superior derecha y el botón inteligente *Revisión*." class="align-center" src="../../../../_images/eco-form.png" />
+</section><section id="change-components">
+<h2>Cambio de componentes<a class="headerlink" href="#change-components" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si desea modificar los componentes de una <a href="#id32"><span class="problematic" id="id33">|lista de materiales|</span></a>, haga clic en el botón inteligente <span class="guilabel">Revisión</span> en una <a href="#id34"><span class="problematic" id="id35">|orden de cambio de ingeniería|</span></a> para acceder a la nueva versión de la <a href="#id36"><span class="problematic" id="id37">|LdM|</span></a>. Odoo puede diferenciar la versión de no producción de la versión actual al marcar la versión de prueba con una etiqueta grande con la leyenda <span class="guilabel">archivado</span>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Después de hacer clic en el botón <span class="guilabel">Comenzar revisión</span> de una <a href="#id38"><span class="problematic" id="id39">|orden de cambio de ingeniería|</span></a> para el producto, <code class="o_code docutils literal notranslate"><span class="pre">[D_0045</span> <span class="pre">Stool]</span></code>, realice cambios en la <a href="#id40"><span class="problematic" id="id41">|lista de materiales|</span></a> del producto al hacer clic en el botón inteligente <span class="guilabel">Revisión</span>. Cuando lo haga se abrirá la lista de materiales archivada, marcada con una etiqueta roja con la leyenda <span class="guilabel">archivado</span>.</p>
+<img alt="Muestra de la lista de materiales archivada" class="align-center" src="../../../../_images/archived-bom.png" />
+</div>
+<p>Modifique la lista de componentes de la nueva <a href="#id42"><span class="problematic" id="id43">|LdM|</span></a>, para esto vaya a la pestaña <span class="guilabel">Componentes</span> y cambie la <span class="guilabel">cantidad</span> de los componentes existentes, puede añadir nuevos componentes al hacer clic en el botón <span class="guilabel">añadir una línea</span>, y puede eliminar componentes con el icono <span class="guilabel">🗑️ (papelera)</span>.</p>
+<div class="alert alert-success" id="plm-eco-example-keyboard">
+<p class="alert-title">
+Example</p><p>En la versión dos de la <a href="#id44"><span class="problematic" id="id45">|LdM|</span></a> para el teclado, se redujeron las cantidades de componentes y se añadió un nuevo componente llamado <code class="o_code docutils literal notranslate"><span class="pre">estabilizadores</span></code>.</p>
+<img alt="Realice cambios en los componentes al acceder a la nueva lista de materiales con el botón inteligente *Revisión*." class="align-center" src="../../../../_images/version-2-bom.png" />
+</div>
+</section><section id="compare-changes">
+<h3>Comparar cambios<a class="headerlink" href="#compare-changes" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una vez completados los cambios, vaya de nuevo a la <a href="#id46"><span class="problematic" id="id47">|orden de cambio de ingeniería|</span></a> haciendo clic en <code class="o_code docutils literal notranslate"><span class="pre">ECO00X</span></code> en las migas de pan situadas en la esquina superior izquierda. En el formulario de la <a href="#id48"><span class="problematic" id="id49">|orden de cambio de ingeniería|</span></a>, podrá ver una nueva pestaña llamada <span class="guilabel">Cambios en LdM</span> que muestra las diferencias entre la <a href="#id50"><span class="problematic" id="id51">|LdM|</span></a> actual y la nueva versión.</p>
+<p>El texto azul indica los nuevos componentes añadidos a la <a href="#id52"><span class="problematic" id="id53">|LdM|</span></a> revisada que no están en la <a href="#id54"><span class="problematic" id="id55">|LdM|</span></a> de producción. El texto negro representa las actualizaciones compartidas en ambas <a href="#id56"><span class="problematic" id="id57">|listas de materiales|</span></a>, mientras que el texto rojo indica componentes eliminados en la <a href="#id58"><span class="problematic" id="id59">|LdM|</span></a> revisada.</p>
+<p>Los cambios y las pruebas se encapsulan en la <a href="#id60"><span class="problematic" id="id61">|LdM|</span></a> revisada, y <strong>no</strong> afectan a la <a href="#id62"><span class="problematic" id="id63">|LdM|</span></a> utilizada en producción. Al menos hasta que se apliquen los <a class="reference internal" href="#plm-eco-apply-changes"><span class="std std-ref">cambios</span></a>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Consulte el resumen de las diferencias entre las <a href="#id64"><span class="problematic" id="id65">|listas de materiales|</span></a> del teclado actuales y revisadas en la pestaña <span class="guilabel">Cambios en LdM</span> de la <a href="#id66"><span class="problematic" id="id67">|orden de cambio de ingeniería|</span></a>.</p>
+<img alt="Vea el resumen de los cambios de los componentes en la pestaña *Cambios en la LdM*." class="align-center" src="../../../../_images/bom-changes.png" />
+</div>
+</section><section id="change-operations">
+<h2>Cambio de operaciones<a class="headerlink" href="#change-operations" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si desea modificar las operaciones de una <a href="#id68"><span class="problematic" id="id69">|LdM|</span></a>, haga clic en el botón inteligente <span class="guilabel">Revisión</span> de una <a href="#id70"><span class="problematic" id="id71">|orden de cambio de ingeniería|</span></a> para acceder a la nueva versión archivada de la <a href="#id72"><span class="problematic" id="id73">|LdM|</span></a>.</p>
+<p>En la nueva versión de la <a href="#id74"><span class="problematic" id="id75">|lista de materiales|</span></a>, cambie a la pestaña <span class="guilabel">operaciones</span> para ver y editar las operaciones de <a href="#id76"><span class="problematic" id="id77">|LdM|</span></a>. Para realizar cambios, seleccione cada operación, esto abrirá la ventana emergente <span class="guilabel">Abrir: operaciones</span> correspondiente.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>La pestaña <span class="guilabel">operaciones</span> no está disponible de forma predeterminada. Para activarla, vaya a la aplicación <span class="menuselection">Fabricación ‣ Configuración ‣ Ajustes</span>, y marque la casilla <span class="guilabel">Órdenes de trabajo</span>.</p>
+</div>
+<p>Realice cambios en cualquiera de los campos de la ventana emergente <span class="guilabel">Abrir: operaciones</span> y, a continuación, haga clic en <span class="guilabel">Guardar</span>.</p>
+<p>Cree nuevas operaciones al hacer clic en el botón <span class="guilabel">Agregar línea</span>, y elimine nuevas operaciones con el botón <span class="guilabel">Archivar operación</span>.</p>
+</section><section id="id1">
+<h3>Comparar cambios<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una vez completados los cambios, haga clic en <code class="o_code docutils literal notranslate"><span class="pre">ECO00X</span></code> en las migas de pan situadas en la esquina superior izquierda para ir de nuevo a la <a href="#id78"><span class="problematic" id="id79">|orden de cambio de ingeniería|</span></a>.</p>
+<p>En el formulario de la <a href="#id80"><span class="problematic" id="id81">|orden de cambio de ingeniería|</span></a> podrá ver una nueva pestaña <span class="guilabel">Cambios de operación</span> muestra las diferencias entre la <a href="#id82"><span class="problematic" id="id83">|LdM|</span></a> de producción actual y la nueva versión.</p>
+<p>El texto azul indica las nuevas operaciones añadidas a la <a href="#id84"><span class="problematic" id="id85">|LdM|</span></a> revisada que aún no existen en la <a href="#id86"><span class="problematic" id="id87">|LdM|</span></a> de producción. El texto negro representa actualizaciones compartidas por ambas <a href="#id88"><span class="problematic" id="id89">|listas de materiales|</span></a>, mientras que el texto rojo indica las operaciones eliminadas en la <a href="#id90"><span class="problematic" id="id91">|LdM|</span></a> revisada.</p>
+<p>Las modificaciones de la <a href="#id92"><span class="problematic" id="id93">|LdM|</span></a> en una <a href="#id94"><span class="problematic" id="id95">|orden de cambio de ingeniería|</span></a> <strong>no</strong> afectarán a la <a href="#id96"><span class="problematic" id="id97">|LdM|</span></a> utilizada en producción. Es decir, hasta que se apliquen los <a class="reference internal" href="#plm-eco-apply-changes"><span class="std std-ref">cambios</span></a>.</p>
+<p>En la pestaña <span class="guilabel">Cambios de operación</span>, cada fila de detalles, debajo de las columnas de la tabla, refleja la siguiente información:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Operación</span>: Nombre de la operación que se modificó.</p></li>
+<li><p><span class="guilabel">Paso</span>: especifica el punto de control de calidad, visible cuando la operación incluye instrucciones detalladas.</p></li>
+</ul>
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>Para revisar las instrucciones, haga clic en la línea de la operación en la pestaña <span class="guilabel">Operaciones</span> de una <a href="#id98"><span class="problematic" id="id99">|LdM|</span></a>. A continuación, en la ventana emergente <span class="guilabel">Abrir: operaciones</span>, busque el botón inteligente <span class="guilabel">Instrucciones</span> que aparece en la parte superior.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>El <code class="o_code docutils literal notranslate"><span class="pre">ensamblaje</span></code> <span class="guilabel">Operación</span> incluye <code class="o_code docutils literal notranslate"><span class="pre">10</span></code> <span class="guilabel">instrucciones</span> detalladas para completarlo.</p>
+<img alt="Mostrar el botón inteligente *Instrucciones* para comprobar si una operación tiene instrucciones adicionales." class="align-center" src="../../../../_images/instructions-smart-button.png" />
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">Tipo de paso</span> detalla el tipo de control de calidad para más instrucciones en la operación.</p></li>
+<li><p><span class="guilabel">Tipo</span> corresponde al texto de color para especificar en qué difiere la <a href="#id100"><span class="problematic" id="id101">|LdM|</span></a> revisada de la <a href="#id102"><span class="problematic" id="id103">|LdM|</span></a> de producción. Los tipos de cambio de operación pueden ser <span class="guilabel">añadir</span>, <span class="guilabel">eliminar</span> o <span class="guilabel">actualizar</span>.</p></li>
+<li><p><span class="guilabel">Centro de trabajo</span>: especifica el centro de trabajo en el que se realiza la operación.</p></li>
+<li><p><span class="guilabel">Cambio manual de duración</span> se refiere al cambio en el campo <span class="guilabel">Duración predeterminada</span> de la ventana emergente <span class="guilabel">Abrir: operaciones</span>, que especifica el tiempo previsto para completar la operación.</p></li>
+</ul>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>La pestaña <span class="guilabel">cambios de operación</span> compara la producción de la <a href="#id104"><span class="problematic" id="id105">|LdM|</span></a> con la <a href="#id106"><span class="problematic" id="id107">|LdM|</span></a> revisada en la <a href="#id108"><span class="problematic" id="id109">|orden de cambio de ingeniería|</span></a>.</p>
+<p>En la <a href="#id110"><span class="problematic" id="id111">|LdM|</span></a> revisada, se añade una nueva <span class="guilabel">Operación</span> de <code class="o_code docutils literal notranslate"><span class="pre">ensamblaje</span></code> en la <code class="o_code docutils literal notranslate"><span class="pre">línea</span> <span class="pre">de</span> <span class="pre">ensamblaje</span> <span class="pre">1</span></code> del <code class="o_code docutils literal notranslate"><span class="pre">centro</span> <span class="pre">de</span> <span class="pre">trabajo</span></code>. Además, la duración prevista de la operación es de <code class="o_code docutils literal notranslate"><span class="pre">20.00</span></code> minutos, tal y como se especifica en la etiqueta <span class="guilabel">Cambio manual de duración</span>.</p>
+<p>Para completar la operación de <code class="o_code docutils literal notranslate"><span class="pre">ensamblaje</span></code>, se añaden dos instrucciones de puntos de control de calidad:</p>
+<ol class="arabic simple">
+<li><p>El primero es el <span class="guilabel">paso</span> <code class="o_code docutils literal notranslate"><span class="pre">QCP00039</span></code>, un <span class="guilabel">tipo de paso</span> para <span class="guilabel">registrar la producción</span> de componentes.</p></li>
+<li><p>El segundo <span class="guilabel">paso</span> es <code class="o_code docutils literal notranslate"><span class="pre">QCP00034</span></code>, un <span class="guilabel">tipo de paso</span> de <code class="o_code docutils literal notranslate"><span class="pre">instrucciones</span></code> que proporciona detalles adicionales de ensamblaje.</p></li>
+</ol>
+<img alt="Mostrar la pestaña *cambios de operación* en una |orden de cambio de ingeniería|." class="align-center" src="../../../../_images/operation-changes.png" />
+</div>
+</section><section id="apply-changes">
+<span id="plm-eco-apply-changes"></span><h2>Aplicar cambios<a class="headerlink" href="#apply-changes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Después de verificar los cambios, mueva la <a href="#id112"><span class="problematic" id="id113">|orden de cambio de ingeniería|</span></a> a una <a class="reference internal" href="eco_type.html#plm-eco-stage-config"><span class="std std-ref">etapa de verificación</span></a>, estas etapas requieren aprobación antes de que los cambios revisados se puedan aplicar a la <a href="#id114"><span class="problematic" id="id115">|orden de cambio de ingeniería|</span></a> de producción.</p>
+<p>Una vez que los aprobadores aceptan los cambios, verá el botón <span class="guilabel">aplicar cambios</span>. Haga clic en él y la <a href="#id116"><span class="problematic" id="id117">|orden de cambio de ingeniería|</span></a> pasará automáticamente a la fase de cierre. Una vez que se aplican los cambios, se archivará la <a href="#id118"><span class="problematic" id="id119">|LdM|</span></a> de producción original, y la <a href="#id120"><span class="problematic" id="id121">|LdM|</span></a> revisada se convertirá en la nueva <a href="#id122"><span class="problematic" id="id123">|LdM|</span></a> de producción.</p>
+</section><section id="verify-changes">
+<h3>Verificar cambios<a class="headerlink" href="#verify-changes" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Puede verificar que los cambios están activos desde la <a href="#id124"><span class="problematic" id="id125">|orden de cambio de ingeniería|</span></a> en la que hizo clic en el botón <span class="guilabel">aplicar cambios</span>. Vuelva a la <a href="#id126"><span class="problematic" id="id127">|LdM|</span></a> revisada haciendo clic en el botón inteligente <span class="guilabel">Revisión</span>.</p>
+<p>Ya no verá la etiqueta roja con la leyenda <span class="guilabel">archivado</span> en la <a href="#id128"><span class="problematic" id="id129">|LdM|</span></a> revisada.</p>
+<p>Si desea comprobar los cambios, vaya a la aplicación <span class="menuselection">Fabricación ‣ Productos ‣ Productos</span> y seleccione el producto para ver la <a href="#id130"><span class="problematic" id="id131">|LdM|</span></a> de producción.</p>
+<p>A continuación, en el formulario del producto, haga clic en el botón inteligente <span class="guilabel">lista de materiales</span> y seleccione la <a href="#id132"><span class="problematic" id="id133">|LdM|</span></a> de la lista. En la pestaña <span class="guilabel">Varios</span> de la <a href="#id134"><span class="problematic" id="id135">|LdM|</span></a>, el campo <span class="guilabel">Versión</span> se actualiza para coincidir con el número de versión que aparece en el botón inteligente <span class="guilabel">Revisión</span> de la última <a href="#id136"><span class="problematic" id="id137">|orden de cambio de ingeniería|</span></a>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Después de aplicar los cambios de la <a href="#id138"><span class="problematic" id="id139">|orden de cambio de ingeniería|</span></a> para el <a class="reference internal" href="#plm-eco-example-keyboard"><span class="std std-ref">teclado</span></a>, vea la versión de la <a href="#id140"><span class="problematic" id="id141">|LdM|</span></a> actual del teclado en la pestaña <span class="guilabel">varios</span>. Aquí, el número de <span class="guilabel">versión</span> se ha actualizado a <code class="o_code docutils literal notranslate"><span class="pre">2</span></code>, que coincide con la <code class="o_code docutils literal notranslate"><span class="pre">V2</span></code> que aparece en el botón inteligente <span class="guilabel">Revisión</span> de la <a href="#id142"><span class="problematic" id="id143">|orden de cambio de ingeniería|</span></a>.</p>
+<img alt="Vista de la versión actual de la *LdM* en la pestaña Varios." class="align-center" src="../../../../_images/bom-version.png" />
+</div>
+</section><section id="create-eco-from-tablet-view">
+<span id="plm-eco-tablet-view"></span><h2>Crear una orden de cambio de ingeniería desde la vista de tableta<a class="headerlink" href="#create-eco-from-tablet-view" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los operadores pueden sugerir directamente instrucciones de operación más claras, mientras ejecutan órdenes de fabricación en la aplicación <em>Fabricación</em>.</p>
+<p>Si desea crear órdenes de fabricación de este modo, vaya a la aplicación <span class="menuselection">Fabricación ‣ Operaciones ‣ Órdenes de fabricación</span>. A continuación, seleccione la <abbr>orden de fabricación)</abbr> deseada y vaya a la pestaña <span class="guilabel">órdenes de trabajo</span>. Después, haga clic en el icono <span class="guilabel">📱 (teléfono móvil)</span> de la orden de trabajo deseada para abrir la <em>vista de tableta</em> de la operación.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Importante</p><p><strong>Solo</strong> está disponible el icono <span class="guilabel">📱 (teléfono móvil)</span> en las órdenes de fabricación con estado <span class="guilabel">confirmado</span> o <span class="guilabel">en progreso</span>.</p>
+</div>
+<img alt="Busque el icono de tableta para cada operación, es el segundo del extremo derecho." class="align-center" src="../../../../_images/tablet-icon.png" />
+<p>A continuación, añada un paso de instrucción, haga clic en el icono <span class="guilabel">☰ (tres líneas horizontales)</span> en la vista de tableta de una operación. Al hacerlo, se abrirá el <span class="guilabel">menú</span> de elementos de acción para una orden de fabricación. Después haga clic en el botón <span class="guilabel">añadir un paso</span>.</p>
+<img alt="Abra la ventana emergente *añadir un paso* al hacer clic en el icono de las tres líneas horizontales en la vista de tableta." class="align-center" src="../../../../_images/additional-options-menu.png" />
+<p>Si hace clic en el botón, aparecerá la ventana emergente <span class="guilabel">añadir un paso</span>, donde se envían los cambios propuestos.</p>
+<p>En el campo <span class="guilabel">Título</span>, escriba una breve descripción del paso. Luego, en el campo de texto <span class="guilabel">Instrucción</span>, escriba las instrucciones del paso con más detalle. De manera opcional, puede agregar una imagen en el campo <span class="guilabel">Documento</span>. Una vez que está completo, haga clic en el botón <span class="guilabel">Proponer cambios</span>.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Para proponer una revisión adicional para componentes rotos, escriba los detalles en la ventana emergente de <span class="guilabel">Agregar un paso</span>. Al hacerlo, se creará un punto de control de calidad con instrucciones que se explicarán más a detalle en la siguiente sección.</p>
+<img alt="Complete el formulario de *Agregar un paso* para sugerir un punto adicional de control de calidad. " class="align-center" src="../../../../_images/add-a-step.png" />
+</div>
+<p>Con base en las entradas de la ventana emergente de <span class="guilabel">Agregar un paso</span>, se creará una orden para cambio de ingeniería con la siguiente información:</p>
+<ol class="arabic simple">
+<li><p>La <span class="guilabel">Descripción</span> es el nombre de la operación, seguido del número de referencia de la orden de fabricación.</p></li>
+<li><p>El <span class="guilabel">Tipo</span> de la orden para cambio de ingeniería se le asigna automáticamente a los <code class="o_code docutils literal notranslate"><span class="pre">Cambios</span> <span class="pre">en</span> <span class="pre">la</span> <span class="pre">LdM</span></code>.</p></li>
+<li><p>Los campos de <span class="guilabel">Producto</span> y <span class="guilabel">Lista de materiales</span> se completan de manera automática de acuerdo con la LdM que se utilizó en la orden de fabricación.</p></li>
+<li><p>El <span class="guilabel">Responsable</span> es el operador que envió la retroalimentación.</p></li>
+</ol>
+</section><section id="view-eco">
+<h3>Ver orden para cambio de ingeniería<a class="headerlink" href="#view-eco" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para revisar los cambios propuestos, vaya a la <span class="menuselection">Aplicación PLM ‣ Información general</span>. En la tarjeta <code class="o_code docutils literal notranslate"><span class="pre">Actualizaciones</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">lista</span> <span class="pre">de</span> <span class="pre">materiales</span></code>, el botón <span class="guilabel">X Cambios de ingeniería</span> representa la cantidad de cambios operacionales que se crearon dese la vista de tableta.</p>
+<p>Haga clic en el botón de <span class="guilabel">X Cambios de ingeniería</span> para abrir la vista kanban para ver el tipo de orden para cambio de ingeniería. Para ver la sugerencia, seleccione una orden para cambio de ingeniería en etapa de <code class="o_code docutils literal notranslate"><span class="pre">Nuevo</span></code>.</p>
+<p>En la orden para cambio de ingeniería, aparecerá un resumen de los cambios propuestos en la pestaña <span class="guilabel">Cambios de operación</span>. Haga clic en el botón inteligente de <span class="guilabel">Revisión</span> para ir a la lista de materiales editada y revise los cambios propuestos con más detalle.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Un operador sugirió otra revisión para componentes rotos agregando un paso desde la vista de tableta al realizar la operación <code class="o_code docutils literal notranslate"><span class="pre">Ensamblaje</span> <span class="pre">de</span> <span class="pre">botones</span></code> para la orden de fabricación <code class="o_code docutils literal notranslate"><span class="pre">WH/MO/00010</span></code> para el producto <code class="o_code docutils literal notranslate"><span class="pre">Teclado</span></code>.</p>
+<p>Esta orden para cambio de ingeniería se puede ver en el tipo <code class="o_code docutils literal notranslate"><span class="pre">Actualizaciones</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">lista</span> <span class="pre">de</span> <span class="pre">materiales</span></code> en la <span class="menuselection">Aplicación PLM ‣ Información general</span>. De manera predeterminada, las órdenes para cambios de ingeniería que se crean desde la vista de tableta se generan en etapa de <code class="o_code docutils literal notranslate"><span class="pre">Nuevo</span></code>.</p>
+<p>El campo <span class="guilabel">Responsable</span> se le asigna al operador que hizo la sugerencia, lo cual le permite al empleado encargado de revisar la orden para cambio de ingeniería obtener más información directamente de la persona que propuso el cambio.</p>
+<img alt="Encontrará la nueva orden para cambio de ingeniería en el tipo de orden &quot;Actualizaciones en la lista de materiales&quot;, en etapa de *Nuevo*. " class="align-center" src="../../../../_images/view-bom-change.png" />
+</div>
+<p>En la LdM actualizada, vaya a la pestaña <span class="guilabel">Operaciones</span> y seleccione el icono <span class="guilabel">☰ (tres líneas horizontales)</span>. Al hacerlo, aparecerá una lista de <span class="guilabel">Pasos</span> a seguir para la operación con la instrucción recientemente agregada llamada <code class="o_code docutils literal notranslate"><span class="pre">Sugerencia</span> <span class="pre">de</span> <span class="pre">nuevo</span> <span class="pre">paso:</span></code>, seguida del título que puso el usuario. Haga clic en la línea para ver los cambios sugeridos.</p>
+<img alt="Icono &quot;Mostrar instrucciones&quot; en la pestaña *Operaciones* de una LdM." class="align-center" src="../../../../_images/show-instructions.png" />
+<p>En el formulario de <a class="reference internal" href="../../quality/quality_management/quality_control_points.html#quality-quality-management-quality-control-points"><span class="std std-ref">punto de control de calidad</span></a> asegúrese de llenar los siguientes campos para que los operadores cuenten con instrucciones detalladas:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Título</span>: cambie el nombre para dar una descripción concisa de la nueva instrucción.</p></li>
+<li><p><span class="guilabel">Control por</span>: utilice el menú desplegable para determinar si esta instruccion aplica de manera general para todo el  <span class="guilabel">Producto</span>, <em>solo</em> para esta <span class="guilabel">Operación</span> en específico o para una <span class="guilabel">Cantidad</span> particular del producto.</p></li>
+<li><p><span class="guilabel">Tipo</span>: categoriza el tipo de punto de control. Desde el menú desplegable, seleccione las <span class="guilabel">Instrucciones</span> para aclararle las instrucciones al trabajador. Para que el trabajador pueda ingresar información, seleccione <span class="guilabel">Tomar una foto</span>, <span class="guilabel">Registrar materiales consumidos</span>, <span class="guilabel">Imprimir etiqueta</span>, u otras <a class="reference internal" href="../../quality/quality_management/quality_control_points.html#quality-quality-management-quality-control-points"><span class="std std-ref">opciones de control de calidad</span></a>.</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+Ver también</p><p><a class="reference internal" href="../../quality/quality_management/quality_control_points.html#quality-quality-management-quality-control-points"><span class="std std-ref">Configuración de los puntos de control de calidad</span></a></p>
+</div>
+<p>Una vez que el punto de calidad esté configurado, regrese a la lista de  <span class="guilabel">Pasos</span> usando las migas de pan. Finalmente, arrastre el último elemento de la línea del control de calidad a su orden de instrucciones correspondiente.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Arrastre y reordene la instrucción <code class="o_code docutils literal notranslate"><span class="pre">Revisar</span> <span class="pre">si</span> <span class="pre">hay</span> <span class="pre">botones</span> <span class="pre">descompuestos</span></code> haciendo clic y arrastrando su icono de «6 puntos» para moverlo del final a la segunda posición.</p>
+<img alt="Arrastre y reordene instrucciones seleccionando el icono de &quot;6 puntos&quot; en la extrema izquierda." class="align-center" src="../../../../_images/reorder.png" />
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>En esta página</h5>
+    <ul>
+<li><a class="reference internal" href="#">Órdenes de cambio de ingeniería</a><ul>
+<li><a class="reference internal" href="#create-eco">Crear una ECO</a></li>
+<li><a class="reference internal" href="#change-components">Cambio de componentes</a><ul>
+<li><a class="reference internal" href="#compare-changes">Comparar cambios</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-operations">Cambio de operaciones</a><ul>
+<li><a class="reference internal" href="#id1">Comparar cambios</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apply-changes">Aplicar cambios</a><ul>
+<li><a class="reference internal" href="#verify-changes">Verificar cambios</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-eco-from-tablet-view">Crear una orden de cambio de ingeniería desde la vista de tableta</a><ul>
+<li><a class="reference internal" href="#view-eco">Ver orden para cambio de ingeniería</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Obtenga ayuda</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contactar a soporte</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Pregúntele a la comunidad de Odoo</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Órdenes de cambio de ingeniería</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1231 @@
+
+<!DOCTYPE html>
+
+<html lang="ES">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solución de problemas &#8212; documentación de Odoo - 16.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/utils.js"></script>
+    <script src="../../../../_static/js/layout.js"></script>
+    <script src="../../../../_static/js/menu.js"></script>
+    <script src="../../../../_static/js/page_toc.js"></script>
+    <script src="../../../../_static/js/switchers.js"></script>
+    <script src="../../../../_static/translations.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="x-default" href="https://ekodo.es/doc/applications/general/iot/config/troubleshooting.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/general/iot/config/troubleshooting.html" />
+    
+    <link rel="index" title="Índice" href="../../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">Documentos para el usuario</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Fundamentos de Odoo</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Actividades</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reportes</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Buscar y filtrar registros</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Exportar e importar datos</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">Compras dentro de la aplicación (IAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_sales"><a class="reference internal" href="#">Ventas</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_crm"><a class="reference internal" href="../../../sales/crm.html">CRM</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_crm_pipeline"><a class="reference internal" href="#">Organizar un flujo</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_lost_opportunities"><a class="reference internal" href="../../../sales/crm/pipeline/lost_opportunities.html">Gestión de oportunidades perdidas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_multi_sales_team"><a class="reference internal" href="../../../sales/crm/pipeline/multi_sales_team.html">Varios equipos de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_acquire_leads"><a class="reference internal" href="#">Obtener leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_convert"><a class="reference internal" href="../../../sales/crm/acquire_leads/convert.html">Convertir leads en oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_generate_leads"><a class="reference internal" href="../../../sales/crm/acquire_leads/generate_leads.html">Generar leads y oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_send_quotes"><a class="reference internal" href="../../../sales/crm/acquire_leads/send_quotes.html">Envíe presupuestos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_lead_mining"><a class="reference internal" href="../../../sales/crm/acquire_leads/lead_mining.html">Minado de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_track_leads"><a class="reference internal" href="#">Asignar y rastrear leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_track_leads_lead_scoring"><a class="reference internal" href="../../../sales/crm/track_leads/lead_scoring.html">Asignación de leads con la puntuación predictiva de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_performance"><a class="reference internal" href="#">Analizar el rendimiento</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_performance_win_loss"><a class="reference internal" href="../../../sales/crm/performance/win_loss.html">Revise la relación ganancia/pérdida</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_optimize"><a class="reference internal" href="#">Mejoras para su trabajo diario</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_partner_autocomplete"><a class="reference internal" href="../../../sales/crm/optimize/partner_autocomplete.html">Enriquecer contactos con la función Autocompletar contacto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_gamification"><a class="reference internal" href="../../../sales/crm/optimize/gamification.html">¿Cómo motivar y recompensar a mis vendedores?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_utilize_activities"><a class="reference internal" href="../../../sales/crm/optimize/utilize_activities.html">Utilizar actividades para los equipos de ventas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_lead_enrichment"><a class="reference internal" href="../../../sales/crm/optimize/lead_enrichment.html">Enriquecimiento de leads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_sales"><a class="reference internal" href="../../../sales/sales.html">Ventas</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_sales_send_quotations"><a class="reference internal" href="#">Enviar cotizaciones</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_quote_template"><a class="reference internal" href="../../../sales/sales/send_quotations/quote_template.html">Plantillas de cotización</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_optional_products"><a class="reference internal" href="../../../sales/sales/send_quotations/optional_products.html">Productos opcionales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_signature_to_validate"><a class="reference internal" href="../../../sales/sales/send_quotations/get_signature_to_validate.html">Firmas electrónicas para la confirmación de órdenes.</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_paid_to_validate"><a class="reference internal" href="../../../sales/sales/send_quotations/get_paid_to_validate.html">Confirmación de orden de pago en línea</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_deadline"><a class="reference internal" href="../../../sales/sales/send_quotations/deadline.html">Fecha límite de cotizaciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_different_addresses"><a class="reference internal" href="../../../sales/sales/send_quotations/different_addresses.html">Entregas y facturas en diferentes direcciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_orders_and_variants"><a class="reference internal" href="../../../sales/sales/send_quotations/orders_and_variants.html">Variantes de producto en cotizaciones y órdenes de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_invoicing"><a class="reference internal" href="#">Método de facturación</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_invoicing_policy"><a class="reference internal" href="../../../sales/sales/invoicing/invoicing_policy.html">Facturar por cantidades entregadas u ordenadas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_down_payment"><a class="reference internal" href="../../../sales/sales/invoicing/down_payment.html">Anticipos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_proforma"><a class="reference internal" href="../../../sales/sales/invoicing/proforma.html">Facturas proforma</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_time_materials"><a class="reference internal" href="../../../sales/sales/invoicing/time_materials.html">Facturación por tiempo y materiales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_milestone"><a class="reference internal" href="../../../sales/sales/invoicing/milestone.html">Facturar objetivos de proyecto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_expense"><a class="reference internal" href="../../../sales/sales/invoicing/expense.html">Volver a facturar gastos a los clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_products_prices"><a class="reference internal" href="#">Productos y precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_products"><a class="reference internal" href="#">Gestionar productos</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_import"><a class="reference internal" href="../../../sales/sales/products_prices/products/import.html">Importar productos</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_variants"><a class="reference internal" href="../../../sales/sales/products_prices/products/variants.html">Variantes de producto</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_product_images"><a class="reference internal" href="../../../sales/sales/products_prices/products/product_images.html">Imágenes para productos con Google Imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_prices"><a class="reference internal" href="#">Gestionar precios</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_pricing"><a class="reference internal" href="../../../sales/sales/products_prices/prices/pricing.html">Listas de precios, descuentos y fórmulas</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_currencies"><a class="reference internal" href="../../../sales/sales/products_prices/prices/currencies.html">Divisas extranjeras</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_returns"><a class="reference internal" href="../../../sales/sales/products_prices/returns.html">Devoluciones y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_ewallets_giftcards"><a class="reference internal" href="../../../sales/sales/products_prices/ewallets_giftcards.html">Usar monederos electrónicos y tarjetas de regalo</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_loyalty_discount"><a class="reference internal" href="../../../sales/sales/products_prices/loyalty_discount.html">Programas de descuento y lealtad</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_amazon_connector"><a class="reference internal" href="#">Conector de Amazon</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_features"><a class="reference internal" href="../../../sales/sales/amazon_connector/features.html">Funciones del Conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_setup"><a class="reference internal" href="../../../sales/sales/amazon_connector/setup.html">Configuración del conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_manage"><a class="reference internal" href="../../../sales/sales/amazon_connector/manage.html">Gestión de órdenes de Amazon</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_ebay_connector"><a class="reference internal" href="#">Conector de eBay</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_setup"><a class="reference internal" href="../../../sales/sales/ebay_connector/setup.html">Configuración del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_manage"><a class="reference internal" href="../../../sales/sales/ebay_connector/manage.html">¿Cómo anunciar un producto?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_troubleshooting"><a class="reference internal" href="../../../sales/sales/ebay_connector/troubleshooting.html">Solución de problemas del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_linking_listings"><a class="reference internal" href="../../../sales/sales/ebay_connector/linking_listings.html">Vincular anuncios existentes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale"><a class="reference internal" href="../../../sales/point_of_sale.html">Punto de venta</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_employee_login"><a class="reference internal" href="../../../sales/point_of_sale/employee_login.html">Gestión de varios empleados</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_receipts_invoices"><a class="reference internal" href="../../../sales/point_of_sale/receipts_invoices.html">Recibos y facturas</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_configuration"><a class="reference internal" href="../../../sales/point_of_sale/configuration.html">Configuración</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_printers"><a class="reference internal" href="../../../sales/point_of_sale/configuration/epos_printers.html">Impresoras ePOS</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_https"><a class="reference internal" href="../../../sales/point_of_sale/configuration/https.html">Conexión segura (HTTPS)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_ssc"><a class="reference internal" href="../../../sales/point_of_sale/configuration/epos_ssc.html">Certificado autofirmado para impresoras electrónicas del PdV</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_shop"><a class="reference internal" href="#">Funciones de tienda</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_sales_order"><a class="reference internal" href="../../../sales/point_of_sale/shop/sales_order.html">Orden de venta</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_barcode"><a class="reference internal" href="../../../sales/point_of_sale/shop/barcode.html">Códigos de barras</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_serial_numbers"><a class="reference internal" href="../../../sales/point_of_sale/shop/serial_numbers.html">Números de serie y lotes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_ship_later"><a class="reference internal" href="../../../sales/point_of_sale/shop/ship_later.html">Enviar después</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_customer_display"><a class="reference internal" href="../../../sales/point_of_sale/shop/customer_display.html">Pantalla del cliente</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_restaurant"><a class="reference internal" href="../../../sales/point_of_sale/restaurant.html">Funciones para restaurantes</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_bill_printing"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/bill_printing.html">Cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_floors_tables"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/floors_tables.html">Gestión de pisos y mesas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_kitchen_printing"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/kitchen_printing.html">Impresión de órdenes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_tips"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/tips.html">Propinas</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_pricing"><a class="reference internal" href="#">Funciones de precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discounts"><a class="reference internal" href="../../../sales/point_of_sale/pricing/discounts.html">Descuentos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discount_tags"><a class="reference internal" href="../../../sales/point_of_sale/pricing/discount_tags.html">Etiquetas de descuento (lector de código de barras)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_loyalty"><a class="reference internal" href="../../../sales/point_of_sale/pricing/loyalty.html">Programas de lealtad</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_pricelists"><a class="reference internal" href="../../../sales/point_of_sale/pricing/pricelists.html">Listas de precios</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_fiscal_position"><a class="reference internal" href="../../../sales/point_of_sale/pricing/fiscal_position.html">Impuestos flexibles (posiciones fiscales)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_cash_rounding"><a class="reference internal" href="../../../sales/point_of_sale/pricing/cash_rounding.html">Redondeo de efectivo</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_payment_methods"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods.html">Métodos de pago</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_payment_methods_terminals"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals.html">Terminales de pago</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_adyen"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/adyen.html">Adyen</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_ingenico"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/ingenico.html">Ingenico</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_six"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/six.html">SIX</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_stripe"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/stripe.html">Stripe</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_vantiv"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/vantiv.html">Vantiv</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_worldline"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/worldline.html">Worldline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_reporting"><a class="reference internal" href="../../../sales/point_of_sale/reporting.html">Reportes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_services"><a class="reference internal" href="#">Servicios</a><ul>
+<li class="toctree-l3 o_menu_applications_services_project"><a class="reference internal" href="../../../services/project.html">Proyecto</a><ul>
+<li class="toctree-l4 o_menu_applications_services_project_tasks"><a class="reference internal" href="#">Tareas</a><ul>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_email_alias"><a class="reference internal" href="../../../services/project/tasks/email_alias.html">Crear tareas del proyecto a partir de un seudónimo de correo electrónico</a></li>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_recurring_tasks"><a class="reference internal" href="../../../services/project/tasks/recurring_tasks.html">Tareas recurrentes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_project_project_management"><a class="reference internal" href="../../../services/project/project_management.html">Gestión de proyectos</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_timesheets"><a class="reference internal" href="../../../services/timesheets.html">Hojas de horas</a><ul>
+<li class="toctree-l4 o_menu_applications_services_timesheets_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_timesheets_overview_time_off"><a class="reference internal" href="../../../services/timesheets/overview/time_off.html">Crear hojas de horas después de la validación del tiempo personal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_field_service"><a class="reference internal" href="../../../services/field_service.html">Servicio externo</a><ul>
+<li class="toctree-l4 o_menu_applications_services_field_service_onsite_interventions"><a class="reference internal" href="../../../services/field_service/onsite_interventions.html">Planificación de intervenciones in situ</a></li>
+<li class="toctree-l4 o_menu_applications_services_field_service_default_warehouse"><a class="reference internal" href="../../../services/field_service/default_warehouse.html">Almacén predeterminado del usuario</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_helpdesk"><a class="reference internal" href="../../../services/helpdesk.html">Servicio de asistencia</a><ul>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_getting_started"><a class="reference internal" href="../../../services/helpdesk/overview/getting_started.html">Primeros pasos con Servicio de asistencia</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_sla"><a class="reference internal" href="../../../services/helpdesk/overview/sla.html">Acuerdos de nivel de servicio (SLA)</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_receiving_tickets"><a class="reference internal" href="../../../services/helpdesk/overview/receiving_tickets.html">Empezar a recibir tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_reports"><a class="reference internal" href="../../../services/helpdesk/overview/reports.html">Reportes</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_help_center"><a class="reference internal" href="../../../services/helpdesk/overview/help_center.html">Centro de ayuda</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_ratings"><a class="reference internal" href="../../../services/helpdesk/overview/ratings.html">Calificación de clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_advanced"><a class="reference internal" href="#">Avanzado</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_after_sales"><a class="reference internal" href="../../../services/helpdesk/advanced/after_sales.html">Servicios posventa</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_close_tickets"><a class="reference internal" href="../../../services/helpdesk/advanced/close_tickets.html">Cerrar tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_track_and_bill"><a class="reference internal" href="../../../services/helpdesk/advanced/track_and_bill.html">Seguimiento y facturación del tiempo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_finance"><a class="reference internal" href="#">Finanzas</a><ul>
+<li class="toctree-l3 o_menu_applications_finance_accounting"><a class="reference internal" href="../../../finance/accounting.html">Contabilidad y facturación</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_accounting_get_started"><a class="reference internal" href="../../../finance/accounting/get_started.html">Información básica</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_cheat_sheet"><a class="reference internal" href="../../../finance/accounting/get_started/cheat_sheet.html">Hoja de referencia de Contabilidad</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_chart_of_accounts"><a class="reference internal" href="../../../finance/accounting/get_started/chart_of_accounts.html">Plan de cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_multi_currency"><a class="reference internal" href="../../../finance/accounting/get_started/multi_currency.html">Sistema multidivisa</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_avg_price_valuation"><a class="reference internal" href="../../../finance/accounting/get_started/avg_price_valuation.html">Costo promedio en bienes devueltos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_vat_units"><a class="reference internal" href="../../../finance/accounting/get_started/vat_units.html">Unidades de IVA</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_taxes"><a class="reference internal" href="../../../finance/accounting/taxes.html">Impuestos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_cash_basis"><a class="reference internal" href="../../../finance/accounting/taxes/cash_basis.html">Impuestos de base de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_retention"><a class="reference internal" href="../../../finance/accounting/taxes/retention.html">Retención fiscal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_vat_verification"><a class="reference internal" href="../../../finance/accounting/taxes/vat_verification.html">Comprobar un número de IVA (sistema VIES)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_fiscal_positions"><a class="reference internal" href="../../../finance/accounting/taxes/fiscal_positions.html">Posiciones fiscales (mapeo de impuestos y cuentas)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_avatax"><a class="reference internal" href="../../../finance/accounting/taxes/avatax.html">Integración con AvaTax</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avatax_use"><a class="reference internal" href="../../../finance/accounting/taxes/avatax/avatax_use.html">Uso de AvaTax</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avalara_portal"><a class="reference internal" href="../../../finance/accounting/taxes/avatax/avalara_portal.html">Portal de Avalara (AvaTax)</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_taxcloud"><a class="reference internal" href="../../../finance/accounting/taxes/taxcloud.html">Integración con TaxCloud</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_eu_distance_selling"><a class="reference internal" href="../../../finance/accounting/taxes/eu_distance_selling.html">Ventas a distancia intracomunitarias en la UE</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_B2B_B2C"><a class="reference internal" href="../../../finance/accounting/taxes/B2B_B2C.html">Precios B2B (impuestos no incluidos) y B2C (impuestos incluidos)</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_customer_invoices"><a class="reference internal" href="../../../finance/accounting/customer_invoices.html">Facturas de cliente</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="../../../finance/accounting/customer_invoices/overview.html">Procesos de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="../../../finance/accounting/customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_payment_terms"><a class="reference internal" href="../../../finance/accounting/customer_invoices/payment_terms.html">Términos de pago y planes de pago a plazos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="../../../finance/accounting/customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_discounts"><a class="reference internal" href="../../../finance/accounting/customer_invoices/cash_discounts.html">Descuentos por pronto pago y reducción de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="../../../finance/accounting/customer_invoices/credit_notes.html">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_rounding"><a class="reference internal" href="../../../finance/accounting/customer_invoices/cash_rounding.html">Redondeo de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_deferred_revenues"><a class="reference internal" href="../../../finance/accounting/customer_invoices/deferred_revenues.html">Ingresos diferidos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_electronic_invoicing"><a class="reference internal" href="../../../finance/accounting/customer_invoices/electronic_invoicing.html">Facturación electrónica (<abbr title="intercambio electrónico de datos">EDI</abbr>)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_snailmail"><a class="reference internal" href="../../../finance/accounting/customer_invoices/snailmail.html">Correo postal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_epc_qr_code"><a class="reference internal" href="../../../finance/accounting/customer_invoices/epc_qr_code.html">Códigos EPC QR</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_incoterms"><a class="reference internal" href="../../../finance/accounting/customer_invoices/incoterms.html">Incoterms</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../../../finance/accounting/vendor_bills.html">Facturas de proveedor</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_invoice_digitization"><a class="reference internal" href="../../../finance/accounting/vendor_bills/invoice_digitization.html">Digitalización de documentos con IA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="../../../finance/accounting/vendor_bills/assets.html">Activos no circulantes y fijos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="../../../finance/accounting/vendor_bills/deferred_expenses.html">Gastos diferidos y prepagos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_payments"><a class="reference internal" href="../../../finance/accounting/payments.html">Pagos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="../../../finance/accounting/payments/online.html">Pagos en línea</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="../../../finance/accounting/payments/checks.html">Cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch"><a class="reference internal" href="../../../finance/accounting/payments/batch.html">Pagos por lote para depósitos bancarios</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch_sdd"><a class="reference internal" href="../../../finance/accounting/payments/batch_sdd.html">Pagos por lotes: domiciliación bancaria SEPA (SDD)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_follow_up"><a class="reference internal" href="../../../finance/accounting/payments/follow_up.html">Seguimiento en las facturas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="../../../finance/accounting/payments/internal_transfers.html">Transferencias internas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="../../../finance/accounting/payments/pay_sepa.html">Pagos con SEPA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="../../../finance/accounting/payments/pay_checks.html">Pagar con cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="../../../finance/accounting/payments/forecast.html">Pronóstico de futuras facturas por pagar</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../../../finance/accounting/bank.html">Cuentas bancarias y de efectivo</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization.html">Sincronización bancaria</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/saltedge.html">Salt Edge</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/ponto.html">Ponto</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/enablebanking.html">Enable Banking</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="../../../finance/accounting/bank/transactions.html">Transacciones</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="../../../finance/accounting/bank/reconciliation.html">Conciliación bancaria</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="../../../finance/accounting/bank/reconciliation_models.html">Modelos de conciliación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_foreign_currency"><a class="reference internal" href="../../../finance/accounting/bank/foreign_currency.html">Gestione una cuenta bancaria en una moneda extranjera</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_cash_register"><a class="reference internal" href="../../../finance/accounting/bank/cash_register.html">Caja registradora</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_reporting"><a class="reference internal" href="../../../finance/accounting/reporting.html">Reportes</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_returns"><a class="reference internal" href="../../../finance/accounting/reporting/tax_returns.html">Declaración de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_carryover"><a class="reference internal" href="../../../finance/accounting/reporting/tax_carryover.html">Traspaso de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_analytic_accounting"><a class="reference internal" href="../../../finance/accounting/reporting/analytic_accounting.html">Contabilidad analítica</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_budget"><a class="reference internal" href="../../../finance/accounting/reporting/budget.html">Presupuesto financiero</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_intrastat"><a class="reference internal" href="../../../finance/accounting/reporting/intrastat.html">Intrastat</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_data_inalterability"><a class="reference internal" href="../../../finance/accounting/reporting/data_inalterability.html">Reporte de comprobación de inalterabilidad de datos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_silverfin"><a class="reference internal" href="../../../finance/accounting/reporting/silverfin.html">Integración con Silverfin</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_customize"><a class="reference internal" href="../../../finance/accounting/reporting/customize.html">Reportes personalizados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_year_end"><a class="reference internal" href="../../../finance/accounting/reporting/year_end.html">Cierre del ejercicio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_expenses"><a class="reference internal" href="../../../finance/expenses.html">Gastos</a></li>
+<li class="toctree-l3 o_menu_applications_finance_payment_providers"><a class="reference internal" href="../../../finance/payment_providers.html">Pagos en línea</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_wire_transfer"><a class="reference internal" href="../../../finance/payment_providers/wire_transfer.html">Transferencias bancarias</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_adyen"><a class="reference internal" href="../../../finance/payment_providers/adyen.html">Adyen</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_alipay"><a class="reference internal" href="../../../finance/payment_providers/alipay.html">Alipay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_amazon_payment_services"><a class="reference internal" href="../../../finance/payment_providers/amazon_payment_services.html">Servicios de pago de Amazon</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_asiapay"><a class="reference internal" href="../../../finance/payment_providers/asiapay.html">AsiaPay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_authorize"><a class="reference internal" href="../../../finance/payment_providers/authorize.html">Authorize.Net</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_buckaroo"><a class="reference internal" href="../../../finance/payment_providers/buckaroo.html">Buckaroo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_demo"><a class="reference internal" href="../../../finance/payment_providers/demo.html">Demostración</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_flutterwave"><a class="reference internal" href="../../../finance/payment_providers/flutterwave.html">Flutterwave</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mercado_pago"><a class="reference internal" href="../../../finance/payment_providers/mercado_pago.html">Mercado Pago</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mollie"><a class="reference internal" href="../../../finance/payment_providers/mollie.html">Mollie</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_ogone"><a class="reference internal" href="../../../finance/payment_providers/ogone.html">Ogone</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_paypal"><a class="reference internal" href="../../../finance/payment_providers/paypal.html">PayPal</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_razorpay"><a class="reference internal" href="../../../finance/payment_providers/razorpay.html">Razorpay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_sips"><a class="reference internal" href="../../../finance/payment_providers/sips.html">SIPS</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_stripe"><a class="reference internal" href="../../../finance/payment_providers/stripe.html">Stripe</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_fiscal_localizations"><a class="reference internal" href="../../../finance/fiscal_localizations.html">Localizaciones fiscales</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_argentina"><a class="reference internal" href="../../../finance/fiscal_localizations/argentina.html">Argentina</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_australia"><a class="reference internal" href="../../../finance/fiscal_localizations/australia.html">Australia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_belgium"><a class="reference internal" href="../../../finance/fiscal_localizations/belgium.html">Bélgica</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_brazil"><a class="reference internal" href="../../../finance/fiscal_localizations/brazil.html">Brasil</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_chile"><a class="reference internal" href="../../../finance/fiscal_localizations/chile.html">Chile</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_colombia"><a class="reference internal" href="../../../finance/fiscal_localizations/colombia.html">Colombia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_ecuador"><a class="reference internal" href="../../../finance/fiscal_localizations/ecuador.html">Ecuador</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_egypt"><a class="reference internal" href="../../../finance/fiscal_localizations/egypt.html">Egipto</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_france"><a class="reference internal" href="../../../finance/fiscal_localizations/france.html">Francia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_germany"><a class="reference internal" href="../../../finance/fiscal_localizations/germany.html">Alemania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_india"><a class="reference internal" href="../../../finance/fiscal_localizations/india.html">India</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_indonesia"><a class="reference internal" href="../../../finance/fiscal_localizations/indonesia.html">Indonesia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_italy"><a class="reference internal" href="../../../finance/fiscal_localizations/italy.html">Italia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_kenya"><a class="reference internal" href="../../../finance/fiscal_localizations/kenya.html">Kenia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_luxembourg"><a class="reference internal" href="../../../finance/fiscal_localizations/luxembourg.html">Luxemburgo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_mexico"><a class="reference internal" href="../../../finance/fiscal_localizations/mexico.html">México</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_netherlands"><a class="reference internal" href="../../../finance/fiscal_localizations/netherlands.html">Países Bajos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_romania"><a class="reference internal" href="../../../finance/fiscal_localizations/romania.html">Rumania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_peru"><a class="reference internal" href="../../../finance/fiscal_localizations/peru.html">Perú</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_philippines"><a class="reference internal" href="../../../finance/fiscal_localizations/philippines.html">Filipinas</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_saudi_arabia"><a class="reference internal" href="../../../finance/fiscal_localizations/saudi_arabia.html">Arabia Saudita</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_spain"><a class="reference internal" href="../../../finance/fiscal_localizations/spain.html">España</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_switzerland"><a class="reference internal" href="../../../finance/fiscal_localizations/switzerland.html">Suiza</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_thailand"><a class="reference internal" href="../../../finance/fiscal_localizations/thailand.html">Tailandia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_arab_emirates"><a class="reference internal" href="../../../finance/fiscal_localizations/united_arab_emirates.html">Emiratos Árabes Unidos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_kingdom"><a class="reference internal" href="../../../finance/fiscal_localizations/united_kingdom.html">Reino Unido</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>En esta página</h5>
+    <ul>
+<li><a class="reference internal" href="#">Solución de problemas</a><ul>
+<li><a class="reference internal" href="#iot-box-connection">Conexión de la caja IoT</a><ul>
+<li><a class="reference internal" href="#unable-to-locate-the-pairing-code-to-connect-the-iot-box">No es posible localizar el código de emparejamiento para conectar la caja IoT</a></li>
+<li><a class="reference internal" href="#iot-box-is-connected-but-it-is-not-showing-in-the-database">La caja IoT está conectada pero no aparece en la base de datos</a></li>
+<li><a class="reference internal" href="#the-iot-box-is-connected-to-the-odoo-database-but-cannot-be-reached">La caja IoT está conectada a la base de datos de Odoo pero no puede localizarla</a></li>
+<li><a class="reference internal" href="#the-https-certificate-does-not-generate">No se genera el certificado HTTPS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#printer">Impresora</a><ul>
+<li><a class="reference internal" href="#the-printer-is-not-detected">No se detecta la impresora</a></li>
+<li><a class="reference internal" href="#the-printer-outputs-random-text">La impresora imprime texto aleatorio</a><ul>
+<li><a class="reference internal" href="#epson-configuration-special-case">Caso especial de uso de Epson</a><ul>
+<li><a class="reference internal" href="#process-to-force-esc-command">Proceso para forzar el comando ESC*</a><ul>
+<li><a class="reference internal" href="#epson-printer-compatibility">Compatibilidad de la impresora Epson</a></li>
+<li><a class="reference internal" href="#iot-box-configuration-for-esc">configuración de la caja IoT para ESC*</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dymo-labelwriter-print-issue">Problemas con la impresora DYMO LabelWriter</a><ul>
+<li><a class="reference internal" href="#dymo-labelwriter-not-printing">DYMO LabelWriter no está imprimiendo</a></li>
+<li><a class="reference internal" href="#dymo-labelwriter-print-delay">Retraso de impresión en DYMO LabelWriter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-zebra-printer-does-not-print-anything">La impresora Zebra no imprime nada</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#barcode-scanner">Lector de código de barras</a><ul>
+<li><a class="reference internal" href="#the-characters-read-by-the-barcode-scanner-do-not-match-the-barcode">El lector de códigos de barras lee caracteres que no coinciden con el código de barras</a></li>
+<li><a class="reference internal" href="#nothing-happens-when-a-barcode-is-scanned">No ocurre nada al escanear un código de barras</a></li>
+<li><a class="reference internal" href="#the-barcode-scanner-is-detected-as-a-keyboard">El lector de códigos de barras se detecta como un teclado</a></li>
+<li><a class="reference internal" href="#barcode-scanner-processes-barcode-characters-individually">El lector de código de barras procesa los caracteres del código de barras de forma individual</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cash-drawer">Caja registradora</a><ul>
+<li><a class="reference internal" href="#the-cash-drawer-does-not-open">La caja registradora no abre</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale">Báscula</a><ul>
+<li><a class="reference internal" href="#set-up-ariva-s-scales">Configuración de las básculas Ariva S</a><ul>
+<li><a class="reference internal" href="#cable">Cable</a></li>
+<li><a class="reference internal" href="#setup">Configurar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../../applications.html">Documentos para el usuario</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Fundamentos de Odoo</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../../essentials/activities.html">Actividades</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../../essentials/reporting.html">Reportes</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../../essentials/search.html">Buscar y filtrar registros</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../../essentials/contacts.html">Contacts</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../../essentials/export_import_data.html">Exportar e importar datos</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../../essentials/in_app_purchase.html">Compras dentro de la aplicación (IAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_sales"><a class="reference internal" href="#">Ventas</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_crm"><a class="reference internal" href="../../../sales/crm.html">CRM</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_crm_pipeline"><a class="reference internal" href="#">Organizar un flujo</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_lost_opportunities"><a class="reference internal" href="../../../sales/crm/pipeline/lost_opportunities.html">Gestión de oportunidades perdidas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_multi_sales_team"><a class="reference internal" href="../../../sales/crm/pipeline/multi_sales_team.html">Varios equipos de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_acquire_leads"><a class="reference internal" href="#">Obtener leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_convert"><a class="reference internal" href="../../../sales/crm/acquire_leads/convert.html">Convertir leads en oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_generate_leads"><a class="reference internal" href="../../../sales/crm/acquire_leads/generate_leads.html">Generar leads y oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_send_quotes"><a class="reference internal" href="../../../sales/crm/acquire_leads/send_quotes.html">Envíe presupuestos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_lead_mining"><a class="reference internal" href="../../../sales/crm/acquire_leads/lead_mining.html">Minado de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_track_leads"><a class="reference internal" href="#">Asignar y rastrear leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_track_leads_lead_scoring"><a class="reference internal" href="../../../sales/crm/track_leads/lead_scoring.html">Asignación de leads con la puntuación predictiva de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_performance"><a class="reference internal" href="#">Analizar el rendimiento</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_performance_win_loss"><a class="reference internal" href="../../../sales/crm/performance/win_loss.html">Revise la relación ganancia/pérdida</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_optimize"><a class="reference internal" href="#">Mejoras para su trabajo diario</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_partner_autocomplete"><a class="reference internal" href="../../../sales/crm/optimize/partner_autocomplete.html">Enriquecer contactos con la función Autocompletar contacto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_gamification"><a class="reference internal" href="../../../sales/crm/optimize/gamification.html">¿Cómo motivar y recompensar a mis vendedores?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_utilize_activities"><a class="reference internal" href="../../../sales/crm/optimize/utilize_activities.html">Utilizar actividades para los equipos de ventas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_lead_enrichment"><a class="reference internal" href="../../../sales/crm/optimize/lead_enrichment.html">Enriquecimiento de leads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_sales"><a class="reference internal" href="../../../sales/sales.html">Ventas</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_sales_send_quotations"><a class="reference internal" href="#">Enviar cotizaciones</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_quote_template"><a class="reference internal" href="../../../sales/sales/send_quotations/quote_template.html">Plantillas de cotización</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_optional_products"><a class="reference internal" href="../../../sales/sales/send_quotations/optional_products.html">Productos opcionales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_signature_to_validate"><a class="reference internal" href="../../../sales/sales/send_quotations/get_signature_to_validate.html">Firmas electrónicas para la confirmación de órdenes.</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_paid_to_validate"><a class="reference internal" href="../../../sales/sales/send_quotations/get_paid_to_validate.html">Confirmación de orden de pago en línea</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_deadline"><a class="reference internal" href="../../../sales/sales/send_quotations/deadline.html">Fecha límite de cotizaciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_different_addresses"><a class="reference internal" href="../../../sales/sales/send_quotations/different_addresses.html">Entregas y facturas en diferentes direcciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_orders_and_variants"><a class="reference internal" href="../../../sales/sales/send_quotations/orders_and_variants.html">Variantes de producto en cotizaciones y órdenes de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_invoicing"><a class="reference internal" href="#">Método de facturación</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_invoicing_policy"><a class="reference internal" href="../../../sales/sales/invoicing/invoicing_policy.html">Facturar por cantidades entregadas u ordenadas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_down_payment"><a class="reference internal" href="../../../sales/sales/invoicing/down_payment.html">Anticipos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_proforma"><a class="reference internal" href="../../../sales/sales/invoicing/proforma.html">Facturas proforma</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_time_materials"><a class="reference internal" href="../../../sales/sales/invoicing/time_materials.html">Facturación por tiempo y materiales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_milestone"><a class="reference internal" href="../../../sales/sales/invoicing/milestone.html">Facturar objetivos de proyecto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_expense"><a class="reference internal" href="../../../sales/sales/invoicing/expense.html">Volver a facturar gastos a los clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_products_prices"><a class="reference internal" href="#">Productos y precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_products"><a class="reference internal" href="#">Gestionar productos</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_import"><a class="reference internal" href="../../../sales/sales/products_prices/products/import.html">Importar productos</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_variants"><a class="reference internal" href="../../../sales/sales/products_prices/products/variants.html">Variantes de producto</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_product_images"><a class="reference internal" href="../../../sales/sales/products_prices/products/product_images.html">Imágenes para productos con Google Imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_prices"><a class="reference internal" href="#">Gestionar precios</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_pricing"><a class="reference internal" href="../../../sales/sales/products_prices/prices/pricing.html">Listas de precios, descuentos y fórmulas</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_currencies"><a class="reference internal" href="../../../sales/sales/products_prices/prices/currencies.html">Divisas extranjeras</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_returns"><a class="reference internal" href="../../../sales/sales/products_prices/returns.html">Devoluciones y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_ewallets_giftcards"><a class="reference internal" href="../../../sales/sales/products_prices/ewallets_giftcards.html">Usar monederos electrónicos y tarjetas de regalo</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_loyalty_discount"><a class="reference internal" href="../../../sales/sales/products_prices/loyalty_discount.html">Programas de descuento y lealtad</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_amazon_connector"><a class="reference internal" href="#">Conector de Amazon</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_features"><a class="reference internal" href="../../../sales/sales/amazon_connector/features.html">Funciones del Conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_setup"><a class="reference internal" href="../../../sales/sales/amazon_connector/setup.html">Configuración del conector de Amazon</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_amazon_connector_manage"><a class="reference internal" href="../../../sales/sales/amazon_connector/manage.html">Gestión de órdenes de Amazon</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_ebay_connector"><a class="reference internal" href="#">Conector de eBay</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_setup"><a class="reference internal" href="../../../sales/sales/ebay_connector/setup.html">Configuración del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_manage"><a class="reference internal" href="../../../sales/sales/ebay_connector/manage.html">¿Cómo anunciar un producto?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_troubleshooting"><a class="reference internal" href="../../../sales/sales/ebay_connector/troubleshooting.html">Solución de problemas del Conector de eBay</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_ebay_connector_linking_listings"><a class="reference internal" href="../../../sales/sales/ebay_connector/linking_listings.html">Vincular anuncios existentes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_point_of_sale"><a class="reference internal" href="../../../sales/point_of_sale.html">Punto de venta</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_employee_login"><a class="reference internal" href="../../../sales/point_of_sale/employee_login.html">Gestión de varios empleados</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_receipts_invoices"><a class="reference internal" href="../../../sales/point_of_sale/receipts_invoices.html">Recibos y facturas</a></li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_configuration"><a class="reference internal" href="../../../sales/point_of_sale/configuration.html">Configuración</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_printers"><a class="reference internal" href="../../../sales/point_of_sale/configuration/epos_printers.html">Impresoras ePOS</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_https"><a class="reference internal" href="../../../sales/point_of_sale/configuration/https.html">Conexión segura (HTTPS)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_configuration_epos_ssc"><a class="reference internal" href="../../../sales/point_of_sale/configuration/epos_ssc.html">Certificado autofirmado para impresoras electrónicas del PdV</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_shop"><a class="reference internal" href="#">Funciones de tienda</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_sales_order"><a class="reference internal" href="../../../sales/point_of_sale/shop/sales_order.html">Orden de venta</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_barcode"><a class="reference internal" href="../../../sales/point_of_sale/shop/barcode.html">Códigos de barras</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_serial_numbers"><a class="reference internal" href="../../../sales/point_of_sale/shop/serial_numbers.html">Números de serie y lotes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_ship_later"><a class="reference internal" href="../../../sales/point_of_sale/shop/ship_later.html">Enviar después</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_shop_customer_display"><a class="reference internal" href="../../../sales/point_of_sale/shop/customer_display.html">Pantalla del cliente</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_restaurant"><a class="reference internal" href="../../../sales/point_of_sale/restaurant.html">Funciones para restaurantes</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_bill_printing"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/bill_printing.html">Cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_floors_tables"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/floors_tables.html">Gestión de pisos y mesas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_kitchen_printing"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/kitchen_printing.html">Impresión de órdenes</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_restaurant_tips"><a class="reference internal" href="../../../sales/point_of_sale/restaurant/tips.html">Propinas</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_pricing"><a class="reference internal" href="#">Funciones de precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discounts"><a class="reference internal" href="../../../sales/point_of_sale/pricing/discounts.html">Descuentos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_discount_tags"><a class="reference internal" href="../../../sales/point_of_sale/pricing/discount_tags.html">Etiquetas de descuento (lector de código de barras)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_loyalty"><a class="reference internal" href="../../../sales/point_of_sale/pricing/loyalty.html">Programas de lealtad</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_pricelists"><a class="reference internal" href="../../../sales/point_of_sale/pricing/pricelists.html">Listas de precios</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_fiscal_position"><a class="reference internal" href="../../../sales/point_of_sale/pricing/fiscal_position.html">Impuestos flexibles (posiciones fiscales)</a></li>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_pricing_cash_rounding"><a class="reference internal" href="../../../sales/point_of_sale/pricing/cash_rounding.html">Redondeo de efectivo</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_payment_methods"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods.html">Métodos de pago</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_point_of_sale_payment_methods_terminals"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals.html">Terminales de pago</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_adyen"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/adyen.html">Adyen</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_ingenico"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/ingenico.html">Ingenico</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_six"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/six.html">SIX</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_stripe"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/stripe.html">Stripe</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_vantiv"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/vantiv.html">Vantiv</a></li>
+<li class="toctree-l6 o_menu_applications_sales_point_of_sale_payment_methods_terminals_worldline"><a class="reference internal" href="../../../sales/point_of_sale/payment_methods/terminals/worldline.html">Worldline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_point_of_sale_reporting"><a class="reference internal" href="../../../sales/point_of_sale/reporting.html">Reportes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_services"><a class="reference internal" href="#">Servicios</a><ul>
+<li class="toctree-l3 o_menu_applications_services_project"><a class="reference internal" href="../../../services/project.html">Proyecto</a><ul>
+<li class="toctree-l4 o_menu_applications_services_project_tasks"><a class="reference internal" href="#">Tareas</a><ul>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_email_alias"><a class="reference internal" href="../../../services/project/tasks/email_alias.html">Crear tareas del proyecto a partir de un seudónimo de correo electrónico</a></li>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_recurring_tasks"><a class="reference internal" href="../../../services/project/tasks/recurring_tasks.html">Tareas recurrentes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_project_project_management"><a class="reference internal" href="../../../services/project/project_management.html">Gestión de proyectos</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_timesheets"><a class="reference internal" href="../../../services/timesheets.html">Hojas de horas</a><ul>
+<li class="toctree-l4 o_menu_applications_services_timesheets_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_timesheets_overview_time_off"><a class="reference internal" href="../../../services/timesheets/overview/time_off.html">Crear hojas de horas después de la validación del tiempo personal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_field_service"><a class="reference internal" href="../../../services/field_service.html">Servicio externo</a><ul>
+<li class="toctree-l4 o_menu_applications_services_field_service_onsite_interventions"><a class="reference internal" href="../../../services/field_service/onsite_interventions.html">Planificación de intervenciones in situ</a></li>
+<li class="toctree-l4 o_menu_applications_services_field_service_default_warehouse"><a class="reference internal" href="../../../services/field_service/default_warehouse.html">Almacén predeterminado del usuario</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_services_helpdesk"><a class="reference internal" href="../../../services/helpdesk.html">Servicio de asistencia</a><ul>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_overview"><a class="reference internal" href="#">Información general</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_getting_started"><a class="reference internal" href="../../../services/helpdesk/overview/getting_started.html">Primeros pasos con Servicio de asistencia</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_sla"><a class="reference internal" href="../../../services/helpdesk/overview/sla.html">Acuerdos de nivel de servicio (SLA)</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_receiving_tickets"><a class="reference internal" href="../../../services/helpdesk/overview/receiving_tickets.html">Empezar a recibir tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_reports"><a class="reference internal" href="../../../services/helpdesk/overview/reports.html">Reportes</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_help_center"><a class="reference internal" href="../../../services/helpdesk/overview/help_center.html">Centro de ayuda</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_overview_ratings"><a class="reference internal" href="../../../services/helpdesk/overview/ratings.html">Calificación de clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_helpdesk_advanced"><a class="reference internal" href="#">Avanzado</a><ul>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_after_sales"><a class="reference internal" href="../../../services/helpdesk/advanced/after_sales.html">Servicios posventa</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_close_tickets"><a class="reference internal" href="../../../services/helpdesk/advanced/close_tickets.html">Cerrar tickets</a></li>
+<li class="toctree-l5 o_menu_applications_services_helpdesk_advanced_track_and_bill"><a class="reference internal" href="../../../services/helpdesk/advanced/track_and_bill.html">Seguimiento y facturación del tiempo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_finance"><a class="reference internal" href="#">Finanzas</a><ul>
+<li class="toctree-l3 o_menu_applications_finance_accounting"><a class="reference internal" href="../../../finance/accounting.html">Contabilidad y facturación</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_accounting_get_started"><a class="reference internal" href="../../../finance/accounting/get_started.html">Información básica</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_cheat_sheet"><a class="reference internal" href="../../../finance/accounting/get_started/cheat_sheet.html">Hoja de referencia de Contabilidad</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_chart_of_accounts"><a class="reference internal" href="../../../finance/accounting/get_started/chart_of_accounts.html">Plan de cuentas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_multi_currency"><a class="reference internal" href="../../../finance/accounting/get_started/multi_currency.html">Sistema multidivisa</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_avg_price_valuation"><a class="reference internal" href="../../../finance/accounting/get_started/avg_price_valuation.html">Costo promedio en bienes devueltos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_get_started_vat_units"><a class="reference internal" href="../../../finance/accounting/get_started/vat_units.html">Unidades de IVA</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_taxes"><a class="reference internal" href="../../../finance/accounting/taxes.html">Impuestos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_cash_basis"><a class="reference internal" href="../../../finance/accounting/taxes/cash_basis.html">Impuestos de base de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_retention"><a class="reference internal" href="../../../finance/accounting/taxes/retention.html">Retención fiscal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_vat_verification"><a class="reference internal" href="../../../finance/accounting/taxes/vat_verification.html">Comprobar un número de IVA (sistema VIES)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_fiscal_positions"><a class="reference internal" href="../../../finance/accounting/taxes/fiscal_positions.html">Posiciones fiscales (mapeo de impuestos y cuentas)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_avatax"><a class="reference internal" href="../../../finance/accounting/taxes/avatax.html">Integración con AvaTax</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avatax_use"><a class="reference internal" href="../../../finance/accounting/taxes/avatax/avatax_use.html">Uso de AvaTax</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_taxes_avatax_avalara_portal"><a class="reference internal" href="../../../finance/accounting/taxes/avatax/avalara_portal.html">Portal de Avalara (AvaTax)</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_taxcloud"><a class="reference internal" href="../../../finance/accounting/taxes/taxcloud.html">Integración con TaxCloud</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_eu_distance_selling"><a class="reference internal" href="../../../finance/accounting/taxes/eu_distance_selling.html">Ventas a distancia intracomunitarias en la UE</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_taxes_B2B_B2C"><a class="reference internal" href="../../../finance/accounting/taxes/B2B_B2C.html">Precios B2B (impuestos no incluidos) y B2C (impuestos incluidos)</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_customer_invoices"><a class="reference internal" href="../../../finance/accounting/customer_invoices.html">Facturas de cliente</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="../../../finance/accounting/customer_invoices/overview.html">Procesos de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="../../../finance/accounting/customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_payment_terms"><a class="reference internal" href="../../../finance/accounting/customer_invoices/payment_terms.html">Términos de pago y planes de pago a plazos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="../../../finance/accounting/customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_discounts"><a class="reference internal" href="../../../finance/accounting/customer_invoices/cash_discounts.html">Descuentos por pronto pago y reducción de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="../../../finance/accounting/customer_invoices/credit_notes.html">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_cash_rounding"><a class="reference internal" href="../../../finance/accounting/customer_invoices/cash_rounding.html">Redondeo de efectivo</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_deferred_revenues"><a class="reference internal" href="../../../finance/accounting/customer_invoices/deferred_revenues.html">Ingresos diferidos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_electronic_invoicing"><a class="reference internal" href="../../../finance/accounting/customer_invoices/electronic_invoicing.html">Facturación electrónica (<abbr title="intercambio electrónico de datos">EDI</abbr>)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_snailmail"><a class="reference internal" href="../../../finance/accounting/customer_invoices/snailmail.html">Correo postal</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_epc_qr_code"><a class="reference internal" href="../../../finance/accounting/customer_invoices/epc_qr_code.html">Códigos EPC QR</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_incoterms"><a class="reference internal" href="../../../finance/accounting/customer_invoices/incoterms.html">Incoterms</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../../../finance/accounting/vendor_bills.html">Facturas de proveedor</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_invoice_digitization"><a class="reference internal" href="../../../finance/accounting/vendor_bills/invoice_digitization.html">Digitalización de documentos con IA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="../../../finance/accounting/vendor_bills/assets.html">Activos no circulantes y fijos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="../../../finance/accounting/vendor_bills/deferred_expenses.html">Gastos diferidos y prepagos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_payments"><a class="reference internal" href="../../../finance/accounting/payments.html">Pagos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="../../../finance/accounting/payments/online.html">Pagos en línea</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="../../../finance/accounting/payments/checks.html">Cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch"><a class="reference internal" href="../../../finance/accounting/payments/batch.html">Pagos por lote para depósitos bancarios</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_batch_sdd"><a class="reference internal" href="../../../finance/accounting/payments/batch_sdd.html">Pagos por lotes: domiciliación bancaria SEPA (SDD)</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_follow_up"><a class="reference internal" href="../../../finance/accounting/payments/follow_up.html">Seguimiento en las facturas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="../../../finance/accounting/payments/internal_transfers.html">Transferencias internas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="../../../finance/accounting/payments/pay_sepa.html">Pagos con SEPA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="../../../finance/accounting/payments/pay_checks.html">Pagar con cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="../../../finance/accounting/payments/forecast.html">Pronóstico de futuras facturas por pagar</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../../../finance/accounting/bank.html">Cuentas bancarias y de efectivo</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization.html">Sincronización bancaria</a><ul>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/saltedge.html">Salt Edge</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/ponto.html">Ponto</a></li>
+<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="../../../finance/accounting/bank/bank_synchronization/enablebanking.html">Enable Banking</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="../../../finance/accounting/bank/transactions.html">Transacciones</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="../../../finance/accounting/bank/reconciliation.html">Conciliación bancaria</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="../../../finance/accounting/bank/reconciliation_models.html">Modelos de conciliación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_foreign_currency"><a class="reference internal" href="../../../finance/accounting/bank/foreign_currency.html">Gestione una cuenta bancaria en una moneda extranjera</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_cash_register"><a class="reference internal" href="../../../finance/accounting/bank/cash_register.html">Caja registradora</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_reporting"><a class="reference internal" href="../../../finance/accounting/reporting.html">Reportes</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_returns"><a class="reference internal" href="../../../finance/accounting/reporting/tax_returns.html">Declaración de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_tax_carryover"><a class="reference internal" href="../../../finance/accounting/reporting/tax_carryover.html">Traspaso de impuestos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_analytic_accounting"><a class="reference internal" href="../../../finance/accounting/reporting/analytic_accounting.html">Contabilidad analítica</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_budget"><a class="reference internal" href="../../../finance/accounting/reporting/budget.html">Presupuesto financiero</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_intrastat"><a class="reference internal" href="../../../finance/accounting/reporting/intrastat.html">Intrastat</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_data_inalterability"><a class="reference internal" href="../../../finance/accounting/reporting/data_inalterability.html">Reporte de comprobación de inalterabilidad de datos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_silverfin"><a class="reference internal" href="../../../finance/accounting/reporting/silverfin.html">Integración con Silverfin</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_customize"><a class="reference internal" href="../../../finance/accounting/reporting/customize.html">Reportes personalizados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_reporting_year_end"><a class="reference internal" href="../../../finance/accounting/reporting/year_end.html">Cierre del ejercicio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_expenses"><a class="reference internal" href="../../../finance/expenses.html">Gastos</a></li>
+<li class="toctree-l3 o_menu_applications_finance_payment_providers"><a class="reference internal" href="../../../finance/payment_providers.html">Pagos en línea</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_wire_transfer"><a class="reference internal" href="../../../finance/payment_providers/wire_transfer.html">Transferencias bancarias</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_adyen"><a class="reference internal" href="../../../finance/payment_providers/adyen.html">Adyen</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_alipay"><a class="reference internal" href="../../../finance/payment_providers/alipay.html">Alipay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_amazon_payment_services"><a class="reference internal" href="../../../finance/payment_providers/amazon_payment_services.html">Servicios de pago de Amazon</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_asiapay"><a class="reference internal" href="../../../finance/payment_providers/asiapay.html">AsiaPay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_authorize"><a class="reference internal" href="../../../finance/payment_providers/authorize.html">Authorize.Net</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_buckaroo"><a class="reference internal" href="../../../finance/payment_providers/buckaroo.html">Buckaroo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_demo"><a class="reference internal" href="../../../finance/payment_providers/demo.html">Demostración</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_flutterwave"><a class="reference internal" href="../../../finance/payment_providers/flutterwave.html">Flutterwave</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mercado_pago"><a class="reference internal" href="../../../finance/payment_providers/mercado_pago.html">Mercado Pago</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_mollie"><a class="reference internal" href="../../../finance/payment_providers/mollie.html">Mollie</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_ogone"><a class="reference internal" href="../../../finance/payment_providers/ogone.html">Ogone</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_paypal"><a class="reference internal" href="../../../finance/payment_providers/paypal.html">PayPal</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_razorpay"><a class="reference internal" href="../../../finance/payment_providers/razorpay.html">Razorpay</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_sips"><a class="reference internal" href="../../../finance/payment_providers/sips.html">SIPS</a></li>
+<li class="toctree-l4 o_menu_applications_finance_payment_providers_stripe"><a class="reference internal" href="../../../finance/payment_providers/stripe.html">Stripe</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_fiscal_localizations"><a class="reference internal" href="../../../finance/fiscal_localizations.html">Localizaciones fiscales</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_argentina"><a class="reference internal" href="../../../finance/fiscal_localizations/argentina.html">Argentina</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_australia"><a class="reference internal" href="../../../finance/fiscal_localizations/australia.html">Australia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_belgium"><a class="reference internal" href="../../../finance/fiscal_localizations/belgium.html">Bélgica</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_brazil"><a class="reference internal" href="../../../finance/fiscal_localizations/brazil.html">Brasil</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_chile"><a class="reference internal" href="../../../finance/fiscal_localizations/chile.html">Chile</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_colombia"><a class="reference internal" href="../../../finance/fiscal_localizations/colombia.html">Colombia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_ecuador"><a class="reference internal" href="../../../finance/fiscal_localizations/ecuador.html">Ecuador</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_egypt"><a class="reference internal" href="../../../finance/fiscal_localizations/egypt.html">Egipto</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_france"><a class="reference internal" href="../../../finance/fiscal_localizations/france.html">Francia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_germany"><a class="reference internal" href="../../../finance/fiscal_localizations/germany.html">Alemania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_india"><a class="reference internal" href="../../../finance/fiscal_localizations/india.html">India</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_indonesia"><a class="reference internal" href="../../../finance/fiscal_localizations/indonesia.html">Indonesia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_italy"><a class="reference internal" href="../../../finance/fiscal_localizations/italy.html">Italia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_kenya"><a class="reference internal" href="../../../finance/fiscal_localizations/kenya.html">Kenia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_luxembourg"><a class="reference internal" href="../../../finance/fiscal_localizations/luxembourg.html">Luxemburgo</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_mexico"><a class="reference internal" href="../../../finance/fiscal_localizations/mexico.html">México</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_netherlands"><a class="reference internal" href="../../../finance/fiscal_localizations/netherlands.html">Países Bajos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_romania"><a class="reference internal" href="../../../finance/fiscal_localizations/romania.html">Rumania</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_peru"><a class="reference internal" href="../../../finance/fiscal_localizations/peru.html">Perú</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_philippines"><a class="reference internal" href="../../../finance/fiscal_localizations/philippines.html">Filipinas</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_saudi_arabia"><a class="reference internal" href="../../../finance/fiscal_localizations/saudi_arabia.html">Arabia Saudita</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_spain"><a class="reference internal" href="../../../finance/fiscal_localizations/spain.html">España</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_switzerland"><a class="reference internal" href="../../../finance/fiscal_localizations/switzerland.html">Suiza</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_thailand"><a class="reference internal" href="../../../finance/fiscal_localizations/thailand.html">Tailandia</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_arab_emirates"><a class="reference internal" href="../../../finance/fiscal_localizations/united_arab_emirates.html">Emiratos Árabes Unidos</a></li>
+<li class="toctree-l4 o_menu_applications_finance_fiscal_localizations_united_kingdom"><a class="reference internal" href="../../../finance/fiscal_localizations/united_kingdom.html">Reino Unido</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+      <a href="../../../../index.html" class="o_logo">
+          <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+          <span>docs</span>
+      </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://odoo.com/trial">Pruebe Odoo GRATIS</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu" aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                ES 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/applications/general/iot/config/troubleshooting.html">EN</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Solución de problemas</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="troubleshooting">
+<h1>Solución de problemas<a class="headerlink" href="#troubleshooting" title="Enlazar permanentemente con este título">¶</a></h1>
+</section><section id="iot-box-connection">
+<h2>Conexión de la caja IoT<a class="headerlink" href="#iot-box-connection" title="Enlazar permanentemente con este título">¶</a></h2>
+</section><section id="unable-to-locate-the-pairing-code-to-connect-the-iot-box">
+<h3>No es posible localizar el código de emparejamiento para conectar la caja IoT<a class="headerlink" href="#unable-to-locate-the-pairing-code-to-connect-the-iot-box" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El código de emparejamiento debe estar impreso en la impresora de recibos conectada a la caja <abbr title="Internet de las cosas">IoT</abbr> y debe aparecer en los monitores conectados.</p>
+<p>El código de emparejamiento no aparece en los siguientes casos:</p>
+<ul class="simple">
+<li><p>La caja IoT ya está conectada a una base de datos de Odoo.</p></li>
+<li><p>La caja IoT no está conectada a internet.</p></li>
+<li><p>El código solo es válido durante los primeros 5 minutos después de encender la caja IoT. Una vez pasado este tiempo, se elimina en automático de las pantallas conectadas.</p></li>
+<li><p>La versión de la imagen de la caja IoT no es reciente. Si la imagen de la caja IoT es de una versión anterior, entonces tendrá que reiniciar la tarjeta SD de la caja para actualizar la imagen (consulte <a class="reference internal" href="updating_iot.html#iot-config-flash"><span class="std std-ref">Actualizar la tarjeta SD</span></a>).</p></li>
+</ul>
+<p>Si no es ninguno de los casos mencionados con anterioridad, asegúrese de que la caja <abbr title="internet de las cosas, por sus siglas en inglés">IoT</abbr>  se encendió de forma adecuada. Verifique que un LED verde fijo aparece junto al puerto micro USB.</p>
+</section><section id="iot-box-is-connected-but-it-is-not-showing-in-the-database">
+<h3>La caja IoT está conectada pero no aparece en la base de datos<a class="headerlink" href="#iot-box-is-connected-but-it-is-not-showing-in-the-database" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Es posible que una caja IoT se reinicie cuando se conecta a una base de datos. En este caso, puede tardar hasta cinco minutos antes de aparecer en la base de datos. Si la caja IoT no aparece después de cinco minutos, asegúrese de que tiene alcance a la base de datos y que el servidor no utiliza un entorno de varias bases de datos.</p>
+<p>Para acceder a la base de datos desde la caja IoT, abra su navegador y escriba la dirección de la base de datos.</p>
+</section><section id="the-iot-box-is-connected-to-the-odoo-database-but-cannot-be-reached">
+<h3>La caja IoT está conectada a la base de datos de Odoo pero no puede localizarla<a class="headerlink" href="#the-iot-box-is-connected-to-the-odoo-database-but-cannot-be-reached" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Asegúrese de que la caja IoT y la computadora que ejecuta el navegador se encuentran conectadas a la misma red, ya que la caja IoT no podrá localizarla fuera de la red local.</p>
+</section><section id="the-https-certificate-does-not-generate">
+<h3>No se genera el certificado HTTPS<a class="headerlink" href="#the-https-certificate-does-not-generate" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para generar un certificado <abbr title="Protocolo seguro de transferencia de hipertexto">HTTPS</abbr>, es necesaria una suscripción a la caja IoT para la caja IoT. Si conecta la caja IoT antes de configurar una suscripción de IoT para la base de datos y la caja IoT, entonces el resultado será una conexión no segura.</p>
+<p>Además, un firewall también puede evitar que el certificado <abbr title="Protocolo seguro de transferencia de hipertexto">HTTPS</abbr> se genere de forma adecuada. En este caso, desactive el firewall hasta que se genere el certificado. Considere que ciertos dispositivos, como un enrutador con un firewall incorporado, pueden impedir que se genere un certificado HTTPS.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+Ver también</p><p><a class="reference internal" href="https_certificate_iot.html"><span class="doc">Certificado HTTPS (IoT)</span></a></p>
+</div>
+</section><section id="printer">
+<h2>Impresora<a class="headerlink" href="#printer" title="Enlazar permanentemente con este título">¶</a></h2>
+</section><section id="the-printer-is-not-detected">
+<h3>No se detecta la impresora<a class="headerlink" href="#the-printer-is-not-detected" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si una impresora no aparece en su lista de dispositivos, vaya a la página de inicio de la caja IoT y asegúrese de que aparece en <span class="guilabel">Impresoras</span>.</p>
+<img alt="La página de inicio de la caja IoT." class="align-center" src="../../../../_images/printer-status.png" />
+<p>Si la impresora no aparece en la página de inicio de la caja IoT, haga clic en <span class="guilabel">Servidor de impresoras</span>, vaya a la pestaña <span class="guilabel">Administración</span> y haga clic en <span class="guilabel">Agregar impresora</span>. Es probable que la impresora no esté conectada correctamente si no aparece en la lista.</p>
+</section><section id="the-printer-outputs-random-text">
+<h3>La impresora imprime texto aleatorio<a class="headerlink" href="#the-printer-outputs-random-text" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para la mayoría de las impresoras, el controlador correcto se detecta y selecciona de forma automática. Sin embargo, en algunos casos, es posible que el mecanismo de detección automática no sea suficiente, y si no encuentra ningún controlador, la impresora podría imprimir caracteres aleatorios.</p>
+<p>La solución es seleccionar el controlador correspondiente de forma manual. Haga clic en <span class="guilabel">Servidor de impresoras</span> en la página de inicio de la caja IoT, vaya a la pestaña <span class="guilabel">Impresoras</span> y seleccione la impresora en la lista. En el menú desplegable <span class="guilabel">Administración</span> haga clic en <span class="guilabel">Modificar impresora</span>. Siga los pasos y seleccione la <em>marca</em> y el <em>modelo</em> que correspondan a la impresora.</p>
+<img alt="Editar la impresora conectada a la caja IoT." class="align-center" src="../../../../_images/modify-printer.png" />
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>Las impresoras de recibos Epson y Star y las impresoras de etiquetas Zebra no necesitan un controlador para funcionar. Asegúrese de que no se seleccionó ningún controlador para esas impresoras.</p>
+</div>
+</section><section id="epson-configuration-special-case">
+<h4>Caso especial de uso de Epson<a class="headerlink" href="#epson-configuration-special-case" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>La mayoría de las impresoras Epson pueden imprimir recibos desde el <span class="guilabel">Punto de venta de Odoo</span> con el comando <code class="o_code docutils literal notranslate"><span class="pre">GS</span> <span class="pre">v</span> <span class="pre">0</span></code>. Sin embargo, los siguientes modelos de impresoras Epson no son compatibles con el comando;</p>
+<ul class="simple">
+<li><p>TM-U220</p></li>
+<li><p>TM-U230</p></li>
+<li><p>TM-P60</p></li>
+<li><p>TMP-P60II</p></li>
+</ul>
+<p>Para solucionar este problema, configure la impresora para que use el comando  <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code> para esto mejor.</p>
+</section><section id="process-to-force-esc-command">
+<h5>Proceso para forzar el comando ESC*<a class="headerlink" href="#process-to-force-esc-command" title="Enlazar permanentemente con este título">¶</a></h5>
+</section><section id="epson-printer-compatibility">
+<h6>Compatibilidad de la impresora Epson<a class="headerlink" href="#epson-printer-compatibility" title="Enlazar permanentemente con este título">¶</a></h6>
+<p>El primer paso es revisar si una impresora no es compatible con el comando <code class="o_code docutils literal notranslate"><span class="pre">GS</span> <span class="pre">v</span> <span class="pre">0</span></code></p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+Ver también</p><ul class="simple">
+<li><p><a class="reference external" href="https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=94">Documentación de Epson GS v 0</a> para impresoras compatibles con <code class="o_code docutils literal notranslate"><span class="pre">GS</span> <span class="pre">v</span> <span class="pre">0</span></code>.</p></li>
+<li><p><a class="reference external" href="https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=88">Documentación Epson ESC*</a> para impresoras compatibles con <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code>.</p></li>
+</ul>
+</div>
+<p>Si la impresora no es compatible con el comando <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code> entonces no será posible realizar el siguiente proceso. Si la impresora es compatible con el uso del comando <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code> para imprimir, siga este proceso para configurar la impresora con la caja <abbr title="Internet de las cosas, por sus siglas en inglés">IoT</abbr>.</p>
+</section><section id="iot-box-configuration-for-esc">
+<h6>configuración de la caja IoT para ESC*<a class="headerlink" href="#iot-box-configuration-for-esc" title="Enlazar permanentemente con este título">¶</a></h6>
+<p>Para configurar el uso del comando <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code> para imprimir en la caja <abbr title="Internet de las cosas por sus siglsa en inglés">IoT</abbr> vaya a la página de inicio de la caja <abbr title="Internet de las cosas por sus siglsa en inglés">IoT</abbr> desde <span class="menuselection">la aplicación IoT ‣ cajas IoT</span>. Después haga clic en la <span class="guilabel">dirección IP</span>, así se le redirigirá a la página de inicio de la caja <abbr title="Internet de las cosas por sus siglsa en inglés">IoT</abbr>.</p>
+<p><strong>Al elegir la impresora</strong></p>
+<p>Ahora haga clic en el botón <span class="guilabel">Printers server</span> (servidores de impresoras). Esto lo redirigirá a la página de <em>CUPS</em>. Después, vaya a <span class="menuselection">Administración ‣ Impresoras ‣ Agregar una impresora</span>, elija la impresora que se tiene que modificar y haga clic en <span class="guilabel">Continuar</span>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Truco</p><p>Si todavía no está seguro de cuál es el nombre de la impresora, siga los siguientes pasos:</p>
+<ol class="arabic simple">
+<li><p>Fíjese qué impresoras están enlistadas en la página <em>CUPS</em>.</p></li>
+<li><p>Apague la impresora y vuelva a cargar la página.</p></li>
+<li><p>Ahora compare las listas para encontrar qué impresora desapareció.</p></li>
+<li><p>Vuelva a prender la impresora y recargue la página.</p></li>
+<li><p>Verifique de nuevo la lista para ver si la impresora vuelve a aparecer.</p></li>
+<li><p>La impresora que desapareció y volvió a aparecer en la lista de impresoras es el nombre de la impresora correspondiente.</p></li>
+</ol>
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>Puede aparecer como <span class="guilabel">Desconocido</span> en :guilabel: <code class="o_code docutils literal notranslate"><span class="pre">Impresoras</span> <span class="pre">locales</span></code>.</p>
+</div>
+</div>
+<p><strong>Convención de nomenclatura CUPS</strong></p>
+<p>El comando <code class="o_code docutils literal notranslate"><span class="pre">CUPS</span></code> le solicitará tres datos al administrador: <span class="guilabel">Nombre</span>, <span class="guilabel">Descripción</span> y <span class="guilabel">Ubicación</span>. No es necesario que los dos últimos datos sean específicos, sin embargo, el <span class="guilabel">nombre</span> debe contar con una nomenclatura específica para que funcione con el comando <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code>.</p>
+<p>El <span class="guilabel">Nombre</span> debe seguir este formato: <code class="o_code docutils literal notranslate"><span class="pre">&lt;printer_name&gt;__IMC_&lt;param_1&gt;_&lt;param_2&gt;_..._&lt;param_n&gt;__</span></code>.</p>
+<p>Desglose de la convención de nomenclatura:</p>
+<ul>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">printer_name</span></code>: es el nombre de la impresora. Puede incluir cualquier carácter siempre que no sea <code class="o_code docutils literal notranslate"><span class="pre">_</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">/</span></code>, <code class="o_code docutils literal notranslate"><span class="pre">#</span></code>, o ` ` (espacio).</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">IMC</span></code>: Son las siglas de <em>Image Mode Column</em> (el nombre simplificado de <code class="o_code docutils literal notranslate"><span class="pre">ESC*</span></code>).</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">param_1</span></code>: representa el parámetro específico:</p>
+<ul>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">SCALE&lt;X&gt;</span></code>: escala de la imagen (con la misma relación de aspecto). <code class="o_code docutils literal notranslate"><span class="pre">X</span></code> debe ser un número entero que describa el porcentaje de escala que se debe utilizar.</p>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p><code class="o_code docutils literal notranslate"><span class="pre">100</span></code> es el tamaño original, <code class="o_code docutils literal notranslate"><span class="pre">50</span></code> es la mitad del tamaño y <code class="o_code docutils literal notranslate"><span class="pre">200</span></code> es el doble del tamaño.</p>
+</div>
+</li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">LDV</span></code>: <em>Low Density Vertical</em> (densidad vertical baja), se establecerá en <em>High Density Vertical</em> (densidad vertical alta) si no se especifica.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">LDH</span></code>: <em>Low Density Horizontal</em> (densidad horizontal baja), se establecerá en <em>High Density Horizontal</em> (densidad horizontal alta) si no se especifica.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>Es posible que los parámetros de <em>densidad</em> se deban configurar de una manera específica según el modelo de impresora.</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+Ver también</p><p>Visite la documentación ESC * de <a class="reference external" href="https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=88">Epson</a> y haga clic en el modelo de impresora de la tabla superior para averiguar el tipo de configuración que debe tener.</p>
+</div>
+<div class="alert alert-success">
+<p class="alert-title">
+Example</p><p>Los siguientes son ejemplos de nombres con formato correcto e incorrecto:</p>
+<p>Formato correcto:</p>
+<ul class="simple">
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">EPSONTMm30II__IMC__</span></code></p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">EPSON_TM_U220__IMC_LDV_LDH_SCALE80__</span></code></p></li>
+</ul>
+<p>Formato incorrecto (no impedirá la impresión, pero el resultado podría no ser el esperado):</p>
+<ul class="simple">
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">EPSON</span> <span class="pre">TMm</span> <span class="pre">30II</span></code> -&gt; El nombre no debe incluir espacios.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">EPSONTMm30II</span></code> -&gt; El nombre es correcto, pero no hace uso de <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code>.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">EPSONTMm30II__IMC</span></code> -&gt; El nombre no incluye <code class="o_code docutils literal notranslate"><span class="pre">__</span></code> al final.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">EPSONTMm30II__IMC_XDV__</span></code> -&gt; El parámetro <code class="o_code docutils literal notranslate"><span class="pre">XDV</span></code> no coincide con ningún parámetro existente.</p></li>
+<li><p><code class="o_code docutils literal notranslate"><span class="pre">EPSONTMm30II_IMC_SCALE_</span></code> -&gt; El parámetro <code class="o_code docutils literal notranslate"><span class="pre">SCALE</span></code> no incluye el valor con la escala.</p></li>
+</ul>
+</div>
+<p><strong>Terminar de agregar una impresora</strong></p>
+<p>Después de asignar un nombre a la impresora con la convención de nomenclatura adecuada, haga clic en <span class="guilabel">Continuar</span>. A continuación, en el valor <span class="guilabel">Crear</span> seleccione <span class="guilabel">Sin procesar</span> y para el valor <span class="guilabel">Modelo</span> seleccione <span class="guilabel">Cola sin procesar (en)</span>.</p>
+<p>Tras completar estos pasos, haga clic en <span class="guilabel">Agregar impresora</span>. Si no ocurrió ningún error, se le redirigirá a la página de <em>banners</em>.</p>
+<p>En este punto la impresora debería haber sido creada, ahora la caja <abbr title="Internet de las cosas">IoT</abbr> solo necesita detectarla y luego sincronizarla con el servidor de Odoo (esto podría tardar unos minutos).</p>
+<p><strong>Agregar la impresora al PdV de Odoo</strong></p>
+<p>Una vez que la impresora aparezca en la base de datos de Odoo, deberá elegirla en la configuración del <abbr title="Punto de venta">PdV</abbr> como la impresora <abbr title="Internet de las cosas">IoT</abbr>. Vaya a <span class="menuselection">Punto de venta ‣ Ajustes ‣ Dispositivos conectados ‣ Caja IoT ‣ Impresora de recibos ‣ Guardar</span>.</p>
+<div class="alert alert-primary">
+<p class="alert-title">
+Nota</p><p>Si la impresora se configuró de forma incorrecta (todavía imprime texto aleatorio o el recibo impreso es demasiado grande o pequeño), no se puede modificar mediante el nombre de la impresora con <em>CUPS</em>. Puede repetir el proceso anterior para configurar otra impresora desde cero y crear una con los parámetros modificados.</p>
+</div>
+<p><strong>Ejemplo de configuración de la impresora Epson TM-U220B con ESC</strong></p>
+<div class="accordion accordion-flush o_spoiler alert"><div class="accordion-item"><span class="accordion-header" id="o_spoiler_header_0"><button aria-controls="o_spoiler_content_0" aria-expanded="false" class="accordion-button collapsed flex-row-reverse justify-content-end fw-bold p-0 border-bottom-0" data-bs-target="#o_spoiler_content_0" data-bs-toggle="collapse" type="button">Click this text to reveal the example</button></span><div aria-labelledby="o_spoiler_header_0" class="accordion-collapse collapse border-bottom-0" id="o_spoiler_content_0"><div class="accordion-body"><p>El siguiente es un ejemplo del proceso de solución de problemas para el modelo TM-U220B con el comando <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code>. El recibo que aparece a continuación ejemplifica un recibo que se imprime correctamente debido al formato adecuado (en teoría):</p>
+<img alt="Imagen de un recibo con un formato correcto impreso desde una base de datos de demostración." class="align-center" src="../../../../_images/receipt-example.png" />
+<p>Si intenta imprimir este recibo antes de configurar el formato adecuado, imprimirá caracteres aleatorios, ya que el modelo TM-U220B no es compatible con <code class="o_code docutils literal notranslate"><span class="pre">GS</span> <span class="pre">v</span> <span class="pre">0</span></code>.</p>
+<img alt="Papel de impresora con caracteres aparentemente aleatorios." class="align-center" src="../../../../_images/receipt-print-random-letters.png" />
+<p>Para configurar correctamente el formato para el modelo TM-U220B  de la impresora Epson, debe seguir los siguientes pasos.</p>
+<p>Luego de consultar el sitio web de Epson para verificar la compatibilidad de los comandos <a class="reference external" href="https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=94">GS v 0</a> y <a class="reference external" href="https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=88">ESC *</a>, puede observar que el modelo TM-U220B no es compatible con <code class="o_code docutils literal notranslate"><span class="pre">GS</span> <span class="pre">v</span> <span class="pre">0</span></code>, pero sí con <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code>.</p>
+<img alt="Evaluación de compatibilidad de Epson en su sitio web." class="align-center" src="../../../../_images/epson-compatibility-compare.png" />
+<p>Al agregar la impresora, <em>CUPS</em> preguntará qué impresora se debe agregar:</p>
+<img alt="Selección para agregar impresora en el menú de administración." class="align-center" src="../../../../_images/add-printer.png" />
+<p>En este caso, la impresora está conectada por <abbr title="Bus serie universal">USB</abbr> así que no aparecerá en las <span class="guilabel">impresoras descubiertas en la red</span>. En su lugar, es probable que aparezca en la selección <span class="guilabel">desconocida</span> en <span class="guilabel">impresoras locales</span>. Al desconectar el cable <abbr title="Bus serie universal">USB</abbr> de la impresora de la caja <abbr title="Internet de las cosas">IoT</abbr> y actualizar la página, la impresora <span class="guilabel">desconocida</span> desaparece. Al conectarla de nuevo, vuelve a aparecer, por lo que se puede decir que esta es la impresora en cuestión.</p>
+<p>Es necesario agregar <code class="o_code docutils literal notranslate"><span class="pre">__IMC</span></code> a la nomenclatura del nombre, pues necesitará imprimir con el comando <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code>. Busque el modelo de la impresora en <a class="reference external" href="https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=88">el sitio web de Epson ESC *</a> para obtener más información acerca de los parámetros de <em>densidad</em>.</p>
+<img alt="Especificaciones de la impresora Epson TM-U220 en el sitio web del fabricante. " class="align-center" src="../../../../_images/epson-tm-u220-specification.png" />
+<p>Para el modelo particular TM-U220, el valor de <code class="o_code docutils literal notranslate"><span class="pre">m</span></code> debe ser igual a 0 o 1. Al referenciar la caja rosa de  <span class="guilabel">Descripción</span> en la imagen anterior, los valores de <code class="o_code docutils literal notranslate"><span class="pre">m</span></code> pueden ser 0, 1, 32 o 33. En el caso de esta impresora, el valor de <code class="o_code docutils literal notranslate"><span class="pre">m</span></code> NO pueden ser 32 o 33 (de lo contrario se imprimirán caracteres al azar).</p>
+<p>La tabla incluye los siguientes valores numéricos: 32 y 33, los cuáles ocurren si el <span class="guilabel">Número de bits para datos verticales</span> está establecido en 24. Esto significa que es una <em>Alta densidad vertical</em>. En caso de configurar la Epson TM-U220, deberá forzar la <em>Baja densidad vertical</em>, pues el modelo de la impresora no es compatible con una <em>Alta densidad vertical</em> para el comando <code class="o_code docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">*</span></code>.</p>
+<p>Para agregar una <em>Baja densidad vertical</em>, agregue el parámetro <code class="o_code docutils literal notranslate"><span class="pre">LDV</span></code> a la nomenclatura del nombre.</p>
+<img alt="Agregue una *Baja densidad vertical*  (el parámetro `LDV`) a la nomenclatura del nombre. " class="align-center" src="../../../../_images/add-printer-filled.png" />
+<p>Haga clic en  <span class="guilabel">Continuar</span> para proceder. Luego, establezca el valor <span class="guilabel">Hacer</span> a <span class="guilabel">Raw</span> y para el modelo <span class="guilabel">Modelo</span> establézcalo en <span class="guilabel">Raw Queue (en)</span>.</p>
+<img alt="Especificaciones para Epson TM-U220 en el sitio web de los fabricantes." class="align-center" src="../../../../_images/add-printer-add.png" />
+<p>Sin embargo, al intentar imprimir con la nomenclatura del nombre <code class="o_code docutils literal notranslate"><span class="pre">EpsonTMU220B__IMC_LDV__</span></code> se imprimirá el recibo, pero será muy grande y se saldrá del margen. Para solucionar esto, agregue una nueva impresora (y la nomenclatura del nombre) con el parámetro  <a href="#id1"><span class="problematic" id="id2">`</span></a>SCALE&lt;X&gt; ` para adaptar el tamaño del recibo.</p>
+<p>Estos son algunos de los ejemplos:</p>
+<table class="table docutils">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Convención sobre el nombre de impresoras</p></th>
+<th class="head"><p><code class="o_code docutils literal notranslate"><span class="pre">EpsonTMU220B__IMC_LDV__</span></code></p></th>
+<th class="head"><p><code class="o_code docutils literal notranslate"><span class="pre">EpsonTMU220B__IMC_LDV_SCALE75__</span></code></p></th>
+<th class="head"><p><code class="o_code docutils literal notranslate"><span class="pre">EpsonTMU220B__IMC_LDV_LDH__</span></code></p></th>
+<th class="head"><p><code class="o_code docutils literal notranslate"><span class="pre">EpsonTMU220B__IMC_LDV_LDH_SCALE35__</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><img alt="Formato de un recibo de ejemplo." class="align-center" src="../../../../_images/receipt-example.png" />
+</td>
+<td><img alt="Formato del recibo usando la convención: EpsonTMU220B__IMC_LDV__. " class="align-center" src="../../../../_images/tm-u220-ldv.png" />
+</td>
+<td><img alt="Formato de un recibo usando la convención de nombre: EpsonTMU220B__IMC_LDV_SCALE75__. " class="align-center" src="../../../../_images/tm-u220-ldv-scale75.png" />
+</td>
+<td><img alt="Formato del recibo usando la convención de nombre: EpsonTMU220B__IMC_LDV_LDH__." class="align-center" src="../../../../_images/tm-u220-ldv-hdv.png" />
+</td>
+<td><img alt="Formato del recibo usando la convención de nombre: EpsonTMU220B__IMC_LDV_LDH_SCALE35__." class="align-center" src="../../../../_images/tm-u220-ldv-hdv-scale35.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div></div></div></div></section><section id="dymo-labelwriter-print-issue">
+<h3>Problemas con la impresora DYMO LabelWriter<a class="headerlink" href="#dymo-labelwriter-print-issue" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Es bien sabido que la impresora DYMO LabelWriter tiene problemas al imprimir con la caja <abbr title="internet de las cosas, por sus siglas en inglés">IoT</abbr>. El servidor OpenPrinting CUPS instala la impresora con controladores <span class="guilabel">Local RAW Printer</span>. Para poder imprimir lo que sea, debe configurar el <span class="guilabel">Make and Model</span> (fabricador y modelo) correctos, así se hará referencia al controlador correcto al usar el dispositivo.</p>
+<p>Además, se debe agregar una nueva impresora para reducir la tardanza en impresiones que puede ocurrir después de actualizar el controlador.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Importante</p><p>La impresora DYMO recomendada para usar con Odoo y con la caja <abbr title="internet de las cosas, por sus siglas en inglés">IoT</abbr> es la impresora DYMO LabelWriter 450 DUO. Para usarla primero <strong>debe</strong> estar conectada, y que se reconozca, en la caja <abbr title="internet de las cosas, por sus siglas en inglés">IoT</abbr>.</p>
+<p>La impresora DYMO LabelWriter 450 DUO contiene dos impresoras en una: una impresora de etiquetas y una impresora de cintas. Seleccionar el modelo correcto (ya sea DYMO LabelWriter 450 DUO Label (en) o DYMO LabelWriter 450 DUO Tape (en)) es crucial al momento de configurar el siguiente proceso.</p>
+<p>Para que las cosas sean consistentes, ambos procesos detallan la configuración para el modelo DYMO LabelWriter 450 DUO Label (en). Cambie el modelo cuando sea necesario.</p>
+</div>
+</section><section id="dymo-labelwriter-not-printing">
+<span id="troubleshooting-dymo-update-drivers"></span><h4>DYMO LabelWriter no está imprimiendo<a class="headerlink" href="#dymo-labelwriter-not-printing" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>En caso de que la impresora DYMO LabelWriter no esté imprimiendo nada, debe instalar un controlador nuevo.</p>
+<p>Primero, haga clic en <span class="menuselection">Servidor de impresoras</span> en la parte inferior de la página de inicio de la caja <abbr title="Internet de las cosas">IoT</abbr> para abrir la consola OpenPrinting CUPS. Después, haga clic en <span class="menuselection">Impresoras</span> en el menú superior, haga clic en la impresora correspondiente y seleccione <span class="guilabel">Mantenimiento</span> en el primer menú desplegable, en el segundo menú desplegable seleccione <span class="guilabel">Modificar impresora</span>.</p>
+<img alt="Modifique el fabricante y el modelo de la impresora DYMO LabelWriter. Se resaltan los menús de mantenimiento y modificación." class="align-center" src="../../../../_images/main-modify.png" />
+<p>Después, seleccione la conexión a red o impresora específica en la que se debería hacer la modificación. Haga clic en <span class="guilabel">Continuar</span>.</p>
+<img alt="Pantalla para la selección de impresoras con el botón Continuar sobresaltado." class="align-center" src="../../../../_images/modify-select-printer.png" />
+<p>En la siguiente página, haga clic en <span class="guilabel">Continuar</span> para ahora configurar el <span class="guilabel">Fabricante</span> de la impresora.</p>
+<img alt="Pantalla para modificar impresoras con el botón Continuar sobresaltado." class="align-center" src="../../../../_images/modify-printer-dymo.png" />
+<p>En <span class="guilabel">Make</span> (fabricante) seleccione <span class="guilabel">DYMO</span> del menú. Haga clic en <span class="guilabel">Continuar</span> para configurar el <span class="guilabel">Model</span> (modelo).</p>
+<img alt="Página donde se configura el fabricante, con DYMO y el botón continuar resaltados." class="align-center" src="../../../../_images/setting-make.png" />
+<p>En la siguiente página configure el <span class="guilabel">Model</span> (modelo) como <span class="guilabel">DYMO LabelWriter 450 DUO Label (en)</span> (o el modelo DYMO que se esté usando). Haga clic en <span class="guilabel">Modify Printer</span> (modificar impresora) para terminar de configurar el nuevo controlador. Al final, aparecerá una página de confirmación.</p>
+<img alt="Configuración del modelo de la impresora con DYMO LabelWriter 450 DUO Label (en)." class="align-center" src="../../../../_images/setting-model.png" />
+<p>Cuando se le muestre la página de confirmación, en la cual se confirma que se logró actualizar con éxito, haga clic en el botón <span class="menuselection">Impresoras</span> en la parte superior del menú.</p>
+<p>Aparecerán todas las impresoras instaladas en el servidor OpenPrinting CUPS , incluyendo la que acaba de actualizar: <span class="guilabel">DYMO LabelWriter 450 DUO Label</span> (o el modelo de impresora de DYMO que esté usando). Haga clic en la impresora que se acaba de actualizar.</p>
+<p>Para imprimir una etiqueta de prueba haga clic en el menú desplegable <span class="guilabel">Mantenimiento</span> en la parte izquierda del menú desplegable <span class="guilabel">Administración</span> y seleccione <span class="guilabel">Print Test Page</span> (imprimir página de prueba). La etiqueta de prueba se imprimirá con un retraso de diez segundos si el controlador se actualizó con éxito.</p>
+<img alt="Imprimir una página de prueba desde el menú desplegable de administración en el servidor OpenPrinting CUPs." class="align-center" src="../../../../_images/print-test.png" />
+<p>Para reducir este retraso tendrá que agregar una nueva impresora, siga el proceso a continuación.</p>
+</section><section id="dymo-labelwriter-print-delay">
+<h4>Retraso de impresión en DYMO LabelWriter<a class="headerlink" href="#dymo-labelwriter-print-delay" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Para resolver el problema de retraso después de modificar el controlador, <strong>debe</strong> volver a instalar la impresora. Para hacerlo, haga clic en <span class="menuselection">Servidor de impresoras</span> para abrir la página de administración de OpenPrinting CUPS en la parte inferior de la página de inicio de la caja <abbr title="internet de las cosas, por sus siglas en inglés">IoT</abbr>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Truco</p><p>Si la impresora DYMO LabelWriter 450 DUO no está imprimiendo, o si no es reconocible (tiene un controlador tipo RAW), entonces actualice los controladores del dispositivo. Consulte <a class="reference internal" href="#troubleshooting-dymo-update-drivers"><span class="std std-ref">DYMO LabelWriter no está imprimiendo</span></a>.</p>
+</div>
+<img alt="Imagen en la que se resalta el botón Agregar una impresora en la página de mantenimiento Printer CUPS." class="align-center" src="../../../../_images/add-printer-dymo.png" />
+<p>En la siguiente pantalla, en la sección <span class="guilabel">Local Printers</span> (impresoras locales), seleccione la impresora ya instalada, <span class="guilabel">DYMO LabelWriter 450 DUO Label (DYMO LabelWriter 450 DUO Label)</span> (o el modelo de impresora DYMO que esté utilizando). Haga clic en <span class="guilabel">Continuar</span>.</p>
+<img alt="Imagen de la pantalla para agregar una impresora en OpenPrinting CUPS en la que se resalta DYMO LabelWriter 450 DUO Label." class="align-center" src="../../../../_images/local-printer.png" />
+<p>En la siguiente pantalla, modifique el <span class="guilabel">Nombre</span> a algo que pueda reconocer pues la impresora original seguirá visible. Haga clic en <span class="guilabel">Continuar</span> para continuar a la siguiente pantalla.</p>
+<img alt="Página donde se cambia el nombre de la impresora en el flujo 'Agregar una impresora', se resalta el campo del nombre." class="align-center" src="../../../../_images/rename-printer.png" />
+<p>Ahora seleccione el <span class="guilabel">Model</span> (modelo), <span class="guilabel">DYMO LabelWriter 450 DUO Label (en)</span> (o el modelo DYMO que se esté usando). Finalmente, haga clic en <span class="guilabel">Agregar impresora</span> para completar la instalación.</p>
+<img alt="Pantalla donde se selecciona un modelo en la consola OpenPrinting CUPS con el modelo y la impresora resaltados." class="align-center" src="../../../../_images/choose-printer.png" />
+<p>Cuando se le muestre la página de confirmación, en la cual se confirma que se logró instalar con éxito, haga clic en el botón <span class="menuselection">Impresoras</span> en la parte superior del menú.</p>
+<p>Aparecerán todas las impresoras instaladas en el servidor OpenPrinting CUPS , incluyendo la que acaba de instalar: <span class="guilabel">DYMO LabelWriter 450 DUO Label</span> (o el modelo de impresora de DYMO que esté usando). Haga clic en la impresora que se acaba de instalar.</p>
+<img alt="Página de la impresora con la impresora que se acaba de instalar resaltada." class="align-center" src="../../../../_images/printer-page.png" />
+<p>Para imprimir una etiqueta de prueba haga clic en el menú desplegable <span class="guilabel">Mantenimiento</span> en la parte izquierda del menú desplegable <span class="guilabel">Administración</span> y seleccione <span class="guilabel">Print Test Page</span> (imprimir página de prueba). La etiqueta de prueba se debe imprimir de inmediato (con un retraso de uno o dos segundos).</p>
+<img alt="Imprimir una página de prueba desde el menú desplegable de administración en el servidor OpenPrinting CUPs." class="align-center" src="../../../../_images/print-test.png" />
+</section><section id="the-zebra-printer-does-not-print-anything">
+<h3>La impresora Zebra no imprime nada<a class="headerlink" href="#the-zebra-printer-does-not-print-anything" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Las impresoras Zebra son muy sensibles al formato del código de Zebra Programming Language (ZPL) que se imprime. Si no sale nada de la impresora o se imprimen etiquetas en blanco, intente cambiar el formato del reporte que se envía a la impresora, vaya a <span class="menuselection">Ajustes ‣ Técnico ‣ Interfaz de usuario ‣ Vistas</span> en el <a class="reference internal" href="../../developer_mode.html#developer-mode"><span class="std std-ref">modo de desarrollador</span></a>  y busque la plantilla correspondiente.</p>
+<div class="alert alert-secondary">
+<p class="alert-title">
+Ver también</p><p>Consulte las instrucciones de Zebra sobre la impresión de archivos <abbr title="Zebra Programming Language">ZPL</abbr> <a class="reference external" href="https://supportcommunity.zebra.com/s/article/Print-a-zpl-file-using-the-Generic-Text-Printer">aquí</a>.</p>
+</div>
+</section><section id="barcode-scanner">
+<h2>Lector de código de barras<a class="headerlink" href="#barcode-scanner" title="Enlazar permanentemente con este título">¶</a></h2>
+</section><section id="the-characters-read-by-the-barcode-scanner-do-not-match-the-barcode">
+<h3>El lector de códigos de barras lee caracteres que no coinciden con el código de barras<a class="headerlink" href="#the-characters-read-by-the-barcode-scanner-do-not-match-the-barcode" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>De forma predeterminada, la mayoría de los lectores de códigos de barras están configurados en el formato QWERTY de Estados Unidos. Si el lector de códigos de barras utiliza una distribución distinta, vaya a la vista de formulario del dispositivo (aplicación <span class="menuselection">IoT ‣ Dispositivos ‣ Dispositivo de código de barras</span>) y seleccione el formato correcto.</p>
+</section><section id="nothing-happens-when-a-barcode-is-scanned">
+<h3>No ocurre nada al escanear un código de barras<a class="headerlink" href="#nothing-happens-when-a-barcode-is-scanned" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Asegúrese de que seleccionó el dispositivo correcto en la configuración del <span class="menuselection">Punto de venta</span> y que el código de barras está configurado para enviar un carácter <code class="o_code docutils literal notranslate"><span class="pre">ENTER</span></code> (código 28) al final de cada código de barras. Para ello, vaya a la aplicación <span class="menuselection">Punto de venta ‣ Menú de tres puntos en el PdV ‣ Sección caja IoT ‣ Editar</span>.</p>
+</section><section id="the-barcode-scanner-is-detected-as-a-keyboard">
+<h3>El lector de códigos de barras se detecta como un teclado<a class="headerlink" href="#the-barcode-scanner-is-detected-as-a-keyboard" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="alert alert-warning">
+<p class="alert-title">
+Importante</p><p>Algunos lectores de código de barras no se anuncian como lectores de código de barras, sino como teclados USB. La caja IoT no los reconocerá.</p>
+</div>
+<p>El tipo de dispositivo se puede cambiar manualmente desde su vista de formulario (aplicación <span class="menuselection">IoT ‣ Dispositivos‣ Dispositivo de código de barras</span>), luego deberá activar la opción <span class="guilabel">¿Es un escáner?</span>.</p>
+<img alt="Modificar la vista de formulario del lector de códigos de barras." class="align-center" src="../../../../_images/barcode-scanner-settings.png" />
+</section><section id="barcode-scanner-processes-barcode-characters-individually">
+<h3>El lector de código de barras procesa los caracteres del código de barras de forma individual<a class="headerlink" href="#barcode-scanner-processes-barcode-characters-individually" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Al acceder a Odoo desde un dispositivo móvil o una tableta, enlazado con un lector de códigos de barras mediante la caja <abbr title="Internet de las cosas">IoT</abbr> es posible que el lector procese cada carácter del código de barras de forma individual. En este caso <strong>debe</strong> seleccionar el idioma apropiado del escáner de códigos de barras en la opción <em>Distribución del teclado</em> de la página del formulario del <em>escáner de códigos de barras</em>.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Truco</p><p>Vaya a <span class="menuselection">IoT ‣ Dispositivos ‣ Lector de códigos de barras</span> para acceder a la página del formulario correspondiente.</p>
+</div>
+<img alt="La página del formulario de lector de códigos de barras. La opción &quot;Distribución del teclado&quot; aparece dentro de un rectángulo rojo." class="align-center" src="../../../../_images/keyboard-layout.png" />
+<p>La <span class="guilabel">distribución del teclado</span> toma como referencia el idioma y las opciones disponibles varían según el dispositivo y el idioma de la base de datos. Por ejemplo: <span class="guilabel">Inglés (RU)</span>, <span class="guilabel">Inglés (EE. UU.)</span>, etc.</p>
+</section><section id="cash-drawer">
+<h2>Caja registradora<a class="headerlink" href="#cash-drawer" title="Enlazar permanentemente con este título">¶</a></h2>
+</section><section id="the-cash-drawer-does-not-open">
+<h3>La caja registradora no abre<a class="headerlink" href="#the-cash-drawer-does-not-open" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La caja registradora debe estar conectada a la impresora y la casilla de verificación <span class="guilabel">Caja registradora</span> debe estar seleccionada en la configuración del <abbr title="Punto de venta">PdV</abbr>. Para hacerlo, vaya a la aplicación <span class="menuselection">Punto de venta ‣ menú con tres puntos en el PdV ‣ sección Caja IoT ‣ Editar ‣ Impresora de recibos ‣ casilla Caja registradora</span>.</p>
+</section><section id="scale">
+<h2>Báscula<a class="headerlink" href="#scale" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las básculas son muy importantes para el proceso de pago, sobre todo para los productos que se venden por peso y no por precio fijo.</p>
+</section><section id="set-up-ariva-s-scales">
+<h3>Configuración de las básculas Ariva S<a class="headerlink" href="#set-up-ariva-s-scales" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Odoo ha determinado que las básculas Ariva (fabricadas por Mettler-Toledo, LLC.) de la serie S necesitan modificaciones en ajustes específicos y que también necesitan un cable Mettler <abbr title="Bus universal en serie">USB</abbr> a RJ45 específico para que las básculas funcionen con nuestra caja <abbr title="Internet de las cosas">IoT</abbr>.</p>
+<p>Para configurar la báscula Ariva de la serie S de forma correcta y que la caja <abbr title="Internet de las cosas">IoT</abbr> la reconozca deberá seguir este proceso de configuración.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Importante</p><p>Es fundamental que use el cable oficial USB a RJ45 de Mettler durante este proceso.</p>
+</div>
+</section><section id="cable">
+<h4>Cable<a class="headerlink" href="#cable" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>El número de pieza de Mettler es 72256236 - cable USB a PdV (o POS). Contacte a Mettler o a un distribuidor autorizado para adquirir un cable auténtico. Tome en cuenta que <strong>ningún otro</strong> cable funciona para esta configuración, solo el de Mettler. Si decide usar algún otro cable conectado a un adaptador serial a <abbr title="Bus universal en serie">USB</abbr>, considere que entonces <strong>no</strong> funcionará.</p>
+<img alt="Cable USB a PdV auténtico de Mettler, número de pieza 72256236." class="align-center" src="../../../../_images/cable-mettler.png" />
+</section><section id="setup">
+<h4>Configurar<a class="headerlink" href="#setup" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Consulte la guía de configuración de Mettler para básculas Ariva de la serie S para realizar los siguientes pasos: <a class="reference external" href="https://www.mt.com/dam/RET_DOCS/2014_usermanuals/UG_Ariva_ES.pdf">Guía del usuario de la báscula de cobro de Ariva</a>.</p>
+<p>Vaya a la página 17 del manual anterior, en la sección <em>Configuración</em>. Esta guía incluye las posibilidades de configuración para las básculas Ariva de la serie S.</p>
+<p>Siga las instrucciones, junto con el siguiente proceso, para configurar la báscula en modo de configuración. Primero, mantenga presionado el botón <strong>&gt;T&lt;</strong> durante ocho segundos o hasta que aparezca <span class="guilabel">CONF</span> .</p>
+<p>Después presione <strong>&gt;T&lt;</strong> hasta que aparezca <span class="guilabel">GRP 3</span> y luego presione <strong>&gt;0&lt;</strong> para confirmar.</p>
+<p>En <span class="guilabel">3.1</span>, asegúrese de que el ajuste corresponda a <span class="guilabel">1</span> (Puertos COM virtuales USB). Presione <strong>&gt;T&lt;</strong> para avanzar entre las opciones del grupo 3.1.</p>
+<p>Una vez que <span class="guilabel">3.1</span> sea <span class="guilabel">1</span>, presione <strong>&gt;0&lt;**para confirmar su selección y después presione **&gt;0&lt;</strong> hasta que aparezca <span class="guilabel">GRP 4</span>.</p>
+<p>Ahora presione <strong>&gt;T&lt;</strong> hasta que aparezca <span class="guilabel">EXIT</span>.</p>
+<div class="alert alert-warning">
+<p class="alert-title">
+Importante</p><p><strong>No</strong> haga ningún otro cambio a menos que sea necesario.</p>
+</div>
+<p>Después de que aparezca <span class="guilabel">EXIT</span>, presione <strong>&gt;0&lt;</strong> y luego vuelva a presionar <strong>&gt;0&lt;</strong> para <span class="guilabel">SAVE</span> (Guardar). La báscula se reiniciará.</p>
+<p>Por último, reinicie la caja <abbr title="Internet de las cosas">IoT</abbr> para que reconozca las modificaciones en la configuración de la báscula. La báscula aparecerá como <code class="o_code docutils literal notranslate"><span class="pre">Toledo</span> <span class="pre">8217</span></code> después de que se reinicie, en lugar del nombre anterior que era <code class="o_code docutils literal notranslate"><span class="pre">Adam</span> <span class="pre">Equipment</span> <span class="pre">Serial</span></code>.</p>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>En esta página</h5>
+    <ul>
+<li><a class="reference internal" href="#">Solución de problemas</a><ul>
+<li><a class="reference internal" href="#iot-box-connection">Conexión de la caja IoT</a><ul>
+<li><a class="reference internal" href="#unable-to-locate-the-pairing-code-to-connect-the-iot-box">No es posible localizar el código de emparejamiento para conectar la caja IoT</a></li>
+<li><a class="reference internal" href="#iot-box-is-connected-but-it-is-not-showing-in-the-database">La caja IoT está conectada pero no aparece en la base de datos</a></li>
+<li><a class="reference internal" href="#the-iot-box-is-connected-to-the-odoo-database-but-cannot-be-reached">La caja IoT está conectada a la base de datos de Odoo pero no puede localizarla</a></li>
+<li><a class="reference internal" href="#the-https-certificate-does-not-generate">No se genera el certificado HTTPS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#printer">Impresora</a><ul>
+<li><a class="reference internal" href="#the-printer-is-not-detected">No se detecta la impresora</a></li>
+<li><a class="reference internal" href="#the-printer-outputs-random-text">La impresora imprime texto aleatorio</a><ul>
+<li><a class="reference internal" href="#epson-configuration-special-case">Caso especial de uso de Epson</a><ul>
+<li><a class="reference internal" href="#process-to-force-esc-command">Proceso para forzar el comando ESC*</a><ul>
+<li><a class="reference internal" href="#epson-printer-compatibility">Compatibilidad de la impresora Epson</a></li>
+<li><a class="reference internal" href="#iot-box-configuration-for-esc">configuración de la caja IoT para ESC*</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dymo-labelwriter-print-issue">Problemas con la impresora DYMO LabelWriter</a><ul>
+<li><a class="reference internal" href="#dymo-labelwriter-not-printing">DYMO LabelWriter no está imprimiendo</a></li>
+<li><a class="reference internal" href="#dymo-labelwriter-print-delay">Retraso de impresión en DYMO LabelWriter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-zebra-printer-does-not-print-anything">La impresora Zebra no imprime nada</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#barcode-scanner">Lector de código de barras</a><ul>
+<li><a class="reference internal" href="#the-characters-read-by-the-barcode-scanner-do-not-match-the-barcode">El lector de códigos de barras lee caracteres que no coinciden con el código de barras</a></li>
+<li><a class="reference internal" href="#nothing-happens-when-a-barcode-is-scanned">No ocurre nada al escanear un código de barras</a></li>
+<li><a class="reference internal" href="#the-barcode-scanner-is-detected-as-a-keyboard">El lector de códigos de barras se detecta como un teclado</a></li>
+<li><a class="reference internal" href="#barcode-scanner-processes-barcode-characters-individually">El lector de código de barras procesa los caracteres del código de barras de forma individual</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cash-drawer">Caja registradora</a><ul>
+<li><a class="reference internal" href="#the-cash-drawer-does-not-open">La caja registradora no abre</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale">Báscula</a><ul>
+<li><a class="reference internal" href="#set-up-ariva-s-scales">Configuración de las básculas Ariva S</a><ul>
+<li><a class="reference internal" href="#cable">Cable</a></li>
+<li><a class="reference internal" href="#setup">Configurar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Obtenga ayuda</h4>
+        <div>
+            <a href="https://odoo.com/help" target="_blank" class="btn btn-outline-secondary mb-2">Contactar a soporte</a>
+            <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Pregúntele a la comunidad de Odoo</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.odoo.com">
+            <img src="../../../../_static/img/logos/odoo_logo.svg" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Solución de problemas</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>
