@@ -29,7 +29,7 @@
     <link rel="index" title="Índice" href="../../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../../search.html" />
     <link rel="next" title="Conciliación bancaria" href="reconciliation.html" />
-    <link rel="prev" title="Enable Banking" href="bank_synchronization/enablebanking.html" /> 
+    <link rel="prev" title="Cuentas bancarias y de efectivo" href="../bank.html" /> 
   </head><body>
     <noscript>
         <nav class="o_side_nav border-end">
@@ -282,12 +282,6 @@
 </ul>
 </li>
 <li class="toctree-l4 current o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../bank.html">Cuentas bancarias y de efectivo</a><ul class="current">
-<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="bank_synchronization.html">Sincronización bancaria</a><ul>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="bank_synchronization/saltedge.html">Salt Edge</a></li>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="bank_synchronization/ponto.html">Ponto</a></li>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="bank_synchronization/enablebanking.html">Enable Banking</a></li>
-</ul>
-</li>
 <li class="toctree-l5 current o_menu_applications_finance_accounting_bank_"><a class="current reference internal" href="#">Transacciones</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="reconciliation.html">Conciliación bancaria</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="reconciliation_models.html">Modelos de conciliación</a></li>
@@ -638,12 +632,6 @@
 </ul>
 </li>
 <li class="toctree-l4 current o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../bank.html">Cuentas bancarias y de efectivo</a><ul class="current">
-<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="bank_synchronization.html">Sincronización bancaria</a><ul>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="bank_synchronization/saltedge.html">Salt Edge</a></li>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="bank_synchronization/ponto.html">Ponto</a></li>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="bank_synchronization/enablebanking.html">Enable Banking</a></li>
-</ul>
-</li>
 <li class="toctree-l5 current o_menu_applications_finance_accounting_bank_"><a class="current reference internal" href="#">Transacciones</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="reconciliation.html">Conciliación bancaria</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="reconciliation_models.html">Modelos de conciliación</a></li>
@@ -784,7 +772,7 @@
           <a href="reconciliation.html" title="Conciliación bancaria"
              accesskey="N">siguiente</a> |</li>
         <li class="right" >
-          <a href="bank_synchronization/enablebanking.html" title="Enable Banking"
+          <a href="../bank.html" title="Cuentas bancarias y de efectivo"
              accesskey="P">anterior</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../../../applications.html" >Documentos para el usuario</a> &#187;</li>
@@ -802,7 +790,7 @@
   <section id="transactions">
 <h1>Transacciones<a class="headerlink" href="#transactions" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Importar transacciones desde sus estados de cuenta bancarios permite hacer un seguimiento de las transacciones de la cuenta bancaria y conciliarlas con las registradas en su contabilidad.</p>
-<p>La <a class="reference internal" href="bank_synchronization.html"><span class="doc">sincronización bancaria</span></a> automatiza el proceso. Sin embargo, si no desea utilizarlo o si su banco aún no es compatible, existen otras opciones:</p>
+<p>You have two options to import your transactions:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#transactions-import"><span class="std std-ref">Importar transacciones bancarias</span></a> proporcionadas por su banco;</p></li>
 <li><p><a class="reference internal" href="#transactions-register"><span class="std std-ref">Registrar transacciones bancarias</span></a> manualmente.</p></li>
@@ -814,15 +802,12 @@ Nota</p><p>La <a class="reference internal" href="#transactions-statements"><spa
 </section><section id="import-transactions">
 <span id="transactions-import"></span><h2>Importar transacciones<a class="headerlink" href="#import-transactions" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Odoo admite múltiples formatos de archivo para importar transacciones:</p>
-<ul class="simple">
-<li><p>Formato de gestión de efectivo recomendado por SEPA (CAMT.053);</p></li>
-<li><p>Valores separados por coma (.CSV);</p></li>
-<li><p>Open Financial Exchange (.OFX);</p></li>
-<li><p>Quicken Interchange Format (.QIF);</p></li>
-<li><p>Bélgica: Coded Statement of Account (.CODA).</p></li>
-</ul>
+<p>AEB Norma 43 (Spanish standard for bank file exchange)
+Text file (.TXT)
+Spreadsheet file (.XLSX)
+Comma-separated values (.CSV)</p>
 <p>Para importar un archivo vaya al <span class="guilabel">Tablero de contabilidad</span> y en el diario <span class="guilabel">Banco</span> haga clic en <span class="guilabel">Importar transacciones</span>.</p>
-<img alt="Importe transacciones bancarias desde el diario de banco" src="../../../../_images/import-transactions.png" />
+<img alt="Importar transacciones bancarias desde el diario bancario" src="../../../../_images/importar_transaccion.png" />
 <p>Después, seleccione al archivo y súbalo.</p>
 <p>Después de configurar las opciones de formato necesarias y mapear las columnas del archivo con los campos relacionados en Odoo, puede correr una <span class="guilabel">prueba</span> e <span class="guilabel">import</span> sus transacciones bancarias.</p>
 <div class="alert alert-secondary">
@@ -844,7 +829,7 @@ Importante</p><p>Si quiere comparar los balances finales de sus estados bancario
 </section><section id="statement-creation-from-the-kanban-view">
 <h3>Creación de estados de cuenta desde la vista de kanban<a class="headerlink" href="#statement-creation-from-the-kanban-view" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Haga clic en el nombre del diario de banco para abrir la vista de conciliación bancaria. Identifique la transacción correspondiente a la última transacción en su estado bancario. Haga clic en el botón <span class="guilabel">ESTADO DE CUENTA</span> que aparece al pasar el ratón encima de la línea de separación superior.</p>
-<img alt="Al colocar el cursor arriba de la línea que separa dos transacciones podrá ver un botón &quot;ESTADO DE CUENTA&quot;." src="../../../../_images/statements-kanban.png" />
+<img alt="El botón &quot;DECLARACIÓN&quot; es visible al pasar el cursor sobre la línea que separa dos transacciones." src="applications/finance/accounting/bank/otransactions/conciliacion_bancaria.png" />
 <p>Llene los detalles del estado de cuenta y guárdelos. El estado de cuenta que se acaba de crear incluye las transacciones previas desde el último estado de cuenta.</p>
 </section><section id="statement-creation-from-the-list-view">
 <h3>Creación de estado de cuenta desde la vista de lista<a class="headerlink" href="#statement-creation-from-the-list-view" title="Enlazar permanentemente con este título">¶</a></h3>
@@ -898,7 +883,7 @@ Importante</p><p>Si quiere comparar los balances finales de sus estados bancario
           <a href="reconciliation.html" title="Conciliación bancaria"
              >siguiente</a> |</li>
         <li class="right" >
-          <a href="bank_synchronization/enablebanking.html" title="Enable Banking"
+          <a href="../bank.html" title="Cuentas bancarias y de efectivo"
              >anterior</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../../../applications.html" >Documentos para el usuario</a> &#187;</li>

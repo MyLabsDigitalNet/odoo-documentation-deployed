@@ -281,12 +281,6 @@
 </ul>
 </li>
 <li class="toctree-l4 current o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../bank.html">Bank and cash accounts</a><ul class="current">
-<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="bank_synchronization.html">Bank synchronization</a><ul>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="bank_synchronization/saltedge.html">Salt Edge</a></li>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="bank_synchronization/ponto.html">Ponto</a></li>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="bank_synchronization/enablebanking.html">Enable Banking</a></li>
-</ul>
-</li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="reconciliation.html">Bank reconciliation</a></li>
 <li class="toctree-l5 current o_menu_applications_finance_accounting_bank_"><a class="current reference internal" href="#">Reconciliation models</a></li>
@@ -638,12 +632,6 @@
 </ul>
 </li>
 <li class="toctree-l4 current o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../bank.html">Bank and cash accounts</a><ul class="current">
-<li class="toctree-l5 o_menu_applications_finance_accounting_bank_bank_synchronization"><a class="reference internal" href="bank_synchronization.html">Bank synchronization</a><ul>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_saltedge"><a class="reference internal" href="bank_synchronization/saltedge.html">Salt Edge</a></li>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_ponto"><a class="reference internal" href="bank_synchronization/ponto.html">Ponto</a></li>
-<li class="toctree-l6 o_menu_applications_finance_accounting_bank_bank_synchronization_enablebanking"><a class="reference internal" href="bank_synchronization/enablebanking.html">Enable Banking</a></li>
-</ul>
-</li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="reconciliation.html">Bank reconciliation</a></li>
 <li class="toctree-l5 current o_menu_applications_finance_accounting_bank_"><a class="current reference internal" href="#">Reconciliation models</a></li>
@@ -809,7 +797,6 @@ conditions</span>.</p>
 <div class="alert alert-secondary">
 <p class="alert-title">
 See also</p><ul class="simple">
-<li><p><a class="reference internal" href="bank_synchronization.html"><span class="doc">Bank synchronization</span></a></p></li>
 <li><p><a class="reference external" href="https://www.odoo.com/slides/slide/reconciliation-models-1841?fullscreen=1">Odoo Tutorials: Reconciliation models</a></p></li>
 </ul>
 </div>
@@ -839,13 +826,13 @@ These can be updated if needed. Users can also create their own reconciliation m
 <p class="alert-title">
 Important</p><p>If a record matches with several reconciliation models, the first one in the <em>sequence</em> of models
 is applied. You can rearrange the order by dragging and dropping the handle next to the name.</p>
-<img alt="Rearrange the sequence of models in the list view." src="../../../../_images/list-view.png" />
+<img alt="Reorganizar la secuencia de modelos en la vista de lista." src="../../../../_images/modelos_conciliacion.png" />
 </div>
 </section><section id="invoices-bills-perfect-match">
 <h3>Invoices/Bills perfect match<a class="headerlink" href="#invoices-bills-perfect-match" title="Permalink to this headline">¶</a></h3>
 <p>This model should be at the top of the <em>sequence</em> of models, as it enables Odoo to suggest matching
 existing invoices or bills with a bank transaction based on set conditions.</p>
-<img alt="Set rules to trigger the reconciliation." src="../../../../_images/invoices-bills-perfect-match.png" />
+<img alt="Configura las reglas de conciliación" src="../../../../_images/coincidencia_perfecta.png" />
 <p>Odoo automatically reconciles the payment when the <span class="guilabel">Auto-validate</span> option is selected, and
 the model conditions are perfectly met. In this case, it expects to find on the bank statement’s
 line the invoice/payment’s reference (as <span class="guilabel">Label</span> is selected) and the partner’s name
@@ -859,7 +846,7 @@ amount received is slightly lower than the invoice amount, for example in the ca
 <span class="guilabel">counterpart entries</span> tab.</p>
 <p>The reconciliation model <span class="guilabel">Type</span> is <span class="guilabel">Rule to match invoices/bills</span>, and the
 <span class="guilabel">Payment tolerance</span> should be set.</p>
-<img alt="Set rules to trigger the reconciliation." src="../../../../_images/partial-match.png" />
+<img alt="Configura las reglas de conciliación" src="../../../../_images/coincidencia_parcial.png" />
 <div class="alert alert-primary">
 <p class="alert-title">
 Note</p><p>The <span class="guilabel">Payment tolerance</span> is only applicable to lower payments. It is disregarded when an
@@ -875,18 +862,7 @@ See also</p><p><a class="reference internal" href="../customer_invoices/cash_dis
 reconciliation model <span class="guilabel">Type</span> is <span class="guilabel">Rule to suggest counterpart entry</span>, and the
 <span class="guilabel">Label</span> can be used for example, to identify the information referring to the
 <span class="guilabel">Bank fees</span> in the label of the transaction.</p>
-<img alt="Set rules to trigger the reconciliation." src="../../../../_images/bank-fees.png" />
-<div class="alert alert-primary">
-<p class="alert-title">
-Note</p><p><a class="reference external" href="https://regexone.com/">Regular expressions</a>, often abbreviated as <strong>Regex</strong>, can be used in
-Odoo in various ways to search, validate, and manipulate data within the system. Regex can be
-powerful but also complex, so it’s essential to use it judiciously and with a good understanding
-of the patterns you’re working with.</p>
-<p>To use regular expressions in your reconciliation models, set the <span class="guilabel">Transaction Type</span>
-to <span class="guilabel">Match Regex</span> and add your expression. Odoo automatically retrieves the
-transactions that match your Regex expression and the conditions specified in your model.</p>
-<img alt="Using Regex in Odoo" src="../../../../_images/regex.png" />
-</div>
+<img alt="Configura las reglas de conciliación" src="../../../../_images/linea_comisiones_bancarias.png" />
 </section><section id="partner-mapping">
 <h2>Partner mapping<a class="headerlink" href="#partner-mapping" title="Permalink to this headline">¶</a></h2>
 <p>Partner mapping allows you to establish rules for automatically matching transactions to the correct
@@ -896,7 +872,7 @@ specific reference numbers or keywords in the transaction description. When an i
 meets these criteria, Odoo automatically maps it to the corresponding customer’s account.</p>
 <p>To create a partner mapping rule, go to the <span class="guilabel">Partner Mapping</span> tab and enter the
 <span class="guilabel">Find Text in Label</span>, <span class="guilabel">Find Text in Notes</span>, and <span class="guilabel">Partner</span>.</p>
-<img alt="defining partner mapping" src="../../../../_images/partner-mapping.png" />
+<img alt="Define el mapeo de contactos" src="../../../../_images/mapeo_contactos.png" />
 </section>
 
                     </div>
