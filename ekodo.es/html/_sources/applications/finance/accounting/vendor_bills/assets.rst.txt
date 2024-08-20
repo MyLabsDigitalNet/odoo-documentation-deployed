@@ -2,255 +2,187 @@
 Non-current assets and fixed assets
 ===================================
 
-**Non-current Assets**, also known as **long-term assets**, are investments that are expected to be
-realized after one year. They are capitalized rather than being expensed and appear on the company's
-balance sheet. Depending on their nature, they may undergo **depreciation**.
+Assets are the most important part of the business since they are the main source of income, and 
+this income increases profits and results in business growth.
+Therefore, it is important to provide a brief introduction to understand assets and their different 
+types, in order to clearly differentiate them.
 
-**Fixed Assets** are a type of Non-current Assets and include the properties bought for their
-productive aspects, such as buildings, vehicles, equipment, land, and software.
+There are different types of assets, the most common being current, non-current, physical, 
+intangible, operational, and non-operational. For a company, it is essential to correctly identify 
+and classify the types of assets, so it can maintain solvency and manage the income associated with 
+them.
 
-For example, let's say we buy a car for $ 27,000. We plan to amortize it over five years, and we
-will sell it for $ 7,000 afterward. Using the linear, or straight-line, depreciation method,
-$ 4,000 are expensed each year as **depreciation expenses**. After five years, the **Accumulated
-Depreciation** amount reported on the balance sheet equals $ 20,000, leaving us with $ 7,000 of
-**Not Depreciable Value**, or Salvage value.
+Fixed Assets or Non-current Assets
+==================================
 
-Odoo Accounting handles depreciation by creating all depreciation entries automatically in *draft
-mode*. They are then posted periodically.
+Non-current assets are those that cannot be easily or quickly converted into cash and cash 
+equivalents. That is why they are also called Long-term Assets or tangible or intangible assets 
+that cannot be used for sale but are necessary for the proper functioning of the company. We can 
+mention a few examples:
 
-Odoo supports the following **Depreciation Methods**:
+- Land or properties.
+- Buildings.
+- Machinery.
+- Equipment.
+- Patents.
+- Trademarks.
+- Furniture.
+- Vehicles.
+- Other assets.
 
-- Straight Line
-- Declining
-- Declining Then Straight Line
+A tangible asset is one that has a physical presence and can be touched, whereas an intangible
+asset does not have a physical presence but holds economic value for the company.
 
-.. note::
-   The server checks once a day if an entry must be posted. It might then take up to 24 hours before
-   you see a change from *draft* to *posted*.
+Accounts Involved in Non-current Assets
+=======================================
 
-Prerequisites
-=============
-
-Such transactions must be posted on an **Assets Account** rather than on the default
-expense account.
-
-Configure an Assets Account
----------------------------
-
-To configure your account in the **Chart of Accounts**, go to :menuselection:`Accounting -->
-Configuration --> Chart of Accounts`, click on *Create*, and fill out the form.
-
-.. image:: assets/configurar_cuenta.png
+.. image:: assets/cuentas_activos.png
    :align: center
-   :alt: Configuración de una Cuenta de Activos en Odoo Contabilidad
+   :alt: Cuentas contables que intervienen en los cuentas_activos
 
-.. note::
-   This account's type must be either *Fixed Assets* or *Non-current Assets*.
+Example of a non-current fixed asset. Suppose a company acquires a software program for 1,000 euros
+plus VAT at the general rate and an additional 300 euros for training courses so that employees
+can learn to use the software. Professional training and development are exempt from VAT.
 
-Post an expense to the right account
-------------------------------------
+For the acquisition of the software:
+We record the invoice for the software program:
+1,000 (206) Software Applications → (572) Bank Accounts €1,210
+210 (472) VAT Payable
+(21% * 1,000)
 
-Select the account on a draft bill
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to make this entry in Odoo
+==============================
 
-On a draft bill, select the right account for all the assets you are buying.
+Suppose the asset category is already set up (see asset categories).
+In this case, we record the invoice (see supplier invoices), but instead of indicating an expense 
+account in the Debit, we indicate the asset account as in the example. When saving the invoice, 
+the asset is automatically created, and we would see it as follows:
 
-.. image:: assets/linea_factura.png
+.. image:: assets/entrada_asiento.png
    :align: center
-   :alt: Selección de una cuenta de activos en un borrador de factura en Odoo
+   :alt: Cuentas contables que intervienen en los cuentas_activos
 
-.. _product-assets-account:
-
-Choose a different Expense Account for specific products
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Start editing the product, go to the *Accounting* tab, select the right **Expense Account**, and
-save.
-
-.. image:: assets/ajuste_producto.png
+.. image:: assets/crear_activo.png
    :align: center
-   :alt: Cambio de la Cuenta de Activos de un producto en Odoo
+   :alt: Cuentas contables que intervienen en los cuentas_activos
 
-.. tip::
-   It is possible to :ref:`automate the creation of assets entries <assets-automation>` for these
-   products.
+We will see that the asset has been created from the invoice. We enter the asset and must review 
+everything highlighted in red: that the asset name is correct (it can be edited), the purchase 
+value, the start date (which takes the invoice date), the asset category, and the asset group, 
+which are very important. The depreciation method, the years, and the term should not be changed 
+unless the term is to be shortened, or for that asset, the term is to be changed (monthly, quarterly, 
+or yearly).
 
-.. _journal-assets-account:
-
-Change the account of a posted journal item
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To do so, open your Purchases Journal by going to :menuselection:`Accounting --> Accounting -->
-Purchases`, select the journal item you want to modify, click on the account, and select the right
-one.
-
-.. image:: assets/assets04.png
+.. image:: assets/activo_completo.png
    :align: center
-   :alt: Modification of a posted journal item's account in Odoo Accounting
+   :alt: Formulario de activo completo
 
-Assets entries
-==============
+If everything is there, we indicate **CONFIRM ACTIVE**
 
-.. _create-assets-entry:
-
-Create a new entry
-------------------
-
-An **Asset entry** automatically generates all journal entries in *draft mode*. They are then posted
-one by one at the right time.
-
-To create a new entry, go to :menuselection:`Accounting --> Accounting --> Assets`, click on
-*Create*, and fill out the form.
-
-Click on **select related purchases** to link an existing journal item to this new entry. Some
-fields are then automatically filled out, and the journal item is now listed under the **Related
-Purchase** tab.
-
-.. image:: assets/assets05.png
+.. image:: assets/confirmar_activo.png
    :align: center
-   :alt: Assets entry in Odoo Accounting
+   :alt: Boton de confirmar activo
 
-Once done, you can click on *Compute Depreciation* (next to the *Confirm* button) to generate all
-the values of the **Depreciation Board**. This board shows you all the entries that Odoo will post
-to depreciate your asset, and at which date.
+The same applies to tangible fixed assets.
+It may happen that there is a sale of the fixed asset, whether intangible or tangible.
 
-.. image:: assets/assets06.png
+Example of how to account for the sale of a tangible fixed asset:
+
+Before entering the accounting process itself, it is necessary to clearly understand the concept 
+of the net book value of a fixed asset because, as we will see, it must be used.
+In this sense, when valuing an item at a given time, it is important to consider the depreciation 
+it has undergone. Therefore, the net book value of a fixed asset is the difference between its 
+acquisition value and its accumulated depreciation.
+
+Let's take an example.
+
+A vehicle was purchased for €10,000 and is depreciated annually at 12% (€1,200 per year).
+Its net value after six years will be €2,800, which is the result of subtracting the acquisition 
+value (€10,000) from the accumulated depreciation over six years (€7,200).
+
+Specific Accounting Accounts
+In addition to the fixed asset account itself and its accumulated depreciation, the main accounting accounts used are:
+1.- To reflect the profit from the operation:
+
+770 Profits from intangible fixed assets
+771 Profits from tangible fixed assets
+2.- To record the loss from the operation:
+670 Losses from intangible fixed assets
+671 Losses from tangible fixed assets
+3.- To record outstanding receivables:
+253 Long-term receivables from fixed asset sales
+543 Short-term receivables from fixed asset sales
+
+Steps to Follow
+===============
+
+Step 1
+
+Make the depreciation entry for the asset for the portion that corresponds to the date of the sale.
+If the sale occurs on May 31, for example, the depreciation entry would need to be made for the five 
+months the asset was part of the company’s assets, and the amount would be €500 (the result of dividing 
+€1,200 by 12 and multiplying by 5).
+
+Step 2
+
+Calculate the net book value of the fixed asset being sold.
+Net Value = Acquisition price – accumulated depreciation
+In our example, it will be €2,800
+€10,000 – €7,200 = €2,800 net value
+
+Step 3
+
+Determine whether the operation generates a loss or a profit.
+To do this, calculate the difference between the net book value and the sale price.
+If the vehicle is sold for €5,000, the company will make a profit of €2,200 on the transaction (€5,000 – €2,800).
+If, on the other hand, the sale price is €1,400, there will be a loss of €1,400 (€1,400 – €2,800).
+
+Step 4
+
+Make the accounting entry, keeping in mind that:
+
+-Both the account for the fixed asset being sold and its accumulated depreciation must be written off.
+-The profit or loss from the operation must be recorded using the appropriate account depending on whether it 
+is a tangible or intangible fixed asset.
+
+Example:
+
+Let's imagine our company sells a vehicle that was purchased a few years ago and is recorded in accounting 
+with an acquisition price of €25,000. It is depreciated at 16% annually, and the accumulated depreciation 
+as of December 31 of the previous year amounts to €11,000.
+The sale price is €17,000 plus 21% VAT, for a total of €20,570, which is collected by bank transfer 
+on the day of the transaction.
+
+The calculations to be made are:
+1.- The depreciation amount corresponding to December 15:
+€25,000 x 16% = €4,000/year
+€4,000 / 12 x 8.5 (months from January to September 15) = €2,833.33
+2.- The profit or loss from the transaction:
+Net book value = acquisition price – accumulated depreciation
+Net book value = €25,000 – €13,833.33 = €11,166.67
+(The accumulated depreciation is the result of adding the €11,000 from the previous year and the €2,833.33 from the current year).
+If we subtract the net book value (€11,166.67) from the sale price (€17,000), we find that the company has gained €5,833.33 from the transaction.
+
+Therefore, these are the accounting entries that should be made:
+
+1.- For the depreciation from January 1 to September 15:
+
+.. image:: assets/amortizacion_1.png
    :align: center
-   :alt: Depreciation Board in Odoo Accounting
+   :alt: Ejemplo de amortización
 
-What does "Prorata Temporis" mean?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.- For the sale entry:
 
-The **Prorata Temporis** feature is useful to depreciate your assets the most accurately possible.
-
-With this feature, the first entry on the Depreciation Board is computed based on the time left
-between the *Prorata Date* and the *First Depreciation Date* rather than the default amount of time
-between depreciations.
-
-For example, the Depreciation Board above has its first depreciation with an amount of $ 241.10
-rather than $ 4,000.00. Consequently, the last entry is also lower and has an amount of $ 3758.90.
-
-What are the different Depreciation Methods
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The **Straight Line Depreciation Method** divides the initial Depreciable Value by the number of
-depreciations planned. All depreciation entries have the same amount.
-
-The **Declining Depreciation Method** multiplies the Depreciable Value by the **Declining Factor**
-for each entry. Each depreciation entry has a lower amount than the previous entry. The last
-depreciation entry doesn't use the declining factor but instead has an amount corresponding to the
-balance of the depreciable value so that it reaches $0 by the end of the specified duration.
-
-The **Declining Then Straight Line Depreciation Method** uses the Declining Method, but with a
-minimum Depreciation equal to the Straight Line Method. This method ensures a fast depreciation
-at the beginning, followed by a constant one afterward.
-
-Assets from the Purchases Journal
----------------------------------
-
-You can create an asset entry from a specific journal item in your **Purchases Journal**.
-
-To do so, open your Purchases Journal by going to :menuselection:`Accounting --> Accounting -->
-Purchases`, and select the journal item you want to record as an asset. Make sure that it is posted
-in the right account (see: :ref:`journal-assets-account`).
-
-Then, click on *Action*, select **Create Asset**, and fill out the form the same way you would do to
-:ref:`create a new entry <create-assets-entry>`.
-
-.. image:: assets/assets07.png
+.. image:: assets/amortizacion_2.png
    :align: center
-   :alt: Create Asset Entry from a journal item in Odoo Accounting
+   :alt: Ejemplo de amortización
 
-Modification of an Asset
-========================
+3.- For the collection
 
-You can modify the values of an asset to increase or decrease its value.
-
-To do so, open the asset you want to modify, and click on *Modify Depreciation*. Then, fill out the
-form with the new depreciation values and click on *Modify*.
-
-A **decrease in value** posts a new Journal Entry for the **Value Decrease** and modifies all the
-future *unposted* Journal Entries listed in the Depreciation Board.
-
-An **increase in value** requires you to fill out additional fields related to the account movements
-and creates a new Asset entry with the **Value Increase**. The Gross Increase Asset Entry can be
-accessed with a Smart Button.
-
-.. image:: assets/assets08.png
+.. image:: assets/amortizacion_3.png
    :align: center
-   :alt: Gross Increase smart button in Odoo Accounting
+   :alt: Ejemplo de amortización
 
-Disposal of Fixed Assets
-========================
 
-To **sell** an asset or **dispose** of it implies that it must be removed from the Balance Sheet.
+For instance, `Ver tabla de amortización por coeficiente AEAT <https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2022/c07-rendimientos-actividades-economicas-estimacion-directa/fase-1-determinacion-rendimiento-neto/amortizaciones-dotaciones-ejercicio-fiscalmente-deducibles/requisitos-generales/coeficientes-amortizacion-lineal.html>`_.
 
-To do so, open the asset you want to dispose of, click on *Sell or Dispose*, and fill out the form.
-
-.. image:: assets/assets09.png
-   :align: center
-   :alt: Disposal of Assets in Odoo Accounting
-
-Odoo Accounting then generates all the journal entries necessary to dispose of the asset, including
-the gain or loss on sale, which is based on the difference between the asset's book value at the
-time of the sale and the amount it is sold for.
-
-.. note::
-   To record the sale of an asset, you must first post the related Customer Invoice so you can link
-   the sale of the asset with it.
-
-Assets Models
-=============
-
-You can create **Assets Models** to create your Asset entries faster. It is particularly useful if
-you recurrently buy the same kind of assets.
-
-To create a model, go to :menuselection:`Accounting --> Configuration --> Assets Models`, click on
-*Create*, and fill out the form the same way you would do to create a new entry.
-
-.. tip::
-   You can also convert a *confirmed Asset entry* into a model by opening it from
-   :menuselection:`Accounting --> Accounting --> Assets` and then, by clicking on the button *Save
-   Model*.
-
-Apply an Asset Model to a new entry
------------------------------------
-
-When you create a new Asset entry,  fill out the **Fixed Asset Account** with the right asset
-account.
-
-New buttons with all the models linked to that account appear at the top of the form. Clicking on a
-model button fills out the form according to that model.
-
-.. image:: assets/assets10.png
-   :align: center
-   :alt: Assets model button in Odoo Accounting
-
-.. _assets-automation:
-
-Automate the Assets
-===================
-
-When you create or edit an account of which the type is either *Non-current Assets* or *Fixed
-Assets*, you can configure it to create assets for the expenses that are credited on it
-automatically.
-
-You have three choices for the **Automate Assets** field:
-
-#. **No:** this is the default value. Nothing happens.
-#. **Create in draft:** whenever a transaction is posted on the account, a draft *Assets entry* is
-   created, but not validated. You must first fill out the form in :menuselection:`Accounting -->
-   Accounting --> Assets`.
-#. **Create and validate:** you must also select an Asset Model (see: `Assets Models`_). Whenever a
-   transaction is posted on the account, an *Assets entry* is created and immediately validated.
-
-.. image:: assets/assets11.png
-   :align: center
-   :alt: Automate Assets on an account in Odoo Accounting
-
-.. tip::
-   You can, for example, select this account as the default **Expense Account** of a product to
-   fully automate its purchase. (see: :ref:`product-assets-account`).
-
-.. seealso::
-  * :doc:`../get_started/chart_of_accounts`
