@@ -209,7 +209,6 @@
 <li><a class="reference internal" href="#sales">Ventas</a><ul>
 <li><a class="reference internal" href="#sales-order-invoice">Órdenes de venta ‣ Factura</a></li>
 <li><a class="reference internal" href="#sales-order-delivery-order-invoice">Orden de venta ‣ Orden de entrega ‣ Factura</a></li>
-<li><a class="reference internal" href="#ecommerce-order-invoice">Orden de comercio electrónico ‣ factura</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#contracts">Contratos</a><ul>
@@ -219,9 +218,6 @@
 </li>
 <li><a class="reference internal" href="#others">Otros</a><ul>
 <li><a class="reference internal" href="#creating-an-invoice-manually">Crear una factura de manera manual</a></li>
-<li><a class="reference internal" href="#specific-modules">Módulos específicos</a></li>
-<li><a class="reference internal" href="#resequencing-of-the-invoices">Cambiar la secuencia de las facturas</a></li>
-<li><a class="reference internal" href="#invoice-digitization-with-optical-character-recognition-ocr">Digitalización de facturas con reconocimiento óptico de caracteres (OCR)</a></li>
 </ul>
 </li>
 </ul>
@@ -475,8 +471,9 @@
                     <div role="main"> 
   <section id="invoicing-processes">
 <h1>Procesos de facturación<a class="headerlink" href="#invoicing-processes" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>Dependiendo de su negocio y la aplicación que utiliza, hay diferentes maneras de automatizar la creación de facturas de clientes en Odoo. Por lo general, el sistema crea borradores de facturas (con información proveniente de otros documentos como las órdenes de venta o contratos), de manera que contabilidad solo tiene que validar los borradores y enviar las facturas por lote (por correo postal o correo electrónico).</p>
-<p>Dependiendo de su negocio, puede optar por una de las siguientes maneras de crear borradores de facturas:</p>
+<p>There are different ways to automate the creation of customer invoices in Odoo. The system generates
+draft invoices using information that can come from other documents, such as sales orders or contracts,
+eliminating the need to create invoices manually.</p>
 </section><section id="sales">
 <h2>Ventas<a class="headerlink" href="#sales" title="Enlazar permanentemente con este título">¶</a></h2>
 </section><section id="sales-order-invoice">
@@ -485,9 +482,8 @@
 <ul class="simple">
 <li><p>Factura manual: use un botón en la orden de venta para activar los borradores de factura</p></li>
 <li><p>Factura antes de la entrega: facture la orden completa antes de activar la orden de entrega</p></li>
-<li><p>Factura basada en la orden de entrega: vea la siguiente sección</p></li>
+<li><p>Invoice based on delivery order</p></li>
 </ul>
-<p>Normalmente, la aplicación de Comercio electrónico utiliza la factura antes de la entrega cuando el cliente paga al momento de hacer la orden y se entrega después. (prepago)</p>
 <p>Para la mayoría de casos de uso, se recomienda facturar manualmente. De esta manera el vendedor puede activar la creación de facturas bajo demanda con las siguientes opciones: facturar la orden completa, facturar un porcentaje (avanzado), facturar algunas líneas, facturar un anticipo fijo.</p>
 <p>Este proceso es bueno tanto para los servicios como para los productos físicos.</p>
 <div class="alert alert-secondary">
@@ -500,15 +496,6 @@ Ver también</p><ul class="simple">
 <h3>Orden de venta ‣ Orden de entrega ‣ Factura<a class="headerlink" href="#sales-order-delivery-order-invoice" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Generalmente tanto el comercio electrónico como el minorista facturan basados en órdenes de entrega, en lugar de órdenes de venta. Este enfoque es adecuado para las empresas donde las cantidades que se entregan difieren de las cantidades ordenadas, por ejemplo, alimentos (factura basada en kg).</p>
 <p>De esta manera, si entrega una orden parcial, solo se factura por lo que realmente se entregó. Si crea órdenes parciales (entrega unas cosas primero y el resto más adelante), el cliente recibirá dos facturas, una por cada orden de entrega.</p>
-<div class="alert alert-secondary">
-<p class="alert-title">
-Ver también</p><ul class="simple">
-<li><p><a class="reference internal" href="../../../sales/sales/invoicing/invoicing_policy.html"><span class="doc">Facturar por cantidades entregadas u ordenadas</span></a></p></li>
-</ul>
-</div>
-</section><section id="ecommerce-order-invoice">
-<h3>Orden de comercio electrónico ‣ factura<a class="headerlink" href="#ecommerce-order-invoice" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Una orden de comercio electrónico también activará la creación de la orden cuando se pague por completo. Si permite que el pago de las órdenes sea por cheque o transferencia bancaria, Odoo solo creará una orden y la factura se activará una vez que se recibe el pago.</p>
 </section><section id="contracts">
 <h2>Contratos<a class="headerlink" href="#contracts" title="Enlazar permanentemente con este título">¶</a></h2>
 </section><section id="regular-contracts-invoices">
@@ -522,14 +509,6 @@ Ver también</p><ul class="simple">
 <li><p>gastos como viajes y alojamiento que se van a volver a facturar al cliente.</p></li>
 </ul>
 <p>Puede facturar al momento en el que termine el contrato o también puede generar facturas intermedias. Las empresas que ofrecen servicios y facturan con base en el tiempo y material utilizan este enfoque. En cambio, las empresas de servicio que facturan con base en el precio fijo, usan una orden de venta normal.</p>
-<div class="alert alert-secondary">
-<p class="alert-title">
-Ver también</p><ul class="simple">
-<li><p><a class="reference internal" href="../../../sales/sales/invoicing/time_materials.html"><span class="doc">Facturación por tiempo y materiales</span></a></p></li>
-<li><p><a class="reference internal" href="../../../sales/sales/invoicing/expense.html"><span class="doc">Volver a facturar gastos a los clientes</span></a></p></li>
-<li><p><a class="reference internal" href="../../../sales/sales/invoicing/milestone.html"><span class="doc">Facturar objetivos de proyecto</span></a></p></li>
-</ul>
-</div>
 </section><section id="recurring-contracts-invoices">
 <h3>Contratos recurrentes ‣ facturas<a class="headerlink" href="#recurring-contracts-invoices" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En el caso de las suscripciones, se activa una factura periódicamente de forma automática. La frecuencia de la facturación y de los servicios/productos facturados se definen en el contrato.</p>
@@ -545,33 +524,18 @@ Ver también</p><ul class="simple">
 <li><p>si necesita modificar la factura creada desde la orden de venta, o</p></li>
 <li><p>si necesita facturar algo no relacionado con su negocio principal.</p></li>
 </ul>
-</section><section id="specific-modules">
-<h3>Módulos específicos<a class="headerlink" href="#specific-modules" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>También se pueden crear borradores de facturas desde algunos módulos específicos:</p>
-<ul class="simple">
-<li><p><strong>membresía</strong>: facture cada año a sus miembros</p></li>
-<li><p><strong>reparaciones</strong>: facture después de vender sus servicios</p></li>
-</ul>
-</section><section id="resequencing-of-the-invoices">
-<h3>Cambiar la secuencia de las facturas<a class="headerlink" href="#resequencing-of-the-invoices" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Es posible cambiar la secuencia de las facturas, aunque con algunas restricciones:</p>
+<hr class="docutils" />
+<hr class="docutils" />
 <ol class="arabic simple">
-<li><p>Esta función no está disponible cuando el registro es de una fecha anterior a la del bloqueo.</p></li>
 <li><p>Esta función no está disponible cuando la secuencia no coincide con el mes del registro.</p></li>
 <li><p>No funciona si la secuencia provoca un duplicado.</p></li>
 <li><p>El orden de la factura no se modifica.</p></li>
 <li><p>Es útil para las personas que utilizan una numeración proveniente de otro software y que quieren continuar con la numeración del año en curso sin volver a empezar desde cero.</p></li>
 </ol>
-</section><section id="invoice-digitization-with-optical-character-recognition-ocr">
-<h3>Digitalización de facturas con reconocimiento óptico de caracteres (OCR)<a class="headerlink" href="#invoice-digitization-with-optical-character-recognition-ocr" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>La <strong>digitalización de facturas</strong> es el proceso en el que las facturas impresas se codifican de manera automática y se convierten en formularios de facturas en su contabilidad en línea.</p>
-<p>Odoo usa OCR y tecnología de inteligencia artificial para reconocer el contenido de los documentos. Los formularios para las facturas de cliente y proveedor se crean y se llenan según las facturas escaneadas.</p>
-<div class="alert alert-secondary">
-<p class="alert-title">
-Ver también</p><ul class="simple">
-<li><p><a class="reference internal" href="../vendor_bills/invoice_digitization.html"><span class="doc">Digitalización de documentos con IA</span></a></p></li>
-</ul>
-</div>
+<hr class="docutils" />
+<p>invoices forms in your accounting.</p>
+<p>Vendor bills and customer invoices forms are automatically created and populated based on scanned
+invoices.</p>
 </section>
 
                     </div>
@@ -585,7 +549,6 @@ Ver también</p><ul class="simple">
 <li><a class="reference internal" href="#sales">Ventas</a><ul>
 <li><a class="reference internal" href="#sales-order-invoice">Órdenes de venta ‣ Factura</a></li>
 <li><a class="reference internal" href="#sales-order-delivery-order-invoice">Orden de venta ‣ Orden de entrega ‣ Factura</a></li>
-<li><a class="reference internal" href="#ecommerce-order-invoice">Orden de comercio electrónico ‣ factura</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#contracts">Contratos</a><ul>
@@ -595,9 +558,6 @@ Ver también</p><ul class="simple">
 </li>
 <li><a class="reference internal" href="#others">Otros</a><ul>
 <li><a class="reference internal" href="#creating-an-invoice-manually">Crear una factura de manera manual</a></li>
-<li><a class="reference internal" href="#specific-modules">Módulos específicos</a></li>
-<li><a class="reference internal" href="#resequencing-of-the-invoices">Cambiar la secuencia de las facturas</a></li>
-<li><a class="reference internal" href="#invoice-digitization-with-optical-character-recognition-ocr">Digitalización de facturas con reconocimiento óptico de caracteres (OCR)</a></li>
 </ul>
 </li>
 </ul>

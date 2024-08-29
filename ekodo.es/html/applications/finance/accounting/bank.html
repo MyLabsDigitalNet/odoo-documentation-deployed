@@ -206,21 +206,19 @@
     <ul>
 <li><a class="reference internal" href="#">Bank and cash accounts</a><ul>
 <li><a class="reference internal" href="#manage-your-bank-and-cash-accounts">Manage your bank and cash accounts</a><ul>
+<li><a class="reference internal" href="#create-a-bank-account">Create a bank account</a></li>
 <li><a class="reference internal" href="#create-a-cash-journal">Create a cash journal</a></li>
 <li><a class="reference internal" href="#edit-an-existing-bank-or-cash-journal">Edit an existing bank or cash journal</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#configuration">Configuration</a><ul>
 <li><a class="reference internal" href="#suspense-account">Suspense account</a></li>
-<li><a class="reference internal" href="#profit-and-loss-accounts">Profit and loss accounts</a></li>
 <li><a class="reference internal" href="#currency">Currency</a></li>
 <li><a class="reference internal" href="#account-number">Account number</a></li>
 <li><a class="reference internal" href="#bank-feeds">Bank feeds</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#outstanding-accounts">Outstanding accounts</a><ul>
-<li><a class="reference internal" href="#default-accounts-configuration">Default accounts configuration</a></li>
-<li><a class="reference internal" href="#bank-and-cash-journals-configuration">Bank and cash journals configuration</a></li>
+<li><a class="reference internal" href="#configuration-of-bank-and-cash-journals">Configuration of Bank and Cash Journals</a></li>
+<li><a class="reference internal" href="#bank-synchronization">Bank Synchronization</a></li>
+<li><a class="reference internal" href="#first-synchronization">First Synchronization</a></li>
 </ul>
 </li>
 </ul>
@@ -484,9 +482,13 @@ Note</p><p>Cash journals and accounts must be configured manually.</p>
 </div>
 <p>Bank journals are displayed by default on the <span class="guilabel">Accounting Dashboard</span> in the form of cards
 which include action buttons.</p>
-<img alt="Los diarios bancarios se muestran en el Panel de contabilidad y contienen botones de acción" src="../../../_images/banco_ficha.png" />
+<img alt="Los diarios bancarios se muestran en el Panel de contabilidad y contienen botones de acción" src="../../../_images/tablero_cuenta_bancaria.png" />
 </section><section id="manage-your-bank-and-cash-accounts">
 <span id="bank-accounts-manage"></span><h2>Manage your bank and cash accounts<a class="headerlink" href="#manage-your-bank-and-cash-accounts" title="Permalink to this headline">¶</a></h2>
+</section><section id="create-a-bank-account">
+<h3>Create a bank account<a class="headerlink" href="#create-a-bank-account" title="Permalink to this headline">¶</a></h3>
+<p>To add a bank account, we need to go to <span class="menuselection">Accounting ‣ Configuration ‣ Banks ‣ Add a bank account</span>.</p>
+<img alt="Crear una cuenta bancaria en Odoo" src="../../../_images/crear_cuenta_bancaria.png" />
 </section><section id="create-a-cash-journal">
 <h3>Create a cash journal<a class="headerlink" href="#create-a-cash-journal" title="Permalink to this headline">¶</a></h3>
 <p>To create a new cash journal, go to <span class="menuselection">Accounting ‣ Configuration ‣ Accounting:
@@ -505,92 +507,78 @@ Journals</span> and select the journal you want to modify.</p>
 </section><section id="configuration">
 <span id="bank-accounts-configuration"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>You can edit the accounting information and bank account number according to your needs.</p>
-<img alt="Configura manualmente la información con de tu banco" src="../../../_images/diario_ficha.png" />
-<div class="alert alert-secondary">
-<p class="alert-title">
-See also</p><ul class="simple">
-<li><p><a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Multi-currency system</span></a></p></li>
-<li><p><a class="reference internal" href="bank/transactions.html"><span class="doc">Transactions</span></a></p></li>
-</ul>
-</div>
+<img alt="Configura el diario contable" src="../../../_images/diario_contable_crear.png" />
 </section><section id="suspense-account">
 <span id="bank-accounts-suspense"></span><h3>Suspense account<a class="headerlink" href="#suspense-account" title="Permalink to this headline">¶</a></h3>
-<p>Bank statement transactions are posted on the <span class="guilabel">Suspense Account</span> until the final
+<p>Bank statement transactions are posted on the Suspense Account until the final
 reconciliation allows finding the right account.</p>
-</section><section id="profit-and-loss-accounts">
-<h3>Profit and loss accounts<a class="headerlink" href="#profit-and-loss-accounts" title="Permalink to this headline">¶</a></h3>
-<p>The <span class="guilabel">Profit Account</span> is used to register a profit when the ending balance of a cash
-register differs from what the system computes, while the <span class="guilabel">Loss Account</span> is used to
+<hr class="docutils" />
+<p>register differs from what the system computes, while the <span class="guilabel">Loss Account</span> is used to
 register a loss when the ending balance of a cash register differs from what the system computes.</p>
 </section><section id="currency">
 <h3>Currency<a class="headerlink" href="#currency" title="Permalink to this headline">¶</a></h3>
 <p>You can edit the currency used to enter the statements.</p>
-<div class="alert alert-secondary">
-<p class="alert-title">
-See also</p><p><a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Multi-currency system</span></a></p>
-</div>
 </section><section id="account-number">
 <h3>Account number<a class="headerlink" href="#account-number" title="Permalink to this headline">¶</a></h3>
 <p>If you need to <strong>edit your bank account details</strong>, click on the external link arrow next to your
 <span class="guilabel">Account Number</span>. On the new page, click on the external link arrow next to your
 <span class="guilabel">Bank</span> and update your bank information accordingly. These details are used when
 registering payments.</p>
-<img alt="Edita tu información bancaria" src="../../../_images/numero_cuenta.png" />
+<img alt="Edita tu información bancaria" src="../../../_images/enlace_interno.png" />
 </section><section id="bank-feeds">
 <h3>Bank feeds<a class="headerlink" href="#bank-feeds" title="Permalink to this headline">¶</a></h3>
 <p><span class="guilabel">Bank Feeds</span> defines how the bank statements are registered. Three options are available:</p>
 <ul class="simple">
 <li><p><span class="guilabel">Undefined yet</span>, which should be selected when you don’t know yet if you will
 synchronize your bank account with your database or not.</p></li>
-<li><p><span class="guilabel">Import (N43, TXT/CSV/XSLX)</span>, which should be selected if you want to import
+<li><p><span class="guilabel">Import (N43, TXT/CSV)</span>, which should be selected if you want to import
 your bank statement using a different format.</p></li>
 </ul>
-<div class="alert alert-secondary">
+<img alt="Elija su conexióin bancaria" src="../../../_images/conexiones_bancarias.png" />
+</section><section id="configuration-of-bank-and-cash-journals">
+<h3>Configuration of Bank and Cash Journals<a class="headerlink" href="#configuration-of-bank-and-cash-journals" title="Permalink to this headline">¶</a></h3>
+<p>You can also set specific pending accounts for any Bank or Cash type journal.
+From the Accounting Dashboard, click on the ⋮ menu of the journal you want to configure, and click
+on Configuration. Then, open the Incoming/Outgoing Payments tab. To display the pending accounts
+column, click on the toggle button and check the box for Pending Receivable/Payable Accounts, then
+update the account.</p>
+<div class="alert alert-warning">
 <p class="alert-title">
-See also</p><ul class="simple">
-<li><p><span class="xref std std-doc">bank/bank_synchronization</span></p></li>
-<li><p><a class="reference internal" href="bank/transactions.html"><span class="doc">Transactions</span></a></p></li>
-</ul>
+Important</p><p>If you do not specify a pending payment account or a pending receivable account for a specific journal,
+Odoo will use the default pending accounts.</p>
 </div>
-</section><section id="outstanding-accounts">
-<span id="bank-outstanding-accounts"></span><h2>Outstanding accounts<a class="headerlink" href="#outstanding-accounts" title="Permalink to this headline">¶</a></h2>
-<p>By default, payments are registered through transitory accounts named <strong>outstanding accounts</strong>,
-before being recorded in your bank account.</p>
+<p>If your main bank account is added as a pending receivable or payable account, when a payment is recorded,
+the status of the invoice or receipt is set directly to Paid.</p>
+</section><section id="bank-synchronization">
+<h3>Bank Synchronization<a class="headerlink" href="#bank-synchronization" title="Permalink to this headline">¶</a></h3>
+<p>Odoo can sync directly with your bank so that all bank statements are automatically imported into your
+database.</p>
+</section><section id="first-synchronization">
+<h3>First Synchronization<a class="headerlink" href="#first-synchronization" title="Permalink to this headline">¶</a></h3>
+<p>You can start the synchronization by going to the Accounting application and then to Accounting Dashboard ‣ Configuration ‣ Journals: Bank.
+Then, select the provider.</p>
+<img alt="Elija su extracto bancario" src="../../../_images/extracto_oca.png" />
+<p>Next, go to Accounting ‣ Online Bank Statement Providers and select the bank you want to sync.</p>
+<img alt="Elija su extracto bancario" src="../../../_images/gocardless.png" />
+<p>Once these details have been entered, you should click:</p>
+<img alt="Validar banco" src="../../../_images/validar_banco.png" />
+<p>The following image will appear, where the account holder and authorized person must synchronize:</p>
+<img alt="Seleccionar banco" src="../../../_images/seleccionar_banco.png" />
+<p>You can now search for your banking institution. Select it and follow the steps to synchronize it.</p>
+<span class="target" id="bank-outstanding-accounts"></span><hr class="docutils" />
+<p>before being recorded in your bank account.</p>
 <ul class="simple">
-<li><p>An <strong>outstanding payments account</strong> is where outgoing payments are posted until they are linked
-with a withdrawal from your bank statement.</p></li>
 <li><p>An <strong>outstanding receipts account</strong> is where incoming payments are posted until they are linked
 with a deposit from your bank statement.</p></li>
 </ul>
-<p>These accounts should be of <a class="reference internal" href="get_started/chart_of_accounts.html#chart-of-account-type"><span class="std std-ref">type</span></a> <span class="guilabel">Current Assets</span>.</p>
-<div class="alert alert-primary">
-<p class="alert-title">
-Note</p><p>The movement from an outstanding account to a bank account is done automatically when you
-reconcile the bank account with a bank statement.</p>
-</div>
-</section><section id="default-accounts-configuration">
-<h3>Default accounts configuration<a class="headerlink" href="#default-accounts-configuration" title="Permalink to this headline">¶</a></h3>
-<p>The outstanding accounts are defined by default. If necessary, you can update them by going to
-<span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Default Accounts</span> and update your
+<hr class="docutils" />
+<p><span class="menuselection">Accounting ‣ Configuration ‣ Settings ‣ Default Accounts</span> and update your
 <span class="guilabel">Outstanding Receipts Account</span> and <span class="guilabel">Outstanding Payments Account</span>.</p>
-</section><section id="bank-and-cash-journals-configuration">
-<h3>Bank and cash journals configuration<a class="headerlink" href="#bank-and-cash-journals-configuration" title="Permalink to this headline">¶</a></h3>
-<p>You can also set specific outstanding accounts for any journal with the <a class="reference internal" href="get_started/chart_of_accounts.html#chart-of-account-type"><span class="std std-ref">type</span></a> <span class="guilabel">Bank</span> or <span class="guilabel">Cash</span>.</p>
-<p>From your <span class="guilabel">Accounting Dashboard</span>, click on the menu selection ⋮ of the journal you want to
-configure, and click on <span class="guilabel">Configuration</span>, then open the <span class="guilabel">Incoming/Outgoing
+<hr class="docutils" />
+<p>&lt;chart-of-account/type&gt;` <span class="guilabel">Bank</span> or <span class="guilabel">Cash</span>.</p>
+<p>configure, and click on <span class="guilabel">Configuration</span>, then open the <span class="guilabel">Incoming/Outgoing
 Payments</span> tab. To display the outstanding accounts column, click on the toggle button and check the
 <span class="guilabel">Outstanding Receipts/Payments accounts</span>, then update the account.</p>
-<img alt="Seleccione el botón de alternancia y haga clic en Cuentas pendientes" class="align-center" src="../../../_images/cuentas_cobros.png" />
-<div class="alert alert-primary">
-<p class="alert-title">
-Note</p><ul class="simple">
-<li><p>If you do not specify an outstanding payments account or an outstanding receipts account for a
-specific journal, Odoo uses the default outstanding accounts.</p></li>
-<li><p>If your main bank account is added as an outstanding receipts account or outstanding payments
-account, when a payment is registered, the invoice or bill’s status is directly set to
-<span class="guilabel">Paid</span>.</p></li>
-</ul>
-</div>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="bank/transactions.html">Transactions</a></li>
@@ -609,21 +597,19 @@ account, when a payment is registered, the invoice or bill’s status is directl
     <ul>
 <li><a class="reference internal" href="#">Bank and cash accounts</a><ul>
 <li><a class="reference internal" href="#manage-your-bank-and-cash-accounts">Manage your bank and cash accounts</a><ul>
+<li><a class="reference internal" href="#create-a-bank-account">Create a bank account</a></li>
 <li><a class="reference internal" href="#create-a-cash-journal">Create a cash journal</a></li>
 <li><a class="reference internal" href="#edit-an-existing-bank-or-cash-journal">Edit an existing bank or cash journal</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#configuration">Configuration</a><ul>
 <li><a class="reference internal" href="#suspense-account">Suspense account</a></li>
-<li><a class="reference internal" href="#profit-and-loss-accounts">Profit and loss accounts</a></li>
 <li><a class="reference internal" href="#currency">Currency</a></li>
 <li><a class="reference internal" href="#account-number">Account number</a></li>
 <li><a class="reference internal" href="#bank-feeds">Bank feeds</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#outstanding-accounts">Outstanding accounts</a><ul>
-<li><a class="reference internal" href="#default-accounts-configuration">Default accounts configuration</a></li>
-<li><a class="reference internal" href="#bank-and-cash-journals-configuration">Bank and cash journals configuration</a></li>
+<li><a class="reference internal" href="#configuration-of-bank-and-cash-journals">Configuration of Bank and Cash Journals</a></li>
+<li><a class="reference internal" href="#bank-synchronization">Bank Synchronization</a></li>
+<li><a class="reference internal" href="#first-synchronization">First Synchronization</a></li>
 </ul>
 </li>
 </ul>

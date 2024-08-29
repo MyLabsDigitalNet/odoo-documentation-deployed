@@ -207,6 +207,9 @@
     <ul>
 <li><a class="reference internal" href="#">Conciliación bancaria</a><ul>
 <li><a class="reference internal" href="#bank-reconciliation-view">Vista de conciliación bancaria</a></li>
+<li><a class="reference internal" href="#transactions">Transacciones</a></li>
+<li><a class="reference internal" href="#counterpart-entries">Asientos de contrapartida</a></li>
+<li><a class="reference internal" href="#resulting-entry">Asiento resultante</a></li>
 <li><a class="reference internal" href="#reconcile-transactions">Conciliar transacciones</a><ul>
 <li><a class="reference internal" href="#match-existing-entries">Emparejar asientos existentes</a></li>
 <li><a class="reference internal" href="#manual-operations">Operaciones manuales</a></li>
@@ -480,17 +483,24 @@ Ver también</p><ul class="simple">
 <li><p>haga clic en el nombre del diario (por ejemplo, <span class="guilabel">banco</span>) para mostrar todas las transacciones, incluidas las que ya están conciliadas, o</p></li>
 <li><p>haga clic en el botón <span class="guilabel">Conciliar apuntes</span> para mostrar todas las transacciones preseleccionadas por Odoo para la conciliación. Puede eliminar el filtro <span class="guilabel">no conciliadas</span> de la barra de búsqueda para incluir transacciones ya conciliadas.</p></li>
 </ul>
-<img alt="Acceder a la herramienta de conciliación bancaria desde el panel de contabilidad" src="../../../../_images/tablero_banco.png" />
+<img alt="Acceder a la herramienta de conciliación bancaria desde el panel de contabilidad" src="../../../../_images/cuenta_oca.png" />
 <p>La vista de la conciliación bancaria se estructura en tres secciones diferentes: transacciones, asientos de contrapartida y el asiento resultante.</p>
 <img alt="La interfaz de usuario de la vista de conciliación de un diario bancario." src="../../../../_images/conciliacion_bancaria.png" />
-<dl class="simple">
-<dt>Transacciones</dt><dd><p>La sección de transacciones e la izquierda muestra todas las transacciones bancarias, la más reciente se muestra primero. Haga clic en una transacción para seleccionarla.</p>
-</dd>
-<dt>Asientos de contrapartida</dt><dd><p>La sección de asientos de contrapartida que se encuentra en la parte inferior derecha muestra las opciones para conciliar la transacción bancaria seleccionada. Tendrá disponibles varias pestañas, incluyendo <span class="xref std std-ref">conciliar asientos existentes</span>, <span class="xref std std-ref">conciliar pagos por lote</span>, <span class="xref std std-ref">operaciones manuales de conciliación</span> y <span class="guilabel">Conversaciones</span>, en esta última encontrará el chatter para la transacción bancaria que seleccione.</p>
-</dd>
-<dt>Asiento resultante</dt><dd><p>La sección de asiento resultante en la parte superior derecha muestra la transacción bancaria seleccionada con los asientos de contrapartida e incluye cualquier cargo o abono restante. En esta sección, puede validar la conciliación o marcarla como <span class="guilabel">por revisar</span>. Todos los <a class="reference internal" href="#reconciliation-button"><span class="std std-ref">botones de los modelos de conciliación</span></a> también están disponibles en la sección del asiento resultante.</p>
-</dd>
-</dl>
+</section><section id="transactions">
+<h2>Transacciones<a class="headerlink" href="#transactions" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><p>La sección de transacciones e la izquierda muestra todas las transacciones bancarias, la más reciente se muestra primero. Haga clic en una transacción para seleccionarla.</p>
+</div></blockquote>
+</section><section id="counterpart-entries">
+<h2>Asientos de contrapartida<a class="headerlink" href="#counterpart-entries" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><p>La sección de asientos de contrapartida que se encuentra en la parte inferior derecha muestra las opciones para conciliar la transacción bancaria seleccionada. Tendrá disponibles varias pestañas, incluyendo <span class="xref std std-ref">conciliar asientos existentes</span>, <span class="xref std std-ref">conciliar pagos por lote</span>, <span class="xref std std-ref">operaciones manuales de conciliación</span> y <span class="guilabel">Conversaciones</span>, en esta última encontrará el chatter para la transacción bancaria que seleccione.</p>
+</div></blockquote>
+</section><section id="resulting-entry">
+<h2>Asiento resultante<a class="headerlink" href="#resulting-entry" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><p>La sección de asiento resultante en la parte superior derecha muestra la transacción bancaria seleccionada con los asientos de contrapartida e incluye cualquier cargo o abono restante. En esta sección, puede validar la conciliación o marcarla como <span class="guilabel">por revisar</span>. Todos los <a class="reference internal" href="#reconciliation-button"><span class="std std-ref">botones de los modelos de conciliación</span></a> también están disponibles en la sección del asiento resultante.</p>
+</div></blockquote>
 </section><section id="reconcile-transactions">
 <h2>Conciliar transacciones<a class="headerlink" href="#reconcile-transactions" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Las transacciones se pueden conciliar de forma automática con el uso de <a class="reference internal" href="reconciliation_models.html"><span class="doc">los modelos de conciliación</span></a>, o se pueden conciliar con <a class="reference internal" href="#reconciliation-existing-entries"><span class="std std-ref">asientos existentes</span></a>, <span class="xref std std-ref">pagos por lote</span>, <a class="reference internal" href="#reconciliation-manual-operations"><span class="std std-ref">operaciones manuales</span></a> y <a class="reference internal" href="#reconciliation-button"><span class="std std-ref">botones de modelo de conciliación</span></a>.</p>
@@ -500,10 +510,6 @@ Ver también</p><ul class="simple">
 <li><p>Si el asiento resultante no está totalmente saldado, puede agregar un asiento de contrapartida existente o ponerlo como una <a class="reference internal" href="#reconciliation-manual-operations"><span class="std std-ref">operación manual</span></a>.</p></li>
 <li><p>Haga clic en el botón <span class="guilabel">Validar</span> para confirmar la conciliación y seguir con la siguiente transacción.</p></li>
 </ol>
-<div class="alert alert-tip">
-<p class="alert-title">
-Truco</p><p>Si no está seguro de cómo conciliar una transacción en particular y quiere lidiar con ella después, use el botón <span class="guilabel">por revisar</span>. Todas las transacciones que se marquen como <span class="guilabel">por revisar</span> se peden mostrar si elige el filtro <span class="guilabel">por revisar</span>.</p>
-</div>
 <div class="alert alert-primary">
 <p class="alert-title">
 Nota</p><p>Las transacciones bancarias se publican en la <strong>cuenta transitoria del diario</strong> hasta que se concilien. En este momento, la conciliación modifica el asiento de diario de la transacción. Para hacerlo, se reemplaza la cuenta transitoria del banco con la cuenta por cobrar, por paga o pendiente correspondiente.</p>
@@ -518,10 +524,7 @@ Truco</p><p>La barra de búsqueda dentro de la pestaña <span class="guilabel">e
 </section><section id="manual-operations">
 <span id="reconciliation-manual-operations"></span><h3>Operaciones manuales<a class="headerlink" href="#manual-operations" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Si no hay un asiento existente para emparejar con la transacción seleccionada, puede conciliar la transacción de manera manual, solo tiene que seleccionar la cuenta y la cantidad correcta. Después, complete todos los campos opcionales que sean necesarios.</p>
-<div class="alert alert-tip">
-<p class="alert-title">
-Truco</p><p>Puede usar la opción <span class="guilabel">totalmente pagado</span> para conciliar un pago, incluso si solo ha recibido un pago parcial. Aparecerá una nueva línea en la sección del asiento resultante para que mostrará el saldo pendiente que se registró en la cuenta por cobrar de forma predeterminada. Para elegir otra cuenta haga clic en la línea nueva que se encuentra en la sección del asiento resultante y seleccione la <span class="guilabel">Cuenta</span> para registrar este saldo.</p>
-</div>
+<img alt="Completar transacción de manera manual" src="../../../../_images/operaciones_manuales.png" />
 </section><section id="reconciliation-model-buttons">
 <span id="reconciliation-button"></span><h3>Botones del modelo de conciliación<a class="headerlink" href="#reconciliation-model-buttons" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Use el <a class="reference internal" href="reconciliation_models.html"><span class="doc">botón del modelo de conciliación</span></a> para operaciones manuales que se usan con frecuencia. Estos botones personalizados le permitirán conciliar transacciones bancarias de manera eficaz y manual, además de que se pueden usar con asientos ya existentes.</p>
@@ -536,6 +539,9 @@ Truco</p><p>Puede usar la opción <span class="guilabel">totalmente pagado</span
     <ul>
 <li><a class="reference internal" href="#">Conciliación bancaria</a><ul>
 <li><a class="reference internal" href="#bank-reconciliation-view">Vista de conciliación bancaria</a></li>
+<li><a class="reference internal" href="#transactions">Transacciones</a></li>
+<li><a class="reference internal" href="#counterpart-entries">Asientos de contrapartida</a></li>
+<li><a class="reference internal" href="#resulting-entry">Asiento resultante</a></li>
 <li><a class="reference internal" href="#reconcile-transactions">Conciliar transacciones</a><ul>
 <li><a class="reference internal" href="#match-existing-entries">Emparejar asientos existentes</a></li>
 <li><a class="reference internal" href="#manual-operations">Operaciones manuales</a></li>

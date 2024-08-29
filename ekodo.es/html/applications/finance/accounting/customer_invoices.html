@@ -213,6 +213,12 @@
 <li><a class="reference internal" href="#send-the-invoice-to-customer">Send the invoice to customer</a></li>
 <li><a class="reference internal" href="#payment">Payment</a></li>
 <li><a class="reference internal" href="#receive-a-partial-payment-through-the-bank-statement">Receive a partial payment through the bank statement</a></li>
+<li><a class="reference internal" href="#payment-followup">Payment Followup</a><ul>
+<li><a class="reference internal" href="#customer-aging-report">Customer aging report:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#profit-and-loss">Profit and loss</a></li>
+<li><a class="reference internal" href="#balance-sheet">Balance sheet</a></li>
 </ul>
 </li>
 </ul>
@@ -467,26 +473,19 @@
 <h1>Customer invoices<a class="headerlink" href="#customer-invoices" title="Permalink to this headline">¶</a></h1>
 </section><section id="from-customer-invoice-to-payments-collection">
 <h2>From Customer Invoice to Payments Collection<a class="headerlink" href="#from-customer-invoice-to-payments-collection" title="Permalink to this headline">¶</a></h2>
-<p>Odoo supports multiple invoicing and payment workflows, so you can
-choose and use the ones that match your business needs. Whether you want
-to accept a single payment for a single invoice, or process a payment
-spanning multiple invoices and taking discounts for early payments, you
-can do so efficiently and accurately.</p>
+<p>With Odoo, you can choose from different workflows that cover your business needs.
+You can make a single payment for one invoice, or a single payment for multiple invoices,
+and even apply discounts for advance payments.</p>
 </section><section id="from-draft-invoice-to-profit-and-loss">
 <h3>From Draft Invoice to Profit and Loss<a class="headerlink" href="#from-draft-invoice-to-profit-and-loss" title="Permalink to this headline">¶</a></h3>
-<p>If we pick up at the end of a typical ‘order to cash’ scenario, after
-the goods have been shipped, you will: issue an invoice; receive
-payment; deposit that payment at the bank; make sure the Customer
-Invoice is closed; follow up if Customers are late; and finally present
-your Income on the Profit and Loss report and show the decrease in
-Assets on the Balance Sheet report.</p>
-<p>Invoicing in most countries occurs when a contractual obligation is met.
-If you ship a box to a customer, you have met the terms of the contract
-and can bill them. If your supplier sends you a shipment, they have met
-the terms of that contract and can bill you. Therefore, the terms of the
-contract is fulfilled when the box moves to or from the truck. At this
-point, Odoo supports the creation of what is called a Draft Invoice by
-Warehouse staff.</p>
+<p>The usual billing process for clients, after goods have been delivered or the service has been
+performed, involves issuing the invoice, the client depositing that payment in the bank, receiving
+the payment, reconciling the client’s account balance, and finally reporting it on the Balance Sheet.</p>
+<p>Billing occurs when a contractual obligation is fulfilled. If you ship a box to a customer, you have
+met the terms of the contract and can invoice them. If your supplier sends you an order, they have
+fulfilled the terms of that contract and can invoice you. Additionally, the terms of the contract are
+fulfilled when the box is moved to or from a truck. At this point, Odoo supports the creation of what
+warehouse staff call a Draft Invoice.</p>
 </section><section id="invoice-creation">
 <h3>Invoice creation<a class="headerlink" href="#invoice-creation" title="Permalink to this headline">¶</a></h3>
 <p>Draft invoices can be manually generated from other documents such as
@@ -509,7 +508,13 @@ There is nothing to stop users from creating their own draft invoices.</p>
 <li><p>Unit Price: 100</p></li>
 <li><p>Taxes: Tax 15%</p></li>
 </ul>
-<img alt="../../../_images/ejemplo_factura.png" src="../../../_images/ejemplo_factura.png" />
+<img alt="Menú del módulo facturación" class="align-center" src="../../../_images/menu_clientes.png" />
+<img alt="Menú facturas dentro de clientes" class="align-center" src="../../../_images/clientes_factura.png" />
+<img alt="Crear nueva factura" class="align-center" src="../../../_images/nueva_factura.png" />
+<img alt="Borrador de nueva factura" class="align-center" src="../../../_images/borrador_factura.png" />
+<p>We fill in the previously indicated data:</p>
+<img alt="Ejemplo de factura rellenada con los datos" class="align-center" src="../../../_images/factura_completada.png" />
+<img alt="Líneas de factura" class="align-center" src="../../../_images/asiento_contable.png" />
 <p>The document is composed of three parts:</p>
 <ul class="simple">
 <li><p>the top of the invoice, with customer information,</p></li>
@@ -518,134 +523,83 @@ There is nothing to stop users from creating their own draft invoices.</p>
 </ul>
 </section><section id="open-or-pro-forma-invoices">
 <h3>Open or Pro-forma invoices<a class="headerlink" href="#open-or-pro-forma-invoices" title="Permalink to this headline">¶</a></h3>
-<p>An invoice will usually include the quantity and the price of goods
-and/or services, the date, any parties involved, the unique invoice
-number, and any tax information.</p>
-<p>“Validate” the invoice when you are ready to approve it. The invoice
-then moves from the Draft state to the Open state.</p>
-<p>When you have validated an invoice, Odoo gives it a unique number from a
-defined, and modifiable, sequence.</p>
-<img alt="../../../_images/factura.png" src="../../../_images/factura.png" />
-<p>Accounting entries corresponding to this invoice are automatically
-generated when you validate the invoice. You can see the details by
-clicking on the entry in the Journal Entry field in the “Other Info”
-tab.</p>
-<img alt="../../../_images/apuntes_contables.png" src="../../../_images/apuntes_contables.png" />
+<p>When we have the invoice with the data entered, the next step is to save it. To do this, we will
+click on the cloud icon that appears next to “New.”</p>
+<img alt="Guardado de factura" class="align-center" src="../../../_images/guardar_factura.png" />
+<p>In this way, the information will be saved, and Odoo will change the status from DRAFT to pending CONFIRMATION.</p>
+<p>At this point, we can view the invoice by clicking on PREVIEW or see how the accounting entries would look by
+clicking on the “Accounting Entries” tab.</p>
+<p>If we exit without confirming the invoice, when we check the invoice dashboard, it will appear as follows:</p>
+<img alt="Vista general de tablero de facturas" class="align-center" src="../../../_images/tablero_factura.png" />
+<p>Without an invoice number and in a different color.</p>
+<p>At this point, we can customize the information bar. At the end, next to Status, we will have three
+dots. If we click on them, a screen will appear with a series of checkmarks that allow us to add or
+remove elements from the information bar:</p>
+<img alt="Como añadir columnas al tablero de facturas" class="align-center" src="../../../_images/añadir_columnas.png" />
+<p>If we enter the invoice again and click on CONFIRM, Odoo will automatically assign an invoice number,
+and the corresponding accounting entries for this invoice will be created.</p>
+<img alt="Asignación de un número de factura" class="align-center" src="../../../_images/factura_inv.png" />
+<p>In this image, we can see what the accounting entry would look like:</p>
+<img alt="Asignación de un número de factura" class="align-center" src="../../../_images/factura_asiento.png" />
 </section><section id="send-the-invoice-to-customer">
 <h3>Send the invoice to customer<a class="headerlink" href="#send-the-invoice-to-customer" title="Permalink to this headline">¶</a></h3>
-<p>After validating the customer invoice, you can directly send it to the
-customer via the ‘Send by email’ functionality.</p>
-<img alt="../../../_images/factura_correo.png" src="../../../_images/factura_correo.png" />
+<p>From here, we have the option to send the invoice to the client in PDF format via email. We click
+on Send and Print, and it will take us to the following screen:</p>
+<img alt="Enviar factura por correo al cliente" class="align-center" src="../../../_images/enviar_pdf.png" />
+<p>Where we will enter the email (if it is configured, this step won’t be necessary as the information
+will appear automatically).</p>
+<img alt="Datos introducidos automáticamente" class="align-center" src="../../../_images/mail_configurado.png" />
 <p>A typical journal entry generated from a validated invoice will look
 like as follows:</p>
-<table class="table docutils">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 19%" />
-<col style="width: 20%" />
-<col style="width: 16%" />
-<col style="width: 17%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Account</strong></p></th>
-<th class="head"><p><strong>Partner</strong></p></th>
-<th class="head"><p><strong>Due date</strong></p></th>
-<th class="head"><p><strong>Debit</strong></p></th>
-<th class="head"><p><strong>Credit</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Accounts Receivable</p></td>
-<td><p>Agrolait</p></td>
-<td><p>01/07/2015</p></td>
-<td><p>115</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Taxes</p></td>
-<td><p>Agrolait</p></td>
-<td></td>
-<td></td>
-<td><p>15</p></td>
-</tr>
-<tr class="row-even"><td><p>Sales</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>100</p></td>
-</tr>
-</tbody>
-</table>
+<img alt="Vista del asiento contable" class="align-center" src="../../../_images/linea_factura.png" />
 </section><section id="payment">
 <h3>Payment<a class="headerlink" href="#payment" title="Permalink to this headline">¶</a></h3>
 <p>In Odoo, an invoice is considered to be paid when the associated
-accounting entry has been reconciled with the payment entries. If there
-has not been a reconciliation, the invoice will remain in the Open state
-until you have entered the payment.</p>
+accounting entry has been reconciled with the payment entries. The invoice will remain as “Unpaid”
+until it is recorded.</p>
 <p>A typical journal entry generated from a payment will look like as
 follows:</p>
-<table class="table docutils">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 19%" />
-<col style="width: 20%" />
-<col style="width: 16%" />
-<col style="width: 17%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Account</strong></p></th>
-<th class="head"><p><strong>Partner</strong></p></th>
-<th class="head"><p><strong>Due date</strong></p></th>
-<th class="head"><p><strong>Debit</strong></p></th>
-<th class="head"><p><strong>Credit</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Bank</p></td>
-<td><p>Agrolait</p></td>
-<td></td>
-<td><p>115</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Accounts Receivable</p></td>
-<td><p>Agrolait</p></td>
-<td></td>
-<td></td>
-<td><p>115</p></td>
-</tr>
-</tbody>
-</table>
+<img alt="Entrada de diario" class="align-center" src="../../../_images/no_pagado.png" />
 </section><section id="receive-a-partial-payment-through-the-bank-statement">
 <h3>Receive a partial payment through the bank statement<a class="headerlink" href="#receive-a-partial-payment-through-the-bank-statement" title="Permalink to this headline">¶</a></h3>
 <p>You can manually enter your bank statements in Odoo, or you can import
 them in from a csv file or from several other predefined formats
 according to your accounting localisation.</p>
-<p>Create a bank statement from the accounting dashboard with the related
-journal and enter an amount of $100 .</p>
-<img alt="../../../_images/pago.png" src="../../../_images/pago.png" />
+<img alt="Tablero de asientos contables y conciliación" class="align-center" src="../../../_images/tablero_contabilidad.png" />
 <hr class="docutils" />
 <p>display “You have outstanding payments for this customer. You can
 reconcile them to pay this invoice. “</p>
 <p>the invoice.</p>
-<hr class="docutils" />
-<p>Therefore, collectors must make every effort to collect money and
+</section><section id="payment-followup">
+<h3>Payment Followup<a class="headerlink" href="#payment-followup" title="Permalink to this headline">¶</a></h3>
+<p>There’s a growing trend of customers paying bills later and later.
+Therefore, collectors must make every effort to collect money and
 collect it faster.</p>
-<p>to pay their outstanding invoices, you can define different actions
+<p>Odoo will help you define your follow-up strategy. To remind customers
+to pay their outstanding invoices, you can define different actions
 depending on how severely overdue the customer is. These actions are
 bundled into follow-up levels that are triggered when the due date of an
 invoice has passed a certain number of days. If there are other overdue
 invoices for the same customer, the actions of the most overdue invoice
 will be executed.</p>
-<p>you will see the follow-up message and all overdue invoices.</p>
-<span class="target" id="customer-invoices-aging-report"></span><hr class="docutils" />
-<p>collector to understand the customer credit issues, and to prioritize
-their work.</p>
-<p>your collection efforts.</p>
-<hr class="docutils" />
-<p>Ultimately, this gives you a clear image of your Net Profit and Loss. It
+<p>_customer-invoices/aging-report:</p>
+</section><section id="customer-aging-report">
+<h4>Customer aging report:<a class="headerlink" href="#customer-aging-report" title="Permalink to this headline">¶</a></h4>
+<p>Use the Open Items Report to determine which customers have outstanding payments and initiate your
+collection process.</p>
+</section><section id="profit-and-loss">
+<h3>Profit and loss<a class="headerlink" href="#profit-and-loss" title="Permalink to this headline">¶</a></h3>
+<p>The Profit and Loss statement displays your revenue and expense details.
+Ultimately, this gives you a clear image of your Net Profit and Loss. It
 is sometimes referred to as the “Income Statement” or “Statement of
 Revenues and Expenses.”</p>
-<hr class="docutils" />
-<p>assets and equity at a specific moment in time.</p>
+<img alt="../../../_images/balance_perdidas_ganancias.png" src="../../../_images/balance_perdidas_ganancias.png" />
+</section><section id="balance-sheet">
+<h3>Balance sheet<a class="headerlink" href="#balance-sheet" title="Permalink to this headline">¶</a></h3>
+<p>The balance sheet summarizes your company’s liabilities,
+assets and equity at a specific moment in time.</p>
+<img alt="../../../_images/balance_situacion_1.png" src="../../../_images/balance_situacion_1.png" />
+<img alt="../../../_images/balance_situacion_2.png" src="../../../_images/balance_situacion_2.png" />
 <p>method, you should expect a decrease in account “Current Assets” once
 the material has been shipped to the customer.</p>
 <div class="toctree-wrapper compound">
@@ -677,6 +631,12 @@ the material has been shipped to the customer.</p>
 <li><a class="reference internal" href="#send-the-invoice-to-customer">Send the invoice to customer</a></li>
 <li><a class="reference internal" href="#payment">Payment</a></li>
 <li><a class="reference internal" href="#receive-a-partial-payment-through-the-bank-statement">Receive a partial payment through the bank statement</a></li>
+<li><a class="reference internal" href="#payment-followup">Payment Followup</a><ul>
+<li><a class="reference internal" href="#customer-aging-report">Customer aging report:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#profit-and-loss">Profit and loss</a></li>
+<li><a class="reference internal" href="#balance-sheet">Balance sheet</a></li>
 </ul>
 </li>
 </ul>

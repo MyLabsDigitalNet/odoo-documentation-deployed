@@ -214,6 +214,12 @@
 <li><a class="reference internal" href="#send-the-invoice-to-customer">Enviar la factura al cliente</a></li>
 <li><a class="reference internal" href="#payment">Pagos</a></li>
 <li><a class="reference internal" href="#receive-a-partial-payment-through-the-bank-statement">Recibir un pago parcial a través del estado de cuenta bancario</a></li>
+<li><a class="reference internal" href="#payment-followup">Seguimiento de pagos</a><ul>
+<li><a class="reference internal" href="#customer-aging-report">Reporte de antigüedad del cliente:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#profit-and-loss">Estado de resultados</a></li>
+<li><a class="reference internal" href="#balance-sheet">Balance general</a></li>
 </ul>
 </li>
 </ul>
@@ -468,11 +474,19 @@
 <h1>Facturas de cliente<a class="headerlink" href="#customer-invoices" title="Enlazar permanentemente con este título">¶</a></h1>
 </section><section id="from-customer-invoice-to-payments-collection">
 <h2>Desde la factura de cliente a la cobranza<a class="headerlink" href="#from-customer-invoice-to-payments-collection" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Odoo es compatible con múltiples flujos de trabajo de facturación y pago, puede elegir y usar los que satisfagan las necesidades de su negocio. Si quiere aceptar un solo pago para una sola factura, o procesar un pago que abarca múltiples facturas y tomar descuentos por anticipos, puede hacerlo con eficacia y precisión.</p>
+<p>With Odoo, you can choose from different workflows that cover your business needs.
+You can make a single payment for one invoice, or a single payment for multiple invoices,
+and even apply discounts for advance payments.</p>
 </section><section id="from-draft-invoice-to-profit-and-loss">
 <h3>Desde el Borrador de factura a las Ganancias y pérdidas<a class="headerlink" href="#from-draft-invoice-to-profit-and-loss" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Si al final elegimos un escenario típico de “orden por cobrar”, después que los bienes se entregaron, usted: emitirá una factura, recibirá un pago, depositará ese pago en el banco, se asegurará que la factura del cliente está cerrada, llevará el seguimiento si los clientes están retrasados y, finalmente, presentará sus ingresos en el reporte de pérdidas y ganancias y mostrará la disminución en Activos en el Balance general.</p>
-<p>La facturación en la mayoría de países ocurre cuando  se cumple una obligación contractual. Si envía una caja a un cliente, cumplió con los términos del contrato y puede facturarle. Si su proveedor le envía una orden, cumplió con los términos de ese contrato y pueden facturarle. Además, se han cumplido los términos del contrato cuando la caja se mueve a o desde un camión. En este punto, Odoo es compatible con la creación de lo que el personal de almacén denomina Borrador de factura.</p>
+<p>The usual billing process for clients, after goods have been delivered or the service has been
+performed, involves issuing the invoice, the client depositing that payment in the bank, receiving
+the payment, reconciling the client’s account balance, and finally reporting it on the Balance Sheet.</p>
+<p>Billing occurs when a contractual obligation is fulfilled. If you ship a box to a customer, you have
+met the terms of the contract and can invoice them. If your supplier sends you an order, they have
+fulfilled the terms of that contract and can invoice you. Additionally, the terms of the contract are
+fulfilled when the box is moved to or from a truck. At this point, Odoo supports the creation of what
+warehouse staff call a Draft Invoice.</p>
 </section><section id="invoice-creation">
 <h3>Creación de facturas<a class="headerlink" href="#invoice-creation" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Los borradores de factura se pueden generar de forma manual desde otros documentos como órdenes de venta, órdenes de compra, etc. Aunque puede crear un borrador de factura directamente si así lo desea.</p>
@@ -488,7 +502,13 @@
 <li><p>Precio unitario: 100</p></li>
 <li><p>Impuestos: impuesto del 15%</p></li>
 </ul>
-<img alt="../../../_images/ejemplo_factura.png" src="../../../_images/ejemplo_factura.png" />
+<img alt="Menú del módulo facturación" class="align-center" src="../../../_images/menu_clientes.png" />
+<img alt="Menú facturas dentro de clientes" class="align-center" src="../../../_images/clientes_factura.png" />
+<img alt="Crear nueva factura" class="align-center" src="../../../_images/nueva_factura.png" />
+<img alt="Borrador de nueva factura" class="align-center" src="../../../_images/borrador_factura.png" />
+<p>We fill in the previously indicated data:</p>
+<img alt="Ejemplo de factura rellenada con los datos" class="align-center" src="../../../_images/factura_completada.png" />
+<img alt="Líneas de factura" class="align-center" src="../../../_images/asiento_contable.png" />
 <p>El documento se compone de tres partes:</p>
 <ul class="simple">
 <li><p>la parte superior de la factura, con la información del cliente,</p></li>
@@ -497,118 +517,67 @@
 </ul>
 </section><section id="open-or-pro-forma-invoices">
 <h3>Facturas proforma o abiertas<a class="headerlink" href="#open-or-pro-forma-invoices" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Una factura normalmente incluye la cantidad y el precio de los bienes y/o servicios, la fecha y las partes involucradas, el número único de factura y la información de impuestos.</p>
-<p>«Valide» la factura cuando esté listo para aprobarla. Posteriormente, la factura se mueve desde el estado de Borrador al estado Abierto.</p>
-<p>Cuando valida una factura, Odoo le da un número único de una secuencia definida y modificable.</p>
-<img alt="../../../_images/factura.png" src="../../../_images/factura.png" />
-<p>Los asientos contables que corresponden a esta factura se generan automáticamente al validar la factura. Puede ver los detalles al hacer clic en el asiento en el campo Asiento contable en la pestaña «Otra información».</p>
-<img alt="../../../_images/apuntes_contables.png" src="../../../_images/apuntes_contables.png" />
+<p>When we have the invoice with the data entered, the next step is to save it. To do this, we will
+click on the cloud icon that appears next to «New.»</p>
+<img alt="Guardado de factura" class="align-center" src="../../../_images/guardar_factura.png" />
+<p>In this way, the information will be saved, and Odoo will change the status from DRAFT to pending CONFIRMATION.</p>
+<p>At this point, we can view the invoice by clicking on PREVIEW or see how the accounting entries would look by
+clicking on the «Accounting Entries» tab.</p>
+<p>If we exit without confirming the invoice, when we check the invoice dashboard, it will appear as follows:</p>
+<img alt="Vista general de tablero de facturas" class="align-center" src="../../../_images/tablero_factura.png" />
+<p>Without an invoice number and in a different color.</p>
+<p>At this point, we can customize the information bar. At the end, next to Status, we will have three
+dots. If we click on them, a screen will appear with a series of checkmarks that allow us to add or
+remove elements from the information bar:</p>
+<img alt="Como añadir columnas al tablero de facturas" class="align-center" src="../../../_images/añadir_columnas.png" />
+<p>If we enter the invoice again and click on CONFIRM, Odoo will automatically assign an invoice number,
+and the corresponding accounting entries for this invoice will be created.</p>
+<img alt="Asignación de un número de factura" class="align-center" src="../../../_images/factura_inv.png" />
+<p>In this image, we can see what the accounting entry would look like:</p>
+<img alt="Asignación de un número de factura" class="align-center" src="../../../_images/factura_asiento.png" />
 </section><section id="send-the-invoice-to-customer">
 <h3>Enviar la factura al cliente<a class="headerlink" href="#send-the-invoice-to-customer" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Después de validar la factura de cliente, puede enviarla directamente al cliente a través de la función “Enviar por correo electrónico”.</p>
-<img alt="../../../_images/factura_correo.png" src="../../../_images/factura_correo.png" />
+<p>From here, we have the option to send the invoice to the client in PDF format via email. We click
+on Send and Print, and it will take us to the following screen:</p>
+<img alt="Enviar factura por correo al cliente" class="align-center" src="../../../_images/enviar_pdf.png" />
+<p>Where we will enter the email (if it is configured, this step won’t be necessary as the information
+will appear automatically).</p>
+<img alt="Datos introducidos automáticamente" class="align-center" src="../../../_images/mail_configurado.png" />
 <p>Un asiento contable normal que se generó de una factura validada se verá así:</p>
-<table class="table docutils">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 19%" />
-<col style="width: 20%" />
-<col style="width: 16%" />
-<col style="width: 17%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Cuenta</strong></p></th>
-<th class="head"><p><strong>Partner</strong></p></th>
-<th class="head"><p><strong>Fecha de vencimiento</strong></p></th>
-<th class="head"><p><strong>Debe</strong></p></th>
-<th class="head"><p><strong>Haber</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Cuentas por cobrar</p></td>
-<td><p>Agrolait</p></td>
-<td><p>01/07/2015</p></td>
-<td><p>115</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Impuestos</p></td>
-<td><p>Agrolait</p></td>
-<td></td>
-<td></td>
-<td><p>15</p></td>
-</tr>
-<tr class="row-even"><td><p>Ventas</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>100</p></td>
-</tr>
-</tbody>
-</table>
+<img alt="Vista del asiento contable" class="align-center" src="../../../_images/linea_factura.png" />
 </section><section id="payment">
 <h3>Pagos<a class="headerlink" href="#payment" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>En Odoo, una factura se considera pagada cuando el asiento contable asociado se ha conciliado con los asientos de pago. Si no ha habido una conciliación, la factura permanecerá en el estado Abierto hasta que ingrese el pago.</p>
+<p>In Odoo, an invoice is considered to be paid when the associated
+accounting entry has been reconciled with the payment entries. The invoice will remain as «Unpaid»
+until it is recorded.</p>
 <p>Un asiento contable normal que se generó de una factura validada se verá así:</p>
-<table class="table docutils">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 19%" />
-<col style="width: 20%" />
-<col style="width: 16%" />
-<col style="width: 17%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Cuenta</strong></p></th>
-<th class="head"><p><strong>Partner</strong></p></th>
-<th class="head"><p><strong>Fecha de vencimiento</strong></p></th>
-<th class="head"><p><strong>Debe</strong></p></th>
-<th class="head"><p><strong>Haber</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Banco</p></td>
-<td><p>Agrolait</p></td>
-<td></td>
-<td><p>115</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Cuentas por cobrar</p></td>
-<td><p>Agrolait</p></td>
-<td></td>
-<td></td>
-<td><p>115</p></td>
-</tr>
-</tbody>
-</table>
+<img alt="Entrada de diario" class="align-center" src="../../../_images/no_pagado.png" />
 </section><section id="receive-a-partial-payment-through-the-bank-statement">
 <h3>Recibir un pago parcial a través del estado de cuenta bancario<a class="headerlink" href="#receive-a-partial-payment-through-the-bank-statement" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Puede ingresar en Odoo sus estados de cuenta bancarios de forma manual, o puede importarlos desde un archivo csv o desde otros formatos predefinidos de acuerdo a la localización de su contabilidad.</p>
-<p>Cree un estado de cuenta bancario desde el tablero de Contabilidad con el diario relacionado e ingrese un importe de $100.</p>
-<img alt="../../../_images/pago.png" src="../../../_images/pago.png" />
+<img alt="Tablero de asientos contables y conciliación" class="align-center" src="../../../_images/tablero_contabilidad.png" />
 <hr class="docutils" />
 <p>display «You have outstanding payments for this customer. You can
 reconcile them to pay this invoice. «</p>
 <p>the invoice.</p>
-<hr class="docutils" />
-<p>Therefore, collectors must make every effort to collect money and
-collect it faster.</p>
-<p>to pay their outstanding invoices, you can define different actions
-depending on how severely overdue the customer is. These actions are
-bundled into follow-up levels that are triggered when the due date of an
-invoice has passed a certain number of days. If there are other overdue
-invoices for the same customer, the actions of the most overdue invoice
-will be executed.</p>
-<p>you will see the follow-up message and all overdue invoices.</p>
-<span class="target" id="customer-invoices-aging-report"></span><hr class="docutils" />
-<p>collector to understand the customer credit issues, and to prioritize
-their work.</p>
-<p>your collection efforts.</p>
-<hr class="docutils" />
-<p>Ultimately, this gives you a clear image of your Net Profit and Loss. It
-is sometimes referred to as the «Income Statement» or «Statement of
-Revenues and Expenses.»</p>
-<hr class="docutils" />
-<p>assets and equity at a specific moment in time.</p>
+</section><section id="payment-followup">
+<h3>Seguimiento de pagos<a class="headerlink" href="#payment-followup" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Hay una tendencia creciente de clientes que pagan cada vez más tarde. Además, los recaudadores deben realizar todo tipo de esfuerzos para cobrar cada vez más rápido.</p>
+<p>Odoo le ayudará a definir su estrategia de seguimiento. Para recordarle a los clientes pagar sus facturas pendientes, puede definir diferentes acciones dependiendo de que tan atrasado está el pago. Estas acciones son un conjunto de niveles de seguimiento que se activan cuando la fecha de vencimiento de una factura ha sobrepasado un cierto número de días. Si hay otras facturas pendientes del mismo cliente, se ejecutarán las acciones de la factura más vencida.</p>
+<p>_customer-invoices/aging-report:</p>
+</section><section id="customer-aging-report">
+<h4>Reporte de antigüedad del cliente:<a class="headerlink" href="#customer-aging-report" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Use the Open Items Report to determine which customers have outstanding payments and initiate your
+collection process.</p>
+</section><section id="profit-and-loss">
+<h3>Estado de resultados<a class="headerlink" href="#profit-and-loss" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El estado de resultados muestra los detalles de sus ingresos y gastos. En última instancia, este le da una imagen clara de sus pérdidas y ganancias netas. Algunas veces se refieren a él como «Estado de ingresos» o «Estado de ingresos y gastos.»</p>
+<img alt="../../../_images/balance_perdidas_ganancias.png" src="../../../_images/balance_perdidas_ganancias.png" />
+</section><section id="balance-sheet">
+<h3>Balance general<a class="headerlink" href="#balance-sheet" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El balance general resume los activos, pasivos y capital de su empresa en un punto específico del tiempo.</p>
+<img alt="../../../_images/balance_situacion_1.png" src="../../../_images/balance_situacion_1.png" />
+<img alt="../../../_images/balance_situacion_2.png" src="../../../_images/balance_situacion_2.png" />
 <p>method, you should expect a decrease in account «Current Assets» once
 the material has been shipped to the customer.</p>
 <div class="toctree-wrapper compound">
@@ -640,6 +609,12 @@ the material has been shipped to the customer.</p>
 <li><a class="reference internal" href="#send-the-invoice-to-customer">Enviar la factura al cliente</a></li>
 <li><a class="reference internal" href="#payment">Pagos</a></li>
 <li><a class="reference internal" href="#receive-a-partial-payment-through-the-bank-statement">Recibir un pago parcial a través del estado de cuenta bancario</a></li>
+<li><a class="reference internal" href="#payment-followup">Seguimiento de pagos</a><ul>
+<li><a class="reference internal" href="#customer-aging-report">Reporte de antigüedad del cliente:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#profit-and-loss">Estado de resultados</a></li>
+<li><a class="reference internal" href="#balance-sheet">Balance general</a></li>
 </ul>
 </li>
 </ul>

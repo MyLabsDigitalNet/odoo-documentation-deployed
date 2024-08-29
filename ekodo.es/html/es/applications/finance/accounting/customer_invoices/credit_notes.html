@@ -212,7 +212,6 @@
 <li><a class="reference internal" href="#full-refund-and-new-draft-invoice">Reembolso completo y nuevo borrador de factura</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#issue-a-debit-note">Emitir nota de débito</a></li>
 <li><a class="reference internal" href="#record-a-vendor-refund">Registrar un reembolso de proveedor</a></li>
 <li><a class="reference internal" href="#record-a-debit-note">Registrar una nota de débito</a></li>
 <li><a class="reference internal" href="#journal-entries">Asientos contables</a></li>
@@ -485,6 +484,7 @@ Nota</p><p>Las notas de débito o crédito son la única manera legal de cancela
 <h2>Emitir nota de crédito<a class="headerlink" href="#issue-a-credit-note" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para crear una nota de crédito nueva desde cero, vaya a <span class="menuselection">Contabildad ‣ Clientes ‣ Notas de crédito</span> y haga clic en <span class="guilabel">Crear</span>. El formulario de la nota de crédito funciona de la misma forma que el formulario de una factura.</p>
 <p>Sin embargo, en la mayoría de los casos las notas de crédito se crean directamente a partir de las facturas relacionadas. Para hacerlo, vaya a <span class="menuselection">Contabilidad ‣ Clientes ‣ Facturas</span>, abra la <strong>factura de cliente</strong> relacionada y haga clic en <span class="guilabel">Agregar nota de crédito</span>.</p>
+<img alt="Ejemplo de factura rectificativa" class="align-center" src="../../../../_images/factura_rectificativa.png" />
 <p>Puede escoger entre tres opciones:</p>
 <blockquote>
 <div><ul class="simple">
@@ -495,7 +495,8 @@ Nota</p><p>Las notas de débito o crédito son la única manera legal de cancela
 </div></blockquote>
 <div class="alert alert-primary">
 <p class="alert-title">
-Nota</p><p>La secuencia de una nota de crédito empieza con <code class="o_code docutils literal notranslate"><span class="pre">R</span></code> seguida por el número del documento relacionado (por ejemplo, RINV/2019/0004 está relacionada a la factura INV/2019/0004).</p>
+Nota</p><p>A credit note sequence starts with <code class="o_code docutils literal notranslate"><span class="pre">R</span></code> and is followed by the number of the related document
+(e.g., RINV/2024/0003 is related to the invoice INV/2024/0003).</p>
 </div>
 </section><section id="partial-refund">
 <h3>Reembolso parcial<a class="headerlink" href="#partial-refund" title="Enlazar permanentemente con este título">¶</a></h3>
@@ -507,15 +508,15 @@ Nota</p><p>Esta es la única opción para facturas que ya estén marcadas como <
 </section><section id="full-refund">
 <h3>Reembolso completo<a class="headerlink" href="#full-refund" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando selecciona la opción <span class="guilabel">Reembolso completo</span> Odoo crea una nota de crédito, la valida en automático y la concilia con la factura relacionada.</p>
-<img alt="Nota de crédito de reembolso completo." src="../../../../_images/reembolso_completo.png" />
+<img alt="Nota de crédito de reembolso completo." src="../../../../_images/reembolso_completo_1.png" />
 <p>Esta es la opción que debe elegir para realizar un reembolso completo o si desea <strong>cancelar</strong> una factura <em>validada</em>.</p>
 </section><section id="full-refund-and-new-draft-invoice">
 <h3>Reembolso completo y nuevo borrador de factura<a class="headerlink" href="#full-refund-and-new-draft-invoice" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando selecciona la opción <span class="guilabel">Reembolso completo y nuevo borrador de factura</span>, Odoo crea una nota de crédito, la valida en automático, la concilia con la factura relacionada y abre un nuevo borrador de factura que ya tendrá los mismos detalles que la factura original.</p>
 <p>Esta es la opción para <strong>modificar</strong> el contenido de una factura <em>validada</em>.</p>
-</section><section id="issue-a-debit-note">
-<h2>Emitir nota de débito<a class="headerlink" href="#issue-a-debit-note" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Para crear una nota de débito desde cero, vaya a <span class="menuselection">Contabilidad ‣ Clientes ‣ Facturas</span> o haga clic en la factura por la que quiere emitir la nota de débito. En la vista de formulario de la factura, haga clic en <span class="guilabel">Agregar nota de débito</span>, llena la información y haga clic en <span class="guilabel">Crear</span>.</p>
+<hr class="docutils" />
+<p>Invoices` or by clicking on the related invoice you wish to issue a debit note for. On the invoice
+form view, click <span class="guilabel">Add debit note</span>, fill in the information, and click <span class="guilabel">Create</span>.</p>
 </section><section id="record-a-vendor-refund">
 <h2>Registrar un reembolso de proveedor<a class="headerlink" href="#record-a-vendor-refund" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Los <strong>reembolsos a proveedores</strong> se registran de la misma manera que las notas de crédito:</p>
@@ -527,13 +528,6 @@ Nota</p><p>Esta es la única opción para facturas que ya estén marcadas como <
 </section><section id="journal-entries">
 <h2>Asientos contables<a class="headerlink" href="#journal-entries" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Emitir una nota de débito o de crédito desde una factura resulta en la creación de un <strong>asiento de reversión</strong> que elimina todos los apuntes que se generaron a partir de la factura original.</p>
-<div class="alert alert-success">
-<p class="alert-title">
-Example</p><p>El asiento de diario de una factura:</p>
-<img alt="Asiento de factura." src="../../../../_images/asiento_factura_2.png" />
-<p>Y aquí está el asiento de la nota de crédito generado para anular la factura original anterior:</p>
-<img alt="El asiento de la nota de crédito revierte el asiento de la factura." src="../../../../_images/asiento_factura.png" />
-</div>
 </section>
 
                     </div>
@@ -550,7 +544,6 @@ Example</p><p>El asiento de diario de una factura:</p>
 <li><a class="reference internal" href="#full-refund-and-new-draft-invoice">Reembolso completo y nuevo borrador de factura</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#issue-a-debit-note">Emitir nota de débito</a></li>
 <li><a class="reference internal" href="#record-a-vendor-refund">Registrar un reembolso de proveedor</a></li>
 <li><a class="reference internal" href="#record-a-debit-note">Registrar una nota de débito</a></li>
 <li><a class="reference internal" href="#journal-entries">Asientos contables</a></li>
