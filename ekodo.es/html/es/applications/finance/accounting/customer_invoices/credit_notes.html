@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Notas de crédito y reembolsos &#8212; documentación de Odoo - 16.0</title>
+    <title>Factura de Abono y reembolsos &#8212; documentación de Odoo - 16.0</title>
     
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/style.css" />
@@ -136,7 +136,7 @@
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="overview.html">Procesos de facturación</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="customer_addresses.html">Direcciones de entrega y de facturación</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="terms_conditions.html">Términos y condiciones predeterminados</a></li>
-<li class="toctree-l5 current o_menu_applications_finance_accounting_customer_invoices_"><a class="current reference internal" href="#">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 current o_menu_applications_finance_accounting_customer_invoices_"><a class="current reference internal" href="#">Factura de Abono y reembolsos</a></li>
 </ul>
 </li>
 <li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../vendor_bills.html">Facturas de proveedor</a><ul>
@@ -214,8 +214,8 @@
                 <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
     <h5>En esta página</h5>
     <ul>
-<li><a class="reference internal" href="#">Notas de crédito y reembolsos</a><ul>
-<li><a class="reference internal" href="#issue-a-credit-note">Emitir nota de crédito</a><ul>
+<li><a class="reference internal" href="#">Factura de Abono y reembolsos</a><ul>
+<li><a class="reference internal" href="#issue-a-credit-note">Emitir una Factura de Abono</a><ul>
 <li><a class="reference internal" href="#partial-refund">Reembolso parcial</a></li>
 <li><a class="reference internal" href="#full-refund">Reembolso completo</a></li>
 <li><a class="reference internal" href="#full-refund-and-new-draft-invoice">Reembolso completo y nuevo borrador de factura</a></li>
@@ -334,7 +334,7 @@
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="overview.html">Procesos de facturación</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="customer_addresses.html">Direcciones de entrega y de facturación</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="terms_conditions.html">Términos y condiciones predeterminados</a></li>
-<li class="toctree-l5 current o_menu_applications_finance_accounting_customer_invoices_"><a class="current reference internal" href="#">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 current o_menu_applications_finance_accounting_customer_invoices_"><a class="current reference internal" href="#">Factura de Abono y reembolsos</a></li>
 </ul>
 </li>
 <li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../vendor_bills.html">Facturas de proveedor</a><ul>
@@ -474,7 +474,7 @@
           <li class="nav-item nav-item-2"><a href="../../../finance.html" >Finanzas</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="../../accounting.html" >Contabilidad y facturación</a> &#187;</li>
           <li class="nav-item nav-item-4"><a href="../customer_invoices.html" accesskey="U">Facturas de cliente</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Notas de crédito y reembolsos</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Factura de Abono y reembolsos</a></li> 
       </ul>
     </div>
     <div id="wrap">
@@ -483,9 +483,9 @@
                 <article id="o_content" class="doc-body">
                     <div role="main"> 
   <section id="credit-notes-and-refunds">
-<h1>Notas de crédito y reembolsos<a class="headerlink" href="#credit-notes-and-refunds" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>Una nota de crédito o de débito es un documento que se le da a un cliente en donde se le notifica que se le ha <em>abonado o cargado</em> una cantidad en específico.</p>
-<p>Muchos casos de uso pueden resultar en una nota de crédito, por ejemplo:</p>
+<h1>Factura de Abono y reembolsos<a class="headerlink" href="#credit-notes-and-refunds" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Una Factura de Abono es un documento que se le da a un cliente en donde se le notifica que se le ha <em>abonado o cargado</em> una cantidad en específico.</p>
+<p>Muchos casos de uso pueden resultar en una factura de abono, por ejemplo:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>un error en la factura</p></li>
@@ -496,10 +496,10 @@
 <p>Las notas de débito son las menos comunes, pero normalmente se usan para dar seguimiento a las deudas (ya sea de clientes o a proveedores) que surgen cuando se hacen modificaciones a facturas que ya se habían confirmado.</p>
 <div class="alert alert-primary">
 <p class="alert-title">
-Nota</p><p>Las notas de débito o crédito son la única manera legal de cancelar, reembolsar o modificar una factura que ya está validada. No olvide <strong>registrar el pago</strong> después si necesita reembolsar el dinero del cliente, o valide la  <a class="reference internal" href="../../../sales/sales/products_prices/returns.html"><span class="doc">return</span></a> devolución si se regresó un producto.</p>
+Nota</p><p>Las facturas de abono o notas de cargo son la única manera legal de cancelar, reembolsar o modificar una factura que ya está validada. No olvide <strong>registrar el pago</strong> después si necesita reembolsar el dinero del cliente, o valide la <a class="reference internal" href="../../../sales/sales/products_prices/returns.html"><span class="doc">return</span></a> devolución si se regresó un producto.</p>
 </div>
 </section><section id="issue-a-credit-note">
-<h2>Emitir nota de crédito<a class="headerlink" href="#issue-a-credit-note" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Emitir una Factura de Abono<a class="headerlink" href="#issue-a-credit-note" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para crear una nota de crédito nueva desde cero, vaya a <span class="menuselection">Contabildad ‣ Clientes ‣ Notas de crédito</span> y haga clic en <span class="guilabel">Crear</span>. El formulario de la nota de crédito funciona de la misma forma que el formulario de una factura.</p>
 <p>Sin embargo, en la mayoría de los casos las notas de crédito se crean directamente a partir de las facturas relacionadas. Para hacerlo, vaya a <span class="menuselection">Contabilidad ‣ Clientes ‣ Facturas</span>, abra la <strong>factura de cliente</strong> relacionada y haga clic en <span class="guilabel">Agregar nota de crédito</span>.</p>
 <img alt="Ejemplo de factura rectificativa" class="align-center" src="../../../../_images/factura_rectificativa.png" />
@@ -533,7 +533,7 @@ Nota</p><p>Esta es la única opción para facturas que ya estén marcadas como <
 <p>Esta es la opción para <strong>modificar</strong> el contenido de una factura <em>validada</em>.</p>
 </section><section id="record-a-vendor-refund">
 <h2>Registrar un reembolso de proveedor<a class="headerlink" href="#record-a-vendor-refund" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Los <strong>reembolsos a proveedores</strong> se registran de la misma manera que las notas de crédito:</p>
+<p>Los <strong>reembolsos a proveedores</strong> se registran de la misma manera que las facturas de abono:</p>
 <p>Para crear una nota de crédito desde cero tiene dos opciones. La primera opción es ir a <span class="menuselection">Contabilidad ‣ Proveedores ‣ Reembolsos</span> y haga clic en <span class="guilabel">Crear</span>. La segunda opción es abrir la <strong>factura del proveedor</strong> y haga clic en <span class="guilabel">Agregar nota de crédito</span>.</p>
 </section><section id="record-a-debit-note">
 <h2>Registrar una nota de débito<a class="headerlink" href="#record-a-debit-note" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -551,8 +551,8 @@ Nota</p><p>Esta es la única opción para facturas que ya estén marcadas como <
             <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
     <h5>En esta página</h5>
     <ul>
-<li><a class="reference internal" href="#">Notas de crédito y reembolsos</a><ul>
-<li><a class="reference internal" href="#issue-a-credit-note">Emitir nota de crédito</a><ul>
+<li><a class="reference internal" href="#">Factura de Abono y reembolsos</a><ul>
+<li><a class="reference internal" href="#issue-a-credit-note">Emitir una Factura de Abono</a><ul>
 <li><a class="reference internal" href="#partial-refund">Reembolso parcial</a></li>
 <li><a class="reference internal" href="#full-refund">Reembolso completo</a></li>
 <li><a class="reference internal" href="#full-refund-and-new-draft-invoice">Reembolso completo y nuevo borrador de factura</a></li>
@@ -600,7 +600,7 @@ Nota</p><p>Esta es la única opción para facturas que ya estén marcadas como <
           <li class="nav-item nav-item-2"><a href="../../../finance.html" >Finanzas</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="../../accounting.html" >Contabilidad y facturación</a> &#187;</li>
           <li class="nav-item nav-item-4"><a href="../customer_invoices.html" >Facturas de cliente</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Notas de crédito y reembolsos</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Factura de Abono y reembolsos</a></li> 
       </ul>
     </div>
   </body>

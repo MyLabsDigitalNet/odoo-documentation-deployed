@@ -29,7 +29,7 @@
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
     <link rel="next" title="Activos no circulantes y fijos" href="vendor_bills/assets.html" />
-    <link rel="prev" title="Notas de crédito y reembolsos" href="customer_invoices/credit_notes.html" /> 
+    <link rel="prev" title="Factura de Abono y reembolsos" href="customer_invoices/credit_notes.html" /> 
   </head><body>
     <noscript>
         <nav class="o_side_nav border-end">
@@ -136,7 +136,7 @@
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="customer_invoices/overview.html">Procesos de facturación</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
-<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="customer_invoices/credit_notes.html">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="customer_invoices/credit_notes.html">Factura de Abono y reembolsos</a></li>
 </ul>
 </li>
 <li class="toctree-l4 current o_menu_applications_finance_accounting_"><a class="current reference internal" href="#">Facturas de proveedor</a><ul>
@@ -334,7 +334,7 @@
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="customer_invoices/overview.html">Procesos de facturación</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
 <li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
-<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="customer_invoices/credit_notes.html">Notas de crédito y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="customer_invoices/credit_notes.html">Factura de Abono y reembolsos</a></li>
 </ul>
 </li>
 <li class="toctree-l4 current o_menu_applications_finance_accounting_"><a class="current reference internal" href="#">Facturas de proveedor</a><ul>
@@ -467,7 +467,7 @@
           <a href="vendor_bills/assets.html" title="Activos no circulantes y fijos"
              accesskey="N">siguiente</a> |</li>
         <li class="right" >
-          <a href="customer_invoices/credit_notes.html" title="Notas de crédito y reembolsos"
+          <a href="customer_invoices/credit_notes.html" title="Factura de Abono y reembolsos"
              accesskey="P">anterior</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../../applications.html" >Documentos para el usuario</a> &#187;</li>
@@ -493,9 +493,12 @@ Ver también</p><ul class="simple">
 </div>
 </section><section id="bill-creation">
 <h2>Creación de factura<a class="headerlink" href="#bill-creation" title="Enlazar permanentemente con este título">¶</a></h2>
+<img alt="Check odoo menu" class="align-center" src="../../../_images/proveedores.png" />
+<img alt="Create a new bill" class="align-center" src="../../../_images/menu_facturas.png" />
 </section><section id="manually">
 <h3>Manualmente<a class="headerlink" href="#manually" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Para crear una factura de proveedor de forma manual, vaya a <span class="menuselection">Contabilidad ‣ Proveedores ‣ Facturas</span> y haga clic en <span class="guilabel">Crear</span>.</p>
+<img alt="Manually bill" class="align-center" src="../../../_images/factura_manual.png" />
 </section><section id="automatically">
 <h3>Automáticamente<a class="headerlink" href="#automatically" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Se pueden crear de forma automática las facturas de proveedores, solo se debe <strong>enviar un correo electrónico</strong> a un <a class="reference internal" href="vendor_bills/invoice_digitization.html#invoice-digitization-email-alias"><span class="std std-ref">seudónimo de correo electrónico</span></a> vinculado al diario de compras, o <strong>subir un PDF</strong> en <span class="menuselection">Contabilidad ‣ Proveedores ‣ Facturas</span> y, luego, hacer clic en <span class="guilabel">subir</span>.</p>
@@ -504,27 +507,56 @@ Ver también</p><ul class="simple">
 <p>Aunque la factura se cree de forma manual o automática, debe asegurarse de que los siguientes campos se hayan completado correctamente:</p>
 <ul class="simple">
 <li><p><span class="guilabel">Proveedor</span>: Odoo completa la información registrada en órdenes de compra o facturas del proveedor.</p></li>
-<li><p><span class="guilabel">Referencia de factura</span>: añade la referencia de la orden de venta y se usa para hacer la <a class="reference internal" href="payments.html#payments-matching"><span class="std std-ref">conciliación</span></a> al recibir los productos.</p></li>
-<li><p><span class="guilabel">Autocompletar</span>: seleccione una factura u orden de compra para que el documento se complete de forma automática. Debe haber completado el campo de <span class="guilabel">proveedor</span> antes de este campo.</p></li>
-<li><p><span class="guilabel">Fecha de factura</span>: es la fecha de la emisión de la factura.</p></li>
-<li><p><span class="guilabel">Fecha contable</span>: es la fecha en la cuál se registra el documento en su contabilidad.</p></li>
-<li><p><span class="guilabel">Referencia de pago</span>: se indica automáticamente en el campo <span class="guilabel">Memo</span> al registrar un pago.</p></li>
-<li><p><span class="guilabel">Banco destinatario</span>: indica el número de cuenta al que se tiene que hacer el pago.</p></li>
+<li><p><span class="guilabel">Bill Reference</span>: Add the sales order reference provided by the vendor and is used to do
+the <a class="reference internal" href="payments.html#payments-matching"><span class="std std-ref">matching</span></a> When you receive the products.</p></li>
+<li><p><span class="guilabel">Auto-Complete</span>: Select a past bill/purchase order to automatically complete the
+document. The <span class="guilabel">Vendor</span> Field should be completed prior to completing this field.</p></li>
+<li><p><span class="guilabel">Bill Date</span>: Is the issuance date of the document.</p></li>
+<li><p><span class="guilabel">Accounting Date</span>: Is the date on which the document is registered in your accounting.</p></li>
+<li><p><span class="guilabel">Payment Reference</span>: When registering the payment, it is automatically indicated in the
+<span class="guilabel">Memo</span> field.</p></li>
+<li><p><span class="guilabel">Recipient Bank</span>: To indicate to which account number the payment has to be made.</p></li>
 <li><p><span class="guilabel">Fecha de vencimiento</span> o <span class="guilabel">Términos</span> de la factura a pagar.</p></li>
-<li><p><span class="guilabel">Diario</span>: selecciona el diario en el cuál se registrará la factura y su <a class="reference internal" href="get_started/multi_currency.html"><span class="doc">divisa</span></a>.</p></li>
+<li><p><span class="guilabel">Journal</span>: Select in which journal the bill should be recorded and the <a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Currency</span></a>.</p></li>
+<li><p><span class="guilabel">Product</span>: We indicate where we want to categorize the invoice lines; this must be
+pre-configured beforehand.</p></li>
+<li><p><span class="guilabel">Label</span>: A brief summary of the invoice line.</p></li>
+<li><p><span class="guilabel">Account</span>: When specifying the product, Odoo automatically fills this information.</p></li>
+<li><p><span class="guilabel">Asset Category</span>: Only for asset invoices.</p></li>
+<li><p><span class="guilabel">Price</span>: The taxable base of the product line.</p></li>
+<li><p><span class="guilabel">Tax</span>: Automatically populated, as it will be pre-configured when specifying the product.</p></li>
+<li><p><span class="guilabel">Quantity</span>: The unit of the product line (in case it needs to be itemized).</p></li>
+<li><p><span class="guilabel">Price</span>: The unit price of the product.</p></li>
 </ul>
-<img alt="Borrador de factura en Odoo" class="align-center" src="../../../_images/borrador_factura1.png" />
+<img alt="Borrador de nueva factura en Odoo" class="align-center" src="../../../_images/borrador_nueva_factura.png" />
 </section><section id="bill-confirmation">
 <h2>Confirmación de la factura<a class="headerlink" href="#bill-confirmation" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Haga clic en <span class="guilabel">confirmar</span> cuando termine un documento. El estado de su documento cambiará a <span class="guilabel">Publicado</span> y se creará un asiento de diario según la configuración de la factura.</p>
 <div class="alert alert-primary">
 <p class="alert-title">
-Nota</p><p>Una vez que se confirme no podrá editarlo. Si desea hacer algún cambio, tendrá que hacer clic <span class="guilabel">Restablecer a borrador</span>.</p>
+Nota</p><blockquote>
+<div><p>Una vez que se confirme no podrá editarlo. Si desea hacer algún cambio, tendrá que hacer clic <span class="guilabel">Restablecer a borrador</span>.</p>
+</div></blockquote>
+<img alt="Reestablece a borrador una factura" class="align-center" src="../../../_images/reestablecer_borrador.png" />
 </div>
 </section><section id="bill-payment">
 <h2>Pago de la factura<a class="headerlink" href="#bill-payment" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Una vez pagada la factura del proveedor, haga clic en <span class="guilabel">Registrar pago</span>, esto hará que aparezca una nueva ventana.</p>
-<p>Seleccione el <span class="guilabel">diario</span>, el <span class="guilabel">método de pago</span>, el <span class="guilabel">importe</span> a pagar (completo o parcial), y la <span class="guilabel">divisa</span>. Odoo completa el campo <span class="guilabel">Memo</span> de manera automática si la <span class="guilabel">referencia de pago</span> se estableció correctamente en la factura de proveedor; se recomienda que seleccione el número de factura de proveedor como referencia.</p>
+<p>We have two ways to reconcile the supplier’s payment:</p>
+<p>1. By clicking on Register Payment, which will open a new window. Please note that in order to
+register the payment this way, it must be pre-configured accordingly.</p>
+<img alt="Register a bill payment" class="align-center" src="../../../_images/registrar_nuevo_pago.png" />
+<p>We provide the bank journal, the payment method, the bank account, the amount to be paid
+(full or partial), the payment date, and the memo, which includes the invoice with its internal
+reference.</p>
+<p>When we click Create Payment, the invoice will be confirmed, and a banner with the message
+«In payment process» will appear until the invoice is reconciled.</p>
+<img alt="Register a bill payment" class="align-center" src="../../../_images/pagado.png" />
+<img alt="Register a bill payment" class="align-center" src="../../../_images/base_imponible.png" />
+<ol class="arabic simple" start="2">
+<li><p>Another way is to reconcile the invoices directly from the bank</p></li>
+</ol>
+<img alt="Reconciled payment" class="align-center" src="../../../_images/conciliar_pago.png" />
+<p>This is the recommended method as it will directly reconcile the supplier’s invoice with the bank.</p>
 </section><section id="aged-payable-report">
 <h2>Informe de cuentas antiguas por pagar<a class="headerlink" href="#aged-payable-report" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Si desea obtener una vista general de sus facturas de proveedor pendientes y sus fechas de vencimiento correspondientes, use el <strong>informe de cuentas antiguas por pagar</strong>. Vaya a <span class="menuselection">Contabilidad ‣ Informes ‣ Informe de contacto: Cuenta antigua por pagar</span>.</p>
@@ -593,7 +625,7 @@ Nota</p><ul class="simple">
           <a href="vendor_bills/assets.html" title="Activos no circulantes y fijos"
              >siguiente</a> |</li>
         <li class="right" >
-          <a href="customer_invoices/credit_notes.html" title="Notas de crédito y reembolsos"
+          <a href="customer_invoices/credit_notes.html" title="Factura de Abono y reembolsos"
              >anterior</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../../applications.html" >Documentos para el usuario</a> &#187;</li>

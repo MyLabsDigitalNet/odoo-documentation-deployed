@@ -494,10 +494,13 @@ See also</p><ul class="simple">
 </div>
 </section><section id="bill-creation">
 <h2>Bill creation<a class="headerlink" href="#bill-creation" title="Permalink to this headline">¶</a></h2>
+<img alt="Check odoo menu" class="align-center" src="../../../_images/proveedores.png" />
+<img alt="Create a new bill" class="align-center" src="../../../_images/menu_facturas.png" />
 </section><section id="manually">
 <h3>Manually<a class="headerlink" href="#manually" title="Permalink to this headline">¶</a></h3>
 <p>Create a vendor bill manually by going to <span class="menuselection">Accounting ‣ Vendors ‣ Bills</span> and
 clicking <span class="guilabel">Create</span>.</p>
+<img alt="Manually bill" class="align-center" src="../../../_images/factura_manual.png" />
 </section><section id="automatically">
 <h3>Automatically<a class="headerlink" href="#automatically" title="Permalink to this headline">¶</a></h3>
 <p>Vendor bills can be automatically created by <strong>sending an email</strong> to an <a class="reference internal" href="vendor_bills/invoice_digitization.html#invoice-digitization-email-alias"><span class="std std-ref">email alias</span></a> associated with the purchase journal, or by <strong>uploading a PDF</strong>
@@ -509,35 +512,58 @@ appropriately completed:</p>
 <ul class="simple">
 <li><p><span class="guilabel">Vendor</span>: Odoo automatically fills some information based on the vendor’s registered
 information, previous purchase orders, or bills.</p></li>
-<li><p><span class="guilabel">Bill Reference</span>: add the sales order reference provided by the vendor and is used to do
-the <a class="reference internal" href="payments.html#payments-matching"><span class="std std-ref">matching</span></a> when you receive the products.</p></li>
-<li><p><span class="guilabel">Auto-Complete</span>: select a past bill/purchase order to automatically complete the
-document. The <span class="guilabel">Vendor</span> field should be completed prior to completing this field.</p></li>
-<li><p><span class="guilabel">Bill Date</span>: is the issuance date of the document.</p></li>
-<li><p><span class="guilabel">Accounting Date</span>: is the date on which the document is registered in your accounting.</p></li>
-<li><p><span class="guilabel">Payment Reference</span>: when registering the payment, it is automatically indicated in the
+<li><p><span class="guilabel">Bill Reference</span>: Add the sales order reference provided by the vendor and is used to do
+the <a class="reference internal" href="payments.html#payments-matching"><span class="std std-ref">matching</span></a> When you receive the products.</p></li>
+<li><p><span class="guilabel">Auto-Complete</span>: Select a past bill/purchase order to automatically complete the
+document. The <span class="guilabel">Vendor</span> Field should be completed prior to completing this field.</p></li>
+<li><p><span class="guilabel">Bill Date</span>: Is the issuance date of the document.</p></li>
+<li><p><span class="guilabel">Accounting Date</span>: Is the date on which the document is registered in your accounting.</p></li>
+<li><p><span class="guilabel">Payment Reference</span>: When registering the payment, it is automatically indicated in the
 <span class="guilabel">Memo</span> field.</p></li>
-<li><p><span class="guilabel">Recipient Bank</span>: to indicate to which account number the payment has to be made.</p></li>
+<li><p><span class="guilabel">Recipient Bank</span>: To indicate to which account number the payment has to be made.</p></li>
 <li><p><span class="guilabel">Due Date</span> or <span class="guilabel">Terms</span> to pay the bill.</p></li>
-<li><p><span class="guilabel">Journal</span>: select in which journal the bill should be recorded and the <a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Currency</span></a>.</p></li>
+<li><p><span class="guilabel">Journal</span>: Select in which journal the bill should be recorded and the <a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Currency</span></a>.</p></li>
+<li><p><span class="guilabel">Product</span>: We indicate where we want to categorize the invoice lines; this must be
+pre-configured beforehand.</p></li>
+<li><p><span class="guilabel">Label</span>: A brief summary of the invoice line.</p></li>
+<li><p><span class="guilabel">Account</span>: When specifying the product, Odoo automatically fills this information.</p></li>
+<li><p><span class="guilabel">Asset Category</span>: Only for asset invoices.</p></li>
+<li><p><span class="guilabel">Price</span>: The taxable base of the product line.</p></li>
+<li><p><span class="guilabel">Tax</span>: Automatically populated, as it will be pre-configured when specifying the product.</p></li>
+<li><p><span class="guilabel">Quantity</span>: The unit of the product line (in case it needs to be itemized).</p></li>
+<li><p><span class="guilabel">Price</span>: The unit price of the product.</p></li>
 </ul>
-<img alt="Borrador de factura en Odoo" class="align-center" src="../../../_images/borrador_factura1.png" />
+<img alt="Borrador de nueva factura en Odoo" class="align-center" src="../../../_images/borrador_nueva_factura.png" />
 </section><section id="bill-confirmation">
 <h2>Bill confirmation<a class="headerlink" href="#bill-confirmation" title="Permalink to this headline">¶</a></h2>
 <p>Click <span class="guilabel">Confirm</span> when the document is completed. The status of your document changes to
 <span class="guilabel">Posted</span> and a journal entry is generated based on the configuration on the invoice.</p>
 <div class="alert alert-primary">
 <p class="alert-title">
-Note</p><p>Once confirmed, it is no longer possible to update it. Click <span class="guilabel">Reset to draft</span> if
+Note</p><blockquote>
+<div><p>Once confirmed, it is no longer possible to update it. Click <span class="guilabel">Reset to draft</span> if
 changes are required.</p>
+</div></blockquote>
+<img alt="Reestablece a borrador una factura" class="align-center" src="../../../_images/reestablecer_borrador.png" />
 </div>
 </section><section id="bill-payment">
 <h2>Bill Payment<a class="headerlink" href="#bill-payment" title="Permalink to this headline">¶</a></h2>
-<p>Upon payment of the vendor bill, click on <span class="guilabel">Register Payment</span>. A new window pops up.</p>
-<p>Select the <span class="guilabel">Journal</span>, the <span class="guilabel">Payment Method</span>, the <span class="guilabel">Amount</span> you wish to
-pay (full or partial payment), and the <span class="guilabel">Currency</span>. Odoo fills the <span class="guilabel">Memo</span> field
-automatically if the <span class="guilabel">Payment Reference</span> has been set correctly in the vendor bill. If
-the field is empty, we recommend you select the vendor invoice number as a reference.</p>
+<p>We have two ways to reconcile the supplier’s payment:</p>
+<p>1. By clicking on Register Payment, which will open a new window. Please note that in order to
+register the payment this way, it must be pre-configured accordingly.</p>
+<img alt="Register a bill payment" class="align-center" src="../../../_images/registrar_nuevo_pago.png" />
+<p>We provide the bank journal, the payment method, the bank account, the amount to be paid
+(full or partial), the payment date, and the memo, which includes the invoice with its internal
+reference.</p>
+<p>When we click Create Payment, the invoice will be confirmed, and a banner with the message
+“In payment process” will appear until the invoice is reconciled.</p>
+<img alt="Register a bill payment" class="align-center" src="../../../_images/pagado.png" />
+<img alt="Register a bill payment" class="align-center" src="../../../_images/base_imponible.png" />
+<ol class="arabic simple" start="2">
+<li><p>Another way is to reconcile the invoices directly from the bank</p></li>
+</ol>
+<img alt="Reconciled payment" class="align-center" src="../../../_images/conciliar_pago.png" />
+<p>This is the recommended method as it will directly reconcile the supplier’s invoice with the bank.</p>
 </section><section id="aged-payable-report">
 <h2>Aged payable report<a class="headerlink" href="#aged-payable-report" title="Permalink to this headline">¶</a></h2>
 <p>To get an overview of your open vendor bills and their related due dates, you can use the

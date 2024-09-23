@@ -15,11 +15,23 @@ amounts on time.
 Bill creation
 =============
 
+.. image:: vendor_bills/proveedores.png
+   :align: center
+   :alt: Check odoo menu
+
+.. image:: vendor_bills/menu_facturas.png
+   :align: center
+   :alt: Create a new bill
+
 Manually
 --------
 
 Create a vendor bill manually by going to :menuselection:`Accounting --> Vendors --> Bills` and
 clicking :guilabel:`Create`.
+
+.. image:: vendor_bills/factura_manual.png
+   :align: center
+   :alt: Manually bill
 
 Automatically
 -------------
@@ -36,22 +48,31 @@ appropriately completed:
 
 - :guilabel:`Vendor`: Odoo automatically fills some information based on the vendor's registered
   information, previous purchase orders, or bills.
-- :guilabel:`Bill Reference`: add the sales order reference provided by the vendor and is used to do
-  the :ref:`matching <payments/matching>` when you receive the products.
-- :guilabel:`Auto-Complete`: select a past bill/purchase order to automatically complete the
-  document. The :guilabel:`Vendor` field should be completed prior to completing this field.
-- :guilabel:`Bill Date`: is the issuance date of the document.
-- :guilabel:`Accounting Date`: is the date on which the document is registered in your accounting.
-- :guilabel:`Payment Reference`: when registering the payment, it is automatically indicated in the
+- :guilabel:`Bill Reference`: Add the sales order reference provided by the vendor and is used to do
+  the :ref:`matching <payments/matching>` When you receive the products.
+- :guilabel:`Auto-Complete`: Select a past bill/purchase order to automatically complete the
+  document. The :guilabel:`Vendor` Field should be completed prior to completing this field.
+- :guilabel:`Bill Date`: Is the issuance date of the document.
+- :guilabel:`Accounting Date`: Is the date on which the document is registered in your accounting.
+- :guilabel:`Payment Reference`: When registering the payment, it is automatically indicated in the
   :guilabel:`Memo` field.
-- :guilabel:`Recipient Bank`: to indicate to which account number the payment has to be made.
+- :guilabel:`Recipient Bank`: To indicate to which account number the payment has to be made.
 - :guilabel:`Due Date` or :guilabel:`Terms` to pay the bill.
-- :guilabel:`Journal`: select in which journal the bill should be recorded and the :doc:`Currency
+- :guilabel:`Journal`: Select in which journal the bill should be recorded and the :doc:`Currency
   <get_started/multi_currency>`.
+- :guilabel:`Product`: We indicate where we want to categorize the invoice lines; this must be
+  pre-configured beforehand.
+- :guilabel:`Label`: A brief summary of the invoice line.
+- :guilabel:`Account`: When specifying the product, Odoo automatically fills this information.
+- :guilabel:`Asset Category`: Only for asset invoices.
+- :guilabel:`Price`: The taxable base of the product line.
+- :guilabel:`Tax`: Automatically populated, as it will be pre-configured when specifying the product.
+- :guilabel:`Quantity`: The unit of the product line (in case it needs to be itemized).
+- :guilabel:`Price`: The unit price of the product.
 
-.. image:: vendor_bills/borrador_factura.png
+.. image:: vendor_bills/borrador_nueva_factura.png
    :align: center
-   :alt: Borrador de factura en Odoo
+   :alt: Borrador de nueva factura en Odoo
 
 Bill confirmation
 =================
@@ -62,16 +83,45 @@ Click :guilabel:`Confirm` when the document is completed. The status of your doc
 .. note::
    Once confirmed, it is no longer possible to update it. Click :guilabel:`Reset to draft` if
    changes are required.
+  .. image:: vendor_bills/reestablecer_borrador.png
+   :align: center
+   :alt: Reestablece a borrador una factura
 
 Bill Payment
 ============
 
-Upon payment of the vendor bill, click on :guilabel:`Register Payment`. A new window pops up.
+We have two ways to reconcile the supplier's payment:
 
-Select the :guilabel:`Journal`, the :guilabel:`Payment Method`, the :guilabel:`Amount` you wish to
-pay (full or partial payment), and the :guilabel:`Currency`. Odoo fills the :guilabel:`Memo` field
-automatically if the :guilabel:`Payment Reference` has been set correctly in the vendor bill. If
-the field is empty, we recommend you select the vendor invoice number as a reference.
+1. By clicking on Register Payment, which will open a new window. Please note that in order to
+register the payment this way, it must be pre-configured accordingly.
+
+.. image:: vendor_bills/registrar_nuevo_pago.png
+   :align: center
+   :alt: Register a bill payment
+
+We provide the bank journal, the payment method, the bank account, the amount to be paid
+(full or partial), the payment date, and the memo, which includes the invoice with its internal 
+reference.
+
+When we click Create Payment, the invoice will be confirmed, and a banner with the message 
+"In payment process" will appear until the invoice is reconciled.
+
+.. image:: vendor_bills/pagado.png
+   :align: center
+   :alt: Register a bill payment
+
+.. image:: vendor_bills/base_imponible.png
+   :align: center
+   :alt: Register a bill payment
+
+2. Another way is to reconcile the invoices directly from the bank
+
+.. image:: vendor_bills/conciliar_pago.png
+   :align: center
+   :alt: Reconciled payment
+
+This is the recommended method as it will directly reconcile the supplier's invoice with the bank.
+
 
 Aged payable report
 ===================
