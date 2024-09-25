@@ -223,7 +223,7 @@
 <li><a class="reference internal" href="#bill-completion">Finalización de la factura</a></li>
 <li><a class="reference internal" href="#bill-confirmation">Confirmación de la factura</a></li>
 <li><a class="reference internal" href="#bill-payment">Pago de la factura</a></li>
-<li><a class="reference internal" href="#aged-payable-report">Informe de cuentas antiguas por pagar</a></li>
+<li><a class="reference internal" href="#aged-payable-report">Informe de partidas abiertas</a></li>
 </ul>
 </li>
 </ul>
@@ -507,26 +507,22 @@ Ver también</p><ul class="simple">
 <p>Aunque la factura se cree de forma manual o automática, debe asegurarse de que los siguientes campos se hayan completado correctamente:</p>
 <ul class="simple">
 <li><p><span class="guilabel">Proveedor</span>: Odoo completa la información registrada en órdenes de compra o facturas del proveedor.</p></li>
-<li><p><span class="guilabel">Bill Reference</span>: Add the sales order reference provided by the vendor and is used to do
-the <a class="reference internal" href="payments.html#payments-matching"><span class="std std-ref">matching</span></a> When you receive the products.</p></li>
-<li><p><span class="guilabel">Auto-Complete</span>: Select a past bill/purchase order to automatically complete the
-document. The <span class="guilabel">Vendor</span> Field should be completed prior to completing this field.</p></li>
-<li><p><span class="guilabel">Bill Date</span>: Is the issuance date of the document.</p></li>
-<li><p><span class="guilabel">Accounting Date</span>: Is the date on which the document is registered in your accounting.</p></li>
-<li><p><span class="guilabel">Payment Reference</span>: When registering the payment, it is automatically indicated in the
-<span class="guilabel">Memo</span> field.</p></li>
-<li><p><span class="guilabel">Recipient Bank</span>: To indicate to which account number the payment has to be made.</p></li>
+<li><p><span class="guilabel">Referencia de factura</span>: Número de orden de la factura del proveedor.</p></li>
+<li><p><span class="guilabel">Autocompletar</span>: Seleccione una factura para que el documento se complete de forma automática. Debe haber completado el campo de <span class="guilabel">proveedor</span> antes de este campo.</p></li>
+<li><p><span class="guilabel">Fecha de factura</span>: Es la fecha de la emisión de la factura del proveedor.</p></li>
+<li><p><span class="guilabel">Fecha contable</span>: Es la fecha en la que registramos la factura.</p></li>
+<li><p><span class="guilabel">Referencia de pago</span>: Es la forma de pago negociada con el proveedor, se indica automáticamente al registrar.</p></li>
+<li><p><span class="guilabel">Banco destinatario</span>: Indica el número de cuenta bancaria donde se va a realizar el pago, la cuenta bancaria del proveedor.</p></li>
 <li><p><span class="guilabel">Fecha de vencimiento</span> o <span class="guilabel">Términos</span> de la factura a pagar.</p></li>
-<li><p><span class="guilabel">Journal</span>: Select in which journal the bill should be recorded and the <a class="reference internal" href="get_started/multi_currency.html"><span class="doc">Currency</span></a>.</p></li>
-<li><p><span class="guilabel">Product</span>: We indicate where we want to categorize the invoice lines; this must be
-pre-configured beforehand.</p></li>
-<li><p><span class="guilabel">Label</span>: A brief summary of the invoice line.</p></li>
-<li><p><span class="guilabel">Account</span>: When specifying the product, Odoo automatically fills this information.</p></li>
-<li><p><span class="guilabel">Asset Category</span>: Only for asset invoices.</p></li>
-<li><p><span class="guilabel">Price</span>: The taxable base of the product line.</p></li>
-<li><p><span class="guilabel">Tax</span>: Automatically populated, as it will be pre-configured when specifying the product.</p></li>
-<li><p><span class="guilabel">Quantity</span>: The unit of the product line (in case it needs to be itemized).</p></li>
-<li><p><span class="guilabel">Price</span>: The unit price of the product.</p></li>
+<li><p><span class="guilabel">Diario</span>: Selecciona el diario donde se registrará la factura.</p></li>
+<li><p><span class="guilabel">Producto</span>: Informamos dónde queremos categorizar las líneas de la factura, previamente tiene que estar parametrizado.</p></li>
+<li><p><span class="guilabel">Etiqueta</span>: Pequeño resumen de la línea de la factura</p></li>
+<li><p><span class="guilabel">Cuenta</span>: Al informar el producto Odoo la informa automáticamente.</p></li>
+<li><p><span class="guilabel">Categoría del activo</span>: Sólo para facturas de activos.</p></li>
+<li><p><span class="guilabel">Precio</span>: Base imponible de la línea de producto.</p></li>
+<li><p><span class="guilabel">Impuesto</span>: Se informa automáticamente ya que estará previamente parametrizado al informar el producto.</p></li>
+<li><p><span class="guilabel">Cantidad</span>: Unidad de la línea de producto (en el caso de que se quiera desglosar).</p></li>
+<li><p><span class="guilabel">Precio</span>: Importe unitario del producto.</p></li>
 </ul>
 <img alt="Borrador de nueva factura en Odoo" class="align-center" src="../../../_images/borrador_nueva_factura.png" />
 </section><section id="bill-confirmation">
@@ -541,25 +537,21 @@ Nota</p><blockquote>
 </div>
 </section><section id="bill-payment">
 <h2>Pago de la factura<a class="headerlink" href="#bill-payment" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>We have two ways to reconcile the supplier’s payment:</p>
-<p>1. By clicking on Register Payment, which will open a new window. Please note that in order to
-register the payment this way, it must be pre-configured accordingly.</p>
+<p>Disponemos de dos formas de conciliar el pago del proveedor:</p>
+<p>1.- Haciendo clic en Registrar Pago, esto hará que aparezca una nueva ventana. Indicar, que para realizar el registro de esta manera debe de estar parametrizado para ello.</p>
 <img alt="Register a bill payment" class="align-center" src="../../../_images/registrar_nuevo_pago.png" />
-<p>We provide the bank journal, the payment method, the bank account, the amount to be paid
-(full or partial), the payment date, and the memo, which includes the invoice with its internal
-reference.</p>
-<p>When we click Create Payment, the invoice will be confirmed, and a banner with the message
-«In payment process» will appear until the invoice is reconciled.</p>
+<p>Informamos el Diario del banco, el método de pago, la cuenta bancaria, el importe a pagar (completo o parcial), la fecha en la que se ha realizado el pago y la Memo, la factura con referencia interna.</p>
+<p>Cuando pulsemos crear pago la factura quedaría confirmada aparecerá una cinta con el mensaje en proceso de pago hasta que se concilie la factura.</p>
 <img alt="Register a bill payment" class="align-center" src="../../../_images/pagado.png" />
 <img alt="Register a bill payment" class="align-center" src="../../../_images/base_imponible.png" />
 <ol class="arabic simple" start="2">
-<li><p>Another way is to reconcile the invoices directly from the bank</p></li>
+<li><p>2.- Otra manera es conciliar las facturas directamente desde el banco</p></li>
 </ol>
 <img alt="Reconciled payment" class="align-center" src="../../../_images/conciliar_pago.png" />
-<p>This is the recommended method as it will directly reconcile the supplier’s invoice with the bank.</p>
+<p>Es la manera recomendada ya que de esta forma se conciliará directamente con la factura del proveedor con el banco.</p>
 </section><section id="aged-payable-report">
-<h2>Informe de cuentas antiguas por pagar<a class="headerlink" href="#aged-payable-report" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Si desea obtener una vista general de sus facturas de proveedor pendientes y sus fechas de vencimiento correspondientes, use el <strong>informe de cuentas antiguas por pagar</strong>. Vaya a <span class="menuselection">Contabilidad ‣ Informes ‣ Informe de contacto: Cuenta antigua por pagar</span>.</p>
+<h2>Informe de partidas abiertas<a class="headerlink" href="#aged-payable-report" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si desea obtener una vista general de sus facturas de proveedor pendientes y sus fechas de vencimiento correspondientes, use el <strong>informe de partidas abiertas</strong>. Vaya a <span class="menuselection">Contabilidad ‣ Informes ‣ Informe de contacto: Cuenta antigua por pagar</span>.</p>
 <p>Haga clic en el nombre de un proveedor para ver la información de todas las facturas con pagos pendientes, su importe, fechas de vencimiento, etc.</p>
 <div class="alert alert-primary">
 <p class="alert-title">
@@ -592,7 +584,7 @@ Nota</p><ul class="simple">
 <li><a class="reference internal" href="#bill-completion">Finalización de la factura</a></li>
 <li><a class="reference internal" href="#bill-confirmation">Confirmación de la factura</a></li>
 <li><a class="reference internal" href="#bill-payment">Pago de la factura</a></li>
-<li><a class="reference internal" href="#aged-payable-report">Informe de cuentas antiguas por pagar</a></li>
+<li><a class="reference internal" href="#aged-payable-report">Informe de partidas abiertas</a></li>
 </ul>
 </li>
 </ul>
