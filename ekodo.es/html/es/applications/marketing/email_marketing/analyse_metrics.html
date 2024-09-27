@@ -1,0 +1,623 @@
+
+<!DOCTYPE html>
+
+<html lang="ES">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analyze metrics &#8212; documentación de Odoo - 16.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/utils.js"></script>
+    <script src="../../../_static/js/layout.js"></script>
+    <script src="../../../_static/js/menu.js"></script>
+    <script src="../../../_static/js/page_toc.js"></script>
+    <script src="../../../_static/js/switchers.js"></script>
+    <script src="../../../_static/translations.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+        <link rel="alternate" hreflang="x-default" href="https://ekodo.es/doc/applications/marketing/email_marketing/analyse_metrics.html" />
+    <link rel="canonical" href="https://ekodo.es/doc/applications/marketing/email_marketing/analyse_metrics.html" />
+    
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+  </head><body>
+    <noscript>
+        <nav class="o_side_nav border-end">
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">Documentos para el usuario</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Fundamentos de Odoo</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Actividades</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Informes</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Buscar y filtrar registros</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contactos</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Exportar e importar datos</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">Compras dentro de la aplicación (IAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_sales"><a class="reference internal" href="#">Ventas</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_crm"><a class="reference internal" href="../../sales/crm.html">CRM</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_crm_pipeline"><a class="reference internal" href="#">Organizar un flujo</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_lost_opportunities"><a class="reference internal" href="../../sales/crm/pipeline/lost_opportunities.html">Gestión de oportunidades perdidas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_multi_sales_team"><a class="reference internal" href="../../sales/crm/pipeline/multi_sales_team.html">Varios equipos de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_acquire_leads"><a class="reference internal" href="#">Obtener leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_convert"><a class="reference internal" href="../../sales/crm/acquire_leads/convert.html">Convertir leads en oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_generate_leads"><a class="reference internal" href="../../sales/crm/acquire_leads/generate_leads.html">Generar leads y oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_send_quotes"><a class="reference internal" href="../../sales/crm/acquire_leads/send_quotes.html">Envíe presupuestos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_lead_mining"><a class="reference internal" href="../../sales/crm/acquire_leads/lead_mining.html">Minado de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_track_leads"><a class="reference internal" href="#">Asignar y rastrear leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_track_leads_lead_scoring"><a class="reference internal" href="../../sales/crm/track_leads/lead_scoring.html">Asignación de leads con la puntuación predictiva de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_performance"><a class="reference internal" href="#">Analizar el rendimiento</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_performance_win_loss"><a class="reference internal" href="../../sales/crm/performance/win_loss.html">Revise la relación ganancia/pérdida</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_optimize"><a class="reference internal" href="#">Mejoras para su trabajo diario</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_partner_autocomplete"><a class="reference internal" href="../../sales/crm/optimize/partner_autocomplete.html">Enriquecer contactos con la función Autocompletar contacto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_gamification"><a class="reference internal" href="../../sales/crm/optimize/gamification.html">¿Cómo motivar y recompensar a mis vendedores?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_utilize_activities"><a class="reference internal" href="../../sales/crm/optimize/utilize_activities.html">Utilizar actividades para los equipos de ventas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_lead_enrichment"><a class="reference internal" href="../../sales/crm/optimize/lead_enrichment.html">Enriquecimiento de leads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_sales"><a class="reference internal" href="../../sales/sales.html">Ventas</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_sales_send_quotations"><a class="reference internal" href="#">Enviar cotizaciones</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_quote_template"><a class="reference internal" href="../../sales/sales/send_quotations/quote_template.html">Plantillas de cotización</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_optional_products"><a class="reference internal" href="../../sales/sales/send_quotations/optional_products.html">Productos opcionales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_signature_to_validate"><a class="reference internal" href="../../sales/sales/send_quotations/get_signature_to_validate.html">Firmas electrónicas para la confirmación de órdenes.</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_paid_to_validate"><a class="reference internal" href="../../sales/sales/send_quotations/get_paid_to_validate.html">Confirmación de orden de pago en línea</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_deadline"><a class="reference internal" href="../../sales/sales/send_quotations/deadline.html">Fecha límite de cotizaciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_different_addresses"><a class="reference internal" href="../../sales/sales/send_quotations/different_addresses.html">Entregas y facturas en diferentes direcciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_orders_and_variants"><a class="reference internal" href="../../sales/sales/send_quotations/orders_and_variants.html">Variantes de producto en cotizaciones y órdenes de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_invoicing"><a class="reference internal" href="#">Método de facturación</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_invoicing_policy"><a class="reference internal" href="../../sales/sales/invoicing/invoicing_policy.html">Facturar por cantidades entregadas u ordenadas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_down_payment"><a class="reference internal" href="../../sales/sales/invoicing/down_payment.html">Anticipos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_proforma"><a class="reference internal" href="../../sales/sales/invoicing/proforma.html">Facturas proforma</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_time_materials"><a class="reference internal" href="../../sales/sales/invoicing/time_materials.html">Facturación por tiempo y materiales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_milestone"><a class="reference internal" href="../../sales/sales/invoicing/milestone.html">Facturar objetivos de proyecto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_expense"><a class="reference internal" href="../../sales/sales/invoicing/expense.html">Volver a facturar gastos a los clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_products_prices"><a class="reference internal" href="#">Productos y precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_products"><a class="reference internal" href="#">Gestionar productos</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_import"><a class="reference internal" href="../../sales/sales/products_prices/products/import.html">Importar productos</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_variants"><a class="reference internal" href="../../sales/sales/products_prices/products/variants.html">Variantes de producto</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_product_images"><a class="reference internal" href="../../sales/sales/products_prices/products/product_images.html">Imágenes para productos con Google Imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_prices"><a class="reference internal" href="#">Gestionar precios</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_pricing"><a class="reference internal" href="../../sales/sales/products_prices/prices/pricing.html">Listas de precios, descuentos y fórmulas</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_currencies"><a class="reference internal" href="../../sales/sales/products_prices/prices/currencies.html">Divisas extranjeras</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_returns"><a class="reference internal" href="../../sales/sales/products_prices/returns.html">Devoluciones y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_ewallets_giftcards"><a class="reference internal" href="../../sales/sales/products_prices/ewallets_giftcards.html">Usar monederos electrónicos y tarjetas de regalo</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_loyalty_discount"><a class="reference internal" href="../../sales/sales/products_prices/loyalty_discount.html">Programas de descuento y lealtad</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_services"><a class="reference internal" href="#">Servicios</a><ul>
+<li class="toctree-l3 o_menu_applications_services_project"><a class="reference internal" href="../../services/project.html">Proyecto</a><ul>
+<li class="toctree-l4 o_menu_applications_services_project_tasks"><a class="reference internal" href="#">Tareas</a><ul>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_email_alias"><a class="reference internal" href="../../services/project/tasks/email_alias.html">Crear tareas del proyecto a partir de un seudónimo de correo electrónico</a></li>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_recurring_tasks"><a class="reference internal" href="../../services/project/tasks/recurring_tasks.html">Tareas recurrentes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_project_project_management"><a class="reference internal" href="../../services/project/project_management.html">Gestión de proyectos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_finance"><a class="reference internal" href="#">Finanzas</a><ul>
+<li class="toctree-l3 o_menu_applications_finance_accounting"><a class="reference internal" href="../../finance/accounting.html">Contabilidad y facturación</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_accounting_customer_invoices"><a class="reference internal" href="../../finance/accounting/customer_invoices.html">Facturas de cliente</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="../../finance/accounting/customer_invoices/overview.html">Procesos de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="../../finance/accounting/customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="../../finance/accounting/customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="../../finance/accounting/customer_invoices/credit_notes.html">Factura de Abono y reembolsos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../../finance/accounting/vendor_bills.html">Facturas de proveedor</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="../../finance/accounting/vendor_bills/assets.html">Activos no circulantes y fijos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="../../finance/accounting/vendor_bills/deferred_expenses.html">Gastos diferidos y prepagos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_payments"><a class="reference internal" href="../../finance/accounting/payments.html">Pagos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="../../finance/accounting/payments/online.html">Pagos en línea</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="../../finance/accounting/payments/checks.html">Cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="../../finance/accounting/payments/internal_transfers.html">Transferencias internas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="../../finance/accounting/payments/pay_sepa.html">Pagos con SEPA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="../../finance/accounting/payments/pay_checks.html">Pagar con cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="../../finance/accounting/payments/forecast.html">Pronóstico de futuras facturas por pagar</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../../finance/accounting/bank.html">Cuentas bancarias y de efectivo</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="../../finance/accounting/bank/transactions.html">Transacciones</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="../../finance/accounting/bank/reconciliation.html">Conciliación bancaria</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="../../finance/accounting/bank/reconciliation_models.html">Modelos de conciliación</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_reporting"><a class="reference internal" href="../../finance/accounting/reporting.html">Informes</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_expenses"><a class="reference internal" href="../../finance/expenses.html">Gastos</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_inventory_and_mrp"><a class="reference internal" href="#">Cadena de suministro</a><ul>
+<li class="toctree-l3 o_menu_applications_inventory_and_mrp_purchase"><a class="reference internal" href="../../inventory_and_mrp/purchase.html">Compra</a><ul>
+<li class="toctree-l4 o_menu_applications_inventory_and_mrp_purchase_products"><a class="reference internal" href="#">Productos</a><ul>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_products_reordering"><a class="reference internal" href="../../inventory_and_mrp/purchase/products/reordering.html">Configurar reglas de reordenamiento</a></li>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_products_uom"><a class="reference internal" href="../../inventory_and_mrp/purchase/products/uom.html">Compre en unidades de medida diferentes a las de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_inventory_and_mrp_purchase_manage_deals"><a class="reference internal" href="#">Gestionar ofertas</a><ul>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_manage_deals_blanket_orders"><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/blanket_orders.html">Utilice las órdenes abiertas para crear contratos de compra con los proveedores</a></li>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_manage_deals_calls_for_tenders"><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/calls_for_tenders.html">Cree solicitudes de cotización alternas para varios proveedores.</a></li>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_manage_deals_control_bills"><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/control_bills.html">Políticas de control de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_manage_deals_manage"><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/manage.html">Gestionar facturas de proveedor</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_inventory_and_mrp_purchase_advanced"><a class="reference internal" href="#">Avanzado</a><ul>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_advanced_analyze"><a class="reference internal" href="../../inventory_and_mrp/purchase/advanced/analyze.html">Analice el rendimiento de sus compras</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_hr"><a class="reference internal" href="#">Recursos humanos</a><ul>
+<li class="toctree-l3 o_menu_applications_hr_attendances"><a class="reference internal" href="../../hr/attendances.html">Asistencias</a><ul>
+<li class="toctree-l4 o_menu_applications_hr_attendances_hardware"><a class="reference internal" href="../../hr/attendances/hardware.html">Hardware</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_hr_employees"><a class="reference internal" href="../../hr/employees.html">Empleados</a><ul>
+<li class="toctree-l4 o_menu_applications_hr_employees_new_employee"><a class="reference internal" href="../../hr/employees/new_employee.html">Crear un nuevo empleado</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_marketing"><a class="reference internal" href="#">Marketing</a><ul>
+<li class="toctree-l3 o_menu_applications_marketing_email_marketing"><a class="reference internal" href="../email_marketing.html">Marketing por correo electrónico</a><ul>
+<li class="toctree-l4 o_menu_applications_marketing_email_marketing_mailing_lists"><a class="reference internal" href="mailing_lists.html">Listas de correo</a></li>
+<li class="toctree-l4 o_menu_applications_marketing_email_marketing_unsubscriptions"><a class="reference internal" href="unsubscriptions.html">Gestionar la cancelación de suscripciones (lista de exclusión)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+    </noscript>
+    
+    <nav id="o_menu" class="o_side_nav">
+        <div class="o_mobile-overlay" data-bs-toggle="collapse" data-bs-target="#o_menu"></div>
+        <div class="o_side_nav-inner border-end">
+                
+                <aside id="o_page_toc_in_nav" class="o_page_toc o_in_nav_toc border-bottom pt-3 pb-3" hidden><div class="o_page_toc_nav mt-1">
+    <h5>En esta página</h5>
+    <ul>
+<li><a class="reference internal" href="#">Analyze metrics</a><ul>
+<li><a class="reference internal" href="#view-metrics">View metrics</a><ul>
+<li><a class="reference internal" href="#opened-rate">Opened rate</a></li>
+<li><a class="reference internal" href="#replied-rate">Replied rate</a></li>
+<li><a class="reference internal" href="#clicked-rate">Clicked rate</a></li>
+<li><a class="reference internal" href="#received-rate">Received rate</a></li>
+<li><a class="reference internal" href="#bounced-rate">Bounced rate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deliverability-issues">Deliverability issues</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+                </aside>
+            <div id="o_main_toctree" class="o_main_toc mt-3" hidden>
+
+
+<ul>
+<li class="toctree-l1 o_menu_applications"><a class="reference internal" href="../../../applications.html">Documentos para el usuario</a><ul>
+<li class="toctree-l2 o_menu_applications_essentials"><a class="reference internal" href="#">Fundamentos de Odoo</a><ul>
+<li class="toctree-l3 o_menu_applications_essentials_activities"><a class="reference internal" href="../../essentials/activities.html">Actividades</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_reporting"><a class="reference internal" href="../../essentials/reporting.html">Informes</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_search"><a class="reference internal" href="../../essentials/search.html">Buscar y filtrar registros</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_contacts"><a class="reference internal" href="../../essentials/contacts.html">Contactos</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_export_import_data"><a class="reference internal" href="../../essentials/export_import_data.html">Exportar e importar datos</a></li>
+<li class="toctree-l3 o_menu_applications_essentials_in_app_purchase"><a class="reference internal" href="../../essentials/in_app_purchase.html">Compras dentro de la aplicación (IAP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_sales"><a class="reference internal" href="#">Ventas</a><ul>
+<li class="toctree-l3 o_menu_applications_sales_crm"><a class="reference internal" href="../../sales/crm.html">CRM</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_crm_pipeline"><a class="reference internal" href="#">Organizar un flujo</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_lost_opportunities"><a class="reference internal" href="../../sales/crm/pipeline/lost_opportunities.html">Gestión de oportunidades perdidas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_pipeline_multi_sales_team"><a class="reference internal" href="../../sales/crm/pipeline/multi_sales_team.html">Varios equipos de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_acquire_leads"><a class="reference internal" href="#">Obtener leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_convert"><a class="reference internal" href="../../sales/crm/acquire_leads/convert.html">Convertir leads en oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_generate_leads"><a class="reference internal" href="../../sales/crm/acquire_leads/generate_leads.html">Generar leads y oportunidades</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_send_quotes"><a class="reference internal" href="../../sales/crm/acquire_leads/send_quotes.html">Envíe presupuestos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_acquire_leads_lead_mining"><a class="reference internal" href="../../sales/crm/acquire_leads/lead_mining.html">Minado de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_track_leads"><a class="reference internal" href="#">Asignar y rastrear leads</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_track_leads_lead_scoring"><a class="reference internal" href="../../sales/crm/track_leads/lead_scoring.html">Asignación de leads con la puntuación predictiva de leads</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_performance"><a class="reference internal" href="#">Analizar el rendimiento</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_performance_win_loss"><a class="reference internal" href="../../sales/crm/performance/win_loss.html">Revise la relación ganancia/pérdida</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_crm_optimize"><a class="reference internal" href="#">Mejoras para su trabajo diario</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_partner_autocomplete"><a class="reference internal" href="../../sales/crm/optimize/partner_autocomplete.html">Enriquecer contactos con la función Autocompletar contacto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_gamification"><a class="reference internal" href="../../sales/crm/optimize/gamification.html">¿Cómo motivar y recompensar a mis vendedores?</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_utilize_activities"><a class="reference internal" href="../../sales/crm/optimize/utilize_activities.html">Utilizar actividades para los equipos de ventas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_crm_optimize_lead_enrichment"><a class="reference internal" href="../../sales/crm/optimize/lead_enrichment.html">Enriquecimiento de leads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_sales_sales"><a class="reference internal" href="../../sales/sales.html">Ventas</a><ul>
+<li class="toctree-l4 o_menu_applications_sales_sales_send_quotations"><a class="reference internal" href="#">Enviar cotizaciones</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_quote_template"><a class="reference internal" href="../../sales/sales/send_quotations/quote_template.html">Plantillas de cotización</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_optional_products"><a class="reference internal" href="../../sales/sales/send_quotations/optional_products.html">Productos opcionales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_signature_to_validate"><a class="reference internal" href="../../sales/sales/send_quotations/get_signature_to_validate.html">Firmas electrónicas para la confirmación de órdenes.</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_get_paid_to_validate"><a class="reference internal" href="../../sales/sales/send_quotations/get_paid_to_validate.html">Confirmación de orden de pago en línea</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_deadline"><a class="reference internal" href="../../sales/sales/send_quotations/deadline.html">Fecha límite de cotizaciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_different_addresses"><a class="reference internal" href="../../sales/sales/send_quotations/different_addresses.html">Entregas y facturas en diferentes direcciones</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_send_quotations_orders_and_variants"><a class="reference internal" href="../../sales/sales/send_quotations/orders_and_variants.html">Variantes de producto en cotizaciones y órdenes de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_invoicing"><a class="reference internal" href="#">Método de facturación</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_invoicing_policy"><a class="reference internal" href="../../sales/sales/invoicing/invoicing_policy.html">Facturar por cantidades entregadas u ordenadas</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_down_payment"><a class="reference internal" href="../../sales/sales/invoicing/down_payment.html">Anticipos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_proforma"><a class="reference internal" href="../../sales/sales/invoicing/proforma.html">Facturas proforma</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_time_materials"><a class="reference internal" href="../../sales/sales/invoicing/time_materials.html">Facturación por tiempo y materiales</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_milestone"><a class="reference internal" href="../../sales/sales/invoicing/milestone.html">Facturar objetivos de proyecto</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_invoicing_expense"><a class="reference internal" href="../../sales/sales/invoicing/expense.html">Volver a facturar gastos a los clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_sales_sales_products_prices"><a class="reference internal" href="#">Productos y precios</a><ul>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_products"><a class="reference internal" href="#">Gestionar productos</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_import"><a class="reference internal" href="../../sales/sales/products_prices/products/import.html">Importar productos</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_variants"><a class="reference internal" href="../../sales/sales/products_prices/products/variants.html">Variantes de producto</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_products_product_images"><a class="reference internal" href="../../sales/sales/products_prices/products/product_images.html">Imágenes para productos con Google Imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_prices"><a class="reference internal" href="#">Gestionar precios</a><ul>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_pricing"><a class="reference internal" href="../../sales/sales/products_prices/prices/pricing.html">Listas de precios, descuentos y fórmulas</a></li>
+<li class="toctree-l6 o_menu_applications_sales_sales_products_prices_prices_currencies"><a class="reference internal" href="../../sales/sales/products_prices/prices/currencies.html">Divisas extranjeras</a></li>
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_returns"><a class="reference internal" href="../../sales/sales/products_prices/returns.html">Devoluciones y reembolsos</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_ewallets_giftcards"><a class="reference internal" href="../../sales/sales/products_prices/ewallets_giftcards.html">Usar monederos electrónicos y tarjetas de regalo</a></li>
+<li class="toctree-l5 o_menu_applications_sales_sales_products_prices_loyalty_discount"><a class="reference internal" href="../../sales/sales/products_prices/loyalty_discount.html">Programas de descuento y lealtad</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_services"><a class="reference internal" href="#">Servicios</a><ul>
+<li class="toctree-l3 o_menu_applications_services_project"><a class="reference internal" href="../../services/project.html">Proyecto</a><ul>
+<li class="toctree-l4 o_menu_applications_services_project_tasks"><a class="reference internal" href="#">Tareas</a><ul>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_email_alias"><a class="reference internal" href="../../services/project/tasks/email_alias.html">Crear tareas del proyecto a partir de un seudónimo de correo electrónico</a></li>
+<li class="toctree-l5 o_menu_applications_services_project_tasks_recurring_tasks"><a class="reference internal" href="../../services/project/tasks/recurring_tasks.html">Tareas recurrentes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_services_project_project_management"><a class="reference internal" href="../../services/project/project_management.html">Gestión de proyectos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_finance"><a class="reference internal" href="#">Finanzas</a><ul>
+<li class="toctree-l3 o_menu_applications_finance_accounting"><a class="reference internal" href="../../finance/accounting.html">Contabilidad y facturación</a><ul>
+<li class="toctree-l4 o_menu_applications_finance_accounting_customer_invoices"><a class="reference internal" href="../../finance/accounting/customer_invoices.html">Facturas de cliente</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_overview"><a class="reference internal" href="../../finance/accounting/customer_invoices/overview.html">Procesos de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_customer_addresses"><a class="reference internal" href="../../finance/accounting/customer_invoices/customer_addresses.html">Direcciones de entrega y de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_terms_conditions"><a class="reference internal" href="../../finance/accounting/customer_invoices/terms_conditions.html">Términos y condiciones predeterminados</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_customer_invoices_credit_notes"><a class="reference internal" href="../../finance/accounting/customer_invoices/credit_notes.html">Factura de Abono y reembolsos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_vendor_bills"><a class="reference internal" href="../../finance/accounting/vendor_bills.html">Facturas de proveedor</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_assets"><a class="reference internal" href="../../finance/accounting/vendor_bills/assets.html">Activos no circulantes y fijos</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_vendor_bills_deferred_expenses"><a class="reference internal" href="../../finance/accounting/vendor_bills/deferred_expenses.html">Gastos diferidos y prepagos</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_payments"><a class="reference internal" href="../../finance/accounting/payments.html">Pagos</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_online"><a class="reference internal" href="../../finance/accounting/payments/online.html">Pagos en línea</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_checks"><a class="reference internal" href="../../finance/accounting/payments/checks.html">Cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_internal_transfers"><a class="reference internal" href="../../finance/accounting/payments/internal_transfers.html">Transferencias internas</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_sepa"><a class="reference internal" href="../../finance/accounting/payments/pay_sepa.html">Pagos con SEPA</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_pay_checks"><a class="reference internal" href="../../finance/accounting/payments/pay_checks.html">Pagar con cheques</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_payments_forecast"><a class="reference internal" href="../../finance/accounting/payments/forecast.html">Pronóstico de futuras facturas por pagar</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_bank"><a class="reference internal" href="../../finance/accounting/bank.html">Cuentas bancarias y de efectivo</a><ul>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_transactions"><a class="reference internal" href="../../finance/accounting/bank/transactions.html">Transacciones</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation"><a class="reference internal" href="../../finance/accounting/bank/reconciliation.html">Conciliación bancaria</a></li>
+<li class="toctree-l5 o_menu_applications_finance_accounting_bank_reconciliation_models"><a class="reference internal" href="../../finance/accounting/bank/reconciliation_models.html">Modelos de conciliación</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_finance_accounting_reporting"><a class="reference internal" href="../../finance/accounting/reporting.html">Informes</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_finance_expenses"><a class="reference internal" href="../../finance/expenses.html">Gastos</a></li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_inventory_and_mrp"><a class="reference internal" href="#">Cadena de suministro</a><ul>
+<li class="toctree-l3 o_menu_applications_inventory_and_mrp_purchase"><a class="reference internal" href="../../inventory_and_mrp/purchase.html">Compra</a><ul>
+<li class="toctree-l4 o_menu_applications_inventory_and_mrp_purchase_products"><a class="reference internal" href="#">Productos</a><ul>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_products_reordering"><a class="reference internal" href="../../inventory_and_mrp/purchase/products/reordering.html">Configurar reglas de reordenamiento</a></li>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_products_uom"><a class="reference internal" href="../../inventory_and_mrp/purchase/products/uom.html">Compre en unidades de medida diferentes a las de venta</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_inventory_and_mrp_purchase_manage_deals"><a class="reference internal" href="#">Gestionar ofertas</a><ul>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_manage_deals_blanket_orders"><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/blanket_orders.html">Utilice las órdenes abiertas para crear contratos de compra con los proveedores</a></li>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_manage_deals_calls_for_tenders"><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/calls_for_tenders.html">Cree solicitudes de cotización alternas para varios proveedores.</a></li>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_manage_deals_control_bills"><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/control_bills.html">Políticas de control de facturación</a></li>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_manage_deals_manage"><a class="reference internal" href="../../inventory_and_mrp/purchase/manage_deals/manage.html">Gestionar facturas de proveedor</a></li>
+</ul>
+</li>
+<li class="toctree-l4 o_menu_applications_inventory_and_mrp_purchase_advanced"><a class="reference internal" href="#">Avanzado</a><ul>
+<li class="toctree-l5 o_menu_applications_inventory_and_mrp_purchase_advanced_analyze"><a class="reference internal" href="../../inventory_and_mrp/purchase/advanced/analyze.html">Analice el rendimiento de sus compras</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_hr"><a class="reference internal" href="#">Recursos humanos</a><ul>
+<li class="toctree-l3 o_menu_applications_hr_attendances"><a class="reference internal" href="../../hr/attendances.html">Asistencias</a><ul>
+<li class="toctree-l4 o_menu_applications_hr_attendances_hardware"><a class="reference internal" href="../../hr/attendances/hardware.html">Hardware</a></li>
+</ul>
+</li>
+<li class="toctree-l3 o_menu_applications_hr_employees"><a class="reference internal" href="../../hr/employees.html">Empleados</a><ul>
+<li class="toctree-l4 o_menu_applications_hr_employees_new_employee"><a class="reference internal" href="../../hr/employees/new_employee.html">Crear un nuevo empleado</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 o_menu_applications_marketing"><a class="reference internal" href="#">Marketing</a><ul>
+<li class="toctree-l3 o_menu_applications_marketing_email_marketing"><a class="reference internal" href="../email_marketing.html">Marketing por correo electrónico</a><ul>
+<li class="toctree-l4 o_menu_applications_marketing_email_marketing_mailing_lists"><a class="reference internal" href="mailing_lists.html">Listas de correo</a></li>
+<li class="toctree-l4 o_menu_applications_marketing_email_marketing_unsubscriptions"><a class="reference internal" href="unsubscriptions.html">Gestionar la cancelación de suscripciones (lista de exclusión)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+    <header class="o_headers"><div class="o_main_header border-bottom d-flex align-items-center">
+    <div class="o_logo_wrapper">
+        <a href="../../../index.html" class="o_logo">
+            <img src="../../../_static/img/logos/ekodo_logo_130px.png" height="20" alt="Ekodo" />
+            <span>docs</span>
+        </a>
+    </div>
+    <div class="d-flex flex-grow-1">
+<div id="searchbox" class="o_search_wrapper d-flex flex-grow-1" role="search">
+    <form class="o_search" action="../../../search.html" method="get">
+        <input type="text" name="q" id="q" class="form-control rounded-pill" placeholder="What are you looking for?">
+        <input type="hidden" name="area" value="default">
+        <input type="hidden" name="check_keywords" value="yes">
+        <button type="submit" class="btn"><i class="i-search"></i></button>
+    </form>
+</div>
+<script type="text/javascript">$('.o_search_wrapper').show(0);</script>
+        <a class="btn btn-primary fw_bold ms-auto d-none d-lg-inline-block" href="https://ekodo.es/contacto">Solicita una Demo</a>
+    </div>
+</div>
+<div class="o_subheader border-bottom d-flex">
+    <div class="o_side_nav_toggler_wrapper border-end d-flex d-lg-none">
+        <button class="h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#o_menu"
+            aria-label="Toggle navigation">
+            <i class="i-sidepanel"></i>
+        </button>
+    </div>
+    <div class="d-flex justify-content-end ms-auto"><div class="o_languages">
+	<div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="languages"
+                    data-bs-toggle="dropdown">
+                ES 
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="languages">
+                <li><a class="o_switcher_item dropdown-item" href="https://ekodo.es/doc/applications/marketing/email_marketing/analyse_metrics.html">EN</a></li>
+        </ul>
+	</div>
+</div><div class="o_versions row">
+    <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle"
+                    id="versions"
+                    disabled="">
+                Odoo 16 
+            </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versions">
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+    </header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Analyze metrics</a></li> 
+      </ul>
+    </div>
+    <div id="wrap">
+
+        <main class="container-fluid ">
+                <article id="o_content" class="doc-body">
+                    <div role="main"> 
+  <section id="analyze-metrics">
+<h1>Analyze metrics<a class="headerlink" href="#analyze-metrics" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>To properly understand the success or failure of an email marketing campaign, it is
+necessary to monitor several key metrics. The insights gained from these metrics can then be used to
+optimize future campaigns. Odoo’s <strong>Email Marketing</strong> application tracks several <a class="reference internal" href="#email-marketing-key-metrics"><span class="std std-ref">key metrics</span></a>, which can be interpreted to improve future campaigns.</p>
+</section><section id="view-metrics">
+<h2>View metrics<a class="headerlink" href="#view-metrics" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>After a mass mail has been sent, the results for that particular mailing are displayed in multiple
+locations.</p>
+<p>To access the metrics for an individual mailing, navigate to <span class="menuselection">Email Marketing app
+‣ Mailings</span>. Locate the specific mailing in the list view, and use the column headings to view the
+results for that mailing. Click on one of the mailings in the list to open the record. At the top of
+the record, detailed metrics are displayed as smart buttons.</p>
+<img alt="The smart buttons on a mass mailing, displaying the results of the message." class="align-center" src="../../../_images/ver_metricas.png" />
+<p>Below is a non-comprehensive selection of percentage-based metrics that are key for analyzing the
+success of an email marketing campaign.</p>
+<div class="alert alert-tip">
+<p class="alert-title">
+Truco</p><p>Click on any smart button to see the recipient records for that respective metric.</p>
+</div>
+</section><section id="opened-rate">
+<span id="email-marketing-key-metrics"></span><h3>Opened rate<a class="headerlink" href="#opened-rate" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>The <span class="guilabel">Opened</span> rate measures the percentage of emails opened by recipients against the
+total number of sent emails.</p>
+<p>A high open rate may indicate the subject line was timely, compelling, and successfully
+prompted the recipients to view the message.</p>
+<p>A low open rate may indicate the subject line failed to capture the recipients” interest. It could
+also indicate the email ended up in a spam or junk folder, due to having a poor sender reputation,
+or failing to <a class="reference internal" href="../../general/email_communication/email_domain.html"><span class="doc">configure the proper DNS records</span></a>.</p>
+</section><section id="replied-rate">
+<h3>Replied rate<a class="headerlink" href="#replied-rate" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>The <span class="guilabel">Replied</span> rate measures the percentage of recipients who responded to the email
+directly against the total number of sent emails.</p>
+<p>A high replied rate may indicate the email resonated with recipients, prompting them to take action
+or provide feedback.</p>
+<p>A low replied rate may suggest that the message lacked relevance or did not contain a clear
+call-to-action.</p>
+</section><section id="clicked-rate">
+<h3>Clicked rate<a class="headerlink" href="#clicked-rate" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>The <span class="guilabel">Clicked</span> rate, represents the <em>Click Through Rate (CTR)</em>, which measures the
+percentage of recipients who clicked on a link within the email against the total number of sent
+emails.</p>
+<p>A high <abbr title="Click through rate">CTR</abbr> may indicate the email content was relevant and appropriately targeted. Recipients were
+motivated to click the links provided, and likely found the content engaging.</p>
+<p>A low <abbr title="Click through rate">CTR</abbr> may indicate issues with either the targeting, or the content itself. If there were any
+calls to action, recipients may have been unmotivated, or the message itself may have been directed
+toward the wrong audience.</p>
+</section><section id="received-rate">
+<h3>Received rate<a class="headerlink" href="#received-rate" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>The <em>Received</em> rate measures the percentage of emails successfully delivered against the
+total number of sent emails.</p>
+<p>A high received rate can indicate the mailing list used is up-to-date and the sender
+authentication is trusted by email providers.</p>
+<p>A low received rate may indicate issues with either the mailing list used for the mailing, or with
+the sender authentication. View the <a class="reference internal" href="#email-marketing-deliverability-issues"><span class="std std-ref">Deliverability issues</span></a> section for more
+information.</p>
+</section><section id="bounced-rate">
+<h3>Bounced rate<a class="headerlink" href="#bounced-rate" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>The <em>Bounced</em> rate measures the percentage of emails unsuccessfully delivered, against the
+total number of sent emails.</p>
+<p>A high bounce rate could indicate issues with either the mailing list used for the mailing, or with
+the sender authentication.</p>
+<p>A low bounce rate may indicate the mailing list used is up-to-date and the sender
+authentication is trusted by email providers. View the <a class="reference internal" href="#email-marketing-deliverability-issues"><span class="std std-ref">Deliverability issues</span></a>
+section for more information.</p>
+</section><section id="deliverability-issues">
+<span id="email-marketing-deliverability-issues"></span><h2>Deliverability issues<a class="headerlink" href="#deliverability-issues" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>The following defines possible reasons for a high bounce rate or low received rate:</p>
+<ul class="simple">
+<li><p>Using a mailing list that contains outdated contact information, or malformed email addresses, is
+likely to result in a high bounce rate and/or a low received rate.</p></li>
+<li><p>Mailings sent using a <em>From</em> email address that differs from the sender’s domain are likely to
+bounce with certain email providers, due to failing <a class="reference internal" href="../../general/email_communication/email_domain.html"><span class="doc">DMARC authentication</span></a>.</p></li>
+<li><p>Failing to <a class="reference internal" href="../../general/email_communication/email_domain.html"><span class="doc">configure the proper DNS records</span></a> can also result in a high bounce rate.</p></li>
+</ul>
+<div class="alert alert-secondary">
+<p class="alert-title">
+Ver también</p><ul class="simple">
+<li><p><a class="reference internal" href="../email_marketing.html"><span class="doc">Mailing campaigns</span></a></p></li>
+<li><p><a class="reference internal" href="unsubscriptions.html"><span class="doc">Manage unsubscriptions</span></a></p></li>
+</ul>
+</div>
+</section>
+
+                    </div>
+                </article>
+        </main>
+            
+            <aside id="o_page_toc" class="o_page_toc" hidden><div class="o_page_toc_nav mt-1">
+    <h5>En esta página</h5>
+    <ul>
+<li><a class="reference internal" href="#">Analyze metrics</a><ul>
+<li><a class="reference internal" href="#view-metrics">View metrics</a><ul>
+<li><a class="reference internal" href="#opened-rate">Opened rate</a></li>
+<li><a class="reference internal" href="#replied-rate">Replied rate</a></li>
+<li><a class="reference internal" href="#clicked-rate">Clicked rate</a></li>
+<li><a class="reference internal" href="#received-rate">Received rate</a></li>
+<li><a class="reference internal" href="#bounced-rate">Bounced rate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deliverability-issues">Deliverability issues</a></li>
+</ul>
+</li>
+</ul>
+ 
+</div>
+            </aside>
+    </div>
+    <footer><div class="o_get_help container-fluid d-lg-flex">
+    <div class="col-12 col-lg-10">
+        <h4><i class="i-o-help me-2"></i>Obtenga ayuda</h4>
+        <div>
+            <a href="https://ekodo.es/new/ticket" target="_blank" class="btn btn-outline-secondary mb-2">Contactar a soporte</a>
+            <!-- <a href="https://www.odoo.com/forum/help-1" target="_blank" class="btn btn-outline-secondary mb-2">Pregúntele a la comunidad de Odoo</a> -->
+        </div>
+    </div>
+    <div class="col-12 col-lg-2 mt-5 mt-lg-0 text-center">
+        <a class="o_logo" href="https://www.ekodo.es">
+            <img src="../../../_static/img/logos/ekodo_logo_130px.png" height="20" alt="Odoo"/>
+        </a>
+    </div>
+</div>
+    </footer>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de Odoo - 16.0</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Analyze metrics</a></li> 
+      </ul>
+    </div>
+  </body>
+</html>
