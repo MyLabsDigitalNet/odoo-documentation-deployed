@@ -213,6 +213,10 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2 o_menu_applications_productivity"><a class="reference internal" href="#">Productividad</a><ul>
+<li class="toctree-l3 o_menu_applications_productivity_calendar"><a class="reference internal" href="../calendar.html">Calendario</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -436,6 +440,10 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2 o_menu_applications_productivity"><a class="reference internal" href="#">Productividad</a><ul>
+<li class="toctree-l3 o_menu_applications_productivity_calendar"><a class="reference internal" href="../calendar.html">Calendario</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -530,7 +538,7 @@ Ver también</p><ul class="simple">
 Nota</p><p>Si esta es la primera vez que visita esta página, Google le pedirá que ingrese a un país y acepte los Términos de servicio. Seleccione un país de la lista y acepte los :guilabel;`Términos de servicio`.</p>
 </div>
 <p>Después, haga clic en <span class="guilabel">Select a project</span> (seleccionar un proyecto) y seleccione (o cree) un proyecto API en el que pueda configurar OAuth y guardar credenciales. Haga clic en <span class="guilabel">New Project</span> (nuevo proyecto).</p>
-<img alt="Cree un nuevo proyecto de API donde guarde las credenciales" class="align-center" src="../../../_images/new-api-project.png" />
+<img alt="Cree un nuevo proyecto de API donde guarde las credenciales" class="align-center" src="../../../_images/crear_proyecto.png" />
 <div class="alert alert-tip">
 <p class="alert-title">
 Truco</p><p>Póngale un nombre identificable al proyecto API, como «Odoo Sync», para que lo pueda identificar.</p>
@@ -538,9 +546,9 @@ Truco</p><p>Póngale un nombre identificable al proyecto API, como «Odoo Sync»
 </section><section id="enable-google-calendar-api">
 <h3>Active el API del calendario de Google<a class="headerlink" href="#enable-google-calendar-api" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Ahora, haga clic en <span class="guilabel">Enabled APIs and Services</span> (API y servicios activados) en el menú del lado izquierdo. Seleccione <span class="guilabel">Enabled APIs and Services</span> (API y servicios activados) otra vez si la <span class="guilabel">barra de búsqueda</span> no aparece.</p>
-<img alt="Active el API y servicios en el proyecto API." class="align-center" src="../../../_images/enable-apis-services.png" />
+<img alt="Active el API y servicios en el proyecto API." class="align-center" src="../../../_images/habilitar_api.png" />
 <p>Después, busque el <code class="o_code docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Calendar</span> <span class="pre">API</span></code> en la barra de búsqueda y seleccione <span class="guilabel">Google Calendar API</span> en los resultados de búsqueda. Haga clic en <span class="guilabel">Enable</span> (habilitar).</p>
-<img alt="Habilite el API del calendario de Google." class="align-center" src="../../../_images/enable-google-cal-api.png" />
+<img alt="Habilite el API del calendario de Google." class="align-center" src="../../../_images/api_calendar.png" />
 </section><section id="oauth-consent-screen">
 <h3>Pantalla de consentimiento OAuth<a class="headerlink" href="#oauth-consent-screen" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Ya que creó el proyecto API, el siguiente paso es configurar OAuth. Para hacerlo, haga clic en <span class="guilabel">OAuth consent</span> (consentimiento OAuth) en el menú izquierdo y después seleccione <span class="guilabel">User Type</span> (tipo de usuario).</p>
@@ -557,22 +565,23 @@ Advertencia</p><p>A las cuentas <em>personales</em> de Gmail solo se les permite
 </section><section id="create-credentials">
 <h3>Creación de credenciales<a class="headerlink" href="#create-credentials" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Necesita tanto el <em>ID del cliente</em> como el <em>secreto del cliente</em> para poder conectar el calendario de Google a Odoo. Este es el último paso que tendrá que realizar en la consola de Google. Para empezar, haga clic en <span class="guilabel">Credentials</span> (credenciales) en el menú de la izquierda. Después, haga clic en <span class="guilabel">Create Credentials</span> (crear credenciales) y seleccione <span class="guilabel">OAuth client ID</span> (ID del cliente OAuth). Se abrirá la guía de Google para crear credenciales.</p>
+<img alt="Agregue los orígenes de JavaScript autorizados y después las URI de redirección autorizadas." class="align-center" src="../../../_images/credenciales.png" />
 <p>En <span class="menuselection">Create OAuth Client ID</span> (crear un ID de cliente de OAuth), seleccione <span class="guilabel">Website application</span> (aplicación de sitio web) en el campo <span class="guilabel">Application Type</span> (tipo de aplicación)  y escriba <code class="o_code docutils literal notranslate"><span class="pre">mi</span> <span class="pre">base</span> <span class="pre">de</span> <span class="pre">datos</span> <span class="pre">de</span> <span class="pre">Odoo</span></code> en <span class="guilabel">Name</span> (nombre).</p>
 <ul class="simple">
 <li><p>En la sección <span class="guilabel">Authorized JavaScript Origins</span> (orígenes autorizados de JavaScript) haga clic en <span class="guilabel">+ Add URI</span> (agregar URL) e ingrese la dirección <abbr title="Localizador de recursos uniforme">URL</abbr> completa del Odoo de su empresa.</p></li>
 <li><p>En la sección <span class="guilabel">Authorized redirect URIs</span> (URI de redirección autorizadas) haga clic en <span class="guilabel">+ Add URI</span> (agregar URI) y escriba a dirección <abbr title="Localizador de recursos uniforme">URL</abbr> del Odoo de su empresa seguido por <code class="o_code docutils literal notranslate"><span class="pre">/google_account/authentication</span></code>. Para terminar haga clic en <span class="guilabel">Create</span> (crear).</p></li>
 </ul>
-<img alt="Agregue los orígenes de JavaScript autorizados y después las URI de redirección autorizadas." class="align-center" src="../../../_images/uri.png" />
+<img alt="Agregue los orígenes de JavaScript autorizados y después las URI de redirección autorizadas." class="align-center" src="../../../_images/javascript_url.png" />
 <p>El <span class="guilabel">ID del cliente</span> y el <span class="guilabel">Secreto del cliente</span> aparecerán ahora, cópielos en un bloc de notas.</p>
 </section><section id="setup-in-odoo">
 <h2>Configuración en Odoo<a class="headerlink" href="#setup-in-odoo" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Cuando tenga el <em>ID del cliente</em> y el <em>Secreto del cliente</em>, abra su base de datos de Odoo y vaya a <span class="menuselection">Ajustes ‣ Ajustes generales ‣ Integraciones ‣ Google Calendar</span>.</p>
-<img alt="La opción a activar de Google Calendar en los ajustes generales." class="align-center" src="../../../_images/settings-google-cal.png" />
+<img alt="La opción a activar de Google Calendar en los ajustes generales." class="align-center" src="../../../_images/calendario_google.png" />
 <p>Ahora, copie y pegue el <em>ID del cliente</em> y el <em>Secreto del cliente</em> desde la página de las credenciales del API del calendario de Google en los campos que aparecerán debajo dela opción <span class="guilabel">Google Calendar</span>. Después haga clic en <span class="guilabel">guardar</span>.</p>
 </section><section id="sync-calendar-in-odoo">
 <h2>Sincronización del calendario con Odoo<a class="headerlink" href="#sync-calendar-in-odoo" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Abra la aplicación <span class="menuselection">Calendario</span> en Odoo y haga clic en el botón <span class="guilabel">Google</span> para sincronizar su calendario de Google.</p>
-<img alt="Haga clic en el botón de sincronización con Google para sincronizar su calendario de Google con Odoo." class="align-center" src="../../../_images/sync-google.png" />
+<img alt="Haga clic en el botón de sincronización con Google para sincronizar su calendario de Google con Odoo." class="align-center" src="../../../_images/conectar_google.png" />
 <div class="alert alert-primary">
 <p class="alert-title">
 Nota</p><p>La primera vez que sincronice su Calendario de Google con Odoo se le redirigirá a su cuenta de Google. Ahí seleccione la <span class="guilabel">cuenta de correo</span> que quiere que tenga acceso, después haga clic en <span class="guilabel">continuar</span> (si la aplicación no está verificada) y vuelva a hacer clic en <span class="guilabel">continuar</span> (para permitir la transferencia de información).</p>
