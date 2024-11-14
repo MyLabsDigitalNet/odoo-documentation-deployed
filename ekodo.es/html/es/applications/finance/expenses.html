@@ -586,8 +586,10 @@ Example</p><p>Estos son algunos ejemplos de cuándo es mejor establecer un <span
 </div>
 <p>Seleccione una <span class="guilabel">cuenta de gastos</span> si usa la aplicación <em>Contabilidad</em> de Odoo. Se recomienda consultar con el departamento de contabilidad para determinar la cuenta correcta a la que hacer referencia en este campo, ya que afectará a los reportes.</p>
 <p>Establezca un impuesto para cada producto en los campos <span class="guilabel">impuestos del vendedor</span> e <span class="guilabel">impuestos del cliente</span>, si es necesario. Una buena práctica sería utilizar un impuesto configurado con <a class="reference internal" href="accounting/taxes.html#taxes-included-in-price"><span class="std std-ref">impuesto incluido en el precio</span></a>. Si lo establece, los impuestos se configurarán automáticamente.</p>
+<p id="expenses-new">Para añadir una referencia interna en una categoría de gastos, haga clic en la categoría para abrir el formulario. Introduzca la referencia interna en el campo. Debajo del campo <span class="guilabel">Referencia interna</span>, aparece esta frase: <span class="guilabel">Utilizar esta referencia como prefijo en el asunto al enviar por correo electrónico</span>.</p>
+<img alt="Los números de referencia internos se enumeran en la vista principal de Productos de gastos." class="align-center" src="../../_images/referencia_interna.png" />
 </section><section id="record-expenses">
-<span id="expenses-new"></span><h2>Registrar gastos<a class="headerlink" href="#record-expenses" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Registrar gastos<a class="headerlink" href="#record-expenses" title="Enlazar permanentemente con este título">¶</a></h2>
 </section><section id="manually-create-a-new-expense">
 <h3>Crear un nuevo gasto de manera manual<a class="headerlink" href="#manually-create-a-new-expense" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Para registrar un nuevo gasto, comience en el tablero principal de la aplicación <span class="menuselection">Gastos</span>, que presenta la vista predeterminada <span class="guilabel">Mis gastos</span>. También se puede acceder a esta vista desde <span class="menuselection">Gastos ‣ Mis gastos ‣ Mis gastos</span>.</p>
@@ -606,18 +608,11 @@ Example</p><p>Por ejemplo, en el caso del kilometraje recorrido, el <span class=
 </li>
 </ol>
 </li>
-<li><p><span class="guilabel">Impuestos incluidos</span>: si se han configurado impuestos en la categoría de gasto, el porcentaje de impuestos y el importe, aparecerán automáticamente después de introducir el <span class="guilabel">total</span> o la <span class="guilabel">cantidad</span>.</p>
-<div class="alert alert-primary">
-<p class="alert-title">
-Nota</p><p>Cuando se configura un impuesto en una categoría de gasto, el valor de <span class="guilabel">impuestos incluidos</span> se actualizará en tiempo real a medida que se actualice el <span class="guilabel">total</span> o la <span class="guilabel">cantidad</span>.</p>
-</div>
-</li>
 <li><p><span class="guilabel">Empleado</span>: gracias al menú desplegable, seleccione el empleado para el que es este gasto.</p></li>
 <li><p><span class="guilabel">Pagado por</span>: haga clic en el botón de opción para indicar quién pagó el gasto y se le debe reembolsar. Si el empleado pagó el gasto (y se le debe reembolsar), seleccione <span class="guilabel">Empleado (a reembolsar)</span>. Si la empresa pagó directamente (por ejemplo, si se utilizó la tarjeta de crédito de la empresa para pagar el gasto), seleccione <span class="guilabel">Empresa</span>. Dependiendo de la categoría de gasto seleccionada, es posible que este campo no aparezca.</p></li>
-<li><p><span class="guilabel">Referencia de factura</span>: si hay algún texto de referencia que deba incluirse para el gasto, introdúzcalo en este campo.</p></li>
-<li><p><span class="guilabel">Fecha de gastos</span>: utilizando el módulo de calendario, introduzca la fecha en que se incurrió en el gasto. Utilice las flechas <span class="guilabel">&lt; (izquierda)</span> y <span class="guilabel">&gt; (derecha)</span> para navegar hasta el mes correcto y, a continuación, haga clic en el día correspondiente.</p></li>
-<li><p><span class="guilabel">Cuenta</span>: seleccione la cuenta de gastos en la que debe registrarse este gasto en el menú desplegable.</p></li>
-<li><p><span class="guilabel">Cliente al que se le va a volver a facturar</span>: Si el gasto lo debe pagar un cliente, seleccione la <code class="o_code docutils literal notranslate"><span class="pre">orden</span> <span class="pre">de</span> <span class="pre">venta</span></code> y el cliente al que se facturará este gasto en el menú desplegable. Todas las órdenes de venta del menú desplegable muestran tanto la <code class="o_code docutils literal notranslate"><span class="pre">orden</span> <span class="pre">de</span> <span class="pre">venta</span></code> como la empresa para la que se ha escrito la orden de venta, pero una vez guardado el gasto, el nombre del cliente desaparece y solo aparece la <code class="o_code docutils literal notranslate"><span class="pre">orden</span> <span class="pre">de</span> <span class="pre">venta</span></code> en el gasto.</p>
+<li><p><span class="guilabel">Ticket Reference</span>: If there is any reference text that should be included for the
+expense, enter it in this field.</p></li>
+<li><p><span class="guilabel">Fecha de gastos</span>: utilizando el módulo de calendario, introduzca la fecha en que se incurrió en el gasto. Utilice las flechas <span class="guilabel">&lt; (izquierda)</span> y <span class="guilabel">&gt; (derecha)</span> para navegar hasta el mes correcto y, a continuación, haga clic en el día correspondiente.</p>
 <div class="alert alert-success">
 <p class="alert-title">
 Example</p><p>Si un cliente desea tener una reunión in situ para un jardín personalizado (diseño e instalación) y acepta pagar los gastos asociados a la misma (como viaje, hotel, alimentos, etc.). Todos los gastos vinculados a esa reunión se indicarían en la orden de venta del jardín personalizado (que también hace referencia al cliente) como <span class="guilabel">cliente al que se le va a volver a facturar</span>.</p>
@@ -650,22 +645,6 @@ Nota</p><p>Si es necesario configurar el seudónimo del dominio, aparecerá <spa
 <p>Para enviar un gasto por correo electrónico, cree un nuevo mensaje e introduzca el código de <em>referencia interna</em> del producto (si está disponible) y el importe del gasto en el asunto del mensaje. Luego, adjunte el recibo al correo electrónico. Odoo crea el gasto tomando la información en el asunto del correo electrónico y combinándolo con el recibo.</p>
 <p>Para comprobar la referencia interna de una categoría de gastos, vaya a <span class="menuselection">Gastos ‣ Configuración ‣ Categorías de gastos</span>. Si aparece una referencia interna en la categoría de gasto, aparecerá en la columna <span class="guilabel">Referencia interna</span>.</p>
 <img alt="Los números de referencia internos se enumeran en la vista principal de categorías de gastos." class="align-center" src="../../_images/referencia_gastos.png" />
-<p>Para añadir una referencia interna en una categoría de gastos, haga clic en la categoría para abrir el formulario. Introduzca la referencia interna en el campo. Debajo del campo <span class="guilabel">Referencia interna</span>, aparece esta frase: <span class="guilabel">Utilizar esta referencia como prefijo en el asunto al enviar por correo electrónico</span>.</p>
-<img alt="Los números de referencia internos se enumeran en la vista principal de Productos de gastos." class="align-center" src="../../_images/referencia_interna.png" />
-<div class="alert alert-primary">
-<p class="alert-title">
-Nota</p><p>Por razones de seguridad, Odoo solo acepta los correos electrónicos autenticados de empleados cuando se crea un gasto desde un correo electrónico. Para confirmar una dirección de correo electrónico de empleado autenticado, vaya a la tarjeta del empleado en la aplicación <span class="menuselection">Empleados</span>, y verifique el <span class="guilabel">correo de trabajo</span>.</p>
-<img alt="Crea el alias de dominio haciendo clic en el enlace" class="align-center" src="../../_images/correo_empleado.png" />
-</div>
-<div class="alert alert-success">
-<p class="alert-title">
-Example</p><p>Si envía un gasto de alimento por correo electrónico por $25.00 durante un viaje de trabajo, el asunto del correo electrónico sería <code class="o_code docutils literal notranslate"><span class="pre">COMIDA</span> <span class="pre">$25.00</span></code>.</p>
-<p>Explicación:</p>
-<ul class="simple">
-<li><p>La <span class="guilabel">referencia interna</span> para la categoría de gasto <code class="o_code docutils literal notranslate"><span class="pre">alimentos</span></code> es <code class="o_code docutils literal notranslate"><span class="pre">COMIDA</span></code>.</p></li>
-<li><p>El <span class="guilabel">costo</span> del gasto es <code class="o_code docutils literal notranslate"><span class="pre">$25.00</span></code></p></li>
-</ul>
-</div>
 </section><section id="create-an-expense-report">
 <span id="expenses-report"></span><h2>Crear un reporte de gastos<a class="headerlink" href="#create-an-expense-report" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Cuando los gastos estén listos para su envío (por ejemplo, al final de un viaje de negocios o una vez al mes), deberá crearse un <em>reporte de gastos</em>. Vaya al tablero principal de la aplicación <span class="menuselection">Gastos</span>, que mostrará la vista predeterminada <span class="guilabel">Mis gastos</span>, o vaya a la aplicación <span class="menuselection">Gastos ‣ Mis gastos ‣ Mis gastos</span>.</p>

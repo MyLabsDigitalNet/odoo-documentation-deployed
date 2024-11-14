@@ -619,8 +619,12 @@ will affect reports.</p>
 <p>Set a tax on each product in the <span class="guilabel">Vendor Taxes</span> and <span class="guilabel">Customer Taxes</span> fields, if
 applicable. It is considered good practice to use a tax that is configured with <a class="reference internal" href="accounting/taxes.html#taxes-included-in-price"><span class="std std-ref">Tax Included
 in Price</span></a>. Taxes will be automatically configured if this is set.</p>
+<p id="expenses-new">To add an internal reference on an expense category, click on the category to open the form. Enter
+the internal reference in the field. Beneath the <span class="guilabel">Internal Reference</span> field, this sentence
+appears: <span class="guilabel">Use this reference as a subject prefix when submitting by email.</span></p>
+<img alt="Los números de referencia internos se enumeran en la vista principal de Productos de gastos." class="align-center" src="../../_images/referencia_interna.png" />
 </section><section id="record-expenses">
-<span id="expenses-new"></span><h2>Record expenses<a class="headerlink" href="#record-expenses" title="Permalink to this headline">¶</a></h2>
+<h2>Record expenses<a class="headerlink" href="#record-expenses" title="Permalink to this headline">¶</a></h2>
 </section><section id="manually-create-a-new-expense">
 <h3>Manually create a new expense<a class="headerlink" href="#manually-create-a-new-expense" title="Permalink to this headline">¶</a></h3>
 <p>To record a new expense, begin in the main <span class="menuselection">Expenses</span> app dashboard, which presents
@@ -652,32 +656,17 @@ is calculated.</p>
 </li>
 </ol>
 </li>
-<li><p><span class="guilabel">Included Taxes</span>: If taxes were configured on the expense category, the tax percentage
-and amount appear automatically after entering either the <span class="guilabel">Total</span> or the
-<span class="guilabel">Quantity</span>.</p>
-<div class="alert alert-primary">
-<p class="alert-title">
-Note</p><p>When a tax is configured on an expense category, the <span class="guilabel">Included Taxes</span> value will
-update in real time as the <span class="guilabel">Total</span> or <span class="guilabel">Quantity</span> is updated.</p>
-</div>
-</li>
 <li><p><span class="guilabel">Employee</span>: Using the drop-down menu, select the employee this expense is for.</p></li>
 <li><p><span class="guilabel">Paid By</span>: Click the radio button to indicate who paid for the expense and should be
 reimbursed. If the employee paid for the expense (and should be reimbursed) select
 <span class="guilabel">Employee (to reimburse)</span>. If the company paid directly instead (e.g. if the company
 credit card was used to pay for the expense) select <span class="guilabel">Company</span>. Depending on the expense
 category selected, this field may not appear.</p></li>
-<li><p><span class="guilabel">Bill Reference</span>: If there is any reference text that should be included for the
+<li><p><span class="guilabel">Ticket Reference</span>: If there is any reference text that should be included for the
 expense, enter it in this field.</p></li>
 <li><p><span class="guilabel">Expense Date</span>: Using the calendar module, enter the date the expense was incurred. Use
 the <span class="guilabel">&lt; (left)</span> and <span class="guilabel">&gt; (right)</span> arrows to navigate to the correct month, then
-click on the specific day to enter the selection.</p></li>
-<li><p><span class="guilabel">Account</span>: Select the expense account that this expense should be logged on from the
-drop-down menu.</p></li>
-<li><p><span class="guilabel">Customer to Reinvoice</span>: If the expense is something that should be paid for by a
-customer, select the <abbr title="Sales Order">SO</abbr> and customer that will be invoiced for this expense
-from the drop-down menu. All sales orders in the drop-down menu list both the <abbr title="Sales Order">SO</abbr> as well as the company the sales order is written for, but after the expense is saved, the
-customer name disappears and only the <abbr title="Sales Order">SO</abbr> is visible on the expense.</p>
+click on the specific day to enter the selection.</p>
 <div class="alert alert-success">
 <p class="alert-title">
 Example</p><p>A customer wishes to have an on-site meeting for a custom garden (design and installation) and
@@ -743,27 +732,6 @@ the receipt.</p>
 Configuration ‣ Expense Categories</span>. If an internal reference is listed on the expense category,
 it is listed in the <span class="guilabel">Internal Reference</span> column.</p>
 <img alt="Los números de referencia internos se enumeran en la vista principal de categorías de gastos." class="align-center" src="../../_images/referencia_gastos.png" />
-<p>To add an internal reference on an expense category, click on the category to open the form. Enter
-the internal reference in the field. Beneath the <span class="guilabel">Internal Reference</span> field, this sentence
-appears: <span class="guilabel">Use this reference as a subject prefix when submitting by email.</span></p>
-<img alt="Los números de referencia internos se enumeran en la vista principal de Productos de gastos." class="align-center" src="../../_images/referencia_interna.png" />
-<div class="alert alert-primary">
-<p class="alert-title">
-Note</p><p>For security purposes, only authenticated employee emails are accepted by Odoo when creating an
-expense from an email. To confirm an authenticated employee email address, go to the employee
-card in the <span class="menuselection">Employees</span> app, and refer to the <span class="guilabel">Work Email</span></p>
-<img alt="Crea el alias de dominio haciendo clic en el enlace" class="align-center" src="../../_images/correo_empleado.png" />
-</div>
-<div class="alert alert-success">
-<p class="alert-title">
-Example</p><p>If submitting an expense via email for a $25.00 meal during a work trip, the email subject would
-be <code class="o_code docutils literal notranslate"><span class="pre">FOOD</span> <span class="pre">$25.00</span></code>.</p>
-<p>Explanation:</p>
-<ul class="simple">
-<li><p>The <span class="guilabel">Internal Reference</span> for the expense category <code class="o_code docutils literal notranslate"><span class="pre">Meals</span></code> is <code class="o_code docutils literal notranslate"><span class="pre">FOOD</span></code></p></li>
-<li><p>The <span class="guilabel">Cost</span> for the expense is <code class="o_code docutils literal notranslate"><span class="pre">$25.00</span></code></p></li>
-</ul>
-</div>
 </section><section id="create-an-expense-report">
 <span id="expenses-report"></span><h2>Create an expense report<a class="headerlink" href="#create-an-expense-report" title="Permalink to this headline">¶</a></h2>
 <p>When expenses are ready to submit (such as at the end of a business trip, or once a month), an
